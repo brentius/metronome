@@ -11,10 +11,10 @@ Entry for Jane Street's [protocol emulator ASIC competition](https://blog.janest
 | Path | Contents |
 |---|---|
 | `code/md/` | Machine description (`machine.py`, single source of truth), generator (`gen.py`), instruction encoder (`encode.py`) |
-| `code/rtl/` | Verilog for `tt_um_metronome`; `code/rtl/gen/` is generated |
+| `info.yaml`, `src/`, `test/`, `docs/` | Tiny Tapeout template layout (from [ttihp-verilog-template](https://github.com/TinyTapeout/ttihp-verilog-template)): Verilog for `tt_um_brentius_metronome` and the LibreLane config in `src/` (`src/md_defs.vh` is generated), the template smoke test in `test/`, the datasheet page in `docs/info.md` |
 | `code/host/` | Assembler, static timing checks, program images, example programs |
 | `code/tests/` | RTL tests, lockstep RTL-vs-model harness, independent protocol checkers |
-| `code/flow/` | Tiny Tapeout hardening and precheck scripts for the remote flow machine |
+| `code/flow/` | v1.0 remote hardening scripts (RunPod). v2.0 hardens through the template's GitHub Actions |
 | `sim/reference/` | Cycle-level reference model of the chip (the verification oracle) |
 | `wiki/` | Architecture, specification, toolchain and verification write-ups |
 | `data/raw/`, `data/processed/` | Original tool outputs and derived results |
@@ -29,7 +29,7 @@ python -m pytest code/tests -q           # checkers, RTL tests, lockstep
 python -m pytest code/host -q            # toolchain
 ```
 
-Hardening runs the official Tiny Tapeout flow (tt-support-tools + LibreLane 3.1.0.dev4, ihp-sg13cmos5l) on a Linux machine; see `code/flow/runpod/` (`setup_flow.sh`, `tt_harden.sh`, `tt_precheck.sh`).
+Hardening runs through the template's GitHub Actions (`gds`: LibreLane GDS, TT precheck and gate-level test; `test`: the cocotb smoke test in `test/`). The SRAM macros use the power-stripe step at the repository root (`librelane_plugin_sram_pdn.py`, `odb_stripes.py`, from ttcodebot/ttihp-cmos5l-sram-example). v1.0 was hardened on RunPod with `code/flow/`.
 
 ## Status
 

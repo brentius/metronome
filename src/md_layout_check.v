@@ -1,4 +1,4 @@
-// Elaboration-time checks of the assumptions the RTL makes about code/rtl/gen/md_defs.vh: families of ports,
+// Elaboration-time checks of the assumptions the RTL makes about src/md_defs.vh: families of ports,
 // guards and triggers are contiguous (the RTL indexes them as FIRST + k), and the sizes the pin map and field
 // widths are written for. A failed check instantiates an undefined module, so every tool stops at elaboration.
 `timescale 1ns/1ps

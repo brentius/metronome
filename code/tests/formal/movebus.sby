@@ -14,7 +14,7 @@ read_slang --top md_movebus -I . md_movebus.v md_wgroup.v fv_movebus.sv
 prep -top md_movebus
 
 [files]
-../../rtl/md_movebus.v
-../../rtl/md_wgroup.v
-../../rtl/gen/md_defs.vh
+../../../src/md_movebus.v
+../../../src/md_wgroup.v
+../../../src/md_defs.vh
 fv_movebus.sv

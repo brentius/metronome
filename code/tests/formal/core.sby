@@ -17,6 +17,6 @@ read_slang --top md_core -I . md_core.v fv_core.sv
 prep -top md_core
 
 [files]
-../../rtl/md_core.v
-../../rtl/gen/md_defs.vh
+../../../src/md_core.v
+../../../src/md_defs.vh
 fv_core.sv

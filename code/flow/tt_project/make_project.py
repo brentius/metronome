@@ -1,4 +1,7 @@
-"""Assemble the Tiny Tapeout project for tt_um_metronome (IHP SG13CMOS5L, 8x4 tiles) from code/rtl.
+"""Superseded for v2.0 by the template layout at the repository root (info.yaml, src/config.json; D18). Kept for
+the v1.0 RunPod flow.
+
+Assemble the Tiny Tapeout project for tt_um_brentius_metronome (IHP SG13CMOS5L, 8x4 tiles) from src.
 
     python code/flow/tt_project/make_project.py OUTDIR [--period 16.667] [--density 60] [--tgz OUT.tgz]
 
@@ -22,7 +25,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
-RTL = ROOT / "code/rtl"
+RTL = ROOT / "src"
 SRAM = "pdk_dir::libs.ref/sg13cmos5l_sram"
 ROW = 3.78
 DIE = (1724.16, 710.64)
@@ -139,7 +142,7 @@ INFO = """project:
   language:     "Verilog"
   clock_hz:     60000000
   tiles: "8x4"
-  top_module:  "tt_um_metronome"
+  top_module:  "tt_um_brentius_metronome"
   source_files:
 {files}
 pinout:
@@ -180,9 +183,8 @@ def build(out: Path, period: float, density: int) -> None:
     files = sorted(p.name for p in RTL.glob("*.v"))
     for f in files:
         shutil.copy(RTL / f, out / "src" / f)
-    shutil.copy(RTL / "gen/md_defs.vh", out / "src/md_defs.vh")
+    shutil.copy(RTL / "md_defs.vh", out / "src/md_defs.vh")
     (out / "src/sram_bb.v").write_text(blackboxes(), newline="\n")
-    files.append("sram_bb.v")
     (out / "info.yaml").write_text(INFO.format(files="\n".join(f'    - "{f}"' for f in files)), newline="\n")
     (out / "src/config.json").write_text(json.dumps(config(period, density), indent=2) + "\n", newline="\n")
     shutil.copy(HERE / "vendor/pdn_cfg.tcl", out / "src/pdn_cfg.tcl")

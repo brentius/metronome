@@ -18,7 +18,7 @@ Keep persistent role guidance in BOTS/AGENTS/ and changing plans, status and dec
 
 | Path | Contents |
 |---|---|
-| `code/rtl/` | Synthesizable RTL for the emulator |
+| `info.yaml`, `src/`, `test/`, `docs/info.md`, `.github/workflows/` | Tiny Tapeout template layout (the submission view): synthesizable RTL and flow config in `src/`, the template cocotb smoke test (RTL and gate level) in `test/` |
 | `code/host/` | Host-side software: assembler or toolchain, example programs, program loaders |
 | `code/tests/` | RTL testbenches, toolchain tests, regression and co-simulation harnesses |
 | `sim/reference/` | Golden reference model of the protocol behaviour and its test cases |

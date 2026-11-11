@@ -17,6 +17,6 @@ read_slang --top md_beatgen -I . md_beatgen.v fv_beatgen.sv
 prep -top md_beatgen
 
 [files]
-../../rtl/md_beatgen.v
-../../rtl/gen/md_defs.vh
+../../../src/md_beatgen.v
+../../../src/md_defs.vh
 fv_beatgen.sv

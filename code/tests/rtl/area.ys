@@ -1,8 +1,8 @@
-# Hierarchical IHP standard-cell area of tt_um_metronome (driven by code/tests/rtl/area.py, which substitutes @LIB@).
+# Hierarchical IHP standard-cell area of tt_um_brentius_metronome (driven by code/tests/rtl/area.py, which substitutes @LIB@).
 # Memory wrappers are black boxes (the SRAM macros are not standard cells).
-read_verilog -lib -DSYNTHESIS code/rtl/prog_mem.v code/rtl/data_mem.v
-read_verilog -DSYNTHESIS -Icode/rtl/gen code/rtl/md_sync.v code/rtl/md_wgroup.v code/rtl/md_flags.v code/rtl/md_acc.v code/rtl/md_shifter.v code/rtl/md_counter.v code/rtl/md_lfsr.v code/rtl/md_beatgen.v code/rtl/md_engine.v code/rtl/md_core.v code/rtl/md_movebus.v code/rtl/md_ptrs.v code/rtl/md_ctrl.v code/rtl/md_spi.v code/rtl/md_outcell.v code/rtl/md_layout_check.v code/rtl/tt_um_metronome.v
-synth -top tt_um_metronome
+read_verilog -lib -DSYNTHESIS src/prog_mem.v src/data_mem.v
+read_verilog -DSYNTHESIS -Isrc src/md_sync.v src/md_wgroup.v src/md_flags.v src/md_acc.v src/md_shifter.v src/md_counter.v src/md_lfsr.v src/md_beatgen.v src/md_engine.v src/md_core.v src/md_movebus.v src/md_ptrs.v src/md_ctrl.v src/md_spi.v src/md_outcell.v src/md_layout_check.v src/project.v
+synth -top tt_um_brentius_metronome
 dfflibmap -liberty @LIB@
 abc -liberty @LIB@
 opt_clean

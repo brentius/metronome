@@ -1,4 +1,4 @@
-"""Hierarchical standard-cell area of tt_um_metronome with the IHP sg13cmos5l typical library.
+"""Hierarchical standard-cell area of tt_um_brentius_metronome with the IHP sg13cmos5l typical library.
 
     source code/tools/env.sh && python code/tests/rtl/area.py [--lib build/pdk/<lib>] [--log <file>]
 
@@ -48,7 +48,7 @@ def main() -> int:
         rows[name] = (area, ffs, body)
     # instance counts from the top's (and every module's) submodule lists
     counts = {n: 0 for n in rows}
-    top = next(n for n in rows if n.endswith("tt_um_metronome"))
+    top = next(n for n in rows if n.endswith("tt_um_brentius_metronome"))
     counts[top] = 1
 
     def subs(body):

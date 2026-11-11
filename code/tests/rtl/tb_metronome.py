@@ -1,4 +1,4 @@
-"""Directed cocotb tests for tt_um_metronome through the Tiny Tapeout pins (wiki/SPEC.md).
+"""Directed cocotb tests for tt_um_brentius_metronome through the Tiny Tapeout pins (wiki/SPEC.md).
 
 Sampling convention: the monitor records every value at the falling edge in the middle of cycle t (registers hold
 their cycle-t value and combinational nets have settled), so "cycle t" matches SPEC 1. Inputs are changed on falling

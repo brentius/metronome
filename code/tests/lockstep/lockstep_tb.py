@@ -1,4 +1,4 @@
-"""cocotb side of the lockstep harness: drive tt_um_metronome and the reference model with identical pin stimulus,
+"""cocotb side of the lockstep harness: drive tt_um_brentius_metronome and the reference model with identical pin stimulus,
 compare uo_out, uio_out and uio_oe on every clock cycle.
 
 Scenarios are built in Python (scenarios.py) as a list of per-cycle (ui_in, uio_in) pairs plus optional

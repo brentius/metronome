@@ -1,4 +1,4 @@
-"""pytest entry: build tt_um_metronome with Icarus and run each lockstep scenario against the reference model.
+"""pytest entry: build tt_um_brentius_metronome with Icarus and run each lockstep scenario against the reference model.
 
     python -m pytest code/tests/lockstep -q                    # directed scenarios + a few random seeds
     LOCKSTEP_SEEDS=50 python -m pytest code/tests/lockstep -q  # more random seeds
@@ -13,11 +13,11 @@ import pytest
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
-RTL = sorted(p for p in (ROOT / "code/rtl").glob("*.v"))
+RTL = sorted(p for p in (ROOT / "src").glob("*.v"))
 SEEDS = int(os.environ.get("LOCKSTEP_SEEDS", "3"))
 
 pytestmark = pytest.mark.skipif(not RTL or shutil.which("iverilog") is None,
-                                reason="needs code/rtl/*.v and iverilog on PATH (source code/tools/env.sh)")
+                                reason="needs src/*.v and iverilog on PATH (source code/tools/env.sh)")
 
 
 def _paths(var: str) -> list[Path]:
@@ -26,7 +26,7 @@ def _paths(var: str) -> list[Path]:
 
 def _run(scenario: str):
     """Environment knobs (used on the pod, where the PDK lives):
-    LOCKSTEP_NETLIST  gate-level netlist to simulate instead of code/rtl (e.g. final/nl/tt_um_metronome.nl.v)
+    LOCKSTEP_NETLIST  gate-level netlist to simulate instead of src (e.g. final/nl/tt_um_brentius_metronome.nl.v)
     LOCKSTEP_EXTRA    extra sources, os.pathsep-separated (cell models, IHP SRAM behavioural models)
     LOCKSTEP_DEFINES  comma-separated defines (e.g. USE_IHP_SRAM,FUNCTIONAL,SIM)
     LOCKSTEP_TAG      build-directory suffix so that different configurations do not share a build"""
@@ -36,9 +36,9 @@ def _run(scenario: str):
     sources = _paths("LOCKSTEP_NETLIST") or RTL
     defines = {d: 1 for d in os.environ.get("LOCKSTEP_DEFINES", "").split(",") if d}
     r = get_runner("icarus")
-    r.build(sources=sources + _paths("LOCKSTEP_EXTRA"), hdl_toplevel="tt_um_metronome", build_dir=build,
-            includes=[ROOT / "code/rtl/gen"], defines=defines, timescale=("1ns", "1ps"), always=False)
-    r.test(hdl_toplevel="tt_um_metronome", test_module="lockstep_tb", build_dir=build, test_dir=HERE,
+    r.build(sources=sources + _paths("LOCKSTEP_EXTRA"), hdl_toplevel="tt_um_brentius_metronome", build_dir=build,
+            includes=[ROOT / "src"], defines=defines, timescale=("1ns", "1ps"), always=False)
+    r.test(hdl_toplevel="tt_um_brentius_metronome", test_module="lockstep_tb", build_dir=build, test_dir=HERE,
            extra_env={"LOCKSTEP_SCENARIO": scenario}, results_xml=str(build / f"results_{scenario}.xml"))
     import xml.etree.ElementTree as ET
     root = ET.parse(build / f"results_{scenario}.xml").getroot()

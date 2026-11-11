@@ -18,6 +18,25 @@ project:
   # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
     - "project.v"
+    - "data_mem.v"
+    - "md_acc.v"
+    - "md_beatgen.v"
+    - "md_core.v"
+    - "md_counter.v"
+    - "md_ctrl.v"
+    - "md_engine.v"
+    - "md_flags.v"
+    - "md_layout_check.v"
+    - "md_lfsr.v"
+    - "md_movebus.v"
+    - "md_outcell.v"
+    - "md_ptrs.v"
+    - "md_shifter.v"
+    - "md_spi.v"
+    - "md_sync.v"
+    - "md_wgroup.v"
+    - "prog_mem.v"
+    - "sram_bb.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).

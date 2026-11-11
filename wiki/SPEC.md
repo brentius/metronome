@@ -1,6 +1,6 @@
 # Metronome v1: normative machine specification
 
-Status: v1, 2026-11-11. This document is **normative**: the RTL (`code/rtl/`), the cycle-level reference model (`sim/reference/`) and the assembler (`code/host/`) implement exactly this. Names and numbers (field positions, port and guard indices, trigger codes, host addresses) come from `code/md/machine.py` and its generated tables (`wiki/ISA_TABLES.md`, `code/rtl/gen/md_defs.vh`). wiki/ARCHITECTURE.md explains *why*; this file says *what*. Where they disagree, this file wins and the difference is recorded in `BOTS/PLANS/DECISIONS.md`.
+Status: v1, 2026-11-11. This document is **normative**: the RTL (`src/`), the cycle-level reference model (`sim/reference/`) and the assembler (`code/host/`) implement exactly this. Names and numbers (field positions, port and guard indices, trigger codes, host addresses) come from `code/md/machine.py` and its generated tables (`wiki/ISA_TABLES.md`, `src/md_defs.vh`). wiki/ARCHITECTURE.md explains *why*; this file says *what*. Where they disagree, this file wins and the difference is recorded in `BOTS/PLANS/DECISIONS.md`.
 
 ## 1. Conventions
 

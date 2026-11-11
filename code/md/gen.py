@@ -1,6 +1,6 @@
 """Generate derived files from code/md/machine.py.
 
-    python code/md/gen.py          write code/rtl/gen/md_defs.vh, code/md/machine.json, wiki/ISA_TABLES.md
+    python code/md/gen.py          write src/md_defs.vh, code/md/machine.json, wiki/ISA_TABLES.md
     python code/md/gen.py --check  fail if any generated file is out of date (used by tests)
 """
 from __future__ import annotations
@@ -108,7 +108,7 @@ def tables() -> str:
 
 
 OUTPUTS = {
-    ROOT / "code/rtl/gen/md_defs.vh": verilog,
+    ROOT / "src/md_defs.vh": verilog,
     ROOT / "code/md/machine.json": as_json,
     ROOT / "wiki/ISA_TABLES.md": tables,
 }

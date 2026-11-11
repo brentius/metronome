@@ -16,8 +16,8 @@ def probe_runner():
         pytest.skip("needs iverilog on PATH")
     build = HERE / "sim_build_probe_validation"
     runner = get_runner("icarus")
-    runner.build(sources=sorted((ROOT / "code/rtl").glob("*.v")),
-                 includes=[ROOT / "code/rtl/gen"], hdl_toplevel="tt_um_metronome",
+    runner.build(sources=sorted((ROOT / "src").glob("*.v")),
+                 includes=[ROOT / "src"], hdl_toplevel="tt_um_brentius_metronome",
                  build_dir=build, timescale=("1ns", "1ps"), always=True)
     return runner, build
 
@@ -27,7 +27,7 @@ def test_internal_probe_fault_fails(probe_runner, fault):
     runner, build = probe_runner
     xml = build / f"results_{fault}.xml"
     with pytest.raises(SystemExit) as failure:
-        runner.test(hdl_toplevel="tt_um_metronome", test_module="probe_fault_tb", build_dir=build,
+        runner.test(hdl_toplevel="tt_um_brentius_metronome", test_module="probe_fault_tb", build_dir=build,
                     test_dir=HERE, results_xml=str(xml), extra_env={"LOCKSTEP_PROBE": "1",
                     "LOCKSTEP_SCENARIO": "smoke", "PROBE_FAULT": fault})
     assert failure.value.code == 1

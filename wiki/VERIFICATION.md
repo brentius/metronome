@@ -2,16 +2,18 @@
 
 How we know Metronome does what its spec says, and how strongly each claim is supported. Every number on this page carries its evidence class: *verified against the reference model* (lockstep), *RTL-simulated*, *formally proven*, *synthesized / precheck-passed*, *calculated*, *estimated*. Nothing here is measured on silicon or on an FPGA yet.
 
+The v2.0 template baseline moves the v1 RTL to `src/` and renames its top level to `tt_um_brentius_metronome`. The template smoke test assembles `blink.mas`, loads it through the host SPI pins, and checks O8 transitions every 60 clocks using the IHP SRAM behavioral models. Local port evidence is in `data/raw/template_port_20261111T2055/`; official Actions results must be checked separately before claiming that this port is hardened. The root SRAM PDN plugin, `odb_stripes.py`, and `src/pdn_cfg.tcl` are unchanged copies of the files documented in `code/flow/tt_project/vendor/PROVENANCE.md`. The simulation-only SRAM model provenance is in `test/sram_model/README.md`.
+
 ## 1. The independence structure
 
 A testbench is only as good as the thing it is compared against. The project keeps four artifacts written separately from the same normative text, so a misreading has to be made identically twice to slip through:
 
 | Artifact | Written from | Location |
 |---|---|---|
-| Machine description (sizes, encodings, port and register maps) | the architecture | `code/md/machine.py`, generated into `code/rtl/gen/md_defs.vh`, `code/md/machine.json`, `wiki/ISA_TABLES.md` |
+| Machine description (sizes, encodings, port and register maps) | the architecture | `code/md/machine.py`, generated into `src/md_defs.vh`, `code/md/machine.json`, `wiki/ISA_TABLES.md` |
 | Normative cycle-level spec | the architecture plus the machine description | `wiki/SPEC.md` (edge cases in section 9a) |
 | Reference model (Python, cycle-accurate behind the pins) | SPEC only | `sim/reference/metronome/` |
-| RTL | SPEC only | `code/rtl/` |
+| RTL | SPEC only | `src/` |
 | Protocol checkers (UART, SPI, I2C, 10BASE-T) | the protocol standards, not the chip | `code/tests/checkers/protocols.py` |
 | Toolchain (assembler, checker, image/SPI frames) | SPEC and the machine description | `code/host/` |
 

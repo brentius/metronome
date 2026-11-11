@@ -17,6 +17,6 @@ read_slang --top md_ptrs -I . md_ptrs.v fv_ptrs.sv
 prep -top md_ptrs
 
 [files]
-../../rtl/md_ptrs.v
-../../rtl/gen/md_defs.vh
+../../../src/md_ptrs.v
+../../../src/md_defs.vh
 fv_ptrs.sv

@@ -1,10 +1,10 @@
 #!/bin/bash
 # Run the lockstep harness (RTL or gate level vs the reference model) on the pod, where the PDK models live.
 #   lockstep_pod.sh REPO_TGZ MODE [HARDEN_TAG] [-k EXPR]
-#     MODE rtl       code/rtl with behavioural memories (same as on the laptop)
-#     MODE ihp_sram  code/rtl with USE_IHP_SRAM and the PDK's SRAM behavioural models
+#     MODE rtl       src with behavioural memories (same as on the laptop)
+#     MODE ihp_sram  src with USE_IHP_SRAM and the PDK's SRAM behavioural models
 #     MODE gl        the harden result's final/nl netlist + IHP stdcell and SRAM models (needs HARDEN_TAG)
-# REPO_TGZ: `podctl pack` of code/rtl code/md code/tests/lockstep code/tests/checkers code/host/metronome_tools code/host/examples
+# REPO_TGZ: `podctl pack` of src code/md code/tests/lockstep code/tests/checkers code/host/metronome_tools code/host/examples
 # sim/reference. Results: /workspace/results/lockstep/<stamp>_<MODE>[_TAG]/ (junit xml, pytest log).
 set -uo pipefail
 TGZ=$1; MODE=$2; shift 2

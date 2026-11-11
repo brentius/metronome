@@ -1,4 +1,4 @@
-"""Lockstep scenarios: per-cycle pin stimulus for tt_um_metronome and the reference model.
+"""Lockstep scenarios: per-cycle pin stimulus for tt_um_brentius_metronome and the reference model.
 
 The SPI encoder here is written from wiki/SPEC.md section 9 and is independent of the reference model's helpers.
 Pins: ui[0]=SCK, ui[1]=CS_N, ui[2]=MOSI, ui[7:3] protocol inputs P8..P12; uio_in = P0..P7.

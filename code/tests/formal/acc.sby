@@ -17,6 +17,6 @@ read_slang --top md_acc -I . md_acc.v fv_acc.sv
 prep -top md_acc
 
 [files]
-../../rtl/md_acc.v
-../../rtl/gen/md_defs.vh
+../../../src/md_acc.v
+../../../src/md_defs.vh
 fv_acc.sv
