@@ -35,3 +35,18 @@
 /data/raw/metronome_v1.0/r6_run_text.tgz
 /data/raw/metronome_v1.0/reports/nom_*/
 /data/raw/physical_resume_20261111_120036/metronome_r3_d17_checkpoint_grt_repaired.tgz
+
+# Tiny Tapeout template (ttihp-verilog-template @4b1204a)
+.DS_Store
+.idea
+*.vcd
+*.fst
+*.fst.hier
+runs
+tt_submission
+src/user_config.json
+src/config_merged.json
+test/sim_build
+test/__pycache__/
+test/results.xml
+test/gate_level_netlist.v
