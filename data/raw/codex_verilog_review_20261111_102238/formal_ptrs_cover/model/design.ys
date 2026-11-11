@@ -1,0 +1,9 @@
+# running in C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover/src/
+plugin -i slang
+read_slang --top md_ptrs -I . md_ptrs.v fv_ptrs.sv
+prep -top md_ptrs
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

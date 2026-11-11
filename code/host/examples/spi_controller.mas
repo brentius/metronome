@@ -1,0 +1,78 @@
+; spi_controller.mas -- SPI mode 0 (CPOL=0, CPHA=0), MSB first, host-driven byte-at-a-time master.
+;
+; Pins: O8 = SCK (uo_out[2]), O9 = MOSI (uo_out[3]), O10 = CS_N (uo_out[4]), MISO = P8 (ui_in[3]).
+; Host protocol: write a byte to CTRL.HOSTIN (0x2404) when HOSTSTAT bit 0 (INV) is clear.  The chip clocks it out, and
+; the byte that came back on MISO appears in CTRL.HOSTOUT (0x2405) with HOSTSTAT bit 1 set (write 0x02 to HOSTSTAT to
+; acknowledge) and IRQ on uo_out[1].  One transfer is 8 bits; CS_N is low for the whole byte.
+;
+; Design
+;   * BG0 is the SPI bit clock: one beat per bit, 60 clocks (1 MHz SCK at 60 MHz, calculated).  Tap T0 = 30, so the
+;     beat generator's segment is 0 in the first half of the bit and 1 in the second.
+;   * Engine 0 (one burst per beat) stages a 2-bit symbol that the three output cells decode together with the segment:
+;         sym 0 = idle (CS_N high, SCK low, MOSI low)      sym 1 = setup (CS_N low, SCK low)
+;         sym 2 = clocking, MOSI = 0                       sym 3 = clocking, MOSI = 1
+;     SCK = (sym >= 2) and (seg == 1): low in the first half of each bit, high in the second.  MOSI changes only at
+;     beat boundaries, so it is stable when SCK rises.  Symbol 0 is the reset value, so CS_N is high from power-up.
+;   * MISO is sampled by the engine's capture register A0, which latches pin P8 at tap T0, i.e. at the SCK rising edge
+;     (SPEC 4).  The burst of the next-but-one beat reads it (E.IN) and shifts it into SH1 (MSB first).  Bit k is
+;     staged in beat k, on the pins in beat k+1, sampled in beat k+1 and read in beat k+2, so the last bit is read
+;     in beat 10.  SH1 shifts ten times (the first two bits are stale and fall out), leaving bits 1..8 in SH1.
+;
+; Timeline for one byte (beat numbers):  0 idle (load, stage setup) | 1..8 bit | 9 tail1 (stage idle) | 10 tail2 (deliver)
+; CS_N is low from the beat-1 commit to the beat-10 commit and high for at least the two following beats.
+
+.clock 60e6
+
+.beatgen 0
+    period 60
+    taps 30 - -
+    ctl run
+.end
+
+.engine 0
+    core 0
+    trigger BG0.BEAT
+    pins A=P8
+    in0 a0                      ; symbol bit 0 = capture A0 (MISO sampled at the SCK rising edge)
+    start init
+.end
+
+.irqen outv
+
+.out O8                         ; SCK
+    engine 0
+    lut 1 if (sym >= 2 and seg == 1) else 0
+.end
+
+.out O9                         ; MOSI
+    engine 0
+    lut 1 if sym == 3 else 0
+.end
+
+.out O10                        ; CS_N
+    engine 0
+    lut 1 if sym == 0 else 0
+.end
+
+.budget engine 0 cycles 30      ; worst burst is 3 instructions; 60 clocks per beat are available
+
+.core 0
+; Runs once on the first beat, then falls into idle.  Both shifters are MSB first, length 8.
+init:   #0x10 -> SH0.CFG, #0x10 -> SH1.CFG
+
+; idle (address 1, so that the immediate #1 and the goto target agree): if the mailbox holds a byte, load the transmit
+; shifter, arm the receive shifter and stage the setup symbol.  Otherwise stay.
+idle:   when HOST.INV   ? HOST.IN -> SH0.LD, ? ZERO -> SH1.LD, ? #1 -> E.SYM   pause goto idle ifnot
+
+; bit (beats 1..8): stage MOSI for this bit (sym 2 + bit), shift the transmit shifter, and shift in the sample read from
+; capture A0.  The two E.SYM writes land in different cycles; the later one (the 1 bit) wins.
+bit:    #2 -> E.SYM, E.IN -> SH1.SH
+        when SH0.OUT   ? #3 -> E.SYM, ZERO -> SH0.SH
+        when SH0.DONE   pause goto bit ifnot
+
+; tail1 (beat 9): stage idle, shift in sample 7.
+tail1:  ZERO -> E.SYM, E.IN -> SH1.SH   pause
+
+; tail2 (beat 10): shift in sample 8 and deliver the received byte (SH1.D is updated in the next cycle).
+tail2:  E.IN -> SH1.SH
+        SH1.D -> HOST.OUT   pause goto idle

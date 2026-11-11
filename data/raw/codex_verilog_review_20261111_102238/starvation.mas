@@ -1,0 +1,24 @@
+
+.engine 0
+ core 0
+ trigger ALWAYS
+ start high0
+.end
+.engine 1
+ core 0
+ trigger ALWAYS
+ start high1
+.end
+.engine 2
+ core 0
+ trigger NONE
+ start low
+.end
+.budget engine 2 cycles 6
+.core 0
+high0: nop
+ pause goto high0
+high1: nop
+ pause goto high1
+low: #165 -> HOST.OUT
+ pause goto low

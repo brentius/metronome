@@ -1,0 +1,56 @@
+##   0:00:00  Solver: bitwuzla
+##   0:00:00  Checking cover reachability in step 0..
+##   0:00:00  Reached cover statement in step 0 at fv_wgroup: fv_wgroup.sv:32.59-32.76 (_witness_.check_348)
+##   0:00:00  Writing trace to VCD file: engine_0/trace0.vcd
+##   0:00:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+##   0:00:00  Writing trace to constraints file: engine_0/trace0.smtc
+##   0:00:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+##   0:00:00  Checking cover reachability in step 0..
+##   0:00:00  Reached cover statement in step 0 at fv_wgroup: fv_wgroup.sv:32.41-32.58 (_witness_.check_345)
+##   0:00:00  Writing trace to VCD file: engine_0/trace1.vcd
+##   0:00:00  Writing trace to Verilog testbench: engine_0/trace1_tb.v
+##   0:00:00  Writing trace to constraints file: engine_0/trace1.smtc
+##   0:00:00  Writing trace to Yosys witness file: engine_0/trace1.yw
+##   0:00:00  Checking cover reachability in step 0..
+##   0:00:00  Reached cover statement in step 0 at fv_wgroup: fv_wgroup.sv:32.23-32.40 (_witness_.check_342)
+##   0:00:00  Writing trace to VCD file: engine_0/trace2.vcd
+##   0:00:00  Writing trace to Verilog testbench: engine_0/trace2_tb.v
+##   0:00:00  Writing trace to constraints file: engine_0/trace2.smtc
+##   0:00:00  Writing trace to Yosys witness file: engine_0/trace2.yw
+##   0:00:00  Checking cover reachability in step 0..
+##   0:00:00  Reached cover statement in step 0 at fv_wgroup: fv_wgroup.sv:32.59-32.76 (_witness_.check_253)
+##   0:00:00  Writing trace to VCD file: engine_0/trace3.vcd
+##   0:00:00  Writing trace to Verilog testbench: engine_0/trace3_tb.v
+##   0:00:00  Writing trace to constraints file: engine_0/trace3.smtc
+##   0:00:00  Writing trace to Yosys witness file: engine_0/trace3.yw
+##   0:00:00  Checking cover reachability in step 0..
+##   0:00:00  Reached cover statement in step 0 at fv_wgroup: fv_wgroup.sv:32.41-32.58 (_witness_.check_250)
+##   0:00:00  Writing trace to VCD file: engine_0/trace4.vcd
+##   0:00:00  Writing trace to Verilog testbench: engine_0/trace4_tb.v
+##   0:00:00  Writing trace to constraints file: engine_0/trace4.smtc
+##   0:00:00  Writing trace to Yosys witness file: engine_0/trace4.yw
+##   0:00:00  Checking cover reachability in step 0..
+##   0:00:00  Reached cover statement in step 0 at fv_wgroup: fv_wgroup.sv:32.23-32.40 (_witness_.check_247)
+##   0:00:00  Writing trace to VCD file: engine_0/trace5.vcd
+##   0:00:00  Writing trace to Verilog testbench: engine_0/trace5_tb.v
+##   0:00:00  Writing trace to constraints file: engine_0/trace5.smtc
+##   0:00:00  Writing trace to Yosys witness file: engine_0/trace5.yw
+##   0:00:00  Checking cover reachability in step 0..
+##   0:00:00  Reached cover statement in step 0 at fv_wgroup: fv_wgroup.sv:32.41-32.58 (_witness_.check_122)
+##   0:00:00  Writing trace to VCD file: engine_0/trace6.vcd
+##   0:00:00  Writing trace to Verilog testbench: engine_0/trace6_tb.v
+##   0:00:00  Writing trace to constraints file: engine_0/trace6.smtc
+##   0:00:00  Writing trace to Yosys witness file: engine_0/trace6.yw
+##   0:00:00  Checking cover reachability in step 0..
+##   0:00:00  Reached cover statement in step 0 at fv_wgroup: fv_wgroup.sv:32.23-32.40 (_witness_.check_119)
+##   0:00:00  Writing trace to VCD file: engine_0/trace7.vcd
+##   0:00:00  Writing trace to Verilog testbench: engine_0/trace7_tb.v
+##   0:00:00  Writing trace to constraints file: engine_0/trace7.smtc
+##   0:00:00  Writing trace to Yosys witness file: engine_0/trace7.yw
+##   0:00:00  Checking cover reachability in step 0..
+##   0:00:00  Reached cover statement in step 0 at fv_wgroup: fv_wgroup.sv:32.59-32.76 (_witness_.check_125)
+##   0:00:00  Writing trace to VCD file: engine_0/trace8.vcd
+##   0:00:00  Writing trace to Verilog testbench: engine_0/trace8_tb.v
+##   0:00:00  Writing trace to constraints file: engine_0/trace8.smtc
+##   0:00:00  Writing trace to Yosys witness file: engine_0/trace8.yw
+##   0:00:00  Status: passed

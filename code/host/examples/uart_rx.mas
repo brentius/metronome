@@ -1,0 +1,51 @@
+; uart_rx.mas -- 115200 8N1 receiver on P8 = ui_in[3].  Received bytes go to the host mailbox (HOSTOUT).
+;
+; Design
+;   * BG0 is armed and idle.  The falling edge of the start bit starts it (SPEC 3: edge && ARM && !RUN) with phase
+;     PRE, so the beat grid is aligned to the incoming start edge.  REN stays 0 so later edges do not re-align.
+;   * Taps at 25%, 50% and 75% of the bit capture pin A three times; the engine's input table takes a 2-of-3 majority
+;     vote (`in0 maj(a0,a1,a2)`), so a single-sample glitch cannot flip a bit.
+;   * The engine is triggered by TAP2 (75% of each bit), when all three samples of the CURRENT bit are in.  Triggering
+;     on the beat would re-arm only at the end of the stop bit and could miss a back-to-back start edge.
+;   * One burst per bit, state in the PC:  s_start (start bit) -> data x8 -> stop.
+;   * Shifter 0 shifts right and inserts at bit 7, so after 8 shifts the first (least significant) bit is at bit 0.
+;   * At the stop bit a good frame pushes the byte to HOST.OUT (raises IRQ if enabled); a bad stop bit drops the byte and
+;     sets flag F2 (framing error).  BG0 is then written 0b010 (ARM only) to stop and re-arm.
+;
+; PRE = 4*INC compensates the pin synchroniser and edge-detect delay (about 4 clocks, estimated, not measured).
+; Expected behaviour: each 8N1 frame at 115200 baud (+-2.5% clock error tolerance, estimated) yields one HOSTOUT byte.
+
+.clock 60e6
+
+.beatgen 0
+    baud 115200
+    taps MOD//4 MOD//2 3*MOD//4   ; sample points: 25% 50% 75% of the bit
+    preset 4*INC                  ; synchroniser latency
+    edge P8 fall                  ; start-bit edge on ui_in[3]
+    ctl arm                       ; armed, not running
+.end
+
+.engine 0
+    core 0
+    trigger BG0.TAP2
+    pins A=P8
+    in0 maj(a0, a1, a2)           ; symbol bit 0 = majority of the three samples; bit 1 stays 0
+    start s_start
+.end
+
+.irqen outv                       ; uo_out[1] = IRQ when a byte is waiting
+
+.core 0
+; --- s_start: the sample is the start bit; it must be 0.  A: on a glitch (1) re-arm; always preload the shifter.
+s_start: when E.IN0   ? #2 -> BG0.CTL, ZERO -> SH0.LD
+; B: glitch -> stay in s_start, else continue with the data bits.
+        when E.IN0   pause goto s_start if
+
+; --- data: shift the voted bit in.  B repeats until the shifter reports 8 bits.
+data:   E.IN -> SH0.SH
+        when SH0.DONE   pause goto data ifnot
+
+; --- stop: the sample is the stop bit (should be 1).  Good frame: deliver the byte.  Bad stop bit: drop the byte and
+;     set flag F2 (framing error).  Either way re-arm the beat generator (CTL = 0b010).
+stop:   when E.IN0   ? SH0.D -> HOST.OUT, ! #2 -> FLAGS.SET, #2 -> BG0.CTL
+        pause goto s_start

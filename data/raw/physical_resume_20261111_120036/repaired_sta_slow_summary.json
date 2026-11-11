@@ -1,0 +1,36 @@
+{
+ "metric_sources": {
+  "design__max_slew_violation__count__corner:nom_slow_1p08V_125C": "01-openroad-stamidpnr/or_metrics_out.json",
+  "design__max_fanout_violation__count__corner:nom_slow_1p08V_125C": "01-openroad-stamidpnr/or_metrics_out.json",
+  "design__max_cap_violation__count__corner:nom_slow_1p08V_125C": "01-openroad-stamidpnr/or_metrics_out.json",
+  "timing__hold__ws__corner:nom_slow_1p08V_125C": "01-openroad-stamidpnr/or_metrics_out.json",
+  "timing__setup__ws__corner:nom_slow_1p08V_125C": "01-openroad-stamidpnr/or_metrics_out.json"
+ },
+ "global_route_gate": {
+  "status": "unknown"
+ },
+ "design__max_slew_violation__count__corner:nom_slow_1p08V_125C": 24,
+ "design__max_fanout_violation__count__corner:nom_slow_1p08V_125C": 210,
+ "design__max_cap_violation__count__corner:nom_slow_1p08V_125C": 0,
+ "timing__hold__ws__corner:nom_slow_1p08V_125C": 0.561424,
+ "timing__setup__ws__corner:nom_slow_1p08V_125C": 0.229125,
+ "last_step": "01-openroad-stamidpnr",
+ "rc": 0,
+ "wall_s": 18,
+ "base": "metronome_r3_d17",
+ "variant": "repaired_sta_slow",
+ "overrides": {
+  "SYNTH_STRATEGY": "AREA 0",
+  "GRT_ADJUSTMENT": 0.15,
+  "GRT_ALLOW_CONGESTION": false,
+  "OPENROAD_THREADS": 4,
+  "STA_THREADS": 4,
+  "PNR_CORNERS": [
+   "nom_slow_1p08V_125C"
+  ],
+  "DEFAULT_CORNER": "nom_slow_1p08V_125C"
+ },
+ "frm": "OpenROAD.STAMidPNR",
+ "state": "repaired_grt/01-openroad-globalrouting",
+ "to": "OpenROAD.STAMidPNR"
+}

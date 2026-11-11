@@ -1,0 +1,30 @@
+Elapsed clock time [H:MM:SS (secs)]: 0:00:05 (5)
+Elapsed process time unvailable on Windows
+engine_0 (smtbmc bitwuzla) returned pass
+cover trace: engine_0\trace0.vcd
+cover trace: engine_0\trace0.yw
+  reached cover statement md_core._witness_.check_966 at fv_core.sv:63.9-63.47 step 3
+cover trace: engine_0\trace1.vcd
+cover trace: engine_0\trace1.yw
+  reached cover statement md_core._witness_.check_960 at fv_core.sv:62.9-62.64 step 3
+cover trace: engine_0\trace2.vcd
+cover trace: engine_0\trace2.yw
+  reached cover statement md_core._witness_.check_952 at fv_core.sv:61.9-61.79 step 3
+cover trace: engine_0\trace3.vcd
+cover trace: engine_0\trace3.yw
+  reached cover statement md_core._witness_.check_945 at fv_core.sv:56.13-56.78 step 7
+cover trace: engine_0\trace4.vcd
+cover trace: engine_0\trace4.yw
+  reached cover statement md_core._witness_.check_927 at fv_core.sv:56.13-56.78 step 8
+cover trace: engine_0\trace5.vcd
+cover trace: engine_0\trace5.yw
+  reached cover statement md_core._witness_.check_891 at fv_core.sv:56.13-56.78 step 8
+cover trace: engine_0\trace6.vcd
+cover trace: engine_0\trace6.yw
+  reached cover statement md_core._witness_.check_873 at fv_core.sv:56.13-56.78 step 8
+cover trace: engine_0\trace7.vcd
+cover trace: engine_0\trace7.yw
+  reached cover statement md_core._witness_.check_855 at fv_core.sv:56.13-56.78 step 8
+cover trace: engine_0\trace8.vcd
+cover trace: engine_0\trace8.yw
+  reached cover statement md_core._witness_.check_909 at fv_core.sv:56.13-56.78 step 8

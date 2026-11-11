@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-11-11T10:23:16" hostname="WC23-30B22373BF" package="movebus" id="0" name="prove" tests="79" errors="0" failures="0" time="0" skipped="4">
+<properties>
+<property name="os" value="Windows"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="PASS"/>
+</properties>
+<testcase classname="prove" name="build execution" time="0">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:80.17-80.46" time="0" type="ASSERT" location="fv_movebus.sv:80.17-80.46" id="_witness_.check_12154">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:83.9-83.41" time="0" type="ASSERT" location="fv_movebus.sv:83.9-83.41" id="_witness_.check_12158">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:84.25-84.82" time="0" type="ASSERT" location="fv_movebus.sv:84.25-84.82" id="_witness_.check_12163">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:86.13-86.48" time="0" type="ASSERT" location="fv_movebus.sv:86.13-86.48" id="_witness_.check_12170">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:87.31-87.78" time="0" type="ASSERT" location="fv_movebus.sv:87.31-87.78" id="_witness_.check_12175">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:88.13-88.49" time="0" type="ASSERT" location="fv_movebus.sv:88.13-88.49" id="_witness_.check_12180">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:89.31-89.106" time="0" type="ASSERT" location="fv_movebus.sv:89.31-89.106" id="_witness_.check_12185">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:90.13-90.50" time="0" type="ASSERT" location="fv_movebus.sv:90.13-90.50" id="_witness_.check_12192">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:91.31-91.80" time="0" type="ASSERT" location="fv_movebus.sv:91.31-91.80" id="_witness_.check_12197">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:92.13-92.50" time="0" type="ASSERT" location="fv_movebus.sv:92.13-92.50" id="_witness_.check_12202">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:93.32-93.118" time="0" type="ASSERT" location="fv_movebus.sv:93.32-93.118" id="_witness_.check_12207">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:94.13-94.50" time="0" type="ASSERT" location="fv_movebus.sv:94.13-94.50" id="_witness_.check_12214">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:95.32-95.81" time="0" type="ASSERT" location="fv_movebus.sv:95.32-95.81" id="_witness_.check_12219">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:86.13-86.48" time="0" type="ASSERT" location="fv_movebus.sv:86.13-86.48" id="_witness_.check_12224">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:87.31-87.78" time="0" type="ASSERT" location="fv_movebus.sv:87.31-87.78" id="_witness_.check_12229">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:88.13-88.49" time="0" type="ASSERT" location="fv_movebus.sv:88.13-88.49" id="_witness_.check_12234">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:89.31-89.106" time="0" type="ASSERT" location="fv_movebus.sv:89.31-89.106" id="_witness_.check_12239">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:90.13-90.50" time="0" type="ASSERT" location="fv_movebus.sv:90.13-90.50" id="_witness_.check_12246">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:91.31-91.80" time="0" type="ASSERT" location="fv_movebus.sv:91.31-91.80" id="_witness_.check_12251">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:92.13-92.50" time="0" type="ASSERT" location="fv_movebus.sv:92.13-92.50" id="_witness_.check_12256">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:93.32-93.118" time="0" type="ASSERT" location="fv_movebus.sv:93.32-93.118" id="_witness_.check_12261">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:94.13-94.50" time="0" type="ASSERT" location="fv_movebus.sv:94.13-94.50" id="_witness_.check_12268">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:95.32-95.81" time="0" type="ASSERT" location="fv_movebus.sv:95.32-95.81" id="_witness_.check_12273">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:86.13-86.48" time="0" type="ASSERT" location="fv_movebus.sv:86.13-86.48" id="_witness_.check_12278">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:87.31-87.78" time="0" type="ASSERT" location="fv_movebus.sv:87.31-87.78" id="_witness_.check_12283">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:88.13-88.49" time="0" type="ASSERT" location="fv_movebus.sv:88.13-88.49" id="_witness_.check_12288">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:89.31-89.106" time="0" type="ASSERT" location="fv_movebus.sv:89.31-89.106" id="_witness_.check_12293">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:90.13-90.50" time="0" type="ASSERT" location="fv_movebus.sv:90.13-90.50" id="_witness_.check_12300">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:91.31-91.80" time="0" type="ASSERT" location="fv_movebus.sv:91.31-91.80" id="_witness_.check_12305">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:92.13-92.50" time="0" type="ASSERT" location="fv_movebus.sv:92.13-92.50" id="_witness_.check_12310">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:93.32-93.118" time="0" type="ASSERT" location="fv_movebus.sv:93.32-93.118" id="_witness_.check_12315">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:94.13-94.50" time="0" type="ASSERT" location="fv_movebus.sv:94.13-94.50" id="_witness_.check_12322">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:95.32-95.81" time="0" type="ASSERT" location="fv_movebus.sv:95.32-95.81" id="_witness_.check_12327">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:86.13-86.48" time="0" type="ASSERT" location="fv_movebus.sv:86.13-86.48" id="_witness_.check_12332">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:87.31-87.78" time="0" type="ASSERT" location="fv_movebus.sv:87.31-87.78" id="_witness_.check_12337">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:88.13-88.49" time="0" type="ASSERT" location="fv_movebus.sv:88.13-88.49" id="_witness_.check_12342">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:89.31-89.106" time="0" type="ASSERT" location="fv_movebus.sv:89.31-89.106" id="_witness_.check_12347">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:90.13-90.50" time="0" type="ASSERT" location="fv_movebus.sv:90.13-90.50" id="_witness_.check_12354">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:91.31-91.80" time="0" type="ASSERT" location="fv_movebus.sv:91.31-91.80" id="_witness_.check_12359">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:92.13-92.50" time="0" type="ASSERT" location="fv_movebus.sv:92.13-92.50" id="_witness_.check_12364">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:93.32-93.118" time="0" type="ASSERT" location="fv_movebus.sv:93.32-93.118" id="_witness_.check_12369">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:94.13-94.50" time="0" type="ASSERT" location="fv_movebus.sv:94.13-94.50" id="_witness_.check_12376">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:95.32-95.81" time="0" type="ASSERT" location="fv_movebus.sv:95.32-95.81" id="_witness_.check_12381">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:98.13-98.50" time="0" type="ASSERT" location="fv_movebus.sv:98.13-98.50" id="_witness_.check_12386">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:99.32-99.113" time="0" type="ASSERT" location="fv_movebus.sv:99.32-99.113" id="_witness_.check_12391">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:100.13-100.49" time="0" type="ASSERT" location="fv_movebus.sv:100.13-100.49" id="_witness_.check_12398">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:101.32-101.116" time="0" type="ASSERT" location="fv_movebus.sv:101.32-101.116" id="_witness_.check_12403">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:98.13-98.50" time="0" type="ASSERT" location="fv_movebus.sv:98.13-98.50" id="_witness_.check_12410">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:99.32-99.113" time="0" type="ASSERT" location="fv_movebus.sv:99.32-99.113" id="_witness_.check_12415">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:100.13-100.49" time="0" type="ASSERT" location="fv_movebus.sv:100.13-100.49" id="_witness_.check_12422">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:101.32-101.116" time="0" type="ASSERT" location="fv_movebus.sv:101.32-101.116" id="_witness_.check_12427">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:103.9-103.41" time="0" type="ASSERT" location="fv_movebus.sv:103.9-103.41" id="_witness_.check_12434">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:104.26-104.86" time="0" type="ASSERT" location="fv_movebus.sv:104.26-104.86" id="_witness_.check_12439">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:105.9-105.41" time="0" type="ASSERT" location="fv_movebus.sv:105.9-105.41" id="_witness_.check_12446">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:106.26-106.63" time="0" type="ASSERT" location="fv_movebus.sv:106.26-106.63" id="_witness_.check_12451">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:108.13-108.51" time="0" type="ASSERT" location="fv_movebus.sv:108.13-108.51" id="_witness_.check_12456">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:109.32-109.82" time="0" type="ASSERT" location="fv_movebus.sv:109.32-109.82" id="_witness_.check_12461">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:110.13-110.52" time="0" type="ASSERT" location="fv_movebus.sv:110.13-110.52" id="_witness_.check_12466">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:108.13-108.51" time="0" type="ASSERT" location="fv_movebus.sv:108.13-108.51" id="_witness_.check_12470">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:109.32-109.82" time="0" type="ASSERT" location="fv_movebus.sv:109.32-109.82" id="_witness_.check_12475">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:110.13-110.52" time="0" type="ASSERT" location="fv_movebus.sv:110.13-110.52" id="_witness_.check_12480">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:108.13-108.51" time="0" type="ASSERT" location="fv_movebus.sv:108.13-108.51" id="_witness_.check_12484">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:109.32-109.82" time="0" type="ASSERT" location="fv_movebus.sv:109.32-109.82" id="_witness_.check_12489">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:110.13-110.52" time="0" type="ASSERT" location="fv_movebus.sv:110.13-110.52" id="_witness_.check_12494">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:108.13-108.51" time="0" type="ASSERT" location="fv_movebus.sv:108.13-108.51" id="_witness_.check_12498">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:109.32-109.82" time="0" type="ASSERT" location="fv_movebus.sv:109.32-109.82" id="_witness_.check_12503">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:110.13-110.52" time="0" type="ASSERT" location="fv_movebus.sv:110.13-110.52" id="_witness_.check_12508">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:108.13-108.51" time="0" type="ASSERT" location="fv_movebus.sv:108.13-108.51" id="_witness_.check_12512">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:109.32-109.82" time="0" type="ASSERT" location="fv_movebus.sv:109.32-109.82" id="_witness_.check_12517">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:110.13-110.52" time="0" type="ASSERT" location="fv_movebus.sv:110.13-110.52" id="_witness_.check_12522">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:108.13-108.51" time="0" type="ASSERT" location="fv_movebus.sv:108.13-108.51" id="_witness_.check_12526">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:109.32-109.82" time="0" type="ASSERT" location="fv_movebus.sv:109.32-109.82" id="_witness_.check_12531">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:110.13-110.52" time="0" type="ASSERT" location="fv_movebus.sv:110.13-110.52" id="_witness_.check_12536">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:115.9-115.28" time="0" type="ASSERT" location="fv_movebus.sv:115.9-115.28" id="_witness_.check_12555">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_movebus at fv_movebus.sv:117.58-117.111" time="0" type="ASSERT" location="fv_movebus.sv:117.58-117.111" id="_witness_.check_12562">
+</testcase>
+<testcase classname="prove" name="Property COVER in md_movebus at fv_movebus.sv:120.9-120.26" time="0" type="COVER" location="fv_movebus.sv:120.9-120.26" id="_witness_.check_12572">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property COVER in md_movebus at fv_movebus.sv:121.9-121.37" time="0" type="COVER" location="fv_movebus.sv:121.9-121.37" id="_witness_.check_12574">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property COVER in md_movebus at fv_movebus.sv:122.9-122.39" time="0" type="COVER" location="fv_movebus.sv:122.9-122.39" id="_witness_.check_12578">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property COVER in md_movebus at fv_movebus.sv:123.9-123.29" time="0" type="COVER" location="fv_movebus.sv:123.9-123.29" id="_witness_.check_12581">
+<skipped />
+</testcase>
+<system-out>SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] Removing directory 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove'.
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\md_movebus.v' to 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove\src\md_movebus.v'.
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\md_wgroup.v' to 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove\src\md_wgroup.v'.
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\gen\md_defs.vh' to 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove\src\md_defs.vh'.
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\fv_movebus.sv' to 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove\src\fv_movebus.sv'.
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] engine_0: smtbmc bitwuzla
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] base: starting process &quot;cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove/src&amp; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 10:23:12 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] base: finished (returncode=0)
+SBY 10:23:12 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] prep: starting process &quot;cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove/model&amp; yosys -ql design_prep.log design_prep.ys&quot;
+SBY 10:23:13 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] prep: finished (returncode=0)
+SBY 10:23:13 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] smt2: starting process &quot;cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove/model&amp; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY 10:23:13 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] smt2: finished (returncode=0)
+SBY 10:23:13 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] engine_0.basecase: starting process &quot;cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove&amp; yosys-smtbmc -s bitwuzla --presat --unroll --noprogress -t 1  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2&quot;
+SBY 10:23:13 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] engine_0.induction: starting process &quot;cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove&amp; yosys-smtbmc -s bitwuzla --presat --unroll -i --noprogress -t 1  --append 0 --dump-vcd engine_0/trace_induct.vcd --dump-yw engine_0/trace_induct.yw --dump-vlogtb engine_0/trace_induct_tb.v --dump-smtc engine_0/trace_induct.smtc model/design_smt2.smt2&quot;
+SBY 10:23:14 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] engine_0.induction: ##   0:00:00  Solver: bitwuzla
+SBY 10:23:14 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] engine_0.induction: ##   0:00:00  Trying induction in step 1..
+SBY 10:23:16 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] engine_0.induction: ##   0:00:02  Temporal induction successful.
+SBY 10:23:16 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] engine_0.induction: ##   0:00:02  Status: passed
+SBY 10:23:16 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] engine_0.basecase: ##   0:00:00  Solver: bitwuzla
+SBY 10:23:16 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 0..
+SBY 10:23:16 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 0..
+SBY 10:23:16 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] engine_0.basecase: ##   0:00:02  Status: passed
+SBY 10:23:16 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] engine_0.induction: finished (returncode=0)
+SBY 10:23:16 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] engine_0.induction: Status returned by engine for induction: pass
+SBY 10:23:16 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] engine_0.basecase: finished (returncode=0)
+SBY 10:23:16 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] engine_0.basecase: Status returned by engine for basecase: pass
+SBY 10:23:16 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:07 (7)
+SBY 10:23:16 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] summary: Elapsed process time unvailable on Windows
+SBY 10:23:16 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] summary: engine_0 (smtbmc bitwuzla) returned pass for basecase
+SBY 10:23:16 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] summary: engine_0 (smtbmc bitwuzla) returned pass for induction
+SBY 10:23:16 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] summary: engine_0 did not produce any traces
+SBY 10:23:16 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] summary: successful proof by k-induction.
+SBY 10:23:16 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_movebus_prove_0\movebus_prove] DONE (PASS, rc=0)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

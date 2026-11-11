@@ -1,0 +1,9 @@
+# running in C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_acc_cover_0\acc_cover/src/
+plugin -i slang
+read_slang --top md_acc -I . md_acc.v fv_acc.sv
+prep -top md_acc
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

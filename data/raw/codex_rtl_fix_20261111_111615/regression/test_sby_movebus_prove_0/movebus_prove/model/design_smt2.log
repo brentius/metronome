@@ -1,0 +1,71 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+
+-- Executing script file `design_smt2.ys' --
+
+1. Executing RTLIL frontend.
+Input filename: design_prep.il
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `md_movebus'. Setting top module to md_movebus.
+
+2.1. Analyzing design hierarchy..
+Top module:  \md_movebus
+
+2.2. Analyzing design hierarchy..
+Top module:  \md_movebus
+Removed 0 unused modules.
+Module md_movebus directly or indirectly contains formal properties -> setting "keep" attribute.
+
+3. Executing FORMALFF pass.
+
+4. Executing DFFUNMAP pass (unmap clock enable and synchronous reset from FFs).
+
+5. Printing statistics.
+
+=== md_movebus ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     3201 wires
+    15239 wire bits
+      509 public wires
+     6276 public wire bits
+       35 ports
+      354 port bits
+     3343 cells
+      259   $add
+      366   $and
+       32   $anyseq
+       75   $assert
+      525   $eq
+       93   $ge
+       54   $le
+       91   $logic_and
+       15   $logic_not
+       12   $logic_or
+        2   $lt
+     1092   $mux
+       33   $not
+      508   $or
+       39   $reduce_bool
+       40   $reduce_or
+       33   $shiftx
+        8   $shl
+       66   $sub
+
+6. Executing SMT2 backend.
+
+6.1. Executing BMUXMAP pass.
+
+6.2. Executing DEMUXMAP pass.
+Creating SMT-LIBv2 representation of module md_movebus.
+
+End of script. Logfile hash: 008f728886
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Time spent: 11% 2x write_smt2 (0 sec), 11% 2x read_rtlil (0 sec), ...

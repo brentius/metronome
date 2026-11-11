@@ -1,0 +1,9 @@
+# running in C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_core_cover_0\core_cover/src/
+plugin -i slang
+read_slang --top md_core -I . md_core.v fv_core.sv
+prep -top md_core
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

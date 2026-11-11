@@ -1,0 +1,69 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+
+-- Executing script file `design_smt2.ys' --
+
+1. Executing RTLIL frontend.
+Input filename: design_prep.il
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `md_engine'. Setting top module to md_engine.
+
+2.1. Analyzing design hierarchy..
+Top module:  \md_engine
+
+2.2. Analyzing design hierarchy..
+Top module:  \md_engine
+Removed 0 unused modules.
+Module md_engine directly or indirectly contains formal properties -> setting "keep" attribute.
+
+3. Executing FORMALFF pass.
+
+4. Executing DFFUNMAP pass (unmap clock enable and synchronous reset from FFs).
+
+5. Printing statistics.
+
+=== md_engine ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      294 wires
+      953 wire bits
+      126 public wires
+      560 public wire bits
+       39 ports
+      182 port bits
+      242 cells
+        3   $and
+       36   $anyinit
+        4   $assume
+        9   $bmux
+        7   $cover
+       44   $eq
+        8   $ff
+       35   $logic_and
+       14   $logic_not
+        2   $logic_or
+        1   $mul
+       65   $mux
+        2   $ne
+        4   $not
+        4   $or
+        2   $pmux
+        2   $shiftx
+
+6. Executing SMT2 backend.
+
+6.1. Executing BMUXMAP pass.
+
+6.2. Executing DEMUXMAP pass.
+Creating SMT-LIBv2 representation of module md_engine.
+
+End of script. Logfile hash: 88eaea5010
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Time spent: 11% 2x write_smt2 (0 sec), 11% 2x read_rtlil (0 sec), ...

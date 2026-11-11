@@ -1,0 +1,91 @@
+[?2004hsh-5.3# stty -echo; python3 -c 'exec(__import__("base64").b64decode("aW1wb3J0IHBhdGhsaWIKcD1wYXRobGliLlBhdGgoJy9yb290L3dvcmsvbWV0cm9ub21lX3IzX2QxNy9ydW5zL3JlcGFpcmVkX3N0YV9zbG93LzAxLW9wZW5yb2FkLXN0YW1pZHBuci9jaGVja3MucnB0Jyk7dD1wLnJlYWRfdGV4dChlcnJvcnM9J3JlcGxhY2UnKTtwcmludCgnQ0hFQ0tTX0hFQUQnLHRbOjU4MDBdKQpwPXBhdGhsaWIuUGF0aCgnL3Jvb3Qvd29yay9tZXRyb25vbWVfcjNfZDE3L3J1bnMvcm91dGVfYXJlYTAnKTtzdGVwcz1zb3J0ZWQocC5nbG9iKCcqZGV0YWlsZWRyb3V0aW5nKicpKTtwcmludCgnRFJUX0ZJTEVTJyxbKGYubmFtZSxmLnN0YXQoKS5zdF9zaXplKSBmb3IgZiBpbiBzdGVwc1swXS5pdGVyZGlyKCkgaWYgZi5pc19maWxlKCldKQpwcmludCgnUk9VVEVfVEFJTCcscGF0aGxpYi5QYXRoKCcvd29ya3NwYWNlL2pvYnMvcjNfcm91dGVfYXJlYTAubG9nJykucmVhZF90ZXh0KGVycm9ycz0ncmVwbGFjZScpWy0xMDAwOl0pCg=="))'; echo __JSC_1794404769885__$?
+[?2004lCHECKS_HEAD 
+===========================================================================
+report_checks -unconstrained
+===========================================================================
+======================= nom_slow_1p08V_125C Corner ===================================
+
+Startpoint: u_pmem1.u_sram (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _38695_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock clk (rise edge)
+                                  0.000000    0.000000   clock source latency
+     2    0.130451    0.219703    0.161069    0.161069 ^ clk (in)
+                                                         clk (net)
+                      0.221155    0.000000    0.161069 ^ delaybuf_0_clk/A (sg13cmos5l_buf_16)
+     1    0.032070    0.043168    0.194162    0.355231 ^ delaybuf_0_clk/X (sg13cmos5l_buf_16)
+                                                         delaynet_0_clk (net)
+                      0.043279    0.004110    0.359342 ^ delaybuf_1_clk/A (sg13cmos5l_buf_16)
+     1    0.032101    0.034360    0.111146    0.470488 ^ delaybuf_1_clk/X (sg13cmos5l_buf_16)
+                                                         delaynet_1_clk (net)
+                      0.034538    0.004256    0.474745 ^ delaybuf_2_clk/A (sg13cmos5l_buf_16)
+     1    0.032922    0.034343    0.106218    0.580962 ^ delaybuf_2_clk/X (sg13cmos5l_buf_16)
+                                                         delaynet_2_clk (net)
+                      0.034522    0.004269    0.585231 ^ delaybuf_3_clk/A (sg13cmos5l_buf_16)
+     1    0.031766    0.033949    0.105894    0.691125 ^ delaybuf_3_clk/X (sg13cmos5l_buf_16)
+                                                         delaynet_3_clk (net)
+                      0.034107    0.004025    0.695150 ^ delaybuf_4_clk/A (sg13cmos5l_buf_16)
+     1    0.031414    0.033815    0.105572    0.800723 ^ delaybuf_4_clk/X (sg13cmos5l_buf_16)
+                                                         delaynet_4_clk (net)
+                      0.033962    0.003886    0.804608 ^ clkbuf_0_clk/A (sg13cmos5l_buf_16)
+     2    0.083820    0.051802    0.119485    0.924093 ^ clkbuf_0_clk/X (sg13cmos5l_buf_16)
+                                                         clknet_0_clk (net)
+                      0.054856    0.010125    0.934218 ^ clkbuf_1_0__f_clk/A (sg13cmos5l_buf_16)
+     2    0.158689    0.080768    0.146669    1.080887 ^ clkbuf_1_0__f_clk/X (sg13cmos5l_buf_16)
+                                                         clknet_1_0__leaf_clk (net)
+                      0.118493    0.019854    1.100741 ^ u_pmem1.u_sram/A_CLK (RM_IHPSG13_1P_256x64_c2_bm_bist)
+     2    0.030086    0.100036    5.525867    6.626608 ^ u_pmem1.u_sram/A_DOUT[11] (RM_IHPSG13_1P_256x64_c2_bm_bist)
+                                                         c1_insn[11] (net)
+                      0.098634    0.003674    6.630283 ^ fanout1531/A (sg13cmos5l_buf_1)
+     6    0.041897    0.271190    0.311543    6.941826 ^ fanout1531/X (sg13cmos5l_buf_1)
+                                                         net1531 (net)
+                      0.271197    0.001182    6.943007 ^ fanout1530/A (sg13cmos5l_buf_1)
+     7    0.054462    0.350693    0.430592    7.373599 ^ fanout1530/X (sg13cmos5l_buf_1)
+                                                         net1530 (net)
+                      0.350717    0.002543    7.376143 ^ fanout1529/A (sg13cmos5l_buf_1)
+    10    0.069270    0.442360    0.521847    7.897989 ^ fanout1529/X (sg13cmos5l_buf_1)
+                                                         net1529 (net)
+                      0.442534    0.004166    7.902155 ^ _24464_/A (sg13cmos5l_inv_2)
+     7    0.073977    0.283200    0.398841    8.300996 v _24464_/Y (sg13cmos5l_inv_2)
+                                                         _12842_ (net)
+                      0.284037    0.012673    8.313668 v _25929_/B1 (sg13cmos5l_a21oi_1)
+     1    0.005156    0.168386    0.202617    8.516286 ^ _25929_/Y (sg13cmos5l_a21oi_1)
+                                                         _14282_ (net)
+                      0.168387    0.000390    8.516676 ^ _25930_/C (sg13cmos5l_and3_1)
+     1    0.024690    0.173652    0.364675    8.881351 ^ _25930_/X (sg13cmos5l_and3_1)
+                                                         _14283_ (net)
+                      0.173743    0.003872    8.885223 ^ _25937_/A1 (sg13cmos5l_o21ai_1)
+     1    0.004586    0.098326    0.164277    9.049501 v _25937_/Y (sg13cmos5l_o21ai_1)
+                                                         _14290_ (net)
+                      0.098326    0.000199    9.049700 v _25951_/A2 (sg13cmos5l_o21ai_1)
+     1    0.019351    0.332650    0.333994    9.383694 ^ _25951_/Y (sg13cmos5l_o21ai_1)
+                                                         _14304_ (net)
+                      0.332679    0.002666    9.386360 ^ _25971_/A1 (sg13cmos5l_a21oi_1)
+     4    0.042327    0.438118    0.537418    9.923779 v _25971_/Y (sg13cmos5l_a21oi_1)
+                                                         _14324_ (net)
+                      0.438217    0.005759    9.929538 v _26299_/A1 (sg13cmos5l_o21ai_1)
+     2    0.018447    0.371940    0.461235   10.390773 ^ _26299_/Y (sg13cmos5l_o21ai_1)
+                                                         _14623_ (net)
+                      0.371940    0.001285   10.392058 ^ _26301_/B (sg13cmos5l_nand3_1)
+     3    0.016117    0.287659    0.389170   10.781228 v _26301_/Y (sg13cmos5l_nand3_1)
+                                                         _14625_ (net)
+        
+DRT_FILES [('state_in.json', 9399), ('config.json', 11966), ('_env.tcl', 10143), ('openroad-detailedrouting.log', 8237), ('COMMANDS', 267)]
+ROUTE_TAIL                            
+                                                                                
+[INFO DRT-0195] Start 2nd optimization iteration.                               
+    Completing 10% with 16983 violations.                                       
+    elapsed time = 00:00:12, memory = 1794.46 (MB).                             
+    Completing 20% with 16983 violations.                                       
+    elapsed time = 00:00:40, memory = 1768.12 (MB).                             
+    Completing 30% with 16865 violations.                                       
+    elapsed time = 00:01:29, memory = 1740.49 (MB).                             
+    Completing 40% with 16865 violations.                                       
+    elapsed time = 00:01:51, memory = 1771.42 (MB).                             
+    Completing 50% with 16865 violations.                                       
+    elapsed time = 00:02:36, memory = 1826.38 (MB).                             
+

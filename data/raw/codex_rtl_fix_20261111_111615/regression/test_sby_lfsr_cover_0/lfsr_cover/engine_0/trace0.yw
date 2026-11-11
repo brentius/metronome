@@ -1,0 +1,31 @@
+{
+  "format": "Yosys Witness Trace",
+  "generator": "smtbmc",
+  "clocks": [
+    {"path": ["\\clk"], "edge": "posedge", "offset": 0}
+  ],
+  "signals": [
+    {"path": ["\\clk"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\d"], "width": 8, "offset": 0, "init_only": false},
+    {"path": ["\\h_byte"], "width": 2, "offset": 0, "init_only": false},
+    {"path": ["\\h_wd"], "width": 8, "offset": 0, "init_only": false},
+    {"path": ["\\h_we"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\rst_n"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\sel"], "width": 3, "offset": 0, "init_only": false},
+    {"path": ["\\we"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\u0", "\\fv_props", "\\p_d"], "width": 8, "offset": 0, "init_only": true},
+    {"path": ["\\u0", "\\fv_props", "\\p_h_we"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\u0", "\\fv_props", "\\p_rstn"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\u0", "\\fv_props", "\\p_s"], "width": 32, "offset": 0, "init_only": true},
+    {"path": ["\\u0", "\\fv_props", "\\p_sel"], "width": 3, "offset": 0, "init_only": true},
+    {"path": ["\\u0", "\\fv_props", "\\p_we"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\u0", "\\poly"], "width": 32, "offset": 0, "init_only": true},
+    {"path": ["\\u0", "\\s"], "width": 32, "offset": 0, "init_only": true}
+  ],
+  "steps": [
+    {"bits": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"},
+    {"bits": "1000110000000000111111110"},
+    {"bits": "0000000000000000000000000"},
+    {"bits": "0000000000000000000000000"}
+  ]
+}

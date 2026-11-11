@@ -1,0 +1,1 @@
+Original probe run: nine cases passed, including random_2 just before transition; optional probe-enabled random_3 stopped. Short fast-run startup stopped to avoid repeating random_2. Finishing random_3 alone.

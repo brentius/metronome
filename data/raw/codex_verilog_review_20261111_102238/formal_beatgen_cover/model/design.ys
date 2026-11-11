@@ -1,0 +1,9 @@
+# running in C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_beatgen_cover_0\beatgen_cover/src/
+plugin -i slang
+read_slang --top md_beatgen -I . md_beatgen.v fv_beatgen.sv
+prep -top md_beatgen
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

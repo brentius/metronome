@@ -1,0 +1,43 @@
+{
+  "format": "Yosys Witness Trace",
+  "generator": "smtbmc",
+  "clocks": [
+    {"path": ["\\clk"], "edge": "posedge", "offset": 0}
+  ],
+  "signals": [
+    {"path": ["\\clk"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\h_off"], "width": 5, "offset": 0, "init_only": false},
+    {"path": ["\\h_roff"], "width": 5, "offset": 0, "init_only": false},
+    {"path": ["\\h_wd"], "width": 8, "offset": 0, "init_only": false},
+    {"path": ["\\h_we"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\mv_d"], "width": 3, "offset": 0, "init_only": false},
+    {"path": ["\\mv_we"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\pin_fall"], "width": 16, "offset": 0, "init_only": false},
+    {"path": ["\\pin_rise"], "width": 16, "offset": 0, "init_only": false},
+    {"path": ["\\rst_n"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\arm"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\edg"], "width": 6, "offset": 0, "init_only": true},
+    {"path": ["\\fv_props", "\\p_accept"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\fv_props", "\\p_beat"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\fv_props", "\\p_rstn"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\fv_props", "\\p_start"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\inc"], "width": 16, "offset": 0, "init_only": true},
+    {"path": ["\\mod"], "width": 16, "offset": 0, "init_only": true},
+    {"path": ["\\ph"], "width": 16, "offset": 0, "init_only": true},
+    {"path": ["\\pre"], "width": 16, "offset": 0, "init_only": true},
+    {"path": ["\\ren"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\run"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\sc"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\sp"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\t0"], "width": 16, "offset": 0, "init_only": true},
+    {"path": ["\\t1"], "width": 16, "offset": 0, "init_only": true},
+    {"path": ["\\t2"], "width": 16, "offset": 0, "init_only": true},
+    {"path": ["\\wen"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\whi"], "width": 16, "offset": 0, "init_only": true},
+    {"path": ["\\wlo"], "width": 16, "offset": 0, "init_only": true}
+  ],
+  "steps": [
+    {"bits": "0000000000000001111111111111111010000000000000001000000000000000100000000000000010011000000000000000000000000000000001111111111111111000000000000000100001100000010101010101010111010101010101011000000000000000000000000"},
+    {"bits": "000000000000000000000000000000000000000000000000000000000"}
+  ]
+}

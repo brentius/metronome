@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-11-11T11:25:46" hostname="WC23-30B22373BF" package="acc" id="0" name="prove" tests="13" errors="0" failures="0" time="0" skipped="3">
+<properties>
+<property name="os" value="Windows"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="PASS"/>
+</properties>
+<testcase classname="prove" name="build execution" time="0">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_acc at fv_acc.sv:46.40-46.108" time="0" type="ASSERT" location="fv_acc.sv:46.40-46.108" id="_witness_.check_104">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_acc at fv_acc.sv:46.40-46.108" time="0" type="ASSERT" location="fv_acc.sv:46.40-46.108" id="_witness_.check_109">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_acc at fv_acc.sv:46.40-46.108" time="0" type="ASSERT" location="fv_acc.sv:46.40-46.108" id="_witness_.check_114">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_acc at fv_acc.sv:46.40-46.108" time="0" type="ASSERT" location="fv_acc.sv:46.40-46.108" id="_witness_.check_119">
+</testcase>
+<testcase classname="prove" name="Property COVER in md_acc at fv_acc.sv:49.9-49.59" time="0" type="COVER" location="fv_acc.sv:49.9-49.59" id="_witness_.check_124">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property COVER in md_acc at fv_acc.sv:50.9-50.56" time="0" type="COVER" location="fv_acc.sv:50.9-50.56" id="_witness_.check_132">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property COVER in md_acc at fv_acc.sv:51.9-51.51" time="0" type="COVER" location="fv_acc.sv:51.9-51.51" id="_witness_.check_139">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_acc at fv_acc.sv:35.46-35.102" time="0" type="ASSERT" location="fv_acc.sv:35.46-35.102" id="_witness_.check_63">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_acc at fv_acc.sv:37.9-37.44" time="0" type="ASSERT" location="fv_acc.sv:37.9-37.44" id="_witness_.check_76">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_acc at fv_acc.sv:38.9-38.46" time="0" type="ASSERT" location="fv_acc.sv:38.9-38.46" id="_witness_.check_80">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_acc at fv_acc.sv:39.9-39.37" time="0" type="ASSERT" location="fv_acc.sv:39.9-39.37" id="_witness_.check_84">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_acc at fv_acc.sv:40.9-40.30" time="0" type="ASSERT" location="fv_acc.sv:40.9-40.30" id="_witness_.check_88">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_acc at fv_acc.sv:42.45-42.99" time="0" type="ASSERT" location="fv_acc.sv:42.45-42.99" id="_witness_.check_94">
+</testcase>
+<system-out>SBY 11:25:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] Removing directory 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove'.
+SBY 11:25:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\md_acc.v' to 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove\src\md_acc.v'.
+SBY 11:25:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\gen\md_defs.vh' to 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove\src\md_defs.vh'.
+SBY 11:25:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\fv_acc.sv' to 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove\src\fv_acc.sv'.
+SBY 11:25:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0: smtbmc bitwuzla
+SBY 11:25:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] base: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove/src&amp; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 11:25:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] base: finished (returncode=0)
+SBY 11:25:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] prep: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove/model&amp; yosys -ql design_prep.log design_prep.ys&quot;
+SBY 11:25:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] prep: finished (returncode=0)
+SBY 11:25:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] smt2: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove/model&amp; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] smt2: finished (returncode=0)
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.basecase: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove&amp; yosys-smtbmc -s bitwuzla --presat --unroll --noprogress -t 3  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2&quot;
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.induction: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove&amp; yosys-smtbmc -s bitwuzla --presat --unroll -i --noprogress -t 3  --append 0 --dump-vcd engine_0/trace_induct.vcd --dump-yw engine_0/trace_induct.yw --dump-vlogtb engine_0/trace_induct_tb.v --dump-smtc engine_0/trace_induct.smtc model/design_smt2.smt2&quot;
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.induction: ##   0:00:00  Solver: bitwuzla
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.induction: ##   0:00:00  Trying induction in step 3..
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.induction: ##   0:00:00  Trying induction in step 2..
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.induction: ##   0:00:00  Trying induction in step 1..
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.induction: ##   0:00:00  Temporal induction successful.
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.induction: ##   0:00:00  Status: passed
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.basecase: ##   0:00:00  Solver: bitwuzla
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 0..
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 0..
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 1..
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 1..
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 2..
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 2..
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.basecase: ##   0:00:00  Status: passed
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.basecase: finished (returncode=0)
+SBY 11:25:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.basecase: Status returned by engine for basecase: pass
+SBY 11:25:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.induction: finished (returncode=0)
+SBY 11:25:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] engine_0.induction: Status returned by engine for induction: pass
+SBY 11:25:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:02 (2)
+SBY 11:25:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] summary: Elapsed process time unvailable on Windows
+SBY 11:25:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] summary: engine_0 (smtbmc bitwuzla) returned pass for basecase
+SBY 11:25:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] summary: engine_0 (smtbmc bitwuzla) returned pass for induction
+SBY 11:25:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] summary: engine_0 did not produce any traces
+SBY 11:25:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] summary: successful proof by k-induction.
+SBY 11:25:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_acc_prove_0\acc_prove] DONE (PASS, rc=0)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

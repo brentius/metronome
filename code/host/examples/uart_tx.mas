@@ -1,0 +1,56 @@
+; uart_tx.mas -- 115200 8N1 transmitter on O8 = uo_out[2].  Bytes come from the host mailbox.
+;
+; Host protocol: write a byte to CTRL.HOSTIN (0x2404) when HOSTSTAT bit 0 (INV) is 0.  The engine consumes it at
+; the next beat boundary.  Up to one byte per 10 bit times; back-to-back frames have no gap.
+;
+; Design
+;   * BG0 is the bit clock: one beat per bit, 115200 baud = 6/3125 of 60 MHz (calculated, exact).
+;   * Engine 0 runs one burst per beat and walks a small state machine whose state is its PC:
+;         idle -> (byte available) -> bit x8 -> stop -> idle
+;     The PC persists across `pause`, so the program is straight-line code per beat.
+;   * The symbol staged in a burst is committed at the NEXT beat, so each bit lasts exactly one beat.
+;   * Symbol coding (output cell O8): 0 = high (idle/stop/data 1), 1 = low (start/data 0).  Symbol 0 is the reset
+;     value, so the line is high from the moment the output cell is configured: no spurious break at power-up.
+;   * Shifter 0 is used LSB first (reset default CFG: length 8, MSB=0).  `SH0.OUT` is the next bit to send.
+;   * Flag F0 carries "a byte was loaded this beat" from the first to the second instruction of the idle burst,
+;     because HOST.INV is already cleared once the byte is read.
+;
+; The imm field is shared by the goto target and immediates, which is why several states use two instructions.
+;
+; Expected behaviour: uo_out[2] idles high; each mailbox byte appears as start(0), 8 data bits LSB first, stop(1),
+; every bit 520.83 clocks (3125/6) wide on average, with at most one clock of jitter.
+
+.clock 60e6
+
+.beatgen 0
+    baud 115200
+    ctl run
+.end
+
+.engine 0
+    core 0
+    trigger BG0.BEAT
+    start idle
+.end
+
+.out O8                        ; uo_out[2]
+    engine 0
+    lut 1 if sym == 0 else 0   ; symbol 0 = high, symbol 1 = low
+.end
+
+.budget engine 0 cycles 20     ; the worst burst is 2 instructions = 3 cycles; 520 are available
+
+.core 0
+; --- idle: runs every beat.  A: if the mailbox holds a byte, stage the start bit and load the shifter.
+idle:   when HOST.INV   ? #1 -> E.SYM, ? HOST.IN -> SH0.LD, ? ZERO -> FLAGS.SET     ; (ZERO -> FLAGS.SET sets flag 0)
+; B: if A loaded a byte (F0), clear F0 and fall through to `bit`; otherwise stay in idle.
+        when F0   ? ZERO -> FLAGS.CLR   pause goto idle ifnot
+
+; --- bit: one data bit per beat.  A: stage the level (O = 1 -> symbol 0 = high) and shift.
+bit:    when SH0.OUT   ? ZERO -> E.SYM, ! #1 -> E.SYM, ZERO -> SH0.SH
+; B: after the 8th shift the counter is 0 (DONE) and control falls through to `stop`; else repeat `bit`.
+        when SH0.DONE   pause goto bit ifnot
+
+; --- stop: stage the stop bit (symbol 0 = high) and return to idle.
+stop:   ZERO -> E.SYM
+        pause goto idle

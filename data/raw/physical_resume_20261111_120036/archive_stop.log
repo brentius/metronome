@@ -1,0 +1,124 @@
+[?2004hsh-5.3# [H[2Jsh-5.3# stty -echo; python3 -c 'exec(__import__("base64").b64decode("aW1wb3J0IHBhdGhsaWIsanNvbixkYXRldGltZSx0YXJmaWxlLG9zLHNpZ25hbCxnbG9iCnN0YW1wPWRhdGV0aW1lLmRhdGV0aW1lLm5vdyhkYXRldGltZS50aW1lem9uZS51dGMpLnN0cmZ0aW1lKCclWSVtJWRUJUglTSVTWicpCmV2aWRlbmNlPXBhdGhsaWIuUGF0aCgnL3dvcmtzcGFjZS9yZXN1bHRzL3IyX2dhdGUzX2RpYWdub3Npc18nK3N0YW1wKTtldmlkZW5jZS5ta2RpcigpCmZvciB2IGluIFsnZTFfZ3J0YWRqMDE1JywnZTJfZGVuczQ1J106CiBwPXBhdGhsaWIuUGF0aCgnL3Jvb3Qvd29yay9tZXRyb25vbWVfcjIvcnVucycpL3YKIHdpdGggdGFyZmlsZS5vcGVuKGV2aWRlbmNlLyh2KydfdGV4dC50Z3onKSwndzpneicpIGFzIHQ6CiAgZm9yIGYgaW4gc29ydGVkKHAucmdsb2IoJyonKSk6CiAgIGlmIGYuaXNfZmlsZSgpIGFuZCBmLnN1ZmZpeCBpbiBbJy5sb2cnLCcuanNvbicsJy5ycHQnLCcuc2RjJywnLnRjbCddIGFuZCBmLnN0YXQoKS5zdF9zaXplPDIwMDAwMDAwOnQuYWRkKGYsYXJjbmFtZT1zdHIoZi5yZWxhdGl2ZV90byhwKSkpCiBwcmludCgnQVJDSElWRUQnLHYsKGV2aWRlbmNlLyh2KydfdGV4dC50Z3onKSkuc3RhdCgpLnN0X3NpemUpCmZvciBmIGluIHBhdGhsaWIuUGF0aCgnL3Byb2MnKS5nbG9iKCdbMC05XSovY21kbGluZScpOgogdHJ5OgogIHJhdz1mLnJlYWRfYnl0ZXMoKTtwYXJ0cz1yYXcuc3BsaXQoYnl0ZXMoWzBdKSk7Y21kPXJhdy5yZXBsYWNlKGJ5dGVzKFswXSksYicgJykuZGVjb2RlKGVycm9ycz0ncmVwbGFjZScpCiAgaWYgcGFydHMgYW5kIHBhcnRzWzBdLmRlY29kZShlcnJvcnM9J3JlcGxhY2UnKS5lbmRzd2l0aCgnL29wZW5yb2FkJykgYW5kIGFueSgnL3Jvb3Qvd29yay9tZXRyb25vbWVfcjIvcnVucy8nK3YrJy8nIGluIGNtZCBmb3IgdiBpbiBbJ2UxX2dydGFkajAxNScsJ2UyX2RlbnM0NSddKToKICAgcGlkPWludChmLnBhcmVudC5uYW1lKTsoZXZpZGVuY2UvKCdzdG9wcGVkXycrc3RyKHBpZCkrJy50eHQnKSkud3JpdGVfdGV4dChjbWQpO29zLmtpbGwocGlkLHNpZ25hbC5TSUdURVJNKTtwcmludCgnU1RPUFBFRF9TVVBFUlNFREVEX1JPVVRFUicscGlkKQogZXhjZXB0IChGaWxlTm90Rm91bmRFcnJvcixQcm9jZXNzTG9va3VwRXJyb3IpOnBhc3MKYmFzZT1wYXRobGliLlBhdGgoZ2xvYi5nbG9iKCcvbml4L3N0b3JlLypweXRob24zLTMuMTMuMTMtZW52L2xpYi9weXRob24zLjEzL3NpdGUtcGFja2FnZXMvbGlicmVsYW5lJylbMF0pCmZvciBrZXkgaW4gWydNQVhfQ09SRVMnLCdTWU5USF9TVFJBVEVHWScsJ1NZTlRIX0hJRVJBUkNIWV9NT0RFJ106CiBwcmludCgnQ09ORklHX0tFWScsa2V5KTtjb3VudD0wCiBmb3IgcCBpbiBiYXNlLnJnbG9iKCcqJyk6CiAgaWYgcC5zdWZmaXggbm90IGluIFsnLnB5JywnLnRjbCddOmNvbnRpbnVlCiAgdHJ5OmxpbmVzPXAucmVhZF90ZXh0KCkuc3BsaXRsaW5lcygpCiAgZXhjZXB0IEV4Y2VwdGlvbjpjb250aW51ZQogIGZvciBpLGwgaW4gZW51bWVyYXRlKGxpbmVzKToKICAgaWYga2V5IGluIGw6CiAgICBwcmludChzdHIocC5yZWxhdGl2ZV90byhiYXNlKSksaSsxLCdcbicuam9pbihsaW5lc1ttYXgoMCxpLTIpOmkrNV0pKTtjb3VudCs9MQogICAgaWYgY291bnQ+PTg6YnJlYWsKICBpZiBjb3VudD49ODpicmVhawpmb3IgbiBpbiBbJy9zeXMvZnMvY2dyb3VwL2NwdS9jcHUuY2ZzX3F1b3RhX3VzJywnL3N5cy9mcy9jZ3JvdXAvY3B1L2NwdS5jZnNfcGVyaW9kX3VzJywnL3N5cy9mcy9jZ3JvdXAvbWVtb3J5L21lbW9yeS5saW1pdF9pbl9ieXRlcyddOgogcD1wYXRobGliLlBhdGgobik7cHJpbnQobixwLnJlYWRfdGV4dCgpLnN0cmlwKCkgaWYgcC5leGlzdHMoKSBlbHNlICdtaXNzaW5nJykKcHJpbnQoJ1JFTU9URV9FVklERU5DRScsZXZpZGVuY2UpCg=="))'; echo __JSC_1794398522025__$?
+[?2004lARCHIVED e1_grtadj015 2666946
+ARCHIVED e2_dens45 8626774
+STOPPED_SUPERSEDED_ROUTER 21808
+STOPPED_SUPERSEDED_ROUTER 23557
+CONFIG_KEY MAX_CORES
+common/misc.py 453 
+def _get_process_limit() -> int:
+    return int(os.getenv("_OPENLANE_MAX_CORES", os.cpu_count() or 1))
+
+
+def gzopen(filename: AnyPath, mode="rt") -> IO[Any]:
+    """
+CONFIG_KEY SYNTH_STRATEGY
+flows/optimizing.py 59 
+        for strategy in ["AREA 0", "AREA 2", "DELAY 1"]:
+            config = self.config.copy(SYNTH_STRATEGY=strategy)
+
+            synth_step = Yosys.Synthesis(
+                config,
+                id=f"synthesis-{strategy}",
+flows/optimizing.py 98         set_log_level(log_level_bk)
+
+        min_strat = synthesis_states[0][0]["SYNTH_STRATEGY"]
+        min_config = synthesis_states[0][0]
+        min_area_state = synthesis_states[0][1]
+        for config, state in synthesis_states[1:]:
+            strategy = config["SYNTH_STRATEGY"]
+flows/optimizing.py 102         min_area_state = synthesis_states[0][1]
+        for config, state in synthesis_states[1:]:
+            strategy = config["SYNTH_STRATEGY"]
+            if (
+                state.metrics["design__instance__area"]
+                < min_area_state.metrics["design__instance__area"]
+            ):
+flows/synth_explore.py 44 
+        ┏━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+        ┃ SYNTH_STRATEGY ┃ Gates ┃ Area (µm²)    ┃ Worst R2R Setup Slack (ns) ┃ Worst Setup Slack (ns) ┃ Total -ve Setup Slack (ns) ┃
+        ┡━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+        │ AREA 0         │ 6692  │ 88675.046400  │ 8.601737                   │ 8.066582297115897      │ 0.0                        │
+        │ AREA 1         │ 6776  │ 88750.118400  │ 8.196377                   │ 7.965740292847976      │ 0.0                        │
+        │ AREA 2         │ 6720  │ 88352.236800  │ 8.628829                   │ 8.628828562575336      │ 0.0                        │
+flows/synth_explore.py 57         └────────────────┴───────┴───────────────┴────────────────────────────┴────────────────────────┴────────────────────────────┘
+
+    You can then update your config file with the best ``SYNTH_STRATEGY`` for your
+    use-case so it can be used with other flows.
+    """
+
+    Steps = [
+flows/synth_explore.py 93             "DELAY 4",
+        ]:
+            config = self.config.copy(SYNTH_STRATEGY=strategy)
+
+            synth_step = Yosys.Synthesis(
+                config,
+                id=f"synthesis-{strategy}",
+flows/synth_explore.py 126         ] = {}
+        for config, future in synth_futures:
+            strategy = config["SYNTH_STRATEGY"]
+            results[strategy] = None
+            try:
+                state = future.result()
+                results[strategy] = (
+flows/synth_explore.py 150 
+        table = rich.table.Table()
+        table.add_column("SYNTH_STRATEGY")
+        table.add_column("Gates")
+        table.add_column("Area (µm²)")
+        table.add_column("Worst R2R Setup Slack (ns)")
+        table.add_column("Worst Setup Slack (ns)")
+CONFIG_KEY SYNTH_HIERARCHY_MODE
+steps/pyosys.py 518         ),
+        Variable(
+            "SYNTH_HIERARCHY_MODE",
+            Literal["flatten", "deferred_flatten", "keep"],
+            "Affects how hierarchy is maintained throughout and after synthesis. 'flatten' flattens it during and after synthesis. 'deferred_flatten' flattens it after synthesis. 'keep' never flattens it. Please note that when using the Slang plugin, you need to pass '--keep-hierarchy' to `SLANG_ARGUMENTS` separately. To keep the hierarchy partially, use one of the flattening options and set the 'keep_hierarchy' attribute on instances or modules via: `SYNTH_KEEP_HIERARCHY_INSTANCES`, `SYNTH_KEEP_HIERARCHY_MODULES` or `SYNTH_KEEP_HIERARCHY_MIN_COST`.",
+            default="flatten",
+            deprecated_names=[
+steps/pyosys.py 534             "SYNTH_KEEP_HIERARCHY_MIN_COST",
+            Optional[int],
+            "Sets the 'keep_hierarchy' attribute on modules where the gate count is estimated to exceed the specified threshold. This prevents larger modules from being flattened. This variable only affects the design when 'flatten' is called through `SYNTH_HIERARCHY_MODE`.",
+        ),
+        Variable(
+            "SYNTH_KEEP_HIERARCHY_INSTANCES",
+            Optional[List[str]],
+steps/pyosys.py 539             "SYNTH_KEEP_HIERARCHY_INSTANCES",
+            Optional[List[str]],
+            "A list of instances for which to set the 'keep_hierarchy' attribute. This variable only affects the design when 'flatten' is called through `SYNTH_HIERARCHY_MODE`.",
+        ),
+        Variable(
+            "SYNTH_KEEP_HIERARCHY_MODULES",
+            Optional[List[str]],
+steps/pyosys.py 544             "SYNTH_KEEP_HIERARCHY_MODULES",
+            Optional[List[str]],
+            "A list of modules for which to set the 'keep_hierarchy' attribute. This variable only affects the design when 'flatten' is called through `SYNTH_HIERARCHY_MODE`.",
+        ),
+        Variable(
+            "SYNTH_SHARE_RESOURCES",
+            bool,
+scripts/pyosys/synthesize.py 354     if config["SYNTH_ELABORATE_ONLY"]:
+        librelane_proc(d, report_dir)
+        if config["SYNTH_HIERARCHY_MODE"] in ["deferred_flatten", "flatten"]:
+            d.run_pass("flatten", "-noscopeinfo")
+        d.run_pass("setattr", "-set", "keep", "1")
+        d.run_pass("splitnets")
+        d.run_pass("opt_clean", "-purge")
+scripts/pyosys/synthesize.py 390         d,
+        config["DESIGN_NAME"],
+        config["SYNTH_HIERARCHY_MODE"] == "flatten",
+        report_dir,
+        booth=config["SYNTH_MUL_BOOTH"],
+        abc_dff=config["SYNTH_ABC_DFF"],
+        undriven=config.get("SYNTH_TIE_UNDEFINED") is not None,
+scripts/pyosys/synthesize.py 557     run_strategy(d)
+
+    if config["SYNTH_HIERARCHY_MODE"] == "deferred_flatten":
+        # Resynthesize, flattening
+        d_flat = ys.Design()
+        d_flat.add_blackbox_models(blackbox_models, includes=includes, defines=defines)
+
+/sys/fs/cgroup/cpu/cpu.cfs_quota_us -1
+/sys/fs/cgroup/cpu/cpu.cfs_period_us 100000
+/sys/fs/cgroup/memory/memory.limit_in_bytes 32000000000
+REMOTE_EVIDENCE /workspace/results/r2_gate3_diagnosis_20261111T120202Z

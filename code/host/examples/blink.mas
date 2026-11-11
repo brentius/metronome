@@ -1,0 +1,36 @@
+; blink.mas -- toggle a pin on every beat.
+;
+; The smallest complete Metronome program: one beat generator, one engine, one output cell.
+;   * BG0 produces a beat at 1 kHz (inc/mod are computed from the 60 MHz clock: 1/60000).
+;   * Engine 0 is triggered by every BG0 beat and runs a two-instruction burst.
+;   * The staged symbol is committed at the next beat, so the pin toggles exactly once per beat: a 500 Hz square wave
+;     on O8 = uo_out[2].
+;
+; Expected behaviour (to be confirmed in simulation by the orchestrator): uo_out[2] toggles every 60000 clocks
+; (1 ms at 60 MHz); first commit one beat after RUN.
+
+.clock 60e6
+
+.beatgen 0
+    rate 1000                  ; beats per second -> inc/mod
+    ctl run                    ; free-running from the moment the host writes CTL
+.end
+
+.engine 0
+    core 0
+    trigger BG0.BEAT           ; beatgen defaults to the trigger's generator
+    start tick
+.end
+
+.out O8                        ; O8 = uo_out[2]
+    engine 0
+    lut sym & 1                ; pin level = low bit of the committed symbol, in every segment
+.end
+
+.budget engine 0 cycles 10     ; sanity: the whole burst must fit in 10 cycles
+
+.core 0
+; ACC holds the next level.  Reading ACC and writing ACC happen in the same cycle (sources are read at the start of
+; the cycle), so one instruction stages the current level and flips it for next time.
+tick:   ACC -> E.SYM, #1 -> ACC.XOR
+        pause goto tick        ; imm field = tick; it cannot also hold the #1 above, hence the second instruction

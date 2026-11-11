@@ -1,0 +1,8 @@
+# running in C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover\model/
+read_rtlil design_prep.il
+hierarchy -smtcheck
+delete */t:$print
+formalff -assume
+dffunmap
+stat
+write_smt2 -wires design_smt2.smt2

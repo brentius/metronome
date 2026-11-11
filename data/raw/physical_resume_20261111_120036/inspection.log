@@ -1,0 +1,114 @@
+[?2004hsh-5.3# [H[2Jsh-5.3# stty -echo; python3 -c 'exec(__import__("base64").b64decode("aW1wb3J0IHBhdGhsaWIsanNvbixkYXRldGltZSxnbG9iCnByaW50KCdVVEMnLGRhdGV0aW1lLmRhdGV0aW1lLm5vdyhkYXRldGltZS50aW1lem9uZS51dGMpLmlzb2Zvcm1hdCgpKQpmb3IgdiBpbiBbJ2UxX2dydGFkajAxNScsJ2UyX2RlbnM0NSddOgogcD1wYXRobGliLlBhdGgoJy9yb290L3dvcmsvbWV0cm9ub21lX3IyL3J1bnMnKS92CiBwcmludCgnUlVOJyx2KQogZm9yIGYgaW4gc29ydGVkKHAuZ2xvYignKmdsb2JhbHJvdXRpbmcqLyoubG9nJykpOgogIHQ9Zi5yZWFkX3RleHQoZXJyb3JzPSdyZXBsYWNlJyk7aT10LnJmaW5kKCdGaW5hbCBjb25nZXN0aW9uIHJlcG9ydDonKTtwcmludCh0W2k6aSsxODAwXSk7cHJpbnQoJ2V4dHJhX2l0ZXJhdGlvbnMnLHQuY291bnQoJ1N0YXJ0IGV4dHJhIGl0ZXJhdGlvbicpLCduZHJfZGlzYWJsZWQnLHQuY291bnQoJ0dSVC0wMjczJykpCiBmb3IgZiBpbiBzb3J0ZWQocC5nbG9iKCcqc3RhbWlkcG5yKi9vcl9tZXRyaWNzX291dC5qc29uJykpWy0xOl06CiAgZD1qc29uLmxvYWRzKGYucmVhZF90ZXh0KCkpO3ByaW50KCdUSU1JTkcnLHtrOnYgZm9yIGssdiBpbiBkLml0ZW1zKCkgaWYgYW55KHMgaW4gayBmb3IgcyBpbiBbJ3NldHVwX193cycsJ2hvbGRfX3dzJywnc2xld192aW9sYXRpb24nLCdjYXBfdmlvbGF0aW9uJ10pfSkKZm9yIG4gaW4gWycvc3lzL2ZzL2Nncm91cC9jcHUubWF4JywnL3N5cy9mcy9jZ3JvdXAvbWVtb3J5Lm1heCcsJy9zeXMvZnMvY2dyb3VwL21lbW9yeS5jdXJyZW50J106CiBwPXBhdGhsaWIuUGF0aChuKTtwcmludChuLHAucmVhZF90ZXh0KCkuc3RyaXAoKSBpZiBwLmV4aXN0cygpIGVsc2UgJ21pc3NpbmcnKQpiYXNlPXBhdGhsaWIuUGF0aChnbG9iLmdsb2IoJy9uaXgvc3RvcmUvKnB5dGhvbjMtMy4xMy4xMy1lbnYvbGliL3B5dGhvbjMuMTMvc2l0ZS1wYWNrYWdlcy9saWJyZWxhbmUnKVswXSkKZm9yIHJlbCBpbiBbJ3NjcmlwdHMveW9zeXMvc3ludGgudGNsJywnY29uZmlnL2Zsb3cucHknLCdzdGVwcy95b3N5cy5weScsJ3N0ZXBzL29wZW5yb2FkLnB5Jywnc2NyaXB0cy9vcGVucm9hZC9jb21tb24vZ3J0LnRjbCddOgogcD1iYXNlL3JlbAogaWYgcC5leGlzdHMoKToKICBsaW5lcz1wLnJlYWRfdGV4dCgpLnNwbGl0bGluZXMoKTtwcmludCgnU09VUkNFJyxzdHIocCkpCiAga2V5cz1bJ1NZTlRIX0hJRVJBUkNIWV9NT0RFJywnU1lOVEhfU1RSQVRFR1knLCdNQVhfQ09SRVMnLCdBUkVBIDAnLCdHUlRfQUxMT1dfQ09OR0VTVElPTicsJ1JUX01BWF9MQVlFUicsJ0dSVF9PVkVSRkxPV19JVEVSUycsJ1NZTlRIX0tFRVBfSElFUkFSQ0hZJ10KICBoaXRzPVtpIGZvciBpLGwgaW4gZW51bWVyYXRlKGxpbmVzKSBpZiBhbnkoayBpbiBsIGZvciBrIGluIGtleXMpXQogIGZvciBpIGluIGhpdHNbOjE4XTpwcmludCgnXG4nLmpvaW4oZid7aisxfToge2xpbmVzW2pdfScgZm9yIGogaW4gcmFuZ2UobWF4KDAsaS0yKSxtaW4obGVuKGxpbmVzKSxpKzUpKSkpCnByaW50KCdWRVJTSU9OUycscGF0aGxpYi5QYXRoKCcvcm9vdC9mbG93X3ZlcnNpb25zLnR4dCcpLnJlYWRfdGV4dCgpKQo="))'; echo __JSC_1794398437314__$?
+[?2004lUTC 2026-11-11T12:00:37.615855+00:00
+RUN e1_grtadj015
+Final congestion report:
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+---------------------------------------------------------------------------------------
+Metal1               0             0            0.00%             0 /  0 /  0
+Metal2          188681        132219           70.08%             1 /  3 / 574
+Metal3          249627        190910           76.48%             6 /  1 / 3934
+Metal4          171053         34241           20.02%             2 /  1 / 45
+---------------------------------------------------------------------------------------
+Total           609361        357370           58.65%             9 /  5 / 4553
+
+[INFO GRT-0018] Total wirelength: 3451543 um
+[INFO GRT-0014] Routed nets: 36589
+[WARNING GRT-0115] Global routing finished with congestion. Check the congestion regions in the DRC Viewer.
+[INFO GRT-0303] Global routing runtime = 00:10:06
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+u_pmem0.u_sram matched with u_pmem0.u_sram
+u_pmem0.u_sram matched with u_pmem0.u_sram
+u_pmem1.u_sram matched with u_pmem1.u_sram
+u_pmem1.u_sram matched with u_pmem1.u_sram
+u_dmem.u_sram matched with u_dmem.u_sram
+u_dmem.u_sram matched with u_dmem.u_sram
+[INFO ODB-0403] 0 connections made, 0 conflicts skipped.
+Updating metrics…
+Cell type report:                       Count       Area
+  Macro                                     3  266080.97
+  Buffer                                 7402   64480.15
+  Clock buffer                            239    6551.80
+  Timing Repair Buffer                   3939   45526.92
+  Inverter                                702    3859.23
+  Clock inverter                           86     803.78
+  Sequential cell                        2208  108167.27
+  Mul
+extra_iterations 99 ndr_disabled 1
+TIMING {'design__max_slew_violation__count__corner:nom_typ_1p20V_25C': 16, 'design__max_cap_violation__count__corner:nom_typ_1p20V_25C': 4, 'timing__hold__ws__corner:nom_typ_1p20V_25C': 0.238938, 'timing__setup__ws__corner:nom_typ_1p20V_25C': 5.16289}
+RUN e2_dens45
+Final congestion report:
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+---------------------------------------------------------------------------------------
+Metal1               0             0            0.00%             0 /  0 /  0
+Metal2          188681        123183           65.29%             1 /  1 / 44
+Metal3          249627        177593           71.14%             5 /  0 / 557
+Metal4          171053         31494           18.41%             1 /  1 / 11
+---------------------------------------------------------------------------------------
+Total           609361        332270           54.53%             7 /  2 / 612
+
+[INFO GRT-0018] Total wirelength: 3167589 um
+[INFO GRT-0014] Routed nets: 36596
+[WARNING GRT-0115] Global routing finished with congestion. Check the congestion regions in the DRC Viewer.
+[INFO GRT-0303] Global routing runtime = 00:18:34
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+u_pmem0.u_sram matched with u_pmem0.u_sram
+u_pmem0.u_sram matched with u_pmem0.u_sram
+u_pmem1.u_sram matched with u_pmem1.u_sram
+u_pmem1.u_sram matched with u_pmem1.u_sram
+u_dmem.u_sram matched with u_dmem.u_sram
+u_dmem.u_sram matched with u_dmem.u_sram
+[INFO ODB-0403] 0 connections made, 0 conflicts skipped.
+Updating metrics…
+Cell type report:                       Count       Area
+  Macro                                     3  266080.97
+  Buffer                                 7402   64480.15
+  Clock buffer                            238    5831.48
+  Timing Repair Buffer                   3960   45906.13
+  Inverter                                702    3859.23
+  Clock inverter                           90     747.53
+  Sequential cell                        2208  108167.27
+  Multi-
+extra_iterations 148 ndr_disabled 2
+TIMING {'design__max_slew_violation__count__corner:nom_typ_1p20V_25C': 16, 'design__max_cap_violation__count__corner:nom_typ_1p20V_25C': 1, 'timing__hold__ws__corner:nom_typ_1p20V_25C': 0.292766, 'timing__setup__ws__corner:nom_typ_1p20V_25C': 6.53959}
+/sys/fs/cgroup/cpu.max missing
+/sys/fs/cgroup/memory.max missing
+/sys/fs/cgroup/memory.current missing
+SOURCE /nix/store/qs4izsy8n6gxz4zr31bjpwcq83nq2422-python3-3.13.13-env/lib/python3.13/site-packages/librelane/config/flow.py
+93:     # Floorplanning
+94:     Variable("RT_MIN_LAYER", str, "The lowest metal layer to route on.", pdk=True),
+95:     Variable("RT_MAX_LAYER", str, "The highest metal layer to route on.", pdk=True),
+96: ]
+97: 
+98: scl_variables = [
+99:     # Common
+SOURCE /nix/store/qs4izsy8n6gxz4zr31bjpwcq83nq2422-python3-3.13.13-env/lib/python3.13/site-packages/librelane/steps/yosys.py
+SOURCE /nix/store/qs4izsy8n6gxz4zr31bjpwcq83nq2422-python3-3.13.13-env/lib/python3.13/site-packages/librelane/steps/openroad.py
+SOURCE /nix/store/qs4izsy8n6gxz4zr31bjpwcq83nq2422-python3-3.13.13-env/lib/python3.13/site-packages/librelane/scripts/openroad/common/grt.tcl
+22: 
+23: set arg_list [list]
+24: lappend arg_list -congestion_iterations $::env(GRT_OVERFLOW_ITERS)
+25: lappend arg_list -verbose
+26: append_if_flag arg_list GRT_ALLOW_CONGESTION -allow_congestion
+27: 
+28: log_cmd global_route {*}$arg_list
+24: lappend arg_list -congestion_iterations $::env(GRT_OVERFLOW_ITERS)
+25: lappend arg_list -verbose
+26: append_if_flag arg_list GRT_ALLOW_CONGESTION -allow_congestion
+27: 
+28: log_cmd global_route {*}$arg_list
+29: 
+30: write_guide $::env(STEP_DIR)/after_grt.guide
+VERSIONS date Wed Nov 11 00:42:35 UTC 2026
+tt-support-tools 9d13ff3e3e6202090740110438c6a10c1d62ca0f
+pdk ihp-sg13cmos5l 89d42ee6d2fd9b50b86a1aada6fee6673c3e6008
+librelane 3.1.0.dev4
+openroad /nix/store/hwpn9njs9l4ymgm41gc7gr46m8q9yk5v-openroad-2026-02-17-python3-3.13.13-env/bin/openroad
+yosys /nix/store/s41b75z1fz54cl136fpram0fkqwp615c-yosys-with-plugins-0.69-python3-3.13.13-env/bin/yosys
+magic /nix/store/7ar043dk92xygs16rwqivrzv8s467rg0-magic-vlsi-8.3.677/bin/magic
+klayout /nix/store/qs4izsy8n6gxz4zr31bjpwcq83nq2422-python3-3.13.13-env/bin/klayout
+netgen /nix/store/16rvjr7jcs7klg2w36c46v2xqh9in747-netgen-1.5.323/bin/netgen
+iverilog /nix/store/nifnxfn7bcwpzxnyfbis5pdbd738pxjc-iverilog-13.0/bin/iverilog
+verilator /nix/store/nh29msaf2ynv146vgdvhgl4a57hcjbzp-verilator-5.046/bin/verilator
+

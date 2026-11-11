@@ -1,0 +1,98 @@
+; eth_tx.mas -- 10BASE-T Ethernet frame transmitter: preamble, SFD, body from data RAM, CRC-32 FCS computed on chip,
+; Manchester coded at 10 Mbit/s (6 clocks per bit, 3 per half-bit at 60 MHz), TP_IDL at the end.  Single-ended output
+; on O8 = uo_out[2] (idle low).  No differential pair and no link pulses (see the notes at the end).
+;
+; Host protocol
+;   * Data RAM: bytes 0..1 = body length N in bytes, little endian (destination MAC .. last payload byte, WITHOUT the
+;     FCS; N >= 1).  Bytes 2..N+1 = the body.  The chip generates preamble, SFD and FCS.
+;   * Write any byte to CTRL.HOSTIN (0x2404) to start a frame; wait until HOSTSTAT bit 0 is 0 to know it was accepted,
+;     and for the frame to end (about (N + 12) * 8 * 6 clocks) before starting another one.
+;
+; Design
+;   * BG0 beat = one bit time = 6 clocks (INC 1, MOD 6).  Tap T0 = 3 is the mid-bit point, so the beat generator's
+;     segment SEG is 0 in the first half-bit and 1 in the second.
+;   * Engine 0 stages one symbol per beat; it is committed at the next beat.  The output cell decodes {SEG, symbol}:
+;         sym 0 = idle (low)             sym 1 = data 1: low then high (IEEE 802.3: low->high mid-bit = 1)
+;         sym 2 = data 0: high then low  sym 3 = TP_IDL (high)
+;     The reset value of the symbol is 0, so the pin is low from power-up.
+;   * CRC-32 uses the LFSR unit: LF0 reflected Galois, POLY 0xEDB88320, initial 0xFFFFFFFF.  Each body bit is fed with
+;     LF0.ST (the data bit on bus bit 0).  After the body, the FCS is ~LF0 sent LSB first: the symbol is the inverse of
+;     LF0.OUT and the register is shifted right with zero feedback (LF0.B0 -> LF0.ST gives fb = S0 ^ S0 = 0).
+;   * Per beat the burst is 3 or 4 instructions, the maximum that fits a 6-clock beat (a burst of n instructions frees
+;     the engine at t+n+2, and the next trigger arrives at t+6).
+;   * R0 holds the constant 2 (the symbol for data 0: guarded moves cannot take two different immediates).
+;   * State lives in the engine PC.  idle -> s1..s4 (setup) -> pbit x7 bytes -> sfd -> bit x N bytes -> fcs x 32 bits
+;     -> t1..t4 (TP_IDL: sym 3 for three beats, then idle).
+
+.clock 60e6
+
+.beatgen 0
+    period 6
+    taps 3 - -
+    ctl run
+.end
+
+.engine 0
+    core 0
+    trigger BG0.BEAT
+    start idle
+.end
+
+.lfsr 0 raw=0xEDB88320 init=0xFFFFFFFF
+
+.out O8
+    engine 0
+    lut 1 if (sym == 1 and seg == 1) or (sym == 2 and seg == 0) or sym == 3 else 0
+.end
+
+.budget engine 0 cycles 5
+
+.core 0
+; --- idle: wait for the host byte (consumed and ignored).
+idle:   when HOST.INV   ? HOST.IN -> NULL   pause goto idle ifnot
+
+; --- s1: CRC register := 0xFFFFFFFF (four byte writes, one per cycle: one write group).
+s1:     #LF0_INIT_B0 -> LF0.B0
+        #LF0_INIT_B1 -> LF0.B1
+        #LF0_INIT_B2 -> LF0.B2
+        #LF0_INIT_B3 -> LF0.B3   pause
+
+; --- s2: pointer 0 := 0 (starts a prefetch of the length low byte), R0 := 2, CNT1 := 7 preamble bytes, CNT2 := 32 FCS bits.
+s2:     ZERO -> P0.AL, #2 -> R0
+        ZERO -> P0.AH, #7 -> CNT1.LO
+        ZERO -> CNT1.HI, #32 -> CNT2.LO
+        ZERO -> CNT2.HI   pause
+
+; --- s3, s4: body length N := RAM[0], RAM[1] into CNT0; the shifter gets the first preamble byte 0x55.
+s3:     P0.D -> CNT0.LO, ZERO -> P0.R   pause
+s4:     P0.D -> CNT0.HI, ZERO -> P0.R, #0x55 -> SH0.LD   pause
+
+; --- pbit: preamble.  7 bytes of 0x55; the last boundary replaces the next byte with the SFD 0xD5.
+; Symbol: bit 1 -> sym 1, bit 0 -> sym 2 (= R0).  Shift in the same cycle (sources are read before the write).
+pbit:   when SH0.OUT   ? #1 -> E.SYM, ! R0 -> E.SYM, ZERO -> SH0.SH
+        when SH0.DONE   ? #0x55 -> SH0.LD, ? ZERO -> CNT1.DEC
+        when CNT1.Z   ? #0xD5 -> SH0.LD
+        when CNT1.Z   pause goto pbit ifnot
+
+; --- sfd: the 0xD5 byte.  At its boundary the first body byte is loaded and the pointer advances.
+sfd:    when SH0.OUT   ? #1 -> E.SYM, ! R0 -> E.SYM, ZERO -> SH0.SH
+        when SH0.DONE   ? P0.D -> SH0.LD, ? ZERO -> P0.R, ? ZERO -> FLAGS.SET      ; F0 = "boundary reached"
+        when F0   ? ZERO -> FLAGS.CLR   pause goto sfd ifnot                        ; (the load already reset DONE)
+
+; --- bit: body, one bit per beat, each bit also steps the CRC.  The boundary burst loads the next byte, advances the
+; pointer and counts a byte down; CNT0 = 0 after the last byte.
+bit:    when SH0.OUT   ? #1 -> E.SYM, ! R0 -> E.SYM, SH0.O -> LF0.ST
+        ZERO -> SH0.SH
+        when SH0.DONE   ? P0.D -> SH0.LD, ? ZERO -> P0.R, ? ZERO -> CNT0.DEC
+        when CNT0.Z   pause goto bit ifnot
+
+; --- fcs: 32 bits of ~CRC, LSB first.  LF0.OUT = 1 means the FCS bit is 0.
+fcs:    when LF0.OUT   ? R0 -> E.SYM, ! #1 -> E.SYM, LF0.B0 -> LF0.ST
+        ZERO -> CNT2.DEC
+        when CNT2.Z   pause goto fcs ifnot
+
+; --- TP_IDL: after the last bit, stage 3 (high), hold it three beats (18 clocks), then back to idle (low).
+t1:     #3 -> E.SYM   pause
+t2:     pause
+t3:     pause
+t4:     ZERO -> E.SYM   pause goto idle

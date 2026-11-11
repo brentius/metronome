@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-11-11T11:22:40" hostname="WC23-30B22373BF" package="core" id="0" name="prove" tests="28" errors="0" failures="0" time="0" skipped="9">
+<properties>
+<property name="os" value="Windows"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="PASS"/>
+</properties>
+<testcase classname="prove" name="build execution" time="0">
+</testcase>
+<testcase classname="prove" name="Property COVER in md_core at fv_core.sv:66.9-66.64" time="0" type="COVER" location="fv_core.sv:66.9-66.64" id="_witness_.check_1002">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property COVER in md_core at fv_core.sv:67.9-67.47" time="0" type="COVER" location="fv_core.sv:67.9-67.47" id="_witness_.check_1008">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:35.13-35.30" time="0" type="ASSERT" location="fv_core.sv:35.13-35.30" id="_witness_.check_813">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:36.13-36.38" time="0" type="ASSERT" location="fv_core.sv:36.13-36.38" id="_witness_.check_816">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:37.13-37.48" time="0" type="ASSERT" location="fv_core.sv:37.13-37.48" id="_witness_.check_819">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:38.13-38.51" time="0" type="ASSERT" location="fv_core.sv:38.13-38.51" id="_witness_.check_822">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:43.22-43.39" time="0" type="ASSERT" location="fv_core.sv:43.22-43.39" id="_witness_.check_831">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:44.26-44.81" time="0" type="ASSERT" location="fv_core.sv:44.26-44.81" id="_witness_.check_834">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:45.14-45.34" time="0" type="ASSERT" location="fv_core.sv:45.14-45.34" id="_witness_.check_840">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:55.29-55.58" time="0" type="ASSERT" location="fv_core.sv:55.29-55.58" id="_witness_.check_852">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:59.17-59.78" time="0" type="ASSERT" location="fv_core.sv:59.17-59.78" id="_witness_.check_856">
+</testcase>
+<testcase classname="prove" name="Property COVER in md_core at fv_core.sv:60.13-60.78" time="0" type="COVER" location="fv_core.sv:60.13-60.78" id="_witness_.check_862">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:55.29-55.58" time="0" type="ASSERT" location="fv_core.sv:55.29-55.58" id="_witness_.check_877">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:59.17-59.78" time="0" type="ASSERT" location="fv_core.sv:59.17-59.78" id="_witness_.check_881">
+</testcase>
+<testcase classname="prove" name="Property COVER in md_core at fv_core.sv:60.13-60.78" time="0" type="COVER" location="fv_core.sv:60.13-60.78" id="_witness_.check_887">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:55.29-55.58" time="0" type="ASSERT" location="fv_core.sv:55.29-55.58" id="_witness_.check_902">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:59.17-59.78" time="0" type="ASSERT" location="fv_core.sv:59.17-59.78" id="_witness_.check_906">
+</testcase>
+<testcase classname="prove" name="Property COVER in md_core at fv_core.sv:60.13-60.78" time="0" type="COVER" location="fv_core.sv:60.13-60.78" id="_witness_.check_912">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:55.29-55.58" time="0" type="ASSERT" location="fv_core.sv:55.29-55.58" id="_witness_.check_927">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:59.17-59.78" time="0" type="ASSERT" location="fv_core.sv:59.17-59.78" id="_witness_.check_931">
+</testcase>
+<testcase classname="prove" name="Property COVER in md_core at fv_core.sv:60.13-60.78" time="0" type="COVER" location="fv_core.sv:60.13-60.78" id="_witness_.check_937">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:55.29-55.58" time="0" type="ASSERT" location="fv_core.sv:55.29-55.58" id="_witness_.check_952">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:59.17-59.78" time="0" type="ASSERT" location="fv_core.sv:59.17-59.78" id="_witness_.check_956">
+</testcase>
+<testcase classname="prove" name="Property COVER in md_core at fv_core.sv:60.13-60.78" time="0" type="COVER" location="fv_core.sv:60.13-60.78" id="_witness_.check_962">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:55.29-55.58" time="0" type="ASSERT" location="fv_core.sv:55.29-55.58" id="_witness_.check_977">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_core at fv_core.sv:59.17-59.78" time="0" type="ASSERT" location="fv_core.sv:59.17-59.78" id="_witness_.check_981">
+</testcase>
+<testcase classname="prove" name="Property COVER in md_core at fv_core.sv:60.13-60.78" time="0" type="COVER" location="fv_core.sv:60.13-60.78" id="_witness_.check_987">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property COVER in md_core at fv_core.sv:65.9-65.79" time="0" type="COVER" location="fv_core.sv:65.9-65.79" id="_witness_.check_994">
+<skipped />
+</testcase>
+<system-out>SBY 11:22:35 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] Removing directory 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove'.
+SBY 11:22:35 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\md_core.v' to 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove\src\md_core.v'.
+SBY 11:22:35 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\gen\md_defs.vh' to 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove\src\md_defs.vh'.
+SBY 11:22:35 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\fv_core.sv' to 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove\src\fv_core.sv'.
+SBY 11:22:35 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0: smtbmc bitwuzla
+SBY 11:22:35 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove/src&amp; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [31]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[34] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[31] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[40] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [30]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[33] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[30] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[39] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [29]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[32] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[29] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[38] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [28]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[31] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[28] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[37] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [27]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[30] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[27] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[36] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [26]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[29] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[26] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[35] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [25]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[28] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[25] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[34] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [24]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[27] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[24] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[33] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [23]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[26] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[23] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[32] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [22]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[25] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[22] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[31] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [21]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[24] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[21] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[30] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [20]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[23] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[20] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[29] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [19]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[22] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[19] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[28] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [18]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[21] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[18] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[27] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [17]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[20] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[17] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[26] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [16]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[19] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[16] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[25] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [15]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[18] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[15] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[24] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [14]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[17] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[14] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[23] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [13]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[16] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[13] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[22] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [12]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[15] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[12] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[21] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [11]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[14] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[11] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[20] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [10]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[13] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[10] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[19] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [9]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[12] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[9] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[18] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [8]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[11] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[8] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[17] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [7]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[10] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[7] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[16] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [6]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[9] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[6] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[15] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [5]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[8] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[5] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[14] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [4]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[7] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[4] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[13] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [3]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[6] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[3] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[12] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [2]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[5] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[2] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[11] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [1]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[4] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[1] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[10] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: Warning: multiple conflicting drivers for md_core.\i [0]:
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[3] of cell $674 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[0] of cell $56 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: port Y[9] of cell $50 ($buf)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] base: finished (returncode=0)
+SBY 11:22:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] prep: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove/model&amp; yosys -ql design_prep.log design_prep.ys&quot;
+SBY 11:22:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] prep: finished (returncode=0)
+SBY 11:22:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] smt2: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove/model&amp; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY 11:22:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] smt2: finished (returncode=0)
+SBY 11:22:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove&amp; yosys-smtbmc -s bitwuzla --presat --unroll --noprogress -t 9  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2&quot;
+SBY 11:22:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.induction: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove&amp; yosys-smtbmc -s bitwuzla --presat --unroll -i --noprogress -t 9  --append 0 --dump-vcd engine_0/trace_induct.vcd --dump-yw engine_0/trace_induct.yw --dump-vlogtb engine_0/trace_induct_tb.v --dump-smtc engine_0/trace_induct.smtc model/design_smt2.smt2&quot;
+SBY 11:22:39 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.induction: ##   0:00:00  Solver: bitwuzla
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.induction: ##   0:00:01  Trying induction in step 9..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.induction: ##   0:00:01  Trying induction in step 8..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.induction: ##   0:00:01  Trying induction in step 7..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.induction: ##   0:00:01  Temporal induction successful.
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.induction: ##   0:00:01  Status: passed
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:00  Solver: bitwuzla
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 0..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 0..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:01  Checking assumptions in step 1..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:01  Checking assertions in step 1..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:01  Checking assumptions in step 2..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:01  Checking assertions in step 2..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:01  Checking assumptions in step 3..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:01  Checking assertions in step 3..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:01  Checking assumptions in step 4..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:01  Checking assertions in step 4..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:01  Checking assumptions in step 5..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:01  Checking assertions in step 5..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:01  Checking assumptions in step 6..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:01  Checking assertions in step 6..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:01  Checking assumptions in step 7..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:01  Checking assertions in step 7..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:01  Checking assumptions in step 8..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:01  Checking assertions in step 8..
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: ##   0:00:01  Status: passed
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.induction: finished (returncode=0)
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.induction: Status returned by engine for induction: pass
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: finished (returncode=0)
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] engine_0.basecase: Status returned by engine for basecase: pass
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:05 (5)
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] summary: Elapsed process time unvailable on Windows
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] summary: engine_0 (smtbmc bitwuzla) returned pass for basecase
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] summary: engine_0 (smtbmc bitwuzla) returned pass for induction
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] summary: engine_0 did not produce any traces
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] summary: successful proof by k-induction.
+SBY 11:22:40 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_prove_0\core_prove] DONE (PASS, rc=0)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

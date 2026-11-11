@@ -1,0 +1,53 @@
+{
+  "format": "Yosys Witness Trace",
+  "generator": "smtbmc",
+  "clocks": [
+    {"path": ["\\clk"], "edge": "posedge", "offset": 0}
+  ],
+  "signals": [
+    {"path": ["\\clk"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\d"], "width": 16, "offset": 0, "init_only": false},
+    {"path": ["\\hreq_addr"], "width": 11, "offset": 0, "init_only": false},
+    {"path": ["\\hreq_d"], "width": 8, "offset": 0, "init_only": false},
+    {"path": ["\\hreq_set"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\hreq_wr"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\m_rd"], "width": 8, "offset": 0, "init_only": false},
+    {"path": ["\\rst_n"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\sel"], "width": 4, "offset": 0, "init_only": false},
+    {"path": ["\\we"], "width": 2, "offset": 0, "init_only": false},
+    {"path": ["\\fv_props", "\\p2_fetch_served"], "width": 2, "offset": 0, "init_only": true},
+    {"path": ["\\fv_props", "\\p2_rstn"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\fv_props", "\\p_fetch_served"], "width": 2, "offset": 0, "init_only": true},
+    {"path": ["\\fv_props", "\\p_op_w"], "width": 2, "offset": 0, "init_only": true},
+    {"path": ["\\fv_props", "\\p_rdy"], "width": 2, "offset": 0, "init_only": true},
+    {"path": ["\\fv_props", "\\p_rstn"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\fv_props", "\\p_setrq"], "width": 2, "offset": 0, "init_only": true},
+    {"path": ["\\g_p[0]", "\\dr"], "width": 8, "offset": 0, "init_only": true},
+    {"path": ["\\g_p[0]", "\\land"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\g_p[0]", "\\lok"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\g_p[0]", "\\ptr"], "width": 11, "offset": 0, "init_only": true},
+    {"path": ["\\g_p[0]", "\\rdyr"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\g_p[0]", "\\rq"], "width": 2, "offset": 0, "init_only": true},
+    {"path": ["\\g_p[0]", "\\rqa"], "width": 11, "offset": 0, "init_only": true},
+    {"path": ["\\g_p[0]", "\\rqd"], "width": 8, "offset": 0, "init_only": true},
+    {"path": ["\\g_p[1]", "\\dr"], "width": 8, "offset": 0, "init_only": true},
+    {"path": ["\\g_p[1]", "\\land"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\g_p[1]", "\\lok"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\g_p[1]", "\\ptr"], "width": 11, "offset": 0, "init_only": true},
+    {"path": ["\\g_p[1]", "\\rdyr"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\g_p[1]", "\\rq"], "width": 2, "offset": 0, "init_only": true},
+    {"path": ["\\g_p[1]", "\\rqa"], "width": 11, "offset": 0, "init_only": true},
+    {"path": ["\\g_p[1]", "\\rqd"], "width": 8, "offset": 0, "init_only": true},
+    {"path": ["\\hland"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\hq"], "width": 1, "offset": 0, "init_only": true},
+    {"path": ["\\hqa"], "width": 11, "offset": 0, "init_only": true},
+    {"path": ["\\hqd"], "width": 8, "offset": 0, "init_only": true},
+    {"path": ["\\hqw"], "width": 1, "offset": 0, "init_only": true}
+  ],
+  "steps": [
+    {"bits": "00000000000000000000100000000000000000000100000000000000000000000000000000000000000001000000000000000000000000000000000010000000000000000000000000000000000000000000000000000"},
+    {"bits": "01001110000000000000000000000000000000000000000000000"},
+    {"bits": "00000000000000000000000000000000000000000000000000000"},
+    {"bits": "00000000000000000000000000000000000000000000000000000"}
+  ]
+}

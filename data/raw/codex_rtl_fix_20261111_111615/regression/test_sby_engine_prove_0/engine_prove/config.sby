@@ -1,0 +1,16 @@
+[options]
+mode prove
+depth 4
+
+[engines]
+smtbmc bitwuzla
+
+[script]
+plugin -i slang
+read_slang --top md_engine -I . md_engine.v fv_engine.sv
+prep -top md_engine
+
+[files]
+../../rtl/md_engine.v
+../../rtl/gen/md_defs.vh
+fv_engine.sv

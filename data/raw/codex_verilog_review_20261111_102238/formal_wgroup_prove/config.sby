@@ -1,0 +1,15 @@
+[options]
+mode prove
+depth 1
+
+[engines]
+smtbmc bitwuzla
+
+[script]
+plugin -i slang
+read_slang --top fv_wgroup md_wgroup.v fv_wgroup.sv
+prep -top fv_wgroup
+
+[files]
+../../rtl/md_wgroup.v
+fv_wgroup.sv

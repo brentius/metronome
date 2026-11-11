@@ -1,0 +1,52 @@
+[
+  {
+    "scenario": "smoke",
+    "passed": true,
+    "probes_enabled": true
+  },
+  {
+    "scenario": "regs",
+    "passed": true,
+    "probes_enabled": true
+  },
+  {
+    "scenario": "blink",
+    "passed": true,
+    "probes_enabled": true
+  },
+  {
+    "scenario": "proto_uart_tx",
+    "passed": true,
+    "probes_enabled": true
+  },
+  {
+    "scenario": "proto_uart_rx",
+    "passed": true,
+    "probes_enabled": true
+  },
+  {
+    "scenario": "proto_spi_controller",
+    "passed": true,
+    "probes_enabled": true
+  },
+  {
+    "scenario": "proto_eth_tx",
+    "passed": true,
+    "probes_enabled": true
+  },
+  {
+    "scenario": "random_1",
+    "passed": true,
+    "probes_enabled": true
+  },
+  {
+    "scenario": "random_2",
+    "passed": true,
+    "probes_enabled": true
+  },
+  {
+    "scenario": "random_3",
+    "passed": true,
+    "probes_enabled": false
+  }
+]

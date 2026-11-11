@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-11-11T10:23:19" hostname="WC23-30B22373BF" package="ptrs" id="0" name="prove" tests="55" errors="0" failures="0" time="0" skipped="7">
+<properties>
+<property name="os" value="Windows"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="PASS"/>
+</properties>
+<testcase classname="prove" name="build execution" time="0">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:32.9-32.32" time="0" type="ASSERT" location="fv_ptrs.sv:32.9-32.32" id="_witness_.check_174">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:33.9-33.46" time="0" type="ASSERT" location="fv_ptrs.sv:33.9-33.46" id="_witness_.check_177">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:34.9-34.53" time="0" type="ASSERT" location="fv_ptrs.sv:34.9-34.53" id="_witness_.check_182">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:35.9-35.60" time="0" type="ASSERT" location="fv_ptrs.sv:35.9-35.60" id="_witness_.check_189">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:36.9-36.43" time="0" type="ASSERT" location="fv_ptrs.sv:36.9-36.43" id="_witness_.check_199">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:38.13-38.47" time="0" type="ASSERT" location="fv_ptrs.sv:38.13-38.47" id="_witness_.check_204">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:39.13-39.69" time="0" type="ASSERT" location="fv_ptrs.sv:39.13-39.69" id="_witness_.check_208">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:40.33-40.57" time="0" type="ASSERT" location="fv_ptrs.sv:40.33-40.57" id="_witness_.check_214">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:43.13-43.47" time="0" type="ASSERT" location="fv_ptrs.sv:43.13-43.47" id="_witness_.check_217">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:44.13-44.69" time="0" type="ASSERT" location="fv_ptrs.sv:44.13-44.69" id="_witness_.check_221">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:45.33-45.57" time="0" type="ASSERT" location="fv_ptrs.sv:45.33-45.57" id="_witness_.check_227">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:48.13-48.51" time="0" type="ASSERT" location="fv_ptrs.sv:48.13-48.51" id="_witness_.check_230">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:49.22-49.43" time="0" type="ASSERT" location="fv_ptrs.sv:49.22-49.43" id="_witness_.check_235">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:51.20-51.35" time="0" type="ASSERT" location="fv_ptrs.sv:51.20-51.35" id="_witness_.check_239">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:53.17-53.57" time="0" type="ASSERT" location="fv_ptrs.sv:53.17-53.57" id="_witness_.check_242">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:66.17-66.38" time="0" type="ASSERT" location="fv_ptrs.sv:66.17-66.38" id="_witness_.check_282">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:70.17-70.64" time="0" type="ASSERT" location="fv_ptrs.sv:70.17-70.64" id="_witness_.check_286">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:71.37-71.54" time="0" type="ASSERT" location="fv_ptrs.sv:71.37-71.54" id="_witness_.check_295">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:97.9-97.112" time="0" type="ASSERT" location="fv_ptrs.sv:97.9-97.112" id="_witness_.check_310">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:109.40-109.66" time="0" type="ASSERT" location="fv_ptrs.sv:109.40-109.66" id="_witness_.check_342">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:114.17-114.82" time="0" type="ASSERT" location="fv_ptrs.sv:114.17-114.82" id="_witness_.check_346">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:116.17-116.41" time="0" type="ASSERT" location="fv_ptrs.sv:116.17-116.41" id="_witness_.check_353">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:118.17-118.40" time="0" type="ASSERT" location="fv_ptrs.sv:118.17-118.40" id="_witness_.check_356">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:120.17-120.84" time="0" type="ASSERT" location="fv_ptrs.sv:120.17-120.84" id="_witness_.check_359">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:124.54-124.71" time="0" type="ASSERT" location="fv_ptrs.sv:124.54-124.71" id="_witness_.check_368">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:128.13-128.72" time="0" type="ASSERT" location="fv_ptrs.sv:128.13-128.72" id="_witness_.check_375">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:129.13-129.45" time="0" type="ASSERT" location="fv_ptrs.sv:129.13-129.45" id="_witness_.check_381">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:133.13-133.29" time="0" type="ASSERT" location="fv_ptrs.sv:133.13-133.29" id="_witness_.check_390">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:134.13-134.45" time="0" type="ASSERT" location="fv_ptrs.sv:134.13-134.45" id="_witness_.check_392">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:137.62-137.94" time="0" type="ASSERT" location="fv_ptrs.sv:137.62-137.94" id="_witness_.check_397">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:139.67-139.83" time="0" type="ASSERT" location="fv_ptrs.sv:139.67-139.83" id="_witness_.check_404">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:109.40-109.66" time="0" type="ASSERT" location="fv_ptrs.sv:109.40-109.66" id="_witness_.check_413">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:114.17-114.82" time="0" type="ASSERT" location="fv_ptrs.sv:114.17-114.82" id="_witness_.check_417">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:116.17-116.41" time="0" type="ASSERT" location="fv_ptrs.sv:116.17-116.41" id="_witness_.check_424">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:118.17-118.40" time="0" type="ASSERT" location="fv_ptrs.sv:118.17-118.40" id="_witness_.check_427">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:120.17-120.84" time="0" type="ASSERT" location="fv_ptrs.sv:120.17-120.84" id="_witness_.check_430">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:124.54-124.71" time="0" type="ASSERT" location="fv_ptrs.sv:124.54-124.71" id="_witness_.check_439">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:128.13-128.72" time="0" type="ASSERT" location="fv_ptrs.sv:128.13-128.72" id="_witness_.check_446">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:129.13-129.45" time="0" type="ASSERT" location="fv_ptrs.sv:129.13-129.45" id="_witness_.check_452">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:133.13-133.29" time="0" type="ASSERT" location="fv_ptrs.sv:133.13-133.29" id="_witness_.check_461">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:134.13-134.45" time="0" type="ASSERT" location="fv_ptrs.sv:134.13-134.45" id="_witness_.check_463">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:137.62-137.94" time="0" type="ASSERT" location="fv_ptrs.sv:137.62-137.94" id="_witness_.check_468">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:139.67-139.83" time="0" type="ASSERT" location="fv_ptrs.sv:139.67-139.83" id="_witness_.check_475">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:145.13-145.86" time="0" type="ASSERT" location="fv_ptrs.sv:145.13-145.86" id="_witness_.check_478">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:147.13-147.26" time="0" type="ASSERT" location="fv_ptrs.sv:147.13-147.26" id="_witness_.check_486">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:149.13-149.49" time="0" type="ASSERT" location="fv_ptrs.sv:149.13-149.49" id="_witness_.check_489">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:152.9-152.44" time="0" type="ASSERT" location="fv_ptrs.sv:152.9-152.44" id="_witness_.check_494">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_ptrs at fv_ptrs.sv:153.20-153.45" time="0" type="ASSERT" location="fv_ptrs.sv:153.20-153.45" id="_witness_.check_499">
+</testcase>
+<testcase classname="prove" name="Property COVER in md_ptrs at fv_ptrs.sv:158.9-158.44" time="0" type="COVER" location="fv_ptrs.sv:158.9-158.44" id="_witness_.check_503">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property COVER in md_ptrs at fv_ptrs.sv:159.9-159.44" time="0" type="COVER" location="fv_ptrs.sv:159.9-159.44" id="_witness_.check_508">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property COVER in md_ptrs at fv_ptrs.sv:160.9-160.24" time="0" type="COVER" location="fv_ptrs.sv:160.9-160.24" id="_witness_.check_513">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property COVER in md_ptrs at fv_ptrs.sv:161.9-161.68" time="0" type="COVER" location="fv_ptrs.sv:161.9-161.68" id="_witness_.check_515">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property COVER in md_ptrs at fv_ptrs.sv:162.9-162.20" time="0" type="COVER" location="fv_ptrs.sv:162.9-162.20" id="_witness_.check_521">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property COVER in md_ptrs at fv_ptrs.sv:163.9-163.28" time="0" type="COVER" location="fv_ptrs.sv:163.9-163.28" id="_witness_.check_523">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property COVER in md_ptrs at fv_ptrs.sv:164.9-164.58" time="0" type="COVER" location="fv_ptrs.sv:164.9-164.58" id="_witness_.check_527">
+<skipped />
+</testcase>
+<system-out>SBY 10:23:17 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] Removing directory 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove'.
+SBY 10:23:17 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\md_ptrs.v' to 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove\src\md_ptrs.v'.
+SBY 10:23:17 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\gen\md_defs.vh' to 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove\src\md_defs.vh'.
+SBY 10:23:17 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\fv_ptrs.sv' to 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove\src\fv_ptrs.sv'.
+SBY 10:23:17 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0: smtbmc bitwuzla
+SBY 10:23:17 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] base: starting process &quot;cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove/src&amp; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 10:23:17 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] base: finished (returncode=0)
+SBY 10:23:17 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] prep: starting process &quot;cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove/model&amp; yosys -ql design_prep.log design_prep.ys&quot;
+SBY 10:23:18 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] prep: finished (returncode=0)
+SBY 10:23:18 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] smt2: starting process &quot;cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove/model&amp; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY 10:23:18 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] smt2: finished (returncode=0)
+SBY 10:23:18 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.basecase: starting process &quot;cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove&amp; yosys-smtbmc -s bitwuzla --presat --unroll --noprogress -t 6  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2&quot;
+SBY 10:23:18 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.induction: starting process &quot;cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove&amp; yosys-smtbmc -s bitwuzla --presat --unroll -i --noprogress -t 6  --append 0 --dump-vcd engine_0/trace_induct.vcd --dump-yw engine_0/trace_induct.yw --dump-vlogtb engine_0/trace_induct_tb.v --dump-smtc engine_0/trace_induct.smtc model/design_smt2.smt2&quot;
+SBY 10:23:18 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.induction: ##   0:00:00  Solver: bitwuzla
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.induction: ##   0:00:00  Trying induction in step 6..
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.induction: ##   0:00:00  Trying induction in step 5..
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.induction: ##   0:00:00  Trying induction in step 4..
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.induction: ##   0:00:00  Trying induction in step 3..
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.induction: ##   0:00:00  Temporal induction successful.
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.induction: ##   0:00:00  Status: passed
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.basecase: ##   0:00:00  Solver: bitwuzla
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 0..
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 0..
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 1..
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 1..
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 2..
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 2..
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 3..
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 3..
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 4..
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 4..
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 5..
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 5..
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.basecase: ##   0:00:00  Status: passed
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.basecase: finished (returncode=0)
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.basecase: Status returned by engine for basecase: pass
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.induction: finished (returncode=0)
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] engine_0.induction: Status returned by engine for induction: pass
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:02 (2)
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] summary: Elapsed process time unvailable on Windows
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] summary: engine_0 (smtbmc bitwuzla) returned pass for basecase
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] summary: engine_0 (smtbmc bitwuzla) returned pass for induction
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] summary: engine_0 did not produce any traces
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] summary: successful proof by k-induction.
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_prove_0\ptrs_prove] DONE (PASS, rc=0)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-11-11T11:22:47" hostname="WC23-30B22373BF" package="core" id="0" name="cover" tests="28" errors="0" failures="0" time="0" skipped="19">
+<properties>
+<property name="os" value="Windows"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="PASS"/>
+</properties>
+<testcase classname="cover" name="build execution" time="0">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_core at fv_core.sv:66.9-66.64" time="0" type="COVER" location="fv_core.sv:66.9-66.64" id="_witness_.check_1002" tracefile="engine_0\trace2.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_core at fv_core.sv:67.9-67.47" time="0" type="COVER" location="fv_core.sv:67.9-67.47" id="_witness_.check_1008" tracefile="engine_0\trace1.vcd">
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:35.13-35.30" time="0" type="ASSERT" location="fv_core.sv:35.13-35.30" id="_witness_.check_813">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:36.13-36.38" time="0" type="ASSERT" location="fv_core.sv:36.13-36.38" id="_witness_.check_816">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:37.13-37.48" time="0" type="ASSERT" location="fv_core.sv:37.13-37.48" id="_witness_.check_819">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:38.13-38.51" time="0" type="ASSERT" location="fv_core.sv:38.13-38.51" id="_witness_.check_822">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:43.22-43.39" time="0" type="ASSERT" location="fv_core.sv:43.22-43.39" id="_witness_.check_831">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:44.26-44.81" time="0" type="ASSERT" location="fv_core.sv:44.26-44.81" id="_witness_.check_834">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:45.14-45.34" time="0" type="ASSERT" location="fv_core.sv:45.14-45.34" id="_witness_.check_840">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:55.29-55.58" time="0" type="ASSERT" location="fv_core.sv:55.29-55.58" id="_witness_.check_852">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:59.17-59.78" time="0" type="ASSERT" location="fv_core.sv:59.17-59.78" id="_witness_.check_856">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property COVER in md_core at fv_core.sv:60.13-60.78" time="0" type="COVER" location="fv_core.sv:60.13-60.78" id="_witness_.check_862" tracefile="engine_0\trace7.vcd">
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:55.29-55.58" time="0" type="ASSERT" location="fv_core.sv:55.29-55.58" id="_witness_.check_877">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:59.17-59.78" time="0" type="ASSERT" location="fv_core.sv:59.17-59.78" id="_witness_.check_881">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property COVER in md_core at fv_core.sv:60.13-60.78" time="0" type="COVER" location="fv_core.sv:60.13-60.78" id="_witness_.check_887" tracefile="engine_0\trace8.vcd">
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:55.29-55.58" time="0" type="ASSERT" location="fv_core.sv:55.29-55.58" id="_witness_.check_902">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:59.17-59.78" time="0" type="ASSERT" location="fv_core.sv:59.17-59.78" id="_witness_.check_906">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property COVER in md_core at fv_core.sv:60.13-60.78" time="0" type="COVER" location="fv_core.sv:60.13-60.78" id="_witness_.check_912" tracefile="engine_0\trace4.vcd">
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:55.29-55.58" time="0" type="ASSERT" location="fv_core.sv:55.29-55.58" id="_witness_.check_927">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:59.17-59.78" time="0" type="ASSERT" location="fv_core.sv:59.17-59.78" id="_witness_.check_931">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property COVER in md_core at fv_core.sv:60.13-60.78" time="0" type="COVER" location="fv_core.sv:60.13-60.78" id="_witness_.check_937" tracefile="engine_0\trace6.vcd">
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:55.29-55.58" time="0" type="ASSERT" location="fv_core.sv:55.29-55.58" id="_witness_.check_952">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:59.17-59.78" time="0" type="ASSERT" location="fv_core.sv:59.17-59.78" id="_witness_.check_956">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property COVER in md_core at fv_core.sv:60.13-60.78" time="0" type="COVER" location="fv_core.sv:60.13-60.78" id="_witness_.check_962" tracefile="engine_0\trace5.vcd">
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:55.29-55.58" time="0" type="ASSERT" location="fv_core.sv:55.29-55.58" id="_witness_.check_977">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_core at fv_core.sv:59.17-59.78" time="0" type="ASSERT" location="fv_core.sv:59.17-59.78" id="_witness_.check_981">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property COVER in md_core at fv_core.sv:60.13-60.78" time="0" type="COVER" location="fv_core.sv:60.13-60.78" id="_witness_.check_987" tracefile="engine_0\trace3.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_core at fv_core.sv:65.9-65.79" time="0" type="COVER" location="fv_core.sv:65.9-65.79" id="_witness_.check_994" tracefile="engine_0\trace0.vcd">
+</testcase>
+<system-out>SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] Removing directory 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover'.
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\md_core.v' to 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover\src\md_core.v'.
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\gen\md_defs.vh' to 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover\src\md_defs.vh'.
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\fv_core.sv' to 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover\src\fv_core.sv'.
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: smtbmc bitwuzla
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover/src&amp; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [31]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[34] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[31] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[40] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [30]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[33] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[30] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[39] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [29]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[32] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[29] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[38] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [28]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[31] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[28] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[37] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [27]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[30] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[27] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[36] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [26]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[29] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[26] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[35] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [25]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[28] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[25] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[34] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [24]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[27] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[24] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[33] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [23]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[26] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[23] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[32] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [22]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[25] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[22] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[31] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [21]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[24] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[21] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[30] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [20]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[23] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[20] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[29] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [19]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[22] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[19] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[28] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [18]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[21] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[18] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[27] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [17]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[20] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[17] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[26] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [16]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[19] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[16] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[25] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [15]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[18] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[15] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[24] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [14]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[17] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[14] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[23] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [13]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[16] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[13] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[22] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [12]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[15] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[12] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[21] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [11]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[14] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[11] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[20] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [10]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[13] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[10] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[19] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [9]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[12] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[9] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[18] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [8]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[11] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[8] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[17] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [7]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[10] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[7] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[16] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [6]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[9] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[6] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[15] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [5]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[8] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[5] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[14] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [4]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[7] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[4] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[13] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [3]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[6] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[3] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[12] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [2]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[5] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[2] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[11] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [1]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[4] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[1] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[10] of cell $50 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: Warning: multiple conflicting drivers for md_core.\i [0]:
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[3] of cell $674 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[0] of cell $56 ($buf)
+SBY 11:22:41 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: port Y[9] of cell $50 ($buf)
+SBY 11:22:42 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] base: finished (returncode=0)
+SBY 11:22:42 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] prep: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover/model&amp; yosys -ql design_prep.log design_prep.ys&quot;
+SBY 11:22:42 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] prep: finished (returncode=0)
+SBY 11:22:42 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] smt2: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover/model&amp; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] smt2: finished (returncode=0)
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover&amp; yosys-smtbmc -s bitwuzla --presat --unroll -c --noprogress -t 18  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2&quot;
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Solver: bitwuzla
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Reached cover statement in step 3 at md_core: fv_core.sv:65.9-65.79 (_witness_.check_994)
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace0.vcd
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace0.smtc
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Reached cover statement in step 3 at md_core: fv_core.sv:67.9-67.47 (_witness_.check_1008)
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace1.vcd
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace1_tb.v
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace1.smtc
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace1.yw
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Reached cover statement in step 3 at md_core: fv_core.sv:66.9-66.64 (_witness_.check_1002)
+SBY 11:22:43 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace2.vcd
+SBY 11:22:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace2_tb.v
+SBY 11:22:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace2.smtc
+SBY 11:22:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace2.yw
+SBY 11:22:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 11:22:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 11:22:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:00  Checking cover reachability in step 5..
+SBY 11:22:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:01  Checking cover reachability in step 6..
+SBY 11:22:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:01  Checking cover reachability in step 7..
+SBY 11:22:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:01  Reached cover statement in step 7 at md_core: fv_core.sv:60.13-60.78 (_witness_.check_987)
+SBY 11:22:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:01  Writing trace to VCD file: engine_0/trace3.vcd
+SBY 11:22:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:01  Writing trace to Verilog testbench: engine_0/trace3_tb.v
+SBY 11:22:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:01  Writing trace to constraints file: engine_0/trace3.smtc
+SBY 11:22:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:01  Writing trace to Yosys witness file: engine_0/trace3.yw
+SBY 11:22:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:01  Checking cover reachability in step 7..
+SBY 11:22:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:01  Checking cover reachability in step 8..
+SBY 11:22:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:01  Reached cover statement in step 8 at md_core: fv_core.sv:60.13-60.78 (_witness_.check_912)
+SBY 11:22:44 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:01  Writing trace to VCD file: engine_0/trace4.vcd
+SBY 11:22:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:01  Writing trace to Verilog testbench: engine_0/trace4_tb.v
+SBY 11:22:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:01  Writing trace to constraints file: engine_0/trace4.smtc
+SBY 11:22:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:01  Writing trace to Yosys witness file: engine_0/trace4.yw
+SBY 11:22:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:01  Checking cover reachability in step 8..
+SBY 11:22:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:01  Reached cover statement in step 8 at md_core: fv_core.sv:60.13-60.78 (_witness_.check_962)
+SBY 11:22:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:01  Writing trace to VCD file: engine_0/trace5.vcd
+SBY 11:22:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:02  Writing trace to Verilog testbench: engine_0/trace5_tb.v
+SBY 11:22:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:02  Writing trace to constraints file: engine_0/trace5.smtc
+SBY 11:22:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:02  Writing trace to Yosys witness file: engine_0/trace5.yw
+SBY 11:22:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:02  Checking cover reachability in step 8..
+SBY 11:22:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:02  Reached cover statement in step 8 at md_core: fv_core.sv:60.13-60.78 (_witness_.check_937)
+SBY 11:22:45 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:02  Writing trace to VCD file: engine_0/trace6.vcd
+SBY 11:22:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:02  Writing trace to Verilog testbench: engine_0/trace6_tb.v
+SBY 11:22:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:02  Writing trace to constraints file: engine_0/trace6.smtc
+SBY 11:22:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:02  Writing trace to Yosys witness file: engine_0/trace6.yw
+SBY 11:22:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:02  Checking cover reachability in step 8..
+SBY 11:22:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:02  Reached cover statement in step 8 at md_core: fv_core.sv:60.13-60.78 (_witness_.check_862)
+SBY 11:22:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:02  Writing trace to VCD file: engine_0/trace7.vcd
+SBY 11:22:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:03  Writing trace to Verilog testbench: engine_0/trace7_tb.v
+SBY 11:22:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:03  Writing trace to constraints file: engine_0/trace7.smtc
+SBY 11:22:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:03  Writing trace to Yosys witness file: engine_0/trace7.yw
+SBY 11:22:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:03  Checking cover reachability in step 8..
+SBY 11:22:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:03  Reached cover statement in step 8 at md_core: fv_core.sv:60.13-60.78 (_witness_.check_887)
+SBY 11:22:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:03  Writing trace to VCD file: engine_0/trace8.vcd
+SBY 11:22:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:03  Writing trace to Verilog testbench: engine_0/trace8_tb.v
+SBY 11:22:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:03  Writing trace to constraints file: engine_0/trace8.smtc
+SBY 11:22:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:03  Writing trace to Yosys witness file: engine_0/trace8.yw
+SBY 11:22:46 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: ##   0:00:03  Status: passed
+SBY 11:22:47 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: finished (returncode=0)
+SBY 11:22:47 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] engine_0: Status returned by engine: pass
+SBY 11:22:47 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:05 (5)
+SBY 11:22:47 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] summary: Elapsed process time unvailable on Windows
+SBY 11:22:47 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] summary: engine_0 (smtbmc bitwuzla) returned pass
+SBY 11:22:47 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] summary: cover trace: C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover\engine_0\trace0.vcd
+SBY 11:22:47 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] summary:   reached cover statement md_core._witness_.check_994 at fv_core.sv:65.9-65.79 step 3
+SBY 11:22:47 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] summary: cover trace: C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover\engine_0\trace1.vcd
+SBY 11:22:47 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] summary:   reached cover statement md_core._witness_.check_1008 at fv_core.sv:67.9-67.47 step 3
+SBY 11:22:47 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] summary: cover trace: C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover\engine_0\trace2.vcd
+SBY 11:22:47 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] summary:   reached cover statement md_core._witness_.check_1002 at fv_core.sv:66.9-66.64 step 3
+SBY 11:22:47 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] summary: cover trace: C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover\engine_0\trace3.vcd
+SBY 11:22:47 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] summary:   reached cover statement md_core._witness_.check_987 at fv_core.sv:60.13-60.78 step 7
+SBY 11:22:47 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] summary: cover trace: C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover\engine_0\trace4.vcd
+SBY 11:22:47 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] summary:   reached cover statement md_core._witness_.check_912 at fv_core.sv:60.13-60.78 step 8
+SBY 11:22:47 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] summary: and 4 further traces
+SBY 11:22:47 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] summary: see C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover/PASS for a complete summary
+SBY 11:22:47 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\formal_core_v2\test_sby_core_cover_0\core_cover] DONE (PASS, rc=0)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

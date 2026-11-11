@@ -1,0 +1,169 @@
+[?2004hsh-5.3# stty -echo; python3 -c 'exec(__import__("base64").b64decode("aW1wb3J0IHBhdGhsaWIsZ2xvYixqc29uCmI9cGF0aGxpYi5QYXRoKGdsb2IuZ2xvYignL25peC9zdG9yZS8qcHl0aG9uMy0zLjEzLjEzLWVudi9saWIvcHl0aG9uMy4xMy9zaXRlLXBhY2thZ2VzL2xpYnJlbGFuZScpWzBdKTtsaW5lcz0oYi8nc3RlcHMvb3BlbnJvYWQucHknKS5yZWFkX3RleHQoKS5zcGxpdGxpbmVzKCkKZm9yIGksbCBpbiBlbnVtZXJhdGUobGluZXMpOgogaWYgbC5zdGFydHN3aXRoKCdjbGFzcyAnKSBhbmQgKCdSZXNpemVyJyBpbiBsIG9yICdSZXBhaXJEZXNpZ24nIGluIGwpOnByaW50KCdDTEFTUycsaSsxLGwpCnByaW50KCdSRVNJWkVSX0NPTlRFWFQnLCdcbicuam9pbihsaW5lc1syMzQwOjI0NDhdKSkKcD1iLydmbG93cy9jbGFzc2ljLnB5JztsaW5lcz1wLnJlYWRfdGV4dCgpLnNwbGl0bGluZXMoKTtwcmludCgnRkxPVycsJ1xuJy5qb2luKGxpbmVzWzY1OjExOF0pKQpjPWpzb24ubG9hZHMocGF0aGxpYi5QYXRoKCcvcm9vdC93b3JrL21ldHJvbm9tZV9yM19kMTcvcnVucy9wbnJfYXJlYTAvcmVzb2x2ZWQuanNvbicpLnJlYWRfdGV4dCgpKTtwcmludCgnQ09ORklHJyx7azp2IGZvciBrLHYgaW4gYy5pdGVtcygpIGlmIGsgaW4gWydSU1pfQ09STkVSUycsJ1BOUl9DT1JORVJTJywnU1RBX0NPUk5FUlMnLCdQTF9SRVNJWkVSX1NFVFVQX1NMQUNLX01BUkdJTicsJ0dSVF9SRVNJWkVSX1NFVFVQX1NMQUNLX01BUkdJTicsJ1JVTl9QT1NUX0dSVF9SRVNJWkVSX1RJTUlORycsJ0dSVF9SRVNJWkVSX1JVTl9HUlQnXX0pCg=="))'; echo __JSC_1794404401348__$?
+[?2004lCLASS 2428 class ResizerStep(OpenROADStep):
+CLASS 2603 class RepairDesignPostGPL(ResizerStep):
+CLASS 2690 class RepairDesign(RepairDesignPostGPL):
+CLASS 2700 class RepairDesignPostGRT(ResizerStep):
+CLASS 2753 class ResizerTimingPostCTS(ResizerStep):
+CLASS 2858 class ResizerTimingPostGRT(ResizerStep):
+RESIZER_CONTEXT     """
+    Cut floorplan rows with respect to placed macros.
+    """
+
+    id = "OpenROAD.CutRows"
+    name = "Cut Rows"
+
+    inputs = [DesignFormat.ODB]
+    outputs = [
+        DesignFormat.ODB,
+        DesignFormat.DEF,
+    ]
+
+    config_vars = OpenROADStep.config_vars + [
+        Variable(
+            "FP_MACRO_HORIZONTAL_HALO",
+            Decimal,
+            "Specify the horizontal halo size around macros.",
+            default=10,
+            units="µm",
+            deprecated_names=["FP_TAP_HORIZONTAL_HALO"],
+        ),
+        Variable(
+            "FP_MACRO_VERTICAL_HALO",
+            Decimal,
+            "Specify the vertical halo size around macros.",
+            default=10,
+            units="µm",
+            deprecated_names=["FP_TAP_VERTICAL_HALO"],
+        ),
+        Variable(
+            "FP_PRUNE_THRESHOLD",
+            Optional[Decimal],
+            'If specified, all rows smaller in width than this value will be removed. This helps avoid "islets" of cells that are hard to route and connect to PDNs.',
+            pdk=True,
+            units="µm",
+        ),
+    ]
+
+    def get_script_path(self):
+        return os.path.join(get_script_dir(), "openroad", "cut_rows.tcl")
+
+
+class WriteViews(OpenROADStep):
+    """
+    Write various layout views of an ODB design
+    """
+
+    id = "OpenROAD.WriteViews"
+    name = "OpenROAD Write Views"
+    outputs = OpenROADStep.outputs + [
+        DesignFormat.SDF_FRIENDLY_POWERED_NETLIST,
+        DesignFormat.LOGICAL_POWERED_NETLIST,
+        DesignFormat.OPENROAD_LEF,
+    ]
+
+    config_vars = OpenROADStep.config_vars + [
+        Variable(
+            "OPENROAD_LEF_BLOAT_OCCUPIED_LAYERS",
+            bool,
+            description="Generates cover obstructions (obstructions over the entire layer) for each layer where shapes are present",
+            default=True,
+        )
+    ]
+
+    def get_script_path(self):
+        return os.path.join(get_script_dir(), "openroad", "write_views.tcl")
+
+
+@Step.factory.register()
+class WriteCDL(OpenROADStep):
+    """
+    Write CDL view of an ODB design
+    """
+
+    id = "OpenROAD.WriteCDL"
+    name = "Write CDL"
+    outputs = [DesignFormat.CDL]
+
+    def get_script_path(self):
+        return os.path.join(get_script_dir(), "openroad", "write_cdl.tcl")
+
+
+# Resizer Steps
+
+
+## ABC
+class ResizerStep(OpenROADStep):
+    config_vars = OpenROADStep.config_vars + grt_variables + rsz_variables
+
+    def run(
+        self,
+        state_in,
+        **kwargs,
+    ) -> Tuple[ViewsUpdate, MetricsUpdate]:
+        kwargs, env = self.extract_env(kwargs)
+        return super().run(
+            state_in,
+            corners=self.config["RSZ_CORNERS"] or self.config["STA_CORNERS"],
+            env=env,
+            **kwargs,
+        )
+
+
+@Step.factory.register()
+class CTS(OpenROADStep):
+    """
+    Creates a `Clock tree <https://en.wikipedia.org/wiki/Clock_signal#Distribution>`_
+FLOW         Odb.CustomIOPlacement,
+        Odb.ApplyDEFTemplate,
+        OpenROAD.GlobalPlacement,
+        Odb.WriteVerilogHeader,
+        Checker.PowerGridViolations,
+        OpenROAD.STAMidPNR,
+        OpenROAD.RepairDesignPostGPL,
+        Odb.ManualGlobalPlacement,
+        OpenROAD.DetailedPlacement,
+        OpenROAD.CTS,
+        OpenROAD.STAMidPNR,
+        OpenROAD.ResizerTimingPostCTS,
+        OpenROAD.STAMidPNR,
+        OpenROAD.GlobalRouting,
+        OpenROAD.CheckAntennas,
+        OpenROAD.RepairDesignPostGRT,
+        Odb.DiodesOnPorts,
+        Odb.HeuristicDiodeInsertion,
+        OpenROAD.RepairAntennas,
+        OpenROAD.ResizerTimingPostGRT,
+        OpenROAD.STAMidPNR,
+        OpenROAD.DetailedRouting,
+        Odb.RemoveRoutingObstructions,
+        OpenROAD.CheckAntennas,
+        Checker.TrDRC,
+        Odb.ReportDisconnectedPins,
+        Checker.DisconnectedPins,
+        Odb.ReportWireLength,
+        Checker.WireLength,
+        OpenROAD.FillInsertion,
+        Odb.CellFrequencyTables,
+        OpenROAD.RCX,
+        OpenROAD.STAPostPNR,
+        OpenROAD.IRDropReport,
+        Magic.StreamOut,
+        KLayout.StreamOut,
+        KLayout.Render,
+        Magic.WriteLEF,
+        Odb.CheckDesignAntennaProperties,
+        KLayout.XOR,
+        Checker.XOR,
+        Magic.DRC,
+        KLayout.DRC,
+        Checker.MagicDRC,
+        Checker.KLayoutDRC,
+        Magic.SpiceExtraction,
+        Checker.IllegalOverlap,
+        Netgen.LVS,
+        Checker.LVS,
+        Yosys.EQY,
+        Checker.SetupViolations,
+        Checker.HoldViolations,
+        Checker.MaxSlewViolations,
+CONFIG {'STA_CORNERS': ['nom_fast_1p32V_m40C', 'nom_slow_1p08V_125C', 'nom_typ_1p20V_25C'], 'RUN_POST_GRT_RESIZER_TIMING': False, 'PNR_CORNERS': None, 'RSZ_CORNERS': None, 'PL_RESIZER_SETUP_SLACK_MARGIN': 0.05, 'GRT_RESIZER_SETUP_SLACK_MARGIN': 0.025, 'GRT_RESIZER_RUN_GRT': True}

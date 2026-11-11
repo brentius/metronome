@@ -1,0 +1,53 @@
+initial
+assume (= [$auto$async2sync.cc:116:execute$147] true)
+assume (= [$auto$async2sync.cc:116:execute$81] true)
+assume (= [$auto$async2sync.cc:116:execute$87] true)
+assume (= [u0.fv_props.p_d] #b00000000)
+assume (= [u0.fv_props.p_h_we] false)
+assume (= [u0.fv_props.p_rstn] false)
+assume (= [u0.fv_props.p_s] #b00000000000000000000000000000000)
+assume (= [u0.fv_props.p_sel] #b000)
+assume (= [u0.fv_props.p_we] false)
+assume (= [u0.fv_props.pv] false)
+assume (= [u0.poly] #b00000000000000000000000000000000)
+assume (= [u0.s] #b00000000000000000000000000000000)
+
+state 0
+assume (= [clk] false)
+assume (= [d] #b00000000)
+assume (= [h_byte] #b00)
+assume (= [h_wd] #b00000000)
+assume (= [h_we] false)
+assume (= [rst_n] false)
+assume (= [sel] #b000)
+assume (= [we] false)
+
+state 1
+assume (= [clk] false)
+assume (= [d] #b11111111)
+assume (= [h_byte] #b00)
+assume (= [h_wd] #b00000000)
+assume (= [h_we] true)
+assume (= [rst_n] true)
+assume (= [sel] #b000)
+assume (= [we] true)
+
+state 2
+assume (= [clk] false)
+assume (= [d] #b00000000)
+assume (= [h_byte] #b00)
+assume (= [h_wd] #b00000000)
+assume (= [h_we] false)
+assume (= [rst_n] false)
+assume (= [sel] #b000)
+assume (= [we] false)
+
+state 3
+assume (= [clk] false)
+assume (= [d] #b00000000)
+assume (= [h_byte] #b00)
+assume (= [h_wd] #b00000000)
+assume (= [h_we] false)
+assume (= [rst_n] false)
+assume (= [sel] #b000)
+assume (= [we] false)

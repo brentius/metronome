@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-11-11T10:23:22" hostname="WC23-30B22373BF" package="ptrs" id="0" name="cover" tests="55" errors="0" failures="0" time="0" skipped="48">
+<properties>
+<property name="os" value="Windows"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="PASS"/>
+</properties>
+<testcase classname="cover" name="build execution" time="0">
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:32.9-32.32" time="0" type="ASSERT" location="fv_ptrs.sv:32.9-32.32" id="_witness_.check_174">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:33.9-33.46" time="0" type="ASSERT" location="fv_ptrs.sv:33.9-33.46" id="_witness_.check_177">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:34.9-34.53" time="0" type="ASSERT" location="fv_ptrs.sv:34.9-34.53" id="_witness_.check_182">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:35.9-35.60" time="0" type="ASSERT" location="fv_ptrs.sv:35.9-35.60" id="_witness_.check_189">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:36.9-36.43" time="0" type="ASSERT" location="fv_ptrs.sv:36.9-36.43" id="_witness_.check_199">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:38.13-38.47" time="0" type="ASSERT" location="fv_ptrs.sv:38.13-38.47" id="_witness_.check_204">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:39.13-39.69" time="0" type="ASSERT" location="fv_ptrs.sv:39.13-39.69" id="_witness_.check_208">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:40.33-40.57" time="0" type="ASSERT" location="fv_ptrs.sv:40.33-40.57" id="_witness_.check_214">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:43.13-43.47" time="0" type="ASSERT" location="fv_ptrs.sv:43.13-43.47" id="_witness_.check_217">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:44.13-44.69" time="0" type="ASSERT" location="fv_ptrs.sv:44.13-44.69" id="_witness_.check_221">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:45.33-45.57" time="0" type="ASSERT" location="fv_ptrs.sv:45.33-45.57" id="_witness_.check_227">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:48.13-48.51" time="0" type="ASSERT" location="fv_ptrs.sv:48.13-48.51" id="_witness_.check_230">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:49.22-49.43" time="0" type="ASSERT" location="fv_ptrs.sv:49.22-49.43" id="_witness_.check_235">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:51.20-51.35" time="0" type="ASSERT" location="fv_ptrs.sv:51.20-51.35" id="_witness_.check_239">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:53.17-53.57" time="0" type="ASSERT" location="fv_ptrs.sv:53.17-53.57" id="_witness_.check_242">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:66.17-66.38" time="0" type="ASSERT" location="fv_ptrs.sv:66.17-66.38" id="_witness_.check_282">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:70.17-70.64" time="0" type="ASSERT" location="fv_ptrs.sv:70.17-70.64" id="_witness_.check_286">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:71.37-71.54" time="0" type="ASSERT" location="fv_ptrs.sv:71.37-71.54" id="_witness_.check_295">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:97.9-97.112" time="0" type="ASSERT" location="fv_ptrs.sv:97.9-97.112" id="_witness_.check_310">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:109.40-109.66" time="0" type="ASSERT" location="fv_ptrs.sv:109.40-109.66" id="_witness_.check_342">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:114.17-114.82" time="0" type="ASSERT" location="fv_ptrs.sv:114.17-114.82" id="_witness_.check_346">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:116.17-116.41" time="0" type="ASSERT" location="fv_ptrs.sv:116.17-116.41" id="_witness_.check_353">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:118.17-118.40" time="0" type="ASSERT" location="fv_ptrs.sv:118.17-118.40" id="_witness_.check_356">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:120.17-120.84" time="0" type="ASSERT" location="fv_ptrs.sv:120.17-120.84" id="_witness_.check_359">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:124.54-124.71" time="0" type="ASSERT" location="fv_ptrs.sv:124.54-124.71" id="_witness_.check_368">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:128.13-128.72" time="0" type="ASSERT" location="fv_ptrs.sv:128.13-128.72" id="_witness_.check_375">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:129.13-129.45" time="0" type="ASSERT" location="fv_ptrs.sv:129.13-129.45" id="_witness_.check_381">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:133.13-133.29" time="0" type="ASSERT" location="fv_ptrs.sv:133.13-133.29" id="_witness_.check_390">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:134.13-134.45" time="0" type="ASSERT" location="fv_ptrs.sv:134.13-134.45" id="_witness_.check_392">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:137.62-137.94" time="0" type="ASSERT" location="fv_ptrs.sv:137.62-137.94" id="_witness_.check_397">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:139.67-139.83" time="0" type="ASSERT" location="fv_ptrs.sv:139.67-139.83" id="_witness_.check_404">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:109.40-109.66" time="0" type="ASSERT" location="fv_ptrs.sv:109.40-109.66" id="_witness_.check_413">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:114.17-114.82" time="0" type="ASSERT" location="fv_ptrs.sv:114.17-114.82" id="_witness_.check_417">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:116.17-116.41" time="0" type="ASSERT" location="fv_ptrs.sv:116.17-116.41" id="_witness_.check_424">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:118.17-118.40" time="0" type="ASSERT" location="fv_ptrs.sv:118.17-118.40" id="_witness_.check_427">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:120.17-120.84" time="0" type="ASSERT" location="fv_ptrs.sv:120.17-120.84" id="_witness_.check_430">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:124.54-124.71" time="0" type="ASSERT" location="fv_ptrs.sv:124.54-124.71" id="_witness_.check_439">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:128.13-128.72" time="0" type="ASSERT" location="fv_ptrs.sv:128.13-128.72" id="_witness_.check_446">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:129.13-129.45" time="0" type="ASSERT" location="fv_ptrs.sv:129.13-129.45" id="_witness_.check_452">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:133.13-133.29" time="0" type="ASSERT" location="fv_ptrs.sv:133.13-133.29" id="_witness_.check_461">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:134.13-134.45" time="0" type="ASSERT" location="fv_ptrs.sv:134.13-134.45" id="_witness_.check_463">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:137.62-137.94" time="0" type="ASSERT" location="fv_ptrs.sv:137.62-137.94" id="_witness_.check_468">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:139.67-139.83" time="0" type="ASSERT" location="fv_ptrs.sv:139.67-139.83" id="_witness_.check_475">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:145.13-145.86" time="0" type="ASSERT" location="fv_ptrs.sv:145.13-145.86" id="_witness_.check_478">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:147.13-147.26" time="0" type="ASSERT" location="fv_ptrs.sv:147.13-147.26" id="_witness_.check_486">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:149.13-149.49" time="0" type="ASSERT" location="fv_ptrs.sv:149.13-149.49" id="_witness_.check_489">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:152.9-152.44" time="0" type="ASSERT" location="fv_ptrs.sv:152.9-152.44" id="_witness_.check_494">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_ptrs at fv_ptrs.sv:153.20-153.45" time="0" type="ASSERT" location="fv_ptrs.sv:153.20-153.45" id="_witness_.check_499">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property COVER in md_ptrs at fv_ptrs.sv:158.9-158.44" time="0" type="COVER" location="fv_ptrs.sv:158.9-158.44" id="_witness_.check_503" tracefile="engine_0\trace5.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_ptrs at fv_ptrs.sv:159.9-159.44" time="0" type="COVER" location="fv_ptrs.sv:159.9-159.44" id="_witness_.check_508" tracefile="engine_0\trace6.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_ptrs at fv_ptrs.sv:160.9-160.24" time="0" type="COVER" location="fv_ptrs.sv:160.9-160.24" id="_witness_.check_513" tracefile="engine_0\trace2.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_ptrs at fv_ptrs.sv:161.9-161.68" time="0" type="COVER" location="fv_ptrs.sv:161.9-161.68" id="_witness_.check_515" tracefile="engine_0\trace3.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_ptrs at fv_ptrs.sv:162.9-162.20" time="0" type="COVER" location="fv_ptrs.sv:162.9-162.20" id="_witness_.check_521" tracefile="engine_0\trace1.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_ptrs at fv_ptrs.sv:163.9-163.28" time="0" type="COVER" location="fv_ptrs.sv:163.9-163.28" id="_witness_.check_523" tracefile="engine_0\trace0.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_ptrs at fv_ptrs.sv:164.9-164.58" time="0" type="COVER" location="fv_ptrs.sv:164.9-164.58" id="_witness_.check_527" tracefile="engine_0\trace4.vcd">
+</testcase>
+<system-out>SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] Removing directory 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover'.
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\md_ptrs.v' to 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover\src\md_ptrs.v'.
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\gen\md_defs.vh' to 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover\src\md_defs.vh'.
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\fv_ptrs.sv' to 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover\src\fv_ptrs.sv'.
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: smtbmc bitwuzla
+SBY 10:23:19 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] base: starting process &quot;cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover/src&amp; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 10:23:20 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] base: finished (returncode=0)
+SBY 10:23:20 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] prep: starting process &quot;cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover/model&amp; yosys -ql design_prep.log design_prep.ys&quot;
+SBY 10:23:20 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] prep: finished (returncode=0)
+SBY 10:23:20 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] smt2: starting process &quot;cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover/model&amp; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] smt2: finished (returncode=0)
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: starting process &quot;cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover&amp; yosys-smtbmc -s bitwuzla --presat --unroll -c --noprogress -t 12  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2&quot;
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Solver: bitwuzla
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Reached cover statement in step 1 at md_ptrs: fv_ptrs.sv:163.9-163.28 (_witness_.check_523)
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace0.vcd
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace0.smtc
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Reached cover statement in step 1 at md_ptrs: fv_ptrs.sv:162.9-162.20 (_witness_.check_521)
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace1.vcd
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace1_tb.v
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace1.smtc
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace1.yw
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Reached cover statement in step 1 at md_ptrs: fv_ptrs.sv:160.9-160.24 (_witness_.check_513)
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace2.vcd
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace2_tb.v
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace2.smtc
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace2.yw
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Reached cover statement in step 3 at md_ptrs: fv_ptrs.sv:161.9-161.68 (_witness_.check_515)
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace3.vcd
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace3_tb.v
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace3.smtc
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace3.yw
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Reached cover statement in step 3 at md_ptrs: fv_ptrs.sv:164.9-164.58 (_witness_.check_527)
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace4.vcd
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace4_tb.v
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace4.smtc
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace4.yw
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Checking cover reachability in step 5..
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Reached cover statement in step 5 at md_ptrs: fv_ptrs.sv:158.9-158.44 (_witness_.check_503)
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace5.vcd
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace5_tb.v
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace5.smtc
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace5.yw
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Checking cover reachability in step 5..
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Reached cover statement in step 5 at md_ptrs: fv_ptrs.sv:159.9-159.44 (_witness_.check_508)
+SBY 10:23:21 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace6.vcd
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace6_tb.v
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace6.smtc
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace6.yw
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: ##   0:00:00  Status: passed
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: finished (returncode=0)
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] engine_0: Status returned by engine: pass
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:02 (2)
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] summary: Elapsed process time unvailable on Windows
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] summary: engine_0 (smtbmc bitwuzla) returned pass
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] summary: cover trace: C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover\engine_0\trace0.vcd
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] summary:   reached cover statement md_ptrs._witness_.check_523 at fv_ptrs.sv:163.9-163.28 step 1
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] summary: cover trace: C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover\engine_0\trace1.vcd
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] summary:   reached cover statement md_ptrs._witness_.check_521 at fv_ptrs.sv:162.9-162.20 step 1
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] summary: cover trace: C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover\engine_0\trace2.vcd
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] summary:   reached cover statement md_ptrs._witness_.check_513 at fv_ptrs.sv:160.9-160.24 step 1
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] summary: cover trace: C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover\engine_0\trace3.vcd
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] summary:   reached cover statement md_ptrs._witness_.check_515 at fv_ptrs.sv:161.9-161.68 step 3
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] summary: cover trace: C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover\engine_0\trace4.vcd
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] summary:   reached cover statement md_ptrs._witness_.check_527 at fv_ptrs.sv:164.9-164.58 step 3
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] summary: and 2 further traces
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] summary: see C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover/PASS for a complete summary
+SBY 10:23:22 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_ptrs_cover_0\ptrs_cover] DONE (PASS, rc=0)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

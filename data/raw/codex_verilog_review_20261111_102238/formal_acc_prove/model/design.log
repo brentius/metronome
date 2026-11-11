@@ -1,0 +1,366 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+
+-- Executing script file `../model/design.ys' --
+
+1. Executing SLANG frontend.
+Top level design units:
+    md_acc
+
+
+Build succeeded: 0 errors, 0 warnings
+
+1.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\md_acc.$123'.
+Found and cleaned up 1 empty switch in `\md_acc.$49'.
+Removing empty process `md_acc.$42'.
+Found and cleaned up 1 empty switch in `\md_acc.$14'.
+Found and cleaned up 1 empty switch in `\md_acc.$0'.
+Cleaned up 4 empty switches.
+
+1.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 8 switch rules as full_case in process $14 in module md_acc.
+Marked 1 switch rules as full_case in process $0 in module md_acc.
+Removed a total of 0 dead cases.
+
+1.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 8 redundant assignments.
+Promoted 3 assignments to connections.
+
+1.4. Executing PROC_INIT pass (extract init attributes).
+
+1.5. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~26 debug messages>
+
+1.6. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\md_acc.$118'.
+     1/1: $120
+Creating decoders for process `\md_acc.$113'.
+     1/1: $115
+Creating decoders for process `\md_acc.$108'.
+     1/1: $110
+Creating decoders for process `\md_acc.$103'.
+     1/1: $105
+Creating decoders for process `\md_acc.$91'.
+     1/1: $95
+Creating decoders for process `\md_acc.$74'.
+     1/4: $89
+     2/4: $85
+     3/4: $81
+     4/4: $77
+Creating decoders for process `\md_acc.$60'.
+     1/1: $64
+Creating decoders for process `\md_acc.$49'.
+     1/4: $fv_props.exp_c$58
+     2/4: $fv_props.exp_wc$57
+     3/4: $fv_props.exp_wa$56
+     4/4: $fv_props.res$55
+Creating decoders for process `\md_acc.$123'.
+Creating decoders for process `\md_acc.$38'.
+     1/1: $40
+Creating decoders for process `\md_acc.$33'.
+     1/1: $36
+Creating decoders for process `\md_acc.$14'.
+     1/16: $r[31:24]$26
+     2/16: $r[23:16]$25
+     3/16: $r[15:8]$24
+     4/16: $r[7:0]$23
+     5/16: $c$17
+     6/16: $a$16
+     7/16: $n$22
+     8/16: $c$21
+     9/16: $z$20
+    10/16: $a$19
+    11/16: $r$31
+    12/16: $n$30
+    13/16: $c$29
+    14/16: $z$28
+    15/16: $a$27
+    16/16: $k$32
+Creating decoders for process `\md_acc.$0'.
+     1/4: $wc$12
+     2/4: $wa$11
+     3/4: $cy$10
+     4/4: $res$9
+
+1.7. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\md_acc.$118'.
+Removing empty process `md_acc.$118'.
+Found and cleaned up 1 empty switch in `\md_acc.$113'.
+Removing empty process `md_acc.$113'.
+Found and cleaned up 1 empty switch in `\md_acc.$108'.
+Removing empty process `md_acc.$108'.
+Found and cleaned up 1 empty switch in `\md_acc.$103'.
+Removing empty process `md_acc.$103'.
+Found and cleaned up 1 empty switch in `\md_acc.$91'.
+Removing empty process `md_acc.$91'.
+Found and cleaned up 1 empty switch in `\md_acc.$74'.
+Removing empty process `md_acc.$74'.
+Found and cleaned up 1 empty switch in `\md_acc.$60'.
+Removing empty process `md_acc.$60'.
+Found and cleaned up 1 empty switch in `\md_acc.$49'.
+Removing empty process `md_acc.$49'.
+Removing empty process `md_acc.$123'.
+Found and cleaned up 1 empty switch in `\md_acc.$38'.
+Removing empty process `md_acc.$38'.
+Found and cleaned up 1 empty switch in `\md_acc.$33'.
+Removing empty process `md_acc.$33'.
+Found and cleaned up 15 empty switches in `\md_acc.$14'.
+Removing empty process `md_acc.$14'.
+Found and cleaned up 1 empty switch in `\md_acc.$0'.
+Removing empty process `md_acc.$0'.
+Cleaned up 26 empty switches.
+
+1.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_acc.
+<suppressed ~25 debug messages>
+
+2. Executing PREP pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \md_acc
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \md_acc
+Removed 0 unused modules.
+Module md_acc directly or indirectly contains formal properties -> setting "keep" attribute.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_acc.
+
+2.3. Executing FUTURE pass.
+
+2.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_acc.
+
+2.5. Executing CHECK pass (checking for obvious problems).
+Checking module md_acc...
+Found and reported 0 problems.
+
+2.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_acc..
+Removed 4 unused cells and 95 unused wires.
+<suppressed ~23 debug messages>
+
+2.7. Executing OPT pass (performing simple optimizations).
+
+2.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_acc.
+<suppressed ~1 debug messages>
+
+2.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md_acc'.
+Computing hashes of 180 cells of `\md_acc'.
+Finding duplicate cells in `\md_acc'.
+Computing hashes of 153 cells of `\md_acc'.
+Finding duplicate cells in `\md_acc'.
+<suppressed ~81 debug messages>
+Removed a total of 27 cells.
+
+2.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \md_acc..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$46.
+    dead port 1/2 on $mux $procmux$29.
+    dead port 2/2 on $mux $procmux$29.
+    dead port 2/2 on $mux $procmux$103.
+    dead port 2/2 on $mux $procmux$97.
+    dead port 2/2 on $mux $procmux$91.
+    dead port 2/2 on $mux $procmux$85.
+    dead port 2/2 on $mux $procmux$79.
+    dead port 2/2 on $mux $procmux$76.
+    dead port 2/2 on $mux $procmux$72.
+    dead port 2/2 on $mux $procmux$69.
+    dead port 2/2 on $mux $procmux$64.
+    dead port 2/2 on $mux $procmux$58.
+    dead port 2/2 on $mux $procmux$52.
+Removed 14 multiplexer ports.
+<suppressed ~80 debug messages>
+
+2.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \md_acc.
+    New ctrl vector for $pmux cell $procmux$130: $auto$opt_reduce.cc:137:opt_pmux$157
+    New ctrl vector for $pmux cell $procmux$25: $auto$opt_reduce.cc:137:opt_pmux$159
+    New ctrl vector for $pmux cell $procmux$21: { $auto$opt_reduce.cc:137:opt_pmux$161 $procmux$37_CMP }
+    New ctrl vector for $pmux cell $procmux$149: { $auto$opt_reduce.cc:137:opt_pmux$163 $procmux$151_CMP $procmux$152_CMP $procmux$153_CMP $procmux$155_CMP }
+    New ctrl vector for $pmux cell $procmux$144: { $auto$opt_reduce.cc:137:opt_pmux$165 $procmux$155_CMP }
+    New ctrl vector for $pmux cell $procmux$31: { $auto$opt_reduce.cc:137:opt_pmux$167 $procmux$33_CMP $procmux$34_CMP $procmux$35_CMP $procmux$37_CMP }
+    New ctrl vector for $pmux cell $procmux$136: $auto$opt_reduce.cc:137:opt_pmux$169
+  Optimizing cells in module \md_acc.
+Performed a total of 7 changes.
+
+2.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md_acc'.
+Computing hashes of 147 cells of `\md_acc'.
+Finding duplicate cells in `\md_acc'.
+Computing hashes of 139 cells of `\md_acc'.
+Finding duplicate cells in `\md_acc'.
+<suppressed ~24 debug messages>
+Removed a total of 8 cells.
+
+2.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_acc..
+Removed 0 unused cells and 48 unused wires.
+<suppressed ~2 debug messages>
+
+2.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_acc.
+
+2.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \md_acc..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~56 debug messages>
+
+2.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \md_acc.
+Performed a total of 0 changes.
+
+2.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md_acc'.
+Computing hashes of 139 cells of `\md_acc'.
+Finding duplicate cells in `\md_acc'.
+Removed a total of 0 cells.
+
+2.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_acc..
+
+2.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_acc.
+
+2.7.14. Finished fast OPT passes. (There is nothing left to do.)
+
+2.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 9) from port A of cell md_acc.$1 ($add).
+Removed top 1 bits (of 9) from port B of cell md_acc.$1 ($add).
+Removed top 1 bits (of 9) from port A of cell md_acc.$45 ($add).
+Removed top 1 bits (of 9) from port B of cell md_acc.$45 ($add).
+Removed top 1 bits (of 9) from port A of cell md_acc.$47 ($sub).
+Removed top 1 bits (of 9) from port B of cell md_acc.$47 ($sub).
+Removed top 1 bits (of 3) from port B of cell md_acc.$procmux$35_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell md_acc.$procmux$36_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell md_acc.$procmux$37_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell md_acc.$procmux$153_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell md_acc.$procmux$154_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell md_acc.$procmux$155_CMP0 ($eq).
+
+2.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_acc..
+
+2.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.11. Executing OPT pass (performing simple optimizations).
+
+2.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_acc.
+
+2.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md_acc'.
+Computing hashes of 139 cells of `\md_acc'.
+Finding duplicate cells in `\md_acc'.
+Removed a total of 0 cells.
+
+2.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_acc..
+
+2.11.4. Finished fast OPT passes.
+
+2.12. Executing SORT pass.
+
+2.13. Printing statistics.
+
+=== md_acc ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      143 wires
+      588 wire bits
+       47 public wires
+      328 public wire bits
+       12 ports
+       93 port bits
+      139 cells
+        2   $add
+        2   $and
+       15   $check
+       17   $dff
+       24   $eq
+        1   $ge
+        1   $le
+       19   $logic_and
+       10   $logic_not
+       30   $mux
+        3   $not
+        2   $or
+        4   $pmux
+        5   $reduce_or
+        2   $sub
+        2   $xor
+
+2.14. Executing CHECK pass (checking for obvious problems).
+Checking module md_acc...
+Found and reported 0 problems.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `md_acc'. Setting top module to md_acc.
+
+3.1. Analyzing design hierarchy..
+Top module:  \md_acc
+
+3.2. Analyzing design hierarchy..
+Top module:  \md_acc
+Removed 0 unused modules.
+Module md_acc directly or indirectly contains formal properties -> setting "keep" attribute.
+
+4. Executing jny backend.
+
+5. Executing RTLIL backend.
+Output filename: ../model/design.il
+
+End of script. Logfile hash: e06b91a298
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Time spent: 3% 7x opt_expr (0 sec), 3% 5x opt_clean (0 sec), ...

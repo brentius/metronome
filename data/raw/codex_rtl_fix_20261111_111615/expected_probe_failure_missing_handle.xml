@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="cocotb tests"><testsuite name="lockstep_tb" errors="0" failures="1" skipped="0" tests="1" time="0.015" timestamp="2026-11-11T11:26:57.094823+00:00" hostname="WC23-30B22373BF"><testcase classname="lockstep_tb" name="lockstep" time="0.015"><failure message="internal probe unavailable: u_acc.a" type="AssertionError">Traceback (most recent call last):
+  File "C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lockstep\lockstep_tb.py", line 42, in g
+    h = h[int(part)] if part.isdigit() else getattr(h, part)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lockstep\probe_fault_tb.py", line 18, in __getattr__
+    raise AttributeError(name)
+AttributeError: u_acc
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lockstep\lockstep_tb.py", line 126, in lockstep
+    bad = {k: v for k, v in probe(dut, model, probe_handles).items()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lockstep\probe_fault_tb.py", line 20, in faulty_probe
+    return original_probe(MissingAccumulator(), model, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lockstep\lockstep_tb.py", line 58, in probe
+    st["acc.A"] = (g("u_acc.a"), model.acc.A)
+                   ^^^^^^^^^^^^
+  File "C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lockstep\lockstep_tb.py", line 44, in g
+    raise AssertionError(f"internal probe unavailable: {path}") from exc
+AssertionError: internal probe unavailable: u_acc.a
+</failure><properties><property name="cocotb" value="True" /><property name="random_seed" value="1794396416" /><property name="file" value="C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lockstep\lockstep_tb.py" /><property name="line" value="99" /><property name="sim_time_unit" value="ns" /><property name="sim_time_start" value="0.0" /><property name="sim_time_stop" value="48.0" /><property name="sim_time_duration" value="48.0" /><property name="sim_time_ratio" value="3199.999999736125" /></properties><system-err>Test failed with COCOTB_RANDOM_SEED=1794396416
+</system-err></testcase></testsuite></testsuites>

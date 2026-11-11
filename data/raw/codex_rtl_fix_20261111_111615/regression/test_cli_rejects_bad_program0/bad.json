@@ -1,0 +1,35 @@
+{
+ "format": "metronome-image",
+ "version": 1,
+ "machine_version": 1,
+ "clock_hz": 60000000.0,
+ "source": "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\data\\raw\\codex_rtl_fix_20261111_111615\\regression\\test_cli_rejects_bad_program0\\bad.mas",
+ "program": [
+  {
+   "core": 0,
+   "addr": 0,
+   "words": [
+    "0x0000000000000000",
+    "0x0000000000000002"
+   ]
+  }
+ ],
+ "writes": [
+  {
+   "addr": 0,
+   "data": "00000000000000000200000000000000",
+   "note": "core 0 program words 0x00..0x01"
+  },
+  {
+   "addr": 9216,
+   "data": "01",
+   "note": "CTRL.RUN"
+  }
+ ],
+ "labels": {
+  "s": [
+   0,
+   0
+  ]
+ }
+}

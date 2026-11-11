@@ -1,0 +1,59 @@
+{
+  "evidence_class": "mapped synthesis and unplaced STA, not signoff",
+  "source_manifest": "data\\raw\\physical_resume_20261111_120036\\r3_source_manifest.json",
+  "candidates": {
+    "map_delay4": {
+      "synthesis_metrics": {
+        "design__lint_error__count": 0,
+        "design__lint_timing_construct__count": 0,
+        "design__lint_warning__count": 106,
+        "design__inferred_latch__count": 0,
+        "design__instance__count": 33073,
+        "design__instance__area": 399548.6838,
+        "design__instance_unmapped__count": 0,
+        "synthesis__check_error__count": 0
+      },
+      "timing": {
+        "timing__hold__ws__corner:nom_fast_1p32V_m40C": -0.43470525631775203,
+        "timing__setup__ws__corner:nom_fast_1p32V_m40C": -1.067031604386669,
+        "timing__hold__ws__corner:nom_slow_1p08V_125C": -0.6113476564690088,
+        "timing__setup__ws__corner:nom_slow_1p08V_125C": -28.9418932567161,
+        "timing__hold__ws__corner:nom_typ_1p20V_25C": -0.4925309743905958,
+        "timing__setup__ws__corner:nom_typ_1p20V_25C": -11.423281310871449,
+        "timing__hold__ws": -0.6113476564690088,
+        "timing__setup__ws": -28.9418932567161,
+        "timing__hold__tns": -40.98460709039514,
+        "timing__setup__tns": -616.0501190214627
+      },
+      "strategy": "DELAY 4",
+      "rc": 0
+    },
+    "map_area0": {
+      "synthesis_metrics": {
+        "design__lint_error__count": 0,
+        "design__lint_timing_construct__count": 0,
+        "design__lint_warning__count": 106,
+        "design__inferred_latch__count": 0,
+        "design__instance__count": 21983,
+        "design__instance__area": 293010.6312,
+        "design__instance_unmapped__count": 0,
+        "synthesis__check_error__count": 0
+      },
+      "timing": {
+        "timing__hold__ws__corner:nom_fast_1p32V_m40C": -0.4784842102411638,
+        "timing__setup__ws__corner:nom_fast_1p32V_m40C": -94.35828030445425,
+        "timing__hold__ws__corner:nom_slow_1p08V_125C": -0.7061096351929163,
+        "timing__setup__ws__corner:nom_slow_1p08V_125C": -272.955966000085,
+        "timing__hold__ws__corner:nom_typ_1p20V_25C": -0.5542824689451182,
+        "timing__setup__ws__corner:nom_typ_1p20V_25C": -160.39898752098182,
+        "timing__hold__ws": -0.7061096351929163,
+        "timing__setup__ws": -272.955966000085,
+        "timing__hold__tns": -78.50160921280856,
+        "timing__setup__tns": -10319.008943845916
+      },
+      "strategy": "AREA 0",
+      "rc": 0
+    }
+  },
+  "calculated_stdcell_area_reduction_pct": 26.664598563245224
+}

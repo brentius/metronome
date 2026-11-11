@@ -1,0 +1,126 @@
+[
+  {
+    "path": "code\\rtl\\data_mem.v",
+    "sha256": "7b7b5081833f840653770746328c68f7e99ef67f06898264ed0c9db22c1f975f"
+  },
+  {
+    "path": "code\\rtl\\md_acc.v",
+    "sha256": "be1d45e23d9daf56e4cebd6b3a0e1f2e8e8c3bce30b0bb8cba0d7ccd2de1710c"
+  },
+  {
+    "path": "code\\rtl\\md_beatgen.v",
+    "sha256": "5594763316f4f0cb6d923d474f81a71eadff2faa8ac99145d6351bf0d5dc60d0"
+  },
+  {
+    "path": "code\\rtl\\md_core.v",
+    "sha256": "6814c40774800f0c51aee06d5a18d98e649cbc4d15babfddb7b15d8e4f45966f"
+  },
+  {
+    "path": "code\\rtl\\md_counter.v",
+    "sha256": "a1514eddc041ac09c9f366c26c2e1fddab396dc14c8fed5e04d987e9aa62faa6"
+  },
+  {
+    "path": "code\\rtl\\md_ctrl.v",
+    "sha256": "ac7540dbfedfc25475c3500f14b724c71a3df6c6995d905d6fb821aff943f1e5"
+  },
+  {
+    "path": "code\\rtl\\md_engine.v",
+    "sha256": "0703e8d915b53cbbeaae967ad8653f8f28ef6f146cc4b3d5f5cf4ec560379f92"
+  },
+  {
+    "path": "code\\rtl\\md_flags.v",
+    "sha256": "f842f49c684430ae236cefdfbf6e82e0914e00216c37fc3625654724818ee98e"
+  },
+  {
+    "path": "code\\rtl\\md_layout_check.v",
+    "sha256": "4ceb5f73425307ffbf06320a017ef01744079f3e358878eaaa2e50333e6dd10e"
+  },
+  {
+    "path": "code\\rtl\\md_lfsr.v",
+    "sha256": "04d886d0c6385f00ffb4f80c408f7204a03da4fd3145124b0aa279f173a738ee"
+  },
+  {
+    "path": "code\\rtl\\md_movebus.v",
+    "sha256": "3ecececa4fdc5f94f533880205b7cd52f2200ec0cfc11c6901a281a793fdc35a"
+  },
+  {
+    "path": "code\\rtl\\md_outcell.v",
+    "sha256": "429282ead6b7b586bb56738f31d0a1ecc42e08a4354dbf6945f56ac7090b9d03"
+  },
+  {
+    "path": "code\\rtl\\md_ptrs.v",
+    "sha256": "aa58e3b723ebff23abd148b92f4433009c55f6cd65e4c8b9c2de31337dea8c9f"
+  },
+  {
+    "path": "code\\rtl\\md_shifter.v",
+    "sha256": "2e0aaacac05241534f278969f17030732514a1eca877930d8ba478a15cc535d1"
+  },
+  {
+    "path": "code\\rtl\\md_spi.v",
+    "sha256": "627692fa2ef054bdfdd5a1983a87881abc58cd8d08692d462df4f371d8b43513"
+  },
+  {
+    "path": "code\\rtl\\md_sync.v",
+    "sha256": "132cd01aa1901559a52d0d94f36d563f89f55773e62d5716ec9a5f32c69f9c7a"
+  },
+  {
+    "path": "code\\rtl\\md_wgroup.v",
+    "sha256": "657e60cae2168f984712fbc86753845f6f516082f0fe0d68b20e9fdfa5704b79"
+  },
+  {
+    "path": "code\\rtl\\prog_mem.v",
+    "sha256": "05e7bac5640a97f499bb1dfdf0d0ea8ee11648f569e5b107833c69b5177ed861"
+  },
+  {
+    "path": "code\\rtl\\tt_um_metronome.v",
+    "sha256": "1d2684449a7ea1950d70a84107eb0334b423be722280a121c47bb433090daab2"
+  },
+  {
+    "path": "code\\rtl\\gen\\md_defs.vh",
+    "sha256": "9e1023a36970cc1de3868f0ffe722f08f0f879a3d6717f99e38da95638b5c20d"
+  },
+  {
+    "path": "sim\\reference\\metronome\\core.py",
+    "sha256": "5844cf2d773629a37d5a32ce5a740265c4174f6983242d807a5c55d6a7a9d10f"
+  },
+  {
+    "path": "sim\\reference\\tests\\test_engine_core.py",
+    "sha256": "536dd484e9017092691f57a2f0eeb2f107929f4cca8f12000309a89e9f264d46"
+  },
+  {
+    "path": "code\\tests\\rtl\\tb_metronome.py",
+    "sha256": "f0dcd6021a1941e589c8253e80d3d36dee7707a7eb8ff08ec1490d0ef821ba15"
+  },
+  {
+    "path": "code\\tests\\rtl\\test_rtl.py",
+    "sha256": "aec28a9892fceae69cdaa42a66d4a33ab77774e437224bb43427e9083703836f"
+  },
+  {
+    "path": "code\\tests\\lockstep\\lockstep_tb.py",
+    "sha256": "d8b28fb208e84374ca03e85100e569324a00ba246d930b0fca04d75634b9ceba"
+  },
+  {
+    "path": "code\\tests\\lockstep\\probe_fault_tb.py",
+    "sha256": "94c772c040e41bfac8e0c9120c7a13792be74c16a7364be7e676476590262787"
+  },
+  {
+    "path": "code\\tests\\lockstep\\test_probe_validation.py",
+    "sha256": "ae24ddf05d22520981741cb4316ea5bc8572bb114df95ace7086ff98bc103b8a"
+  },
+  {
+    "path": "code\\tests\\formal\\fv_core.sv",
+    "sha256": "35487ecce503a28683a517347b1d8d796b4c30c9c21ee622b49f7d86bc3b8378"
+  },
+  {
+    "path": "code\\tests\\formal\\core.sby",
+    "sha256": "c0b228498ea6b39d0ef22175544d1ecef99e401c8ae8799a3c790a131903851f"
+  },
+  {
+    "path": "code\\tests\\formal\\test_formal.py",
+    "sha256": "256a77ccc943614b4d4e4b7c72abc03a7667a8c70661cfe355b54ee96afcf49b"
+  },
+  {
+    "path": "code\\host\\metronome_tools\\check.py",
+    "sha256": "235e59ae64237dc2f46588340b19c37d4134bd4b4b3dab12d1ed27fb66f28fd4"
+  }
+]

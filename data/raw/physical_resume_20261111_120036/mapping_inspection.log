@@ -1,0 +1,125 @@
+[?2004hsh-5.3# stty -echo; python3 -c 'exec(__import__("base64").b64decode("aW1wb3J0IHBhdGhsaWIsanNvbgpmb3IgdiBpbiBbJ21hcF9kZWxheTQnLCdtYXBfYXJlYTAnXToKIHA9cGF0aGxpYi5QYXRoKCcvcm9vdC93b3JrL21ldHJvbm9tZV9yM19kMTcvcnVucycpL3YKIHByaW50KCdSVU4nLHYpCiBmb3IgZiBpbiBzb3J0ZWQocC5nbG9iKCcqc3ludGhlc2lzL3N0YXRlX291dC5qc29uJykpOgogIGQ9anNvbi5sb2FkcyhmLnJlYWRfdGV4dCgpKTtwcmludCgnU1lOVEhfU1RBVEUnLHN0cihmKSk7cHJpbnQoJ1ZJRVdTJyx7azp2IGZvciBrLHYgaW4gZC5pdGVtcygpIGlmIGshPSdtZXRyaWNzJ30pO3ByaW50KCdNRVRSSUNTJyxkLmdldCgnbWV0cmljcycpKQogZm9yIGYgaW4gc29ydGVkKHAuZ2xvYignKnN5bnRoZXNpcy8qc3RhdConKSk6cHJpbnQoJ1NUQVQnLHN0cihmKSxmLnJlYWRfdGV4dChlcnJvcnM9J3JlcGxhY2UnKVstMjgwMDpdKQogZm9yIGYgaW4gc29ydGVkKHAuZ2xvYignKnN0YXByZXBuci8qJykpOgogIGlmIGYuaXNfZmlsZSgpIGFuZCBmLnN1ZmZpeCBpbiBbJy5ycHQnLCcubG9nJ106cHJpbnQoJ1NUQV9GSUxFJyxmLm5hbWUpCiBwcmludCgnRklOQUwnLFsoc3RyKGYucmVsYXRpdmVfdG8ocCkpLGYuc3RhdCgpLnN0X3NpemUpIGZvciBmIGluIHAuZ2xvYignZmluYWwvbmwvKicpXSkKcHJpbnQoJ01BUFBJTkdfTE9HJyxwYXRobGliLlBhdGgoJy93b3Jrc3BhY2Uvam9icy9yM19tYXBwaW5nLmxvZycpLnJlYWRfdGV4dChlcnJvcnM9J3JlcGxhY2UnKVstOTAwOl0pCg=="))'; echo __JSC_1794403473444__$?
+[?2004lRUN map_delay4
+SYNTH_STATE /root/work/metronome_r3_d17/runs/map_delay4/06-yosys-synthesis/state_out.json
+VIEWS {'json_h': '/root/work/metronome_r3_d17/runs/map_delay4/05-yosys-jsonheader/tt_um_metronome.h.json', 'nl': '/root/work/metronome_r3_d17/runs/map_delay4/06-yosys-synthesis/tt_um_metronome.nl.v'}
+METRICS {'design__lint_error__count': 0, 'design__lint_timing_construct__count': 0, 'design__lint_warning__count': 106, 'design__inferred_latch__count': 0, 'design__instance__count': 33073, 'design__instance__area': 399548.6838, 'design__instance_unmapped__count': 0, 'synthesis__check_error__count': 0}
+STAT /root/work/metronome_r3_d17/runs/map_delay4/06-yosys-synthesis/state_in.json {
+    "json_h": "/root/work/metronome_r3_d17/runs/map_delay4/05-yosys-jsonheader/tt_um_metronome.h.json",
+    "metrics": {
+        "design__lint_error__count": 0,
+        "design__lint_timing_construct__count": 0,
+        "design__lint_warning__count": 106,
+        "design__inferred_latch__count": 0
+    }
+}
+STAT /root/work/metronome_r3_d17/runs/map_delay4/06-yosys-synthesis/state_out.json {
+    "json_h": "/root/work/metronome_r3_d17/runs/map_delay4/05-yosys-jsonheader/tt_um_metronome.h.json",
+    "nl": "/root/work/metronome_r3_d17/runs/map_delay4/06-yosys-synthesis/tt_um_metronome.nl.v",
+    "metrics": {
+        "design__lint_error__count": 0,
+        "design__lint_timing_construct__count": 0,
+        "design__lint_warning__count": 106,
+        "design__inferred_latch__count": 0,
+        "design__instance__count": 33073,
+        "design__instance__area": 399548.6838,
+        "design__instance_unmapped__count": 0,
+        "synthesis__check_error__count": 0
+    }
+}
+STAT /root/work/metronome_r3_d17/runs/map_delay4/06-yosys-synthesis/yosys-synthesis.process_stats.json {
+    "time": {
+        "cpu_time_user": "00:00:08.449",
+        "cpu_time_system": "00:00:00.720",
+        "runtime": "00:01:16.591",
+        "cpu_time_iowait": "00:00:00.000"
+    },
+    "peak_resources": {
+        "cpu_percent": 393.5,
+        "memory_rss": "221MiB",
+        "memory_vms": "3GiB",
+        "threads": 42
+    },
+    "avg_resources": {
+        "cpu_percent": 11.922120418848156,
+        "memory_rss": "151MiB",
+        "memory_vms": "1GiB",
+        "threads": 1.1413612565445037
+    }
+}
+STA_FILE summary.rpt
+FINAL [('final/nl/tt_um_metronome.nl.v', 3570039)]
+RUN map_area0
+SYNTH_STATE /root/work/metronome_r3_d17/runs/map_area0/06-yosys-synthesis/state_out.json
+VIEWS {'json_h': '/root/work/metronome_r3_d17/runs/map_area0/05-yosys-jsonheader/tt_um_metronome.h.json', 'nl': '/root/work/metronome_r3_d17/runs/map_area0/06-yosys-synthesis/tt_um_metronome.nl.v'}
+METRICS {'design__lint_error__count': 0, 'design__lint_timing_construct__count': 0, 'design__lint_warning__count': 106, 'design__inferred_latch__count': 0, 'design__instance__count': 21983, 'design__instance__area': 293010.6312, 'design__instance_unmapped__count': 0, 'synthesis__check_error__count': 0}
+STAT /root/work/metronome_r3_d17/runs/map_area0/06-yosys-synthesis/state_in.json {
+    "json_h": "/root/work/metronome_r3_d17/runs/map_area0/05-yosys-jsonheader/tt_um_metronome.h.json",
+    "metrics": {
+        "design__lint_error__count": 0,
+        "design__lint_timing_construct__count": 0,
+        "design__lint_warning__count": 106,
+        "design__inferred_latch__count": 0
+    }
+}
+STAT /root/work/metronome_r3_d17/runs/map_area0/06-yosys-synthesis/state_out.json {
+    "json_h": "/root/work/metronome_r3_d17/runs/map_area0/05-yosys-jsonheader/tt_um_metronome.h.json",
+    "nl": "/root/work/metronome_r3_d17/runs/map_area0/06-yosys-synthesis/tt_um_metronome.nl.v",
+    "metrics": {
+        "design__lint_error__count": 0,
+        "design__lint_timing_construct__count": 0,
+        "design__lint_warning__count": 106,
+        "design__inferred_latch__count": 0,
+        "design__instance__count": 21983,
+        "design__instance__area": 293010.6312,
+        "design__instance_unmapped__count": 0,
+        "synthesis__check_error__count": 0
+    }
+}
+STAT /root/work/metronome_r3_d17/runs/map_area0/06-yosys-synthesis/yosys-synthesis.process_stats.json {
+    "time": {
+        "cpu_time_user": "00:00:07.610",
+        "cpu_time_system": "00:00:00.680",
+        "runtime": "00:01:02.014",
+        "cpu_time_iowait": "00:00:00.000"
+    },
+    "peak_resources": {
+        "cpu_percent": 346.2,
+        "memory_rss": "238MiB",
+        "memory_vms": "3GiB",
+        "threads": 35
+    },
+    "avg_resources": {
+        "cpu_percent": 13.296445880452339,
+        "memory_rss": "149MiB",
+        "memory_vms": "1GiB",
+        "threads": 1.2180936995153475
+    }
+}
+STA_FILE summary.rpt
+FINAL [('final/nl/tt_um_metronome.nl.v', 2637775)]
+MAPPING_LOG timing__setup__ws__corner:nom_typ_1p20V_25C": -160.39898752098182,
+ "design__max_slew_violation__count": 3355,
+ "design__max_cap_violation__count": 27,
+ "timing__hold__ws": -0.7061096351929163,
+ "timing__setup__ws": -272.955966000085,
+ "timing__hold__tns": -78.50160921280856,
+ "timing__setup__tns": -10319.008943845916,
+ "last_step": "12-openroad-staprepnr",
+ "rc": 0,
+ "wall_s": 102,
+ "base": "metronome_r3_d17",
+ "variant": "map_area0",
+ "overrides": {
+  "SYNTH_STRATEGY": "AREA 0",
+  "GRT_ADJUSTMENT": 0.15,
+  "GRT_ALLOW_CONGESTION": false,
+  "OPENROAD_THREADS": 8,
+  "STA_THREADS": 4
+ },
+ "frm": null,
+ "state": null,
+ "to": "OpenROAD.STAPrePNR"
+}
+VARIANT_END 20261111T132415Z metronome_r3_d17__map_area0 rc=0 wall_s=102 last=12-openroad-staprepnr over={"SYNTH_STRATEGY":"AREA 0","GRT_ADJUSTMENT":0.15,"GRT_ALLOW_CONGESTION":false,"OPENROAD_THREADS":8,"STA_THREADS":4}
+MAPPING_RESULT area0 rc=0
+

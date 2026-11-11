@@ -1,0 +1,51 @@
+{
+  "source": "data\\raw\\physical_resume_20261111_120036",
+  "results": {
+    "e1_grtadj015": {
+      "metric_sources": {
+        "global_route__vias": "01-openroad-globalrouting/or_metrics_out.json",
+        "global_route__wirelength": "01-openroad-globalrouting/or_metrics_out.json",
+        "design__instance__area__stdcell": "01-openroad-globalrouting/or_metrics_out.json",
+        "design__instance__utilization__stdcell": "01-openroad-globalrouting/or_metrics_out.json"
+      },
+      "global_route_gate": {
+        "status": "fail",
+        "overflow": 4553,
+        "step_completed": true,
+        "extra_iterations": 99,
+        "ndr_disabled": 1,
+        "evidence_file": "01-openroad-globalrouting/openroad-globalrouting.log"
+      },
+      "global_route__vias": 271317,
+      "global_route__wirelength": 3451543,
+      "design__instance__area__stdcell": 445265,
+      "design__instance__utilization__stdcell": 0.472634,
+      "last_step": "01-openroad-globalrouting",
+      "grt_extra_iterations": 99,
+      "grt_ndr_disabled": 1
+    },
+    "e2_dens45": {
+      "metric_sources": {
+        "global_route__vias": "12-openroad-globalrouting/or_metrics_out.json",
+        "global_route__wirelength": "12-openroad-globalrouting/or_metrics_out.json",
+        "design__instance__area__stdcell": "12-openroad-globalrouting/or_metrics_out.json",
+        "design__instance__utilization__stdcell": "12-openroad-globalrouting/or_metrics_out.json"
+      },
+      "global_route_gate": {
+        "status": "fail",
+        "overflow": 612,
+        "step_completed": true,
+        "extra_iterations": 148,
+        "ndr_disabled": 2,
+        "evidence_file": "12-openroad-globalrouting/openroad-globalrouting.log"
+      },
+      "global_route__vias": 254342,
+      "global_route__wirelength": 3167589,
+      "design__instance__area__stdcell": 444867,
+      "design__instance__utilization__stdcell": 0.472212,
+      "last_step": "12-openroad-globalrouting",
+      "grt_extra_iterations": 148,
+      "grt_ndr_disabled": 2
+    }
+  }
+}

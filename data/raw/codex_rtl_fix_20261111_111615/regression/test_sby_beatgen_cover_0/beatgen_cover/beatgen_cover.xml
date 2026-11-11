@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-11-11T11:25:14" hostname="WC23-30B22373BF" package="beatgen" id="0" name="cover" tests="31" errors="0" failures="0" time="0" skipped="25">
+<properties>
+<property name="os" value="Windows"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="PASS"/>
+</properties>
+<testcase classname="cover" name="build execution" time="0">
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:37.17-37.45" time="0" type="ASSERT" location="fv_beatgen.sv:37.17-37.45" id="_witness_.check_157">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:39.17-39.50" time="0" type="ASSERT" location="fv_beatgen.sv:39.17-39.50" id="_witness_.check_162">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:40.27-40.59" time="0" type="ASSERT" location="fv_beatgen.sv:40.27-40.59" id="_witness_.check_169">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:42.29-42.79" time="0" type="ASSERT" location="fv_beatgen.sv:42.29-42.79" id="_witness_.check_175">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:43.29-43.61" time="0" type="ASSERT" location="fv_beatgen.sv:43.29-43.61" id="_witness_.check_183">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:45.25-45.64" time="0" type="ASSERT" location="fv_beatgen.sv:45.25-45.64" id="_witness_.check_189">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:47.25-47.43" time="0" type="ASSERT" location="fv_beatgen.sv:47.25-47.43" id="_witness_.check_195">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:48.25-48.82" time="0" type="ASSERT" location="fv_beatgen.sv:48.25-48.82" id="_witness_.check_199">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:55.25-55.75" time="0" type="ASSERT" location="fv_beatgen.sv:55.25-55.75" id="_witness_.check_245">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:56.32-56.49" time="0" type="ASSERT" location="fv_beatgen.sv:56.32-56.49" id="_witness_.check_253">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:57.32-57.49" time="0" type="ASSERT" location="fv_beatgen.sv:57.32-57.49" id="_witness_.check_258">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:58.32-58.49" time="0" type="ASSERT" location="fv_beatgen.sv:58.32-58.49" id="_witness_.check_263">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:62.17-62.38" time="0" type="ASSERT" location="fv_beatgen.sv:62.17-62.38" id="_witness_.check_282">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:63.35-63.56" time="0" type="ASSERT" location="fv_beatgen.sv:63.35-63.56" id="_witness_.check_287">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:65.64-65.85" time="0" type="ASSERT" location="fv_beatgen.sv:65.64-65.85" id="_witness_.check_298">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:68.17-68.41" time="0" type="ASSERT" location="fv_beatgen.sv:68.17-68.41" id="_witness_.check_312">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:74.9-74.120" time="0" type="ASSERT" location="fv_beatgen.sv:74.9-74.120" id="_witness_.check_320">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:77.9-77.53" time="0" type="ASSERT" location="fv_beatgen.sv:77.9-77.53" id="_witness_.check_341">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:79.9-79.88" time="0" type="ASSERT" location="fv_beatgen.sv:79.9-79.88" id="_witness_.check_348">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:81.9-81.106" time="0" type="ASSERT" location="fv_beatgen.sv:81.9-81.106" id="_witness_.check_362">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:86.9-86.60" time="0" type="ASSERT" location="fv_beatgen.sv:86.9-86.60" id="_witness_.check_379">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:87.9-87.61" time="0" type="ASSERT" location="fv_beatgen.sv:87.9-87.61" id="_witness_.check_383">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:91.9-91.67" time="0" type="ASSERT" location="fv_beatgen.sv:91.9-91.67" id="_witness_.check_388">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:92.9-92.47" time="0" type="ASSERT" location="fv_beatgen.sv:92.9-92.47" id="_witness_.check_393">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_beatgen at fv_beatgen.sv:97.9-97.27" time="0" type="ASSERT" location="fv_beatgen.sv:97.9-97.27" id="_witness_.check_405">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property COVER in md_beatgen at fv_beatgen.sv:100.9-100.35" time="0" type="COVER" location="fv_beatgen.sv:100.9-100.35" id="_witness_.check_409" tracefile="engine_0\trace4.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_beatgen at fv_beatgen.sv:101.9-101.36" time="0" type="COVER" location="fv_beatgen.sv:101.9-101.36" id="_witness_.check_412" tracefile="engine_0\trace3.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_beatgen at fv_beatgen.sv:102.9-102.37" time="0" type="COVER" location="fv_beatgen.sv:102.9-102.37" id="_witness_.check_415" tracefile="engine_0\trace2.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_beatgen at fv_beatgen.sv:103.9-103.38" time="0" type="COVER" location="fv_beatgen.sv:103.9-103.38" id="_witness_.check_418" tracefile="engine_0\trace1.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_beatgen at fv_beatgen.sv:104.9-104.39" time="0" type="COVER" location="fv_beatgen.sv:104.9-104.39" id="_witness_.check_422" tracefile="engine_0\trace0.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_beatgen at fv_beatgen.sv:105.9-105.37" time="0" type="COVER" location="fv_beatgen.sv:105.9-105.37" id="_witness_.check_427" tracefile="engine_0\trace0.vcd">
+</testcase>
+<system-out>SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] Removing directory 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover'.
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\md_beatgen.v' to 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover\src\md_beatgen.v'.
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\gen\md_defs.vh' to 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover\src\md_defs.vh'.
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\fv_beatgen.sv' to 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover\src\fv_beatgen.sv'.
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: smtbmc bitwuzla
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] base: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover/src&amp; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 11:25:13 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] base: finished (returncode=0)
+SBY 11:25:13 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] prep: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover/model&amp; yosys -ql design_prep.log design_prep.ys&quot;
+SBY 11:25:13 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] prep: finished (returncode=0)
+SBY 11:25:13 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] smt2: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover/model&amp; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] smt2: finished (returncode=0)
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover&amp; yosys-smtbmc -s bitwuzla --presat --unroll -c --noprogress -t 14  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2&quot;
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Solver: bitwuzla
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Reached cover statement in step 1 at md_beatgen: fv_beatgen.sv:104.9-104.39 (_witness_.check_422)
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Reached cover statement in step 1 at md_beatgen: fv_beatgen.sv:105.9-105.37 (_witness_.check_427)
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace0.vcd
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace0.smtc
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Reached cover statement in step 1 at md_beatgen: fv_beatgen.sv:103.9-103.38 (_witness_.check_418)
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace1.vcd
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace1_tb.v
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace1.smtc
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace1.yw
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Reached cover statement in step 4 at md_beatgen: fv_beatgen.sv:102.9-102.37 (_witness_.check_415)
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace2.vcd
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace2_tb.v
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace2.smtc
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace2.yw
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Reached cover statement in step 4 at md_beatgen: fv_beatgen.sv:101.9-101.36 (_witness_.check_412)
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace3.vcd
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace3_tb.v
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace3.smtc
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace3.yw
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Reached cover statement in step 4 at md_beatgen: fv_beatgen.sv:100.9-100.35 (_witness_.check_409)
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace4.vcd
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace4_tb.v
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace4.smtc
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace4.yw
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: ##   0:00:00  Status: passed
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: finished (returncode=0)
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] engine_0: Status returned by engine: pass
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:02 (2)
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] summary: Elapsed process time unvailable on Windows
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] summary: engine_0 (smtbmc bitwuzla) returned pass
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] summary: cover trace: C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover\engine_0\trace0.vcd
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] summary:   reached cover statement md_beatgen._witness_.check_422 at fv_beatgen.sv:104.9-104.39 step 1
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] summary:   reached cover statement md_beatgen._witness_.check_427 at fv_beatgen.sv:105.9-105.37 step 1
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] summary: cover trace: C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover\engine_0\trace1.vcd
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] summary:   reached cover statement md_beatgen._witness_.check_418 at fv_beatgen.sv:103.9-103.38 step 1
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] summary: cover trace: C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover\engine_0\trace2.vcd
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] summary:   reached cover statement md_beatgen._witness_.check_415 at fv_beatgen.sv:102.9-102.37 step 4
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] summary: cover trace: C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover\engine_0\trace3.vcd
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] summary:   reached cover statement md_beatgen._witness_.check_412 at fv_beatgen.sv:101.9-101.36 step 4
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] summary: cover trace: C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover\engine_0\trace4.vcd
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] summary:   reached cover statement md_beatgen._witness_.check_409 at fv_beatgen.sv:100.9-100.35 step 4
+SBY 11:25:14 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_cover_0\beatgen_cover] DONE (PASS, rc=0)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

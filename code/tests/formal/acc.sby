@@ -1,0 +1,22 @@
+[tasks]
+prove
+cover
+
+[options]
+prove: mode prove
+prove: depth 3
+cover: mode cover
+cover: depth 8
+
+[engines]
+smtbmc bitwuzla
+
+[script]
+plugin -i slang
+read_slang --top md_acc -I . md_acc.v fv_acc.sv
+prep -top md_acc
+
+[files]
+../../rtl/md_acc.v
+../../rtl/gen/md_defs.vh
+fv_acc.sv

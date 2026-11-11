@@ -1,0 +1,12 @@
+Elapsed clock time [H:MM:SS (secs)]: 0:00:01 (1)
+Elapsed process time unvailable on Windows
+engine_0 (smtbmc bitwuzla) returned pass
+cover trace: engine_0\trace0.vcd
+cover trace: engine_0\trace0.yw
+  reached cover statement fv_lfsr_top._witness_.check_108 at fv_lfsr.sv:37.9-37.31 step 3
+cover trace: engine_0\trace1.vcd
+cover trace: engine_0\trace1.yw
+  reached cover statement fv_lfsr_top._witness_.check_103 at fv_lfsr.sv:36.9-36.46 step 3
+cover trace: engine_0\trace2.vcd
+cover trace: engine_0\trace2.yw
+  reached cover statement fv_lfsr_top._witness_.check_94 at fv_lfsr.sv:35.9-35.78 step 4

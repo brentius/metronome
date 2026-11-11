@@ -1,0 +1,9 @@
+# running in C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_ptrs_prove_0\ptrs_prove/src/
+plugin -i slang
+read_slang --top md_ptrs -I . md_ptrs.v fv_ptrs.sv
+prep -top md_ptrs
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

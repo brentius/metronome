@@ -1,0 +1,37 @@
+{
+ "metric_sources": {
+  "global_route__vias": "01-openroad-resizertimingpostgrt/or_metrics_out.json",
+  "global_route__wirelength": "01-openroad-resizertimingpostgrt/or_metrics_out.json",
+  "design__instance__count": "01-openroad-resizertimingpostgrt/or_metrics_out.json",
+  "design__instance__area": "01-openroad-resizertimingpostgrt/or_metrics_out.json",
+  "design__instance__area__stdcell": "01-openroad-resizertimingpostgrt/or_metrics_out.json",
+  "design__instance__utilization__stdcell": "01-openroad-resizertimingpostgrt/or_metrics_out.json"
+ },
+ "global_route_gate": {
+  "status": "unknown"
+ },
+ "global_route__vias": 187222,
+ "global_route__wirelength": 2151957,
+ "design__instance__count": 27248,
+ "design__instance__area": 622115,
+ "design__instance__area__stdcell": 356034,
+ "design__instance__utilization__stdcell": 0.377919,
+ "last_step": "01-openroad-resizertimingpostgrt",
+ "rc": 0,
+ "wall_s": 51,
+ "base": "metronome_r3_d17",
+ "variant": "repair_grt_area0",
+ "overrides": {
+  "SYNTH_STRATEGY": "AREA 0",
+  "RUN_POST_GRT_RESIZER_TIMING": true,
+  "GRT_ADJUSTMENT": 0.15,
+  "GRT_ALLOW_CONGESTION": false,
+  "GRT_RESIZER_SETUP_SLACK_MARGIN": 0.1,
+  "GRT_RESIZER_HOLD_SLACK_MARGIN": 0.1,
+  "OPENROAD_THREADS": 4,
+  "STA_THREADS": 4
+ },
+ "frm": "OpenROAD.ResizerTimingPostGRT",
+ "state": "route_area0/04-openroad-stamidpnr-3",
+ "to": "OpenROAD.ResizerTimingPostGRT"
+}

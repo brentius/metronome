@@ -1,0 +1,131 @@
+{
+  "tag": "metronome_r3_d17",
+  "created_utc": "2026-11-11T13:19:40.637607+00:00",
+  "source_evidence": "data/raw/codex_rtl_fix_20261111_111615",
+  "files": [
+    {
+      "path": "docs/info.md",
+      "sha256_lf": "d9233564d7857dec3f14edeed7834a9fe2461ff1b132501017a0879d1d7184b5"
+    },
+    {
+      "path": "info.yaml",
+      "sha256_lf": "075e1f77eb337c12ac310d31a197b52766242dddf740857083f9bde9117c1342"
+    },
+    {
+      "path": "librelane_plugin_sram_pdn.py",
+      "sha256_lf": "d29be95d737b7151113248f071aa2e28fe929db0a11f3c89978bfb2199ed2d89"
+    },
+    {
+      "path": "odb_stripes.py",
+      "sha256_lf": "c063dcc45d375f23c25736def0ea2c3b535ea07a2fe178032270d2dab0582d8c"
+    },
+    {
+      "path": "src/config.json",
+      "sha256_lf": "774807591dd4d399e0ffe1d1d0bda2ad9a17434dff59b95cf175364b153f7a28"
+    },
+    {
+      "path": "src/data_mem.v",
+      "sha256_lf": "7b7b5081833f840653770746328c68f7e99ef67f06898264ed0c9db22c1f975f"
+    },
+    {
+      "path": "src/md_acc.v",
+      "sha256_lf": "d94a87840b2a1f653e89625204320515431770f7681dc8841f12f302be4b6d1a"
+    },
+    {
+      "path": "src/md_beatgen.v",
+      "sha256_lf": "7ccc373b3b2a881ceec6af5dcfbbe3f7917f978aec5f6204e48f74f897948e95"
+    },
+    {
+      "path": "src/md_core.v",
+      "sha256_lf": "11ad5df7c3cf802664c3d0d688ccc7f02755d6db5172409fced37998fcf3916e"
+    },
+    {
+      "path": "src/md_counter.v",
+      "sha256_lf": "843f4d59c5bdc17b7d7c0dcf204ce96b57ef34e0360c2ad0c3ca7383a7964f3a"
+    },
+    {
+      "path": "src/md_ctrl.v",
+      "sha256_lf": "b2dbb5136801283dcb390e3e69874ed3c5289756cec2ab6f3e3e2807bffb49cb"
+    },
+    {
+      "path": "src/md_defs.vh",
+      "sha256_lf": "9e1023a36970cc1de3868f0ffe722f08f0f879a3d6717f99e38da95638b5c20d"
+    },
+    {
+      "path": "src/md_engine.v",
+      "sha256_lf": "2300b17d64c702f1b014d623a3c80175dba1e0449f04b68b8cf5e8f1a38bd3ac"
+    },
+    {
+      "path": "src/md_flags.v",
+      "sha256_lf": "fd3cb06074aeee69ad08abb1420cecce34958024c4f50176dd916438313ac32a"
+    },
+    {
+      "path": "src/md_layout_check.v",
+      "sha256_lf": "1351401cb60ff69b7527d101917a6fd5d127b7d8253d5179a64fdb7be50228c0"
+    },
+    {
+      "path": "src/md_lfsr.v",
+      "sha256_lf": "04d886d0c6385f00ffb4f80c408f7204a03da4fd3145124b0aa279f173a738ee"
+    },
+    {
+      "path": "src/md_movebus.v",
+      "sha256_lf": "8530aa0b9747f6905aa329e388f2b0d777f329e0b8270fd38777d38a44ed20ef"
+    },
+    {
+      "path": "src/md_outcell.v",
+      "sha256_lf": "f9610598f817bc3ed71609e79b359a0deaf481076ab4ecc3d6648f98ec14d4db"
+    },
+    {
+      "path": "src/md_ptrs.v",
+      "sha256_lf": "1adc7b3bbaa7248f60185d8c1a585f68be25949b0ca044cc46e82778279cb031"
+    },
+    {
+      "path": "src/md_shifter.v",
+      "sha256_lf": "918300845f6f2f7f3fabf31ad42c5daa8a9e6b9530be4fee5542d0f491341899"
+    },
+    {
+      "path": "src/md_spi.v",
+      "sha256_lf": "24dc091cc48bc3f6ade413cab2b9e59e0a0ced1737ca10e455d4490efdd37aea"
+    },
+    {
+      "path": "src/md_sync.v",
+      "sha256_lf": "132cd01aa1901559a52d0d94f36d563f89f55773e62d5716ec9a5f32c69f9c7a"
+    },
+    {
+      "path": "src/md_wgroup.v",
+      "sha256_lf": "657e60cae2168f984712fbc86753845f6f516082f0fe0d68b20e9fdfa5704b79"
+    },
+    {
+      "path": "src/pdn_cfg.tcl",
+      "sha256_lf": "73b46e84d805e0fc4228aeded7c6c6065b5a90b1cc50297d3a9326710b12d094"
+    },
+    {
+      "path": "src/prog_mem.v",
+      "sha256_lf": "3bf9c6b8dd15e1888c15aba2564fdd0406281786aaed0e77dc4a2065b21992b6"
+    },
+    {
+      "path": "src/sram_bb.v",
+      "sha256_lf": "7f229111f36398c198c530ec4fe58a73a84c8b1ffcbf37c37882b8d76ac7ba45"
+    },
+    {
+      "path": "src/tt_um_metronome.v",
+      "sha256_lf": "35f1c79b99f38e059d26463f97190fb398ab0ba777e07cd2d93ecf8c42989461"
+    },
+    {
+      "path": "test/README.md",
+      "sha256_lf": "de8febed969a3d333660eb8c0461e15c86ca86aa202261c7aa9fa51351d29ff6"
+    }
+  ],
+  "base_density_pct": 45,
+  "clock_period_ns": 16.667,
+  "mapping_comparison": [
+    "DELAY 4",
+    "AREA 0"
+  ],
+  "common_overrides": {
+    "GRT_ADJUSTMENT": 0.15,
+    "GRT_ALLOW_CONGESTION": false,
+    "OPENROAD_THREADS": 8,
+    "STA_THREADS": 4
+  }
+}

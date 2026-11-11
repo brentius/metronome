@@ -1,0 +1,9 @@
+# running in C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_lfsr_cover_0\lfsr_cover/src/
+plugin -i slang
+read_slang --top fv_lfsr_top -I . md_lfsr.v fv_lfsr.sv
+prep -top fv_lfsr_top
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

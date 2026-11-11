@@ -1,0 +1,46 @@
+[
+    {
+        "Path":  "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\code\\rtl\\md_core.v",
+        "Hash":  "7A68518FD6732B2D7EB38B128677040DA4A028FE782138BCF9FBEC903275093F"
+    },
+    {
+        "Path":  "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\sim\\reference\\metronome\\core.py",
+        "Hash":  "47E2508C067F37FF96C41A4A4256176EAAC8767A8940466F9C1D8CE2AFED8691"
+    },
+    {
+        "Path":  "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\sim\\reference\\tests\\test_engine_core.py",
+        "Hash":  "3D241AE462D0AA841A03B5E5836B85736A03310DA1F68C3462CBA68DE35CE10E"
+    },
+    {
+        "Path":  "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\code\\tests\\lockstep\\lockstep_tb.py",
+        "Hash":  "56E1C0E29520BA5E51D214A1E32B6C8D97E56497AD4300BECD95201DB78C33A1"
+    },
+    {
+        "Path":  "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\code\\tests\\rtl\\tb_metronome.py",
+        "Hash":  "11F504E2EA0060A521A51139BC8D00F4977360699E2A8E715404F83C9B53FC72"
+    },
+    {
+        "Path":  "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\code\\tests\\rtl\\test_rtl.py",
+        "Hash":  "FE3E26C8030672B685328480203143BCBE16382F49481CD0A18E2518280F4C01"
+    },
+    {
+        "Path":  "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\code\\host\\metronome_tools\\check.py",
+        "Hash":  "60A109865412B0B8D8747FBA7C36C790AAFBFAF4B943605DD319147B42384F6D"
+    },
+    {
+        "Path":  "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\wiki\\SPEC.md",
+        "Hash":  "8148ED29E99065DBC8E921E50312FF4DABB11F16DCD8BDBC9DB5710F37ADABBF"
+    },
+    {
+        "Path":  "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\wiki\\TOOLCHAIN.md",
+        "Hash":  "F8565E9999B4ABA059C1DC1D2E5A8931305B933ACBCC2AAAC49EB74A4B9E7767"
+    },
+    {
+        "Path":  "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\wiki\\ARCHITECTURE.md",
+        "Hash":  "528C24640FCCC53203432A7E232AC7659E63527E1A38B006376BA1A8581C8552"
+    },
+    {
+        "Path":  "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\wiki\\VERIFICATION.md",
+        "Hash":  "369158F099F3D0B7C9D852DE8F8C0290BBA5E9D3185667773F82B80E709E479F"
+    }
+]

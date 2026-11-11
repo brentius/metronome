@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-11-11T11:25:38" hostname="WC23-30B22373BF" package="engine" id="0" name="cover" tests="26" errors="0" failures="0" time="0" skipped="19">
+<properties>
+<property name="os" value="Windows"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="PASS"/>
+</properties>
+<testcase classname="cover" name="build execution" time="0">
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:63.17-63.47" time="0" type="ASSERT" location="fv_engine.sv:63.17-63.47" id="_witness_.check_168">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:65.17-65.50" time="0" type="ASSERT" location="fv_engine.sv:65.17-65.50" id="_witness_.check_173">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:86.9-86.115" time="0" type="ASSERT" location="fv_engine.sv:86.9-86.115" id="_witness_.check_202">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:91.9-91.70" time="0" type="ASSERT" location="fv_engine.sv:91.9-91.70" id="_witness_.check_222">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:92.9-92.76" time="0" type="ASSERT" location="fv_engine.sv:92.9-92.76" id="_witness_.check_227">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:93.9-93.70" time="0" type="ASSERT" location="fv_engine.sv:93.9-93.70" id="_witness_.check_232">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:95.9-95.87" time="0" type="ASSERT" location="fv_engine.sv:95.9-95.87" id="_witness_.check_237">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:96.9-96.92" time="0" type="ASSERT" location="fv_engine.sv:96.9-96.92" id="_witness_.check_243">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:98.9-98.60" time="0" type="ASSERT" location="fv_engine.sv:98.9-98.60" id="_witness_.check_250">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:99.9-99.88" time="0" type="ASSERT" location="fv_engine.sv:99.9-99.88" id="_witness_.check_254">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:101.9-101.59" time="0" type="ASSERT" location="fv_engine.sv:101.9-101.59" id="_witness_.check_259">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:102.9-102.59" time="0" type="ASSERT" location="fv_engine.sv:102.9-102.59" id="_witness_.check_263">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:103.9-103.59" time="0" type="ASSERT" location="fv_engine.sv:103.9-103.59" id="_witness_.check_267">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:104.9-104.59" time="0" type="ASSERT" location="fv_engine.sv:104.9-104.59" id="_witness_.check_271">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:106.9-106.73" time="0" type="ASSERT" location="fv_engine.sv:106.9-106.73" id="_witness_.check_275">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:108.9-108.73" time="0" type="ASSERT" location="fv_engine.sv:108.9-108.73" id="_witness_.check_280">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:111.56-111.83" time="0" type="ASSERT" location="fv_engine.sv:111.56-111.83" id="_witness_.check_290">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:113.45-113.68" time="0" type="ASSERT" location="fv_engine.sv:113.45-113.68" id="_witness_.check_296">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in md_engine at fv_engine.sv:116.35-116.64" time="0" type="ASSERT" location="fv_engine.sv:116.35-116.64" id="_witness_.check_301">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property COVER in md_engine at fv_engine.sv:119.9-119.48" time="0" type="COVER" location="fv_engine.sv:119.9-119.48" id="_witness_.check_306" tracefile="engine_0\trace4.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_engine at fv_engine.sv:120.9-120.58" time="0" type="COVER" location="fv_engine.sv:120.9-120.58" id="_witness_.check_311" tracefile="engine_0\trace6.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_engine at fv_engine.sv:121.9-121.64" time="0" type="COVER" location="fv_engine.sv:121.9-121.64" id="_witness_.check_318" tracefile="engine_0\trace2.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_engine at fv_engine.sv:122.9-122.92" time="0" type="COVER" location="fv_engine.sv:122.9-122.92" id="_witness_.check_326" tracefile="engine_0\trace1.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_engine at fv_engine.sv:123.9-123.49" time="0" type="COVER" location="fv_engine.sv:123.9-123.49" id="_witness_.check_334" tracefile="engine_0\trace5.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_engine at fv_engine.sv:124.9-124.49" time="0" type="COVER" location="fv_engine.sv:124.9-124.49" id="_witness_.check_339" tracefile="engine_0\trace3.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in md_engine at fv_engine.sv:125.9-125.55" time="0" type="COVER" location="fv_engine.sv:125.9-125.55" id="_witness_.check_345" tracefile="engine_0\trace0.vcd">
+</testcase>
+<system-out>SBY 11:25:36 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] Removing directory 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover'.
+SBY 11:25:36 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\md_engine.v' to 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover\src\md_engine.v'.
+SBY 11:25:36 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\gen\md_defs.vh' to 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover\src\md_defs.vh'.
+SBY 11:25:36 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\fv_engine.sv' to 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover\src\fv_engine.sv'.
+SBY 11:25:36 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: smtbmc bitwuzla
+SBY 11:25:36 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] base: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover/src&amp; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 11:25:36 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] base: finished (returncode=0)
+SBY 11:25:36 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] prep: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover/model&amp; yosys -ql design_prep.log design_prep.ys&quot;
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] prep: finished (returncode=0)
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] smt2: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover/model&amp; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] smt2: finished (returncode=0)
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover&amp; yosys-smtbmc -s bitwuzla --presat --unroll -c --noprogress -t 10  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2&quot;
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Solver: bitwuzla
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Reached cover statement in step 3 at md_engine: fv_engine.sv:125.9-125.55 (_witness_.check_345)
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace0.vcd
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace0.smtc
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Reached cover statement in step 3 at md_engine: fv_engine.sv:122.9-122.92 (_witness_.check_326)
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace1.vcd
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace1_tb.v
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace1.smtc
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace1.yw
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Reached cover statement in step 3 at md_engine: fv_engine.sv:121.9-121.64 (_witness_.check_318)
+SBY 11:25:37 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace2.vcd
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace2_tb.v
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace2.smtc
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace2.yw
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Reached cover statement in step 4 at md_engine: fv_engine.sv:124.9-124.49 (_witness_.check_339)
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace3.vcd
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace3_tb.v
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace3.smtc
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace3.yw
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Reached cover statement in step 4 at md_engine: fv_engine.sv:119.9-119.48 (_witness_.check_306)
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace4.vcd
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace4_tb.v
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace4.smtc
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace4.yw
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Reached cover statement in step 4 at md_engine: fv_engine.sv:123.9-123.49 (_witness_.check_334)
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace5.vcd
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace5_tb.v
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace5.smtc
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace5.yw
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Checking cover reachability in step 5..
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Reached cover statement in step 5 at md_engine: fv_engine.sv:120.9-120.58 (_witness_.check_311)
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace6.vcd
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace6_tb.v
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace6.smtc
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace6.yw
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: ##   0:00:00  Status: passed
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: finished (returncode=0)
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] engine_0: Status returned by engine: pass
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:02 (2)
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] summary: Elapsed process time unvailable on Windows
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] summary: engine_0 (smtbmc bitwuzla) returned pass
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] summary: cover trace: C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover\engine_0\trace0.vcd
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] summary:   reached cover statement md_engine._witness_.check_345 at fv_engine.sv:125.9-125.55 step 3
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] summary: cover trace: C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover\engine_0\trace1.vcd
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] summary:   reached cover statement md_engine._witness_.check_326 at fv_engine.sv:122.9-122.92 step 3
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] summary: cover trace: C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover\engine_0\trace2.vcd
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] summary:   reached cover statement md_engine._witness_.check_318 at fv_engine.sv:121.9-121.64 step 3
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] summary: cover trace: C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover\engine_0\trace3.vcd
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] summary:   reached cover statement md_engine._witness_.check_339 at fv_engine.sv:124.9-124.49 step 4
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] summary: cover trace: C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover\engine_0\trace4.vcd
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] summary:   reached cover statement md_engine._witness_.check_306 at fv_engine.sv:119.9-119.48 step 4
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] summary: and 2 further traces
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] summary: see C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover/PASS for a complete summary
+SBY 11:25:38 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_engine_cover_0\engine_cover] DONE (PASS, rc=0)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

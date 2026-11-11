@@ -1,0 +1,247 @@
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] Removing directory 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover'.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\md_wgroup.v' to 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover\src\md_wgroup.v'.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\fv_wgroup.sv' to 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover\src\fv_wgroup.sv'.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: smtbmc bitwuzla
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: starting process "cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover/src& yosys -ql ../model/design.log ../model/design.ys"
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.sel [17] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.sel [16] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.sel [15] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.sel [14] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.sel [13] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.sel [12] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.sel [11] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.sel [10] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.sel [9] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.sel [8] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.sel [7] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.sel [6] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.sel [5] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.sel [4] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.sel [3] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.sel [2] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.sel [1] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.sel [0] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [47] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [46] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [45] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [44] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [43] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [42] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [41] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [40] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [39] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [38] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [37] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [36] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [35] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [34] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [33] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [32] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [31] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [30] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [29] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [28] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [27] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [26] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [25] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [24] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [23] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [22] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [21] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [20] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [19] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [18] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [17] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [16] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [15] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [14] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [13] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [12] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [11] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [10] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [9] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [8] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [7] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [6] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [5] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [4] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [3] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [2] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [1] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.data [0] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.hit [0] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.sel [5] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.sel [4] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.sel [3] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.sel [2] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.sel [1] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.sel [0] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [29] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [28] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [27] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [26] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [25] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [24] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [23] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [22] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [21] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [20] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [19] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [18] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [17] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [16] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [15] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [14] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [13] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [12] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [11] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [10] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [9] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [8] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [7] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [6] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [5] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [4] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [3] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [2] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [1] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.data [0] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.hit [1] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.sel [5] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.sel [4] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.sel [3] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.sel [2] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.sel [1] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.sel [0] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [23] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [22] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [21] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [20] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [19] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [18] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [17] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [16] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [15] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [14] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [13] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [12] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [11] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [10] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [9] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [8] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [7] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [6] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [5] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [4] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [3] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [2] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [1] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.data [0] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.hit [2] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.hit [1] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c2.hit [0] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.hit [5] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.hit [4] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.hit [3] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.hit [2] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.hit [1] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c1.hit [0] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.hit [5] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.hit [4] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.hit [3] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: Warning: Wire fv_wgroup.\c0.hit [2] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] base: finished (returncode=0)
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] prep: starting process "cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover/model& yosys -ql design_prep.log design_prep.ys"
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] prep: Warning: Wire fv_wgroup.\c1.hit [0] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] prep: Warning: Wire fv_wgroup.\c1.hit [1] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] prep: Warning: Wire fv_wgroup.\c2.hit [0] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] prep: Warning: Wire fv_wgroup.\c0.hit [4] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] prep: Warning: Wire fv_wgroup.\c1.hit [2] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] prep: Warning: Wire fv_wgroup.\c0.hit [1] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] prep: Warning: Wire fv_wgroup.\c1.hit [3] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] prep: Warning: Wire fv_wgroup.\c0.hit [5] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] prep: Warning: Wire fv_wgroup.\c2.hit [1] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] prep: Warning: Wire fv_wgroup.\c1.hit [4] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] prep: Warning: Wire fv_wgroup.\c2.hit [2] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] prep: Warning: Wire fv_wgroup.\c0.hit [2] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] prep: Warning: Wire fv_wgroup.\c1.hit [5] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] prep: Warning: Wire fv_wgroup.\c0.hit [0] is used but has no driver.
+SBY 10:23:07 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] prep: Warning: Wire fv_wgroup.\c0.hit [3] is used but has no driver.
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] prep: finished (returncode=0)
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] smt2: starting process "cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover/model& yosys -ql design_smt2.log design_smt2.ys"
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] smt2: finished (returncode=0)
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: starting process "cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover& yosys-smtbmc -s bitwuzla --presat --unroll -c --noprogress -t 1  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2"
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Solver: bitwuzla
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Reached cover statement in step 0 at fv_wgroup: fv_wgroup.sv:32.59-32.76 (_witness_.check_348)
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace0.vcd
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace0.smtc
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Reached cover statement in step 0 at fv_wgroup: fv_wgroup.sv:32.41-32.58 (_witness_.check_345)
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace1.vcd
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace1_tb.v
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace1.smtc
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace1.yw
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Reached cover statement in step 0 at fv_wgroup: fv_wgroup.sv:32.23-32.40 (_witness_.check_342)
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace2.vcd
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace2_tb.v
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace2.smtc
+SBY 10:23:08 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace2.yw
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Reached cover statement in step 0 at fv_wgroup: fv_wgroup.sv:32.59-32.76 (_witness_.check_253)
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace3.vcd
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace3_tb.v
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace3.smtc
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace3.yw
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Reached cover statement in step 0 at fv_wgroup: fv_wgroup.sv:32.41-32.58 (_witness_.check_250)
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace4.vcd
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace4_tb.v
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace4.smtc
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace4.yw
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Reached cover statement in step 0 at fv_wgroup: fv_wgroup.sv:32.23-32.40 (_witness_.check_247)
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace5.vcd
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace5_tb.v
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace5.smtc
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace5.yw
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Reached cover statement in step 0 at fv_wgroup: fv_wgroup.sv:32.41-32.58 (_witness_.check_122)
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace6.vcd
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace6_tb.v
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace6.smtc
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace6.yw
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Reached cover statement in step 0 at fv_wgroup: fv_wgroup.sv:32.23-32.40 (_witness_.check_119)
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace7.vcd
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace7_tb.v
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace7.smtc
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace7.yw
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Reached cover statement in step 0 at fv_wgroup: fv_wgroup.sv:32.59-32.76 (_witness_.check_125)
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace8.vcd
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace8_tb.v
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace8.smtc
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace8.yw
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: ##   0:00:00  Status: passed
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: finished (returncode=0)
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] engine_0: Status returned by engine: pass
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:02 (2)
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] summary: Elapsed process time unvailable on Windows
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] summary: engine_0 (smtbmc bitwuzla) returned pass
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] summary: cover trace: C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover\engine_0\trace0.vcd
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] summary:   reached cover statement fv_wgroup._witness_.check_348 at fv_wgroup.sv:32.59-32.76
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] summary: cover trace: C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover\engine_0\trace1.vcd
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] summary:   reached cover statement fv_wgroup._witness_.check_345 at fv_wgroup.sv:32.41-32.58
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] summary: cover trace: C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover\engine_0\trace2.vcd
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] summary:   reached cover statement fv_wgroup._witness_.check_342 at fv_wgroup.sv:32.23-32.40
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] summary: cover trace: C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover\engine_0\trace3.vcd
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] summary:   reached cover statement fv_wgroup._witness_.check_253 at fv_wgroup.sv:32.59-32.76
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] summary: cover trace: C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover\engine_0\trace4.vcd
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] summary:   reached cover statement fv_wgroup._witness_.check_250 at fv_wgroup.sv:32.41-32.58
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] summary: and 4 further traces
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] summary: see C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover/PASS for a complete summary
+SBY 10:23:09 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_cover_0\wgroup_cover] DONE (PASS, rc=0)

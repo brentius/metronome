@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-11-11T10:23:32" hostname="WC23-30B22373BF" package="lfsr" id="0" name="cover" tests="11" errors="0" failures="0" time="0" skipped="8">
+<properties>
+<property name="os" value="Windows"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="PASS"/>
+</properties>
+<testcase classname="cover" name="build execution" time="0">
+</testcase>
+<testcase classname="cover" name="Property COVER in fv_lfsr_top at fv_lfsr.sv:36.9-36.46" time="0" type="COVER" location="fv_lfsr.sv:36.9-36.46" id="_witness_.check_103" tracefile="engine_0\trace1.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in fv_lfsr_top at fv_lfsr.sv:37.9-37.31" time="0" type="COVER" location="fv_lfsr.sv:37.9-37.31" id="_witness_.check_108" tracefile="engine_0\trace0.vcd">
+</testcase>
+<testcase classname="cover" name="Property ASSERT in fv_lfsr_top at fv_lfsr.sv:20.46-20.75" time="0" type="ASSERT" location="fv_lfsr.sv:20.46-20.75" id="_witness_.check_33">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in fv_lfsr_top at fv_lfsr.sv:22.61-22.83" time="0" type="ASSERT" location="fv_lfsr.sv:22.61-22.83" id="_witness_.check_42">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in fv_lfsr_top at fv_lfsr.sv:24.61-24.93" time="0" type="ASSERT" location="fv_lfsr.sv:24.61-24.93" id="_witness_.check_49">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in fv_lfsr_top at fv_lfsr.sv:25.61-25.103" time="0" type="ASSERT" location="fv_lfsr.sv:25.61-25.103" id="_witness_.check_56">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in fv_lfsr_top at fv_lfsr.sv:26.61-26.104" time="0" type="ASSERT" location="fv_lfsr.sv:26.61-26.104" id="_witness_.check_63">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in fv_lfsr_top at fv_lfsr.sv:27.61-27.92" time="0" type="ASSERT" location="fv_lfsr.sv:27.61-27.92" id="_witness_.check_70">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in fv_lfsr_top at fv_lfsr.sv:29.63-29.81" time="0" type="ASSERT" location="fv_lfsr.sv:29.63-29.81" id="_witness_.check_78">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in fv_lfsr_top at fv_lfsr.sv:32.9-32.115" time="0" type="ASSERT" location="fv_lfsr.sv:32.9-32.115" id="_witness_.check_82">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property COVER in fv_lfsr_top at fv_lfsr.sv:35.9-35.78" time="0" type="COVER" location="fv_lfsr.sv:35.9-35.78" id="_witness_.check_94" tracefile="engine_0\trace2.vcd">
+</testcase>
+<system-out>SBY 10:23:30 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] Removing directory 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover'.
+SBY 10:23:30 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\md_lfsr.v' to 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover\src\md_lfsr.v'.
+SBY 10:23:30 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\gen\md_defs.vh' to 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover\src\md_defs.vh'.
+SBY 10:23:30 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\fv_lfsr.sv' to 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover\src\fv_lfsr.sv'.
+SBY 10:23:30 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: smtbmc bitwuzla
+SBY 10:23:30 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] base: starting process &quot;cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover/src&amp; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 10:23:31 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] base: finished (returncode=0)
+SBY 10:23:31 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] prep: starting process &quot;cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover/model&amp; yosys -ql design_prep.log design_prep.ys&quot;
+SBY 10:23:31 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] prep: finished (returncode=0)
+SBY 10:23:31 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] smt2: starting process &quot;cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover/model&amp; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] smt2: finished (returncode=0)
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: starting process &quot;cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover&amp; yosys-smtbmc -s bitwuzla --presat --unroll -c --noprogress -t 8  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2&quot;
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Solver: bitwuzla
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Reached cover statement in step 3 at fv_lfsr_top: fv_lfsr.sv:37.9-37.31 (_witness_.check_108)
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace0.vcd
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace0.smtc
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Reached cover statement in step 3 at fv_lfsr_top: fv_lfsr.sv:36.9-36.46 (_witness_.check_103)
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace1.vcd
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace1_tb.v
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace1.smtc
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace1.yw
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Reached cover statement in step 4 at fv_lfsr_top: fv_lfsr.sv:35.9-35.78 (_witness_.check_94)
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace2.vcd
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace2_tb.v
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace2.smtc
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace2.yw
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: ##   0:00:00  Status: passed
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: finished (returncode=0)
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] engine_0: Status returned by engine: pass
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:01 (1)
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] summary: Elapsed process time unvailable on Windows
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] summary: engine_0 (smtbmc bitwuzla) returned pass
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] summary: cover trace: C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover\engine_0\trace0.vcd
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] summary:   reached cover statement fv_lfsr_top._witness_.check_108 at fv_lfsr.sv:37.9-37.31 step 3
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] summary: cover trace: C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover\engine_0\trace1.vcd
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] summary:   reached cover statement fv_lfsr_top._witness_.check_103 at fv_lfsr.sv:36.9-36.46 step 3
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] summary: cover trace: C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover\engine_0\trace2.vcd
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] summary:   reached cover statement fv_lfsr_top._witness_.check_94 at fv_lfsr.sv:35.9-35.78 step 4
+SBY 10:23:32 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_lfsr_cover_0\lfsr_cover] DONE (PASS, rc=0)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

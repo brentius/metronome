@@ -1,0 +1,41 @@
+{
+ "metric_sources": {
+  "global_route__vias": "01-openroad-globalrouting/or_metrics_out.json",
+  "global_route__wirelength": "01-openroad-globalrouting/or_metrics_out.json",
+  "design__instance__count": "01-openroad-globalrouting/or_metrics_out.json",
+  "design__instance__area": "01-openroad-globalrouting/or_metrics_out.json",
+  "design__instance__area__stdcell": "01-openroad-globalrouting/or_metrics_out.json",
+  "design__instance__utilization__stdcell": "01-openroad-globalrouting/or_metrics_out.json"
+ },
+ "global_route_gate": {
+  "status": "pass",
+  "overflow": 0,
+  "step_completed": true,
+  "extra_iterations": 4,
+  "ndr_disabled": 0,
+  "evidence_file": "01-openroad-globalrouting/openroad-globalrouting.log"
+ },
+ "global_route__vias": 187222,
+ "global_route__wirelength": 2151936,
+ "design__instance__count": 27248,
+ "design__instance__area": 622115,
+ "design__instance__area__stdcell": 356034,
+ "design__instance__utilization__stdcell": 0.377919,
+ "last_step": "01-openroad-globalrouting",
+ "grt_extra_iterations": 4,
+ "grt_ndr_disabled": 0,
+ "rc": 0,
+ "wall_s": 14,
+ "base": "metronome_r3_d17",
+ "variant": "repaired_grt",
+ "overrides": {
+  "SYNTH_STRATEGY": "AREA 0",
+  "GRT_ADJUSTMENT": 0.15,
+  "GRT_ALLOW_CONGESTION": false,
+  "OPENROAD_THREADS": 4,
+  "STA_THREADS": 4
+ },
+ "frm": "OpenROAD.GlobalRouting",
+ "state": "repair_grt_area0/01-openroad-resizertimingpostgrt",
+ "to": "OpenROAD.GlobalRouting"
+}

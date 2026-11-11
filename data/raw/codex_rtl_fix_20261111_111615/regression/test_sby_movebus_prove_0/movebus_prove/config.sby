@@ -1,0 +1,17 @@
+[options]
+mode prove
+depth 1
+
+[engines]
+smtbmc bitwuzla
+
+[script]
+plugin -i slang
+read_slang --top md_movebus -I . md_movebus.v md_wgroup.v fv_movebus.sv
+prep -top md_movebus
+
+[files]
+../../rtl/md_movebus.v
+../../rtl/md_wgroup.v
+../../rtl/gen/md_defs.vh
+fv_movebus.sv

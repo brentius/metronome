@@ -1,0 +1,680 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+
+-- Executing script file `../model/design.ys' --
+
+1. Executing SLANG frontend.
+Top level design units:
+    md_core
+
+
+Build succeeded: 0 errors, 0 warnings
+
+1.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\md_core.$951'.
+Found and cleaned up 1 empty switch in `\md_core.$933'.
+Found and cleaned up 1 empty switch in `\md_core.$915'.
+Found and cleaned up 1 empty switch in `\md_core.$897'.
+Found and cleaned up 1 empty switch in `\md_core.$879'.
+Found and cleaned up 1 empty switch in `\md_core.$861'.
+Found and cleaned up 1 empty switch in `\md_core.$843'.
+Found and cleaned up 1 empty switch in `\md_core.$717'.
+Found and cleaned up 1 empty switch in `\md_core.$696'.
+Removing empty process `md_core.$675'.
+Removing empty process `md_core.$553'.
+Removing empty process `md_core.$364'.
+Removing empty process `md_core.$218'.
+Removing empty process `md_core.$72'.
+Removing empty process `md_core.$55'.
+Removing empty process `md_core.$51'.
+Found and cleaned up 1 empty switch in `\md_core.$13'.
+Cleaned up 10 empty switches.
+
+1.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 2 switch rules as full_case in process $829 in module md_core.
+Marked 5 switch rules as full_case in process $717 in module md_core.
+Marked 5 switch rules as full_case in process $696 in module md_core.
+Marked 3 switch rules as full_case in process $933 in module md_core.
+Marked 3 switch rules as full_case in process $915 in module md_core.
+Marked 3 switch rules as full_case in process $897 in module md_core.
+Marked 3 switch rules as full_case in process $879 in module md_core.
+Marked 3 switch rules as full_case in process $861 in module md_core.
+Marked 3 switch rules as full_case in process $843 in module md_core.
+Marked 5 switch rules as full_case in process $13 in module md_core.
+Removed a total of 0 dead cases.
+
+1.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 20 redundant assignments.
+Promoted 3 assignments to connections.
+
+1.4. Executing PROC_INIT pass (extract init attributes).
+
+1.5. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~64 debug messages>
+
+1.6. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\md_core.$829'.
+     1/3: $841
+     2/3: $835
+     3/3: $832
+Creating decoders for process `\md_core.$717'.
+     1/22: $fv_props.found$812
+     2/22: $fv_props.expected_engine$811
+     3/22: $fv_props.expected$810
+     4/22: $fv_props.found$796
+     5/22: $fv_props.expected_engine$795
+     6/22: $fv_props.expected$794
+     7/22: $fv_props.found$780
+     8/22: $fv_props.expected_engine$779
+     9/22: $fv_props.expected$778
+    10/22: $fv_props.found$764
+    11/22: $fv_props.expected_engine$763
+    12/22: $fv_props.expected$762
+    13/22: $fv_props.found$748
+    14/22: $fv_props.expected_engine$747
+    15/22: $fv_props.expected$746
+    16/22: $fv_props.found$732
+    17/22: $fv_props.expected_engine$731
+    18/22: $fv_props.expected$730
+    19/22: $823
+    20/22: $820
+    21/22: $817
+    22/22: $814
+Creating decoders for process `\md_core.$712'.
+     1/1: $715
+Creating decoders for process `\md_core.$696'.
+     1/9: $xpc$703
+     2/9: $xe$702
+     3/9: $xpc$705
+     4/9: $xe$704
+     5/9: $rr$701
+     6/9: $rr$709
+     7/9: $xpc$708
+     8/9: $xv$707
+     9/9: $xe$706
+Creating decoders for process `\md_core.$951'.
+Creating decoders for process `\md_core.$933'.
+     1/4: $946
+     2/4: $fv_props.g_wait[5].waiting_grants$940
+     3/4: $fv_props.g_wait[5].waiting_grants$941
+     4/4: $943
+Creating decoders for process `\md_core.$915'.
+     1/4: $928
+     2/4: $fv_props.g_wait[4].waiting_grants$922
+     3/4: $fv_props.g_wait[4].waiting_grants$923
+     4/4: $925
+Creating decoders for process `\md_core.$897'.
+     1/4: $910
+     2/4: $fv_props.g_wait[3].waiting_grants$904
+     3/4: $fv_props.g_wait[3].waiting_grants$905
+     4/4: $907
+Creating decoders for process `\md_core.$879'.
+     1/4: $892
+     2/4: $fv_props.g_wait[2].waiting_grants$886
+     3/4: $fv_props.g_wait[2].waiting_grants$887
+     4/4: $889
+Creating decoders for process `\md_core.$861'.
+     1/4: $874
+     2/4: $fv_props.g_wait[1].waiting_grants$868
+     3/4: $fv_props.g_wait[1].waiting_grants$869
+     4/4: $871
+Creating decoders for process `\md_core.$843'.
+     1/4: $856
+     2/4: $fv_props.g_wait[0].waiting_grants$850
+     3/4: $fv_props.g_wait[0].waiting_grants$851
+     4/4: $853
+Creating decoders for process `\md_core.$13'.
+     1/30: $x_pinb$49
+     2/30: $x_pina$48
+     3/30: $x_sync$47
+     4/30: $x_cap$46
+     5/30: $x_in$45
+     6/30: $x_pinb$43
+     7/30: $x_pina$42
+     8/30: $x_sync$41
+     9/30: $x_cap$40
+    10/30: $x_in$39
+    11/30: $x_pinb$37
+    12/30: $x_pina$36
+    13/30: $x_sync$35
+    14/30: $x_cap$34
+    15/30: $x_in$33
+    16/30: $x_pinb$31
+    17/30: $x_pina$30
+    18/30: $x_sync$29
+    19/30: $x_cap$28
+    20/30: $x_in$27
+    21/30: $x_pinb$25
+    22/30: $x_pina$24
+    23/30: $x_sync$23
+    24/30: $x_cap$22
+    25/30: $x_in$21
+    26/30: $x_pinb$19
+    27/30: $x_pina$18
+    28/30: $x_sync$17
+    29/30: $x_cap$16
+    30/30: $x_in$15
+
+1.7. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 3 empty switches in `\md_core.$829'.
+Removing empty process `md_core.$829'.
+Found and cleaned up 12 empty switches in `\md_core.$717'.
+Removing empty process `md_core.$717'.
+Found and cleaned up 1 empty switch in `\md_core.$712'.
+Removing empty process `md_core.$712'.
+Found and cleaned up 7 empty switches in `\md_core.$696'.
+Removing empty process `md_core.$696'.
+Removing empty process `md_core.$951'.
+Found and cleaned up 5 empty switches in `\md_core.$933'.
+Removing empty process `md_core.$933'.
+Found and cleaned up 5 empty switches in `\md_core.$915'.
+Removing empty process `md_core.$915'.
+Found and cleaned up 5 empty switches in `\md_core.$897'.
+Removing empty process `md_core.$897'.
+Found and cleaned up 5 empty switches in `\md_core.$879'.
+Removing empty process `md_core.$879'.
+Found and cleaned up 5 empty switches in `\md_core.$861'.
+Removing empty process `md_core.$861'.
+Found and cleaned up 5 empty switches in `\md_core.$843'.
+Removing empty process `md_core.$843'.
+Found and cleaned up 11 empty switches in `\md_core.$13'.
+Removing empty process `md_core.$13'.
+Cleaned up 64 empty switches.
+
+1.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_core.
+<suppressed ~45 debug messages>
+
+2. Executing PREP pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \md_core
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \md_core
+Removed 0 unused modules.
+Module md_core directly or indirectly contains formal properties -> setting "keep" attribute.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_core.
+
+2.3. Executing FUTURE pass.
+
+2.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_core.
+
+2.5. Executing CHECK pass (checking for obvious problems).
+Checking module md_core...
+Warning: multiple conflicting drivers for md_core.\i [31]:
+    port Y[34] of cell $674 ($buf)
+    port Y[31] of cell $56 ($buf)
+    port Y[40] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [30]:
+    port Y[33] of cell $674 ($buf)
+    port Y[30] of cell $56 ($buf)
+    port Y[39] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [29]:
+    port Y[32] of cell $674 ($buf)
+    port Y[29] of cell $56 ($buf)
+    port Y[38] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [28]:
+    port Y[31] of cell $674 ($buf)
+    port Y[28] of cell $56 ($buf)
+    port Y[37] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [27]:
+    port Y[30] of cell $674 ($buf)
+    port Y[27] of cell $56 ($buf)
+    port Y[36] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [26]:
+    port Y[29] of cell $674 ($buf)
+    port Y[26] of cell $56 ($buf)
+    port Y[35] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [25]:
+    port Y[28] of cell $674 ($buf)
+    port Y[25] of cell $56 ($buf)
+    port Y[34] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [24]:
+    port Y[27] of cell $674 ($buf)
+    port Y[24] of cell $56 ($buf)
+    port Y[33] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [23]:
+    port Y[26] of cell $674 ($buf)
+    port Y[23] of cell $56 ($buf)
+    port Y[32] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [22]:
+    port Y[25] of cell $674 ($buf)
+    port Y[22] of cell $56 ($buf)
+    port Y[31] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [21]:
+    port Y[24] of cell $674 ($buf)
+    port Y[21] of cell $56 ($buf)
+    port Y[30] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [20]:
+    port Y[23] of cell $674 ($buf)
+    port Y[20] of cell $56 ($buf)
+    port Y[29] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [19]:
+    port Y[22] of cell $674 ($buf)
+    port Y[19] of cell $56 ($buf)
+    port Y[28] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [18]:
+    port Y[21] of cell $674 ($buf)
+    port Y[18] of cell $56 ($buf)
+    port Y[27] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [17]:
+    port Y[20] of cell $674 ($buf)
+    port Y[17] of cell $56 ($buf)
+    port Y[26] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [16]:
+    port Y[19] of cell $674 ($buf)
+    port Y[16] of cell $56 ($buf)
+    port Y[25] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [15]:
+    port Y[18] of cell $674 ($buf)
+    port Y[15] of cell $56 ($buf)
+    port Y[24] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [14]:
+    port Y[17] of cell $674 ($buf)
+    port Y[14] of cell $56 ($buf)
+    port Y[23] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [13]:
+    port Y[16] of cell $674 ($buf)
+    port Y[13] of cell $56 ($buf)
+    port Y[22] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [12]:
+    port Y[15] of cell $674 ($buf)
+    port Y[12] of cell $56 ($buf)
+    port Y[21] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [11]:
+    port Y[14] of cell $674 ($buf)
+    port Y[11] of cell $56 ($buf)
+    port Y[20] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [10]:
+    port Y[13] of cell $674 ($buf)
+    port Y[10] of cell $56 ($buf)
+    port Y[19] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [9]:
+    port Y[12] of cell $674 ($buf)
+    port Y[9] of cell $56 ($buf)
+    port Y[18] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [8]:
+    port Y[11] of cell $674 ($buf)
+    port Y[8] of cell $56 ($buf)
+    port Y[17] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [7]:
+    port Y[10] of cell $674 ($buf)
+    port Y[7] of cell $56 ($buf)
+    port Y[16] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [6]:
+    port Y[9] of cell $674 ($buf)
+    port Y[6] of cell $56 ($buf)
+    port Y[15] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [5]:
+    port Y[8] of cell $674 ($buf)
+    port Y[5] of cell $56 ($buf)
+    port Y[14] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [4]:
+    port Y[7] of cell $674 ($buf)
+    port Y[4] of cell $56 ($buf)
+    port Y[13] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [3]:
+    port Y[6] of cell $674 ($buf)
+    port Y[3] of cell $56 ($buf)
+    port Y[12] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [2]:
+    port Y[5] of cell $674 ($buf)
+    port Y[2] of cell $56 ($buf)
+    port Y[11] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [1]:
+    port Y[4] of cell $674 ($buf)
+    port Y[1] of cell $56 ($buf)
+    port Y[10] of cell $50 ($buf)
+Warning: multiple conflicting drivers for md_core.\i [0]:
+    port Y[3] of cell $674 ($buf)
+    port Y[0] of cell $56 ($buf)
+    port Y[9] of cell $50 ($buf)
+Found and reported 32 problems.
+
+2.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_core..
+Removed 4 unused cells and 283 unused wires.
+<suppressed ~83 debug messages>
+
+2.7. Executing OPT pass (performing simple optimizations).
+
+2.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_core.
+<suppressed ~151 debug messages>
+
+2.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md_core'.
+Computing hashes of 729 cells of `\md_core'.
+Finding duplicate cells in `\md_core'.
+Computing hashes of 710 cells of `\md_core'.
+Finding duplicate cells in `\md_core'.
+<suppressed ~57 debug messages>
+Removed a total of 19 cells.
+
+2.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \md_core..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$199.
+    dead port 1/2 on $mux $procmux$187.
+    dead port 1/2 on $mux $procmux$175.
+    dead port 1/2 on $mux $procmux$163.
+    dead port 1/2 on $mux $procmux$151.
+    dead port 1/2 on $mux $procmux$139.
+    dead port 2/2 on $mux $procmux$117.
+    dead port 2/2 on $mux $procmux$112.
+    dead port 2/2 on $mux $procmux$104.
+    dead port 2/2 on $mux $procmux$97.
+    dead port 1/2 on $mux $procmux$94.
+    dead port 2/2 on $mux $procmux$89.
+    dead port 1/2 on $mux $procmux$86.
+Removed 13 multiplexer ports.
+<suppressed ~175 debug messages>
+
+2.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \md_core.
+Performed a total of 0 changes.
+
+2.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md_core'.
+Computing hashes of 697 cells of `\md_core'.
+Finding duplicate cells in `\md_core'.
+Computing hashes of 688 cells of `\md_core'.
+Finding duplicate cells in `\md_core'.
+<suppressed ~27 debug messages>
+Removed a total of 9 cells.
+
+2.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_core..
+Removed 0 unused cells and 191 unused wires.
+<suppressed ~1 debug messages>
+
+2.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_core.
+
+2.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \md_core..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~144 debug messages>
+
+2.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \md_core.
+Performed a total of 0 changes.
+
+2.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md_core'.
+Computing hashes of 688 cells of `\md_core'.
+Finding duplicate cells in `\md_core'.
+Removed a total of 0 cells.
+
+2.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_core..
+
+2.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_core.
+
+2.7.14. Finished fast OPT passes. (There is nothing left to do.)
+
+2.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 29 bits (of 32) from port B of cell md_core.$719 ($mod).
+Removed top 29 bits (of 32) from port B of cell md_core.$750 ($mod).
+Removed top 29 bits (of 32) from port B of cell md_core.$798 ($mod).
+Removed top 29 bits (of 32) from port B of cell md_core.$782 ($mod).
+Removed top 29 bits (of 32) from port B of cell md_core.$734 ($mod).
+Removed top 29 bits (of 32) from port B of cell md_core.$766 ($mod).
+Removed top 2 bits (of 3) from port B of cell md_core.$20 ($eq).
+Removed top 1 bits (of 3) from port B of cell md_core.$26 ($eq).
+Removed top 1 bits (of 3) from port B of cell md_core.$32 ($eq).
+Removed top 1 bits (of 2) from port B of cell md_core.$58 ($eq).
+Removed top 63 bits (of 64) from port A of cell md_core.$70 ($shl).
+Removed top 24 bits (of 64) from port Y of cell md_core.$70 ($shl).
+Removed top 6 bits (of 8) from port A of cell md_core.$77 ($and).
+Removed top 4 bits (of 8) from port A of cell md_core.$79 ($and).
+Removed top 3 bits (of 8) from port A of cell md_core.$87 ($and).
+Removed top 7 bits (of 8) from port A of cell md_core.$107 ($and).
+Removed top 7 bits (of 8) from port A of cell md_core.$109 ($and).
+Removed top 7 bits (of 8) from port A of cell md_core.$111 ($and).
+Removed top 7 bits (of 8) from port A of cell md_core.$113 ($and).
+Removed top 1 bits (of 2) from port B of cell md_core.$204 ($eq).
+Removed top 63 bits (of 64) from port A of cell md_core.$216 ($shl).
+Removed top 24 bits (of 64) from port Y of cell md_core.$216 ($shl).
+Removed top 6 bits (of 8) from port A of cell md_core.$223 ($and).
+Removed top 4 bits (of 8) from port A of cell md_core.$225 ($and).
+Removed top 3 bits (of 8) from port A of cell md_core.$233 ($and).
+Removed top 7 bits (of 8) from port A of cell md_core.$253 ($and).
+Removed top 7 bits (of 8) from port A of cell md_core.$255 ($and).
+Removed top 7 bits (of 8) from port A of cell md_core.$257 ($and).
+Removed top 7 bits (of 8) from port A of cell md_core.$259 ($and).
+Removed top 1 bits (of 2) from port B of cell md_core.$350 ($eq).
+Removed top 63 bits (of 64) from port A of cell md_core.$362 ($shl).
+Removed top 24 bits (of 64) from port Y of cell md_core.$362 ($shl).
+Removed top 6 bits (of 8) from port A of cell md_core.$369 ($and).
+Removed top 4 bits (of 8) from port A of cell md_core.$371 ($and).
+Removed top 3 bits (of 8) from port A of cell md_core.$379 ($and).
+Removed top 7 bits (of 8) from port A of cell md_core.$399 ($and).
+Removed top 7 bits (of 8) from port A of cell md_core.$401 ($and).
+Removed top 7 bits (of 8) from port A of cell md_core.$403 ($and).
+Removed top 7 bits (of 8) from port A of cell md_core.$405 ($and).
+Removed top 1 bits (of 2) from port B of cell md_core.$495 ($eq).
+Removed top 7 bits (of 8) from port B of cell md_core.$504 ($add).
+Removed top 2 bits (of 3) from port A of cell md_core.$522 ($ge).
+Removed top 2 bits (of 3) from port A of cell md_core.$525 ($ge).
+Removed top 1 bits (of 3) from port A of cell md_core.$528 ($ge).
+Removed top 1 bits (of 3) from port A of cell md_core.$531 ($ge).
+Removed top 2 bits (of 3) from port A of cell md_core.$595 ($or).
+Removed top 1 bits (of 3) from port B of cell md_core.$595 ($or).
+Removed top 1 bits (of 3) from port Y of cell md_core.$595 ($or).
+Removed top 1 bits (of 3) from port A of cell md_core.$615 ($or).
+Removed top 1 bits (of 3) from port B of cell md_core.$615 ($or).
+Removed top 1 bits (of 3) from port Y of cell md_core.$615 ($or).
+Removed top 1 bits (of 3) from port A of cell md_core.$635 ($or).
+Removed top 2 bits (of 3) from port B of cell md_core.$699 ($add).
+Removed top 29 bits (of 32) from port A of cell md_core.$718 ($add).
+Removed top 31 bits (of 32) from port B of cell md_core.$718 ($add).
+Removed top 28 bits (of 32) from port Y of cell md_core.$718 ($add).
+Removed top 29 bits (of 32) from port A of cell md_core.$733 ($add).
+Removed top 31 bits (of 32) from port B of cell md_core.$733 ($add).
+Removed top 28 bits (of 32) from port Y of cell md_core.$733 ($add).
+Removed top 29 bits (of 32) from port A of cell md_core.$749 ($add).
+Removed top 30 bits (of 32) from port B of cell md_core.$749 ($add).
+Removed top 28 bits (of 32) from port Y of cell md_core.$749 ($add).
+Removed top 29 bits (of 32) from port A of cell md_core.$765 ($add).
+Removed top 30 bits (of 32) from port B of cell md_core.$765 ($add).
+Removed top 28 bits (of 32) from port Y of cell md_core.$765 ($add).
+Removed top 29 bits (of 32) from port A of cell md_core.$781 ($add).
+Removed top 29 bits (of 32) from port B of cell md_core.$781 ($add).
+Removed top 28 bits (of 32) from port Y of cell md_core.$781 ($add).
+Removed top 29 bits (of 32) from port A of cell md_core.$797 ($add).
+Removed top 29 bits (of 32) from port B of cell md_core.$797 ($add).
+Removed top 28 bits (of 32) from port Y of cell md_core.$797 ($add).
+Removed top 29 bits (of 32) from port A of cell md_core.$815 ($lt).
+Removed top 29 bits (of 32) from port B of cell md_core.$815 ($lt).
+Removed top 29 bits (of 32) from port A of cell md_core.$837 ($add).
+Removed top 31 bits (of 32) from port B of cell md_core.$837 ($add).
+Removed top 28 bits (of 32) from port Y of cell md_core.$837 ($add).
+Removed top 28 bits (of 32) from mux cell md_core.$838 ($mux).
+Removed top 29 bits (of 32) from port A of cell md_core.$839 ($eq).
+Removed top 28 bits (of 32) from port B of cell md_core.$839 ($eq).
+Removed top 28 bits (of 32) from port A of cell md_core.$849 ($add).
+Removed top 31 bits (of 32) from port B of cell md_core.$849 ($add).
+Removed top 28 bits (of 32) from port Y of cell md_core.$849 ($add).
+Removed top 28 bits (of 32) from port A of cell md_core.$854 ($lt).
+Removed top 29 bits (of 32) from port B of cell md_core.$854 ($lt).
+Removed top 1 bits (of 4) from port B of cell md_core.$857 ($eq).
+Removed top 28 bits (of 32) from port A of cell md_core.$867 ($add).
+Removed top 31 bits (of 32) from port B of cell md_core.$867 ($add).
+Removed top 28 bits (of 32) from port Y of cell md_core.$867 ($add).
+Removed top 28 bits (of 32) from port A of cell md_core.$872 ($lt).
+Removed top 29 bits (of 32) from port B of cell md_core.$872 ($lt).
+Removed top 1 bits (of 4) from port B of cell md_core.$875 ($eq).
+Removed top 28 bits (of 32) from port A of cell md_core.$885 ($add).
+Removed top 31 bits (of 32) from port B of cell md_core.$885 ($add).
+Removed top 28 bits (of 32) from port Y of cell md_core.$885 ($add).
+Removed top 28 bits (of 32) from port A of cell md_core.$890 ($lt).
+Removed top 29 bits (of 32) from port B of cell md_core.$890 ($lt).
+Removed top 1 bits (of 4) from port B of cell md_core.$893 ($eq).
+Removed top 28 bits (of 32) from port A of cell md_core.$903 ($add).
+Removed top 31 bits (of 32) from port B of cell md_core.$903 ($add).
+Removed top 28 bits (of 32) from port Y of cell md_core.$903 ($add).
+Removed top 28 bits (of 32) from port A of cell md_core.$908 ($lt).
+Removed top 29 bits (of 32) from port B of cell md_core.$908 ($lt).
+Removed top 1 bits (of 4) from port B of cell md_core.$911 ($eq).
+Removed top 28 bits (of 32) from port A of cell md_core.$921 ($add).
+Removed top 31 bits (of 32) from port B of cell md_core.$921 ($add).
+Removed top 28 bits (of 32) from port Y of cell md_core.$921 ($add).
+Removed top 28 bits (of 32) from port A of cell md_core.$926 ($lt).
+Removed top 29 bits (of 32) from port B of cell md_core.$926 ($lt).
+Removed top 1 bits (of 4) from port B of cell md_core.$929 ($eq).
+Removed top 28 bits (of 32) from port A of cell md_core.$939 ($add).
+Removed top 31 bits (of 32) from port B of cell md_core.$939 ($add).
+Removed top 28 bits (of 32) from port Y of cell md_core.$939 ($add).
+Removed top 28 bits (of 32) from port A of cell md_core.$944 ($lt).
+Removed top 29 bits (of 32) from port B of cell md_core.$944 ($lt).
+Removed top 1 bits (of 4) from port B of cell md_core.$947 ($eq).
+Removed top 1 bits (of 3) from wire md_core.$615y.
+Removed top 1 bits (of 3) from wire md_core.$595y.
+Removed top 28 bits (of 32) from wire md_core.$939y.
+Removed top 28 bits (of 32) from wire md_core.$921y.
+Removed top 28 bits (of 32) from wire md_core.$718y.
+Removed top 28 bits (of 32) from wire md_core.$733y.
+Removed top 28 bits (of 32) from wire md_core.$749y.
+Removed top 28 bits (of 32) from wire md_core.$765y.
+Removed top 28 bits (of 32) from wire md_core.$781y.
+Removed top 28 bits (of 32) from wire md_core.$797y.
+Removed top 28 bits (of 32) from wire md_core.$837y.
+Removed top 28 bits (of 32) from wire md_core.$838y.
+Removed top 28 bits (of 32) from wire md_core.$849y.
+Removed top 28 bits (of 32) from wire md_core.$867y.
+Removed top 28 bits (of 32) from wire md_core.$903y.
+Removed top 28 bits (of 32) from wire md_core.$885y.
+
+2.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_core..
+Removed 0 unused cells and 16 unused wires.
+<suppressed ~1 debug messages>
+
+2.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.11. Executing OPT pass (performing simple optimizations).
+
+2.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_core.
+
+2.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md_core'.
+Computing hashes of 688 cells of `\md_core'.
+Finding duplicate cells in `\md_core'.
+Removed a total of 0 cells.
+
+2.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_core..
+
+2.11.4. Finished fast OPT passes.
+
+2.12. Executing SORT pass.
+
+2.13. Printing statistics.
+
+=== md_core ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      713 wires
+     5051 wire bits
+      118 public wires
+     2122 public wire bits
+       38 ports
+      758 port bits
+      688 cells
+       15   $add
+      196   $and
+        9   $bmux
+       23   $check
+        6   $demux
+       15   $dff
+       27   $eq
+       12   $ge
+       45   $logic_and
+       18   $logic_not
+       12   $logic_or
+       13   $lt
+        6   $mod
+       97   $mux
+        5   $not
+      181   $or
+        3   $reduce_bool
+        2   $reduce_or
+        3   $shl
+
+2.14. Executing CHECK pass (checking for obvious problems).
+Checking module md_core...
+Found and reported 0 problems.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `md_core'. Setting top module to md_core.
+
+3.1. Analyzing design hierarchy..
+Top module:  \md_core
+
+3.2. Analyzing design hierarchy..
+Top module:  \md_core
+Removed 0 unused modules.
+Module md_core directly or indirectly contains formal properties -> setting "keep" attribute.
+
+4. Executing jny backend.
+
+5. Executing RTLIL backend.
+Output filename: ../model/design.il
+
+Warnings: 32 unique messages, 32 total
+End of script. Logfile hash: 567c585f21
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Time spent: 3% 7x opt_expr (0 sec), 3% 5x opt_clean (0 sec), ...

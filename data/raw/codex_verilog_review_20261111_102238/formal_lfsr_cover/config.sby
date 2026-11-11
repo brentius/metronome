@@ -1,0 +1,16 @@
+[options]
+mode cover
+depth 8
+
+[engines]
+smtbmc bitwuzla
+
+[script]
+plugin -i slang
+read_slang --top fv_lfsr_top -I . md_lfsr.v fv_lfsr.sv
+prep -top fv_lfsr_top
+
+[files]
+../../rtl/md_lfsr.v
+../../rtl/gen/md_defs.vh
+fv_lfsr.sv

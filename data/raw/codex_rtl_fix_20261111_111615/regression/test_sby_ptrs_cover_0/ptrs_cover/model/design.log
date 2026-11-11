@@ -1,0 +1,506 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+
+-- Executing script file `../model/design.ys' --
+
+1. Executing SLANG frontend.
+Top level design units:
+    md_ptrs
+
+
+Build succeeded: 0 errors, 0 warnings
+
+1.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\md_ptrs.$502'.
+Removing empty process `md_ptrs.$298'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$285'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$281'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$173'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$142'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$107'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$54'.
+Cleaned up 7 empty switches.
+
+1.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 3 switch rules as full_case in process $477 in module md_ptrs.
+Marked 3 switch rules as full_case in process $416 in module md_ptrs.
+Marked 3 switch rules as full_case in process $345 in module md_ptrs.
+Marked 4 switch rules as full_case in process $142 in module md_ptrs.
+Marked 15 switch rules as full_case in process $107 in module md_ptrs.
+Marked 15 switch rules as full_case in process $54 in module md_ptrs.
+Removed a total of 0 dead cases.
+
+1.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 46 redundant assignments.
+Promoted 14 assignments to connections.
+
+1.4. Executing PROC_INIT pass (extract init attributes).
+
+1.5. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~79 debug messages>
+
+1.6. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\md_ptrs.$477'.
+     1/5: $500
+     2/5: $495
+     3/5: $490
+     4/5: $487
+     5/5: $479
+Creating decoders for process `\md_ptrs.$471'.
+     1/1: $476
+Creating decoders for process `\md_ptrs.$466'.
+     1/1: $469
+Creating decoders for process `\md_ptrs.$455'.
+     1/2: $464
+     2/2: $462
+Creating decoders for process `\md_ptrs.$442'.
+     1/2: $453
+     2/2: $447
+Creating decoders for process `\md_ptrs.$437'.
+     1/1: $440
+Creating decoders for process `\md_ptrs.$416'.
+     1/4: $431
+     2/4: $428
+     3/4: $425
+     4/4: $418
+Creating decoders for process `\md_ptrs.$412'.
+     1/1: $414
+Creating decoders for process `\md_ptrs.$400'.
+     1/1: $405
+Creating decoders for process `\md_ptrs.$395'.
+     1/1: $398
+Creating decoders for process `\md_ptrs.$384'.
+     1/2: $393
+     2/2: $391
+Creating decoders for process `\md_ptrs.$371'.
+     1/2: $382
+     2/2: $376
+Creating decoders for process `\md_ptrs.$366'.
+     1/1: $369
+Creating decoders for process `\md_ptrs.$345'.
+     1/4: $360
+     2/4: $357
+     3/4: $354
+     4/4: $347
+Creating decoders for process `\md_ptrs.$341'.
+     1/1: $343
+Creating decoders for process `\md_ptrs.$307'.
+     1/1: $311
+Creating decoders for process `\md_ptrs.$502'.
+Creating decoders for process `\md_ptrs.$293'.
+     1/1: $296
+Creating decoders for process `\md_ptrs.$285'.
+Creating decoders for process `\md_ptrs.$281'.
+Creating decoders for process `\md_ptrs.$173'.
+     1/10: $243
+     2/10: $240
+     3/10: $236
+     4/10: $231
+     5/10: $228
+     6/10: $222
+     7/10: $218
+     8/10: $215
+     9/10: $209
+    10/10: $205
+Creating decoders for process `\md_ptrs.$156'.
+     1/1: $159
+Creating decoders for process `\md_ptrs.$142'.
+     1/10: $hq$146
+     2/10: $hq$147
+     3/10: $hqd$150
+     4/10: $hqa$149
+     5/10: $hqw$148
+     6/10: $hqd$155
+     7/10: $hqa$154
+     8/10: $hqw$153
+     9/10: $hq$152
+    10/10: $hland$151
+Creating decoders for process `\md_ptrs.$107'.
+     1/19: $g_p[1].rq$121
+     2/19: $g_p[1].rq$122
+     3/19: $g_p[1].rq$125
+     4/19: $g_p[1].rqd$124
+     5/19: $g_p[1].rqa$123
+     6/19: $g_p[1].ptr$118
+     7/19: $g_p[1].ptr$119
+     8/19: $g_p[1].ptr$120
+     9/19: $g_p[1].rdyr$114
+    10/19: $g_p[1].rdyr$115
+    11/19: $g_p[1].dr$112
+    12/19: $g_p[1].lok$133
+    13/19: $g_p[1].land$132
+    14/19: $g_p[1].rdyr$131
+    15/19: $g_p[1].rq$130
+    16/19: $g_p[1].rqd$129
+    17/19: $g_p[1].dr$128
+    18/19: $g_p[1].rqa$127
+    19/19: $g_p[1].ptr$126
+Creating decoders for process `\md_ptrs.$54'.
+     1/19: $g_p[0].rq$68
+     2/19: $g_p[0].rq$69
+     3/19: $g_p[0].rq$72
+     4/19: $g_p[0].rqd$71
+     5/19: $g_p[0].rqa$70
+     6/19: $g_p[0].ptr$65
+     7/19: $g_p[0].ptr$66
+     8/19: $g_p[0].ptr$67
+     9/19: $g_p[0].rdyr$61
+    10/19: $g_p[0].rdyr$62
+    11/19: $g_p[0].dr$59
+    12/19: $g_p[0].lok$80
+    13/19: $g_p[0].land$79
+    14/19: $g_p[0].rdyr$78
+    15/19: $g_p[0].rq$77
+    16/19: $g_p[0].rqd$76
+    17/19: $g_p[0].dr$75
+    18/19: $g_p[0].rqa$74
+    19/19: $g_p[0].ptr$73
+
+1.7. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 5 empty switches in `\md_ptrs.$477'.
+Removing empty process `md_ptrs.$477'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$471'.
+Removing empty process `md_ptrs.$471'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$466'.
+Removing empty process `md_ptrs.$466'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$455'.
+Removing empty process `md_ptrs.$455'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$442'.
+Removing empty process `md_ptrs.$442'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$437'.
+Removing empty process `md_ptrs.$437'.
+Found and cleaned up 4 empty switches in `\md_ptrs.$416'.
+Removing empty process `md_ptrs.$416'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$412'.
+Removing empty process `md_ptrs.$412'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$400'.
+Removing empty process `md_ptrs.$400'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$395'.
+Removing empty process `md_ptrs.$395'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$384'.
+Removing empty process `md_ptrs.$384'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$371'.
+Removing empty process `md_ptrs.$371'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$366'.
+Removing empty process `md_ptrs.$366'.
+Found and cleaned up 4 empty switches in `\md_ptrs.$345'.
+Removing empty process `md_ptrs.$345'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$341'.
+Removing empty process `md_ptrs.$341'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$307'.
+Removing empty process `md_ptrs.$307'.
+Removing empty process `md_ptrs.$502'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$293'.
+Removing empty process `md_ptrs.$293'.
+Removing empty process `md_ptrs.$285'.
+Removing empty process `md_ptrs.$281'.
+Found and cleaned up 8 empty switches in `\md_ptrs.$173'.
+Removing empty process `md_ptrs.$173'.
+Found and cleaned up 1 empty switch in `\md_ptrs.$156'.
+Removing empty process `md_ptrs.$156'.
+Found and cleaned up 5 empty switches in `\md_ptrs.$142'.
+Removing empty process `md_ptrs.$142'.
+Found and cleaned up 19 empty switches in `\md_ptrs.$107'.
+Removing empty process `md_ptrs.$107'.
+Found and cleaned up 19 empty switches in `\md_ptrs.$54'.
+Removing empty process `md_ptrs.$54'.
+Cleaned up 79 empty switches.
+
+1.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_ptrs.
+<suppressed ~68 debug messages>
+
+2. Executing PREP pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \md_ptrs
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \md_ptrs
+Removed 0 unused modules.
+Module md_ptrs directly or indirectly contains formal properties -> setting "keep" attribute.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_ptrs.
+
+2.3. Executing FUTURE pass.
+
+2.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_ptrs.
+
+2.5. Executing CHECK pass (checking for obvious problems).
+Checking module md_ptrs...
+Found and reported 0 problems.
+
+2.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_ptrs..
+Removed 8 unused cells and 305 unused wires.
+<suppressed ~121 debug messages>
+
+2.7. Executing OPT pass (performing simple optimizations).
+
+2.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_ptrs.
+<suppressed ~1 debug messages>
+
+2.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md_ptrs'.
+Computing hashes of 534 cells of `\md_ptrs'.
+Finding duplicate cells in `\md_ptrs'.
+Computing hashes of 484 cells of `\md_ptrs'.
+Finding duplicate cells in `\md_ptrs'.
+Computing hashes of 471 cells of `\md_ptrs'.
+Finding duplicate cells in `\md_ptrs'.
+<suppressed ~189 debug messages>
+Removed a total of 63 cells.
+
+2.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \md_ptrs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$383.
+    dead port 2/2 on $mux $procmux$378.
+    dead port 2/2 on $mux $procmux$371.
+    dead port 2/2 on $mux $procmux$364.
+    dead port 2/2 on $mux $procmux$357.
+    dead port 1/2 on $mux $procmux$354.
+    dead port 2/2 on $mux $procmux$347.
+    dead port 1/2 on $mux $procmux$344.
+    dead port 1/2 on $mux $procmux$341.
+    dead port 2/2 on $mux $procmux$421.
+    dead port 2/2 on $mux $procmux$304.
+    dead port 2/2 on $mux $procmux$299.
+    dead port 2/2 on $mux $procmux$292.
+    dead port 1/2 on $mux $procmux$289.
+    dead port 2/2 on $mux $procmux$284.
+    dead port 2/2 on $mux $procmux$277.
+    dead port 1/2 on $mux $procmux$274.
+    dead port 2/2 on $mux $procmux$267.
+    dead port 1/2 on $mux $procmux$264.
+    dead port 1/2 on $mux $procmux$261.
+    dead port 2/2 on $mux $procmux$256.
+    dead port 2/2 on $mux $procmux$249.
+    dead port 2/2 on $mux $procmux$242.
+    dead port 2/2 on $mux $procmux$235.
+    dead port 1/2 on $mux $procmux$232.
+    dead port 2/2 on $mux $procmux$225.
+    dead port 1/2 on $mux $procmux$222.
+    dead port 1/2 on $mux $procmux$219.
+    dead port 2/2 on $mux $procmux$194.
+    dead port 2/2 on $mux $procmux$414.
+    dead port 2/2 on $mux $procmux$188.
+    dead port 1/2 on $mux $procmux$411.
+    dead port 2/2 on $mux $procmux$182.
+    dead port 2/2 on $mux $procmux$406.
+    dead port 2/2 on $mux $procmux$176.
+    dead port 2/2 on $mux $procmux$169.
+    dead port 1/2 on $mux $procmux$166.
+    dead port 2/2 on $mux $procmux$399.
+    dead port 1/2 on $mux $procmux$396.
+    dead port 2/2 on $mux $procmux$389.
+    dead port 1/2 on $mux $procmux$386.
+    dead port 2/2 on $mux $procmux$426.
+Removed 42 multiplexer ports.
+<suppressed ~242 debug messages>
+
+2.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \md_ptrs.
+Performed a total of 0 changes.
+
+2.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md_ptrs'.
+Computing hashes of 429 cells of `\md_ptrs'.
+Finding duplicate cells in `\md_ptrs'.
+Computing hashes of 419 cells of `\md_ptrs'.
+Finding duplicate cells in `\md_ptrs'.
+<suppressed ~30 debug messages>
+Removed a total of 10 cells.
+
+2.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_ptrs..
+Removed 0 unused cells and 107 unused wires.
+<suppressed ~1 debug messages>
+
+2.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_ptrs.
+<suppressed ~1 debug messages>
+
+2.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \md_ptrs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~182 debug messages>
+
+2.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \md_ptrs.
+Performed a total of 0 changes.
+
+2.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md_ptrs'.
+Computing hashes of 418 cells of `\md_ptrs'.
+Finding duplicate cells in `\md_ptrs'.
+Removed a total of 0 cells.
+
+2.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_ptrs..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+2.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_ptrs.
+
+2.7.14. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.15. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \md_ptrs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~182 debug messages>
+
+2.7.16. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \md_ptrs.
+Performed a total of 0 changes.
+
+2.7.17. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md_ptrs'.
+Computing hashes of 418 cells of `\md_ptrs'.
+Finding duplicate cells in `\md_ptrs'.
+Removed a total of 0 cells.
+
+2.7.18. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_ptrs..
+
+2.7.19. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_ptrs.
+
+2.7.20. Finished fast OPT passes. (There is nothing left to do.)
+
+2.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 10 bits (of 11) from port B of cell md_ptrs.$64 ($add).
+Removed top 10 bits (of 11) from port B of cell md_ptrs.$117 ($add).
+Removed top 1 bits (of 2) from port B of cell md_ptrs.$251 ($eq).
+Removed top 1 bits (of 2) from port B of cell md_ptrs.$268 ($eq).
+Removed top 10 bits (of 11) from port B of cell md_ptrs.$336 ($add).
+Removed top 1 bits (of 2) from port B of cell md_ptrs.$355 ($eq).
+Removed top 10 bits (of 11) from port B of cell md_ptrs.$407 ($add).
+Removed top 1 bits (of 2) from port B of cell md_ptrs.$426 ($eq).
+
+2.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_ptrs..
+
+2.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.11. Executing OPT pass (performing simple optimizations).
+
+2.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_ptrs.
+
+2.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md_ptrs'.
+Computing hashes of 418 cells of `\md_ptrs'.
+Finding duplicate cells in `\md_ptrs'.
+Removed a total of 0 cells.
+
+2.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_ptrs..
+
+2.11.4. Finished fast OPT passes.
+
+2.12. Executing SORT pass.
+
+2.13. Printing statistics.
+
+=== md_ptrs ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      439 wires
+     1445 wire bits
+      154 public wires
+      822 public wire bits
+       19 ports
+      102 port bits
+      418 cells
+        4   $add
+        9   $and
+       56   $check
+       52   $dff
+       44   $eq
+       74   $logic_and
+       32   $logic_not
+        2   $logic_or
+      121   $mux
+        2   $ne
+        4   $not
+       14   $or
+        2   $reduce_bool
+        2   $reduce_or
+
+2.14. Executing CHECK pass (checking for obvious problems).
+Checking module md_ptrs...
+Found and reported 0 problems.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `md_ptrs'. Setting top module to md_ptrs.
+
+3.1. Analyzing design hierarchy..
+Top module:  \md_ptrs
+
+3.2. Analyzing design hierarchy..
+Top module:  \md_ptrs
+Removed 0 unused modules.
+Module md_ptrs directly or indirectly contains formal properties -> setting "keep" attribute.
+
+4. Executing jny backend.
+
+5. Executing RTLIL backend.
+Output filename: ../model/design.il
+
+End of script. Logfile hash: f2533769ac
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Time spent: 3% 8x opt_expr (0 sec), 3% 6x opt_clean (0 sec), ...

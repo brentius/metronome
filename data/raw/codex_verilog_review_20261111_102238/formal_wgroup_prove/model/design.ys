@@ -1,0 +1,9 @@
+# running in C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove/src/
+plugin -i slang
+read_slang --top fv_wgroup md_wgroup.v fv_wgroup.sv
+prep -top fv_wgroup
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

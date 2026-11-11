@@ -1,0 +1,170 @@
+{
+ "metric_sources": {
+  "design__instance__count": "45-openroad-rcx/or_metrics_out.json",
+  "design__instance__area": "45-openroad-rcx/or_metrics_out.json",
+  "design__instance__area__stdcell": "45-openroad-rcx/or_metrics_out.json",
+  "design__instance__utilization__stdcell": "45-openroad-rcx/or_metrics_out.json",
+  "design__max_slew_violation__count__corner:nom_typ_1p20V_25C": "46-openroad-stapostpnr/nom_typ_1p20V_25C/sta.log",
+  "design__max_fanout_violation__count__corner:nom_typ_1p20V_25C": "46-openroad-stapostpnr/nom_typ_1p20V_25C/sta.log",
+  "design__max_cap_violation__count__corner:nom_typ_1p20V_25C": "46-openroad-stapostpnr/nom_typ_1p20V_25C/sta.log",
+  "timing__hold__ws__corner:nom_typ_1p20V_25C": "46-openroad-stapostpnr/nom_typ_1p20V_25C/sta.log",
+  "timing__setup__ws__corner:nom_typ_1p20V_25C": "46-openroad-stapostpnr/nom_typ_1p20V_25C/sta.log",
+  "global_route__vias": "35-openroad-detailedrouting/or_metrics_out.json",
+  "global_route__wirelength": "33-openroad-resizertimingpostgrt/or_metrics_out.json",
+  "antenna__violating__nets": "37-openroad-checkantennas-1/or_metrics_out.json",
+  "antenna__violating__pins": "37-openroad-checkantennas-1/or_metrics_out.json",
+  "route__drc_errors__iter:0": "35-openroad-detailedrouting/or_metrics_out.json",
+  "route__drc_errors__iter:1": "35-openroad-detailedrouting/or_metrics_out.json",
+  "route__drc_errors__iter:2": "35-openroad-detailedrouting/or_metrics_out.json",
+  "route__drc_errors__iter:3": "35-openroad-detailedrouting/or_metrics_out.json",
+  "route__drc_errors__iter:4": "35-openroad-detailedrouting/or_metrics_out.json",
+  "route__drc_errors__iter:5": "35-openroad-detailedrouting/or_metrics_out.json",
+  "route__drc_errors__iter:6": "35-openroad-detailedrouting/or_metrics_out.json",
+  "route__drc_errors__iter:7": "35-openroad-detailedrouting/or_metrics_out.json",
+  "route__drc_errors": "35-openroad-detailedrouting/or_metrics_out.json",
+  "route__wirelength": "35-openroad-detailedrouting/or_metrics_out.json",
+  "route__vias": "35-openroad-detailedrouting/or_metrics_out.json",
+  "route__drc_errors__iter:8": "35-openroad-detailedrouting/or_metrics_out.json",
+  "design__max_slew_violation__count__corner:nom_fast_1p32V_m40C": "46-openroad-stapostpnr/nom_fast_1p32V_m40C/sta.log",
+  "design__max_fanout_violation__count__corner:nom_fast_1p32V_m40C": "46-openroad-stapostpnr/nom_fast_1p32V_m40C/sta.log",
+  "design__max_cap_violation__count__corner:nom_fast_1p32V_m40C": "46-openroad-stapostpnr/nom_fast_1p32V_m40C/sta.log",
+  "timing__hold__ws__corner:nom_fast_1p32V_m40C": "46-openroad-stapostpnr/nom_fast_1p32V_m40C/sta.log",
+  "timing__setup__ws__corner:nom_fast_1p32V_m40C": "46-openroad-stapostpnr/nom_fast_1p32V_m40C/sta.log",
+  "design__max_slew_violation__count__corner:nom_slow_1p08V_125C": "46-openroad-stapostpnr/nom_slow_1p08V_125C/sta.log",
+  "design__max_fanout_violation__count__corner:nom_slow_1p08V_125C": "46-openroad-stapostpnr/nom_slow_1p08V_125C/sta.log",
+  "design__max_cap_violation__count__corner:nom_slow_1p08V_125C": "46-openroad-stapostpnr/nom_slow_1p08V_125C/sta.log",
+  "timing__hold__ws__corner:nom_slow_1p08V_125C": "46-openroad-stapostpnr/nom_slow_1p08V_125C/sta.log",
+  "timing__setup__ws__corner:nom_slow_1p08V_125C": "46-openroad-stapostpnr/nom_slow_1p08V_125C/sta.log"
+ },
+ "global_route_gate": {
+  "status": "pass",
+  "overflow": 0,
+  "step_completed": true,
+  "extra_iterations": 6,
+  "ndr_disabled": 0,
+  "evidence_file": "28-openroad-globalrouting/openroad-globalrouting.log"
+ },
+ "design__instance__count": 86095,
+ "design__instance__area": 1174060.0,
+ "design__instance__area__stdcell": 357272,
+ "design__instance__utilization__stdcell": 0.379232,
+ "design__max_slew_violation__count__corner:nom_typ_1p20V_25C": 90,
+ "design__max_fanout_violation__count__corner:nom_typ_1p20V_25C": 183,
+ "design__max_cap_violation__count__corner:nom_typ_1p20V_25C": 21,
+ "timing__hold__ws__corner:nom_typ_1p20V_25C": 0.2908867673513153,
+ "timing__setup__ws__corner:nom_typ_1p20V_25C": 5.1898558031192605,
+ "global_route__vias": 80,
+ "global_route__wirelength": 2149344,
+ "antenna__violating__nets": 1,
+ "antenna__violating__pins": 1,
+ "route__drc_errors__iter:0": 524,
+ "route__drc_errors__iter:1": 83,
+ "route__drc_errors__iter:2": 60,
+ "route__drc_errors__iter:3": 2,
+ "route__drc_errors__iter:4": 2,
+ "route__drc_errors__iter:5": 0,
+ "route__drc_errors__iter:6": 33,
+ "route__drc_errors__iter:7": 33,
+ "route__drc_errors": 0,
+ "route__wirelength": 1686327,
+ "route__vias": 199771,
+ "route__drc_errors__iter:8": 0,
+ "design__max_slew_violation__count__corner:nom_fast_1p32V_m40C": 15,
+ "design__max_fanout_violation__count__corner:nom_fast_1p32V_m40C": 183,
+ "design__max_cap_violation__count__corner:nom_fast_1p32V_m40C": 22,
+ "timing__hold__ws__corner:nom_fast_1p32V_m40C": 0.09124756764006213,
+ "timing__setup__ws__corner:nom_fast_1p32V_m40C": 9.106217371238273,
+ "design__max_slew_violation__count__corner:nom_slow_1p08V_125C": 222,
+ "design__max_fanout_violation__count__corner:nom_slow_1p08V_125C": 183,
+ "design__max_cap_violation__count__corner:nom_slow_1p08V_125C": 21,
+ "timing__hold__ws__corner:nom_slow_1p08V_125C": 0.6417205837241966,
+ "timing__setup__ws__corner:nom_slow_1p08V_125C": -1.9041142534987847,
+ "last_step": "61-misc-reportmanufacturability",
+ "grt_extra_iterations": 6,
+ "grt_ndr_disabled": 0,
+ "rc": 2,
+ "wall_s": 2838,
+ "base": "metronome_r3_d17",
+ "variant": "r5_pmemx891",
+ "overrides": {
+  "SYNTH_STRATEGY": "AREA 0",
+  "GRT_ADJUSTMENT": 0.15,
+  "GRT_ALLOW_CONGESTION": false,
+  "OPENROAD_THREADS": 8,
+  "STA_THREADS": 4,
+  "FP_PDN_VOFFSET": 17.39,
+  "RUN_POST_GRT_DESIGN_REPAIR": true,
+  "RUN_POST_GRT_RESIZER_TIMING": true,
+  "GRT_RESIZER_SETUP_SLACK_MARGIN": 2.0,
+  "GRT_RESIZER_HOLD_SLACK_MARGIN": 0.1,
+  "PL_RESIZER_SETUP_SLACK_MARGIN": 2.0,
+  "MACROS": {
+   "RM_IHPSG13_1P_256x64_c2_bm_bist": {
+    "instances": {
+     "u_pmem0.u_sram": {
+      "location": [
+       891.32,
+       3.78
+      ],
+      "orientation": "FS"
+     },
+     "u_pmem1.u_sram": {
+      "location": [
+       891.32,
+       585.9
+      ],
+      "orientation": "N"
+     }
+    },
+    "gds": [
+     "pdk_dir::libs.ref/sg13cmos5l_sram/gds/RM_IHPSG13_1P_256x64_c2_bm_bist.gds"
+    ],
+    "lef": [
+     "pdk_dir::libs.ref/sg13cmos5l_sram/lef/RM_IHPSG13_1P_256x64_c2_bm_bist.lef"
+    ],
+    "lib": {
+     "*_typ_*": [
+      "pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_256x64_c2_bm_bist_typ_1p20V_25C.lib"
+     ],
+     "*_fast_*": [
+      "pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_256x64_c2_bm_bist_fast_1p32V_m55C.lib"
+     ],
+     "*_slow_*": [
+      "pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_256x64_c2_bm_bist_slow_1p08V_125C.lib"
+     ]
+    }
+   },
+   "RM_IHPSG13_1P_512x32_c2_bm_bist": {
+    "instances": {
+     "u_dmem.u_sram": {
+      "location": [
+       3.36,
+       3.78
+      ],
+      "orientation": "FS"
+     }
+    },
+    "gds": [
+     "pdk_dir::libs.ref/sg13cmos5l_sram/gds/RM_IHPSG13_1P_512x32_c2_bm_bist.gds"
+    ],
+    "lef": [
+     "pdk_dir::libs.ref/sg13cmos5l_sram/lef/RM_IHPSG13_1P_512x32_c2_bm_bist.lef"
+    ],
+    "lib": {
+     "*_typ_*": [
+      "pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_512x32_c2_bm_bist_typ_1p20V_25C.lib"
+     ],
+     "*_fast_*": [
+      "pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_512x32_c2_bm_bist_fast_1p32V_m55C.lib"
+     ],
+     "*_slow_*": [
+      "pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_512x32_c2_bm_bist_slow_1p08V_125C.lib"
+     ]
+    }
+   }
+  }
+ },
+ "frm": "OpenROAD.Floorplan",
+ "state": "map_area0/12-openroad-staprepnr",
+ "to": null
+}

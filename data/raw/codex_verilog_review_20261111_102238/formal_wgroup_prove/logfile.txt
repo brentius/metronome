@@ -1,0 +1,325 @@
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] Removing directory 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove'.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\md_wgroup.v' to 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove\src\md_wgroup.v'.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\fv_wgroup.sv' to 'C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove\src\fv_wgroup.sv'.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] engine_0: smtbmc bitwuzla
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: starting process "cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove/src& yosys -ql ../model/design.log ../model/design.ys"
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.sel [17] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.sel [16] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.sel [15] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.sel [14] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.sel [13] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.sel [12] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.sel [11] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.sel [10] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.sel [9] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.sel [8] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.sel [7] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.sel [6] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.sel [5] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.sel [4] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.sel [3] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.sel [2] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.sel [1] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.sel [0] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [47] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [46] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [45] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [44] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [43] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [42] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [41] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [40] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [39] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [38] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [37] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [36] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [35] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [34] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [33] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [32] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [31] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [30] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [29] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [28] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [27] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [26] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [25] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [24] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [23] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [22] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [21] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [20] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [19] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [18] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [17] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [16] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [15] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [14] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [13] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [12] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [11] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [10] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [9] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [8] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [7] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [6] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [5] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [4] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [3] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [2] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [1] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.data [0] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.hit [0] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.sel [5] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.sel [4] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.sel [3] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.sel [2] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.sel [1] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.sel [0] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [29] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [28] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [27] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [26] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [25] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [24] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [23] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [22] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [21] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [20] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [19] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [18] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [17] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [16] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [15] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [14] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [13] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [12] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [11] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [10] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [9] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [8] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [7] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [6] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [5] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [4] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [3] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [2] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [1] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.data [0] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.hit [1] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.sel [5] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.sel [4] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.sel [3] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.sel [2] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.sel [1] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.sel [0] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [23] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [22] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [21] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [20] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [19] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [18] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [17] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [16] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [15] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [14] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [13] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [12] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [11] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [10] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [9] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [8] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [7] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [6] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [5] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [4] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [3] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [2] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [1] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.data [0] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.hit [2] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.hit [1] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c2.hit [0] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.hit [5] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.hit [4] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.hit [3] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.hit [2] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.hit [1] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c1.hit [0] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.hit [5] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.hit [4] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.hit [3] is used but has no driver.
+SBY 10:23:04 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: Warning: Wire fv_wgroup.\c0.hit [2] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] base: finished (returncode=0)
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: starting process "cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove/model& yosys -ql design_prep.log design_prep.ys"
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [47] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [46] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [45] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [44] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [43] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [42] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [41] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [40] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.sel [17] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.sel [16] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.sel [15] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [39] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [38] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [37] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [36] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [35] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [34] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [33] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [32] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.sel [14] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.sel [13] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.sel [12] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [31] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [30] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [29] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [28] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [27] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [26] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [25] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [24] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [23] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [22] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [21] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [20] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [19] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [18] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [17] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [16] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.sel [5] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.sel [4] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [15] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [14] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [13] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [12] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [11] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [10] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [9] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [8] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.sel [11] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.sel [10] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.sel [9] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.sel [3] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.sel [2] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [7] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [6] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [5] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [4] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [3] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [2] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [1] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.data [0] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.sel [1] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.sel [0] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.hit [2] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.hit [1] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c2.hit [0] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.hit [5] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.hit [4] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.hit [3] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.hit [2] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.hit [1] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.hit [0] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [23] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [22] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [21] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [20] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [19] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [18] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [17] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [16] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.sel [8] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.sel [7] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.sel [6] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [15] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [14] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [13] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [12] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [11] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [10] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [9] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [8] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.sel [5] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.sel [4] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.sel [3] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [7] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [6] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [5] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [4] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [3] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [2] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [1] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.data [0] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [29] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [28] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [27] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [26] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [25] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.sel [5] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [24] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [23] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [22] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [21] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [20] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.sel [4] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [19] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [18] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [17] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [16] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [15] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.sel [3] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [14] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [13] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [12] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [11] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [10] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.sel [2] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.sel [2] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.sel [1] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c0.sel [0] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [9] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [8] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [7] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [6] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [5] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.sel [1] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [4] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [3] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [2] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [1] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.data [0] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.sel [0] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.hit [5] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.hit [4] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.hit [3] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.hit [2] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.hit [1] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: Warning: Wire fv_wgroup.\c1.hit [0] is used but has no driver.
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] prep: finished (returncode=0)
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] smt2: starting process "cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove/model& yosys -ql design_smt2.log design_smt2.ys"
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] smt2: finished (returncode=0)
+SBY 10:23:05 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] engine_0.basecase: starting process "cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove& yosys-smtbmc -s bitwuzla --presat --unroll --noprogress -t 1  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2"
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] engine_0.induction: starting process "cd C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove& yosys-smtbmc -s bitwuzla --presat --unroll -i --noprogress -t 1  --append 0 --dump-vcd engine_0/trace_induct.vcd --dump-yw engine_0/trace_induct.yw --dump-vlogtb engine_0/trace_induct_tb.v --dump-smtc engine_0/trace_induct.smtc model/design_smt2.smt2"
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] engine_0.induction: ##   0:00:00  Solver: bitwuzla
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] engine_0.induction: ##   0:00:00  Trying induction in step 1..
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] engine_0.induction: ##   0:00:00  Temporal induction successful.
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] engine_0.induction: ##   0:00:00  Status: passed
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] engine_0.basecase: ##   0:00:00  Solver: bitwuzla
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 0..
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 0..
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] engine_0.basecase: ##   0:00:00  Status: passed
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] engine_0.basecase: finished (returncode=0)
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] engine_0.basecase: Status returned by engine for basecase: pass
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] engine_0.induction: finished (returncode=0)
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] engine_0.induction: Status returned by engine for induction: pass
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:02 (2)
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] summary: Elapsed process time unvailable on Windows
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] summary: engine_0 (smtbmc bitwuzla) returned pass for basecase
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] summary: engine_0 (smtbmc bitwuzla) returned pass for induction
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] summary: engine_0 did not produce any traces
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] summary: successful proof by k-induction.
+SBY 10:23:06 [C:\Users\b_yee23\AppData\Local\Temp\pytest-of-b_yee23\pytest-16\test_sby_wgroup_prove_0\wgroup_prove] DONE (PASS, rc=0)

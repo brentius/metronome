@@ -1,0 +1,29 @@
+{
+ "timing__hold__ws__corner:nom_fast_1p32V_m40C": -0.4784842102411638,
+ "timing__setup__ws__corner:nom_fast_1p32V_m40C": -94.35828030445425,
+ "timing__hold__ws__corner:nom_slow_1p08V_125C": -0.7061096351929163,
+ "timing__setup__ws__corner:nom_slow_1p08V_125C": -272.955966000085,
+ "timing__hold__ws__corner:nom_typ_1p20V_25C": -0.5542824689451182,
+ "timing__setup__ws__corner:nom_typ_1p20V_25C": -160.39898752098182,
+ "design__max_slew_violation__count": 3355,
+ "design__max_cap_violation__count": 27,
+ "timing__hold__ws": -0.7061096351929163,
+ "timing__setup__ws": -272.955966000085,
+ "timing__hold__tns": -78.50160921280856,
+ "timing__setup__tns": -10319.008943845916,
+ "last_step": "12-openroad-staprepnr",
+ "rc": 0,
+ "wall_s": 102,
+ "base": "metronome_r3_d17",
+ "variant": "map_area0",
+ "overrides": {
+  "SYNTH_STRATEGY": "AREA 0",
+  "GRT_ADJUSTMENT": 0.15,
+  "GRT_ALLOW_CONGESTION": false,
+  "OPENROAD_THREADS": 8,
+  "STA_THREADS": 4
+ },
+ "frm": null,
+ "state": null,
+ "to": "OpenROAD.STAPrePNR"
+}

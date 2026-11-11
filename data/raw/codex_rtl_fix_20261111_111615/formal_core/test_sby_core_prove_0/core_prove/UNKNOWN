@@ -1,0 +1,7 @@
+Elapsed clock time [H:MM:SS (secs)]: 0:00:08 (8)
+Elapsed process time unvailable on Windows
+engine_0 (smtbmc bitwuzla) returned pass for basecase
+engine_0 (smtbmc bitwuzla) returned FAIL for induction
+counterexample trace [induction]: engine_0\trace_induct.vcd
+counterexample trace [induction]: engine_0\trace_induct.yw
+  failed assertion md_core._witness_.check_942 at fv_core.sv:55.29-55.58

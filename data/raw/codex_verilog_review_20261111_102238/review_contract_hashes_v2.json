@@ -1,0 +1,22 @@
+[
+    {
+        "Path":  "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\wiki\\SPEC.md",
+        "Hash":  "8148ED29E99065DBC8E921E50312FF4DABB11F16DCD8BDBC9DB5710F37ADABBF"
+    },
+    {
+        "Path":  "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\code\\md\\machine.py",
+        "Hash":  "2211107EC6918058B874CEA355C4DC8F5EE9716172FA543A2841E9BB11A7F462"
+    },
+    {
+        "Path":  "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\code\\host\\metronome_tools\\check.py",
+        "Hash":  "60A109865412B0B8D8747FBA7C36C790AAFBFAF4B943605DD319147B42384F6D"
+    },
+    {
+        "Path":  "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\code\\tests\\lockstep\\lockstep_tb.py",
+        "Hash":  "56E1C0E29520BA5E51D214A1E32B6C8D97E56497AD4300BECD95201DB78C33A1"
+    },
+    {
+        "Path":  "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\code\\tests\\lockstep\\test_lockstep.py",
+        "Hash":  "94D686DEC8F5AB2AF469936BE3DECF4B27329AB232BA068CA11FAF8C7AD65CA4"
+    }
+]

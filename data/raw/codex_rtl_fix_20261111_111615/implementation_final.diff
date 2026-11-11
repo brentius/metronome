@@ -1,0 +1,419 @@
+--- baseline/wiki/ARCHITECTURE.md
++++ wiki/ARCHITECTURE.md
+@@ -150,7 +150,7 @@
+ 
+ ### 6.5 Cores (x2)
+ 
+-Each core has its own program SRAM (256 words of 64 bits, one `RM_IHPSG13_1P_256x64_c2_bm_bist`), an instruction register, and three move buses into the commons. Engines are assigned to a core statically. A core runs bursts to completion, picking the highest-priority ready engine when it is idle.
++Each core has its own program SRAM (256 words of 64 bits, one `RM_IHPSG13_1P_256x64_c2_bm_bist`), an instruction register, and three move buses into the commons. Engines are assigned to a core statically. A core runs bursts to completion and dispatches ready engines in round-robin order when free (SPEC 5, D17). A three-bit cursor advances only on dispatch, preventing recurring engines from starving a ready peer.
+ 
+ Two cores exist for one reason: Ethernet transmit and receive each need most of a 6-cycle budget, and a single SRAM yields one instruction per cycle. With one core each, a per-bit burst of two instructions takes three cycles including the one-cycle fetch latency (calculated from the synchronous SRAM read), leaving half the budget spare.
+ 
+--- baseline/wiki/SPEC.md
++++ wiki/SPEC.md
+@@ -58,7 +58,7 @@
+ 
+ ## 5. Cores (c = 0..1)
+ 
+-Each core has a 256 x 64 program memory with a synchronous read: the address registered at the end of cycle t selects the word `I` visible during cycle t+1. State: `XV` (executing), `XE` (engine, 3 bits), `XPC` (8 bits).
++Each core has a 256 x 64 program memory with a synchronous read: the address registered at the end of cycle t selects the word `I` visible during cycle t+1. State: `XV` (executing), `XE` (engine, 3 bits), `XPC` (8 bits), `RR` (3-bit next engine ID, reset 0).
+ 
+ In cycle t, with `G[i]` the guard conditions (section 7) evaluated on cycle-t state, `E.*` referring to engine `XE`:
+ 
+@@ -73,12 +73,16 @@
+     if I.pause: PC[XE]' = npc; RUNNING[XE]' = 0; free = 1
+     else:       addr = npc; XPC' = npc; XV' = 1
+ if free:
+-    if RUN_global and some engine e has CORE==c and READY (lowest e wins):
++    if RUN_global and some engine e has CORE==c and READY:
++        e = first ready engine bound to c in circular order RR, RR+1, ... (mod N_ENGINES)
+         d = (W0C[e] != 0 && G_e[W0C[e]]) ? W0H[e] : (W1C[e] != 0 && G_e[W1C[e]]) ? W1H[e] : PC[e]
+         addr = d; XPC' = d; XE' = e; XV' = 1; READY[e]' = 0; RUNNING[e]' = 1
++        RR' = (e + 1) mod N_ENGINES
+     else:
+         XV' = 0
+ ```
++
++`RR` holds its value unless a dispatch occurs or reset is asserted. The circular scan skips engines that are not ready or are assigned to the other core. This round-robin policy (D17) replaces lowest-ID priority: a continuously ready engine can be overtaken by at most one burst from each peer before dispatch. The clock response bound additionally requires finite bursts, `RUN_global = 1`, and fixed program/configuration during the response interval. Write-group arbitration in section 6 retains its lowest-(core, move) priority.
+ 
+ `G_e` evaluates engine-relative guards for engine e. A trigger in cycle t makes `READY` visible in t+1, so the earliest dispatch is t+1 and the first instruction executes in t+2. A burst of n instructions on an otherwise idle core occupies cycles t+2 .. t+n+1. A core finishing a burst can dispatch another ready engine in the same cycle, so back-to-back bursts have no gap. Host writes to a core's program memory take priority over fetches; load programs with `RUN_global = 0` and no burst in flight.
+ 
+--- baseline/wiki/TOOLCHAIN.md
++++ wiki/TOOLCHAIN.md
+@@ -75,7 +75,7 @@
+ 
+ 1. **Burst rule.** Pause nodes are removed from the control-flow graph, and any remaining cycle is an error that names the loop (for example `s(0x00) -> t(0x01) -> s(0x00)`). This covers every assembled instruction, reachable or not. An instruction that continues into unprogrammed memory is also an error.
+ 2. **Burst lengths.** For each engine the entries are its start PC, its watcher handlers, and every resume point after a reachable `pause`. For each entry the checker reports the longest path (instructions) and the position of the last `E.SYM` write. Conditions are not correlated, so infeasible paths count. The result is conservative.
+-3. **Response time.** `resp = own worst burst + 1 + W`. W is the sum of the longest bursts of every other enabled engine on the same core, each counted once. This is conservative: it assumes each other engine fires once before ours runs, and it does not model starvation by a faster-triggering lower-numbered engine.
++3. **Response time.** `resp = own worst burst + 1 + W`. W is the sum of the longest bursts of every other enabled engine on the same core, each counted once. D17 round-robin dispatch makes this conservative: a ready engine gets its turn before any peer can be dispatched twice. An in-flight peer's remaining burst also fits within its counted longest burst. The bound assumes terminating bursts, RUN remains set, and the loaded program, engine assignments and enabled-engine set are not reconfigured during the interval. It does not bound time while RUN is stopped or the host changes configuration/programs.
+ 4. **Budgets.**
+    - For `BGg.BEAT` and `BGg.TAPk` triggers the commit window is derived from INC, MOD and Tk. The last `E.SYM` write must land no later than the commit beat, otherwise the symbol would be LATE.
+    - Also for `BGg.BEAT` and `BGg.TAPk` triggers, response + 1 must not exceed the minimum trigger spacing `floor(MOD/INC)`, otherwise OVR could occur. Edge re-alignment is not modelled, and the checker warns when it is configured.
+--- baseline/wiki/VERIFICATION.md
++++ wiki/VERIFICATION.md
+@@ -19,7 +19,9 @@
+ 
+ ## 2. Lockstep: RTL against the reference model, every pin, every cycle
+ 
+-`code/tests/lockstep/` drives the RTL (Icarus Verilog via cocotb) and the model with identical per-cycle pin stimulus and compares `uo_out`, `uio_out` and `uio_oe` on every clock. Programs and configuration are loaded through the real host SPI pins, using an SPI encoder in the test that is independent of the model's own helpers, so the host link is always under test. With `LOCKSTEP_PROBE=1` the harness also compares architectural registers each cycle (beat-generator phase and flags, engine PC/READY/RUNNING/ARMED/symbols/sticky flags, accumulator, flags, counters, shifters, LFSRs) and reports the first divergence, which takes debugging from tens of thousands of cycles down to one.
++`code/tests/lockstep/` drives the RTL (Icarus Verilog via cocotb) and the model with identical per-cycle pin stimulus and compares `uo_out`, `uio_out` and `uio_oe` on every clock. Programs and configuration are loaded through the real host SPI pins, using an SPI encoder in the test that is independent of the model's own helpers, so the host link is always under test. With `LOCKSTEP_PROBE=1` the harness also compares architectural registers each cycle (beat-generator phase and flags, engine PC/READY/RUNNING/ARMED/symbols/sticky flags, accumulator, flags, counters, shifters, LFSRs, and each core's XV/XE/XPC/RR). A mismatch or unavailable/unresolved required probe now fails immediately. Handles are cached for the run. Probes require RTL hierarchy and should be disabled for flattened gate-level netlists. Earlier probe-enabled results below used diagnostic logging only; their pass/fail assertions checked pins.
++
++D17 regressions (`test_round_robin_fairness_core0/core1`) load two recurring ALWAYS engines and a third doorbell engine over SPI. They failed under the old fixed priority and pass under round-robin within the checker's seven-cycle response bound. `test_probe_validation.py` verifies that deliberately mismatched, unavailable, missing-hierarchy and unresolved-value probes produce failing cocotb results with the expected diagnostic.
+ 
+ Scenarios:
+ - **smoke**: reset, then read the ID register.
+@@ -49,12 +51,13 @@
+ | engine | 4, 9a.1 | 20 | formally proven, k-induction depth 4 |
+ | LFSR / CRC | 6.1 | 8 | formally proven, k-induction depth 3 |
+ | accumulator flags | 6.1, 9a.7 | 8 | formally proven, k-induction depth 3 |
++| round-robin core dispatch | 5, D17 | circular selection, cursor reset/hold/advance, at most five peer dispatches before a continuously eligible engine | formally proven, k-induction (configured depth 9); covers reached within depth 18 |
+ 
+ Vacuity is guarded in two ways:
+ - **Cover tasks.** Every proof has a cover task that shows the events it talks about are reachable.
+ - **Mutations.** Nine deliberate RTL mutations were made: wrong wrap compare, tap boundary, reversed priority, dropped hazard guard and others. The proofs rejected all nine, three of them only as induction failures rather than concrete traces.
+ 
+-Not covered: SPI byte framing, watcher dispatch (it moved into the core during the area pass), the cross-cycle claim that each tap fires once per beat, and liveness.
++Not covered formally: SPI byte framing, watcher dispatch (it moved into the core during the area pass), the cross-cycle claim that each tap fires once per beat, and clock-time liveness without software obligations. The core proof bounds overtaking in dispatches; finite burst lengths and stable RUN/configuration are needed to convert this into the checker's clock bound.
+ 
+ ## 4. Protocols, end to end
+ 
+--- baseline/code/rtl/md_core.v
++++ code/rtl/md_core.v
+@@ -58,6 +58,7 @@
+ /* verilator lint_on UNUSEDPARAM */
+     reg       xv;
+     reg [7:0] xpc;
++    reg [2:0] rr;       // next engine ID to consider (round-robin, D17)
+ 
+     // header code + offset as a 32-bit index (width-clean)
+     function integer ix;
+@@ -167,18 +168,25 @@
+     assign pause_o = xv & i_pause;
+     assign npc_o   = npc;
+ 
+-    // dispatch: lowest ready engine bound to this core (one-hot priority), then its watchers
++    // Circular priority: prefer candidates at/above rr, otherwise wrap to the lowest candidate.
++    // Advance only on dispatch, so a continuously ready engine sees each peer at most once before its turn.
+     wire [NE-1:0] mine = (C != 0) ? e_core : ~e_core;
+     wire [NE-1:0] cand = e_ready & mine & {NE{run_g}};
++    wire [NE-1:0] after_rr, eligible;
++    assign eligible = (|after_rr) ? after_rr : cand;
+     wire [NE-1:0] lower;
+     assign lower[0] = 1'b0;
+     genvar g;
+     generate
++        for (g = 0; g < NE; g = g + 1) begin : g_rr
++            assign after_rr[g] = cand[g] & (g[2:0] >= rr);
++        end
+         for (g = 1; g < NE; g = g + 1) begin : g_low
+-            assign lower[g] = lower[g-1] | cand[g-1];
++            assign lower[g] = lower[g-1] | eligible[g-1];
+         end
+     endgenerate
+-    wire [NE-1:0] win = cand & ~lower;
++    wire [NE-1:0] win = eligible & ~lower;
++    localparam integer LAST_ENGINE = NE - 1;
+ 
+     reg [7:0] d_pc, d_w0h, d_w1h;
+     reg [5:0] d_w0c, d_w1c;
+@@ -223,8 +231,10 @@
+             xv  <= 1'b0;
+             xe  <= 3'd0;
+             xpc <= 8'd0;
++            rr  <= 3'd0;
+         end else begin
+             xv <= fetch_en;
++            if (disp_o) rr <= (disp_e == LAST_ENGINE[2:0]) ? 3'd0 : disp_e + 3'd1;
+             if (cont) begin
+                 xpc <= npc;
+             end else if (disp_o) begin
+--- baseline/code/host/metronome_tools/check.py
++++ code/host/metronome_tools/check.py
+@@ -6,6 +6,8 @@
+ in t+2, so a burst of n instructions occupies cycles t+2 .. t+n+1 and the last instruction runs n+1 cycles after the
+ trigger.  An engine sharing a core can additionally wait for other engines' bursts; the bound used here is the
+ conservative "own burst + longest burst of every other enabled engine on that core" (each other engine counted once).
++D17 round-robin dispatch prevents a ready engine being overtaken twice by the same peer. This bound assumes
++RUN stays set and the image's program, engine assignments and enabled-engine set are not reconfigured during it.
+ """
+ from __future__ import annotations
+ 
+--- baseline/code/tests/lockstep/lockstep_tb.py
++++ code/tests/lockstep/lockstep_tb.py
+@@ -26,17 +26,26 @@
+     return int(v) if v.is_resolvable else None
+ 
+ 
+-def probe(dut, model) -> dict[str, tuple]:
+-    """Architectural register state, RTL vs model (LOCKSTEP_PROBE=1). Names follow the RTL hierarchy at the time
+-    of writing; a missing handle is reported as None on the RTL side rather than failing the run."""
++def probe(dut, model, handles=None) -> dict[str, tuple]:
++    """Required RTL state vs model; cache handles per run, fail on unavailable/unresolved state.
++
++    Probes require the RTL hierarchy. Leave LOCKSTEP_PROBE off for flattened gate-level netlists.
++    """
++    if handles is None:
++        handles = {}
++
+     def g(path):
+-        h = dut
+-        try:
+-            for part in path.split("."):
+-                h = h[int(part)] if part.isdigit() else getattr(h, part)
+-            return _val(h)
+-        except (AttributeError, IndexError, KeyError):
+-            return None
++        if path not in handles:
++            h = dut
++            try:
++                for part in path.split("."):
++                    h = h[int(part)] if part.isdigit() else getattr(h, part)
++            except (AttributeError, IndexError, KeyError) as exc:
++                raise AssertionError(f"internal probe unavailable: {path}") from exc
++            handles[path] = h
++        value = _val(handles[path])
++        assert value is not None, f"internal probe unresolved: {path}"
++        return value
+     st = {}
+     for k, b in enumerate(model.bg):
+         for r, m_ in (("ph", "PH"), ("run", "RUN"), ("arm", "ARM"), ("sc", "SC"), ("sp", "SP")):
+@@ -47,7 +56,7 @@
+                       ("en", "EN"), ("trig", "TRIG"), ("bg", "BG"), ("core", "CORE")):
+             st[f"eng{k}.{m_}"] = (g(f"g_eng.{k}.u.{r}"), getattr(e, m_))
+     st["acc.A"] = (g("u_acc.a"), model.acc.A)
+-    st["acc.ZCN"] = (None if g("u_acc.z") is None else (g("u_acc.z"), g("u_acc.c"), g("u_acc.n")),
++    st["acc.ZCN"] = ((g("u_acc.z"), g("u_acc.c"), g("u_acc.n")),
+                      (model.acc.Z, model.acc.C, model.acc.N))
+     st["flags"] = (g("u_flags.f"), model.flags.F)
+     for k, c in enumerate(model.cnt):
+@@ -56,6 +65,9 @@
+         st[f"sh{k}"] = (g(f"g_sh.{k}.u.dr"), sh.D)
+     for k, lf in enumerate(model.lf):
+         st[f"lf{k}"] = (g(f"g_lf.{k}.u.s"), lf.S)
++    for k, core in enumerate(model.cores):
++        for r, m_ in (("xv", "XV"), ("xe", "XE"), ("xpc", "XPC"), ("rr", "RR")):
++            st[f"core{k}.{m_}"] = (g(f"u_core{k}.{r}"), getattr(core, m_))
+     return st
+ 
+ 
+@@ -96,7 +108,7 @@
+     trace = []
+     mismatches = 0
+     do_probe = os.environ.get("LOCKSTEP_PROBE") == "1"
+-    probe_bad = 0
++    probe_handles = {}
+     dump_at = int(os.environ.get("LOCKSTEP_DUMP_AT", "-1"))
+     for t, (ui, uio, rst_n) in enumerate(scen.cycles):
+         await FallingEdge(dut.clk)
+@@ -109,12 +121,11 @@
+         got = (_val(dut.uo_out), _val(dut.uio_out), _val(dut.uio_oe))
+         trace.append((t, ui, uio, got, exp))
+         if t == dump_at:   # LOCKSTEP_DUMP_AT=<cycle>: print every probed value (including X as None) once
+-            dut._log.info(f"cycle {t}: probe dump {probe(dut, model)}")
+-        if do_probe and t >= scen.compare_from and probe_bad < 3:
+-            bad = {k: v for k, v in probe(dut, model).items() if v[0] is not None and v[0] != v[1]}
+-            if bad:
+-                probe_bad += 1
+-                dut._log.error(f"cycle {t}: internal state differs (rtl, model): {bad}")
++            dut._log.info(f"cycle {t}: probe dump {probe(dut, model, probe_handles)}")
++        if do_probe and t >= scen.compare_from:
++            bad = {k: v for k, v in probe(dut, model, probe_handles).items()
++                   if v[0] is None or v[0] != v[1]}
++            assert not bad, f"cycle {t}: internal state differs or unavailable (rtl, model): {bad}"
+         if t >= scen.compare_from and got != tuple(exp):
+             mismatches += 1
+             if mismatches <= 10:
+--- baseline/code/tests/rtl/tb_metronome.py
++++ code/tests/rtl/tb_metronome.py
+@@ -142,6 +142,43 @@
+ 
+ def I(*moves, cond="TRUE", jmode="next", imm=0, pause=False):
+     return encode(Insn(tuple(Move(*mv) for mv in moves), cond, jmode, imm, pause))
++
++
++async def _round_robin_fairness(dut, core):
++    """Two recurring peers must not starve a doorbell engine (seven-cycle checker bound)."""
++    tb = TB(dut)
++    await tb.start()
++    await tb.load(core, [I(), I(pause=True, jmode="always", imm=0),
++                         I(), I(pause=True, jmode="always", imm=2),
++                         I(("IMM", "HOST.OUT"), imm=0xA5),
++                         I(pause=True, jmode="always", imm=4)])
++    for engine, pc, trig in ((0, 0, "ALWAYS"), (1, 2, "ALWAYS"), (2, 4, "NONE")):
++        await tb.engine(engine, core=core, pc=pc, trig=trig)
++    await tb.write(a_ctrl("RUN"), [1])
++    tb.probes = {"doorbell": dut.doorbell, "ho_we": dut.ho_we, "ho_d": dut.ho_d,
++                 "pause": getattr(dut, f"c{core}_pause"), "xe": getattr(dut, f"c{core}_xe")}
++    tb.log = []
++    await tb.write(a_ctrl("DOORBELL"), [4])
++    await tb.cycles(20)
++    trigger = next(row["t"] for row in tb.log if row["doorbell"] & 4)
++    writes = [row for row in tb.log if row["ho_we"]]
++    assert writes, f"core {core}: ready engine 2 was starved by recurring engines 0 and 1"
++    assert writes[0]["ho_d"] == 0xA5
++    assert 2 <= writes[0]["t"] - trigger <= 7, (trigger, writes[0])
++    completed = [row for row in tb.log if row["pause"] and row["xe"] == 2 and row["t"] >= trigger]
++    assert completed and completed[0]["t"] - trigger <= 7, (trigger, completed)
++    dut._log.info(f"core {core}: doorbell to last instruction {completed[0]['t'] - trigger} cycles (bound 7)")
++    assert await tb.read(a_ctrl("HOSTOUT")) == [0xA5]
++
++
++@cocotb.test()
++async def test_round_robin_fairness_core0(dut):
++    await _round_robin_fairness(dut, 0)
++
++
++@cocotb.test()
++async def test_round_robin_fairness_core1(dut):
++    await _round_robin_fairness(dut, 1)
+ 
+ 
+ # ------------------------------------------------------------------------------------------------------------------
+--- baseline/code/tests/rtl/test_rtl.py
++++ code/tests/rtl/test_rtl.py
+@@ -18,7 +18,8 @@
+ BUILD = HERE / "sim_build"
+ 
+ TESTS = ["test_host_registers", "test_program_load", "test_toggle_every_beat", "test_beatgen_rate_and_taps",
+-         "test_crc32_lfsr", "test_sticky_flags", "test_data_ram_pointers"]
++         "test_crc32_lfsr", "test_sticky_flags", "test_data_ram_pointers",
++         "test_round_robin_fairness_core0", "test_round_robin_fairness_core1"]
+ 
+ 
+ def _tool_env():
+--- baseline/sim/reference/metronome/core.py
++++ sim/reference/metronome/core.py
+@@ -193,6 +193,7 @@
+         self.XE = 0
+         self.XPC = 0
+         self.iaddr = 0       # address registered for the synchronous read of the program memory
++        self.RR = 0          # next engine ID to examine when this core can dispatch
+         self.moves = []
+         self.next = None
+         self.dispatch = None
+@@ -208,7 +209,7 @@
+         self.dispatch = None
+         self.pause = None
+         free = not self.XV
+-        nxt = (self.XV, self.XPC, self.XE, self.iaddr)
++        nxt = (self.XV, self.XPC, self.XE, self.iaddr, self.RR)
+         if self.XV:
+             e = self.XE
+             pause, jmode, imm, cond, mvs = decode_word(self.mem[self.iaddr])
+@@ -226,20 +227,22 @@
+                 self.pause = (e, npc)
+                 free = True
+             else:
+-                nxt = (1, npc, e, npc)
++                nxt = (1, npc, e, npc, self.RR)
+         if free:
+-            nxt = (0, self.XPC, self.XE, self.iaddr)
++            nxt = (0, self.XPC, self.XE, self.iaddr, self.RR)
+             if ch.ctrl.RUN:
+-                for e2, eng in enumerate(ch.eng):
++                for offset in range(m.N_ENGINES):
++                    e2 = (self.RR + offset) % m.N_ENGINES
++                    eng = ch.eng[e2]
+                     if eng.CORE == self.c and eng.READY:
+                         # SPEC 9a.1: a watcher guard index beyond the guard table is false
+                         w0 = eng.W0C and eng.W0C < len(GUARD_FN) and GUARD_FN[eng.W0C](ch, e2)
+                         w1 = eng.W1C and eng.W1C < len(GUARD_FN) and GUARD_FN[eng.W1C](ch, e2)
+                         d = eng.W0H if w0 else (eng.W1H if w1 else eng.PC)
+-                        nxt = (1, d, e2, d)
++                        nxt = (1, d, e2, d, (e2 + 1) % m.N_ENGINES)
+                         self.dispatch = e2
+                         break
+         self.next = nxt
+ 
+     def commit(self):
+-        self.XV, self.XPC, self.XE, self.iaddr = self.next
++        self.XV, self.XPC, self.XE, self.iaddr, self.RR = self.next
+--- baseline/sim/reference/tests/test_engine_core.py
++++ sim/reference/tests/test_engine_core.py
+@@ -63,6 +63,86 @@
+     assert chip.acc.R == [1, 2, 3, 4] and chip.eng[1].RUNNING == 0
+ 
+ 
++def test_round_robin_prevents_always_trigger_starvation():
++    chip = Chip()
++    # Engines 0 and 1 continuously rearm; engine 2 is a one-shot doorbell request.
++    for e in (0, 1):
++        eng_cfg(chip, e, CFG=eng_cfgbyte(1), TRIG=m.TRIG_ID["ALWAYS"], PC=e * 4)
++    eng_cfg(chip, 2, CFG=eng_cfgbyte(1), TRIG=m.TRIG_ID["NONE"], PC=8)
++    load(chip, [I(), I(pause=True, jmode="always", imm=0)], at=0)
++    load(chip, [I(), I(pause=True, jmode="always", imm=4)], at=4)
++    load(chip, [I(("IMM", "HOST.OUT"), imm=0xA5), I(pause=True)], at=8)
++    ctrl(chip, "RUN", 1)
++    chip.eng[2].fire_now()  # same READY transition as a completed host doorbell write
++    step(chip, 7)
++    assert chip.eng[2].RUNNING or chip.host.OUTV
++    assert chip.host.OUTB == 0xA5
++
++
++def test_round_robin_cursor_wrap_skips_unready_and_other_core():
++    chip = Chip()
++    core = chip.cores[0]
++    # Starting at ID 1 must skip a wrong-core READY engine and wrap to ID 5.
++    core.RR = 1
++    eng_cfg(chip, 0, CFG=eng_cfgbyte(1, 0), PC=0)
++    eng_cfg(chip, 1, CFG=eng_cfgbyte(1, 1), PC=0)
++    eng_cfg(chip, 5, CFG=eng_cfgbyte(1, 0), PC=0)
++    eng_cfg(chip, 0, TRIG=m.TRIG_ID["NONE"])
++    eng_cfg(chip, 1, TRIG=m.TRIG_ID["NONE"])
++    eng_cfg(chip, 5, TRIG=m.TRIG_ID["NONE"])
++    load(chip, [I(pause=True)], core=0, at=0)
++    load(chip, [I(pause=True)], core=1, at=0)
++    ctrl(chip, "RUN", 1)
++    chip.eng[0].READY = 1
++    chip.eng[1].READY = 1
++    chip.eng[5].READY = 1
++    core.plan(chip)
++    assert core.dispatch == 5
++    assert core.RR == 1  # plan must preserve cycle-t state until commit
++    core.commit()
++    assert core.RR == 0
++    # The next scan wraps from 0 and selects engine 0 ahead of engine 5.
++    core.XV = 0
++    chip.eng[5].READY = 0
++    core.plan(chip)
++    assert core.dispatch == 0
++    core.commit()
++    assert core.RR == 1
++    core.reset()
++    assert core.RR == 0
++
++
++def test_round_robin_watchers_use_selected_engine_and_cursor_holds():
++    chip = Chip()
++    core = chip.cores[0]
++    eng_cfg(chip, 0, CFG=eng_cfgbyte(1), PC=0x10, TRIG=m.TRIG_ID["NONE"])
++    eng_cfg(chip, 1, CFG=eng_cfgbyte(1), PC=0x20, TRIG=m.TRIG_ID["NONE"],
++            W0C=m.GUARD_ID["F3"], W0H=0x30)
++    load(chip, [I(pause=True)], at=0x10)
++    load(chip, [I(pause=True)], at=0x20)
++    load(chip, [I(pause=True)], at=0x30)
++    ctrl(chip, "RUN", 1)
++    core.RR = 1
++    chip.flags.F = 1 << 3
++    chip.eng[0].READY = chip.eng[1].READY = 1
++    core.plan(chip)
++    assert core.dispatch == 1 and core.next[1] == 0x30
++    core.commit()
++    assert core.RR == 2
++
++    # No dispatch while globally stopped or while busy must leave the cursor unchanged.
++    chip.ctrl.RUN = 0
++    core.XV = 0
++    core.plan(chip)
++    assert core.dispatch is None and core.RR == 2
++    core.commit()
++    chip.ctrl.RUN = 1
++    core.XV = 1
++    core.mem[core.iaddr] = enc.encode(I())
++    core.plan(chip)
++    assert core.dispatch is None and core.RR == 2
++
++
+ def test_overrun_while_running_and_while_ready():
+     chip = beat_chip(inc=1, mod=2)                        # beats in cycles 1, 3, 5, ...
+     load(chip, [I(), I(), I(), I(), I(pause=True, jmode="always", imm=0)])

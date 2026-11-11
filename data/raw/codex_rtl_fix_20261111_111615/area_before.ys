@@ -1,0 +1,10 @@
+# Hierarchical IHP standard-cell area of tt_um_metronome (driven by code/tests/rtl/area.py, which substitutes build/pdk/sg13cmos5l_stdcell_typ_1p20V_25C.lib).
+# Memory wrappers are black boxes (the SRAM macros are not standard cells).
+read_verilog -lib -DSYNTHESIS code/rtl/prog_mem.v code/rtl/data_mem.v
+read_verilog -DSYNTHESIS -Icode/rtl/gen code/rtl/md_sync.v code/rtl/md_wgroup.v code/rtl/md_flags.v code/rtl/md_acc.v code/rtl/md_shifter.v code/rtl/md_counter.v code/rtl/md_lfsr.v code/rtl/md_beatgen.v code/rtl/md_engine.v data/raw/codex_rtl_fix_20261111_111615/baseline/code/rtl/md_core.v code/rtl/md_movebus.v code/rtl/md_ptrs.v code/rtl/md_ctrl.v code/rtl/md_spi.v code/rtl/md_outcell.v code/rtl/md_layout_check.v code/rtl/tt_um_metronome.v
+synth -top tt_um_metronome
+dfflibmap -liberty build/pdk/sg13cmos5l_stdcell_typ_1p20V_25C.lib
+abc -liberty build/pdk/sg13cmos5l_stdcell_typ_1p20V_25C.lib
+opt_clean
+stat -liberty build/pdk/sg13cmos5l_stdcell_typ_1p20V_25C.lib
+

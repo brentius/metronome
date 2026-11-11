@@ -1,0 +1,221 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+
+-- Executing script file `design_prep.ys' --
+
+1. Executing RTLIL frontend.
+Input filename: design.il
+
+2. Executing SCC pass (detecting logic loops).
+Found 0 SCCs in module fv_wgroup.
+Found 0 SCCs.
+
+3. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+
+4. Executing MEMORY_NORDFF pass (extracting $dff cells from memories).
+
+5. Executing ASYNC2SYNC pass.
+
+6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fv_wgroup..
+Removed 39 unused cells and 39 unused wires.
+<suppressed ~40 debug messages>
+
+7. Executing FORMALFF pass.
+
+8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fv_wgroup..
+Removed 6 unused cells and 6 unused wires.
+<suppressed ~7 debug messages>
+
+9. Executing CHECK pass (checking for obvious problems).
+Checking module fv_wgroup...
+Warning: Wire fv_wgroup.\c0.data [47] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [46] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [45] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [44] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [43] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [42] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [41] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [40] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.sel [17] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.sel [16] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.sel [15] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [39] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [38] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [37] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [36] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [35] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [34] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [33] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [32] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.sel [14] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.sel [13] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.sel [12] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [31] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [30] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [29] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [28] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [27] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [26] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [25] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [24] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [23] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [22] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [21] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [20] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [19] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [18] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [17] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [16] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.sel [5] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.sel [4] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [15] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [14] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [13] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [12] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [11] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [10] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [9] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [8] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.sel [11] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.sel [10] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.sel [9] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.sel [3] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.sel [2] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [7] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [6] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [5] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [4] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [3] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [2] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [1] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.data [0] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.sel [1] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.sel [0] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.hit [2] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.hit [1] is used but has no driver.
+Warning: Wire fv_wgroup.\c2.hit [0] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.hit [5] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.hit [4] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.hit [3] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.hit [2] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.hit [1] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.hit [0] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [23] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [22] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [21] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [20] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [19] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [18] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [17] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [16] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.sel [8] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.sel [7] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.sel [6] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [15] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [14] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [13] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [12] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [11] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [10] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [9] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [8] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.sel [5] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.sel [4] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.sel [3] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [7] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [6] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [5] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [4] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [3] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [2] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [1] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.data [0] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [29] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [28] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [27] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [26] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [25] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.sel [5] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [24] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [23] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [22] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [21] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [20] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.sel [4] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [19] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [18] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [17] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [16] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [15] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.sel [3] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [14] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [13] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [12] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [11] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [10] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.sel [2] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.sel [2] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.sel [1] is used but has no driver.
+Warning: Wire fv_wgroup.\c0.sel [0] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [9] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [8] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [7] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [6] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [5] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.sel [1] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [4] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [3] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [2] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [1] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.data [0] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.sel [0] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.hit [5] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.hit [4] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.hit [3] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.hit [2] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.hit [1] is used but has no driver.
+Warning: Wire fv_wgroup.\c1.hit [0] is used but has no driver.
+Found and reported 147 problems.
+
+10. Executing SETUNDEF pass (replace undef values with defined constants).
+
+11. Executing OPT pass (performing simple optimizations).
+
+11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fv_wgroup.
+<suppressed ~8 debug messages>
+
+11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fv_wgroup'.
+Computing hashes of 367 cells of `\fv_wgroup'.
+Finding duplicate cells in `\fv_wgroup'.
+Removed a total of 0 cells.
+
+11.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fv_wgroup..
+Removed 0 unused cells and 138 unused wires.
+<suppressed ~1 debug messages>
+
+11.5. Finished fast OPT passes.
+
+12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fv_wgroup..
+Removed 0 unused cells and 6 unused wires.
+<suppressed ~1 debug messages>
+
+13. Executing RTLIL backend.
+Output filename: ../model/design_prep.il
+
+Warnings: 147 unique messages, 147 total
+End of script. Logfile hash: 776aee6992
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Time spent: 5% 4x opt_clean (0 sec), 5% 3x chformal (0 sec), ...

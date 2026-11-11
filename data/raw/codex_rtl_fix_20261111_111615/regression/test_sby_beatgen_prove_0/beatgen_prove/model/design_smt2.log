@@ -1,0 +1,73 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+
+-- Executing script file `design_smt2.ys' --
+
+1. Executing RTLIL frontend.
+Input filename: design_prep.il
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `md_beatgen'. Setting top module to md_beatgen.
+
+2.1. Analyzing design hierarchy..
+Top module:  \md_beatgen
+
+2.2. Analyzing design hierarchy..
+Top module:  \md_beatgen
+Removed 0 unused modules.
+Module md_beatgen directly or indirectly contains formal properties -> setting "keep" attribute.
+
+3. Executing FORMALFF pass.
+
+4. Executing DFFUNMAP pass (unmap clock enable and synchronous reset from FFs).
+
+5. Printing statistics.
+
+=== md_beatgen ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      396 wires
+     1620 wire bits
+      125 public wires
+      816 public wire bits
+       16 ports
+       73 port bits
+      379 cells
+        8   $add
+       15   $and
+       37   $anyinit
+       25   $assert
+        2   $assume
+        2   $bmux
+       42   $eq
+       16   $ff
+        8   $ge
+        7   $gt
+       12   $le
+       59   $logic_and
+       25   $logic_not
+        7   $logic_or
+        8   $lt
+       87   $mux
+       11   $not
+        5   $or
+        1   $pmux
+        1   $reduce_bool
+        1   $sub
+
+6. Executing SMT2 backend.
+
+6.1. Executing BMUXMAP pass.
+
+6.2. Executing DEMUXMAP pass.
+Creating SMT-LIBv2 representation of module md_beatgen.
+
+End of script. Logfile hash: b16b45d29d
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Time spent: 11% 2x write_smt2 (0 sec), 11% 2x read_rtlil (0 sec), ...

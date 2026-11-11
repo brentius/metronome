@@ -1,0 +1,2558 @@
+
+-- Executing script file `data/raw/codex_rtl_fix_20261111_111615/structural.ys' --
+
+1. Executing Verilog-2005 frontend: code/rtl/data_mem.v
+Parsing Verilog input from `code/rtl/data_mem.v' to AST representation.
+Generating RTLIL representation for module `\data_mem'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: code/rtl/md_acc.v
+Parsing Verilog input from `code/rtl/md_acc.v' to AST representation.
+Generating RTLIL representation for module `\md_acc'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: code/rtl/md_beatgen.v
+Parsing Verilog input from `code/rtl/md_beatgen.v' to AST representation.
+Generating RTLIL representation for module `\md_beatgen'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: code/rtl/md_core.v
+Parsing Verilog input from `code/rtl/md_core.v' to AST representation.
+Generating RTLIL representation for module `\md_core'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: code/rtl/md_counter.v
+Parsing Verilog input from `code/rtl/md_counter.v' to AST representation.
+Generating RTLIL representation for module `\md_counter'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: code/rtl/md_ctrl.v
+Parsing Verilog input from `code/rtl/md_ctrl.v' to AST representation.
+Generating RTLIL representation for module `\md_ctrl'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: code/rtl/md_engine.v
+Parsing Verilog input from `code/rtl/md_engine.v' to AST representation.
+Generating RTLIL representation for module `\md_engine'.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: code/rtl/md_flags.v
+Parsing Verilog input from `code/rtl/md_flags.v' to AST representation.
+Generating RTLIL representation for module `\md_flags'.
+Successfully finished Verilog frontend.
+
+9. Executing Verilog-2005 frontend: code/rtl/md_layout_check.v
+Parsing Verilog input from `code/rtl/md_layout_check.v' to AST representation.
+Generating RTLIL representation for module `\md_layout_check'.
+Successfully finished Verilog frontend.
+
+10. Executing Verilog-2005 frontend: code/rtl/md_lfsr.v
+Parsing Verilog input from `code/rtl/md_lfsr.v' to AST representation.
+Generating RTLIL representation for module `\md_lfsr'.
+Successfully finished Verilog frontend.
+
+11. Executing Verilog-2005 frontend: code/rtl/md_movebus.v
+Parsing Verilog input from `code/rtl/md_movebus.v' to AST representation.
+Generating RTLIL representation for module `\md_movebus'.
+Successfully finished Verilog frontend.
+
+12. Executing Verilog-2005 frontend: code/rtl/md_outcell.v
+Parsing Verilog input from `code/rtl/md_outcell.v' to AST representation.
+Generating RTLIL representation for module `\md_outcell'.
+Successfully finished Verilog frontend.
+
+13. Executing Verilog-2005 frontend: code/rtl/md_ptrs.v
+Parsing Verilog input from `code/rtl/md_ptrs.v' to AST representation.
+Generating RTLIL representation for module `\md_ptrs'.
+Successfully finished Verilog frontend.
+
+14. Executing Verilog-2005 frontend: code/rtl/md_shifter.v
+Parsing Verilog input from `code/rtl/md_shifter.v' to AST representation.
+Generating RTLIL representation for module `\md_shifter'.
+Successfully finished Verilog frontend.
+
+15. Executing Verilog-2005 frontend: code/rtl/md_spi.v
+Parsing Verilog input from `code/rtl/md_spi.v' to AST representation.
+Generating RTLIL representation for module `\md_spi'.
+Successfully finished Verilog frontend.
+
+16. Executing Verilog-2005 frontend: code/rtl/md_sync.v
+Parsing Verilog input from `code/rtl/md_sync.v' to AST representation.
+Generating RTLIL representation for module `\md_sync'.
+Successfully finished Verilog frontend.
+
+17. Executing Verilog-2005 frontend: code/rtl/md_wgroup.v
+Parsing Verilog input from `code/rtl/md_wgroup.v' to AST representation.
+Generating RTLIL representation for module `\md_wgroup'.
+Successfully finished Verilog frontend.
+
+18. Executing Verilog-2005 frontend: code/rtl/prog_mem.v
+Parsing Verilog input from `code/rtl/prog_mem.v' to AST representation.
+Generating RTLIL representation for module `\prog_mem'.
+Successfully finished Verilog frontend.
+
+19. Executing Verilog-2005 frontend: code/rtl/tt_um_metronome.v
+Parsing Verilog input from `code/rtl/tt_um_metronome.v' to AST representation.
+Generating RTLIL representation for module `\tt_um_metronome'.
+Successfully finished Verilog frontend.
+
+20. Executing HIERARCHY pass (managing design hierarchy).
+
+20.1. Analyzing design hierarchy..
+Top module:  \tt_um_metronome
+Used module:     \md_outcell
+Used module:     \md_engine
+Used module:     \md_beatgen
+Used module:     \md_lfsr
+Used module:     \md_counter
+Used module:     \md_shifter
+Used module:     \prog_mem
+Used module:     \md_core
+Used module:     \md_ctrl
+Used module:     \data_mem
+Used module:     \md_ptrs
+Used module:     \md_acc
+Used module:     \md_flags
+Used module:     \md_movebus
+Used module:         \md_wgroup
+Used module:     \md_spi
+Used module:     \md_sync
+Used module:     \md_layout_check
+Parameter \DW = 1
+Parameter \SW = 1
+
+20.2. Executing AST frontend in derive mode using pre-parsed AST for module `\md_wgroup'.
+Parameter \DW = 1
+Parameter \SW = 1
+Generating RTLIL representation for module `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup'.
+Parameter \DW = 2
+Parameter \SW = 1
+
+20.3. Executing AST frontend in derive mode using pre-parsed AST for module `\md_wgroup'.
+Parameter \DW = 2
+Parameter \SW = 1
+Generating RTLIL representation for module `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup'.
+Parameter \DW = 1
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup'.
+Parameter \DW = 2
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup'.
+Parameter \DW = 1
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup'.
+Parameter \DW = 2
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup'.
+Parameter \DW = 1
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup'.
+Parameter \DW = 2
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup'.
+Parameter \DW = 1
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup'.
+Parameter \DW = 2
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup'.
+Parameter \DW = 1
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup'.
+Parameter \DW = 2
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+
+20.4. Executing AST frontend in derive mode using pre-parsed AST for module `\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+Generating RTLIL representation for module `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup'.
+Parameter \DW = 3
+Parameter \SW = 1
+
+20.5. Executing AST frontend in derive mode using pre-parsed AST for module `\md_wgroup'.
+Parameter \DW = 3
+Parameter \SW = 1
+Generating RTLIL representation for module `$paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup'.
+Parameter \DW = 3
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup'.
+Parameter \DW = 3
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup'.
+Parameter \DW = 3
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup'.
+Parameter \DW = 4
+Parameter \SW = 1
+
+20.6. Executing AST frontend in derive mode using pre-parsed AST for module `\md_wgroup'.
+Parameter \DW = 4
+Parameter \SW = 1
+Generating RTLIL representation for module `$paramod$779056bdc84c15aff8cc589907c90756353674e5\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 2
+
+20.7. Executing AST frontend in derive mode using pre-parsed AST for module `\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 2
+Generating RTLIL representation for module `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 2
+Found cached RTLIL representation for module `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 3
+
+20.8. Executing AST frontend in derive mode using pre-parsed AST for module `\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 3
+Generating RTLIL representation for module `$paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 3
+Found cached RTLIL representation for module `$paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 2
+Found cached RTLIL representation for module `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 2
+Found cached RTLIL representation for module `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 2
+Found cached RTLIL representation for module `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 2
+Found cached RTLIL representation for module `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup'.
+Parameter \DW = 5
+Parameter \SW = 1
+
+20.9. Executing AST frontend in derive mode using pre-parsed AST for module `\md_wgroup'.
+Parameter \DW = 5
+Parameter \SW = 1
+Generating RTLIL representation for module `$paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup'.
+Parameter \DW = 5
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup'.
+Parameter \DW = 5
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup'.
+Parameter \DW = 5
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 3
+Found cached RTLIL representation for module `$paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup'.
+Parameter \NE = 6
+Parameter \HAS_OE = 0
+
+20.10. Executing AST frontend in derive mode using pre-parsed AST for module `\md_outcell'.
+Parameter \NE = 6
+Parameter \HAS_OE = 0
+Generating RTLIL representation for module `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell'.
+Parameter \NE = 6
+Parameter \HAS_OE = 0
+Found cached RTLIL representation for module `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell'.
+Parameter \NE = 6
+Parameter \HAS_OE = 0
+Found cached RTLIL representation for module `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell'.
+Parameter \NE = 6
+Parameter \HAS_OE = 0
+Found cached RTLIL representation for module `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell'.
+Parameter \NE = 6
+Parameter \HAS_OE = 0
+Found cached RTLIL representation for module `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell'.
+Parameter \NE = 6
+Parameter \HAS_OE = 0
+Found cached RTLIL representation for module `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell'.
+Parameter \NE = 6
+Parameter \HAS_OE = 1
+
+20.11. Executing AST frontend in derive mode using pre-parsed AST for module `\md_outcell'.
+Parameter \NE = 6
+Parameter \HAS_OE = 1
+Generating RTLIL representation for module `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell'.
+Parameter \NE = 6
+Parameter \HAS_OE = 1
+Found cached RTLIL representation for module `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell'.
+Parameter \NE = 6
+Parameter \HAS_OE = 1
+Found cached RTLIL representation for module `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell'.
+Parameter \NE = 6
+Parameter \HAS_OE = 1
+Found cached RTLIL representation for module `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell'.
+Parameter \NE = 6
+Parameter \HAS_OE = 1
+Found cached RTLIL representation for module `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell'.
+Parameter \NE = 6
+Parameter \HAS_OE = 1
+Found cached RTLIL representation for module `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell'.
+Parameter \NE = 6
+Parameter \HAS_OE = 1
+Found cached RTLIL representation for module `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell'.
+Parameter \NE = 6
+Parameter \HAS_OE = 1
+Found cached RTLIL representation for module `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell'.
+Parameter \NB = 4
+
+20.12. Executing AST frontend in derive mode using pre-parsed AST for module `\md_engine'.
+Parameter \NB = 4
+Generating RTLIL representation for module `$paramod\md_engine\NB=s32'00000000000000000000000000000100'.
+Parameter \NB = 4
+Found cached RTLIL representation for module `$paramod\md_engine\NB=s32'00000000000000000000000000000100'.
+Parameter \NB = 4
+Found cached RTLIL representation for module `$paramod\md_engine\NB=s32'00000000000000000000000000000100'.
+Parameter \NB = 4
+Found cached RTLIL representation for module `$paramod\md_engine\NB=s32'00000000000000000000000000000100'.
+Parameter \NB = 4
+Found cached RTLIL representation for module `$paramod\md_engine\NB=s32'00000000000000000000000000000100'.
+Parameter \NB = 4
+Found cached RTLIL representation for module `$paramod\md_engine\NB=s32'00000000000000000000000000000100'.
+Parameter \C = 1
+Parameter \NE = 6
+Parameter \NR = 4
+Parameter \NSH = 4
+Parameter \NCN = 4
+Parameter \NLF = 2
+
+20.13. Executing AST frontend in derive mode using pre-parsed AST for module `\md_core'.
+Parameter \C = 1
+Parameter \NE = 6
+Parameter \NR = 4
+Parameter \NSH = 4
+Parameter \NCN = 4
+Parameter \NLF = 2
+Generating RTLIL representation for module `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core'.
+Parameter \C = 0
+Parameter \NE = 6
+Parameter \NR = 4
+Parameter \NSH = 4
+Parameter \NCN = 4
+Parameter \NLF = 2
+
+20.14. Executing AST frontend in derive mode using pre-parsed AST for module `\md_core'.
+Parameter \C = 0
+Parameter \NE = 6
+Parameter \NR = 4
+Parameter \NSH = 4
+Parameter \NCN = 4
+Parameter \NLF = 2
+Generating RTLIL representation for module `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core'.
+Parameter \NE = 6
+
+20.15. Executing AST frontend in derive mode using pre-parsed AST for module `\md_ctrl'.
+Parameter \NE = 6
+Generating RTLIL representation for module `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110'.
+Parameter \NR = 4
+
+20.16. Executing AST frontend in derive mode using pre-parsed AST for module `\md_acc'.
+Parameter \NR = 4
+Generating RTLIL representation for module `$paramod\md_acc\NR=s32'00000000000000000000000000000100'.
+Parameter \NE = 6
+Parameter \NB = 4
+Parameter \NSH = 4
+Parameter \NCN = 4
+Parameter \NLF = 2
+Parameter \NR = 4
+Parameter \NP = 2
+
+20.17. Executing AST frontend in derive mode using pre-parsed AST for module `\md_movebus'.
+Parameter \NE = 6
+Parameter \NB = 4
+Parameter \NSH = 4
+Parameter \NCN = 4
+Parameter \NLF = 2
+Parameter \NR = 4
+Parameter \NP = 2
+Generating RTLIL representation for module `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus'.
+Parameter \N = 16
+
+20.18. Executing AST frontend in derive mode using pre-parsed AST for module `\md_sync'.
+Parameter \N = 16
+Generating RTLIL representation for module `$paramod\md_sync\N=s32'00000000000000000000000000010000'.
+
+20.19. Analyzing design hierarchy..
+Top module:  \tt_um_metronome
+Used module:     $paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell
+Used module:     $paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell
+Used module:     $paramod\md_engine\NB=s32'00000000000000000000000000000100
+Used module:     \md_beatgen
+Used module:     \md_lfsr
+Used module:     \md_counter
+Used module:     \md_shifter
+Used module:     \prog_mem
+Used module:     $paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core
+Used module:     $paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core
+Used module:     $paramod\md_ctrl\NE=s32'00000000000000000000000000000110
+Used module:     \data_mem
+Used module:     \md_ptrs
+Used module:     $paramod\md_acc\NR=s32'00000000000000000000000000000100
+Used module:     \md_flags
+Used module:     $paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus
+Used module:         \md_wgroup
+Used module:     \md_spi
+Used module:     $paramod\md_sync\N=s32'00000000000000000000000000010000
+Used module:     \md_layout_check
+Parameter \DW = 1
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup'.
+Parameter \DW = 2
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup'.
+Parameter \DW = 1
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup'.
+Parameter \DW = 2
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup'.
+Parameter \DW = 1
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup'.
+Parameter \DW = 2
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup'.
+Parameter \DW = 1
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup'.
+Parameter \DW = 2
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup'.
+Parameter \DW = 1
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup'.
+Parameter \DW = 2
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup'.
+Parameter \DW = 1
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup'.
+Parameter \DW = 2
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup'.
+Parameter \DW = 3
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup'.
+Parameter \DW = 3
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup'.
+Parameter \DW = 3
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup'.
+Parameter \DW = 3
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup'.
+Parameter \DW = 4
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$779056bdc84c15aff8cc589907c90756353674e5\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 2
+Found cached RTLIL representation for module `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 2
+Found cached RTLIL representation for module `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 3
+Found cached RTLIL representation for module `$paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 3
+Found cached RTLIL representation for module `$paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 2
+Found cached RTLIL representation for module `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 2
+Found cached RTLIL representation for module `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 2
+Found cached RTLIL representation for module `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 2
+Found cached RTLIL representation for module `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup'.
+Parameter \DW = 5
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup'.
+Parameter \DW = 5
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup'.
+Parameter \DW = 5
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup'.
+Parameter \DW = 5
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 1
+Found cached RTLIL representation for module `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup'.
+Parameter \DW = 8
+Parameter \SW = 3
+Found cached RTLIL representation for module `$paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup'.
+
+20.20. Analyzing design hierarchy..
+Top module:  \tt_um_metronome
+Used module:     $paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell
+Used module:     $paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell
+Used module:     $paramod\md_engine\NB=s32'00000000000000000000000000000100
+Used module:     \md_beatgen
+Used module:     \md_lfsr
+Used module:     \md_counter
+Used module:     \md_shifter
+Used module:     \prog_mem
+Used module:     $paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core
+Used module:     $paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core
+Used module:     $paramod\md_ctrl\NE=s32'00000000000000000000000000000110
+Used module:     \data_mem
+Used module:     \md_ptrs
+Used module:     $paramod\md_acc\NR=s32'00000000000000000000000000000100
+Used module:     \md_flags
+Used module:     $paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus
+Used module:         $paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup
+Used module:         $paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup
+Used module:         $paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup
+Used module:         $paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup
+Used module:         $paramod$779056bdc84c15aff8cc589907c90756353674e5\md_wgroup
+Used module:         $paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup
+Used module:         $paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup
+Used module:         $paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup
+Used module:     \md_spi
+Used module:     $paramod\md_sync\N=s32'00000000000000000000000000010000
+Used module:     \md_layout_check
+
+20.21. Analyzing design hierarchy..
+Top module:  \tt_um_metronome
+Used module:     $paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell
+Used module:     $paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell
+Used module:     $paramod\md_engine\NB=s32'00000000000000000000000000000100
+Used module:     \md_beatgen
+Used module:     \md_lfsr
+Used module:     \md_counter
+Used module:     \md_shifter
+Used module:     \prog_mem
+Used module:     $paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core
+Used module:     $paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core
+Used module:     $paramod\md_ctrl\NE=s32'00000000000000000000000000000110
+Used module:     \data_mem
+Used module:     \md_ptrs
+Used module:     $paramod\md_acc\NR=s32'00000000000000000000000000000100
+Used module:     \md_flags
+Used module:     $paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus
+Used module:         $paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup
+Used module:         $paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup
+Used module:         $paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup
+Used module:         $paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup
+Used module:         $paramod$779056bdc84c15aff8cc589907c90756353674e5\md_wgroup
+Used module:         $paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup
+Used module:         $paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup
+Used module:         $paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup
+Used module:     \md_spi
+Used module:     $paramod\md_sync\N=s32'00000000000000000000000000010000
+Used module:     \md_layout_check
+Removing unused module `\md_wgroup'.
+Removing unused module `\md_sync'.
+Removing unused module `\md_outcell'.
+Removing unused module `\md_movebus'.
+Removing unused module `\md_engine'.
+Removing unused module `\md_ctrl'.
+Removing unused module `\md_core'.
+Removing unused module `\md_acc'.
+Removed 8 unused modules.
+
+21. Executing PROC pass (convert processes to netlists).
+
+21.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 2 empty switches in `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.$code/rtl/md_outcell.v:34$proc$2898'.
+Found and cleaned up 2 empty switches in `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.$code/rtl/md_outcell.v:34$proc$2908'.
+Cleaned up 4 empty switches.
+
+21.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $code/rtl/md_outcell.v:34$proc$2898 in module $paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.
+Marked 6 switch rules as full_case in process $code/rtl/md_outcell.v:28$proc$2891 in module $paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.
+Marked 11 switch rules as full_case in process $code/rtl/tt_um_metronome.v:328$proc$2220 in module tt_um_metronome.
+Marked 18 switch rules as full_case in process $code/rtl/tt_um_metronome.v:184$proc$2152 in module tt_um_metronome.
+Marked 1 switch rules as full_case in process $code/rtl/prog_mem.v:33$proc$2017 in module prog_mem.
+Marked 1 switch rules as full_case in process $code/rtl/md_sync.v:16$proc$5274 in module $paramod\md_sync\N=s32'00000000000000000000000000010000.
+Marked 5 switch rules as full_case in process $code/rtl/md_spi.v:106$proc$1938 in module md_spi.
+Marked 2 switch rules as full_case in process $code/rtl/md_shifter.v:19$proc$1892 in module md_shifter.
+Marked 6 switch rules as full_case in process $code/rtl/md_ptrs.v:70$proc$1884 in module md_ptrs.
+Marked 6 switch rules as full_case in process $code/rtl/md_ptrs.v:70$proc$1864 in module md_ptrs.
+Marked 2 switch rules as full_case in process $code/rtl/md_ptrs.v:107$proc$1848 in module md_ptrs.
+Marked 1 switch rules as full_case in process $code/rtl/md_acc.v:44$proc$4373 in module $paramod\md_acc\NR=s32'00000000000000000000000000000100.
+Marked 1 switch rules as full_case in process $code/rtl/md_acc.v:26$proc$4364 in module $paramod\md_acc\NR=s32'00000000000000000000000000000100.
+Removed 1 dead cases from process $code/rtl/md_ctrl.v:79$proc$4363 in module $paramod\md_ctrl\NE=s32'00000000000000000000000000000110.
+Marked 1 switch rules as full_case in process $code/rtl/md_ctrl.v:79$proc$4363 in module $paramod\md_ctrl\NE=s32'00000000000000000000000000000110.
+Marked 5 switch rules as full_case in process $code/rtl/md_ctrl.v:47$proc$4353 in module $paramod\md_ctrl\NE=s32'00000000000000000000000000000110.
+Marked 2 switch rules as full_case in process $code/rtl/md_lfsr.v:19$proc$893 in module md_lfsr.
+Marked 2 switch rules as full_case in process $code/rtl/md_flags.v:15$proc$872 in module md_flags.
+Marked 2 switch rules as full_case in process $code/rtl/md_core.v:229$proc$3889 in module $paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.
+Marked 6 switch rules as full_case in process $code/rtl/md_core.v:95$proc$3724 in module $paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.
+Marked 2 switch rules as full_case in process $code/rtl/md_core.v:229$proc$3197 in module $paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.
+Marked 6 switch rules as full_case in process $code/rtl/md_core.v:95$proc$3033 in module $paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.
+Marked 1 switch rules as full_case in process $code/rtl/md_counter.v:13$proc$791 in module md_counter.
+Marked 1 switch rules as full_case in process $code/rtl/md_engine.v:165$proc$2954 in module $paramod\md_engine\NB=s32'00000000000000000000000000000100.
+Marked 8 switch rules as full_case in process $code/rtl/md_engine.v:111$proc$2946 in module $paramod\md_engine\NB=s32'00000000000000000000000000000100.
+Marked 1 switch rules as full_case in process $code/rtl/md_beatgen.v:123$proc$87 in module md_beatgen.
+Marked 3 switch rules as full_case in process $code/rtl/md_beatgen.v:78$proc$80 in module md_beatgen.
+Marked 2 switch rules as full_case in process $code/rtl/md_beatgen.v:70$proc$76 in module md_beatgen.
+Marked 1 switch rules as full_case in process $code/rtl/md_outcell.v:34$proc$2908 in module $paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.
+Marked 6 switch rules as full_case in process $code/rtl/md_outcell.v:28$proc$2901 in module $paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.
+Marked 2 switch rules as full_case in process $code/rtl/data_mem.v:34$proc$2 in module data_mem.
+Removed a total of 1 dead cases.
+
+21.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 22 redundant assignments.
+Promoted 984 assignments to connections.
+
+21.4. Executing PROC_INIT pass (extract init attributes).
+
+21.5. Executing PROC_ARST pass (detect async resets in processes).
+
+21.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~178 debug messages>
+
+21.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.$code/rtl/md_outcell.v:34$proc$2898'.
+     1/6: $0\lut[15:0] [15:8]
+     2/6: $0\lut[15:0] [7:0]
+     3/6: $0\out[0:0]
+     4/6: $0\oe[15:0]
+     5/6: $0\eng[2:0]
+     6/6: $0\oen[0:0]
+Creating decoders for process `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.$code/rtl/md_outcell.v:28$proc$2891'.
+     1/6: $6\idx[3:0]
+     2/6: $5\idx[3:0]
+     3/6: $4\idx[3:0]
+     4/6: $3\idx[3:0]
+     5/6: $2\idx[3:0]
+     6/6: $1\idx[3:0]
+Creating decoders for process `$paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2858'.
+Creating decoders for process `$paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2823'.
+Creating decoders for process `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2788'.
+Creating decoders for process `$paramod$779056bdc84c15aff8cc589907c90756353674e5\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2753'.
+Creating decoders for process `$paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2718'.
+Creating decoders for process `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2683'.
+Creating decoders for process `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2648'.
+Creating decoders for process `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2613'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2602'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2593'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2584'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2575'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2566'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2557'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2548'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2539'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2530'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2521'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2512'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2503'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2494'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2485'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:264$proc$2469'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:264$proc$2449'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:264$proc$2429'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:264$proc$2409'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:264$proc$2389'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:264$proc$2369'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:216$proc$2356'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:216$proc$2347'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:216$proc$2338'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:216$proc$2329'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:199$proc$2321'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:162$proc$2310'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:162$proc$2299'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:328$proc$2220'.
+     1/11: $11\reg_rd[7:0]
+     2/11: $10\reg_rd[7:0]
+     3/11: $9\reg_rd[7:0]
+     4/11: $8\reg_rd[7:0]
+     5/11: $7\reg_rd[7:0]
+     6/11: $6\reg_rd[7:0]
+     7/11: $5\reg_rd[7:0]
+     8/11: $4\reg_rd[7:0]
+     9/11: $3\reg_rd[7:0]
+    10/11: $2\reg_rd[7:0]
+    11/11: $1\reg_rd[7:0]
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:229$proc$2216'.
+Creating decoders for process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:184$proc$2152'.
+     1/18: $12\pd_haz[0:0]
+     2/18: $11\pd_haz[0:0]
+     3/18: $6\hin_rd[0:0]
+     4/18: $10\pd_haz[0:0]
+     5/18: $9\pd_haz[0:0]
+     6/18: $5\hin_rd[0:0]
+     7/18: $8\pd_haz[0:0]
+     8/18: $7\pd_haz[0:0]
+     9/18: $4\hin_rd[0:0]
+    10/18: $6\pd_haz[0:0]
+    11/18: $5\pd_haz[0:0]
+    12/18: $3\hin_rd[0:0]
+    13/18: $4\pd_haz[0:0]
+    14/18: $3\pd_haz[0:0]
+    15/18: $2\hin_rd[0:0]
+    16/18: $2\pd_haz[0:0]
+    17/18: $1\pd_haz[0:0]
+    18/18: $1\hin_rd[0:0]
+Creating decoders for process `\prog_mem.$code/rtl/prog_mem.v:33$proc$2017'.
+     1/4: $1$memwr$\mem$code/rtl/prog_mem.v:34$2016_EN[63:0]$2023
+     2/4: $1$memwr$\mem$code/rtl/prog_mem.v:34$2016_DATA[63:0]$2022
+     3/4: $1$memwr$\mem$code/rtl/prog_mem.v:34$2016_ADDR[7:0]$2021
+     4/4: $0\q[63:0]
+Creating decoders for process `$paramod\md_sync\N=s32'00000000000000000000000000010000.$code/rtl/md_sync.v:16$proc$5274'.
+     1/3: $0\sp[15:0]
+     2/3: $0\s2[15:0]
+     3/3: $0\s1[15:0]
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:72$proc$5273'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:71$proc$5271'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:70$proc$5268'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:72$proc$5267'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:71$proc$5265'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:70$proc$5262'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:72$proc$5261'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:71$proc$5259'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:70$proc$5256'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:72$proc$5255'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:71$proc$5253'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:70$proc$5250'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:72$proc$5249'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:71$proc$5247'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:70$proc$5244'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:72$proc$5243'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:71$proc$5241'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:70$proc$5238'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:210$proc$5217'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:209$proc$5208'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:203$proc$5199'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:197$proc$5190'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:197$proc$5181'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:197$proc$5172'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:197$proc$5163'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:183$proc$5153'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:182$proc$5144'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:172$proc$5120'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:171$proc$5111'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:170$proc$5102'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:169$proc$5093'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:172$proc$5069'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:171$proc$5060'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:170$proc$5051'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:169$proc$5042'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:159$proc$5017'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:158$proc$5008'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:157$proc$4999'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:156$proc$4990'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:155$proc$4981'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:159$proc$4956'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:158$proc$4947'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:157$proc$4938'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:156$proc$4929'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:155$proc$4920'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:145$proc$4909'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:144$proc$4900'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:143$proc$4891'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:145$proc$4880'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:144$proc$4871'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:143$proc$4862'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:145$proc$4851'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:144$proc$4842'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:143$proc$4833'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:145$proc$4822'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:144$proc$4813'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:143$proc$4804'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:130$proc$4794'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:129$proc$4785'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:128$proc$4776'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:130$proc$4766'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:129$proc$4757'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:128$proc$4748'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:130$proc$4738'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:129$proc$4729'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:128$proc$4720'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:130$proc$4710'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:129$proc$4701'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:128$proc$4692'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:124$proc$4683'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:124$proc$4674'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:124$proc$4665'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:124$proc$4656'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:112$proc$4605'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:111$proc$4596'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:110$proc$4587'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:109$proc$4578'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:108$proc$4569'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:107$proc$4560'.
+Creating decoders for process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:106$proc$4551'.
+Creating decoders for process `\md_spi.$code/rtl/md_spi.v:92$proc$1967'.
+Creating decoders for process `\md_spi.$code/rtl/md_spi.v:91$proc$1960'.
+Creating decoders for process `\md_spi.$code/rtl/md_spi.v:90$proc$1953'.
+Creating decoders for process `\md_spi.$code/rtl/md_spi.v:106$proc$1938'.
+     1/11: $0\addr[15:0] [15:8]
+     2/11: $0\addr[15:0] [7:0]
+     3/11: $0\ldpend[0:0]
+     4/11: $0\hrd[7:0]
+     5/11: $0\tx[7:0]
+     6/11: $0\rx[6:0]
+     7/11: $0\cmd_rd[0:0]
+     8/11: $0\cmd_wr[0:0]
+     9/11: $0\bytecnt[1:0]
+    10/11: $0\bitcnt[2:0]
+    11/11: $0\miso[0:0]
+Creating decoders for process `\md_shifter.$code/rtl/md_shifter.v:19$proc$1892'.
+     1/4: $0\msb[0:0]
+     2/4: $0\len[3:0]
+     3/4: $0\cnt[3:0]
+     4/4: $0\dr[7:0]
+Creating decoders for process `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1884'.
+     1/8: $0\g_p[1].lok[0:0]
+     2/8: $0\g_p[1].land[0:0]
+     3/8: $0\g_p[1].rdyr[0:0]
+     4/8: $0\g_p[1].rq[1:0]
+     5/8: $0\g_p[1].rqd[7:0]
+     6/8: $0\g_p[1].dr[7:0]
+     7/8: $0\g_p[1].rqa[10:0]
+     8/8: $0\g_p[1].ptr[10:0]
+Creating decoders for process `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1864'.
+     1/8: $0\g_p[0].lok[0:0]
+     2/8: $0\g_p[0].land[0:0]
+     3/8: $0\g_p[0].rdyr[0:0]
+     4/8: $0\g_p[0].rq[1:0]
+     5/8: $0\g_p[0].rqd[7:0]
+     6/8: $0\g_p[0].dr[7:0]
+     7/8: $0\g_p[0].rqa[10:0]
+     8/8: $0\g_p[0].ptr[10:0]
+Creating decoders for process `\md_ptrs.$code/rtl/md_ptrs.v:107$proc$1848'.
+     1/5: $0\hland[0:0]
+     2/5: $0\hqd[7:0]
+     3/5: $0\hqa[10:0]
+     4/5: $0\hqw[0:0]
+     5/5: $0\hq[0:0]
+Creating decoders for process `$paramod\md_acc\NR=s32'00000000000000000000000000000100.$code/rtl/md_acc.v:44$proc$4373'.
+     1/9: $0\r[31:0] [31:24]
+     2/9: $0\r[31:0] [23:16]
+     3/9: $0\r[31:0] [15:8]
+     4/9: $0\r[31:0] [7:0]
+     5/9: $1\k[31:0]
+     6/9: $0\n[0:0]
+     7/9: $0\z[0:0]
+     8/9: $0\c[0:0]
+     9/9: $0\a[7:0]
+Creating decoders for process `$paramod\md_acc\NR=s32'00000000000000000000000000000100.$code/rtl/md_acc.v:26$proc$4364'.
+     1/4: $1\res[7:0]
+     2/4: $1\wc[0:0]
+     3/4: $1\wa[0:0]
+     4/4: $1\cy[0:0]
+Creating decoders for process `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.$code/rtl/md_ctrl.v:79$proc$4363'.
+     1/1: $1\h_rd[7:0]
+Creating decoders for process `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.$code/rtl/md_ctrl.v:47$proc$4353'.
+     1/10: $0\irq[0:0]
+     2/10: $0\invp[0:0]
+     3/10: $0\outb[7:0]
+     4/10: $0\irqen[1:0]
+     5/10: $0\memhaz[0:0]
+     6/10: $0\conflict[0:0]
+     7/10: $0\outv[0:0]
+     8/10: $0\inv[0:0]
+     9/10: $0\inb[7:0]
+    10/10: $0\run_g[0:0]
+Creating decoders for process `\md_lfsr.$code/rtl/md_lfsr.v:19$proc$893'.
+     1/8: $2$lookahead\poly$892[31:0]$902
+     2/8: $2$bitselwrite$pos$code/rtl/md_lfsr.v:34$890[31:0]$901
+     3/8: $0\s[31:0] [31:24]
+     4/8: $0\s[31:0] [23:16]
+     5/8: $0\s[31:0] [15:8]
+     6/8: $0\s[31:0] [7:0]
+     7/8: $1$bitselwrite$pos$code/rtl/md_lfsr.v:34$890[31:0]$897
+     8/8: $1$lookahead\poly$892[31:0]$898
+Creating decoders for process `\md_flags.$code/rtl/md_flags.v:15$proc$872'.
+     1/5: $2$lookahead\f$871[15:0]$879
+     2/5: $2$bitselwrite$pos$code/rtl/md_flags.v:21$870[3:0]$878
+     3/5: $0\fp[15:0]
+     4/5: $1$lookahead\f$871[15:0]$877
+     5/5: $1$bitselwrite$pos$code/rtl/md_flags.v:21$870[3:0]$876
+Creating decoders for process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:88$proc$4337'.
+Creating decoders for process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:87$proc$4336'.
+Creating decoders for process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:86$proc$4335'.
+Creating decoders for process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:85$proc$4334'.
+Creating decoders for process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:84$proc$4333'.
+Creating decoders for process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:83$proc$4332'.
+Creating decoders for process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:82$proc$4331'.
+Creating decoders for process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:81$proc$4330'.
+Creating decoders for process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:80$proc$4329'.
+Creating decoders for process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:156$proc$4183'.
+Creating decoders for process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:156$proc$4044'.
+Creating decoders for process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:156$proc$3905'.
+Creating decoders for process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:229$proc$3889'.
+     1/4: $0\xv[0:0]
+     2/4: $0\rr[2:0]
+     3/4: $0\xpc[7:0]
+     4/4: $0\xe[2:0]
+Creating decoders for process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:213$proc$3875'.
+Creating decoders for process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:195$proc$3754'.
+Creating decoders for process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:122$proc$3733'.
+Creating decoders for process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:110$proc$3731'.
+Creating decoders for process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:95$proc$3724'.
+     1/30: $6\x_pinb[0:0]
+     2/30: $6\x_pina[0:0]
+     3/30: $6\x_sync[0:0]
+     4/30: $6\x_cap[3:0]
+     5/30: $6\x_in[1:0]
+     6/30: $5\x_pinb[0:0]
+     7/30: $5\x_pina[0:0]
+     8/30: $5\x_sync[0:0]
+     9/30: $5\x_cap[3:0]
+    10/30: $5\x_in[1:0]
+    11/30: $4\x_pinb[0:0]
+    12/30: $4\x_pina[0:0]
+    13/30: $4\x_sync[0:0]
+    14/30: $4\x_cap[3:0]
+    15/30: $4\x_in[1:0]
+    16/30: $3\x_pinb[0:0]
+    17/30: $3\x_pina[0:0]
+    18/30: $3\x_sync[0:0]
+    19/30: $3\x_cap[3:0]
+    20/30: $3\x_in[1:0]
+    21/30: $2\x_pinb[0:0]
+    22/30: $2\x_pina[0:0]
+    23/30: $2\x_sync[0:0]
+    24/30: $2\x_cap[3:0]
+    25/30: $2\x_in[1:0]
+    26/30: $1\x_pinb[0:0]
+    27/30: $1\x_pina[0:0]
+    28/30: $1\x_sync[0:0]
+    29/30: $1\x_cap[3:0]
+    30/30: $1\x_in[1:0]
+Creating decoders for process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:88$proc$3645'.
+Creating decoders for process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:87$proc$3644'.
+Creating decoders for process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:86$proc$3643'.
+Creating decoders for process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:85$proc$3642'.
+Creating decoders for process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:84$proc$3641'.
+Creating decoders for process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:83$proc$3640'.
+Creating decoders for process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:82$proc$3639'.
+Creating decoders for process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:81$proc$3638'.
+Creating decoders for process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:80$proc$3637'.
+Creating decoders for process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:156$proc$3491'.
+Creating decoders for process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:156$proc$3352'.
+Creating decoders for process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:156$proc$3213'.
+Creating decoders for process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:229$proc$3197'.
+     1/4: $0\xv[0:0]
+     2/4: $0\rr[2:0]
+     3/4: $0\xpc[7:0]
+     4/4: $0\xe[2:0]
+Creating decoders for process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:213$proc$3183'.
+Creating decoders for process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:195$proc$3062'.
+Creating decoders for process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:122$proc$3042'.
+Creating decoders for process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:110$proc$3040'.
+Creating decoders for process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:95$proc$3033'.
+     1/30: $6\x_pinb[0:0]
+     2/30: $6\x_pina[0:0]
+     3/30: $6\x_sync[0:0]
+     4/30: $6\x_cap[3:0]
+     5/30: $6\x_in[1:0]
+     6/30: $5\x_pinb[0:0]
+     7/30: $5\x_pina[0:0]
+     8/30: $5\x_sync[0:0]
+     9/30: $5\x_cap[3:0]
+    10/30: $5\x_in[1:0]
+    11/30: $4\x_pinb[0:0]
+    12/30: $4\x_pina[0:0]
+    13/30: $4\x_sync[0:0]
+    14/30: $4\x_cap[3:0]
+    15/30: $4\x_in[1:0]
+    16/30: $3\x_pinb[0:0]
+    17/30: $3\x_pina[0:0]
+    18/30: $3\x_sync[0:0]
+    19/30: $3\x_cap[3:0]
+    20/30: $3\x_in[1:0]
+    21/30: $2\x_pinb[0:0]
+    22/30: $2\x_pina[0:0]
+    23/30: $2\x_sync[0:0]
+    24/30: $2\x_cap[3:0]
+    25/30: $2\x_in[1:0]
+    26/30: $1\x_pinb[0:0]
+    27/30: $1\x_pina[0:0]
+    28/30: $1\x_sync[0:0]
+    29/30: $1\x_cap[3:0]
+    30/30: $1\x_in[1:0]
+Creating decoders for process `\md_counter.$code/rtl/md_counter.v:13$proc$791'.
+     1/2: $0\v[15:0] [15:8]
+     2/2: $0\v[15:0] [7:0]
+Creating decoders for process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:165$proc$2954'.
+     1/1: $1\h_rd[7:0]
+Creating decoders for process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+     1/26: $0\lut1[15:0] [15:8]
+     2/26: $0\lut1[15:0] [7:0]
+     3/26: $0\lut0[15:0] [7:0]
+     4/26: $0\cap[3:0] [2]
+     5/26: $0\cap[3:0] [1]
+     6/26: $0\cap[3:0] [0]
+     7/26: $0\staged[1:0]
+     8/26: $0\ovr[0:0]
+     9/26: $0\late[0:0]
+    10/26: $0\armed[0:0]
+    11/26: $0\lut0[15:0] [15:8]
+    12/26: $0\cap[3:0] [3]
+    13/26: $0\pb_sel[3:0]
+    14/26: $0\pa_sel[3:0]
+    15/26: $0\trig[4:0]
+    16/26: $0\bg[1:0]
+    17/26: $0\core[0:0]
+    18/26: $0\committed[1:0]
+    19/26: $0\w1h[7:0]
+    20/26: $0\w0h[7:0]
+    21/26: $0\w1c[5:0]
+    22/26: $0\w0c[5:0]
+    23/26: $0\pc[7:0]
+    24/26: $0\running[0:0]
+    25/26: $0\ready[0:0]
+    26/26: $0\en[0:0]
+Creating decoders for process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:84$proc$2924'.
+Creating decoders for process `\md_beatgen.$code/rtl/md_beatgen.v:123$proc$87'.
+     1/1: $1\h_rd[7:0]
+Creating decoders for process `\md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+     1/24: $0\whi[15:0] [15:8]
+     2/24: $0\whi[15:0] [7:0]
+     3/24: $0\wlo[15:0] [7:0]
+     4/24: $0\pre[15:0] [7:0]
+     5/24: $0\t2[15:0] [7:0]
+     6/24: $0\t1[15:0] [7:0]
+     7/24: $0\t0[15:0] [7:0]
+     8/24: $0\mod[15:0] [7:0]
+     9/24: $0\inc[15:0] [7:0]
+    10/24: $0\arm[0:0]
+    11/24: $0\run[0:0]
+    12/24: $0\ph[15:0]
+    13/24: $0\edg[5:0]
+    14/24: $0\sp[0:0]
+    15/24: $0\ren[0:0]
+    16/24: $0\wen[0:0]
+    17/24: $0\wlo[15:0] [15:8]
+    18/24: $0\pre[15:0] [15:8]
+    19/24: $0\t2[15:0] [15:8]
+    20/24: $0\t1[15:0] [15:8]
+    21/24: $0\t0[15:0] [15:8]
+    22/24: $0\mod[15:0] [15:8]
+    23/24: $0\inc[15:0] [15:8]
+    24/24: $0\sc[0:0]
+Creating decoders for process `\md_beatgen.$code/rtl/md_beatgen.v:70$proc$76'.
+     1/2: $2\ph_n[15:8]
+     2/2: $1\ph_n[7:0]
+Creating decoders for process `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.$code/rtl/md_outcell.v:34$proc$2908'.
+     1/7: $0\oe[15:0] [15:8]
+     2/7: $0\oe[15:0] [7:0]
+     3/7: $0\lut[15:0] [7:0]
+     4/7: $0\out[0:0]
+     5/7: $0\lut[15:0] [15:8]
+     6/7: $0\eng[2:0]
+     7/7: $0\oen[0:0]
+Creating decoders for process `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.$code/rtl/md_outcell.v:28$proc$2901'.
+     1/6: $6\idx[3:0]
+     2/6: $5\idx[3:0]
+     3/6: $4\idx[3:0]
+     4/6: $3\idx[3:0]
+     5/6: $2\idx[3:0]
+     6/6: $1\idx[3:0]
+Creating decoders for process `\data_mem.$code/rtl/data_mem.v:34$proc$2'.
+     1/7: $2$memwr$\mem$code/rtl/data_mem.v:36$1_EN[7:0]$11
+     2/7: $2$memwr$\mem$code/rtl/data_mem.v:36$1_DATA[7:0]$10
+     3/7: $2$memwr$\mem$code/rtl/data_mem.v:36$1_ADDR[10:0]$9
+     4/7: $1$memwr$\mem$code/rtl/data_mem.v:36$1_EN[7:0]$8
+     5/7: $1$memwr$\mem$code/rtl/data_mem.v:36$1_DATA[7:0]$7
+     6/7: $1$memwr$\mem$code/rtl/data_mem.v:36$1_ADDR[10:0]$6
+     7/7: $0\q[7:0]
+
+21.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.\i' from process `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.$code/rtl/md_outcell.v:28$proc$2891'.
+No latch inferred for signal `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.\idx' from process `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.$code/rtl/md_outcell.v:28$proc$2891'.
+No latch inferred for signal `$paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup.\i' from process `$paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2858'.
+No latch inferred for signal `$paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup.\wsel' from process `$paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2858'.
+No latch inferred for signal `$paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup.\wdata' from process `$paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2858'.
+No latch inferred for signal `$paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup.\i' from process `$paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2823'.
+No latch inferred for signal `$paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup.\wsel' from process `$paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2823'.
+No latch inferred for signal `$paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup.\wdata' from process `$paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2823'.
+No latch inferred for signal `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup.\i' from process `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2788'.
+No latch inferred for signal `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup.\wsel' from process `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2788'.
+No latch inferred for signal `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup.\wdata' from process `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2788'.
+No latch inferred for signal `$paramod$779056bdc84c15aff8cc589907c90756353674e5\md_wgroup.\i' from process `$paramod$779056bdc84c15aff8cc589907c90756353674e5\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2753'.
+No latch inferred for signal `$paramod$779056bdc84c15aff8cc589907c90756353674e5\md_wgroup.\wsel' from process `$paramod$779056bdc84c15aff8cc589907c90756353674e5\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2753'.
+No latch inferred for signal `$paramod$779056bdc84c15aff8cc589907c90756353674e5\md_wgroup.\wdata' from process `$paramod$779056bdc84c15aff8cc589907c90756353674e5\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2753'.
+No latch inferred for signal `$paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup.\i' from process `$paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2718'.
+No latch inferred for signal `$paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup.\wsel' from process `$paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2718'.
+No latch inferred for signal `$paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup.\wdata' from process `$paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2718'.
+No latch inferred for signal `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup.\i' from process `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2683'.
+No latch inferred for signal `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup.\wsel' from process `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2683'.
+No latch inferred for signal `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup.\wdata' from process `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2683'.
+No latch inferred for signal `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup.\i' from process `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2648'.
+No latch inferred for signal `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup.\wsel' from process `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2648'.
+No latch inferred for signal `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup.\wdata' from process `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2648'.
+No latch inferred for signal `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup.\i' from process `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2613'.
+No latch inferred for signal `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup.\wsel' from process `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2613'.
+No latch inferred for signal `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup.\wdata' from process `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2613'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:317$2113.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2602'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:317$2112.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2593'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:317$2111.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2584'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:317$2110.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2575'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:317$2109.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2566'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:317$2108.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2557'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:317$2107.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2548'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:317$2106.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2539'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:317$2105.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2530'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:317$2104.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2521'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:317$2103.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2512'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:317$2102.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2503'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:317$2101.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2494'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:317$2100.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2485'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:264$2099.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:264$proc$2469'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:264$2098.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:264$proc$2449'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:264$2097.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:264$proc$2429'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:264$2096.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:264$proc$2409'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:264$2095.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:264$proc$2389'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:264$2094.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:264$proc$2369'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:216$2046.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:216$proc$2356'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:216$2045.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:216$proc$2347'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:216$2044.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:216$proc$2338'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:216$2043.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:216$proc$2329'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:199$2042.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:199$proc$2321'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:162$2041.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:162$proc$2310'.
+No latch inferred for signal `\tt_um_metronome.\blk$func$code/rtl/tt_um_metronome.v:162$2040.$result' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:162$proc$2299'.
+No latch inferred for signal `\tt_um_metronome.\reg_rd' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:328$proc$2220'.
+No latch inferred for signal `\tt_um_metronome.\j' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:328$proc$2220'.
+No latch inferred for signal `\tt_um_metronome.\grd_g' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:229$proc$2216'.
+No latch inferred for signal `\tt_um_metronome.\j' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:229$proc$2216'.
+No latch inferred for signal `\tt_um_metronome.\hin_rd' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:184$proc$2152'.
+No latch inferred for signal `\tt_um_metronome.\pd_haz' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:184$proc$2152'.
+No latch inferred for signal `\tt_um_metronome.\j' from process `\tt_um_metronome.$code/rtl/tt_um_metronome.v:184$proc$2152'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\dt[5]' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:72$proc$5273'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\xo[5]' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:71$proc$5271'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\oh[5]' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:70$proc$5268'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\dt[4]' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:72$proc$5267'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\xo[4]' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:71$proc$5265'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\oh[4]' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:70$proc$5262'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\dt[3]' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:72$proc$5261'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\xo[3]' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:71$proc$5259'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\oh[3]' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:70$proc$5256'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\dt[2]' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:72$proc$5255'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\xo[2]' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:71$proc$5253'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\oh[2]' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:70$proc$5250'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\dt[1]' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:72$proc$5249'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\xo[1]' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:71$proc$5247'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\oh[1]' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:70$proc$5244'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\dt[0]' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:72$proc$5243'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\xo[0]' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:71$proc$5241'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\oh[0]' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:70$proc$5238'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:210$4487.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:210$proc$5217'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:209$4486.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:209$proc$5208'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:203$4485.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:203$proc$5199'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:197$4484.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:197$proc$5190'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:197$4482.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:197$proc$5181'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:197$4480.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:197$proc$5172'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:197$4478.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:197$proc$5163'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:183$4476.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:183$proc$5153'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:182$4475.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:182$proc$5144'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:172$4474.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:172$proc$5120'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:171$4472.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:171$proc$5111'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:170$4470.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:170$proc$5102'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:169$4468.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:169$proc$5093'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:172$4466.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:172$proc$5069'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:171$4464.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:171$proc$5060'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:170$4462.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:170$proc$5051'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:169$4460.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:169$proc$5042'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:159$4458.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:159$proc$5017'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:158$4456.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:158$proc$5008'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:157$4454.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:157$proc$4999'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:156$4452.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:156$proc$4990'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:155$4450.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:155$proc$4981'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:159$4448.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:159$proc$4956'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:158$4446.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:158$proc$4947'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:157$4444.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:157$proc$4938'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:156$4442.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:156$proc$4929'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:155$4440.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:155$proc$4920'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:145$4438.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:145$proc$4909'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:144$4436.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:144$proc$4900'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:143$4434.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:143$proc$4891'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:145$4432.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:145$proc$4880'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:144$4430.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:144$proc$4871'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:143$4428.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:143$proc$4862'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:145$4426.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:145$proc$4851'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:144$4424.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:144$proc$4842'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:143$4422.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:143$proc$4833'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:145$4420.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:145$proc$4822'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:144$4418.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:144$proc$4813'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:143$4416.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:143$proc$4804'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:130$4414.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:130$proc$4794'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:129$4412.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:129$proc$4785'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:128$4410.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:128$proc$4776'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:130$4408.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:130$proc$4766'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:129$4406.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:129$proc$4757'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:128$4404.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:128$proc$4748'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:130$4402.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:130$proc$4738'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:129$4400.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:129$proc$4729'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:128$4398.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:128$proc$4720'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:130$4396.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:130$proc$4710'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:129$4394.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:129$proc$4701'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:128$4392.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:128$proc$4692'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:124$4390.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:124$proc$4683'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:124$4388.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:124$proc$4674'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:124$4386.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:124$proc$4665'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:124$4384.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:124$proc$4656'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:112$4382.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:112$proc$4605'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:111$4381.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:111$proc$4596'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:110$4380.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:110$proc$4587'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:109$4379.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:109$proc$4578'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:108$4378.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:108$proc$4569'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:107$4377.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:107$proc$4560'.
+No latch inferred for signal `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.\col$func$code/rtl/md_movebus.v:106$4376.$result' from process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:106$proc$4551'.
+No latch inferred for signal `\md_spi.\in_data$func$code/rtl/md_spi.v:92$1906.$result' from process `\md_spi.$code/rtl/md_spi.v:92$proc$1967'.
+No latch inferred for signal `\md_spi.\in_prog$func$code/rtl/md_spi.v:91$1905.$result' from process `\md_spi.$code/rtl/md_spi.v:91$proc$1960'.
+No latch inferred for signal `\md_spi.\in_data$func$code/rtl/md_spi.v:90$1904.$result' from process `\md_spi.$code/rtl/md_spi.v:90$proc$1953'.
+No latch inferred for signal `$paramod\md_acc\NR=s32'00000000000000000000000000000100.\sum' from process `$paramod\md_acc\NR=s32'00000000000000000000000000000100.$code/rtl/md_acc.v:26$proc$4364'.
+No latch inferred for signal `$paramod\md_acc\NR=s32'00000000000000000000000000000100.\res' from process `$paramod\md_acc\NR=s32'00000000000000000000000000000100.$code/rtl/md_acc.v:26$proc$4364'.
+No latch inferred for signal `$paramod\md_acc\NR=s32'00000000000000000000000000000100.\cy' from process `$paramod\md_acc\NR=s32'00000000000000000000000000000100.$code/rtl/md_acc.v:26$proc$4364'.
+No latch inferred for signal `$paramod\md_acc\NR=s32'00000000000000000000000000000100.\wa' from process `$paramod\md_acc\NR=s32'00000000000000000000000000000100.$code/rtl/md_acc.v:26$proc$4364'.
+No latch inferred for signal `$paramod\md_acc\NR=s32'00000000000000000000000000000100.\wc' from process `$paramod\md_acc\NR=s32'00000000000000000000000000000100.$code/rtl/md_acc.v:26$proc$4364'.
+No latch inferred for signal `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.\h_rd' from process `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.$code/rtl/md_ctrl.v:79$proc$4363'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\i_d[2]' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:88$proc$4337'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\i_s[2]' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:87$proc$4336'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\i_g[2]' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:86$proc$4335'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\i_d[1]' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:85$proc$4334'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\i_s[1]' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:84$proc$4333'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\i_g[1]' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:83$proc$4332'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\i_d[0]' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:82$proc$4331'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\i_s[0]' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:81$proc$4330'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\i_g[0]' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:80$proc$4329'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\g_mv[2].sd' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:156$proc$4183'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\g_mv[2].q' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:156$proc$4183'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\g_mv[1].sd' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:156$proc$4044'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\g_mv[1].q' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:156$proc$4044'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\g_mv[0].sd' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:156$proc$3905'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\g_mv[0].q' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:156$proc$3905'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\gd' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:213$proc$3875'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\i' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:195$proc$3754'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\disp_e' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:195$proc$3754'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\d_pc' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:195$proc$3754'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\d_w0h' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:195$proc$3754'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\d_w1h' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:195$proc$3754'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\d_w0c' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:195$proc$3754'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\d_w1c' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:195$proc$3754'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\d_in' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:195$proc$3754'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\d_sync' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:195$proc$3754'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\d_pina' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:195$proc$3754'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\d_pinb' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:195$proc$3754'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\b' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:122$proc$3733'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\i' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:122$proc$3733'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\src' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:122$proc$3733'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\grd' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:110$proc$3731'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\i' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:95$proc$3724'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\x_in' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:95$proc$3724'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\x_cap' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:95$proc$3724'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\x_sync' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:95$proc$3724'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\x_pina' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:95$proc$3724'.
+No latch inferred for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\x_pinb' from process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:95$proc$3724'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\i_d[2]' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:88$proc$3645'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\i_s[2]' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:87$proc$3644'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\i_g[2]' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:86$proc$3643'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\i_d[1]' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:85$proc$3642'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\i_s[1]' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:84$proc$3641'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\i_g[1]' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:83$proc$3640'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\i_d[0]' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:82$proc$3639'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\i_s[0]' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:81$proc$3638'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\i_g[0]' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:80$proc$3637'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\g_mv[2].sd' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:156$proc$3491'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\g_mv[2].q' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:156$proc$3491'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\g_mv[1].sd' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:156$proc$3352'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\g_mv[1].q' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:156$proc$3352'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\g_mv[0].sd' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:156$proc$3213'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\g_mv[0].q' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:156$proc$3213'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\gd' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:213$proc$3183'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\i' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:195$proc$3062'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\disp_e' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:195$proc$3062'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\d_pc' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:195$proc$3062'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\d_w0h' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:195$proc$3062'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\d_w1h' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:195$proc$3062'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\d_w0c' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:195$proc$3062'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\d_w1c' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:195$proc$3062'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\d_in' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:195$proc$3062'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\d_sync' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:195$proc$3062'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\d_pina' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:195$proc$3062'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\d_pinb' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:195$proc$3062'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\b' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:122$proc$3042'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\i' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:122$proc$3042'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\src' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:122$proc$3042'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\grd' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:110$proc$3040'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\i' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:95$proc$3033'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\x_in' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:95$proc$3033'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\x_cap' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:95$proc$3033'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\x_sync' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:95$proc$3033'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\x_pina' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:95$proc$3033'.
+No latch inferred for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\x_pinb' from process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:95$proc$3033'.
+No latch inferred for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\h_rd' from process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:165$proc$2954'.
+No latch inferred for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\k' from process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:84$proc$2924'.
+No latch inferred for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\ev' from process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:84$proc$2924'.
+No latch inferred for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\g' from process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:84$proc$2924'.
+No latch inferred for signal `\md_beatgen.\h_rd' from process `\md_beatgen.$code/rtl/md_beatgen.v:123$proc$87'.
+No latch inferred for signal `\md_beatgen.\ph_n' from process `\md_beatgen.$code/rtl/md_beatgen.v:70$proc$76'.
+No latch inferred for signal `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.\i' from process `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.$code/rtl/md_outcell.v:28$proc$2901'.
+No latch inferred for signal `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.\idx' from process `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.$code/rtl/md_outcell.v:28$proc$2901'.
+
+21.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.\lut' using process `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.$code/rtl/md_outcell.v:34$proc$2898'.
+  created $dff cell `$procdff$6859' with positive edge clock.
+Creating register for signal `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.\out' using process `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.$code/rtl/md_outcell.v:34$proc$2898'.
+  created $dff cell `$procdff$6860' with positive edge clock.
+Creating register for signal `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.\oen' using process `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.$code/rtl/md_outcell.v:34$proc$2898'.
+  created $dff cell `$procdff$6861' with positive edge clock.
+Creating register for signal `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.\eng' using process `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.$code/rtl/md_outcell.v:34$proc$2898'.
+  created $dff cell `$procdff$6862' with positive edge clock.
+Creating register for signal `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.\oe' using process `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.$code/rtl/md_outcell.v:34$proc$2898'.
+  created $dff cell `$procdff$6863' with positive edge clock.
+Creating register for signal `\prog_mem.\q' using process `\prog_mem.$code/rtl/prog_mem.v:33$proc$2017'.
+  created $dff cell `$procdff$6864' with positive edge clock.
+Creating register for signal `\prog_mem.$memwr$\mem$code/rtl/prog_mem.v:34$2016_ADDR' using process `\prog_mem.$code/rtl/prog_mem.v:33$proc$2017'.
+  created $dff cell `$procdff$6865' with positive edge clock.
+Creating register for signal `\prog_mem.$memwr$\mem$code/rtl/prog_mem.v:34$2016_DATA' using process `\prog_mem.$code/rtl/prog_mem.v:33$proc$2017'.
+  created $dff cell `$procdff$6866' with positive edge clock.
+Creating register for signal `\prog_mem.$memwr$\mem$code/rtl/prog_mem.v:34$2016_EN' using process `\prog_mem.$code/rtl/prog_mem.v:33$proc$2017'.
+  created $dff cell `$procdff$6867' with positive edge clock.
+Creating register for signal `$paramod\md_sync\N=s32'00000000000000000000000000010000.\sp' using process `$paramod\md_sync\N=s32'00000000000000000000000000010000.$code/rtl/md_sync.v:16$proc$5274'.
+  created $dff cell `$procdff$6868' with positive edge clock.
+Creating register for signal `$paramod\md_sync\N=s32'00000000000000000000000000010000.\s1' using process `$paramod\md_sync\N=s32'00000000000000000000000000010000.$code/rtl/md_sync.v:16$proc$5274'.
+  created $dff cell `$procdff$6869' with positive edge clock.
+Creating register for signal `$paramod\md_sync\N=s32'00000000000000000000000000010000.\s2' using process `$paramod\md_sync\N=s32'00000000000000000000000000010000.$code/rtl/md_sync.v:16$proc$5274'.
+  created $dff cell `$procdff$6870' with positive edge clock.
+Creating register for signal `\md_spi.\addr' using process `\md_spi.$code/rtl/md_spi.v:106$proc$1938'.
+  created $dff cell `$procdff$6871' with positive edge clock.
+Creating register for signal `\md_spi.\miso' using process `\md_spi.$code/rtl/md_spi.v:106$proc$1938'.
+  created $dff cell `$procdff$6872' with positive edge clock.
+Creating register for signal `\md_spi.\bitcnt' using process `\md_spi.$code/rtl/md_spi.v:106$proc$1938'.
+  created $dff cell `$procdff$6873' with positive edge clock.
+Creating register for signal `\md_spi.\bytecnt' using process `\md_spi.$code/rtl/md_spi.v:106$proc$1938'.
+  created $dff cell `$procdff$6874' with positive edge clock.
+Creating register for signal `\md_spi.\cmd_wr' using process `\md_spi.$code/rtl/md_spi.v:106$proc$1938'.
+  created $dff cell `$procdff$6875' with positive edge clock.
+Creating register for signal `\md_spi.\cmd_rd' using process `\md_spi.$code/rtl/md_spi.v:106$proc$1938'.
+  created $dff cell `$procdff$6876' with positive edge clock.
+Creating register for signal `\md_spi.\rx' using process `\md_spi.$code/rtl/md_spi.v:106$proc$1938'.
+  created $dff cell `$procdff$6877' with positive edge clock.
+Creating register for signal `\md_spi.\tx' using process `\md_spi.$code/rtl/md_spi.v:106$proc$1938'.
+  created $dff cell `$procdff$6878' with positive edge clock.
+Creating register for signal `\md_spi.\hrd' using process `\md_spi.$code/rtl/md_spi.v:106$proc$1938'.
+  created $dff cell `$procdff$6879' with positive edge clock.
+Creating register for signal `\md_spi.\ldpend' using process `\md_spi.$code/rtl/md_spi.v:106$proc$1938'.
+  created $dff cell `$procdff$6880' with positive edge clock.
+Creating register for signal `\md_shifter.\dr' using process `\md_shifter.$code/rtl/md_shifter.v:19$proc$1892'.
+  created $dff cell `$procdff$6881' with positive edge clock.
+Creating register for signal `\md_shifter.\cnt' using process `\md_shifter.$code/rtl/md_shifter.v:19$proc$1892'.
+  created $dff cell `$procdff$6882' with positive edge clock.
+Creating register for signal `\md_shifter.\len' using process `\md_shifter.$code/rtl/md_shifter.v:19$proc$1892'.
+  created $dff cell `$procdff$6883' with positive edge clock.
+Creating register for signal `\md_shifter.\msb' using process `\md_shifter.$code/rtl/md_shifter.v:19$proc$1892'.
+  created $dff cell `$procdff$6884' with positive edge clock.
+Creating register for signal `\md_ptrs.\g_p[1].ptr' using process `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1884'.
+  created $dff cell `$procdff$6885' with positive edge clock.
+Creating register for signal `\md_ptrs.\g_p[1].rqa' using process `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1884'.
+  created $dff cell `$procdff$6886' with positive edge clock.
+Creating register for signal `\md_ptrs.\g_p[1].dr' using process `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1884'.
+  created $dff cell `$procdff$6887' with positive edge clock.
+Creating register for signal `\md_ptrs.\g_p[1].rqd' using process `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1884'.
+  created $dff cell `$procdff$6888' with positive edge clock.
+Creating register for signal `\md_ptrs.\g_p[1].rq' using process `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1884'.
+  created $dff cell `$procdff$6889' with positive edge clock.
+Creating register for signal `\md_ptrs.\g_p[1].rdyr' using process `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1884'.
+  created $dff cell `$procdff$6890' with positive edge clock.
+Creating register for signal `\md_ptrs.\g_p[1].land' using process `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1884'.
+  created $dff cell `$procdff$6891' with positive edge clock.
+Creating register for signal `\md_ptrs.\g_p[1].lok' using process `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1884'.
+  created $dff cell `$procdff$6892' with positive edge clock.
+Creating register for signal `\md_ptrs.\g_p[0].ptr' using process `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1864'.
+  created $dff cell `$procdff$6893' with positive edge clock.
+Creating register for signal `\md_ptrs.\g_p[0].rqa' using process `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1864'.
+  created $dff cell `$procdff$6894' with positive edge clock.
+Creating register for signal `\md_ptrs.\g_p[0].dr' using process `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1864'.
+  created $dff cell `$procdff$6895' with positive edge clock.
+Creating register for signal `\md_ptrs.\g_p[0].rqd' using process `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1864'.
+  created $dff cell `$procdff$6896' with positive edge clock.
+Creating register for signal `\md_ptrs.\g_p[0].rq' using process `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1864'.
+  created $dff cell `$procdff$6897' with positive edge clock.
+Creating register for signal `\md_ptrs.\g_p[0].rdyr' using process `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1864'.
+  created $dff cell `$procdff$6898' with positive edge clock.
+Creating register for signal `\md_ptrs.\g_p[0].land' using process `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1864'.
+  created $dff cell `$procdff$6899' with positive edge clock.
+Creating register for signal `\md_ptrs.\g_p[0].lok' using process `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1864'.
+  created $dff cell `$procdff$6900' with positive edge clock.
+Creating register for signal `\md_ptrs.\hland' using process `\md_ptrs.$code/rtl/md_ptrs.v:107$proc$1848'.
+  created $dff cell `$procdff$6901' with positive edge clock.
+Creating register for signal `\md_ptrs.\hq' using process `\md_ptrs.$code/rtl/md_ptrs.v:107$proc$1848'.
+  created $dff cell `$procdff$6902' with positive edge clock.
+Creating register for signal `\md_ptrs.\hqw' using process `\md_ptrs.$code/rtl/md_ptrs.v:107$proc$1848'.
+  created $dff cell `$procdff$6903' with positive edge clock.
+Creating register for signal `\md_ptrs.\hqa' using process `\md_ptrs.$code/rtl/md_ptrs.v:107$proc$1848'.
+  created $dff cell `$procdff$6904' with positive edge clock.
+Creating register for signal `\md_ptrs.\hqd' using process `\md_ptrs.$code/rtl/md_ptrs.v:107$proc$1848'.
+  created $dff cell `$procdff$6905' with positive edge clock.
+Creating register for signal `$paramod\md_acc\NR=s32'00000000000000000000000000000100.\a' using process `$paramod\md_acc\NR=s32'00000000000000000000000000000100.$code/rtl/md_acc.v:44$proc$4373'.
+  created $dff cell `$procdff$6906' with positive edge clock.
+Creating register for signal `$paramod\md_acc\NR=s32'00000000000000000000000000000100.\c' using process `$paramod\md_acc\NR=s32'00000000000000000000000000000100.$code/rtl/md_acc.v:44$proc$4373'.
+  created $dff cell `$procdff$6907' with positive edge clock.
+Creating register for signal `$paramod\md_acc\NR=s32'00000000000000000000000000000100.\z' using process `$paramod\md_acc\NR=s32'00000000000000000000000000000100.$code/rtl/md_acc.v:44$proc$4373'.
+  created $dff cell `$procdff$6908' with positive edge clock.
+Creating register for signal `$paramod\md_acc\NR=s32'00000000000000000000000000000100.\n' using process `$paramod\md_acc\NR=s32'00000000000000000000000000000100.$code/rtl/md_acc.v:44$proc$4373'.
+  created $dff cell `$procdff$6909' with positive edge clock.
+Creating register for signal `$paramod\md_acc\NR=s32'00000000000000000000000000000100.\r' using process `$paramod\md_acc\NR=s32'00000000000000000000000000000100.$code/rtl/md_acc.v:44$proc$4373'.
+  created $dff cell `$procdff$6910' with positive edge clock.
+Creating register for signal `$paramod\md_acc\NR=s32'00000000000000000000000000000100.\k' using process `$paramod\md_acc\NR=s32'00000000000000000000000000000100.$code/rtl/md_acc.v:44$proc$4373'.
+  created $dff cell `$procdff$6911' with positive edge clock.
+Creating register for signal `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.\run_g' using process `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.$code/rtl/md_ctrl.v:47$proc$4353'.
+  created $dff cell `$procdff$6912' with positive edge clock.
+Creating register for signal `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.\inb' using process `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.$code/rtl/md_ctrl.v:47$proc$4353'.
+  created $dff cell `$procdff$6913' with positive edge clock.
+Creating register for signal `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.\inv' using process `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.$code/rtl/md_ctrl.v:47$proc$4353'.
+  created $dff cell `$procdff$6914' with positive edge clock.
+Creating register for signal `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.\outv' using process `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.$code/rtl/md_ctrl.v:47$proc$4353'.
+  created $dff cell `$procdff$6915' with positive edge clock.
+Creating register for signal `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.\irq' using process `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.$code/rtl/md_ctrl.v:47$proc$4353'.
+  created $dff cell `$procdff$6916' with positive edge clock.
+Creating register for signal `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.\conflict' using process `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.$code/rtl/md_ctrl.v:47$proc$4353'.
+  created $dff cell `$procdff$6917' with positive edge clock.
+Creating register for signal `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.\memhaz' using process `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.$code/rtl/md_ctrl.v:47$proc$4353'.
+  created $dff cell `$procdff$6918' with positive edge clock.
+Creating register for signal `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.\invp' using process `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.$code/rtl/md_ctrl.v:47$proc$4353'.
+  created $dff cell `$procdff$6919' with positive edge clock.
+Creating register for signal `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.\irqen' using process `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.$code/rtl/md_ctrl.v:47$proc$4353'.
+  created $dff cell `$procdff$6920' with positive edge clock.
+Creating register for signal `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.\outb' using process `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.$code/rtl/md_ctrl.v:47$proc$4353'.
+  created $dff cell `$procdff$6921' with positive edge clock.
+Creating register for signal `\md_lfsr.\s' using process `\md_lfsr.$code/rtl/md_lfsr.v:19$proc$893'.
+  created $dff cell `$procdff$6922' with positive edge clock.
+Creating register for signal `\md_lfsr.\poly' using process `\md_lfsr.$code/rtl/md_lfsr.v:19$proc$893'.
+  created $dff cell `$procdff$6923' with positive edge clock.
+Creating register for signal `\md_lfsr.$bitselwrite$pos$code/rtl/md_lfsr.v:34$890' using process `\md_lfsr.$code/rtl/md_lfsr.v:19$proc$893'.
+  created $dff cell `$procdff$6924' with positive edge clock.
+Creating register for signal `\md_lfsr.$lookahead\poly$892' using process `\md_lfsr.$code/rtl/md_lfsr.v:19$proc$893'.
+  created $dff cell `$procdff$6925' with positive edge clock.
+Creating register for signal `\md_flags.\f' using process `\md_flags.$code/rtl/md_flags.v:15$proc$872'.
+  created $dff cell `$procdff$6926' with positive edge clock.
+Creating register for signal `\md_flags.\fp' using process `\md_flags.$code/rtl/md_flags.v:15$proc$872'.
+  created $dff cell `$procdff$6927' with positive edge clock.
+Creating register for signal `\md_flags.$bitselwrite$pos$code/rtl/md_flags.v:21$870' using process `\md_flags.$code/rtl/md_flags.v:15$proc$872'.
+  created $dff cell `$procdff$6928' with positive edge clock.
+Creating register for signal `\md_flags.$lookahead\f$871' using process `\md_flags.$code/rtl/md_flags.v:15$proc$872'.
+  created $dff cell `$procdff$6929' with positive edge clock.
+Creating register for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\xe' using process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:229$proc$3889'.
+  created $dff cell `$procdff$6930' with positive edge clock.
+Creating register for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\xv' using process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:229$proc$3889'.
+  created $dff cell `$procdff$6931' with positive edge clock.
+Creating register for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\xpc' using process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:229$proc$3889'.
+  created $dff cell `$procdff$6932' with positive edge clock.
+Creating register for signal `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.\rr' using process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:229$proc$3889'.
+  created $dff cell `$procdff$6933' with positive edge clock.
+Creating register for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\xe' using process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:229$proc$3197'.
+  created $dff cell `$procdff$6934' with positive edge clock.
+Creating register for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\xv' using process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:229$proc$3197'.
+  created $dff cell `$procdff$6935' with positive edge clock.
+Creating register for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\xpc' using process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:229$proc$3197'.
+  created $dff cell `$procdff$6936' with positive edge clock.
+Creating register for signal `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.\rr' using process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:229$proc$3197'.
+  created $dff cell `$procdff$6937' with positive edge clock.
+Creating register for signal `\md_counter.\v' using process `\md_counter.$code/rtl/md_counter.v:13$proc$791'.
+  created $dff cell `$procdff$6938' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\en' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6939' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\ready' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6940' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\running' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6941' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\pc' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6942' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\w0c' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6943' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\w1c' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6944' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\w0h' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6945' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\w1h' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6946' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\committed' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6947' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\core' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6948' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\bg' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6949' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\trig' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6950' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\pa_sel' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6951' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\pb_sel' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6952' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\lut0' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6953' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\lut1' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6954' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\armed' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6955' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\late' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6956' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\ovr' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6957' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\staged' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6958' with positive edge clock.
+Creating register for signal `$paramod\md_engine\NB=s32'00000000000000000000000000000100.\cap' using process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+  created $dff cell `$procdff$6959' with positive edge clock.
+Creating register for signal `\md_beatgen.\inc' using process `\md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+  created $dff cell `$procdff$6960' with positive edge clock.
+Creating register for signal `\md_beatgen.\mod' using process `\md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+  created $dff cell `$procdff$6961' with positive edge clock.
+Creating register for signal `\md_beatgen.\t0' using process `\md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+  created $dff cell `$procdff$6962' with positive edge clock.
+Creating register for signal `\md_beatgen.\t1' using process `\md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+  created $dff cell `$procdff$6963' with positive edge clock.
+Creating register for signal `\md_beatgen.\t2' using process `\md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+  created $dff cell `$procdff$6964' with positive edge clock.
+Creating register for signal `\md_beatgen.\pre' using process `\md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+  created $dff cell `$procdff$6965' with positive edge clock.
+Creating register for signal `\md_beatgen.\wlo' using process `\md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+  created $dff cell `$procdff$6966' with positive edge clock.
+Creating register for signal `\md_beatgen.\whi' using process `\md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+  created $dff cell `$procdff$6967' with positive edge clock.
+Creating register for signal `\md_beatgen.\ph' using process `\md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+  created $dff cell `$procdff$6968' with positive edge clock.
+Creating register for signal `\md_beatgen.\wen' using process `\md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+  created $dff cell `$procdff$6969' with positive edge clock.
+Creating register for signal `\md_beatgen.\run' using process `\md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+  created $dff cell `$procdff$6970' with positive edge clock.
+Creating register for signal `\md_beatgen.\arm' using process `\md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+  created $dff cell `$procdff$6971' with positive edge clock.
+Creating register for signal `\md_beatgen.\ren' using process `\md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+  created $dff cell `$procdff$6972' with positive edge clock.
+Creating register for signal `\md_beatgen.\sc' using process `\md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+  created $dff cell `$procdff$6973' with positive edge clock.
+Creating register for signal `\md_beatgen.\sp' using process `\md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+  created $dff cell `$procdff$6974' with positive edge clock.
+Creating register for signal `\md_beatgen.\edg' using process `\md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+  created $dff cell `$procdff$6975' with positive edge clock.
+Creating register for signal `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.\lut' using process `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.$code/rtl/md_outcell.v:34$proc$2908'.
+  created $dff cell `$procdff$6976' with positive edge clock.
+Creating register for signal `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.\out' using process `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.$code/rtl/md_outcell.v:34$proc$2908'.
+  created $dff cell `$procdff$6977' with positive edge clock.
+Creating register for signal `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.\oen' using process `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.$code/rtl/md_outcell.v:34$proc$2908'.
+  created $dff cell `$procdff$6978' with positive edge clock.
+Creating register for signal `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.\eng' using process `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.$code/rtl/md_outcell.v:34$proc$2908'.
+  created $dff cell `$procdff$6979' with positive edge clock.
+Creating register for signal `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.\oe' using process `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.$code/rtl/md_outcell.v:34$proc$2908'.
+  created $dff cell `$procdff$6980' with positive edge clock.
+Creating register for signal `\data_mem.\q' using process `\data_mem.$code/rtl/data_mem.v:34$proc$2'.
+  created $dff cell `$procdff$6981' with positive edge clock.
+Creating register for signal `\data_mem.$memwr$\mem$code/rtl/data_mem.v:36$1_ADDR' using process `\data_mem.$code/rtl/data_mem.v:34$proc$2'.
+  created $dff cell `$procdff$6982' with positive edge clock.
+Creating register for signal `\data_mem.$memwr$\mem$code/rtl/data_mem.v:36$1_DATA' using process `\data_mem.$code/rtl/data_mem.v:34$proc$2'.
+  created $dff cell `$procdff$6983' with positive edge clock.
+Creating register for signal `\data_mem.$memwr$\mem$code/rtl/data_mem.v:36$1_EN' using process `\data_mem.$code/rtl/data_mem.v:34$proc$2'.
+  created $dff cell `$procdff$6984' with positive edge clock.
+
+21.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+21.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 3 empty switches in `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.$code/rtl/md_outcell.v:34$proc$2898'.
+Removing empty process `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.$code/rtl/md_outcell.v:34$proc$2898'.
+Found and cleaned up 6 empty switches in `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.$code/rtl/md_outcell.v:28$proc$2891'.
+Removing empty process `$paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.$code/rtl/md_outcell.v:28$proc$2891'.
+Removing empty process `$paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2858'.
+Removing empty process `$paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2823'.
+Removing empty process `$paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2788'.
+Removing empty process `$paramod$779056bdc84c15aff8cc589907c90756353674e5\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2753'.
+Removing empty process `$paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2718'.
+Removing empty process `$paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2683'.
+Removing empty process `$paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2648'.
+Removing empty process `$paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup.$code/rtl/md_wgroup.v:33$proc$2613'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2602'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2593'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2584'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2575'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2566'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2557'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2548'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2539'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2530'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2521'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2512'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2503'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2494'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:317$proc$2485'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:264$proc$2469'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:264$proc$2449'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:264$proc$2429'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:264$proc$2409'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:264$proc$2389'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:264$proc$2369'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:216$proc$2356'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:216$proc$2347'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:216$proc$2338'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:216$proc$2329'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:199$proc$2321'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:162$proc$2310'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:162$proc$2299'.
+Found and cleaned up 11 empty switches in `\tt_um_metronome.$code/rtl/tt_um_metronome.v:328$proc$2220'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:328$proc$2220'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:229$proc$2216'.
+Found and cleaned up 18 empty switches in `\tt_um_metronome.$code/rtl/tt_um_metronome.v:184$proc$2152'.
+Removing empty process `tt_um_metronome.$code/rtl/tt_um_metronome.v:184$proc$2152'.
+Found and cleaned up 2 empty switches in `\prog_mem.$code/rtl/prog_mem.v:33$proc$2017'.
+Removing empty process `prog_mem.$code/rtl/prog_mem.v:33$proc$2017'.
+Found and cleaned up 1 empty switch in `$paramod\md_sync\N=s32'00000000000000000000000000010000.$code/rtl/md_sync.v:16$proc$5274'.
+Removing empty process `$paramod\md_sync\N=s32'00000000000000000000000000010000.$code/rtl/md_sync.v:16$proc$5274'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:72$proc$5273'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:71$proc$5271'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:70$proc$5268'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:72$proc$5267'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:71$proc$5265'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:70$proc$5262'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:72$proc$5261'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:71$proc$5259'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:70$proc$5256'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:72$proc$5255'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:71$proc$5253'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:70$proc$5250'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:72$proc$5249'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:71$proc$5247'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:70$proc$5244'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:72$proc$5243'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:71$proc$5241'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:70$proc$5238'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:210$proc$5217'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:209$proc$5208'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:203$proc$5199'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:197$proc$5190'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:197$proc$5181'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:197$proc$5172'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:197$proc$5163'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:183$proc$5153'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:182$proc$5144'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:172$proc$5120'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:171$proc$5111'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:170$proc$5102'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:169$proc$5093'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:172$proc$5069'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:171$proc$5060'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:170$proc$5051'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:169$proc$5042'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:159$proc$5017'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:158$proc$5008'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:157$proc$4999'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:156$proc$4990'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:155$proc$4981'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:159$proc$4956'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:158$proc$4947'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:157$proc$4938'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:156$proc$4929'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:155$proc$4920'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:145$proc$4909'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:144$proc$4900'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:143$proc$4891'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:145$proc$4880'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:144$proc$4871'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:143$proc$4862'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:145$proc$4851'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:144$proc$4842'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:143$proc$4833'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:145$proc$4822'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:144$proc$4813'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:143$proc$4804'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:130$proc$4794'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:129$proc$4785'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:128$proc$4776'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:130$proc$4766'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:129$proc$4757'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:128$proc$4748'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:130$proc$4738'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:129$proc$4729'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:128$proc$4720'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:130$proc$4710'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:129$proc$4701'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:128$proc$4692'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:124$proc$4683'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:124$proc$4674'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:124$proc$4665'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:124$proc$4656'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:112$proc$4605'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:111$proc$4596'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:110$proc$4587'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:109$proc$4578'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:108$proc$4569'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:107$proc$4560'.
+Removing empty process `$paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.$code/rtl/md_movebus.v:106$proc$4551'.
+Removing empty process `md_spi.$code/rtl/md_spi.v:92$proc$1967'.
+Removing empty process `md_spi.$code/rtl/md_spi.v:91$proc$1960'.
+Removing empty process `md_spi.$code/rtl/md_spi.v:90$proc$1953'.
+Found and cleaned up 15 empty switches in `\md_spi.$code/rtl/md_spi.v:106$proc$1938'.
+Removing empty process `md_spi.$code/rtl/md_spi.v:106$proc$1938'.
+Found and cleaned up 4 empty switches in `\md_shifter.$code/rtl/md_shifter.v:19$proc$1892'.
+Removing empty process `md_shifter.$code/rtl/md_shifter.v:19$proc$1892'.
+Found and cleaned up 10 empty switches in `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1884'.
+Removing empty process `md_ptrs.$code/rtl/md_ptrs.v:70$proc$1884'.
+Found and cleaned up 10 empty switches in `\md_ptrs.$code/rtl/md_ptrs.v:70$proc$1864'.
+Removing empty process `md_ptrs.$code/rtl/md_ptrs.v:70$proc$1864'.
+Found and cleaned up 3 empty switches in `\md_ptrs.$code/rtl/md_ptrs.v:107$proc$1848'.
+Removing empty process `md_ptrs.$code/rtl/md_ptrs.v:107$proc$1848'.
+Found and cleaned up 8 empty switches in `$paramod\md_acc\NR=s32'00000000000000000000000000000100.$code/rtl/md_acc.v:44$proc$4373'.
+Removing empty process `$paramod\md_acc\NR=s32'00000000000000000000000000000100.$code/rtl/md_acc.v:44$proc$4373'.
+Found and cleaned up 1 empty switch in `$paramod\md_acc\NR=s32'00000000000000000000000000000100.$code/rtl/md_acc.v:26$proc$4364'.
+Removing empty process `$paramod\md_acc\NR=s32'00000000000000000000000000000100.$code/rtl/md_acc.v:26$proc$4364'.
+Found and cleaned up 1 empty switch in `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.$code/rtl/md_ctrl.v:79$proc$4363'.
+Removing empty process `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.$code/rtl/md_ctrl.v:79$proc$4363'.
+Found and cleaned up 11 empty switches in `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.$code/rtl/md_ctrl.v:47$proc$4353'.
+Removing empty process `$paramod\md_ctrl\NE=s32'00000000000000000000000000000110.$code/rtl/md_ctrl.v:47$proc$4353'.
+Found and cleaned up 4 empty switches in `\md_lfsr.$code/rtl/md_lfsr.v:19$proc$893'.
+Removing empty process `md_lfsr.$code/rtl/md_lfsr.v:19$proc$893'.
+Found and cleaned up 2 empty switches in `\md_flags.$code/rtl/md_flags.v:15$proc$872'.
+Removing empty process `md_flags.$code/rtl/md_flags.v:15$proc$872'.
+Removing empty process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:88$proc$4337'.
+Removing empty process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:87$proc$4336'.
+Removing empty process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:86$proc$4335'.
+Removing empty process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:85$proc$4334'.
+Removing empty process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:84$proc$4333'.
+Removing empty process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:83$proc$4332'.
+Removing empty process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:82$proc$4331'.
+Removing empty process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:81$proc$4330'.
+Removing empty process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:80$proc$4329'.
+Removing empty process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:156$proc$4183'.
+Removing empty process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:156$proc$4044'.
+Removing empty process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:156$proc$3905'.
+Found and cleaned up 4 empty switches in `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:229$proc$3889'.
+Removing empty process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:229$proc$3889'.
+Removing empty process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:213$proc$3875'.
+Removing empty process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:195$proc$3754'.
+Removing empty process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:122$proc$3733'.
+Removing empty process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:110$proc$3731'.
+Found and cleaned up 6 empty switches in `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:95$proc$3724'.
+Removing empty process `$paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.$code/rtl/md_core.v:95$proc$3724'.
+Removing empty process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:88$proc$3645'.
+Removing empty process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:87$proc$3644'.
+Removing empty process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:86$proc$3643'.
+Removing empty process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:85$proc$3642'.
+Removing empty process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:84$proc$3641'.
+Removing empty process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:83$proc$3640'.
+Removing empty process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:82$proc$3639'.
+Removing empty process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:81$proc$3638'.
+Removing empty process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:80$proc$3637'.
+Removing empty process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:156$proc$3491'.
+Removing empty process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:156$proc$3352'.
+Removing empty process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:156$proc$3213'.
+Found and cleaned up 4 empty switches in `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:229$proc$3197'.
+Removing empty process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:229$proc$3197'.
+Removing empty process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:213$proc$3183'.
+Removing empty process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:195$proc$3062'.
+Removing empty process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:122$proc$3042'.
+Removing empty process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:110$proc$3040'.
+Found and cleaned up 6 empty switches in `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:95$proc$3033'.
+Removing empty process `$paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.$code/rtl/md_core.v:95$proc$3033'.
+Found and cleaned up 5 empty switches in `\md_counter.$code/rtl/md_counter.v:13$proc$791'.
+Removing empty process `md_counter.$code/rtl/md_counter.v:13$proc$791'.
+Found and cleaned up 1 empty switch in `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:165$proc$2954'.
+Removing empty process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:165$proc$2954'.
+Found and cleaned up 22 empty switches in `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+Removing empty process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:111$proc$2946'.
+Removing empty process `$paramod\md_engine\NB=s32'00000000000000000000000000000100.$code/rtl/md_engine.v:84$proc$2924'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$code/rtl/md_beatgen.v:123$proc$87'.
+Removing empty process `md_beatgen.$code/rtl/md_beatgen.v:123$proc$87'.
+Found and cleaned up 6 empty switches in `\md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+Removing empty process `md_beatgen.$code/rtl/md_beatgen.v:78$proc$80'.
+Found and cleaned up 2 empty switches in `\md_beatgen.$code/rtl/md_beatgen.v:70$proc$76'.
+Removing empty process `md_beatgen.$code/rtl/md_beatgen.v:70$proc$76'.
+Found and cleaned up 3 empty switches in `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.$code/rtl/md_outcell.v:34$proc$2908'.
+Removing empty process `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.$code/rtl/md_outcell.v:34$proc$2908'.
+Found and cleaned up 6 empty switches in `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.$code/rtl/md_outcell.v:28$proc$2901'.
+Removing empty process `$paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.$code/rtl/md_outcell.v:28$proc$2901'.
+Found and cleaned up 2 empty switches in `\data_mem.$code/rtl/data_mem.v:34$proc$2'.
+Removing empty process `data_mem.$code/rtl/data_mem.v:34$proc$2'.
+Cleaned up 178 empty switches.
+
+21.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell.
+<suppressed ~7 debug messages>
+Optimizing module $paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup.
+<suppressed ~3 debug messages>
+Optimizing module $paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup.
+<suppressed ~3 debug messages>
+Optimizing module $paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup.
+<suppressed ~3 debug messages>
+Optimizing module $paramod$779056bdc84c15aff8cc589907c90756353674e5\md_wgroup.
+<suppressed ~3 debug messages>
+Optimizing module $paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup.
+<suppressed ~3 debug messages>
+Optimizing module $paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup.
+<suppressed ~3 debug messages>
+Optimizing module $paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup.
+<suppressed ~3 debug messages>
+Optimizing module $paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup.
+<suppressed ~3 debug messages>
+Optimizing module tt_um_metronome.
+<suppressed ~122 debug messages>
+Optimizing module prog_mem.
+Optimizing module $paramod\md_sync\N=s32'00000000000000000000000000010000.
+<suppressed ~3 debug messages>
+Optimizing module $paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus.
+Optimizing module md_spi.
+<suppressed ~19 debug messages>
+Optimizing module md_shifter.
+<suppressed ~7 debug messages>
+Optimizing module md_ptrs.
+<suppressed ~27 debug messages>
+Optimizing module $paramod\md_acc\NR=s32'00000000000000000000000000000100.
+<suppressed ~11 debug messages>
+Optimizing module $paramod\md_ctrl\NE=s32'00000000000000000000000000000110.
+<suppressed ~12 debug messages>
+Optimizing module md_lfsr.
+<suppressed ~12 debug messages>
+Optimizing module md_layout_check.
+Optimizing module md_flags.
+<suppressed ~5 debug messages>
+Optimizing module $paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core.
+<suppressed ~182 debug messages>
+Optimizing module $paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core.
+<suppressed ~182 debug messages>
+Optimizing module md_counter.
+<suppressed ~5 debug messages>
+Optimizing module $paramod\md_engine\NB=s32'00000000000000000000000000000100.
+<suppressed ~28 debug messages>
+Optimizing module md_beatgen.
+<suppressed ~28 debug messages>
+Optimizing module $paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell.
+<suppressed ~9 debug messages>
+Optimizing module data_mem.
+
+22. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell...
+Checking module $paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup...
+Checking module $paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup...
+Checking module $paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup...
+Checking module $paramod$779056bdc84c15aff8cc589907c90756353674e5\md_wgroup...
+Checking module $paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup...
+Checking module $paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup...
+Checking module $paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup...
+Checking module $paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup...
+Checking module tt_um_metronome...
+Checking module prog_mem...
+Checking module $paramod\md_sync\N=s32'00000000000000000000000000010000...
+Checking module $paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus...
+Checking module md_spi...
+Checking module md_shifter...
+Checking module md_ptrs...
+Checking module $paramod\md_acc\NR=s32'00000000000000000000000000000100...
+Checking module $paramod\md_ctrl\NE=s32'00000000000000000000000000000110...
+Checking module md_lfsr...
+Checking module md_layout_check...
+Checking module md_flags...
+Checking module $paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core...
+Checking module $paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core...
+Checking module md_counter...
+Checking module $paramod\md_engine\NB=s32'00000000000000000000000000000100...
+Checking module md_beatgen...
+Checking module $paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell...
+Checking module data_mem...
+Found and reported 0 problems.
+
+23. Printing statistics.
+
+=== $paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       69 wires
+      331 wire bits
+       14 public wires
+      111 public wire bits
+        9 ports
+       40 port bits
+       33 cells
+        5   $dff
+        7   $eq
+        3   $logic_not
+       17   $mux
+        1   $shiftx
+
+=== $paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       47 wires
+      229 wire bits
+       10 public wires
+       94 public wire bits
+        7 ports
+       50 port bits
+       31 cells
+       14   $and
+        1   $not
+       14   $or
+        2   $reduce_or
+
+=== $paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       47 wires
+      329 wire bits
+       10 public wires
+      129 public wire bits
+        7 ports
+       85 port bits
+       31 cells
+       14   $and
+        1   $not
+       14   $or
+        2   $reduce_or
+
+=== $paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       47 wires
+      309 wire bits
+       10 public wires
+      122 public wire bits
+        7 ports
+       78 port bits
+       31 cells
+       14   $and
+        1   $not
+       14   $or
+        2   $reduce_or
+
+=== $paramod$779056bdc84c15aff8cc589907c90756353674e5\md_wgroup ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       47 wires
+      209 wire bits
+       10 public wires
+       87 public wire bits
+        7 ports
+       43 port bits
+       31 cells
+       14   $and
+        1   $not
+       14   $or
+        2   $reduce_or
+
+=== $paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       47 wires
+      189 wire bits
+       10 public wires
+       80 public wire bits
+        7 ports
+       36 port bits
+       31 cells
+       14   $and
+        1   $not
+       14   $or
+        2   $reduce_or
+
+=== $paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       47 wires
+      289 wire bits
+       10 public wires
+      115 public wire bits
+        7 ports
+       71 port bits
+       31 cells
+       14   $and
+        1   $not
+       14   $or
+        2   $reduce_or
+
+=== $paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       47 wires
+      169 wire bits
+       10 public wires
+       73 public wire bits
+        7 ports
+       29 port bits
+       31 cells
+       14   $and
+        1   $not
+       14   $or
+        2   $reduce_or
+
+=== $paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       47 wires
+      149 wire bits
+       10 public wires
+       66 public wire bits
+        7 ports
+       22 port bits
+       31 cells
+       14   $and
+        1   $not
+       14   $or
+        2   $reduce_or
+
+=== tt_um_metronome ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      862 wires
+     6477 wire bits
+      301 public wires
+     3106 public wire bits
+        8 ports
+       43 port bits
+      277 cells
+       38   $eq
+       83   $logic_and
+       54   $logic_not
+        6   $logic_or
+       37   $mux
+       41   $not
+       17   $or
+        1   $reduce_or
+       47 submodules
+        1   $paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core
+        6   $paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell
+        8   $paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell
+        1   $paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core
+        1   $paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus
+        1   $paramod\md_acc\NR=s32'00000000000000000000000000000100
+        1   $paramod\md_ctrl\NE=s32'00000000000000000000000000000110
+        6   $paramod\md_engine\NB=s32'00000000000000000000000000000100
+        1   $paramod\md_sync\N=s32'00000000000000000000000000010000
+        1   data_mem
+        4   md_beatgen
+        4   md_counter
+        1   md_flags
+        1   md_layout_check
+        2   md_lfsr
+        1   md_ptrs
+        4   md_shifter
+        1   md_spi
+        2   prog_mem
+
+=== prog_mem ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       35 wires
+     1344 wire bits
+        9 public wires
+      219 public wire bits
+        7 ports
+       91 port bits
+        1 memories
+    16384 memory bits
+       16 cells
+        2   $and
+        4   $dff
+        2   $memrd
+        1   $memwr_v2
+        5   $mux
+        1   $not
+        1   $or
+
+=== $paramod\md_sync\N=s32'00000000000000000000000000010000 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       23 wires
+      278 wire bits
+        9 public wires
+      114 public wire bits
+        6 ports
+       66 port bits
+       11 cells
+        2   $and
+        3   $dff
+        1   $logic_not
+        3   $mux
+        2   $not
+
+=== $paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1323 wires
+    52421 wire bits
+      661 public wires
+    26218 public wire bits
+       35 ports
+      354 port bits
+      148 cells
+       12   $and
+        6   $mux
+      117   $or
+        1   $reduce_or
+       12   $shl
+       39 submodules
+        3   $paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup
+        6   $paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup
+        1   $paramod$779056bdc84c15aff8cc589907c90756353674e5\md_wgroup
+        6   $paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup
+        9   $paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup
+        4   $paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup
+        4   $paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup
+        6   $paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup
+
+=== md_spi ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      239 wires
+     1216 wire bits
+       57 public wires
+      406 public wire bits
+       23 ports
+      113 port bits
+      120 cells
+        5   $add
+       13   $and
+       10   $dff
+        1   $div
+       12   $eq
+        1   $logic_and
+        8   $logic_not
+        3   $lt
+       52   $mux
+        1   $ne
+        1   $not
+        3   $or
+        3   $pmux
+        1   $shl
+        6   $sub
+
+=== md_shifter ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       48 wires
+      137 wire bits
+       13 public wires
+       37 public wire bits
+       10 ports
+       28 port bits
+       25 cells
+        4   $dff
+        1   $logic_and
+        3   $logic_not
+       14   $mux
+        2   $reduce_bool
+        1   $sub
+
+=== md_ptrs ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      250 wires
+      873 wire bits
+       66 public wires
+      310 public wire bits
+       19 ports
+      102 port bits
+      136 cells
+        2   $add
+        7   $and
+       21   $dff
+       12   $eq
+       16   $logic_and
+        9   $logic_not
+       54   $mux
+        4   $not
+        6   $or
+        4   $reduce_bool
+        1   $reduce_or
+
+=== $paramod\md_acc\NR=s32'00000000000000000000000000000100 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      104 wires
+      511 wire bits
+       18 public wires
+      145 public wire bits
+       12 ports
+       93 port bits
+       57 cells
+        1   $add
+        1   $and
+        6   $dff
+       17   $eq
+        2   $ge
+        3   $logic_not
+       19   $mux
+        1   $or
+        4   $pmux
+        2   $sub
+        1   $xor
+
+=== $paramod\md_ctrl\NE=s32'00000000000000000000000000000110 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      120 wires
+      236 wire bits
+       31 public wires
+       76 public wire bits
+       20 ports
+       57 port bits
+       65 cells
+        3   $and
+       10   $dff
+       12   $eq
+        9   $logic_and
+        3   $logic_not
+       23   $mux
+        1   $not
+        3   $or
+        1   $pmux
+
+=== md_lfsr ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       74 wires
+     1076 wire bits
+       11 public wires
+       90 public wire bits
+        9 ports
+       57 port bits
+       43 cells
+        1   $add
+        1   $and
+        4   $dff
+        4   $eq
+        5   $logic_not
+        1   $mul
+       15   $mux
+        2   $neg
+        1   $not
+        1   $or
+        4   $pmux
+        2   $shift
+        2   $xor
+
+=== md_layout_check ===
+
+        +----------Local Count, excluding submodules.
+        | 
+
+=== md_flags ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       43 wires
+      375 wire bits
+        8 public wires
+       56 public wire bits
+        7 ports
+       40 port bits
+       22 cells
+        2   $and
+        4   $dff
+        1   $logic_not
+        7   $mux
+        2   $neg
+        3   $not
+        1   $or
+        2   $shift
+
+=== $paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      844 wires
+     7091 wire bits
+       99 public wires
+     1956 public wire bits
+       38 ports
+      758 port bits
+      467 cells
+        2   $add
+      196   $and
+        4   $dff
+       15   $eq
+        6   $ge
+        5   $logic_not
+       45   $mux
+        8   $not
+      176   $or
+        2   $reduce_bool
+        2   $reduce_or
+        3   $shiftx
+        3   $shl
+
+=== $paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      843 wires
+     7085 wire bits
+       99 public wires
+     1956 public wire bits
+       38 ports
+      758 port bits
+      466 cells
+        2   $add
+      196   $and
+        4   $dff
+       15   $eq
+        6   $ge
+        5   $logic_not
+       45   $mux
+        7   $not
+      176   $or
+        2   $reduce_bool
+        2   $reduce_or
+        3   $shiftx
+        3   $shl
+
+=== md_counter ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       31 wires
+      155 wire bits
+        7 public wires
+       30 public wire bits
+        7 ports
+       30 port bits
+       16 cells
+        1   $dff
+        1   $eq
+        3   $logic_not
+        9   $mux
+        1   $reduce_bool
+        1   $sub
+
+=== $paramod\md_engine\NB=s32'00000000000000000000000000000100 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      273 wires
+     1088 wire bits
+       63 public wires
+      346 public wire bits
+       39 ports
+      182 port bits
+      146 cells
+        2   $add
+        3   $and
+       21   $dff
+       15   $eq
+        7   $logic_and
+        4   $logic_not
+        2   $mul
+       71   $mux
+        3   $not
+        4   $or
+        1   $pmux
+       13   $shiftx
+
+=== md_beatgen ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      277 wires
+     1231 wire bits
+       56 public wires
+      345 public wire bits
+       16 ports
+       73 port bits
+      164 cells
+        3   $add
+       15   $and
+       16   $dff
+       22   $eq
+        3   $gt
+        6   $le
+        3   $logic_and
+        2   $logic_not
+        1   $logic_or
+        3   $lt
+       75   $mux
+        6   $not
+        5   $or
+        1   $pmux
+        2   $shiftx
+        1   $sub
+
+=== $paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       82 wires
+      371 wire bits
+       14 public wires
+      111 public wire bits
+        9 ports
+       40 port bits
+       42 cells
+        5   $dff
+        9   $eq
+        3   $logic_not
+       23   $mux
+        2   $shiftx
+
+=== data_mem ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       43 wires
+      270 wire bits
+        7 public wires
+       38 public wire bits
+        6 ports
+       30 port bits
+        1 memories
+    16384 memory bits
+       17 cells
+        4   $dff
+        1   $memrd
+        1   $memwr_v2
+       11   $mux
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+     5343 tt_um_metronome
+      467 $paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core
+       33 $paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell
+       42 $paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell
+      466 $paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core
+      148 $paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus
+       31   $paramod$111b7f5032ce9f30eca632b8e5dca3f601eaef55\md_wgroup
+       31   $paramod$6141a2dce6f46d673ee2280da59424916b15a40a\md_wgroup
+       31   $paramod$779056bdc84c15aff8cc589907c90756353674e5\md_wgroup
+       31   $paramod$8696a8f10b20da168cb67b7db7f47a7c4d8b244f\md_wgroup
+       31   $paramod$990f2ef6e3de31bd44adf80b4f62ee83aa8a3116\md_wgroup
+       31   $paramod$ad080dccf16d0a5a127f954232542f8a1d993091\md_wgroup
+       31   $paramod$cae336ebd23781cc1e39c4a9fb3009d13dd19b94\md_wgroup
+       31   $paramod$d0434c71a390227f30f4c6301d9f22a0707ed95f\md_wgroup
+       57 $paramod\md_acc\NR=s32'00000000000000000000000000000100
+       65 $paramod\md_ctrl\NE=s32'00000000000000000000000000000110
+      146 $paramod\md_engine\NB=s32'00000000000000000000000000000100
+       11 $paramod\md_sync\N=s32'00000000000000000000000000010000
+       17 data_mem
+      164 md_beatgen
+       16 md_counter
+       22 md_flags
+       43 md_lfsr
+      136 md_ptrs
+       25 md_shifter
+      120 md_spi
+       16 prog_mem
+
+        +----------Count including submodules.
+        | 
+    10877 wires
+   108478 wire bits
+     2664 public wires
+    44048 public wire bits
+     1009 ports
+     6941 port bits
+        3 memories
+    49152 memory bits
+        - processes
+     5343 cells
+       38   $add
+     1062   $and
+      362   $dff
+        1   $div
+      425   $eq
+       14   $ge
+       12   $gt
+       24   $le
+      167   $logic_and
+      197   $logic_not
+       10   $logic_or
+       15   $lt
+        5   $memrd
+        3   $memwr_v2
+       14   $mul
+     1446   $mux
+        1   $ne
+        6   $neg
+      152   $not
+     1094   $or
+       26   $pmux
+       20   $reduce_bool
+       85   $reduce_or
+        6   $shift
+      114   $shiftx
+       19   $shl
+       20   $sub
+        5   $xor
+       47 submodules
+        1   $paramod$00fbce7bad4f6f8cacb0825e288e3954a06deda1\md_core
+        6   $paramod$0da44fa9ae75c129c9514a2807359b52876b9bf3\md_outcell
+        8   $paramod$570a591b3cb03110ff1a813daa23b65c2031f814\md_outcell
+        1   $paramod$876881977923a4542f582ed41ab95d61d94b58c5\md_core
+        1   $paramod$9687a7b931620c3d5cb0aea9371ec09a9440b57d\md_movebus
+        1   $paramod\md_acc\NR=s32'00000000000000000000000000000100
+        1   $paramod\md_ctrl\NE=s32'00000000000000000000000000000110
+        6   $paramod\md_engine\NB=s32'00000000000000000000000000000100
+        1   $paramod\md_sync\N=s32'00000000000000000000000000010000
+        1   data_mem
+        4   md_beatgen
+        4   md_counter
+        1   md_flags
+        1   md_layout_check
+        2   md_lfsr
+        1   md_ptrs
+        4   md_shifter
+        1   md_spi
+        2   prog_mem
+

@@ -1,0 +1,9 @@
+# running in C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_movebus_prove_0\movebus_prove/src/
+plugin -i slang
+read_slang --top md_movebus -I . md_movebus.v md_wgroup.v fv_movebus.sv
+prep -top md_movebus
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

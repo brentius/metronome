@@ -1,0 +1,17 @@
+{
+  "acc_cover": "PASS 0 0",
+  "acc_prove": "PASS 0 0",
+  "beatgen_cover": "PASS 0 0",
+  "beatgen_prove": "PASS 0 0",
+  "core_cover": "PASS 0 0",
+  "core_prove": "PASS 0 0",
+  "engine_cover": "PASS 0 0",
+  "engine_prove": "PASS 0 0",
+  "lfsr_cover": "PASS 0 0",
+  "lfsr_prove": "PASS 0 0",
+  "movebus_prove": "PASS 0 0",
+  "ptrs_cover": "PASS 0 0",
+  "ptrs_prove": "PASS 0 0",
+  "wgroup_cover": "PASS 0 0",
+  "wgroup_prove": "PASS 0 0"
+}

@@ -1,0 +1,13 @@
+{
+  "class": "synthesized estimate, hierarchical standard cells, SRAM wrappers blackboxed, no placement/timing signoff",
+  "units": "um^2",
+  "before": 287072.5158,
+  "after": 287808.6708,
+  "delta": 736.1550000000279,
+  "delta_percent": 0.25643520695408484,
+  "library": "build\\pdk\\sg13cmos5l_stdcell_typ_1p20V_25C.lib",
+  "library_sha256": "34163f3e7de9f854afac57332ba06f1739b78e7ac35660a8a5ddd39c570124ad",
+  "conditions": "typical 1.20V 25C",
+  "tool": "Yosys 0.70+190",
+  "logical_added_state_bits": 6
+}

@@ -1,0 +1,137 @@
+{
+ "format": "metronome-image",
+ "version": 1,
+ "machine_version": 1,
+ "clock_hz": 60000000.0,
+ "source": "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\code\\host\\examples\\uart_tx.mas",
+ "program": [
+  {
+   "core": 0,
+   "addr": 0,
+   "words": [
+    "0x0060284E820B3808",
+    "0x0000000008020807",
+    "0x028000830202A808",
+    "0x0000000000008817",
+    "0x0000000002000000",
+    "0x0000000000000003"
+   ]
+  }
+ ],
+ "writes": [
+  {
+   "addr": 0,
+   "data": "08380b824e286000070802080000000008a8020283008002178800000000000000000002000000000300000000000000",
+   "note": "core 0 program words 0x00..0x05"
+  },
+  {
+   "addr": 8768,
+   "data": "00",
+   "note": "O8.ENG"
+  },
+  {
+   "addr": 8770,
+   "data": "1111",
+   "note": "O8.LUT"
+  },
+  {
+   "addr": 8192,
+   "data": "0600",
+   "note": "BG0.INC"
+  },
+  {
+   "addr": 8194,
+   "data": "350c",
+   "note": "BG0.MOD"
+  },
+  {
+   "addr": 8196,
+   "data": "350c",
+   "note": "BG0.T0"
+  },
+  {
+   "addr": 8198,
+   "data": "350c",
+   "note": "BG0.T1"
+  },
+  {
+   "addr": 8200,
+   "data": "350c",
+   "note": "BG0.T2"
+  },
+  {
+   "addr": 8202,
+   "data": "0000",
+   "note": "BG0.PRE"
+  },
+  {
+   "addr": 8204,
+   "data": "0000",
+   "note": "BG0.WLO"
+  },
+  {
+   "addr": 8206,
+   "data": "ffff",
+   "note": "BG0.WHI"
+  },
+  {
+   "addr": 8211,
+   "data": "0f",
+   "note": "BG0.EDGE"
+  },
+  {
+   "addr": 8448,
+   "data": "00",
+   "note": "E0.PC"
+  },
+  {
+   "addr": 8450,
+   "data": "01",
+   "note": "E0.TRIG"
+  },
+  {
+   "addr": 8451,
+   "data": "ff",
+   "note": "E0.PINS"
+  },
+  {
+   "addr": 8452,
+   "data": "0000",
+   "note": "E0.LUT0"
+  },
+  {
+   "addr": 8454,
+   "data": "0000",
+   "note": "E0.LUT1"
+  },
+  {
+   "addr": 8449,
+   "data": "01",
+   "note": "E0.CFG"
+  },
+  {
+   "addr": 8210,
+   "data": "01",
+   "note": "BG0.CTL"
+  },
+  {
+   "addr": 9216,
+   "data": "01",
+   "note": "CTRL.RUN"
+  }
+ ],
+ "labels": {
+  "idle": [
+   0,
+   0
+  ],
+  "bit": [
+   0,
+   2
+  ],
+  "stop": [
+   0,
+   4
+  ]
+ }
+}

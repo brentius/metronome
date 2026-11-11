@@ -1,0 +1,116 @@
+[?2004hsh-5.3# stty -echo; python3 -c 'exec(__import__("base64").b64decode("aW1wb3J0IHBhdGhsaWIsanNvbixnbG9iLHN5cwpzeXMucGF0aC5pbnNlcnQoMCwnL3dvcmtzcGFjZS9qc2MvZmxvdycpO2ltcG9ydCBsbF92YXJpYW50CnA9cGF0aGxpYi5QYXRoKCcvcm9vdC93b3JrL21ldHJvbm9tZV9yM19kMTcvcnVucy9wbnJfYXJlYTAnKTtkPWxsX3ZhcmlhbnQuZ2F0ZV9zdW1tYXJ5KHApCnByaW50KCdHUlRfU1VNTUFSWScsanNvbi5kdW1wcyhkKSkKYmFzZT1wYXRobGliLlBhdGgoZ2xvYi5nbG9iKCcvbml4L3N0b3JlLypweXRob24zLTMuMTMuMTMtZW52L2xpYi9weXRob24zLjEzL3NpdGUtcGFja2FnZXMvbGlicmVsYW5lJylbMF0pCmZvciBrZXkgaW4gWydQTlJfQ09STkVSUycsJ1NUQV9DT1JORVJTJywnREVGQVVMVF9DT1JORVInXToKIHByaW50KCdDT05GSUdfS0VZJyxrZXkpO2NvdW50PTAKIGZvciBmIGluIGJhc2Uucmdsb2IoJyoucHknKToKICBsaW5lcz1mLnJlYWRfdGV4dChlcnJvcnM9J3JlcGxhY2UnKS5zcGxpdGxpbmVzKCkKICBmb3IgaSxsIGluIGVudW1lcmF0ZShsaW5lcyk6CiAgIGlmIGtleSBpbiBsOgogICAgcHJpbnQoc3RyKGYucmVsYXRpdmVfdG8oYmFzZSkpLGkrMSwnXG4nLmpvaW4obGluZXNbbWF4KDAsaS0yKTppKzVdKSk7Y291bnQrPTEKICAgIGlmIGNvdW50Pj01OmJyZWFrCiAgaWYgY291bnQ+PTU6YnJlYWsKcHJpbnQoJ1JPVVRFX1RBSUwnLHBhdGhsaWIuUGF0aCgnL3dvcmtzcGFjZS9qb2JzL3IzX3JvdXRlX2FyZWEwLmxvZycpLnJlYWRfdGV4dChlcnJvcnM9J3JlcGxhY2UnKVstMTEwMDpdKQo="))'; echo __JSC_1794403878881__$?
+[?2004lGRT_SUMMARY {"metric_sources": {"design__instance__count": "28-openroad-globalrouting/or_metrics_out.json", "design__instance__area": "28-openroad-globalrouting/or_metrics_out.json", "design__instance__area__stdcell": "28-openroad-globalrouting/or_metrics_out.json", "design__instance__utilization__stdcell": "28-openroad-globalrouting/or_metrics_out.json", "timing__hold__ws__corner:nom_typ_1p20V_25C": "27-openroad-stamidpnr-2/or_metrics_out.json", "timing__setup__ws__corner:nom_typ_1p20V_25C": "27-openroad-stamidpnr-2/or_metrics_out.json", "global_route__vias": "28-openroad-globalrouting/or_metrics_out.json", "global_route__wirelength": "28-openroad-globalrouting/or_metrics_out.json"}, "global_route_gate": {"status": "pass", "overflow": 0, "step_completed": true, "extra_iterations": 4, "ndr_disabled": 0, "evidence_file": "28-openroad-globalrouting/openroad-globalrouting.log"}, "design__instance__count": 27133, "design__instance__area": 621449, "design__instance__area__stdcell": 355368, "design__instance__utilization__stdcell": 0.377212, "timing__hold__ws__corner:nom_typ_1p20V_25C": 0.27981, "timing__setup__ws__corner:nom_typ_1p20V_25C": 6.37713, "global_route__vias": 187116, "global_route__wirelength": 2151583, "last_step": "28-openroad-globalrouting", "grt_extra_iterations": 4, "grt_ndr_disabled": 0}
+CONFIG_KEY PNR_CORNERS
+steps/common_variables.py 463         "RSZ_CORNERS",
+        Optional[List[str]],
+        "Resizer step-specific override for PNR_CORNERS.",
+    ),
+]
+steps/openroad.py 210     config_vars = [
+        Variable(
+            "PNR_CORNERS",
+            Optional[List[str]],
+            "A list of fully-qualified IPVT corners to use during PnR. If unspecified, the value for `STA_CORNERS` from the PDK will be used.",
+            pdk=True,
+        ),
+steps/openroad.py 359         env = self.prepare_env(env, state_in)
+
+        corners: List[str] = self.config["PNR_CORNERS"] or [
+            self.config["DEFAULT_CORNER"]
+        ]
+
+        @dataclass
+steps/openroad.py 2539                 "CTS_CORNERS",
+                Optional[List[str]],
+                "Clock tree synthesis step-specific override for PNR_CORNERS.",
+            ),
+            Variable(
+                "CTS_ROOT_BUFFER",
+                str,
+CONFIG_KEY STA_CORNERS
+config/flow.py 88     ),
+    Variable(
+        "STA_CORNERS",
+        List[str],
+        "A list of fully qualified IPVT (Interconnect, transistor Process, Voltage, and Temperature) timing corners on which to conduct multi-corner static timing analysis.",
+        pdk=True,
+    ),
+config/pdk_compat.py 218 
+        if new["PDK"].startswith("sky130"):
+            new["STA_CORNERS"] = [
+                "nom_tt_025C_1v80",
+                "nom_ss_100C_1v60",
+                "nom_ff_n40C_1v95",
+                "min_tt_025C_1v80",
+config/pdk_compat.py 307         #            }
+        elif new["PDK"].startswith("gf180mcu"):
+            new["STA_CORNERS"] = [
+                "nom_tt_025C_5v00",
+                "nom_ss_125C_4v50",
+                "nom_ff_n40C_5v50",
+                "min_tt_025C_5v00",
+steps/openroad.py 212             "PNR_CORNERS",
+            Optional[List[str]],
+            "A list of fully-qualified IPVT corners to use during PnR. If unspecified, the value for `STA_CORNERS` from the PDK will be used.",
+            pdk=True,
+        ),
+        Variable(
+            "SET_RC_VERBOSE",
+steps/openroad.py 792         files_so_far: Dict[OpenSTAStep.CornerFileList, str] = {}
+        corners_used: Set[str] = set()
+        for corner in self.config["STA_CORNERS"]:
+            _, file_list = self._get_corner_files(
+                corner, prioritize_nl=self.config["STA_MACRO_PRIORITIZE_NL"]
+            )
+            if previous := files_so_far.get(file_list):
+CONFIG_KEY DEFAULT_CORNER
+common/toolbox.py 98         :returns: The created list
+        """
+        timing_corner = timing_corner or config["DEFAULT_CORNER"]
+        result: List[Path] = []
+
+        for key in Filter(views_by_corner).get_matching_wildcards(timing_corner):
+            value = views_by_corner[key]
+common/toolbox.py 140         from ..config import Macro
+
+        timing_corner = timing_corner or config["DEFAULT_CORNER"]
+        macros = config["MACROS"]
+        result: List[Path] = []
+
+        if macros is None:
+common/toolbox.py 218             A fully qualified IPVT corner to get SCL libs for.
+
+            If not specified, the value for ``DEFAULT_CORNER`` from the SCL will
+            be used.
+        :param prioritize_nl:
+            Do not return lib files for macros that have gate-Level Netlists and
+            SPEF views.
+common/toolbox.py 233         from ..config import Macro
+
+        timing_corner = timing_corner or config["DEFAULT_CORNER"]
+
+        # Filter the cell libs
+        all_libs: List[Path] = self.filter_views(
+            config, config["CELL_LIBS"], timing_corner
+common/toolbox.py 311             A fully qualified IPVT corner to get SCL libs for.
+
+            If not specified, the value for ``DEFAULT_CORNER`` from the SCL will
+            be used.
+        :param prioritize_nl:
+            Do not return lib files for macros that have gate-Level Netlists and
+            SPEF views.
+ROUTE_TAIL query size = 0.                               
+[INFO DRT-0033] Metal1 shape region query size = 613580.                        
+[INFO DRT-0033] Via1 shape region query size = 43744.                           
+[INFO DRT-0033] Metal2 shape region query size = 19109.                         
+[INFO DRT-0033] Via2 shape region query size = 43744.                           
+[INFO DRT-0033] Metal3 shape region query size = 17693.                         
+[INFO DRT-0033] Via3 shape region query size = 43744.                           
+[INFO DRT-0033] Metal4 shape region query size = 10124.                         
+[INFO DRT-0033] TopVia1 shape region query size = 0.                            
+[INFO DRT-0033] TopMetal1 shape region query size = 0.                          
+[INFO DRT-0165] Start pin access.                                               
+[INFO DRT-0076]   Complete 1000 pins.                                           
+[INFO DRT-0078]   Complete 1365 pins.                                           
+[INFO DRT-0081]   Complete 91 unique inst patterns.                             
+

@@ -1,0 +1,3 @@
+
+-- Running command `read_verilog -Icode/rtl/gen code/rtl/*.v; hierarchy -check -top tt_um_metronome; proc; check -assert; stat' --
+ERROR: File `code/rtl/*.v' not found or is a directory

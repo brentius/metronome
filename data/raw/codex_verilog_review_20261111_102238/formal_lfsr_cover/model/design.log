@@ -1,0 +1,335 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+
+-- Executing script file `../model/design.ys' --
+
+1. Executing SLANG frontend.
+Top level design units:
+    fv_lfsr_top
+
+
+Build succeeded: 0 errors, 0 warnings
+
+1.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\fv_lfsr_top.$93'.
+Removing empty process `fv_lfsr_top.$22'.
+Found and cleaned up 1 empty switch in `\fv_lfsr_top.$2'.
+Cleaned up 2 empty switches.
+
+1.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 4 switch rules as full_case in process $2 in module fv_lfsr_top.
+Removed a total of 0 dead cases.
+
+1.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 5 redundant assignments.
+Promoted 3 assignments to connections.
+
+1.4. Executing PROC_INIT pass (extract init attributes).
+
+1.5. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~16 debug messages>
+
+1.6. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\fv_lfsr_top.$81'.
+     1/1: $83
+Creating decoders for process `\fv_lfsr_top.$73'.
+     1/1: $79
+Creating decoders for process `\fv_lfsr_top.$66'.
+     1/1: $71
+Creating decoders for process `\fv_lfsr_top.$59'.
+     1/1: $64
+Creating decoders for process `\fv_lfsr_top.$52'.
+     1/1: $57
+Creating decoders for process `\fv_lfsr_top.$45'.
+     1/1: $50
+Creating decoders for process `\fv_lfsr_top.$38'.
+     1/1: $43
+Creating decoders for process `\fv_lfsr_top.$30'.
+     1/1: $34
+Creating decoders for process `\fv_lfsr_top.$93'.
+Creating decoders for process `\fv_lfsr_top.$17'.
+     1/1: $20
+Creating decoders for process `\fv_lfsr_top.$2'.
+     1/8: $u0.poly$14
+     2/8: $u0.s$6 [31:24]
+     3/8: $u0.s$6 [23:16]
+     4/8: $u0.s$6 [15:8]
+     5/8: $u0.s$6 [7:0]
+     6/8: $u0.s$7
+     7/8: $u0.poly$16
+     8/8: $u0.s$15
+
+1.7. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\fv_lfsr_top.$81'.
+Removing empty process `fv_lfsr_top.$81'.
+Found and cleaned up 1 empty switch in `\fv_lfsr_top.$73'.
+Removing empty process `fv_lfsr_top.$73'.
+Found and cleaned up 1 empty switch in `\fv_lfsr_top.$66'.
+Removing empty process `fv_lfsr_top.$66'.
+Found and cleaned up 1 empty switch in `\fv_lfsr_top.$59'.
+Removing empty process `fv_lfsr_top.$59'.
+Found and cleaned up 1 empty switch in `\fv_lfsr_top.$52'.
+Removing empty process `fv_lfsr_top.$52'.
+Found and cleaned up 1 empty switch in `\fv_lfsr_top.$45'.
+Removing empty process `fv_lfsr_top.$45'.
+Found and cleaned up 1 empty switch in `\fv_lfsr_top.$38'.
+Removing empty process `fv_lfsr_top.$38'.
+Found and cleaned up 1 empty switch in `\fv_lfsr_top.$30'.
+Removing empty process `fv_lfsr_top.$30'.
+Removing empty process `fv_lfsr_top.$93'.
+Found and cleaned up 1 empty switch in `\fv_lfsr_top.$17'.
+Removing empty process `fv_lfsr_top.$17'.
+Found and cleaned up 7 empty switches in `\fv_lfsr_top.$2'.
+Removing empty process `fv_lfsr_top.$2'.
+Cleaned up 16 empty switches.
+
+1.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fv_lfsr_top.
+<suppressed ~17 debug messages>
+
+2. Executing PREP pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \fv_lfsr_top
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \fv_lfsr_top
+Removed 0 unused modules.
+Module fv_lfsr_top directly or indirectly contains formal properties -> setting "keep" attribute.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fv_lfsr_top.
+
+2.3. Executing FUTURE pass.
+
+2.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fv_lfsr_top.
+
+2.5. Executing CHECK pass (checking for obvious problems).
+Checking module fv_lfsr_top...
+Found and reported 0 problems.
+
+2.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fv_lfsr_top..
+Removed 2 unused cells and 45 unused wires.
+<suppressed ~26 debug messages>
+
+2.7. Executing OPT pass (performing simple optimizations).
+
+2.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fv_lfsr_top.
+
+2.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fv_lfsr_top'.
+Computing hashes of 123 cells of `\fv_lfsr_top'.
+Finding duplicate cells in `\fv_lfsr_top'.
+Computing hashes of 110 cells of `\fv_lfsr_top'.
+Finding duplicate cells in `\fv_lfsr_top'.
+Computing hashes of 108 cells of `\fv_lfsr_top'.
+Finding duplicate cells in `\fv_lfsr_top'.
+<suppressed ~45 debug messages>
+Removed a total of 15 cells.
+
+2.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fv_lfsr_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$58.
+    dead port 2/2 on $mux $procmux$50.
+    dead port 2/2 on $mux $procmux$47.
+    dead port 2/2 on $mux $procmux$40.
+    dead port 2/2 on $mux $procmux$37.
+    dead port 2/2 on $mux $procmux$61.
+    dead port 2/2 on $mux $procmux$31.
+    dead port 2/2 on $mux $procmux$28.
+    dead port 2/2 on $mux $procmux$23.
+    dead port 2/2 on $mux $procmux$67.
+Removed 10 multiplexer ports.
+<suppressed ~44 debug messages>
+
+2.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fv_lfsr_top.
+Performed a total of 0 changes.
+
+2.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fv_lfsr_top'.
+Computing hashes of 98 cells of `\fv_lfsr_top'.
+Finding duplicate cells in `\fv_lfsr_top'.
+Removed a total of 0 cells.
+
+2.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fv_lfsr_top..
+Removed 0 unused cells and 25 unused wires.
+<suppressed ~1 debug messages>
+
+2.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fv_lfsr_top.
+
+2.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fv_lfsr_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~34 debug messages>
+
+2.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fv_lfsr_top.
+Performed a total of 0 changes.
+
+2.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fv_lfsr_top'.
+Computing hashes of 98 cells of `\fv_lfsr_top'.
+Finding duplicate cells in `\fv_lfsr_top'.
+Removed a total of 0 cells.
+
+2.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fv_lfsr_top..
+
+2.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fv_lfsr_top.
+
+2.7.14. Finished fast OPT passes. (There is nothing left to do.)
+
+2.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 32) from port A of cell fv_lfsr_top.$5 ($xor).
+Removed top 28 bits (of 32) from port A of cell fv_lfsr_top.$8 ($mul).
+Removed top 30 bits (of 32) from port B of cell fv_lfsr_top.$8 ($mul).
+Removed top 26 bits (of 33) from port A of cell fv_lfsr_top.$11 ($neg).
+Converting cell fv_lfsr_top.$11 ($neg) from signed to unsigned.
+Removed top 1 bits (of 7) from port A of cell fv_lfsr_top.$11 ($neg).
+Removed top 1 bits (of 32) from port A of cell fv_lfsr_top.$27 ($xor).
+Removed top 2 bits (of 3) from port B of cell fv_lfsr_top.$47 ($eq).
+Removed top 1 bits (of 3) from port B of cell fv_lfsr_top.$54 ($eq).
+Removed top 1 bits (of 3) from port B of cell fv_lfsr_top.$61 ($eq).
+Removed top 24 bits (of 32) from port A of cell fv_lfsr_top.$85 ($shl).
+Removed top 26 bits (of 32) from port B of cell fv_lfsr_top.$85 ($shl).
+Removed top 28 bits (of 32) from port A of cell fv_lfsr_top.$88 ($mul).
+Removed top 30 bits (of 32) from port B of cell fv_lfsr_top.$88 ($mul).
+Removed top 24 bits (of 32) from port A of cell fv_lfsr_top.$89 ($shl).
+Removed top 26 bits (of 32) from port B of cell fv_lfsr_top.$89 ($shl).
+Removed top 1 bits (of 3) from port B of cell fv_lfsr_top.$procmux$35_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell fv_lfsr_top.$procmux$45_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell fv_lfsr_top.$procmux$56_CMP0 ($eq).
+
+2.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fv_lfsr_top..
+
+2.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.11. Executing OPT pass (performing simple optimizations).
+
+2.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fv_lfsr_top.
+
+2.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fv_lfsr_top'.
+Computing hashes of 98 cells of `\fv_lfsr_top'.
+Finding duplicate cells in `\fv_lfsr_top'.
+Removed a total of 0 cells.
+
+2.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fv_lfsr_top..
+
+2.11.4. Finished fast OPT passes.
+
+2.12. Executing SORT pass.
+
+2.13. Printing statistics.
+
+=== fv_lfsr_top ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      114 wires
+     1028 wire bits
+       43 public wires
+      390 public wire bits
+        8 ports
+       25 port bits
+       98 cells
+        1   $and
+        1   $bwmux
+       12   $check
+       12   $dff
+       15   $eq
+        1   $gt
+       13   $logic_and
+        7   $logic_not
+        1   $logic_or
+        2   $mul
+       16   $mux
+        2   $ne
+        1   $neg
+        1   $not
+        1   $or
+        4   $pmux
+        1   $shift
+        1   $shiftx
+        2   $shl
+        4   $xor
+
+2.14. Executing CHECK pass (checking for obvious problems).
+Checking module fv_lfsr_top...
+Found and reported 0 problems.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `fv_lfsr_top'. Setting top module to fv_lfsr_top.
+
+3.1. Analyzing design hierarchy..
+Top module:  \fv_lfsr_top
+
+3.2. Analyzing design hierarchy..
+Top module:  \fv_lfsr_top
+Removed 0 unused modules.
+Module fv_lfsr_top directly or indirectly contains formal properties -> setting "keep" attribute.
+
+4. Executing jny backend.
+
+5. Executing RTLIL backend.
+Output filename: ../model/design.il
+
+End of script. Logfile hash: 39ffe987d0
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Time spent: 3% 7x opt_expr (0 sec), 3% 5x opt_clean (0 sec), ...

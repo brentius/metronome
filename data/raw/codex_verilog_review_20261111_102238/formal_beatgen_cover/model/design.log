@@ -1,0 +1,559 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+
+-- Executing script file `../model/design.ys' --
+
+1. Executing SLANG frontend.
+Top level design units:
+    md_beatgen
+
+
+Build succeeded: 0 errors, 0 warnings
+
+1.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\md_beatgen.$408'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$311'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$281'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$161'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$156'.
+Removing empty process `md_beatgen.$138'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$133'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$84'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$77'.
+Cleaned up 8 empty switches.
+
+1.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $133 in module md_beatgen.
+Marked 8 switch rules as full_case in process $84 in module md_beatgen.
+Marked 1 switch rules as full_case in process $77 in module md_beatgen.
+Removed a total of 0 dead cases.
+
+1.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 32 redundant assignments.
+Promoted 10 assignments to connections.
+
+1.4. Executing PROC_INIT pass (extract init attributes).
+
+1.5. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~35 debug messages>
+
+1.6. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\md_beatgen.$397'.
+     1/1: $406
+Creating decoders for process `\md_beatgen.$387'.
+     1/2: $394
+     2/2: $389
+Creating decoders for process `\md_beatgen.$378'.
+     1/2: $384
+     2/2: $380
+Creating decoders for process `\md_beatgen.$357'.
+     1/1: $363
+Creating decoders for process `\md_beatgen.$344'.
+     1/1: $349
+Creating decoders for process `\md_beatgen.$339'.
+     1/1: $342
+Creating decoders for process `\md_beatgen.$317'.
+     1/1: $321
+Creating decoders for process `\md_beatgen.$311'.
+Creating decoders for process `\md_beatgen.$290'.
+     1/1: $299
+Creating decoders for process `\md_beatgen.$285'.
+     1/1: $288
+Creating decoders for process `\md_beatgen.$281'.
+Creating decoders for process `\md_beatgen.$261'.
+     1/1: $264
+Creating decoders for process `\md_beatgen.$256'.
+     1/1: $259
+Creating decoders for process `\md_beatgen.$251'.
+     1/1: $254
+Creating decoders for process `\md_beatgen.$244'.
+     1/1: $246
+Creating decoders for process `\md_beatgen.$198'.
+     1/1: $200
+Creating decoders for process `\md_beatgen.$194'.
+     1/1: $196
+Creating decoders for process `\md_beatgen.$188'.
+     1/1: $190
+Creating decoders for process `\md_beatgen.$182'.
+     1/1: $184
+Creating decoders for process `\md_beatgen.$174'.
+     1/1: $176
+Creating decoders for process `\md_beatgen.$167'.
+     1/1: $170
+Creating decoders for process `\md_beatgen.$161'.
+Creating decoders for process `\md_beatgen.$156'.
+Creating decoders for process `\md_beatgen.$144'.
+     1/1: $147
+Creating decoders for process `\md_beatgen.$408'.
+Creating decoders for process `\md_beatgen.$133'.
+     1/1: $h_rd$134
+Creating decoders for process `\md_beatgen.$84'.
+     1/50: $whi$106 [15:8]
+     2/50: $whi$106 [7:0]
+     3/50: $wlo$105 [7:0]
+     4/50: $pre$104 [7:0]
+     5/50: $t2$103 [7:0]
+     6/50: $t1$102 [7:0]
+     7/50: $t0$101 [7:0]
+     8/50: $mod$100 [7:0]
+     9/50: $inc$99 [7:0]
+    10/50: $wlo$105 [15:8]
+    11/50: $pre$104 [15:8]
+    12/50: $t2$103 [15:8]
+    13/50: $t1$102 [15:8]
+    14/50: $t0$101 [15:8]
+    15/50: $mod$100 [15:8]
+    16/50: $inc$99 [15:8]
+    17/50: $edg$107
+    18/50: $edg$116
+    19/50: $whi$115
+    20/50: $wlo$114
+    21/50: $pre$113
+    22/50: $t2$112
+    23/50: $t1$111
+    24/50: $t0$110
+    25/50: $mod$109
+    26/50: $inc$108
+    27/50: $arm$93
+    28/50: $run$92
+    29/50: $ren$94
+    30/50: $ren$98
+    31/50: $arm$97
+    32/50: $run$96
+    33/50: $wen$95
+    34/50: $sp$88
+    35/50: $edg$132
+    36/50: $sp$131
+    37/50: $sc$130
+    38/50: $ren$129
+    39/50: $arm$128
+    40/50: $run$127
+    41/50: $wen$126
+    42/50: $ph$125
+    43/50: $whi$124
+    44/50: $wlo$123
+    45/50: $pre$122
+    46/50: $t2$121
+    47/50: $t1$120
+    48/50: $t0$119
+    49/50: $mod$118
+    50/50: $inc$117
+Creating decoders for process `\md_beatgen.$77'.
+     1/2: $ph_n[15:8]$82
+     2/2: $ph_n[7:0]$81
+
+1.7. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\md_beatgen.$397'.
+Removing empty process `md_beatgen.$397'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$387'.
+Removing empty process `md_beatgen.$387'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$378'.
+Removing empty process `md_beatgen.$378'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$357'.
+Removing empty process `md_beatgen.$357'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$344'.
+Removing empty process `md_beatgen.$344'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$339'.
+Removing empty process `md_beatgen.$339'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$317'.
+Removing empty process `md_beatgen.$317'.
+Removing empty process `md_beatgen.$311'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$290'.
+Removing empty process `md_beatgen.$290'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$285'.
+Removing empty process `md_beatgen.$285'.
+Removing empty process `md_beatgen.$281'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$261'.
+Removing empty process `md_beatgen.$261'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$256'.
+Removing empty process `md_beatgen.$256'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$251'.
+Removing empty process `md_beatgen.$251'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$244'.
+Removing empty process `md_beatgen.$244'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$198'.
+Removing empty process `md_beatgen.$198'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$194'.
+Removing empty process `md_beatgen.$194'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$188'.
+Removing empty process `md_beatgen.$188'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$182'.
+Removing empty process `md_beatgen.$182'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$174'.
+Removing empty process `md_beatgen.$174'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$167'.
+Removing empty process `md_beatgen.$167'.
+Removing empty process `md_beatgen.$161'.
+Removing empty process `md_beatgen.$156'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$144'.
+Removing empty process `md_beatgen.$144'.
+Removing empty process `md_beatgen.$408'.
+Found and cleaned up 1 empty switch in `\md_beatgen.$133'.
+Removing empty process `md_beatgen.$133'.
+Found and cleaned up 11 empty switches in `\md_beatgen.$84'.
+Removing empty process `md_beatgen.$84'.
+Found and cleaned up 3 empty switches in `\md_beatgen.$77'.
+Removing empty process `md_beatgen.$77'.
+Cleaned up 35 empty switches.
+
+1.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_beatgen.
+<suppressed ~70 debug messages>
+
+2. Executing PREP pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \md_beatgen
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \md_beatgen
+Removed 0 unused modules.
+Module md_beatgen directly or indirectly contains formal properties -> setting "keep" attribute.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_beatgen.
+
+2.3. Executing FUTURE pass.
+
+2.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_beatgen.
+
+2.5. Executing CHECK pass (checking for obvious problems).
+Checking module md_beatgen...
+Found and reported 0 problems.
+
+2.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_beatgen..
+Removed 3 unused cells and 236 unused wires.
+<suppressed ~81 debug messages>
+
+2.7. Executing OPT pass (performing simple optimizations).
+
+2.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_beatgen.
+<suppressed ~2 debug messages>
+
+2.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md_beatgen'.
+Computing hashes of 465 cells of `\md_beatgen'.
+Finding duplicate cells in `\md_beatgen'.
+Computing hashes of 444 cells of `\md_beatgen'.
+Finding duplicate cells in `\md_beatgen'.
+Computing hashes of 442 cells of `\md_beatgen'.
+Finding duplicate cells in `\md_beatgen'.
+<suppressed ~69 debug messages>
+Removed a total of 23 cells.
+
+2.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \md_beatgen..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$101.
+    dead port 2/2 on $mux $procmux$89.
+    dead port 2/2 on $mux $procmux$86.
+    dead port 2/2 on $mux $procmux$76.
+    dead port 2/2 on $mux $procmux$73.
+    dead port 2/2 on $mux $procmux$65.
+    dead port 2/2 on $mux $procmux$62.
+    dead port 2/2 on $mux $procmux$56.
+    dead port 2/2 on $mux $procmux$53.
+    dead port 2/2 on $mux $procmux$426.
+    dead port 2/2 on $mux $procmux$421.
+    dead port 2/2 on $mux $procmux$414.
+    dead port 2/2 on $mux $procmux$407.
+    dead port 2/2 on $mux $procmux$400.
+    dead port 2/2 on $mux $procmux$393.
+    dead port 1/2 on $mux $procmux$390.
+    dead port 2/2 on $mux $procmux$384.
+    dead port 1/2 on $mux $procmux$381.
+    dead port 2/2 on $mux $procmux$375.
+    dead port 1/2 on $mux $procmux$372.
+    dead port 2/2 on $mux $procmux$366.
+    dead port 2/2 on $mux $procmux$194.
+    dead port 2/2 on $mux $procmux$359.
+    dead port 2/2 on $mux $procmux$191.
+    dead port 2/2 on $mux $procmux$184.
+    dead port 2/2 on $mux $procmux$352.
+    dead port 2/2 on $mux $procmux$181.
+    dead port 2/2 on $mux $procmux$345.
+    dead port 2/2 on $mux $procmux$161.
+    dead port 2/2 on $mux $procmux$203.
+    dead port 2/2 on $mux $procmux$338.
+    dead port 2/2 on $mux $procmux$331.
+    dead port 2/2 on $mux $procmux$158.
+    dead port 2/2 on $mux $procmux$206.
+    dead port 2/2 on $mux $procmux$104.
+    dead port 2/2 on $mux $procmux$324.
+    dead port 2/2 on $mux $procmux$317.
+    dead port 2/2 on $mux $procmux$310.
+    dead port 2/2 on $mux $procmux$303.
+    dead port 2/2 on $mux $procmux$300.
+    dead port 2/2 on $mux $procmux$296.
+    dead port 2/2 on $mux $procmux$293.
+    dead port 2/2 on $mux $procmux$274.
+    dead port 2/2 on $mux $procmux$140.
+    dead port 2/2 on $mux $procmux$137.
+    dead port 2/2 on $mux $procmux$271.
+    dead port 2/2 on $mux $procmux$254.
+    dead port 2/2 on $mux $procmux$251.
+    dead port 2/2 on $mux $procmux$236.
+    dead port 2/2 on $mux $procmux$121.
+    dead port 2/2 on $mux $procmux$233.
+    dead port 2/2 on $mux $procmux$118.
+    dead port 2/2 on $mux $procmux$220.
+    dead port 2/2 on $mux $procmux$217.
+Removed 54 multiplexer ports.
+<suppressed ~209 debug messages>
+
+2.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \md_beatgen.
+Performed a total of 0 changes.
+
+2.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md_beatgen'.
+Computing hashes of 388 cells of `\md_beatgen'.
+Finding duplicate cells in `\md_beatgen'.
+Computing hashes of 382 cells of `\md_beatgen'.
+Finding duplicate cells in `\md_beatgen'.
+<suppressed ~18 debug messages>
+Removed a total of 6 cells.
+
+2.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_beatgen..
+Removed 0 unused cells and 83 unused wires.
+<suppressed ~1 debug messages>
+
+2.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_beatgen.
+
+2.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \md_beatgen..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~143 debug messages>
+
+2.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \md_beatgen.
+Performed a total of 0 changes.
+
+2.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md_beatgen'.
+Computing hashes of 382 cells of `\md_beatgen'.
+Finding duplicate cells in `\md_beatgen'.
+Removed a total of 0 cells.
+
+2.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_beatgen..
+
+2.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_beatgen.
+
+2.7.14. Finished fast OPT passes. (There is nothing left to do.)
+
+2.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 17) from port A of cell md_beatgen.$27 ($add).
+Removed top 1 bits (of 17) from port B of cell md_beatgen.$27 ($add).
+Removed top 1 bits (of 18) from port A of cell md_beatgen.$29 ($sub).
+Removed top 2 bits (of 18) from port B of cell md_beatgen.$29 ($sub).
+Removed top 1 bits (of 17) from mux cell md_beatgen.$33 ($mux).
+Removed top 1 bits (of 2) from port A of cell md_beatgen.$63 ($add).
+Removed top 1 bits (of 2) from port B of cell md_beatgen.$63 ($add).
+Removed top 1 bits (of 2) from port B of cell md_beatgen.$64 ($add).
+Removed top 16 bits (of 32) from port A of cell md_beatgen.$153 ($add).
+Removed top 16 bits (of 32) from port B of cell md_beatgen.$153 ($add).
+Removed top 15 bits (of 32) from port Y of cell md_beatgen.$153 ($add).
+Removed top 15 bits (of 32) from port A of cell md_beatgen.$201 ($ge).
+Removed top 16 bits (of 32) from port B of cell md_beatgen.$201 ($ge).
+Removed top 15 bits (of 32) from port A of cell md_beatgen.$202 ($sub).
+Removed top 16 bits (of 32) from port B of cell md_beatgen.$202 ($sub).
+Removed top 14 bits (of 32) from port Y of cell md_beatgen.$202 ($sub).
+Removed top 16 bits (of 32) from port A of cell md_beatgen.$204 ($eq).
+Removed top 16 bits (of 32) from port A of cell md_beatgen.$209 ($gt).
+Removed top 16 bits (of 32) from port B of cell md_beatgen.$209 ($gt).
+Removed top 16 bits (of 32) from port A of cell md_beatgen.$210 ($le).
+Removed top 15 bits (of 32) from port B of cell md_beatgen.$210 ($le).
+Removed top 16 bits (of 32) from port B of cell md_beatgen.$213 ($gt).
+Removed top 16 bits (of 32) from port A of cell md_beatgen.$214 ($add).
+Removed top 16 bits (of 32) from port B of cell md_beatgen.$214 ($add).
+Removed top 15 bits (of 32) from port Y of cell md_beatgen.$214 ($add).
+Removed top 15 bits (of 32) from port A of cell md_beatgen.$215 ($le).
+Removed top 15 bits (of 32) from port B of cell md_beatgen.$215 ($le).
+Removed top 16 bits (of 32) from port A of cell md_beatgen.$221 ($gt).
+Removed top 16 bits (of 32) from port B of cell md_beatgen.$221 ($gt).
+Removed top 16 bits (of 32) from port A of cell md_beatgen.$222 ($le).
+Removed top 15 bits (of 32) from port B of cell md_beatgen.$222 ($le).
+Removed top 16 bits (of 32) from port B of cell md_beatgen.$225 ($gt).
+Removed top 16 bits (of 32) from port A of cell md_beatgen.$226 ($add).
+Removed top 16 bits (of 32) from port B of cell md_beatgen.$226 ($add).
+Removed top 15 bits (of 32) from port Y of cell md_beatgen.$226 ($add).
+Removed top 15 bits (of 32) from port A of cell md_beatgen.$227 ($le).
+Removed top 15 bits (of 32) from port B of cell md_beatgen.$227 ($le).
+Removed top 16 bits (of 32) from port A of cell md_beatgen.$233 ($gt).
+Removed top 16 bits (of 32) from port B of cell md_beatgen.$233 ($gt).
+Removed top 16 bits (of 32) from port A of cell md_beatgen.$234 ($le).
+Removed top 15 bits (of 32) from port B of cell md_beatgen.$234 ($le).
+Removed top 16 bits (of 32) from port B of cell md_beatgen.$237 ($gt).
+Removed top 16 bits (of 32) from port A of cell md_beatgen.$238 ($add).
+Removed top 16 bits (of 32) from port B of cell md_beatgen.$238 ($add).
+Removed top 15 bits (of 32) from port Y of cell md_beatgen.$238 ($add).
+Removed top 15 bits (of 32) from port A of cell md_beatgen.$239 ($le).
+Removed top 15 bits (of 32) from port B of cell md_beatgen.$239 ($le).
+Removed top 1 bits (of 2) from mux cell md_beatgen.$269 ($mux).
+Removed top 1 bits (of 2) from mux cell md_beatgen.$273 ($mux).
+Removed top 1 bits (of 2) from port A of cell md_beatgen.$274 ($add).
+Removed top 1 bits (of 2) from port B of cell md_beatgen.$274 ($add).
+Removed top 1 bits (of 2) from mux cell md_beatgen.$278 ($mux).
+Removed top 1 bits (of 2) from port B of cell md_beatgen.$279 ($add).
+Removed top 1 bits (of 5) from port B of cell md_beatgen.$procmux$52_CMP0 ($eq).
+Removed top 1 bits (of 5) from port B of cell md_beatgen.$procmux$61_CMP0 ($eq).
+Removed top 1 bits (of 5) from port B of cell md_beatgen.$procmux$72_CMP0 ($eq).
+Removed top 1 bits (of 5) from port B of cell md_beatgen.$procmux$85_CMP0 ($eq).
+Removed top 1 bits (of 5) from port B of cell md_beatgen.$procmux$100_CMP0 ($eq).
+Removed top 2 bits (of 5) from port B of cell md_beatgen.$procmux$117_CMP0 ($eq).
+Removed top 2 bits (of 5) from port B of cell md_beatgen.$procmux$136_CMP0 ($eq).
+Removed top 3 bits (of 5) from port B of cell md_beatgen.$procmux$157_CMP0 ($eq).
+Removed top 1 bits (of 5) from port B of cell md_beatgen.$procmux$190_CMP0 ($eq).
+Removed top 1 bits (of 5) from port B of cell md_beatgen.$procmux$202_CMP0 ($eq).
+Removed top 1 bits (of 5) from port B of cell md_beatgen.$procmux$216_CMP0 ($eq).
+Removed top 2 bits (of 5) from port B of cell md_beatgen.$procmux$232_CMP0 ($eq).
+Removed top 2 bits (of 5) from port B of cell md_beatgen.$procmux$250_CMP0 ($eq).
+Removed top 3 bits (of 5) from port B of cell md_beatgen.$procmux$270_CMP0 ($eq).
+Removed top 4 bits (of 5) from port B of cell md_beatgen.$procmux$292_CMP0 ($eq).
+Removed top 1 bits (of 2) from wire md_beatgen.$278y.
+Removed top 1 bits (of 2) from wire md_beatgen.$273y.
+Removed top 1 bits (of 2) from wire md_beatgen.$269y.
+Removed top 15 bits (of 32) from wire md_beatgen.$236y.
+Removed top 15 bits (of 32) from wire md_beatgen.$224y.
+Removed top 15 bits (of 32) from wire md_beatgen.$212y.
+
+2.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_beatgen..
+Removed 0 unused cells and 6 unused wires.
+<suppressed ~1 debug messages>
+
+2.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.11. Executing OPT pass (performing simple optimizations).
+
+2.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md_beatgen.
+
+2.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md_beatgen'.
+Computing hashes of 382 cells of `\md_beatgen'.
+Finding duplicate cells in `\md_beatgen'.
+Computing hashes of 378 cells of `\md_beatgen'.
+Finding duplicate cells in `\md_beatgen'.
+Computing hashes of 377 cells of `\md_beatgen'.
+Finding duplicate cells in `\md_beatgen'.
+<suppressed ~15 debug messages>
+Removed a total of 5 cells.
+
+2.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md_beatgen..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+2.11.4. Finished fast OPT passes.
+
+2.12. Executing SORT pass.
+
+2.13. Printing statistics.
+
+=== md_beatgen ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      389 wires
+     1613 wire bits
+      125 public wires
+      816 public wire bits
+       16 ports
+       73 port bits
+      377 cells
+        8   $add
+       15   $and
+        2   $bmux
+       32   $check
+       38   $dff
+       43   $eq
+        8   $ge
+        7   $gt
+       12   $le
+       67   $logic_and
+       25   $logic_not
+        7   $logic_or
+        8   $lt
+       87   $mux
+       10   $not
+        5   $or
+        1   $pmux
+        1   $reduce_bool
+        1   $sub
+
+2.14. Executing CHECK pass (checking for obvious problems).
+Checking module md_beatgen...
+Found and reported 0 problems.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `md_beatgen'. Setting top module to md_beatgen.
+
+3.1. Analyzing design hierarchy..
+Top module:  \md_beatgen
+
+3.2. Analyzing design hierarchy..
+Top module:  \md_beatgen
+Removed 0 unused modules.
+Module md_beatgen directly or indirectly contains formal properties -> setting "keep" attribute.
+
+4. Executing jny backend.
+
+5. Executing RTLIL backend.
+Output filename: ../model/design.il
+
+End of script. Logfile hash: 18768d71b2
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Time spent: 3% 7x opt_expr (0 sec), 3% 5x opt_clean (0 sec), ...

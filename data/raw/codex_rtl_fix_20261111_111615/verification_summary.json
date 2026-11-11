@@ -1,0 +1,73 @@
+{
+  "full_regression_passed": 564,
+  "skipped": 0,
+  "formal_tasks_passed": 15,
+  "strict_probe_fault_regressions_passed": 4,
+  "ihp_sram_lockstep_passed": 2,
+  "source_hashes_unchanged_during_validation": true,
+  "lockstep": [
+    {
+      "backend": "rtl_model",
+      "case": "smoke",
+      "passed": true
+    },
+    {
+      "backend": "rtl_model",
+      "case": "regs",
+      "passed": true
+    },
+    {
+      "backend": "rtl_model",
+      "case": "blink",
+      "passed": true
+    },
+    {
+      "backend": "rtl_model",
+      "case": "proto_uart_tx",
+      "passed": true
+    },
+    {
+      "backend": "rtl_model",
+      "case": "proto_uart_rx",
+      "passed": true
+    },
+    {
+      "backend": "rtl_model",
+      "case": "proto_spi_controller",
+      "passed": true
+    },
+    {
+      "backend": "rtl_model",
+      "case": "proto_eth_tx",
+      "passed": true
+    },
+    {
+      "backend": "rtl_model",
+      "case": "random_1",
+      "passed": true
+    },
+    {
+      "backend": "rtl_model",
+      "case": "random_2",
+      "passed": true
+    },
+    {
+      "backend": "rtl_model",
+      "case": "random_3",
+      "passed": true
+    },
+    {
+      "backend": "ihp_model",
+      "case": "smoke",
+      "passed": true
+    },
+    {
+      "backend": "ihp_model",
+      "case": "random_1",
+      "passed": true
+    }
+  ],
+  "full_regression_seconds": 1414.45,
+  "raw": "regression.log",
+  "physical_timing_signoff": "not rerun"
+}

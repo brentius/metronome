@@ -1,0 +1,22 @@
+[tasks]
+prove
+cover
+
+[options]
+prove: mode prove
+prove: depth 3
+cover: mode cover
+cover: depth 14
+
+[engines]
+smtbmc bitwuzla
+
+[script]
+plugin -i slang
+read_slang --top md_beatgen -I . md_beatgen.v fv_beatgen.sv
+prep -top md_beatgen
+
+[files]
+../../rtl/md_beatgen.v
+../../rtl/gen/md_defs.vh
+fv_beatgen.sv

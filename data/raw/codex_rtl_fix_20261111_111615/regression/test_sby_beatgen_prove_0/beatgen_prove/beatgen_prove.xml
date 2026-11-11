@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-11-11T11:25:12" hostname="WC23-30B22373BF" package="beatgen" id="0" name="prove" tests="31" errors="0" failures="0" time="0" skipped="6">
+<properties>
+<property name="os" value="Windows"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="PASS"/>
+</properties>
+<testcase classname="prove" name="build execution" time="0">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:37.17-37.45" time="0" type="ASSERT" location="fv_beatgen.sv:37.17-37.45" id="_witness_.check_157">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:39.17-39.50" time="0" type="ASSERT" location="fv_beatgen.sv:39.17-39.50" id="_witness_.check_162">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:40.27-40.59" time="0" type="ASSERT" location="fv_beatgen.sv:40.27-40.59" id="_witness_.check_169">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:42.29-42.79" time="0" type="ASSERT" location="fv_beatgen.sv:42.29-42.79" id="_witness_.check_175">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:43.29-43.61" time="0" type="ASSERT" location="fv_beatgen.sv:43.29-43.61" id="_witness_.check_183">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:45.25-45.64" time="0" type="ASSERT" location="fv_beatgen.sv:45.25-45.64" id="_witness_.check_189">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:47.25-47.43" time="0" type="ASSERT" location="fv_beatgen.sv:47.25-47.43" id="_witness_.check_195">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:48.25-48.82" time="0" type="ASSERT" location="fv_beatgen.sv:48.25-48.82" id="_witness_.check_199">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:55.25-55.75" time="0" type="ASSERT" location="fv_beatgen.sv:55.25-55.75" id="_witness_.check_245">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:56.32-56.49" time="0" type="ASSERT" location="fv_beatgen.sv:56.32-56.49" id="_witness_.check_253">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:57.32-57.49" time="0" type="ASSERT" location="fv_beatgen.sv:57.32-57.49" id="_witness_.check_258">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:58.32-58.49" time="0" type="ASSERT" location="fv_beatgen.sv:58.32-58.49" id="_witness_.check_263">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:62.17-62.38" time="0" type="ASSERT" location="fv_beatgen.sv:62.17-62.38" id="_witness_.check_282">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:63.35-63.56" time="0" type="ASSERT" location="fv_beatgen.sv:63.35-63.56" id="_witness_.check_287">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:65.64-65.85" time="0" type="ASSERT" location="fv_beatgen.sv:65.64-65.85" id="_witness_.check_298">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:68.17-68.41" time="0" type="ASSERT" location="fv_beatgen.sv:68.17-68.41" id="_witness_.check_312">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:74.9-74.120" time="0" type="ASSERT" location="fv_beatgen.sv:74.9-74.120" id="_witness_.check_320">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:77.9-77.53" time="0" type="ASSERT" location="fv_beatgen.sv:77.9-77.53" id="_witness_.check_341">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:79.9-79.88" time="0" type="ASSERT" location="fv_beatgen.sv:79.9-79.88" id="_witness_.check_348">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:81.9-81.106" time="0" type="ASSERT" location="fv_beatgen.sv:81.9-81.106" id="_witness_.check_362">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:86.9-86.60" time="0" type="ASSERT" location="fv_beatgen.sv:86.9-86.60" id="_witness_.check_379">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:87.9-87.61" time="0" type="ASSERT" location="fv_beatgen.sv:87.9-87.61" id="_witness_.check_383">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:91.9-91.67" time="0" type="ASSERT" location="fv_beatgen.sv:91.9-91.67" id="_witness_.check_388">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:92.9-92.47" time="0" type="ASSERT" location="fv_beatgen.sv:92.9-92.47" id="_witness_.check_393">
+</testcase>
+<testcase classname="prove" name="Property ASSERT in md_beatgen at fv_beatgen.sv:97.9-97.27" time="0" type="ASSERT" location="fv_beatgen.sv:97.9-97.27" id="_witness_.check_405">
+</testcase>
+<testcase classname="prove" name="Property COVER in md_beatgen at fv_beatgen.sv:100.9-100.35" time="0" type="COVER" location="fv_beatgen.sv:100.9-100.35" id="_witness_.check_409">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property COVER in md_beatgen at fv_beatgen.sv:101.9-101.36" time="0" type="COVER" location="fv_beatgen.sv:101.9-101.36" id="_witness_.check_412">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property COVER in md_beatgen at fv_beatgen.sv:102.9-102.37" time="0" type="COVER" location="fv_beatgen.sv:102.9-102.37" id="_witness_.check_415">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property COVER in md_beatgen at fv_beatgen.sv:103.9-103.38" time="0" type="COVER" location="fv_beatgen.sv:103.9-103.38" id="_witness_.check_418">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property COVER in md_beatgen at fv_beatgen.sv:104.9-104.39" time="0" type="COVER" location="fv_beatgen.sv:104.9-104.39" id="_witness_.check_422">
+<skipped />
+</testcase>
+<testcase classname="prove" name="Property COVER in md_beatgen at fv_beatgen.sv:105.9-105.37" time="0" type="COVER" location="fv_beatgen.sv:105.9-105.37" id="_witness_.check_427">
+<skipped />
+</testcase>
+<system-out>SBY 11:25:07 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] Removing directory 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove'.
+SBY 11:25:07 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\md_beatgen.v' to 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove\src\md_beatgen.v'.
+SBY 11:25:07 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\..\..\rtl\gen\md_defs.vh' to 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove\src\md_defs.vh'.
+SBY 11:25:07 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] Copy 'C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\formal\fv_beatgen.sv' to 'C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove\src\fv_beatgen.sv'.
+SBY 11:25:07 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0: smtbmc bitwuzla
+SBY 11:25:07 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] base: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove/src&amp; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 11:25:08 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] base: finished (returncode=0)
+SBY 11:25:08 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] prep: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove/model&amp; yosys -ql design_prep.log design_prep.ys&quot;
+SBY 11:25:08 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] prep: finished (returncode=0)
+SBY 11:25:08 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] smt2: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove/model&amp; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY 11:25:09 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] smt2: finished (returncode=0)
+SBY 11:25:09 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.basecase: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove&amp; yosys-smtbmc -s bitwuzla --presat --unroll --noprogress -t 3  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2&quot;
+SBY 11:25:09 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.induction: starting process &quot;cd C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove&amp; yosys-smtbmc -s bitwuzla --presat --unroll -i --noprogress -t 3  --append 0 --dump-vcd engine_0/trace_induct.vcd --dump-yw engine_0/trace_induct.yw --dump-vlogtb engine_0/trace_induct_tb.v --dump-smtc engine_0/trace_induct.smtc model/design_smt2.smt2&quot;
+SBY 11:25:09 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.induction: ##   0:00:00  Solver: bitwuzla
+SBY 11:25:09 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.induction: ##   0:00:00  Trying induction in step 3..
+SBY 11:25:09 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.induction: ##   0:00:00  Trying induction in step 2..
+SBY 11:25:09 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.induction: ##   0:00:00  Trying induction in step 1..
+SBY 11:25:11 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.induction: ##   0:00:02  Temporal induction successful.
+SBY 11:25:11 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.induction: ##   0:00:02  Status: passed
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.basecase: ##   0:00:00  Solver: bitwuzla
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 0..
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 0..
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.basecase: ##   0:00:02  Checking assumptions in step 1..
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.basecase: ##   0:00:02  Checking assertions in step 1..
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.basecase: ##   0:00:02  Checking assumptions in step 2..
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.basecase: ##   0:00:02  Checking assertions in step 2..
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.basecase: ##   0:00:02  Status: passed
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.basecase: finished (returncode=0)
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.basecase: Status returned by engine for basecase: pass
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.induction: finished (returncode=0)
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] engine_0.induction: Status returned by engine for induction: pass
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:04 (4)
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] summary: Elapsed process time unvailable on Windows
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] summary: engine_0 (smtbmc bitwuzla) returned pass for basecase
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] summary: engine_0 (smtbmc bitwuzla) returned pass for induction
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] summary: engine_0 did not produce any traces
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] summary: successful proof by k-induction.
+SBY 11:25:12 [C:\Users\b_yee23\Documents\projects\jane street comp\data\raw\codex_rtl_fix_20261111_111615\regression\test_sby_beatgen_prove_0\beatgen_prove] DONE (PASS, rc=0)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

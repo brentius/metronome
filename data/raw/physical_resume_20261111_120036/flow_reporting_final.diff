@@ -1,0 +1,95 @@
+--- ll_variant_before.py
++++ ll_variant.py
+@@ -19,6 +19,7 @@
+ import glob
+ import json
+ import os
++import re
+ import subprocess
+ import sys
+ import time
+@@ -28,6 +29,8 @@
+ RES = Path("/workspace/results")
+ 
+ GATE_KEYS = [
++    "design__instance__count", "design__instance__area", "design__instance_unmapped__count",
++    "synthesis__check_error__count",
+     "design__instance__utilization__stdcell", "design__instance__area__stdcell",
+     "global_route__wirelength", "route__drc_errors", "route__wirelength", "route__vias",
+     "timing__setup__ws", "timing__hold__ws", "timing__setup__tns", "timing__hold__tns",
+@@ -39,18 +42,48 @@
+ 
+ 
+ def gate_summary(run: Path) -> dict:
+-    """Latest value of each gate metric across the run's steps (later steps override earlier ones)."""
+-    out: dict = {"steps": []}
+-    for f in sorted(glob.glob(str(run / "*/or_metrics_out.json"))) + sorted(glob.glob(str(run / "final/metrics.json"))):
++    """Diagnostic metrics with provenance; only completed GRT gets a gate ruling.
++
++    Flat metrics may originate in different stages and do not constitute final
++    timing, detailed-route or signoff approval. Missing corners stay missing.
++    """
++    out: dict = {"metric_sources": {}, "global_route_gate": {"status": "unknown"}}
++    # final/metrics.json is cumulative: after checkpoint resume it can contain
++    # obsolete timing corners inherited from pre-PnR. Never call those fresh
++    # measurements. Native per-step reports provide the measurement provenance.
++    files = (list(run.glob("*yosys-synthesis/state_out.json"))
++             + list(run.glob("*/or_metrics_out.json")) + list(run.glob("*/*/sta.log")))
++    def stage_order(path: Path):
++        stage = path.relative_to(run).parts[0]
++        number = re.match(r"(\d+)-", stage)
++        return (int(number.group(1)) if number else -1, path.as_posix())
++
++    files.sort(key=stage_order)
++    for f in files:
+         try:
+-            d = json.load(open(f))
++            if f.name == "sta.log":
++                # OpenSTA emits measurements to its log instead of OpenROAD's
++                # JSON metrics file. Read actual records, not cumulative state.
++                d = {}
++                with f.open(errors="replace") as log:
++                    for line in log:
++                        match = re.match(r"%OL_METRIC_([IF])\s+(\S+)\s+(\S+)\s*$", line)
++                        if match:
++                            kind, name, value = match.groups()
++                            d[name] = int(value) if kind == "I" else float(value)
++            else:
++                d = json.loads(f.read_text())
++                if f.name == "state_out.json":
++                    d = d["metrics"]
+         except Exception:
+             continue
+-        out["steps"].append(Path(f).parent.name)
+         for k, v in d.items():
+             if k in GATE_KEYS or k.startswith("timing__setup__ws__corner") or k.startswith("timing__hold__ws__corner") \
+-                    or k.startswith("global_route__") or k.startswith("route__drc"):
++                    or k.startswith("global_route__") or k.startswith("route__drc") \
++                    or k.startswith(("design__max_slew_violation__count", "design__max_cap_violation__count",
++                                     "design__max_fanout_violation__count")):
+                 out[k] = v
++                out["metric_sources"][k] = Path(f).relative_to(run).as_posix()
+     steps = sorted(p.name for p in run.iterdir() if p.is_dir() and p.name[:2].isdigit())
+     out["last_step"] = steps[-1] if steps else None
+     grt = sorted(run.glob("*globalrouting*/*.log"))
+@@ -58,7 +91,19 @@
+         txt = grt[-1].read_text(errors="replace")
+         out["grt_extra_iterations"] = txt.count("Start extra iteration")
+         out["grt_ndr_disabled"] = txt.count("GRT-0273")
+-    out.pop("steps")
++        # The last report matters if OpenROAD attempted several routing passes.
++        final = txt.rsplit("Final congestion report:", 1)[-1] if "Final congestion report:" in txt else ""
++        total = re.search(r"^\s*Total\s+\d+\s+\d+\s+[\d.]+%\s+\d+\s*/\s*\d+\s*/\s*(\d+)\s*$",
++                          final, re.MULTILINE)
++        overflow = int(total.group(1)) if total else None
++        complete = (grt[-1].parent / "state_out.json").is_file()
++        failed = bool(overflow or out["grt_ndr_disabled"] or "GRT-0115" in txt)
++        status = "fail" if failed else "pass" if complete and overflow == 0 else "unknown"
++        out["global_route_gate"] = {
++            "status": status, "overflow": overflow, "step_completed": complete,
++            "extra_iterations": out["grt_extra_iterations"], "ndr_disabled": out["grt_ndr_disabled"],
++            "evidence_file": grt[-1].relative_to(run).as_posix(),
++        }
+     return out
+ 
+ 
