@@ -50,3 +50,7 @@ test/sim_build
 test/__pycache__/
 test/results.xml
 test/gate_level_netlist.v
+
+# Full failed CI archive retained locally; selected reports are versioned.
+/data/raw/template_ci_c83a7f4_20261111T2221/GDS_logs.zip
+/data/raw/template_ci_c83a7f4_20261111T2221/selected/runs/wokwi/58-openroad-stapostpnr/nom_*/
