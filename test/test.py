@@ -10,8 +10,9 @@ from cocotb.triggers import ClockCycles
 async def test_project(dut):
     dut._log.info("Start")
 
-    # Set the clock period to 10 us (100 KHz)
-    clock = Clock(dut.clk, 10, unit="us")
+    # About 60 MHz, the clock the demo board's RP2350 supplies (info.yaml clock_hz).
+    # 16.666 ns because cocotb needs an even number of 1 ps steps.
+    clock = Clock(dut.clk, 16.666, unit="ns")
     cocotb.start_soon(clock.start())
 
     # Reset
