@@ -1,0 +1,125 @@
+{
+  "total_count": 6,
+  "artifacts": [
+    {
+      "id": 13901185590,
+      "node_id": "MDg6QXJ0aWZhY3QxMzkwMTE4NTU5MA==",
+      "name": "gatelevel_test_results",
+      "size_in_bytes": 308599,
+      "url": "https://api.github.com/repos/brentius/metronome/actions/artifacts/13901185590",
+      "archive_download_url": "https://api.github.com/repos/brentius/metronome/actions/artifacts/13901185590/zip",
+      "expired": false,
+      "digest": "sha256:1810357575297239a08174ad9b9ea5fc6f936bb37e74310531dde0f2325f8079",
+      "created_at": "2026-11-11T23:30:06Z",
+      "updated_at": "2026-11-11T23:30:06Z",
+      "expires_at": "2027-02-09T22:33:37Z",
+      "workflow_run": {
+        "id": 43112777677,
+        "repository_id": 1453175746,
+        "head_repository_id": 1453175746,
+        "head_branch": "ci/pipeline-smoke-20261111",
+        "head_sha": "a235fd6ef655bbf02066f68cecf56bca5b81545b"
+      }
+    },
+    {
+      "id": 13900950681,
+      "node_id": "MDg6QXJ0aWZhY3QxMzkwMDk1MDY4MQ==",
+      "name": "github-pages-1",
+      "size_in_bytes": 3467230,
+      "url": "https://api.github.com/repos/brentius/metronome/actions/artifacts/13900950681",
+      "archive_download_url": "https://api.github.com/repos/brentius/metronome/actions/artifacts/13900950681/zip",
+      "expired": false,
+      "digest": "sha256:11bcd12c68ff1d8ba3074ff9914a740a171358f124a1b5a6846f38ce9615c9e0",
+      "created_at": "2026-11-11T23:29:42Z",
+      "updated_at": "2026-11-11T23:29:42Z",
+      "expires_at": "2026-11-12T23:29:41Z",
+      "workflow_run": {
+        "id": 43112777677,
+        "repository_id": 1453175746,
+        "head_repository_id": 1453175746,
+        "head_branch": "ci/pipeline-smoke-20261111",
+        "head_sha": "a235fd6ef655bbf02066f68cecf56bca5b81545b"
+      }
+    },
+    {
+      "id": 13900531119,
+      "node_id": "MDg6QXJ0aWZhY3QxMzkwMDUzMTExOQ==",
+      "name": "GDS_logs",
+      "size_in_bytes": 36010931,
+      "url": "https://api.github.com/repos/brentius/metronome/actions/artifacts/13900531119",
+      "archive_download_url": "https://api.github.com/repos/brentius/metronome/actions/artifacts/13900531119/zip",
+      "expired": false,
+      "digest": "sha256:d9fe96850bcb69f0aad03806ff86621ff9944a8d1fb38f2165873332e23aa8c0",
+      "created_at": "2026-11-11T23:28:22Z",
+      "updated_at": "2026-11-11T23:28:22Z",
+      "expires_at": "2027-02-09T22:33:37Z",
+      "workflow_run": {
+        "id": 43112777677,
+        "repository_id": 1453175746,
+        "head_repository_id": 1453175746,
+        "head_branch": "ci/pipeline-smoke-20261111",
+        "head_sha": "a235fd6ef655bbf02066f68cecf56bca5b81545b"
+      }
+    },
+    {
+      "id": 13900499236,
+      "node_id": "MDg6QXJ0aWZhY3QxMzkwMDQ5OTIzNg==",
+      "name": "precheck_reports",
+      "size_in_bytes": 6878,
+      "url": "https://api.github.com/repos/brentius/metronome/actions/artifacts/13900499236",
+      "archive_download_url": "https://api.github.com/repos/brentius/metronome/actions/artifacts/13900499236/zip",
+      "expired": false,
+      "digest": "sha256:383ae0c12d46a29d7eda83a62cb3bd681e2fea7d16ee2edfcfa35fe804c01b47",
+      "created_at": "2026-11-11T23:49:59Z",
+      "updated_at": "2026-11-11T23:49:59Z",
+      "expires_at": "2027-02-09T22:33:37Z",
+      "workflow_run": {
+        "id": 43112777677,
+        "repository_id": 1453175746,
+        "head_repository_id": 1453175746,
+        "head_branch": "ci/pipeline-smoke-20261111",
+        "head_sha": "a235fd6ef655bbf02066f68cecf56bca5b81545b"
+      }
+    },
+    {
+      "id": 13900002489,
+      "node_id": "MDg6QXJ0aWZhY3QxMzkwMDAwMjQ4OQ==",
+      "name": "gds_render",
+      "size_in_bytes": 3019450,
+      "url": "https://api.github.com/repos/brentius/metronome/actions/artifacts/13900002489",
+      "archive_download_url": "https://api.github.com/repos/brentius/metronome/actions/artifacts/13900002489/zip",
+      "expired": false,
+      "digest": "sha256:28224cc25960e4f558a7240e3214b8dc0b843a40302ff5285a1f38da0ca68557",
+      "created_at": "2026-11-11T23:29:26Z",
+      "updated_at": "2026-11-11T23:29:26Z",
+      "expires_at": "2027-02-09T22:33:37Z",
+      "workflow_run": {
+        "id": 43112777677,
+        "repository_id": 1453175746,
+        "head_repository_id": 1453175746,
+        "head_branch": "ci/pipeline-smoke-20261111",
+        "head_sha": "a235fd6ef655bbf02066f68cecf56bca5b81545b"
+      }
+    },
+    {
+      "id": 13899004703,
+      "node_id": "MDg6QXJ0aWZhY3QxMzg5OTAwNDcwMw==",
+      "name": "tt_submission",
+      "size_in_bytes": 1221891,
+      "url": "https://api.github.com/repos/brentius/metronome/actions/artifacts/13899004703",
+      "archive_download_url": "https://api.github.com/repos/brentius/metronome/actions/artifacts/13899004703/zip",
+      "expired": false,
+      "digest": "sha256:92985ff193c656627d7c86f0a1f089156403361f13c15dbe88673de3766f851e",
+      "created_at": "2026-11-11T23:28:34Z",
+      "updated_at": "2026-11-11T23:28:34Z",
+      "expires_at": "2027-02-09T22:33:37Z",
+      "workflow_run": {
+        "id": 43112777677,
+        "repository_id": 1453175746,
+        "head_repository_id": 1453175746,
+        "head_branch": "ci/pipeline-smoke-20261111",
+        "head_sha": "a235fd6ef655bbf02066f68cecf56bca5b81545b"
+      }
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "scope": "official Tiny Tapeout template pipeline smoke only",
+  "source_commit": "a235fd6ef655bbf02066f68cecf56bca5b81545b",
+  "branch": "ci/pipeline-smoke-20261111",
+  "tiles": "8x4",
+  "configured_clock_hz": 60000000,
+  "required_gates_passed": true,
+  "required_jobs": {
+    "gds": {
+      "job_id": 130832880652,
+      "conclusion": "success",
+      "url": "https://github.com/brentius/metronome/actions/runs/43112777677/job/130832880652"
+    },
+    "precheck": {
+      "job_id": 130858463007,
+      "conclusion": "success",
+      "url": "https://github.com/brentius/metronome/actions/runs/43112777677/job/130858463007"
+    },
+    "gl_test": {
+      "job_id": 130858462836,
+      "conclusion": "success",
+      "url": "https://github.com/brentius/metronome/actions/runs/43112777677/job/130858462836"
+    }
+  },
+  "rtl_run": {
+    "id": 43112777630,
+    "name": "test",
+    "head_branch": "ci/pipeline-smoke-20261111",
+    "head_sha": "a235fd6ef655bbf02066f68cecf56bca5b81545b",
+    "event": "push",
+    "path": ".github/workflows/test.yaml",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-11T22:33:37Z",
+    "run_started_at": "2026-11-11T22:33:37Z",
+    "updated_at": "2026-11-11T22:34:07Z",
+    "html_url": "https://github.com/brentius/metronome/actions/runs/43112777630"
+  },
+  "overall_physical_workflow_conclusion": "failure",
+  "optional_viewer": {
+    "job_id": 130858462859,
+    "conclusion": "failure",
+    "reason": "GitHub Pages deployment HTTP404; Pages not enabled; settings unchanged"
+  },
+  "testcase_counts": {
+    "gatelevel_results.xml": 1,
+    "precheck_results.xml": 10
+  },
+  "toolchain": {
+    "FLOW_NAME": "LibreLane",
+    "FLOW_VERSION": "3.1.0.dev4",
+    "PDK": "ihp-sg13cmos5l",
+    "PDK_SOURCE": "IHP-Open-PDK",
+    "PDK_VERSION": "89d42ee6d2fd9b50b86a1aada6fee6673c3e6008"
+  },
+  "submission_provenance": {
+    "app": "Tiny Tapeout main 9d13ff3e",
+    "repo": "https://github.com/brentius/metronome",
+    "commit": "a235fd6ef655bbf02066f68cecf56bca5b81545b",
+    "workflow_url": "https://github.com/brentius/metronome/actions/runs/43112777677"
+  },
+  "artifact_digest_checks": {
+    "gatelevel_test_results.zip": true,
+    "precheck_reports.zip": true,
+    "tt_submission.zip": true
+  },
+  "limitations": "Does not establish correctness or timing closure of Metronome v1/v2 hardware"
+}

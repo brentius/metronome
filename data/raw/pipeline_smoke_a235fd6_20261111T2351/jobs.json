@@ -1,0 +1,269 @@
+{
+  "total_count": 4,
+  "jobs": [
+    {
+      "id": 130832880652,
+      "run_id": 43112777677,
+      "workflow_name": "gds",
+      "head_branch": "ci/pipeline-smoke-20261111",
+      "run_url": "https://api.github.com/repos/brentius/metronome/actions/runs/43112777677",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVp2zws8AAAAedj9UDA",
+      "head_sha": "a235fd6ef655bbf02066f68cecf56bca5b81545b",
+      "url": "https://api.github.com/repos/brentius/metronome/actions/jobs/130832880652",
+      "html_url": "https://github.com/brentius/metronome/actions/runs/43112777677/job/130832880652",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-11T22:33:37Z",
+      "started_at": "2026-11-11T22:33:40Z",
+      "completed_at": "2026-11-11T23:29:29Z",
+      "name": "gds",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-11T22:33:41Z",
+          "completed_at": "2026-11-11T22:33:44Z"
+        },
+        {
+          "name": "checkout repo",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-11T22:33:44Z",
+          "completed_at": "2026-11-11T22:33:47Z"
+        },
+        {
+          "name": "Build GDS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-11T22:33:47Z",
+          "completed_at": "2026-11-11T23:29:26Z"
+        },
+        {
+          "name": "Post Build GDS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-11T23:29:26Z",
+          "completed_at": "2026-11-11T23:29:26Z"
+        },
+        {
+          "name": "Post checkout repo",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-11T23:29:26Z",
+          "completed_at": "2026-11-11T23:29:27Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-11T23:29:27Z",
+          "completed_at": "2026-11-11T23:29:27Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/brentius/metronome/check-runs/130832880652",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000000025,
+      "runner_name": "GitHub Actions 1000000025",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 130858462836,
+      "run_id": 43112777677,
+      "workflow_name": "gds",
+      "head_branch": "ci/pipeline-smoke-20261111",
+      "run_url": "https://api.github.com/repos/brentius/metronome/actions/runs/43112777677",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVp2zws8AAAAed8WudA",
+      "head_sha": "a235fd6ef655bbf02066f68cecf56bca5b81545b",
+      "url": "https://api.github.com/repos/brentius/metronome/actions/jobs/130858462836",
+      "html_url": "https://github.com/brentius/metronome/actions/runs/43112777677/job/130858462836",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-11T23:29:29Z",
+      "started_at": "2026-11-11T23:29:32Z",
+      "completed_at": "2026-11-11T23:30:13Z",
+      "name": "gl_test",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-11T23:29:33Z",
+          "completed_at": "2026-11-11T23:29:35Z"
+        },
+        {
+          "name": "checkout repo",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-11T23:29:35Z",
+          "completed_at": "2026-11-11T23:29:37Z"
+        },
+        {
+          "name": "GL test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-11T23:29:37Z",
+          "completed_at": "2026-11-11T23:30:07Z"
+        },
+        {
+          "name": "Post GL test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-11T23:30:07Z",
+          "completed_at": "2026-11-11T23:30:12Z"
+        },
+        {
+          "name": "Post checkout repo",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-11T23:30:12Z",
+          "completed_at": "2026-11-11T23:30:12Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-11T23:30:12Z",
+          "completed_at": "2026-11-11T23:30:12Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/brentius/metronome/check-runs/130858462836",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000000027,
+      "runner_name": "GitHub Actions 1000000027",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 130858462859,
+      "run_id": 43112777677,
+      "workflow_name": "gds",
+      "head_branch": "ci/pipeline-smoke-20261111",
+      "run_url": "https://api.github.com/repos/brentius/metronome/actions/runs/43112777677",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVp2zws8AAAAed8Wuiw",
+      "head_sha": "a235fd6ef655bbf02066f68cecf56bca5b81545b",
+      "url": "https://api.github.com/repos/brentius/metronome/actions/jobs/130858462859",
+      "html_url": "https://github.com/brentius/metronome/actions/runs/43112777677/job/130858462859",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-11-11T23:29:29Z",
+      "started_at": "2026-11-11T23:29:33Z",
+      "completed_at": "2026-11-11T23:29:46Z",
+      "name": "viewer",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-11T23:29:34Z",
+          "completed_at": "2026-11-11T23:29:36Z"
+        },
+        {
+          "name": "Run TinyTapeout/tt-gds-action/viewer@ttihp27a",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 2,
+          "started_at": "2026-11-11T23:29:36Z",
+          "completed_at": "2026-11-11T23:29:44Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-11T23:29:44Z",
+          "completed_at": "2026-11-11T23:29:44Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/brentius/metronome/check-runs/130858462859",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000000028,
+      "runner_name": "GitHub Actions 1000000028",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 130858463007,
+      "run_id": 43112777677,
+      "workflow_name": "gds",
+      "head_branch": "ci/pipeline-smoke-20261111",
+      "run_url": "https://api.github.com/repos/brentius/metronome/actions/runs/43112777677",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVp2zws8AAAAed8WvHw",
+      "head_sha": "a235fd6ef655bbf02066f68cecf56bca5b81545b",
+      "url": "https://api.github.com/repos/brentius/metronome/actions/jobs/130858463007",
+      "html_url": "https://github.com/brentius/metronome/actions/runs/43112777677/job/130858463007",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-11T23:29:30Z",
+      "started_at": "2026-11-11T23:29:32Z",
+      "completed_at": "2026-11-11T23:50:05Z",
+      "name": "precheck",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-11T23:29:33Z",
+          "completed_at": "2026-11-11T23:29:34Z"
+        },
+        {
+          "name": "Run Tiny Tapeout Precheck",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-11T23:29:34Z",
+          "completed_at": "2026-11-11T23:49:59Z"
+        },
+        {
+          "name": "Post Run Tiny Tapeout Precheck",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-11T23:49:59Z",
+          "completed_at": "2026-11-11T23:50:04Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-11T23:50:04Z",
+          "completed_at": "2026-11-11T23:50:04Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/brentius/metronome/check-runs/130858463007",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000000029,
+      "runner_name": "GitHub Actions 1000000029",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

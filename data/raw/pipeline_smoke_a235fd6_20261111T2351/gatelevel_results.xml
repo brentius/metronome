@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1794439805" />
+    <testcase name="test_project" classname="test" file="/home/runner/work/metronome/metronome/test/test.py" lineno="9" time="0.0830831527709961" sim_time_ns="166.66" ratio_time="2005.9421728899551" />
+  </testsuite>
+</testsuites>

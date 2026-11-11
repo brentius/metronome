@@ -1,0 +1,14 @@
+{
+  "id": 43112777630,
+  "name": "test",
+  "head_branch": "ci/pipeline-smoke-20261111",
+  "head_sha": "a235fd6ef655bbf02066f68cecf56bca5b81545b",
+  "event": "push",
+  "path": ".github/workflows/test.yaml",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-11T22:33:37Z",
+  "run_started_at": "2026-11-11T22:33:37Z",
+  "updated_at": "2026-11-11T22:34:07Z",
+  "html_url": "https://github.com/brentius/metronome/actions/runs/43112777630"
+}
