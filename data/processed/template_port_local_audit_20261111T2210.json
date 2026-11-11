@@ -1,0 +1,69 @@
+{
+  "source_commit": "c83a7f4f0b3443ab065fc4619414ffa5bbd36f21",
+  "class": "local verification and provenance audit; physical CI pending",
+  "checks": {
+    "recorded_byte_hashes_match": true,
+    "source_matches_built_commit_ignoring_crlf": true,
+    "source_lists_match": true,
+    "saved_v1_project_config_matches": true,
+    "full_regression_passes": true,
+    "saved_v1_gl_smoke_passes": true,
+    "saved_v1_gl_inputs_match": true
+  },
+  "byte_mismatches": [],
+  "normalized_source_mismatches": [],
+  "saved_v1_gl_input_mismatches": [],
+  "config_changes": {},
+  "template_supplied_keys": [
+    "DESIGN_NAME",
+    "DIE_AREA",
+    "FP_DEF_TEMPLATE",
+    "GND_PIN",
+    "OPENROAD_THREADS",
+    "RT_MAX_LAYER",
+    "STA_THREADS",
+    "VDD_PIN",
+    "VERILOG_FILES"
+  ],
+  "source_count": 20,
+  "regression": {
+    "tests": 574,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "partial_ci_provenance": {
+    "gds_action": "2026-11-11T21:00:25.3235415Z Download action repository 'TinyTapeout/tt-gds-action@ttihp27a' (SHA:e7a50f8f46f9f8df4b2c9935bfeb1cbc6b6ae4f6)",
+    "librelane": "2026-11-11T21:01:05.3871123Z Collecting librelane==3.1.0.dev4",
+    "yosys": "2026-11-11T21:02:41.4405029Z  Yosys 0.69 (git sha1 9f75ca1f9834a39a863915b5dae0c7b1e33533bc, Release, Clang  ",
+    "verilator": "2026-11-11T21:02:41.1537124Z - V e r i l a t i o n   R e p o r t: Verilator 5.046 2026-02-28 rev v5.046      "
+  },
+  "pdk_revision_seen_in_ci_log": true,
+  "raw_files": {
+    "data/raw/template_port_20261111T2055/github_gds_snapshot_2111.log": "62be284a65ce1b1e5b7187c09d035aa1e021d04e9f16f14d048fcf2a80e36ef8",
+    "data/raw/template_port_20261111T2055/inputs.json": "168e6456ca44e1cbd238590d36f45704eb7fd7c33d2d198808a12bd8878fef2e",
+    "data/raw/template_port_20261111T2055/legacy_pack_after.log": "ca256991934079058067e838cd0ba4b59056165fbbfdc1a524923a57b939fd7c",
+    "data/raw/template_port_20261111T2055/legacy_pack_before.log": "48d1aa15647bb2bffa1c99b9431334e7952de7501851a0fa6e687f2512bc13b9",
+    "data/raw/template_port_20261111T2055/local_summary.json": "5bacf2adba5ff275820d31088822f0c12cb9d1534f5dd95feb27c36fcca88180",
+    "data/raw/template_port_20261111T2055/probe_faults/results_mismatch.xml": "62e5afcf918abf252d275a326081f6870f7e2947f6b799ae2a27a414651f89f2",
+    "data/raw/template_port_20261111T2055/probe_faults/results_missing_handle.xml": "5f50b5550f3daf1ad6229d900797a417e62ce04901b814ab88c6c560aa672370",
+    "data/raw/template_port_20261111T2055/probe_faults/results_unavailable.xml": "688716c65ce2ef81d8ede78259abc4594de829884f99a61a5543e1e269d7a759",
+    "data/raw/template_port_20261111T2055/probe_faults/results_unresolved_value.xml": "4aa6b1fac83fb0a798dcd1b1ca8801aaac5b8a585f90fac7eae2b46e579e437a",
+    "data/raw/template_port_20261111T2055/README.md": "7a79a7e2313272b08e417162d492885897c816645f19548473b9df45d8942123",
+    "data/raw/template_port_20261111T2055/regression.log": "cfce133a5a2500c85f946fe4448b52309b710be39e2e2a0d3cdd1af81a009eeb",
+    "data/raw/template_port_20261111T2055/regression_env.log": "778c85dd7218e3b4eb31172c9ef138d02534f0720ef0fb08242c63d52ffade9f",
+    "data/raw/template_port_20261111T2055/regression_final.log": "64ece78aeb532e1b94d99582b8d312e3e74031d8758d7ac29f5aa85796f2dbf6",
+    "data/raw/template_port_20261111T2055/regression_final.xml": "f68d70ea8f66869ebad6298e4e05b7cb680626d5bfbf80cf720f8e5676f9db05",
+    "data/raw/template_port_20261111T2055/rtl_after.log": "029ab5824b9b92c7635a39e76f168cf834b24c2f46d2095150fcfa9492dcaa3f",
+    "data/raw/template_port_20261111T2055/run_saved_v1_gl_smoke.py": "491e5b46bc2c5654fb7571ac4554c89401282a86f7972a9e000f519b5af36fa3",
+    "data/raw/template_port_20261111T2055/run_tt_test.py": "5e3be9c51114a0064ef2a410da0fc4bb6fb2d76af2a250e3a0ca26d588649d0e",
+    "data/raw/template_port_20261111T2055/saved_v1_gl_inputs.json": "22d3436822c3f43df8f3cc2f16f7f7af1e8906d0cadc1f79e6039c12807b3f27",
+    "data/raw/template_port_20261111T2055/saved_v1_gl_smoke.log": "341b8970fb6c78f5f72539780648f41bda75849a086fdb2aa60654dc378371a2",
+    "data/raw/template_port_20261111T2055/saved_v1_gl_smoke.xml": "004addad98f76b205b047e4fc00ad8b26e9256497e6450f67d964fdaf7e6930e",
+    "data/raw/template_port_20261111T2055/sram_elaboration.log": "2eefa8568d044509527a8c63772f9b6eed398dcdf26aba77425f263cf87c795d",
+    "data/raw/template_port_20261111T2055/sram_elaboration_after.log": "45c94c4f6740fef0108e0689088b0ecfad78780c3fedad3804c591440de4a16e",
+    "data/raw/template_port_20261111T2055/sram_lint.log": "681ed3b837914b2049ccd88573673288ff509a277e095f12e007fad8717f044a",
+    "data/raw/template_port_20261111T2055/template_rtl.log": "e4d32eec1099d1f0e84227cbac33318ac9cee6a2cbc7d8c47b564c77622d4158",
+    "data/raw/template_port_20261111T2055/tool_versions.txt": "387122a15749cc8d51d208ae3278585979776c22d741f21013df1c1ca011c32d"
+  }
+}

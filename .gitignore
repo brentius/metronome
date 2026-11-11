@@ -27,8 +27,8 @@
 .pytest_cache/
 
 # cocotb simulation builds and results.
-/code/tests/**/sim_build/
-/code/tests/**/results.xml
+/code/tests/**/sim_build*/
+/code/tests/**/results*.xml
 *.fst
 
 # Large raw physical evidence kept on disk (and on the RunPod volume) but out of git.
@@ -39,8 +39,6 @@
 # Tiny Tapeout template (ttihp-verilog-template @4b1204a)
 .DS_Store
 .idea
-*.vcd
-*.fst
 *.fst.hier
 runs
 tt_submission

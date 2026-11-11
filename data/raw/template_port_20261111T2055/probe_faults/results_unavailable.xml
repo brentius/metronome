@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="cocotb tests"><testsuite name="lockstep_tb" errors="0" failures="1" skipped="0" tests="1" time="0.015" timestamp="2026-11-11T21:12:53.718137+00:00" hostname="WC23-30B22373BF"><testcase classname="lockstep_tb" name="lockstep" time="0.015"><failure message="cycle 2: internal state differs or unavailable (rtl, model): {'acc.A': (None, 0)}&#10;assert not {'acc.A': (None, 0)}" type="AssertionError">Traceback (most recent call last):
+  File "C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lockstep\lockstep_tb.py", line 128, in lockstep
+    assert not bad, f"cycle {t}: internal state differs or unavailable (rtl, model): {bad}"
+AssertionError: cycle 2: internal state differs or unavailable (rtl, model): {'acc.A': (None, 0)}
+assert not {'acc.A': (None, 0)}
+</failure><properties><property name="cocotb" value="True" /><property name="random_seed" value="1794431573" /><property name="file" value="C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lockstep\lockstep_tb.py" /><property name="line" value="99" /><property name="sim_time_unit" value="ns" /><property name="sim_time_start" value="0.0" /><property name="sim_time_stop" value="48.0" /><property name="sim_time_duration" value="48.0" /><property name="sim_time_ratio" value="3200.0000001241765" /></properties><system-err>Test failed with COCOTB_RANDOM_SEED=1794431573
+</system-err></testcase></testsuite></testsuites>

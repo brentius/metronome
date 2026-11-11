@@ -1,0 +1,16 @@
+{
+  "kind": "zero-delay saved-v1 gate simulation; template testbench validation only",
+  "pdk_revision": "89d42ee6d2fd9b50b86a1aada6fee6673c3e6008",
+  "model_repository": "https://github.com/IHP-GmbH/IHP-Open-PDK",
+  "original_netlist": "data\\raw\\metronome_v1.0\\gds\\tt_um_metronome.nl.v",
+  "original_netlist_sha256": "33159d03ed1c72af4612762c67c805bbe173dc2a979e2d2b14eff6bdba73d28b",
+  "inputs": {
+    "code\\.build\\template_gl_models\\sg13cmos5l_udp.v": "5491a3edf7468792b5222e7abe057e0583a407c01b2086d4fd44a55b6cf88055",
+    "code\\.build\\template_gl_models\\sg13cmos5l_stdcell.v": "485945f1b167daa68354548f46c95bdbff7d931516fc5b4edd47f2e2cd555735",
+    "test\\sram_model\\RM_IHPSG13_1P_256x64_c2_bm_bist.v": "20262f659479a070330efc277eaf4fd62e73a7f5b671a238d203f1e4344c20fa",
+    "test\\sram_model\\RM_IHPSG13_1P_512x32_c2_bm_bist.v": "2bec4b86c665f485e795da0321da2d8153947090e93d11555b19f222cbee7ed8",
+    "test\\sram_model\\RM_IHPSG13_1P_core_behavioral_bm_bist.v": "d0a6258f8e9c93d1d5b1f78c0a1d66f30d28b1ad8037e5e07f53d1a4e3670b12",
+    "code\\.build\\template_saved_v1_gl\\tt_um_brentius_metronome.nl.v": "b0ab7252b3837595c115aa1e076f2e0d1c7affbcf15983e438bde2aa99d6e5e8",
+    "test\\tb.v": "02bd9ef4eeeb0b77227d08c795dd9a49023c181c6cb3c98aab148f9dc2f7f06b"
+  }
+}

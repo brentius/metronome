@@ -1,0 +1,22 @@
+     -.--ns INFO     gpi                                ..\gpi\GpiCommon.cpp:242  in gpi_load_users                  Loaded entry library: 'C:\Users\b_yee23\AppData\Local\Programs\Python\Python312\python312.dll'
+     -.--ns INFO     gpi                                ..\gpi\GpiCommon.cpp:234  in gpi_load_users                  Running entry func 'initialize' from loaded library 'C:\Users\b_yee23\AppData\Local\Programs\Python\Python312\Lib\site-packages\cocotb\simulator.cp312-win_amd64.pyd'
+     -.--ns INFO     pygpi                              ..ib\pygpi\embed.cpp:115  in initialize                      Using Python 3.12.10 interpreter at C:\Users\b_yee23\AppData\Local\Programs\Python\Python312\python.exe
+     -.--ns INFO     gpi                                ..\gpi\GpiCommon.cpp:74   in gpi_print_registered_impl       GPI: VPI support registered
+     0.00ns INFO     cocotb.initialize                  Seeding Python random module with 1794432809
+     0.00ns INFO     cocotb.initialize                  Initialized cocotb v2.1.0 from C:\Users\b_yee23\AppData\Local\Programs\Python\Python312\Lib\site-packages\cocotb
+     0.00ns INFO     cocotb.initialize                  Running on Icarus Verilog version 14.0 (devel)
+     0.00ns INFO     cocotb.regression                  Running tests
+     0.00ns INFO     cocotb.regression                  running test.test_project (1/1)
+     0.00ns INFO     cocotb.tb                          Start
+     0.00ns INFO     cocotb.tb                          Reset
+   316.65ns INFO     cocotb.tb                          Loading blink.mas: 10 SPI frames, 76 bytes
+176434.61ns INFO     cocotb.tb                          O8 edges at [44, 104, 164, 224, 284, 344, 404, 464]
+176434.61ns INFO     cocotb.regression                  test.test_project passed
+176434.61ns INFO     cocotb.regression                  **************************************************************************************
+                                                        ** TEST                          STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                                                        **************************************************************************************
+                                                        ** test.test_project              PASS      176434.61          14.08      12531.76  **
+                                                        **************************************************************************************
+                                                        ** TESTS=1 PASS=1 FAIL=0 SKIP=0             176434.61          14.58      12101.97  **
+                                                        **************************************************************************************
+VCD info: dumping is suppressed.

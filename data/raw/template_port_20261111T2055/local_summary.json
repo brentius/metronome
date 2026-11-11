@@ -1,0 +1,12 @@
+{
+  "source_commit": "c83a7f4f0b3443ab065fc4619414ffa5bbd36f21",
+  "tests": 574,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "time_seconds": 508.802,
+  "command": "python -m pytest code/tests code/host sim/reference -q -p no:cacheprovider --junitxml=data/raw/template_port_20261111T2055/regression_final.xml",
+  "clock_ns": 16.666,
+  "config_clock_ns": 16.667,
+  "class": "RTL/reference/formal verification; no new physical signoff claim"
+}
