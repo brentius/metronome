@@ -707,10 +707,10 @@ abort
 | # | Question | Draft position |
 |---|---|---|
 | O1 | ~~Can `stretch` map to the beat generator?~~ | **Decided (owner, 2026-11-12):** yes, the beat-generator hold (part B 3.2a) |
-| O2 | Time written as fractions of the beat, or cycles? | Fractions; the fit report prints the quantised cycle and the error |
+| O2 | ~~Time written as fractions of the beat, or cycles?~~ | **Decided (owner, 2026-11-12):** fractions; the fit report prints the quantised cycle and the error |
 | O3 | ~~Full-duplex fields for SPI~~ | **Decided (owner, 2026-11-12):** `\|\|`, section 7.8 |
-| O4 | Received control bits (ACK, `rw`) in the host stream by default? | Yes, unless `hidden` |
-| O5 | One score per protocol, or allow several clocks per score? | Groups (5.5); this supersedes D26's one-clock-per-file choice |
+| O4 | ~~Received control bits (ACK, `rw`) in the host stream by default?~~ | **Decided (owner, 2026-11-12):** yes, unless `hidden` |
+| O5 | ~~One score per protocol, or allow several clocks per score?~~ | **Decided (owner, 2026-11-12):** groups (5.5); this supersedes D26's one-clock-per-file choice. Compiler support for more than one group is not yet implemented |
 | O6 | ~~Symbol limit~~ | **Checked 2026-11-12** against part B 8 and `machine.py`: R1–R5 in 5.3 |
 
 ## Appendix A. Grammar of the score language (EBNF, informal)
