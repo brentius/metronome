@@ -1,0 +1,1312 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+
+-- Executing script file `sim\numerics\v2_sizing\area_stream_run.ys' --
+
+1. Executing Verilog-2005 frontend: sim/numerics/v2_sizing/rtl/md2_stream.v
+Parsing Verilog input from `sim/numerics/v2_sizing/rtl/md2_stream.v' to AST representation.
+Generating RTLIL representation for module `\md2_stream'.
+Successfully finished Verilog frontend.
+
+2. Executing SYNTH pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \md2_stream
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \md2_stream
+Removed 0 unused modules.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 7 switch rules as full_case in process $sim/numerics/v2_sizing/rtl/md2_stream.v:93$proc$38 in module md2_stream.
+Marked 1 switch rules as full_case in process $sim/numerics/v2_sizing/rtl/md2_stream.v:61$proc$10 in module md2_stream.
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 1 assignment to connection.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~19 debug messages>
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:93$proc$38'.
+     1/13: $0\inited[0:0]
+     2/13: $0\starved_r[0:0]
+     3/13: $0\pend_v[0:0]
+     4/13: $0\pend[7:0]
+     5/13: $0\shv[0:0]
+     6/13: $0\sh[7:0]
+     7/13: $0\rdw[0:0]
+     8/13: $0\rq[0:0]
+     9/13: $0\bv[0:0]
+    10/13: $0\wbuf[31:0]
+    11/13: $0\ba[10:0]
+    12/13: $0\bidx[2:0]
+    13/13: $0\pos_r[11:0]
+Creating decoders for process `\md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:61$proc$10'.
+     1/1: $1\lane_byte[7:0]
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\md2_stream.\lane_byte' from process `\md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:61$proc$10'.
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\md2_stream.\inited' using process `\md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:93$proc$38'.
+  created $dff cell `$procdff$278' with positive edge clock.
+Creating register for signal `\md2_stream.\pos_r' using process `\md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:93$proc$38'.
+  created $dff cell `$procdff$279' with positive edge clock.
+Creating register for signal `\md2_stream.\bidx' using process `\md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:93$proc$38'.
+  created $dff cell `$procdff$280' with positive edge clock.
+Creating register for signal `\md2_stream.\ba' using process `\md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:93$proc$38'.
+  created $dff cell `$procdff$281' with positive edge clock.
+Creating register for signal `\md2_stream.\wbuf' using process `\md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:93$proc$38'.
+  created $dff cell `$procdff$282' with positive edge clock.
+Creating register for signal `\md2_stream.\bv' using process `\md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:93$proc$38'.
+  created $dff cell `$procdff$283' with positive edge clock.
+Creating register for signal `\md2_stream.\rq' using process `\md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:93$proc$38'.
+  created $dff cell `$procdff$284' with positive edge clock.
+Creating register for signal `\md2_stream.\rdw' using process `\md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:93$proc$38'.
+  created $dff cell `$procdff$285' with positive edge clock.
+Creating register for signal `\md2_stream.\sh' using process `\md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:93$proc$38'.
+  created $dff cell `$procdff$286' with positive edge clock.
+Creating register for signal `\md2_stream.\shv' using process `\md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:93$proc$38'.
+  created $dff cell `$procdff$287' with positive edge clock.
+Creating register for signal `\md2_stream.\pend' using process `\md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:93$proc$38'.
+  created $dff cell `$procdff$288' with positive edge clock.
+Creating register for signal `\md2_stream.\pend_v' using process `\md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:93$proc$38'.
+  created $dff cell `$procdff$289' with positive edge clock.
+Creating register for signal `\md2_stream.\starved_r' using process `\md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:93$proc$38'.
+  created $dff cell `$procdff$290' with positive edge clock.
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 18 empty switches in `\md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:93$proc$38'.
+Removing empty process `md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:93$proc$38'.
+Found and cleaned up 1 empty switch in `\md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:61$proc$10'.
+Removing empty process `md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:61$proc$10'.
+Cleaned up 19 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md2_stream.
+<suppressed ~33 debug messages>
+
+2.3. Executing CHECK pass (checking for obvious problems).
+Checking module md2_stream...
+Found and reported 0 problems.
+
+2.4. Executing FLATTEN pass (flatten design).
+
+2.5. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md2_stream.
+
+2.6. Executing CHECK pass (checking for obvious problems).
+Checking module md2_stream...
+Found and reported 0 problems.
+
+2.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md2_stream..
+Removed 2 unused cells and 114 unused wires.
+<suppressed ~3 debug messages>
+
+2.8. Executing OPT pass (performing simple optimizations).
+
+2.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md2_stream.
+
+2.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md2_stream'.
+Computing hashes of 159 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+Computing hashes of 150 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+<suppressed ~27 debug messages>
+Removed a total of 9 cells.
+
+2.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \md2_stream..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port A of cell $procmux$164: \rdw -> 1'0
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~126 debug messages>
+
+2.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \md2_stream.
+  Optimizing cells in module \md2_stream.
+Performed a total of 1 changes.
+
+2.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md2_stream'.
+Computing hashes of 149 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+Computing hashes of 148 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+2.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md2_stream..
+Removed 0 unused cells and 11 unused wires.
+<suppressed ~1 debug messages>
+
+2.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md2_stream.
+
+2.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \md2_stream..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~128 debug messages>
+
+2.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \md2_stream.
+Performed a total of 0 changes.
+
+2.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md2_stream'.
+Computing hashes of 148 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+Removed a total of 0 cells.
+
+2.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md2_stream..
+
+2.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md2_stream.
+
+2.8.16. Finished fast OPT passes. (There is nothing left to do.)
+
+2.9. Executing FSM pass (extract and optimize FSM).
+
+2.9.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+2.9.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+2.9.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+2.9.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md2_stream..
+
+2.9.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+2.9.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+2.9.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+2.9.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+2.10. Executing OPT pass (performing simple optimizations).
+
+2.10.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md2_stream.
+
+2.10.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md2_stream'.
+Computing hashes of 148 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+Removed a total of 0 cells.
+
+2.10.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \md2_stream..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~128 debug messages>
+
+2.10.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \md2_stream.
+Performed a total of 0 changes.
+
+2.10.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md2_stream'.
+Computing hashes of 148 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+Removed a total of 0 cells.
+
+2.10.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$280 ($dff) from module md2_stream (D = $procmux$248_Y, Q = \bidx, rval = 3'000).
+Adding EN signal on $auto$ff.cc:337:slice$291 ($sdff) from module md2_stream (D = $procmux$248_Y, Q = \bidx).
+Adding SRST signal on $procdff$281 ($dff) from module md2_stream (D = $procmux$230_Y, Q = \ba, rval = 11'00000000000).
+Adding EN signal on $auto$ff.cc:337:slice$305 ($sdff) from module md2_stream (D = $procmux$230_Y, Q = \ba).
+Adding SRST signal on $procdff$282 ($dff) from module md2_stream (D = $procmux$209_Y, Q = \wbuf, rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$317 ($sdff) from module md2_stream (D = \rdata, Q = \wbuf).
+Adding SRST signal on $procdff$290 ($dff) from module md2_stream (D = $procmux$91_Y, Q = \starved_r, rval = 1'0).
+Adding SRST signal on $procdff$283 ($dff) from module md2_stream (D = $procmux$202_Y, Q = \bv, rval = 1'0).
+Adding SRST signal on $procdff$284 ($dff) from module md2_stream (D = $procmux$174_Y, Q = \rq, rval = 1'0).
+Adding EN signal on $auto$ff.cc:337:slice$325 ($sdff) from module md2_stream (D = 1'1, Q = \rq).
+Adding SRST signal on $procdff$285 ($dff) from module md2_stream (D = $procmux$167_Y, Q = \rdw, rval = 1'0).
+Adding SRST signal on $procdff$289 ($dff) from module md2_stream (D = $procmux$104_Y, Q = \pend_v, rval = 1'0).
+Adding EN signal on $auto$ff.cc:337:slice$336 ($sdff) from module md2_stream (D = $procmux$101_Y, Q = \pend_v).
+Adding SRST signal on $procdff$286 ($dff) from module md2_stream (D = $procmux$157_Y, Q = \sh, rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:337:slice$342 ($sdff) from module md2_stream (D = $procmux$157_Y, Q = \sh).
+Adding SRST signal on $procdff$287 ($dff) from module md2_stream (D = $procmux$134_Y, Q = \shv, rval = 1'0).
+Adding EN signal on $auto$ff.cc:337:slice$358 ($sdff) from module md2_stream (D = $procmux$132_Y, Q = \shv).
+Adding SRST signal on $procdff$288 ($dff) from module md2_stream (D = $procmux$117_Y, Q = \pend, rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:337:slice$374 ($sdff) from module md2_stream (D = \nsh, Q = \pend).
+Adding SRST signal on $procdff$279 ($dff) from module md2_stream (D = $procmux$266_Y, Q = \pos_r, rval = 12'000000000000).
+Adding EN signal on $auto$ff.cc:337:slice$380 ($sdff) from module md2_stream (D = $procmux$266_Y, Q = \pos_r).
+
+2.10.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md2_stream..
+Removed 28 unused cells and 28 unused wires.
+<suppressed ~29 debug messages>
+
+2.10.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md2_stream.
+<suppressed ~11 debug messages>
+
+2.10.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.10.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \md2_stream..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~97 debug messages>
+
+2.10.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \md2_stream.
+Performed a total of 0 changes.
+
+2.10.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md2_stream'.
+Computing hashes of 162 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+Computing hashes of 151 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+Computing hashes of 145 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+<suppressed ~51 debug messages>
+Removed a total of 17 cells.
+
+2.10.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.10.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md2_stream..
+Removed 0 unused cells and 17 unused wires.
+<suppressed ~1 debug messages>
+
+2.10.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md2_stream.
+
+2.10.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.10.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \md2_stream..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~97 debug messages>
+
+2.10.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \md2_stream.
+Performed a total of 0 changes.
+
+2.10.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md2_stream'.
+Computing hashes of 145 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+Removed a total of 0 cells.
+
+2.10.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.10.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md2_stream..
+
+2.10.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md2_stream.
+
+2.10.23. Finished fast OPT passes. (There is nothing left to do.)
+
+2.11. Executing WREDUCE pass (reducing word size of cells).
+Removed top 7 bits (of 8) from port A of cell md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:75$shl$18 ($shl).
+Removed top 2 bits (of 3) from port B of cell md2_stream.$auto$simple.cc:200:make_patterns_logic$302 ($ne).
+Removed top 3 bits (of 4) from port A of cell md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:91$shl$36 ($shl).
+Removed top 2 bits (of 3) from port B of cell md2_stream.$auto$simple.cc:200:make_patterns_logic$314 ($ne).
+Removed top 10 bits (of 11) from port B of cell md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:122$add$60 ($add).
+Removed top 2 bits (of 3) from port B of cell md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:123$add$63 ($add).
+Removed top 11 bits (of 12) from port B of cell md2_stream.$sim/numerics/v2_sizing/rtl/md2_stream.v:125$add$64 ($add).
+Removed top 1 bits (of 2) from port B of cell md2_stream.$auto$simple.cc:200:make_patterns_logic$365 ($ne).
+Removed top 1 bits (of 2) from port B of cell md2_stream.$auto$simple.cc:200:make_patterns_logic$393 ($ne).
+Removed top 1 bits (of 2) from port B of cell md2_stream.$procmux$276_CMP0 ($eq).
+
+2.12. Executing PEEPOPT pass (run peephole optimizers).
+
+2.13. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md2_stream..
+
+2.14. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module md2_stream:
+  creating $macc model for $sim/numerics/v2_sizing/rtl/md2_stream.v:125$add$64 ($add).
+  creating $macc model for $sim/numerics/v2_sizing/rtl/md2_stream.v:123$add$63 ($add).
+  creating $macc model for $sim/numerics/v2_sizing/rtl/md2_stream.v:122$add$60 ($add).
+  creating $alu model for $macc $sim/numerics/v2_sizing/rtl/md2_stream.v:122$add$60.
+  creating $alu model for $macc $sim/numerics/v2_sizing/rtl/md2_stream.v:123$add$63.
+  creating $alu model for $macc $sim/numerics/v2_sizing/rtl/md2_stream.v:125$add$64.
+  creating $alu cell for $sim/numerics/v2_sizing/rtl/md2_stream.v:125$add$64: $auto$alumacc.cc:578:replace_alu$396
+  creating $alu cell for $sim/numerics/v2_sizing/rtl/md2_stream.v:123$add$63: $auto$alumacc.cc:578:replace_alu$399
+  creating $alu cell for $sim/numerics/v2_sizing/rtl/md2_stream.v:122$add$60: $auto$alumacc.cc:578:replace_alu$402
+  created 3 $alu and 0 $macc cells.
+
+2.15. Executing SHARE pass (SAT-based resource sharing).
+
+2.16. Executing OPT pass (performing simple optimizations).
+
+2.16.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md2_stream.
+
+2.16.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md2_stream'.
+Computing hashes of 145 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+Removed a total of 0 cells.
+
+2.16.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \md2_stream..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~97 debug messages>
+
+2.16.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \md2_stream.
+Performed a total of 0 changes.
+
+2.16.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md2_stream'.
+Computing hashes of 145 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+Removed a total of 0 cells.
+
+2.16.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.16.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md2_stream..
+
+2.16.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md2_stream.
+
+2.16.9. Finished fast OPT passes. (There is nothing left to do.)
+
+2.17. Executing MEMORY pass.
+
+2.17.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+2.17.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+2.17.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+2.17.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+2.17.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+2.17.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md2_stream..
+
+2.17.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+2.17.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+2.17.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md2_stream..
+
+2.17.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.18. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md2_stream..
+
+2.19. Executing OPT pass (performing simple optimizations).
+
+2.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md2_stream.
+<suppressed ~29 debug messages>
+
+2.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md2_stream'.
+Computing hashes of 120 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+Removed a total of 0 cells.
+
+2.19.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.19.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md2_stream..
+Removed 0 unused cells and 25 unused wires.
+<suppressed ~1 debug messages>
+
+2.19.5. Finished fast OPT passes.
+
+2.20. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+2.21. Executing OPT pass (performing simple optimizations).
+
+2.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md2_stream.
+
+2.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md2_stream'.
+Computing hashes of 120 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+Removed a total of 0 cells.
+
+2.21.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \md2_stream..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~42 debug messages>
+
+2.21.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \md2_stream.
+Performed a total of 0 changes.
+
+2.21.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md2_stream'.
+Computing hashes of 120 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+Removed a total of 0 cells.
+
+2.21.6. Executing OPT_SHARE pass.
+
+2.21.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.21.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md2_stream..
+
+2.21.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md2_stream.
+
+2.21.10. Finished fast OPT passes. (There is nothing left to do.)
+
+2.22. Executing TECHMAP pass (map to technology primitives).
+
+2.22.1. Executing Verilog-2005 frontend: C:\Users\b_yee23\tools\oss-cad-suite\bin\../share/yosys/techmap.v
+Parsing Verilog input from `C:\Users\b_yee23\tools\oss-cad-suite\bin\../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+2.22.2. Continuing TECHMAP pass.
+Using template $paramod$8f780356cb6cdb52f6a744190131b65634639c4e\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $sdffe.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using template $paramod$constmap:3ee646a60fdef57a93fb99ca61c24b20b924b40c$paramod$3b3a66a7766bf28794ddcd35314b025da1fe57c8\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shl.
+Using extmapper simplemap for cells of type $ne.
+Using template $paramod$constmap:8876c1e1fa289f4793438d4e34d232728e6a9746$paramod$92adee9538f2381d8e5006822c900eb986d754e8\_90_shift_shiftx for cells of type $shiftx.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $reduce_and.
+Using template $paramod$constmap:574a95964644c704a7e64c257267b27c2c48aa52$paramod$77562a466236eb4a6d905351a0995599b75075cb\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shl.
+Using template $paramod$3ef7d3dd227da7627a99c5e5a6a4deb817573e39\_90_alu for cells of type $alu.
+Using template $paramod$2f5fb04daf2da94d981bf9455fa4454c6ec8b705\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $pmux.
+Using extmapper simplemap for cells of type $dff.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001100 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001100 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000011 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000011 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001011 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001011 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~1085 debug messages>
+
+2.23. Executing OPT pass (performing simple optimizations).
+
+2.23.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md2_stream.
+<suppressed ~243 debug messages>
+
+2.23.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md2_stream'.
+Computing hashes of 493 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+Computing hashes of 466 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+Computing hashes of 464 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+<suppressed ~87 debug messages>
+Removed a total of 29 cells.
+
+2.23.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.23.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md2_stream..
+Removed 43 unused cells and 247 unused wires.
+<suppressed ~44 debug messages>
+
+2.23.5. Finished fast OPT passes.
+
+2.24. Executing ABC pass (technology mapping using ABC).
+
+2.24.1. Summary of detected clock domains:
+  8 cells in clk=\clk, en={ }, arst={ }, srst=!\rst_n
+  8 cells in clk=\clk, en=$procmux$175_CMP, arst={ }, srst=$auto$simple.cc:240:combine_resets$328
+  17 cells in clk=\clk, en={ }, arst={ }, srst=$auto$simple.cc:240:combine_resets$294
+  24 cells in clk=\clk, en=\cfg_mode, arst={ }, srst=$auto$simple.cc:240:combine_resets$294
+  24 cells in clk=\clk, en=$auto$simple.cc:216:make_patterns_logic$372, arst={ }, srst=$auto$simple.cc:240:combine_resets$294
+  2 cells in clk=\clk, en={ }, arst={ }, srst={ }
+  32 cells in clk=\clk, en=$auto$simple.cc:216:make_patterns_logic$303, arst={ }, srst=$auto$simple.cc:240:combine_resets$294
+  67 cells in clk=\clk, en=$auto$simple.cc:216:make_patterns_logic$315, arst={ }, srst=!\rst_n
+  85 cells in clk=\clk, en=\rdw, arst={ }, srst=!\rst_n
+  61 cells in clk=\clk, en=$auto$simple.cc:216:make_patterns_logic$356, arst={ }, srst=$auto$simple.cc:240:combine_resets$294
+  11 cells in clk=\clk, en=$auto$simple.cc:216:make_patterns_logic$378, arst={ }, srst=!\rst_n
+  82 cells in clk=\clk, en=$auto$simple.cc:216:make_patterns_logic$394, arst={ }, srst=$auto$simple.cc:240:combine_resets$294
+
+2.24.2. Extracting gate netlist of module `\md2_stream' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, synchronously reset by !\rst_n
+
+2.24.3. Extracting gate netlist of module `\md2_stream' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $procmux$175_CMP, synchronously reset by $auto$simple.cc:240:combine_resets$328
+
+2.24.4. Extracting gate netlist of module `\md2_stream' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, synchronously reset by $auto$simple.cc:240:combine_resets$294
+
+2.24.5. Extracting gate netlist of module `\md2_stream' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by \cfg_mode, synchronously reset by $auto$simple.cc:240:combine_resets$294
+
+2.24.6. Extracting gate netlist of module `\md2_stream' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $auto$simple.cc:216:make_patterns_logic$372, synchronously reset by $auto$simple.cc:240:combine_resets$294
+
+2.24.7. Extracting gate netlist of module `\md2_stream' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk
+
+2.24.8. Extracting gate netlist of module `\md2_stream' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $auto$simple.cc:216:make_patterns_logic$303, synchronously reset by $auto$simple.cc:240:combine_resets$294
+
+2.24.9. Extracting gate netlist of module `\md2_stream' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $auto$simple.cc:216:make_patterns_logic$315, synchronously reset by !\rst_n
+
+2.24.10. Extracting gate netlist of module `\md2_stream' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by \rdw, synchronously reset by !\rst_n
+
+2.24.11. Extracting gate netlist of module `\md2_stream' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $auto$simple.cc:216:make_patterns_logic$356, synchronously reset by $auto$simple.cc:240:combine_resets$294
+
+2.24.12. Extracting gate netlist of module `\md2_stream' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $auto$simple.cc:216:make_patterns_logic$378, synchronously reset by !\rst_n
+
+2.24.13. Extracting gate netlist of module `\md2_stream' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $auto$simple.cc:216:make_patterns_logic$394, synchronously reset by $auto$simple.cc:240:combine_resets$294
+
+2.24.13.1. Executed ABC.
+Extracted 7 gates and 18 wires to a netlist network with 10 inputs and 2 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+2.24.13.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        1
+ABC RESULTS:            ANDNOT cells:        3
+ABC RESULTS:               MUX cells:        2
+ABC RESULTS:                OR cells:        1
+ABC RESULTS:        internal signals:        6
+ABC RESULTS:           input signals:       10
+ABC RESULTS:          output signals:        2
+Removing temp directory.
+
+2.24.13.1. Executed ABC.
+Extracted 7 gates and 15 wires to a netlist network with 8 inputs and 4 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+2.24.13.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        3
+ABC RESULTS:            ANDNOT cells:        1
+ABC RESULTS:               MUX cells:        1
+ABC RESULTS:                OR cells:        1
+ABC RESULTS:        internal signals:        3
+ABC RESULTS:           input signals:        8
+ABC RESULTS:          output signals:        4
+Removing temp directory.
+
+2.24.13.1. Executed ABC.
+Extracted 15 gates and 27 wires to a netlist network with 10 inputs and 7 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+2.24.13.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        4
+ABC RESULTS:            ANDNOT cells:        2
+ABC RESULTS:              NAND cells:        1
+ABC RESULTS:               NOR cells:        1
+ABC RESULTS:               NOT cells:        2
+ABC RESULTS:                OR cells:        5
+ABC RESULTS:        internal signals:       10
+ABC RESULTS:           input signals:       10
+ABC RESULTS:          output signals:        7
+Removing temp directory.
+
+2.24.13.1. Executed ABC.
+Extracted 23 gates and 40 wires to a netlist network with 15 inputs and 13 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+2.24.13.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:       10
+ABC RESULTS:            ANDNOT cells:        1
+ABC RESULTS:              NAND cells:        3
+ABC RESULTS:               NOR cells:        1
+ABC RESULTS:               NOT cells:        2
+ABC RESULTS:                OR cells:        2
+ABC RESULTS:        internal signals:       12
+ABC RESULTS:           input signals:       15
+ABC RESULTS:          output signals:       13
+Removing temp directory.
+
+2.24.13.1. Executed ABC.
+Extracted 23 gates and 41 wires to a netlist network with 18 inputs and 9 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+2.24.13.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        9
+ABC RESULTS:            ANDNOT cells:        2
+ABC RESULTS:              NAND cells:        1
+ABC RESULTS:               NOR cells:        6
+ABC RESULTS:               NOT cells:        2
+ABC RESULTS:                OR cells:        3
+ABC RESULTS:        internal signals:       14
+ABC RESULTS:           input signals:       18
+ABC RESULTS:          output signals:        9
+Removing temp directory.
+
+2.24.13.1. Executed ABC.
+Extracted 1 gates and 2 wires to a netlist network with 1 inputs and 1 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+2.24.13.2. Re-integrating ABC results.
+ABC RESULTS:               NOT cells:        1
+ABC RESULTS:        internal signals:        0
+ABC RESULTS:           input signals:        1
+ABC RESULTS:          output signals:        1
+Removing temp directory.
+
+2.24.13.1. Executed ABC.
+Extracted 29 gates and 41 wires to a netlist network with 11 inputs and 12 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+2.24.13.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        4
+ABC RESULTS:            ANDNOT cells:        1
+ABC RESULTS:              NAND cells:        2
+ABC RESULTS:               NOT cells:        1
+ABC RESULTS:                OR cells:        4
+ABC RESULTS:             ORNOT cells:        2
+ABC RESULTS:               XOR cells:        4
+ABC RESULTS:        internal signals:       18
+ABC RESULTS:           input signals:       11
+ABC RESULTS:          output signals:       12
+Removing temp directory.
+
+2.24.13.1. Executed ABC.
+Extracted 56 gates and 89 wires to a netlist network with 32 inputs and 22 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+2.24.13.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:       11
+ABC RESULTS:            ANDNOT cells:        1
+ABC RESULTS:               MUX cells:       11
+ABC RESULTS:              NAND cells:        3
+ABC RESULTS:               NOR cells:        3
+ABC RESULTS:               NOT cells:        6
+ABC RESULTS:                OR cells:        3
+ABC RESULTS:             ORNOT cells:        1
+ABC RESULTS:              XNOR cells:        1
+ABC RESULTS:               XOR cells:        8
+ABC RESULTS:        internal signals:       35
+ABC RESULTS:           input signals:       32
+ABC RESULTS:          output signals:       22
+Removing temp directory.
+
+2.24.13.1. Executed ABC.
+Extracted 53 gates and 88 wires to a netlist network with 35 inputs and 8 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+2.24.13.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:       18
+ABC RESULTS:              NAND cells:       16
+ABC RESULTS:             ORNOT cells:       24
+ABC RESULTS:        internal signals:       45
+ABC RESULTS:           input signals:       35
+ABC RESULTS:          output signals:        8
+Removing temp directory.
+
+2.24.13.1. Executed ABC.
+Extracted 53 gates and 83 wires to a netlist network with 29 inputs and 18 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+2.24.13.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:       12
+ABC RESULTS:            ANDNOT cells:        8
+ABC RESULTS:               MUX cells:        7
+ABC RESULTS:              NAND cells:       16
+ABC RESULTS:                OR cells:        9
+ABC RESULTS:             ORNOT cells:        8
+ABC RESULTS:        internal signals:       36
+ABC RESULTS:           input signals:       29
+ABC RESULTS:          output signals:       18
+Removing temp directory.
+
+2.24.13.1. Executed ABC.
+Extracted 3 gates and 6 wires to a netlist network with 3 inputs and 1 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+2.24.13.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        1
+ABC RESULTS:            ANDNOT cells:        1
+ABC RESULTS:        internal signals:        2
+ABC RESULTS:           input signals:        3
+ABC RESULTS:          output signals:        1
+Removing temp directory.
+
+2.24.13.1. Executed ABC.
+Extracted 70 gates and 111 wires to a netlist network with 41 inputs and 30 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+2.24.13.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:       21
+ABC RESULTS:            ANDNOT cells:        1
+ABC RESULTS:              NAND cells:        2
+ABC RESULTS:               NOT cells:        2
+ABC RESULTS:                OR cells:        2
+ABC RESULTS:             ORNOT cells:        1
+ABC RESULTS:              XNOR cells:       13
+ABC RESULTS:               XOR cells:       22
+ABC RESULTS:        internal signals:       40
+ABC RESULTS:           input signals:       41
+ABC RESULTS:          output signals:       30
+Removing temp directory.
+Removing global temp directory.
+
+2.25. Executing OPT pass (performing simple optimizations).
+
+2.25.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module md2_stream.
+
+2.25.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\md2_stream'.
+Computing hashes of 402 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+Computing hashes of 401 cells of `\md2_stream'.
+Finding duplicate cells in `\md2_stream'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+2.25.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.25.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md2_stream..
+Removed 0 unused cells and 442 unused wires.
+<suppressed ~3 debug messages>
+
+2.25.5. Finished fast OPT passes.
+
+2.26. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `md2_stream'. Setting top module to md2_stream.
+
+2.26.1. Analyzing design hierarchy..
+Top module:  \md2_stream
+
+2.26.2. Analyzing design hierarchy..
+Top module:  \md2_stream
+Removed 0 unused modules.
+
+2.27. Printing statistics.
+
+=== md2_stream ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      325 wires
+      571 wire bits
+       52 public wires
+      263 public wire bits
+       28 ports
+      154 port bits
+      401 cells
+       20   $_ANDNOT_
+       94   $_AND_
+        1   $_DFF_P_
+       21   $_MUX_
+       44   $_NAND_
+       11   $_NOR_
+       16   $_NOT_
+       36   $_ORNOT_
+       30   $_OR_
+       51   $_SDFFE_PN0P_
+       26   $_SDFFE_PP0P_
+        1   $_SDFF_PN0_
+        2   $_SDFF_PP0_
+       14   $_XNOR_
+       34   $_XOR_
+
+2.28. Executing CHECK pass (checking for obvious problems).
+Checking module md2_stream...
+Found and reported 0 problems.
+
+3. Executing DFFLIBMAP pass (mapping DFF/DLATCH cells to sequential cells from liberty file).
+  cell sg13cmos5l_dfrbpq_1 (noninv, pins=4, area=48.99) is a direct match for cell type $_DFF_PN0_.
+  cell sg13cmos5l_dlhq_1 (noninv, pins=3, area=30.84) is a direct match for cell type $_DLATCH_P_.
+  cell sg13cmos5l_dllrq_1 (noninv, pins=4, area=29.03) is a direct match for cell type $_DLATCH_NN0_.
+  cell sg13cmos5l_dlhrq_1 (noninv, pins=4, area=27.22) is a direct match for cell type $_DLATCH_PN0_.
+  final dff/dlatch cell mappings:
+    unmapped dff/dlatch cell: $_DFF_N_
+    unmapped dff/dlatch cell: $_DFF_P_
+    unmapped dff/dlatch cell: $_DFF_NN0_
+    unmapped dff/dlatch cell: $_DFF_NN1_
+    unmapped dff/dlatch cell: $_DFF_NP0_
+    unmapped dff/dlatch cell: $_DFF_NP1_
+    \sg13cmos5l_dfrbpq_1 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    unmapped dff/dlatch cell: $_DFF_PN1_
+    unmapped dff/dlatch cell: $_DFF_PP0_
+    unmapped dff/dlatch cell: $_DFF_PP1_
+    unmapped dff/dlatch cell: $_DFFE_NN_
+    unmapped dff/dlatch cell: $_DFFE_NP_
+    unmapped dff/dlatch cell: $_DFFE_PN_
+    unmapped dff/dlatch cell: $_DFFE_PP_
+    unmapped dff/dlatch cell: $_DFFSR_NNN_
+    unmapped dff/dlatch cell: $_DFFSR_NNP_
+    unmapped dff/dlatch cell: $_DFFSR_NPN_
+    unmapped dff/dlatch cell: $_DFFSR_NPP_
+    unmapped dff/dlatch cell: $_DFFSR_PNN_
+    unmapped dff/dlatch cell: $_DFFSR_PNP_
+    unmapped dff/dlatch cell: $_DFFSR_PPN_
+    unmapped dff/dlatch cell: $_DFFSR_PPP_
+    unmapped dff/dlatch cell: $_DLATCH_N_
+    \sg13cmos5l_dlhq_1 _DLATCH_P_ (.D( D), .GATE( E), .Q( Q));
+    \sg13cmos5l_dllrq_1 _DLATCH_NN0_ (.D( D), .GATE_N( E), .Q( Q), .RESET_B( R));
+    unmapped dff/dlatch cell: $_DLATCH_NN1_
+    unmapped dff/dlatch cell: $_DLATCH_NP0_
+    unmapped dff/dlatch cell: $_DLATCH_NP1_
+    \sg13cmos5l_dlhrq_1 _DLATCH_PN0_ (.D( D), .GATE( E), .Q( Q), .RESET_B( R));
+    unmapped dff/dlatch cell: $_DLATCH_PN1_
+    unmapped dff/dlatch cell: $_DLATCH_PP0_
+    unmapped dff/dlatch cell: $_DLATCH_PP1_
+    unmapped dff/dlatch cell: $_DLATCHSR_NNN_
+    unmapped dff/dlatch cell: $_DLATCHSR_NNP_
+    unmapped dff/dlatch cell: $_DLATCHSR_NPN_
+    unmapped dff/dlatch cell: $_DLATCHSR_NPP_
+    unmapped dff/dlatch cell: $_DLATCHSR_PNN_
+    unmapped dff/dlatch cell: $_DLATCHSR_PNP_
+    unmapped dff/dlatch cell: $_DLATCHSR_PPN_
+    unmapped dff/dlatch cell: $_DLATCHSR_PPP_
+
+3.1. Executing DFFLEGALIZE pass (convert FFs and LATCHes to types supported by the target).
+<suppressed ~4 debug messages>
+Mapping DFF/DLATCH cells in module `\md2_stream':
+  mapped 81 $_DFF_PN0_ cells to \sg13cmos5l_dfrbpq_1 cells.
+
+4. Executing ABC pass (technology mapping using ABC).
+
+4.1. Summary of detected clock domains:
+  558 cells in clk={ }, en={ }, arst={ }, srst={ }
+
+4.2. Extracting gate netlist of module `\md2_stream' to `<abc-temp-dir>/input.blif'..
+Warning: ABC: merged SCL conversion failed, falling back to liberty format
+ABC: conversion output:
+'C:\Users\b_yee23\tools\oss-cad-suite\bin\yosys-abc" -c "read_lib' is not recognized as an internal or external command,
+
+operable program or batch file.
+
+Warning: ABC: Merged scl conversion failed, using liberty format
+No matching clock domain found. Not extracting any FF cells.
+
+4.2.1. Executed ABC.
+Extracted 477 gates and 638 wires to a netlist network with 159 inputs and 89 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w C:\Users\b_yee23\Documents\projects\jane street comp/build/pdk/sg13cmos5l_stdcell_typ_1p20V_25C.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.02 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13cmos5l_antennanp" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13cmos5l_decap_4" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13cmos5l_decap_8" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13cmos5l_dfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13cmos5l_dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13cmos5l_dfrbpq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13cmos5l_dfrbpq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13cmos5l_dlhq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13cmos5l_dlhr_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13cmos5l_dlhrq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13cmos5l_dllr_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13cmos5l_dllrq_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13cmos5l_ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13cmos5l_ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13cmos5l_ebufn_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13cmos5l_einvn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13cmos5l_einvn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13cmos5l_einvn_8".
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13cmos5l_fill_1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13cmos5l_fill_2" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13cmos5l_fill_4" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13cmos5l_fill_8" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13cmos5l_lgcp_1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13cmos5l_sdfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13cmos5l_sdfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13cmos5l_sdfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13cmos5l_sdfrbpq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13cmos5l_sdfrbpq_2".
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13cmos5l_sighold" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13cmos5l_slgcp_1" due to dont_use attribute.
+ABC: Library "sg13cmos5l_stdcell_typ_1p20V_25C" from "C:\Users\b_yee23\Documents\projects\jane street comp/build/pdk/sg13cmos5l_stdcell_typ_1p20V_25C.lib" has 54 cells (30 skipped: 14 seq; 6 tri-state; 0 no func; 10 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.05 sec
+ABC: Memory =    2.25 MB. Time =     0.05 sec
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+4.2.2. Re-integrating ABC results.
+ABC RESULTS:   sg13cmos5l_a21o_1 cells:        1
+ABC RESULTS:   sg13cmos5l_a21oi_1 cells:       48
+ABC RESULTS:   sg13cmos5l_a221oi_1 cells:        3
+ABC RESULTS:   sg13cmos5l_a22oi_1 cells:       23
+ABC RESULTS:   sg13cmos5l_and2_1 cells:       50
+ABC RESULTS:   sg13cmos5l_and3_1 cells:        9
+ABC RESULTS:   sg13cmos5l_and4_1 cells:        2
+ABC RESULTS:   sg13cmos5l_inv_1 cells:       11
+ABC RESULTS:   sg13cmos5l_mux2_1 cells:       33
+ABC RESULTS:   sg13cmos5l_mux4_1 cells:        2
+ABC RESULTS:   sg13cmos5l_nand2_1 cells:       12
+ABC RESULTS:   sg13cmos5l_nand2b_1 cells:        6
+ABC RESULTS:   sg13cmos5l_nand3_1 cells:        6
+ABC RESULTS:   sg13cmos5l_nand4_1 cells:        4
+ABC RESULTS:   sg13cmos5l_nor2_1 cells:       34
+ABC RESULTS:   sg13cmos5l_nor2b_1 cells:       13
+ABC RESULTS:   sg13cmos5l_nor3_1 cells:       16
+ABC RESULTS:   sg13cmos5l_nor4_1 cells:        4
+ABC RESULTS:   sg13cmos5l_o21ai_1 cells:       55
+ABC RESULTS:   sg13cmos5l_or2_1 cells:        2
+ABC RESULTS:   sg13cmos5l_or4_1 cells:        1
+ABC RESULTS:   sg13cmos5l_xnor2_1 cells:        9
+ABC RESULTS:   sg13cmos5l_xor2_1 cells:       20
+ABC RESULTS:        internal signals:      390
+ABC RESULTS:           input signals:      159
+ABC RESULTS:          output signals:       89
+Removing temp directory.
+Removing global temp directory.
+
+5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \md2_stream..
+Removed 0 unused cells and 607 unused wires.
+<suppressed ~10 debug messages>
+
+6. Printing statistics.
+
+=== md2_stream ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+      398        - wires
+      593        - wire bits
+       43        - public wires
+      238        - public wire bits
+       28        - ports
+      154        - port bits
+      445 7.79E+03 cells
+        1   12.701   sg13cmos5l_a21o_1
+       48  435.456   sg13cmos5l_a21oi_1
+        3   43.546   sg13cmos5l_a221oi_1
+       23  249.518   sg13cmos5l_a22oi_1
+       50    453.6   sg13cmos5l_and2_1
+        9  114.307   sg13cmos5l_and3_1
+        2    29.03   sg13cmos5l_and4_1
+       81 3.97E+03   sg13cmos5l_dfrbpq_1
+       11   59.875   sg13cmos5l_inv_1
+       33  598.752   sg13cmos5l_mux2_1
+        2   76.205   sg13cmos5l_mux4_1
+       12   87.091   sg13cmos5l_nand2_1
+        6   54.432   sg13cmos5l_nand2b_1
+        6   54.432   sg13cmos5l_nand3_1
+        4   43.546   sg13cmos5l_nand4_1
+       34  246.758   sg13cmos5l_nor2_1
+       13  117.936   sg13cmos5l_nor2b_1
+       16  145.152   sg13cmos5l_nor3_1
+        4   43.546   sg13cmos5l_nor4_1
+       55   498.96   sg13cmos5l_o21ai_1
+        2   18.144   sg13cmos5l_or2_1
+        1   14.515   sg13cmos5l_or4_1
+        9  130.637   sg13cmos5l_xnor2_1
+       20  290.304   sg13cmos5l_xor2_1
+
+   Chip area for module '\md2_stream': 7786.535400
+     of which used for sequential elements: 3968.092800 (50.96%)
+
+Warnings: 2 unique messages, 2 total
+End of script. Logfile hash: c336ca86fe
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Time spent: 1% 28x opt_expr (0 sec), 1% 20x opt_clean (0 sec), ...

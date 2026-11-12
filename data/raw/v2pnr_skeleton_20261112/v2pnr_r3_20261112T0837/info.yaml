@@ -1,0 +1,68 @@
+# Tiny Tapeout project information
+project:
+  title:        "Metronome v2 PnR sizing"      # Project title
+  author:       "brent"      # Your name
+  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "Metronome v2 sizing build: two pipelined cores, latch configuration, one stream, SPI host link"      # One line description of what your project does
+  language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
+  clock_hz:     60000000       # Clock frequency in Hz (or 0 if not applicable)
+
+  # How many tiles your design occupies? A single tile is about 202x155 uM.
+  tiles: "8x4"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2, 8x2, 3x4, 4x4, 5x4, 6x4 or 8x4
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_brentius_metronome"
+
+  # List your project's source files here.
+  # Source files must be in ./src and you must list each source file separately, one per line.
+  # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
+  # project.v comes first: it sets `timescale for the files after it that have none (md2_stream.v, cfg_latch_bank.v).
+  # cells_behav.v is empty when USE_IHP_CELLS is defined (src/config.json VERILOG_DEFINES).
+  source_files:
+    - "project.v"
+    - "md2_host.v"
+    - "md2_commons_stub.v"
+    - "md2_core.v"
+    - "md2_core_thread.v"
+    - "md2_pmem.v"
+    - "md2_dmem.v"
+    - "md2_stream.v"
+    - "cfg_latch_bank.v"
+    - "cells_behav.v"
+    - "md2_sram_bb.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: "HOST_SCK"
+  ui[1]: "HOST_CS_N"
+  ui[2]: "HOST_MOSI"
+  ui[3]: "P8"
+  ui[4]: "P9"
+  ui[5]: "P10"
+  ui[6]: "P11"
+  ui[7]: "P12"
+
+  # Outputs
+  uo[0]: "HOST_MISO"
+  uo[1]: "HOST_IRQ"
+  uo[2]: "L0_SYM0"
+  uo[3]: "L0_SYM1"
+  uo[4]: "L0_SYM2"
+  uo[5]: "L0_SYM3"
+  uo[6]: "L1_SYM_PARITY"
+  uo[7]: "L23_SYM_PARITY"
+
+  # Bidirectional pins
+  uio[0]: "P0/R0[0]"
+  uio[1]: "P1/R0[1]"
+  uio[2]: "P2/R0[2]"
+  uio[3]: "P3/R0[3]"
+  uio[4]: "P4/R0[4]"
+  uio[5]: "P5/R0[5]"
+  uio[6]: "P6/R0[6]"
+  uio[7]: "P7/R0[7]"
+
+# Do not change!
+yaml_version: 6

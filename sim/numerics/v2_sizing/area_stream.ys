@@ -1,0 +1,7 @@
+# IHP sg13cmos5l typical area of one md2_stream (driven by area_stream.py, which substitutes @LIB@).
+read_verilog -DSYNTHESIS sim/numerics/v2_sizing/rtl/md2_stream.v
+synth -top md2_stream -flatten
+dfflibmap -liberty @LIB@
+abc -liberty @LIB@
+opt_clean
+stat -liberty @LIB@

@@ -52,3 +52,5 @@ test/gate_level_netlist.v
 # Full failed CI archive retained locally; selected reports are versioned.
 /data/raw/template_ci_c83a7f4_20261111T2221/GDS_logs.zip
 /data/raw/template_ci_c83a7f4_20261111T2221/selected/runs/wokwi/58-openroad-stapostpnr/nom_*/
+/data/raw/v2pnr_skeleton_20261112/*/run_text.tgz
+/data/raw/v2pnr_skeleton_20261112/*/harden.log

@@ -1,0 +1,12 @@
+# Standard-cell area of the whole Metronome v2 PnR sizing top (tt_um_brentius_metronome), hierarchical.
+# Run from the repository root (the repo path has spaces; all paths here are relative):
+#   source code/tools/env.sh && yosys -l sim/numerics/v2_sizing/tt_v2_pnr/area/area_top.log -s sim/numerics/v2_sizing/tt_v2_pnr/area/area_top.ys
+# Flow defines as in src/config.json: USE_IHP_SRAM (SRAM macros, black boxes from src/md2_sram_bb.v) and
+# USE_IHP_CELLS (latch and clock-gate cells, from the liberty file). Typical library, pre-placement.
+read_liberty -lib build/pdk/sg13cmos5l_stdcell_typ_1p20V_25C.lib
+read_verilog -DSYNTHESIS -DUSE_IHP_SRAM -DUSE_IHP_CELLS -Isim/numerics/v2_sizing/tt_v2_pnr/src sim/numerics/v2_sizing/tt_v2_pnr/src/project.v sim/numerics/v2_sizing/tt_v2_pnr/src/md2_host.v sim/numerics/v2_sizing/tt_v2_pnr/src/md2_commons_stub.v sim/numerics/v2_sizing/tt_v2_pnr/src/md2_core.v sim/numerics/v2_sizing/tt_v2_pnr/src/md2_core_thread.v sim/numerics/v2_sizing/tt_v2_pnr/src/md2_pmem.v sim/numerics/v2_sizing/tt_v2_pnr/src/md2_dmem.v sim/numerics/v2_sizing/tt_v2_pnr/src/md2_stream.v sim/numerics/v2_sizing/tt_v2_pnr/src/cfg_latch_bank.v sim/numerics/v2_sizing/tt_v2_pnr/src/cells_behav.v sim/numerics/v2_sizing/tt_v2_pnr/src/md2_sram_bb.v
+synth -top tt_um_brentius_metronome
+dfflibmap -liberty build/pdk/sg13cmos5l_stdcell_typ_1p20V_25C.lib
+abc -liberty build/pdk/sg13cmos5l_stdcell_typ_1p20V_25C.lib
+opt_clean
+stat -liberty build/pdk/sg13cmos5l_stdcell_typ_1p20V_25C.lib

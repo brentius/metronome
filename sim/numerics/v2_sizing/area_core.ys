@@ -1,0 +1,10 @@
+# Hierarchical IHP standard-cell area of the Metronome v2 core sizing wrapper (md2_core_top: two md2_core, six
+# md2_core_thread). Driven by sim/numerics/v2_sizing/area_core.py, which substitutes @LIB@; run from the repo root.
+# The program memory model is a black box (the SRAM macro is not standard cells).
+read_verilog -lib -DSYNTHESIS sim/numerics/v2_sizing/rtl/md2_core_pmem.v
+read_verilog -DSYNTHESIS -Icode/md2 sim/numerics/v2_sizing/rtl/md2_core.v sim/numerics/v2_sizing/rtl/md2_core_thread.v sim/numerics/v2_sizing/rtl/md2_core_top.v
+synth -top md2_core_top
+dfflibmap -liberty @LIB@
+abc -liberty @LIB@
+opt_clean
+stat -liberty @LIB@

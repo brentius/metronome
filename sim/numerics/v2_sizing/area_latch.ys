@@ -1,0 +1,19 @@
+# Area of the 2,048-bit configuration banks with the IHP sg13cmos5l typical library (driven by area_latch.py,
+# which substitutes @LIB@). Latch bank: library cells instantiated (blackbox via read_liberty -lib); decode mapped.
+read_liberty -lib @LIB@
+read_verilog -DUSE_IHP_CELLS -DSYNTHESIS @RTL@/cfg_latch_bank.v
+chparam -set BYTES 256 cfg_latch_bank
+synth -top cfg_latch_bank
+dfflibmap -liberty @LIB@
+abc -liberty @LIB@
+opt_clean
+stat -liberty @LIB@
+design -reset
+read_liberty -lib @LIB@
+read_verilog -DSYNTHESIS @RTL@/cfg_flop_bank.v
+chparam -set BYTES 256 cfg_flop_bank
+synth -top cfg_flop_bank
+dfflibmap -liberty @LIB@
+abc -liberty @LIB@
+opt_clean
+stat -liberty @LIB@

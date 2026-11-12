@@ -1,0 +1,11 @@
+date Thu Nov 12 00:38:14 UTC 2026
+tt-support-tools 9d13ff3e3e6202090740110438c6a10c1d62ca0f
+pdk ihp-sg13cmos5l 89d42ee6d2fd9b50b86a1aada6fee6673c3e6008
+librelane 3.1.0.dev4
+openroad /nix/store/hwpn9njs9l4ymgm41gc7gr46m8q9yk5v-openroad-2026-02-17-python3-3.13.13-env/bin/openroad
+yosys /nix/store/s41b75z1fz54cl136fpram0fkqwp615c-yosys-with-plugins-0.69-python3-3.13.13-env/bin/yosys
+magic /nix/store/7ar043dk92xygs16rwqivrzv8s467rg0-magic-vlsi-8.3.677/bin/magic
+klayout /nix/store/qs4izsy8n6gxz4zr31bjpwcq83nq2422-python3-3.13.13-env/bin/klayout
+netgen /nix/store/16rvjr7jcs7klg2w36c46v2xqh9in747-netgen-1.5.323/bin/netgen
+iverilog /nix/store/nifnxfn7bcwpzxnyfbis5pdbd738pxjc-iverilog-13.0/bin/iverilog
+verilator /nix/store/nh29msaf2ynv146vgdvhgl4a57hcjbzp-verilator-5.046/bin/verilator

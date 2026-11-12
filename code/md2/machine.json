@@ -1,0 +1,557 @@
+{
+ "version": 2,
+ "sizes": {
+  "N_CORES": 2,
+  "N_LINES": 4,
+  "N_THREADS": 6,
+  "N_STREAMS": 2,
+  "N_SHIFTERS": 2,
+  "N_COUNTERS": 3,
+  "N_LFSRS": 2,
+  "N_ACC_REGS": 4,
+  "N_PTRS": 1,
+  "N_FLAGS": 16,
+  "PROG_WORDS": 256,
+  "DATA_BYTES": 2048,
+  "BG_WIDTH": 16,
+  "OSYM_BITS": 4,
+  "ISYM_BITS": 2,
+  "N_SAMPLES": 4,
+  "LUT_IN_BITS": 5,
+  "PIN_LUT_IN_BITS": 5,
+  "STREAM_ADDR_BITS": 11,
+  "STREAM_LEN_BITS": 12,
+  "N_IN_PINS": 13,
+  "N_OUT_PINS": 14,
+  "N_OE_PINS": 8,
+  "VERSION": 2,
+  "DATA_WIDTH": 8,
+  "INSN_BITS": 64,
+  "N_MOVES": 3,
+  "LFSR_WIDTH": 32
+ },
+ "fields": {
+  "pause": [
+   0,
+   1
+  ],
+  "jmode": [
+   1,
+   2
+  ],
+  "imm": [
+   3,
+   8
+  ],
+  "cond": [
+   11,
+   6
+  ],
+  "m0_guard": [
+   17,
+   2
+  ],
+  "m0_src": [
+   19,
+   6
+  ],
+  "m0_dst": [
+   25,
+   6
+  ],
+  "m1_guard": [
+   31,
+   2
+  ],
+  "m1_src": [
+   33,
+   6
+  ],
+  "m1_dst": [
+   39,
+   6
+  ],
+  "m2_guard": [
+   45,
+   2
+  ],
+  "m2_src": [
+   47,
+   6
+  ],
+  "m2_dst": [
+   53,
+   6
+  ],
+  "jcond": [
+   59,
+   5
+  ]
+ },
+ "jmodes": {
+  "next": 0,
+  "always": 1,
+  "if": 2,
+  "ifnot": 3
+ },
+ "guards": {
+  "always": 0,
+  "if": 1,
+  "ifnot": 2,
+  "never": 3
+ },
+ "src": [
+  "ZERO",
+  "IMM",
+  "L.IN",
+  "L.CAP",
+  "FLAGS.LO",
+  "FLAGS.HI",
+  "PINS.LO",
+  "PINS.HI",
+  "ACC",
+  "R0",
+  "R1",
+  "R2",
+  "R3",
+  "SH0.D",
+  "SH1.D",
+  "SH0.O",
+  "SH1.O",
+  "CNT0.LO",
+  "CNT1.LO",
+  "CNT2.LO",
+  "CNT0.HI",
+  "CNT1.HI",
+  "CNT2.HI",
+  "LF0.B0",
+  "LF0.B1",
+  "LF0.B2",
+  "LF0.B3",
+  "LF1.B0",
+  "LF1.B1",
+  "LF1.B2",
+  "LF1.B3",
+  "LF0.O",
+  "LF1.O",
+  "P0.D",
+  "S0.BIT",
+  "S1.BIT",
+  "S0.BYTE",
+  "S1.BYTE",
+  "HOST.IN"
+ ],
+ "dst": [
+  "NULL",
+  "L.SYM",
+  "L.DBIT",
+  "L.XOR",
+  "T.STOP",
+  "FLAGS.SET",
+  "FLAGS.CLR",
+  "ACC.LD",
+  "ACC.ADD",
+  "ACC.SUB",
+  "ACC.AND",
+  "ACC.OR",
+  "ACC.XOR",
+  "ACC.CMP",
+  "R0",
+  "R1",
+  "R2",
+  "R3",
+  "SH0.LD",
+  "SH1.LD",
+  "SH0.SH",
+  "SH1.SH",
+  "SH0.CFG",
+  "SH1.CFG",
+  "CNT0.LO",
+  "CNT1.LO",
+  "CNT2.LO",
+  "CNT0.HI",
+  "CNT1.HI",
+  "CNT2.HI",
+  "CNT0.DEC",
+  "CNT1.DEC",
+  "CNT2.DEC",
+  "LF0.ST",
+  "LF1.ST",
+  "LF0.B0",
+  "LF0.B1",
+  "LF0.B2",
+  "LF0.B3",
+  "LF1.B0",
+  "LF1.B1",
+  "LF1.B2",
+  "LF1.B3",
+  "P0.AL",
+  "P0.AH",
+  "P0.W",
+  "P0.R",
+  "S0.ADV",
+  "S1.ADV",
+  "S0.RX",
+  "S1.RX",
+  "S0.CTL",
+  "S1.CTL",
+  "L0.CTL",
+  "L1.CTL",
+  "L2.CTL",
+  "L3.CTL",
+  "HOST.OUT"
+ ],
+ "guard_conds": [
+  "TRUE",
+  "F0",
+  "F1",
+  "F2",
+  "F3",
+  "F4",
+  "F5",
+  "F6",
+  "F7",
+  "F8",
+  "F9",
+  "F10",
+  "F11",
+  "F12",
+  "F13",
+  "F14",
+  "F15",
+  "SH0.DONE",
+  "SH1.DONE",
+  "SH0.OUT",
+  "SH1.OUT",
+  "CNT0.Z",
+  "CNT1.Z",
+  "CNT2.Z",
+  "ACC.Z",
+  "ACC.C",
+  "ACC.N",
+  "L.IN0",
+  "L.IN1",
+  "L.SYNC",
+  "L.PINA",
+  "L.PINB",
+  "LF0.OUT",
+  "LF1.OUT",
+  "HOST.INV",
+  "HOST.OUTE",
+  "P0.RDY",
+  "S0.END",
+  "S1.END",
+  "S0.MARK",
+  "S1.MARK",
+  "S0.BYTE",
+  "S1.BYTE",
+  "S0.BIT",
+  "S1.BIT",
+  "PIN0",
+  "PIN1",
+  "PIN2",
+  "PIN3",
+  "PIN4",
+  "PIN5",
+  "PIN6",
+  "PIN7",
+  "PIN8",
+  "PIN9",
+  "PIN10",
+  "PIN11",
+  "PIN12",
+  "L0.RUN",
+  "L1.RUN",
+  "L2.RUN",
+  "L3.RUN"
+ ],
+ "jump_guards": [
+  "TRUE",
+  "F0",
+  "F1",
+  "F2",
+  "F3",
+  "F4",
+  "F5",
+  "F6",
+  "F7",
+  "SH0.DONE",
+  "SH1.DONE",
+  "CNT0.Z",
+  "CNT1.Z",
+  "CNT2.Z",
+  "ACC.Z",
+  "ACC.C",
+  "ACC.N",
+  "L.IN0",
+  "L.IN1",
+  "L.SYNC",
+  "L.PINA",
+  "HOST.INV",
+  "HOST.OUTE",
+  "P0.RDY",
+  "S0.END",
+  "S0.MARK",
+  "S0.BYTE",
+  "S0.BIT",
+  "S1.END",
+  "S1.MARK",
+  "S1.BYTE",
+  "S1.BIT"
+ ],
+ "triggers": [
+  "NONE",
+  "L0.BEAT",
+  "L0.TAP0",
+  "L0.TAP1",
+  "L0.TAP2",
+  "L1.BEAT",
+  "L1.TAP0",
+  "L1.TAP1",
+  "L1.TAP2",
+  "L2.BEAT",
+  "L2.TAP0",
+  "L2.TAP1",
+  "L2.TAP2",
+  "L3.BEAT",
+  "L3.TAP0",
+  "L3.TAP1",
+  "L3.TAP2",
+  "FLAG0.RISE",
+  "FLAG1.RISE",
+  "FLAG2.RISE",
+  "FLAG3.RISE",
+  "FLAG4.RISE",
+  "FLAG5.RISE",
+  "FLAG6.RISE",
+  "FLAG7.RISE",
+  "PINA.RISE",
+  "PINA.FALL",
+  "PINA.EDGE",
+  "HOST.INV",
+  "ALWAYS"
+ ],
+ "write_groups": {
+  "L.SYM": [
+   "L.SYM",
+   "L.DBIT",
+   "L.XOR"
+  ],
+  "T.STOP": [
+   "T.STOP"
+  ],
+  "FLAGS": [
+   "FLAGS.SET",
+   "FLAGS.CLR"
+  ],
+  "ACC": [
+   "ACC.LD",
+   "ACC.ADD",
+   "ACC.SUB",
+   "ACC.AND",
+   "ACC.OR",
+   "ACC.XOR",
+   "ACC.CMP"
+  ],
+  "R0": [
+   "R0"
+  ],
+  "R1": [
+   "R1"
+  ],
+  "R2": [
+   "R2"
+  ],
+  "R3": [
+   "R3"
+  ],
+  "SH0": [
+   "SH0.LD",
+   "SH0.SH"
+  ],
+  "SH1": [
+   "SH1.LD",
+   "SH1.SH"
+  ],
+  "SH0.CFG": [
+   "SH0.CFG"
+  ],
+  "SH1.CFG": [
+   "SH1.CFG"
+  ],
+  "CNT0": [
+   "CNT0.LO",
+   "CNT0.HI",
+   "CNT0.DEC"
+  ],
+  "CNT1": [
+   "CNT1.LO",
+   "CNT1.HI",
+   "CNT1.DEC"
+  ],
+  "CNT2": [
+   "CNT2.LO",
+   "CNT2.HI",
+   "CNT2.DEC"
+  ],
+  "LF0": [
+   "LF0.ST",
+   "LF0.B0",
+   "LF0.B1",
+   "LF0.B2",
+   "LF0.B3"
+  ],
+  "LF1": [
+   "LF1.ST",
+   "LF1.B0",
+   "LF1.B1",
+   "LF1.B2",
+   "LF1.B3"
+  ],
+  "P0": [
+   "P0.AL",
+   "P0.AH",
+   "P0.W",
+   "P0.R"
+  ],
+  "S0": [
+   "S0.ADV",
+   "S0.RX",
+   "S0.CTL"
+  ],
+  "S1": [
+   "S1.ADV",
+   "S1.RX",
+   "S1.CTL"
+  ],
+  "L0.CTL": [
+   "L0.CTL"
+  ],
+  "L1.CTL": [
+   "L1.CTL"
+  ],
+  "L2.CTL": [
+   "L2.CTL"
+  ],
+  "L3.CTL": [
+   "L3.CTL"
+  ],
+  "HOST.OUT": [
+   "HOST.OUT"
+  ]
+ },
+ "in_pins": [
+  "uio[0]",
+  "uio[1]",
+  "uio[2]",
+  "uio[3]",
+  "uio[4]",
+  "uio[5]",
+  "uio[6]",
+  "uio[7]",
+  "ui[3]",
+  "ui[4]",
+  "ui[5]",
+  "ui[6]",
+  "ui[7]"
+ ],
+ "out_pins": [
+  "uio[0]",
+  "uio[1]",
+  "uio[2]",
+  "uio[3]",
+  "uio[4]",
+  "uio[5]",
+  "uio[6]",
+  "uio[7]",
+  "uo[2]",
+  "uo[3]",
+  "uo[4]",
+  "uo[5]",
+  "uo[6]",
+  "uo[7]"
+ ],
+ "host_pins": {
+  "SCK": "ui[0]",
+  "CS_N": "ui[1]",
+  "MOSI": "ui[2]",
+  "MISO": "uo[0]",
+  "IRQ": "uo[1]"
+ },
+ "config_blocks": {
+  "line": {
+   "fields": {
+    "INC": 16,
+    "MOD": 16,
+    "T0": 16,
+    "T1": 16,
+    "T2": 16,
+    "PRE": 16,
+    "WLO": 16,
+    "WHI": 16,
+    "WEN": 1,
+    "EDGE": 6,
+    "T0EDGE": 6,
+    "T0SRC": 1,
+    "SNAP": 2,
+    "PINA": 4,
+    "PINB": 4,
+    "LUT0": 32,
+    "LUT1": 32
+   },
+   "instances": 4
+  },
+  "thread": {
+   "fields": {
+    "CORE": 1,
+    "LINE": 2,
+    "TRIG": 5,
+    "W0C": 6,
+    "W1C": 6,
+    "W0H": 8,
+    "W1H": 8
+   },
+   "instances": 6
+  },
+  "out": {
+   "fields": {
+    "LINE": 2,
+    "BOUND": 1,
+    "SEL": 6,
+    "LUT": 32
+   },
+   "instances": 14
+  },
+  "oe": {
+   "fields": {
+    "OE": 32
+   },
+   "instances": 8
+  },
+  "lfsr": {
+   "fields": {
+    "POLY": 32
+   },
+   "instances": 2
+  },
+  "stream": {
+   "fields": {
+    "MODE": 1,
+    "MSB": 1,
+    "START": 11,
+    "LEN": 12,
+    "MARK": 12
+   },
+   "instances": 2
+  }
+ },
+ "config_bits": {
+  "line": 864,
+  "thread": 216,
+  "out": 574,
+  "oe": 256,
+  "lfsr": 64,
+  "stream": 74
+ },
+ "config_bits_total": 2048
+}

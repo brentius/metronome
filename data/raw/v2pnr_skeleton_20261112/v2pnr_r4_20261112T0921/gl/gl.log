@@ -1,0 +1,24 @@
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:242  in gpi_load_users                  Loaded entry library: '/nix/store/60m4rxhg2fldqaak400c0lry96ijrzqn-python3-3.13.13/lib/libpython3.13.so.1.0'
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:233  in gpi_load_users                  Running entry func 'initialize' from loaded library '/root/ttvenv/lib/python3.13/site-packages/cocotb/simulator.cpython-313-x86_64-linux-gnu.so'
+     -.--ns INFO     pygpi                              ..ib/pygpi/embed.cpp:114  in initialize                      Using Python 3.13.8 interpreter at /root/ttvenv/bin/python
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:74   in gpi_print_registered_impl       GPI: VPI support registered
+     0.00ns INFO     cocotb.initialize                  Seeding Python random module with 1794483481
+     0.00ns INFO     cocotb.initialize                  Initialized cocotb v2.1.0 from /root/ttvenv/lib/python3.13/site-packages/cocotb
+     0.00ns INFO     cocotb.initialize                  Running on Icarus Verilog version 13.0 (stable)
+     0.00ns INFO     cocotb.regression                  Running tests
+     0.00ns INFO     cocotb.regression                  running test.test_project (1/1)
+     0.00ns INFO     cocotb.tb                          Start
+     0.00ns INFO     cocotb.tb                          Reset
+260439.58ns INFO     cocotb.tb                          R0 values seen: ['0x0', '0x11', '0x33']
+334569.95ns INFO     cocotb.tb                          stream bits on uo_out[2]: [1, 0, 1, 0, 0, 1, 0, 1]
+343502.93ns INFO     cocotb.tb                          Pass
+343502.93ns INFO     cocotb.regression                  test.test_project passed
+343502.93ns INFO     cocotb.regression                  **************************************************************************************
+                                                        ** TEST                          STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                                                        **************************************************************************************
+                                                        ** test.test_project              PASS      343502.93           1.89     181914.81  **
+                                                        **************************************************************************************
+                                                        ** TESTS=1 PASS=1 FAIL=0 SKIP=0             343502.93           1.89     181863.37  **
+                                                        **************************************************************************************
+VCD info: dumping is suppressed.
+gl: 1 tests, 0 failed

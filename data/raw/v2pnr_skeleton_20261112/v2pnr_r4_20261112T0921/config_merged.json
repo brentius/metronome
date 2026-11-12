@@ -1,0 +1,154 @@
+{
+  "PL_TARGET_DENSITY_PCT": 45,
+  "CLOCK_PERIOD": 16.667,
+  "PL_RESIZER_HOLD_SLACK_MARGIN": 0.1,
+  "GRT_RESIZER_HOLD_SLACK_MARGIN": 0.1,
+  "RUN_LINTER": 1,
+  "LINTER_INCLUDE_PDK_MODELS": 1,
+  "CLOCK_PORT": "clk",
+  "VERILOG_DEFINES": [
+    "USE_IHP_SRAM",
+    "USE_IHP_CELLS"
+  ],
+  "VERILOG_INCLUDE_DIRS": [
+    "dir::."
+  ],
+  "meta": {
+    "flow": "Classic",
+    "substituting_steps": {
+      "+OpenROAD.GeneratePDN": "Project.ExtendPowerStripes"
+    }
+  },
+  "MACROS": {
+    "RM_IHPSG13_1P_256x64_c2_bm_bist": {
+      "instances": {
+        "u_pmem0.u_sram": {
+          "location": [
+            891.32,
+            3.78
+          ],
+          "orientation": "FS"
+        },
+        "u_pmem1.u_sram": {
+          "location": [
+            891.32,
+            585.9
+          ],
+          "orientation": "N"
+        }
+      },
+      "gds": [
+        "pdk_dir::libs.ref/sg13cmos5l_sram/gds/RM_IHPSG13_1P_256x64_c2_bm_bist.gds"
+      ],
+      "lef": [
+        "pdk_dir::libs.ref/sg13cmos5l_sram/lef/RM_IHPSG13_1P_256x64_c2_bm_bist.lef"
+      ],
+      "lib": {
+        "*_typ_*": [
+          "pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_256x64_c2_bm_bist_typ_1p20V_25C.lib"
+        ],
+        "*_fast_*": [
+          "pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_256x64_c2_bm_bist_fast_1p32V_m55C.lib"
+        ],
+        "*_slow_*": [
+          "pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_256x64_c2_bm_bist_slow_1p08V_125C.lib"
+        ]
+      }
+    },
+    "RM_IHPSG13_1P_512x32_c2_bm_bist": {
+      "instances": {
+        "u_dmem.u_sram": {
+          "location": [
+            3.36,
+            3.78
+          ],
+          "orientation": "FS"
+        }
+      },
+      "gds": [
+        "pdk_dir::libs.ref/sg13cmos5l_sram/gds/RM_IHPSG13_1P_512x32_c2_bm_bist.gds"
+      ],
+      "lef": [
+        "pdk_dir::libs.ref/sg13cmos5l_sram/lef/RM_IHPSG13_1P_512x32_c2_bm_bist.lef"
+      ],
+      "lib": {
+        "*_typ_*": [
+          "pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_512x32_c2_bm_bist_typ_1p20V_25C.lib"
+        ],
+        "*_fast_*": [
+          "pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_512x32_c2_bm_bist_fast_1p32V_m55C.lib"
+        ],
+        "*_slow_*": [
+          "pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_512x32_c2_bm_bist_slow_1p08V_125C.lib"
+        ]
+      }
+    }
+  },
+  "PDN_MACRO_CONNECTIONS": [
+    "u_pmem0.u_sram VPWR VGND VDD! VSS!",
+    "u_pmem0.u_sram VPWR VGND VDDARRAY! VSS!",
+    "u_pmem1.u_sram VPWR VGND VDD! VSS!",
+    "u_pmem1.u_sram VPWR VGND VDDARRAY! VSS!",
+    "u_dmem.u_sram VPWR VGND VDD! VSS!",
+    "u_dmem.u_sram VPWR VGND VDDARRAY! VSS!"
+  ],
+  "PDN_CFG": "dir::pdn_cfg.tcl",
+  "EXTEND_STRIPES_SRAM_ARRAY_EVERY_OTHER": true,
+  "ERROR_ON_PDN_VIOLATIONS": 0,
+  "RUN_MAGIC_DRC": 0,
+  "ERROR_ON_ILLEGAL_OVERLAPS": 0,
+  "SYNTH_STRATEGY": "AREA 0",
+  "GRT_ADJUSTMENT": 0.15,
+  "RUN_POST_GRT_DESIGN_REPAIR": true,
+  "RUN_POST_GRT_RESIZER_TIMING": true,
+  "PL_RESIZER_SETUP_SLACK_MARGIN": 3.0,
+  "GRT_RESIZER_SETUP_SLACK_MARGIN": 4.0,
+  "PL_RESIZER_SETUP_REPAIR_TNS_PCT": 100,
+  "GRT_RESIZER_SETUP_REPAIR_TNS_PCT": 100,
+  "PL_RESIZER_SETUP_MAX_BUFFER_PCT": 80,
+  "GRT_RESIZER_SETUP_MAX_BUFFER_PCT": 80,
+  "GRT_RESIZER_GATE_CLONING": true,
+  "GRT_ANTENNA_REPAIR_ITERS": 10,
+  "GRT_ANTENNA_REPAIR_MARGIN": 15,
+  "PNR_SDC_FILE": "dir::project.sdc",
+  "SIGNOFF_SDC_FILE": "dir::project.sdc",
+  "MAX_TRANSITION_CONSTRAINT": 1.0,
+  "RUN_KLAYOUT_XOR": 0,
+  "RUN_KLAYOUT_DRC": 0,
+  "DESIGN_REPAIR_BUFFER_OUTPUT_PORTS": 0,
+  "TOP_MARGIN_MULT": 1,
+  "BOTTOM_MARGIN_MULT": 1,
+  "LEFT_MARGIN_MULT": 6,
+  "RIGHT_MARGIN_MULT": 6,
+  "FP_SIZING": "absolute",
+  "GRT_ALLOW_CONGESTION": 0,
+  "FP_IO_HLENGTH": 2,
+  "FP_IO_VLENGTH": 2,
+  "FP_PDN_VPITCH": 44.96,
+  "FP_PDN_VWIDTH": 2.1,
+  "FP_PDN_VSPACING": 3.52,
+  "FP_PDN_VOFFSET": 17.39,
+  "RUN_CTS": 1,
+  "FP_PDN_MULTILAYER": 0,
+  "MAGIC_DEF_LABELS": 0,
+  "MAGIC_WRITE_LEF_PINONLY": 1,
+  "DESIGN_NAME": "tt_um_brentius_metronome",
+  "VERILOG_FILES": [
+    "dir::project.v",
+    "dir::md2_host.v",
+    "dir::md2_commons_stub.v",
+    "dir::md2_core.v",
+    "dir::md2_core_thread.v",
+    "dir::md2_pmem.v",
+    "dir::md2_dmem.v",
+    "dir::md2_stream.v",
+    "dir::cfg_latch_bank.v",
+    "dir::cells_behav.v",
+    "dir::md2_sram_bb.v"
+  ],
+  "DIE_AREA": "0 0 1724.16 710.64",
+  "FP_DEF_TEMPLATE": "dir::../tt/tech/ihp-sg13cmos5l/def/tt_block_8x4_pgvdd.def",
+  "VDD_PIN": "VPWR",
+  "GND_PIN": "VGND",
+  "RT_MAX_LAYER": "Metal4"
+}
