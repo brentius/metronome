@@ -81,7 +81,7 @@ def read(ch, addr):
              "ERRSUM": errsum(ch)}[name]
     elif b == "LRT":
         ln = ch.lines[i]
-        v = {"PHASE": ln.PH, "CTL": ln.RUN | ln.ARM << 1 | ln.REN << 2 | ln.SP << 3 | ln.FIRED << 4,
+        v = {"PHASE": ln.PH, "CTL": ln.RUN | ln.ARM << 1 | ln.REN << 2 | ln.SP << 3 | ln.FIRED << 4 | ln.HELD << 7,
              "SYM": ln.STAGED | ln.COMMITTED << 4, "INS": ln.CAP | ln.IN << 5, "STAT": ln.TAPMISS}[name]
     elif b == "TRT":
         t = ch.threads[i]

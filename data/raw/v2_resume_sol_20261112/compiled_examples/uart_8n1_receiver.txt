@@ -1,0 +1,7 @@
+fit report: uart_8n1 / role receiver
+  clock      started; beat 520.833 cycles at 60 MHz = 0.1152 MHz; inc/mod 6/3125 (exact)
+  tap 1      phase 1562/3125 = 260.33 cycles (asked 50% = 260.42 cycles, error -0.08); sample tx
+  input      pins A=P0; data bit = IN0; 2 = [], 3 = violation
+  program    core 0: 9 instructions, core 1: 0 instructions
+  thread 0   core 0: longest burst 5 cycles; trigger -> last instruction 7; last input read at burst cycle 1
+  note       end-of-frame work runs in the burst of the last beat

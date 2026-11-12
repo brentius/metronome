@@ -155,3 +155,116 @@ def test_snapshot_is_atomic_and_remembered_bit_decodes_differential():
     for j in range(1, len(samples)):
         assert ins[j] & 1 == samples[j]
         assert ins[j] >> 1 == samples[j] ^ (ins[j - 1] >> 1)
+
+
+# ---------------------------------------------------------------- hold (SPEC v2 3.2a, D27)
+def hold_byte(pin, lvl, tap, en=1):
+    return pin | (lvl << 4) | (tap << 5) | (en << 7)
+
+
+def _beats(chip, n, uio):
+    out = []
+    for _ in range(n):
+        t = chip.cycle
+        chip.step(IDLE, uio(t))
+        out.append(chip.lines[0].beat)
+    return [i for i, b in enumerate(out) if b]
+
+
+def _line(hold):
+    chip = Chip()
+    blk(chip, "LINE", 0, INC=1, MOD=8, T0=0, T1=4, T2=6, HOLD=hold)
+    run_line(chip, 0)
+    return chip
+
+
+def test_hold_at_level_changes_nothing():
+    ref = _beats(_line(0), 80, lambda t: 1)
+    assert ref == _beats(_line(hold_byte(0, 1, 1)), 80, lambda t: 1)
+    assert all(b - a == 8 for a, b in zip(ref, ref[1:]))
+
+
+def test_hold_stalls_phase_at_tap_until_pin_reads_level():
+    chip = _line(hold_byte(0, 1, 1))
+    release = 40
+    seen_held = False
+    taps1 = []
+    for i in range(80):
+        chip.step(IDLE, 1 if chip.cycle >= release else 0)
+        ln = chip.lines[0]
+        if ln.HELD:
+            seen_held = True
+            assert ln.PH == 3                       # stalled just before T1 = 4
+        taps1.append(ln.tap[1])
+    assert seen_held
+    first_t1 = taps1.index(1)
+    assert release + 2 <= first_t1 <= release + 3   # two synchroniser stages after the pin is released
+    assert chip.lines[0].TAPMISS == 0
+    # afterwards the line runs at its normal period
+    tail = _beats(chip, 40, lambda t: 1)
+    assert all(b - a == 8 for a, b in zip(tail, tail[1:]))
+
+
+def test_hold_blocks_boundary_and_later_taps():
+    chip = _line(hold_byte(0, 1, 1))
+    tr = collect(chip, 40, uio=lambda t: 0)        # pin never reaches the level
+    assert sum(x[0] for x in tr) == 0              # no boundary
+    assert sum(x[1][1] + x[1][2] for x in tr) == 0 # taps 1, 2 never fire
+    assert chip.lines[0].HELD == 1
+
+
+def test_hold_disabled_by_htap3_or_hen0():
+    ref = _beats(_line(0), 60, lambda t: 0)
+    assert _beats(_line(hold_byte(0, 1, 3)), 60, lambda t: 0) == ref
+    assert _beats(_line(hold_byte(0, 1, 1, en=0)), 60, lambda t: 0) == ref
+
+
+# ---------------------------------------------------------------- D28: start commit, first-beat TAPMISS exemption
+def test_line_start_commits_staged_symbol():
+    chip = Chip()
+    blk(chip, "LINE", 0, INC=1, MOD=200, T1=0xFFFF, T2=0xFFFF, EDGE=edge(0, 2, follow=1), T0EDGE=edge(0, 1) | 0x40)
+    ln = chip.lines[0]
+    ln.STAGED = 0b1011                               # as if a thread staged the first bit before the clock starts
+    steps(chip, 2)
+    assert ln.COMMITTED == 0
+    run_line(chip, 0, ctl=0b101)                     # host start: RUN rises
+    assert ln.RUN and ln.COMMITTED == 0b1011
+
+
+def test_host_stop_overrides_start_edge_without_committing_symbol():
+    """A simultaneous CTL stop leaves RUN low, so the D28 RUN-rising effects must not happen."""
+    from metronome2 import spi
+
+    chip = Chip()
+    blk(chip, "LINE", 0, INC=1, MOD=8, T0=0, T1=2, T2=6, PRE=3, EDGE=edge(0, 1))
+    chip.lines[0].STAGED = 0b1011
+    run_line(chip, 0, ctl=2)                       # stopped, armed for P0 rise
+    addr = m.HOST_MAP["LRT_BASE"] + 2              # CTL
+    frames = spi.write_frames(addr, b"\x00")
+    last_rise = max(i for i in range(1, len(frames)) if frames[i] & 1 and not frames[i - 1] & 1)
+    collided = False
+    for i, ui in enumerate(frames):
+        chip.step(ui, int(i >= last_rise + 1))     # synchronised P0 rise coincides with the host write
+        if chip.host.wr_now == (addr, 0):
+            assert chip.lines[0].start
+            collided = True
+    assert collided
+    ln = chip.lines[0]
+    assert (ln.RUN, ln.FIRED, ln.FIRST, ln.COMMITTED) == (0, 0, 0, 0)
+
+
+def test_follower_mode1_first_boundary_does_not_raise_tapmiss():
+    """Boundary on SCK rise, edge tap 0 on SCK fall: the first boundary precedes any tap-0 edge."""
+    chip = Chip()
+    blk(chip, "LINE", 0, INC=1, MOD=200, T1=0xFFFF, T2=0xFFFF, EDGE=edge(0, 1, follow=1), T0EDGE=edge(0, 2) | 0x40)
+    run_line(chip, 0, ctl=0b101)
+    steps(chip, 5, uio=0)
+    for _ in range(10):
+        steps(chip, 6, uio=1)
+        steps(chip, 6, uio=0)
+    assert chip.lines[0].TAPMISS == 0 and chip.lines[0].FIRST == 0
+    steps(chip, 6, uio=1)                            # boundary (rise) ...
+    steps(chip, 6, uio=0)                            # ... and its tap-0 fall
+    chip.lines[0].FIRED &= ~1                        # pretend the fall was missed
+    steps(chip, 6, uio=1)                            # next boundary with tap 0 unfired
+    assert chip.lines[0].TAPMISS == 1                # outside the first beat, the exemption no longer applies

@@ -1,0 +1,63 @@
+; spi_target.mas -- SPI mode-1 target (CPOL 0, CPHA 1) on a follower line: the emulator follows whatever clock the
+; controller supplies.  SCK = P0 (uio[0]), MOSI = P1 (uio[1]), MISO = O8 (uo_out[2]).
+;
+;   * Line 0 is a follower: its boundary is the SCK rising edge (MISO launches), tap 0 is the SCK falling edge
+;     (MOSI is captured), so the target works at any clock between `minhalf`-spaced edges and MOD cycles per period.
+;   * Thread 0 (core 0, trigger L0.BEAT) stages the next MISO bit from stream 0 (table at data RAM 0x10, MSB first).
+;   * Thread 1 (core 1, trigger L0.TAP0) appends the captured bit L.IN to stream 1 (receive buffer at 0x100).
+;   * The first MISO bit must be staged before the first SCK rise: the host rings DOORBELL bit 0 (0x2403) once after
+;     loading (after the stream has prefetched its first byte, a few cycles), which runs thread 0 once.  Mode 0 would need the first bit before the first edge of either
+;     polarity; that needs the same doorbell and a pre-commit, which the machine does not have (SPEC v2 3.6).
+;   * minperiod / minhalf are assumptions about the controller (cycles), used by the static check.
+
+.clock 60e6
+
+.line 0
+    follow
+    period 40               ; MOD = longest clock period the target tolerates
+    edge P0 rise
+    t0edge P0 fall
+    pins A=P1
+    in0 a0
+    snap tap0
+    minperiod 20
+    minhalf 8
+    ctl run ren
+.end
+
+.stream 0
+    mode tx
+    order msb
+    start 0x10
+    len 4
+.end
+.stream 1
+    mode rx
+    order msb
+    start 0x100
+    len 4
+.end
+
+.data 0x10 0xA5 0x3C 0xE1 0x07
+
+.thread 0
+    core 0
+    trigger L0.BEAT
+    start tx
+.end
+.thread 1
+    core 1
+    line 0
+    trigger L0.TAP0
+    start rx
+.end
+
+.out O8
+    line 0
+    lut b0
+.end
+
+.core 0
+tx:     when S0.END   ? ZERO -> T.STOP, S0.BIT -> L.DBIT, ZERO -> S0.ADV   pause goto tx
+.core 1
+rx:     L.IN -> S1.RX   pause goto rx

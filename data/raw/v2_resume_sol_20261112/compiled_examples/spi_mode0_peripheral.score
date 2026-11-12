@@ -1,0 +1,32 @@
+protocol spi_mode0
+roles    controller, peripheral
+
+wire sck  out idle low  by controller
+wire cs_n out idle high by controller
+wire mosi out idle low  by controller
+wire miso out idle low  by peripheral
+
+clock 1 MHz
+  controller: generated
+  peripheral: follow sck fall, capture on sck rise
+  split 50%
+
+symbols
+  bit(m, s)  sck "01"  cs_n "0"  mosi "m"  miso "s"  sample mosi at sck rise  sample miso at sck rise
+  select     sck "0"   cs_n "0"
+  deselect   sck "0"   cs_n "1"
+
+recognise
+  cs_on   cs_n falls
+  cs_off  cs_n rises
+
+bits msb first
+
+grammar
+  bus      = transfer*
+  transfer = select
+             { out:u8 by controller  ||  in:u8 by peripheral }*
+             deselect
+
+abort
+  on cs_off -> bus

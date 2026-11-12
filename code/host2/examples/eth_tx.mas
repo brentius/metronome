@@ -1,0 +1,42 @@
+; eth_tx.mas -- Ethernet-rate (10 Mbit/s) Manchester transmitter on O0 = uio_out[0].
+;
+;   * Line 0: one beat per bit cell, 6 cycles at 60 MHz; tap 1 at phase 3 splits the cell into halves.
+;   * Stream 0 sends the bytes at data RAM 0..7 least-significant bit first (preamble 0x55 x7, SFD 0xD5).
+;   * Thread 0, one 1-cycle burst per beat: stage the next bit as the symbol's data bit and advance the stream.
+;     At the end of the stream it stops itself.
+;   * The pin table needs no program: out = data bit XOR (SEG & 1), where SEG = taps fired so far in the beat.
+;     First half of the cell shows the bit, the second half its complement.
+;   * Two leading cells carry symbol 0 (the cell before the first beat, and the first beat's commit of the still-empty
+;     staged symbol): the first data bit is staged at the first beat and committed at the second.
+
+.clock 60e6
+
+.line 0
+    period 6
+    taps - 3 -
+    ctl run
+.end
+
+.stream 0
+    mode tx
+    order lsb
+    start 0
+    len 8
+.end
+
+.data 0 0x55 0x55 0x55 0x55 0x55 0x55 0x55 0xD5
+
+.thread 0
+    core 0
+    trigger L0.BEAT
+    start tx
+.end
+
+.out O0
+    line 0
+    lut b0 ^ (seg & 1)
+    oe always
+.end
+
+.core 0
+tx:     when S0.END   ? ZERO -> T.STOP, S0.BIT -> L.DBIT, ZERO -> S0.ADV   pause goto tx

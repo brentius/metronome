@@ -1,0 +1,13 @@
+fit report: ethernet_10baset / role sender
+  clock      generated; beat 6.000 cycles at 60 MHz = 10 MHz; inc/mod 1/6 (exact)
+  tap 1      phase 3/6 = 3.00 cycles (asked 50% = 3.00 cycles, error +0.00); split
+  symbols    4 classes drive wires ['td', 'tdn']; encoding kind<<k | data bits (idle = 0); idle = code 0
+             code  0  <idle>
+             code  2  tpidl, nlp
+             code  4  bit(0)
+             code  5  bit(1)
+  pins       td -> O0 (sel bits (0, 1, 2)), tdn -> O1 (sel bits (0, 1, 2))
+  program    core 0: 21 instructions, core 1: 5 instructions
+  thread 0   core 0: longest burst 3 cycles; trigger -> last instruction 5; last symbol write at burst cycle 2
+  thread 5   core 1: longest burst 5 cycles; trigger -> last instruction 7
+  rate       fastest generated rate that fits: 10 MHz (6 cycles per beat; calculated from the burst lengths above)

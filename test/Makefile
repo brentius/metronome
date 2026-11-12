@@ -6,11 +6,14 @@ SIM ?= icarus
 FST ?= -fst # Use more efficient FST format
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = project.v data_mem.v md_acc.v md_beatgen.v md_core.v md_counter.v md_ctrl.v md_engine.v md_flags.v md_layout_check.v md_lfsr.v md_movebus.v md_outcell.v md_ptrs.v md_shifter.v md_spi.v md_sync.v md_wgroup.v prog_mem.v sram_bb.v
+# Same order as info.yaml (project.v first: it sets `timescale for files that have none).
+PROJECT_SOURCES = project.v md2_host.v md2_cfg_bank.v cells_behav.v md2_line.v md2_thread.v md2_core.v md2_acc.v \
+                  md2_shifter.v md2_counter.v md2_lfsr.v md2_mem.v md2_stream.v md2_pmem.v md2_dmem.v md2_sram_bb.v
 
 # IHP's behavioural models of the SRAM macros (RTL and gate level simulation), as in
 # ttcodebot/ttihp-cmos5l-sram-example. USE_IHP_SRAM simulates the macros that are taped out; SIM skips the
-# black boxes in src/sram_bb.v.
+# black boxes in src/md2_sram_bb.v. RTL simulation uses the behavioural latch and clock-gate cells (cells_behav.v);
+# the flow defines USE_IHP_CELLS (src/config.json) and gate level uses the PDK cells.
 SRAM_MODEL = $(PWD)/sram_model/RM_IHPSG13_1P_256x64_c2_bm_bist.v $(PWD)/sram_model/RM_IHPSG13_1P_512x32_c2_bm_bist.v $(PWD)/sram_model/RM_IHPSG13_1P_core_behavioral_bm_bist.v
 VERILOG_SOURCES += $(SRAM_MODEL)
 COMPILE_ARGS += -DFUNCTIONAL -DSIM -DUSE_IHP_SRAM

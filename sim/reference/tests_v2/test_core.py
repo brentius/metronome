@@ -1,6 +1,8 @@
 """SPEC v2 sections 4-6: threads, pipelined cores, moves, write groups, symbol ports."""
 import random
 
+import pytest
+
 from helpers_v2 import *     # noqa: F401,F403
 
 I = asm.insn
@@ -18,6 +20,29 @@ def ring(chip, t):
 
 def execs(chip, core=None, thread=None):
     return [x for x in chip.trace if (core is None or x[1] == core) and (thread is None or x[2] == thread)]
+
+
+@pytest.mark.parametrize("k", [0, 1])
+@pytest.mark.parametrize("cfg_first", [False, True])
+@pytest.mark.parametrize("op, data, count", [("LD", 0x12, 3), ("SH", 0x40, 2)])
+def test_simultaneous_shifter_config_uses_old_length_and_direction(k, cfg_first, op, data, count):
+    """CFG and LD/SH are separate groups; move order cannot expose the new config early."""
+    chip = Chip()
+    moves = [("IMM", f"SH{k}.CFG"), ("IMM", f"SH{k}.{op}")]
+    if not cfg_first:
+        moves.reverse()
+    chip.load_program(0, [
+        I(("IMM", f"SH{k}.CFG"), imm=3),       # LSB first, length 3
+        I(("IMM", f"SH{k}.LD"), imm=0x81),
+        I(*moves, imm=0x12, pause=1),            # next config: MSB first, length 2
+    ])
+    thread(chip, 0)
+    go(chip)
+    ring(chip, 0)
+    steps(chip, 10)
+    sh = chip.sh[k]
+    assert (sh.D, sh.CNT, sh.LEN, sh.MSB) == (data, count, 2, 1)
+    assert chip.ctrl.CONFLICT == 0
 
 
 def test_trigger_to_first_instruction_is_three_cycles_and_sequential():

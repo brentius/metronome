@@ -1,0 +1,10 @@
+fit report: uart_8n1 / role sender
+  clock      generated; beat 520.833 cycles at 60 MHz = 0.1152 MHz; inc/mod 6/3125 (exact)
+  symbols    3 classes drive wires ['tx']; encoding kind<<k | data bits (idle = 0); idle = code 0
+             code  0  <idle>
+             code  2  bit(0)
+             code  3  bit(1)
+  pins       tx -> O8 (sel bits (0, 1, 2))
+  program    core 0: 8 instructions, core 1: 0 instructions
+  thread 0   core 0: longest burst 3 cycles; trigger -> last instruction 5; last symbol write at burst cycle 2
+  rate       fastest generated rate that fits: 10 MHz (6 cycles per beat; calculated from the burst lengths above)

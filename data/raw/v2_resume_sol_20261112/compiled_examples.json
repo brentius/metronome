@@ -1,0 +1,81 @@
+[
+  {
+    "case": "uart_8n1_sender",
+    "binding": "tx=O8",
+    "options": {},
+    "errors": [],
+    "warnings": [],
+    "instructions": {
+      "0": 8,
+      "1": 0
+    }
+  },
+  {
+    "case": "uart_8n1_receiver",
+    "binding": "tx=P0",
+    "options": {},
+    "errors": [],
+    "warnings": [],
+    "instructions": {
+      "0": 9,
+      "1": 0
+    }
+  },
+  {
+    "case": "spi_mode0_controller",
+    "binding": "sck=O8 cs_n=O9 mosi=O10 miso=P1",
+    "options": {},
+    "errors": [],
+    "warnings": [],
+    "instructions": {
+      "0": 9,
+      "1": 1
+    }
+  },
+  {
+    "case": "spi_mode0_peripheral",
+    "binding": "sck=P1 cs_n=P2 mosi=P0 miso=O8",
+    "options": {
+      "follow_period": 120
+    },
+    "errors": [],
+    "warnings": [
+      "thread 2: trigger PINA.FALL is not a line event; its symbol-commit deadline cannot be checked",
+      "thread 3: trigger PINA.RISE is not a line event; its symbol-commit deadline cannot be checked",
+      "write group L0.CTL is written by threads [2, 3] on different cores (bursts can overlap: CONFLICT possible)",
+      "write group L1.CTL is written by threads [2, 3] on different cores (bursts can overlap: CONFLICT possible)",
+      "write group S0 is written by threads [0, 2, 3] on different cores (bursts can overlap: CONFLICT possible)",
+      "write group S1 is written by threads [1, 2] on one core (bursts are serialised, but state is shared)"
+    ],
+    "instructions": {
+      "0": 5,
+      "1": 6
+    }
+  },
+  {
+    "case": "ethernet_10baset_sender",
+    "binding": "td=O0 tdn=O1",
+    "options": {
+      "skip_periodic": true
+    },
+    "errors": [],
+    "warnings": [],
+    "instructions": {
+      "0": 21,
+      "1": 5
+    }
+  },
+  {
+    "case": "ethernet_10baset_receiver",
+    "binding": "td=P2 tdn=P3",
+    "options": {
+      "skip_periodic": true
+    },
+    "errors": [],
+    "warnings": [],
+    "instructions": {
+      "0": 40,
+      "1": 5
+    }
+  }
+]

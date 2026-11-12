@@ -498,7 +498,8 @@
     "PINA": 4,
     "PINB": 4,
     "LUT0": 32,
-    "LUT1": 32
+    "LUT1": 32,
+    "HOLD": 8
    },
    "instances": 4
   },
@@ -547,14 +548,14 @@
   }
  },
  "config_bits": {
-  "line": 868,
+  "line": 900,
   "thread": 216,
   "out": 574,
   "oe": 256,
   "lfsr": 64,
   "stream": 74
  },
- "config_bits_total": 2052,
+ "config_bits_total": 2084,
  "host_map": {
   "PROG_BASE": 0,
   "DATA_BASE": 4096,
@@ -668,6 +669,12 @@
      4,
      "W",
      "input table 1, same index"
+    ],
+    "0x1C": [
+     "HOLD",
+     1,
+     "W",
+     "bits 3:0 HPIN, bit 4 HLVL, bits 6:5 HTAP (3 disables), bit 7 HEN"
     ]
    }
   },
@@ -859,7 +866,7 @@
      "CTL",
      1,
      "RW",
-     "bit 0 RUN, 1 ARM, 2 REN; read also bit 3 SYNC, bits 6:4 FIRED"
+     "bit 0 RUN, 1 ARM, 2 REN; read also bit 3 SYNC, bits 6:4 FIRED, bit 7 HELD"
     ],
     "0x03": [
      "SYM",

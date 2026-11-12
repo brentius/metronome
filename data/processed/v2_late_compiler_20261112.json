@@ -1,0 +1,20 @@
+{
+  "manifest": "data/raw/v2_late_compiler_20261112/final_manifest.json",
+  "manifest_sha256": "8f85581b836b309cea0e623ea84409301f1cb10e7cd593303362513b77829a94",
+  "software": {
+    "passed": 199,
+    "score": 140,
+    "compiler": 59,
+    "command": "python -m pytest code/tests/score code/tests/scorec -q",
+    "summary": "199 passed in 241.62s (0:04:01)",
+    "log": "data/raw/v2_late_compiler_20261112/software_frozen.log"
+  },
+  "unchanged_prior_results": [
+    "model43",
+    "host_and_machine78",
+    "RTL_blocks_lint_tables9",
+    "pin_lockstep13",
+    "template1",
+    "standard_cell_area274908.2868um2"
+  ]
+}

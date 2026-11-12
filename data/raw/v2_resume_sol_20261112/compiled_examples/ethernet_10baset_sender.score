@@ -1,0 +1,30 @@
+protocol ethernet_10baset
+roles    sender, receiver
+use      std
+
+wire   td out push-pull idle low by sender
+mirror tdn = !td                    # the other half of the differential pair
+
+clock 10 MHz
+  sender:   generated
+  receiver: recovered from td edges, window 33%..67%
+  split 50%
+
+symbols                             # Manchester: the edge in mid-beat carries the bit
+  bit(d)   td "!dd"     sample td at 75%
+  tpidl    td "1"                   # end-of-frame high
+  nlp      td "1"                   # one beat high = 100 ns normal link pulse
+
+recognise
+  eof      no edge on td for 1 beats
+
+bits lsb first
+
+grammar
+  link   = every 16 ms: nlp
+           frame*
+  frame  = const 55 55 55 55 55 55 55 D5
+           body:bytes until eof
+           fcs: crc crc32_ethernet over body     # sender: appended; receiver: last 4 bytes, checked
+           tpidl x 2
+           gap 9.6 us

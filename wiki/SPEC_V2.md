@@ -1,8 +1,12 @@
-# Metronome v2: normative machine specification
+# Metronome v2 specification, part B: the machine
 
-Status: v2.0 draft 1, 2026-11-12 (build step 2). This document is **normative** for v2: the v2 RTL, the v2 cycle-level reference model and the v2 assembler implement exactly this. Names and numbers (field positions, port, guard and trigger indices, write groups, configuration fields, host addresses) come from `code/md2/machine.py` and its generated tables ([ISA_TABLES_V2.md](ISA_TABLES_V2.md), `code/md2/md2_defs.vh`). `BOTS/PLANS/V2_DESIGN.md` explains *why*; this file says *what*. Where they disagree, this file wins and the difference is recorded in `BOTS/PLANS/DECISIONS.md`. v1 semantics stay in [SPEC.md](SPEC.md); section 11 lists what changed.
+Status: **v2.0 draft 2, 2026-11-12.** Part B is **normative** for the v2 machine: the v2 RTL, the v2 cycle-level reference model and the v2 assembler implement exactly this. Part A, the score language that compiles onto this machine, is [SPEC_V2_SCORE.md](SPEC_V2_SCORE.md); its section 13 lists what the language needs from part B.
 
-Evidence: the v2 cycle-level model `sim/reference/metronome2/` implements this document; its tests (`sim/reference/tests_v2/`, 28 pass) exercise each section, including Ethernet-rate transmit and receive in loopback on two cores. Model and spec are by the same author, so the model checks consistency and the calculated claims, not independent correctness; that comes from lockstep against the RTL. The v2 sizing blocks in `sim/numerics/v2_sizing/` (core, stream, latch bank, host link) are RTL-simulated and the skeleton passed the Tiny Tapeout flow (D24, U10); where this specification differs from them, this specification wins.
+Names and numbers (field positions, port, guard and trigger indices, write groups, configuration fields, host addresses) come from `code/md2/machine.py` and its generated tables ([ISA_TABLES_V2.md](ISA_TABLES_V2.md), `code/md2/md2_defs.vh`). `BOTS/PLANS/V2_DESIGN.md` explains *why*; this file says *what*. Where they disagree, this file wins and the difference is recorded in `BOTS/PLANS/DECISIONS.md`. v1 semantics stay in [SPEC.md](SPEC.md); section 11 lists what changed.
+
+**Changes from draft 1 (commit f945c29):** the beat-generator **hold** (3.2a, D27), start commit and first-beat edge-tap exemption (D28), and priority fixes implementing the existing cycle-state rules (D31-D32). The hold is in the machine tables, model and full v2 RTL. Configuration is 2,084 bits; `HOLD` is at line offset 0x1C and `HELD` is CTL bit 7.
+
+Evidence (2026-11-12, uncommitted working tree over f945c29): the cycle-level model has 43 passing tests; v2 block tests, three Verilator lint configurations and generated-table checks total 9 passing pytest checks, and the Tiny Tapeout RTL template smoke test passes. Pin-level lockstep evidence, source hashes, red/green regressions and exact tool/library provenance are recorded in `data/raw/v2_resume_sol_20261112/` and the current `BOTS/PLANS/STATUS.md` handoff. The model and RTL had a shared host-stop/start-edge error caught by an independently asserted test (D32); lockstep establishes agreement on tested cases, not completeness. Full-v2 synthesis estimates 274,908.2868 um? of standard cells excluding SRAM macros. Physical fit, DRC/LVS, gate-level simulation and 60 MHz timing for this full RTL remain unverified. The earlier sizing skeleton's flow results (D24/U10) apply only to that skeleton.
 
 ## 1. Conventions
 
@@ -10,7 +14,7 @@ Evidence: the v2 cycle-level model `sim/reference/metronome2/` implements this d
 - All combinational quantities in cycle t are functions of register values in cycle t, configuration values in cycle t and the raw input pins.
 - Unsigned arithmetic unless stated. `{a,b}` is concatenation with `a` most significant. `popcount` counts set bits.
 - **Reset.** `rst_n` is asserted asynchronously and released synchronously through two flops; the internal reset `rst_q` is `rst_n` delayed by two rising edges. While `rst_q` is low every register in this document is 0. Configuration (below) clears to 0 while `rst_n` is low.
-- **Configuration** is the host-written, program-invisible state listed per unit as "Configuration" (`machine.CONFIG_BLOCKS`; 2,052 bits). It is held in resettable latches (V2_DESIGN 4.7). A configuration byte written by the host in cycle W (section 9) is seen by all logic from cycle W+2; logic sees the old value through W+1. Multi-byte fields change one byte at a time, so a field written while it is in use passes through mixed values.
+- **Configuration** is the host-written, program-invisible state listed per unit as "Configuration" (`machine.CONFIG_BLOCKS`; 2,052 bits in draft 1, 2,084 with the hold fields of 3.2a). It is held in resettable latches (V2_DESIGN 4.7). A configuration byte written by the host in cycle W (section 9) is seen by all logic from cycle W+2; logic sees the old value through W+1. Multi-byte fields change one byte at a time, so a field written while it is in use passes through mixed values.
 - **Configuration write spacing (D24).** Two configuration writes must not occur in consecutive cycles. The host link (section 9) gives at most one write per completed SPI byte, so it holds by construction. A configuration write in the two cycles after `rst_q` rises is ignored.
 
 ## 2. Pins
@@ -26,9 +30,9 @@ A line is a beat generator plus the pins it samples, its input symbol and its ou
 
 ### 3.1 Configuration and state
 
-Configuration: `INC, MOD, T0, T1, T2, PRE, WLO, WHI` (16 bits each); `EDGE` (pin 4 bits, polarity 2 bits: 0 none, 1 rise, 2 fall, 3 both), `WEN`, `FOLLOW`; `T0EDGE` (pin, polarity), `T0SRC`; `SNAP` (2 bits); `PINA, PINB` (4 bits); `LUT0, LUT1` (32 bits).
+Configuration: `INC, MOD, T0, T1, T2, PRE, WLO, WHI` (16 bits each); `EDGE` (pin 4 bits, polarity 2 bits: 0 none, 1 rise, 2 fall, 3 both), `WEN`, `FOLLOW`; `T0EDGE` (pin, polarity), `T0SRC`; `SNAP` (2 bits); `PINA, PINB` (4 bits); `LUT0, LUT1` (32 bits); hold `HEN` (1), `HPIN` (4), `HLVL` (1), `HTAP` (2).
 
-State: `PH` (16); `RUN, ARM, REN`; `SC, SP`; `FIRED[2:0]`; working samples `W = {B1, A2, A1, A0}`; snapshot `SN` (4); remembered bit `REM`; `STAGED, COMMITTED` (4 bits each); sticky `TAPMISS`.
+State: `PH` (16); `RUN, ARM, REN`; `HELD`; `FIRST`; `SC, SP`; `FIRED[2:0]`; working samples `W = {B1, A2, A1, A0}`; snapshot `SN` (4); remembered bit `REM`; `STAGED, COMMITTED` (4 bits each); sticky `TAPMISS`.
 
 ### 3.2 Beat generator
 
@@ -40,7 +44,7 @@ e0     = polarity-selected RISE/FALL of PIN[T0EDGE.pin]      (same rule)
 inwin  = (WLO <= WHI) ? (WLO <= PH && PH <= WHI) : (PH >= WLO || PH <= WHI)
 start  = edge && ARM && !RUN
 accept = edge && RUN && REN && (!WEN || inwin)
-adv    = RUN && !accept
+adv    = RUN && !accept && !hold                      (hold: section 3.2a)
 n      = PH + INC  (17-bit);   nx = (n >= MOD) ? n - MOD : n
 wrap   = adv && (n >= MOD)
 BEAT   = FOLLOW ? accept : wrap
@@ -58,6 +62,32 @@ FOLLOW = 1:  SC' = 0;                               SP' = BEAT ? 1 : (wrap ? 0 :
 ```
 
 A move to `Lk.CTL` in cycle t sets `RUN' = bus[0], ARM' = bus[1], REN' = bus[2]`, overriding the lines above; `PH'` is unaffected. Host writes to `PHASE` or `CTL` behave the same way and take priority over moves and over the generator.
+
+### 3.2a Hold (clock stretching)
+
+A line can stall its phase until a pin reaches a level. This lets a generated clock wait for a wire it has released, as in I2C clock stretching, without a thread polling the pin.
+
+```
+k      = HTAP                                   (a phase tap: k = 1, 2, or 0 with T0SRC = 0)
+want   = RUN && !accept && (cross_k of 3.4, evaluated with adv = 1)
+hold   = HEN && want && (PIN[HPIN] != HLVL)
+HELD'  = hold
+```
+
+While `hold` is true, the phase does not advance. Tap k does not fire, and neither does any later tap or boundary of the beat. The phase advances again in the first cycle in which the pin reads `HLVL`, and tap k fires in that cycle.
+
+An accepted edge takes priority, because `want` is 0 in an accept cycle. The hold is disabled when `HEN = 0`, when `HTAP = 3`, when tap k is disabled, or when `HTAP = 0` while `T0SRC = 1`.
+
+Consequences (calculated from the rules above, not simulated):
+
+- **A hold only lengthens beats.** Every bound in section 10 that is stated relative to a line's boundaries still holds. A bound stated in cycles grows by the time spent held.
+- **Read-back latency stretches every beat.** The pin is read through the synchronisers (section 2). A wire released at tap j is therefore read back about 4 to 5 cycles later: output register, pad and two synchroniser stages (estimated). If tap k is fewer cycles than that after tap j, the beat stretches by the difference even when no other device holds the wire.
+- **`HPIN >= 13` reads 0.** With `HLVL = 1` the line would hold forever, so the toolchain rejects that combination.
+- **There is no built-in timeout.** A stuck wire leaves the line held, and the host can read `HELD` (section 9). A score's `within` (part A 8.1) compiles to a thread on another line, or to a counter.
+
+Score mapping (part A 5.2): `stretch on WIRE` sets `HEN = 1`, `HPIN` = the wire's input pin, `HLVL = 1`, and `HTAP` = the first tap after the segment in which the role releases the wire.
+
+Cost: 8 configuration bits per line, 32 in total, about 1.0k µm² at the measured 32.4 µm² per latch bit, plus one tap comparator per line (estimated). The comparator can share the tap-crossing logic of 3.4.
 
 ### 3.3 Follower mode
 
@@ -85,14 +115,14 @@ TAPk   = (cur_k && !FIRED[k]) || next_k
 `next_k` marks a tap event that belongs to the beat starting at this boundary; `cur_k` one that belongs to the current beat. A tap fires at most once per beat: a current-beat event with its fired bit already set is dropped. Disabled taps never fire.
 
 ```
-if RUN' && !RUN:  FIRED'[k] = (k is an enabled phase tap) && (Tk <= PH')       (taps behind the starting phase count as fired)
-elif BEAT:        FIRED'[k] = next_k
+if RUN' && !RUN:  FIRED'[k] = (k is an enabled phase tap) && (Tk <= PH');  FIRST' = 1   (taps behind the starting phase count as fired)
+elif BEAT:        FIRED'[k] = next_k;  FIRST' = 0
 else:             FIRED'[k] = FIRED[k] || cur_k
-TAPMISS' = TAPMISS || (BEAT && some enabled k has !FIRED[k] && !cur_k)
+TAPMISS' = TAPMISS || (BEAT && some enabled k has !FIRED[k] && !cur_k && !(k == 0 && T0SRC && FIRST))
 SEG = popcount(FIRED)                                                            (2 bits)
 ```
 
-`TAPMISS` is sticky until the host clears it. `SEG` is the number of taps fired so far in the beat; for phase taps in ascending order with no re-alignment it equals the v1 segment (calculated).
+`FIRST` (one bit per line, state) marks the starting beat, which is partial: its edge-sourced tap 0 may legitimately not occur (an SPI mode-1 target sees its first boundary before any capture edge), so it does not raise `TAPMISS` there (D28). `TAPMISS` is sticky until the host clears it. `SEG` is the number of taps fired so far in the beat; for phase taps in ascending order with no re-alignment it equals the v1 segment (calculated).
 
 ### 3.5 Capture, snapshot and input symbol
 
@@ -114,7 +144,7 @@ L.DBIT:  STAGED' = {STAGED[3:1], bus[0]}
 L.XOR:   STAGED' = STAGED ^ bus[3:0]
 ```
 
-If `BEAT` in cycle t: `COMMITTED' = STAGED'` (a write in the boundary cycle is committed).
+If `BEAT` in cycle t, or `RUN' && !RUN` (the line starts, by an edge, a move or a host write): `COMMITTED' = STAGED'` (a write in the same cycle is committed). The start commit lets a follower present its first bit before the first clock edge, as an SPI mode-0 target must: a thread stages the bit and starts the line, for example on the chip-select edge (D28).
 
 ## 4. Threads (t = 0..5)
 
@@ -264,12 +294,12 @@ The pin outputs are these registers. After reset every pin drives 0 with its out
 - Keep SCK at or below clk/16 (3.75 MHz at 60 MHz).
 - `IRQ' = (IRQEN[0] && OUTV) || (IRQEN[1] && ERR)`, where `ERR` is any of `CONFLICT`, `MEMHAZ`, every thread's `LATE` and `OVR`, every line's `TAPMISS` and every stream's `STARVED`.
 
-**Host map.** Addresses, register layouts and access types are generated from `machine.HOST_MAP` and `HOST_BLOCKS` into [ISA_TABLES_V2.md](ISA_TABLES_V2.md#host-address-map). Configuration registers (access W) are write-only and read 0 (D14). Program memory is written by byte lane (byte k of word w of core c at `c*0x800 + 8w + k`) and reads 0. Unmapped addresses read 0 and ignore writes. Multi-byte registers are little-endian; each byte is written independently. Host writes take priority over moves and hardware updates of the same state, except where a section above says otherwise; a sticky flag set in the same cycle as a host clear stays set.
+**Host map.** Addresses, register layouts and access types are generated from `machine.HOST_MAP` and `HOST_BLOCKS` into [ISA_TABLES_V2.md](ISA_TABLES_V2.md#host-address-map). Configuration registers (access W) are write-only and read 0 (D14). Program memory is written by byte lane (byte k of word w of core c at `c*0x800 + 8w + k`, holding word bits `8k+7..8k`, so little-endian) and reads 0. Unmapped addresses read 0 and ignore writes. Multi-byte registers are little-endian; each byte is written independently. Host writes take priority over moves and hardware updates of the same state, except where a section above says otherwise; a sticky flag set in the same cycle as a host clear stays set.
 
 Runtime registers (flops):
 
 - `CTRL.RUN` bit 0 is `RUN_global`. `STICKY` reads `{MEMHAZ, CONFLICT}` in bits 1, 0, write 1 to clear. `IRQEN` bits 0, 1. `DOORBELL` reads 0; writing bit t in cycle W makes `DB[t] = 1` in cycle W+1 only. `HOSTIN` writes `INB` and sets `INV`, reads `INB`. `HOSTOUT` reads `OUTB`. `HOSTSTAT` reads `{OUTV, INV}` in bits 1, 0; writing 1 to bit 1 clears `OUTV`. `ID` reads `0xA2`. `ERRSUM` reads `{MEMHAZ, CONFLICT, any STARVED, any TAPMISS, any OVR, any LATE}` in bits 5..0.
-- Line runtime: `PHASE` reads and writes `PH`. `CTL` bits 0..2 read and write `RUN, ARM, REN` (section 3.2); reads also give `SYNC` in bit 3 and `FIRED` in bits 6:4. `SYM` reads `{COMMITTED, STAGED}`. `INS` reads `{IN, REM, SN}` in bits 6:0. `STAT` bit 0 reads `TAPMISS`, write 1 to clear.
+- Line runtime: `PHASE` reads and writes `PH`. `CTL` bits 0..2 read and write `RUN, ARM, REN` (section 3.2); reads also give `SYNC` in bit 3, `FIRED` in bits 6:4 and `HELD` in bit 7. `SYM` reads `{COMMITTED, STAGED}`. `INS` reads `{IN, REM, SN}` in bits 6:0. `STAT` bit 0 reads `TAPMISS`, write 1 to clear.
 - Thread runtime: `PC` reads and writes. `STAT` reads `{OVR, LATE, EN, ARMED, RUNNING, READY}` in bits 5..0; a write sets `EN` from bit 3 and clears `LATE` or `OVR` where bit 4 or 5 is 1. A host clearing `LATE` writes `EN` as well, so it must write the current `EN`.
 - Stream runtime: `POSL`, `POSH` (`{STARVED, BIDX, POS[11:8]}`), `CTL` (write-only; section 6.3).
 
@@ -307,7 +337,7 @@ Runtime registers (flops):
 |---|---|---|
 | Structure | 4 beat generators, 6 engines with their own pins and tables | 4 lines (beat generator, pins, tables, symbols), 6 threads bound to a line |
 | Taps | suppressed in an accept cycle without a flag; `SEG` from the phase | fired bits: at most once per beat, `TAPMISS` on a skipped tap; `SEG` = taps fired |
-| Clock modes | generated, edge-started, recovered | adds follower mode and an edge-sourced tap 0 |
+| Clock modes | generated, edge-started, recovered | adds follower mode, an edge-sourced tap 0 and the hold (3.2a) |
 | Input | 2-bit symbol from 16-entry tables over `CAP`, visible per tap | 2-bit symbol from 32-entry tables over an atomic snapshot and a remembered bit |
 | Output | 2-bit symbol, one write port | 4-bit symbol; whole, data-bit and exclusive-or ports, one write group per line |
 | Pin tables | 4 inputs | 5 inputs: three chosen symbol bits and `SEG` |

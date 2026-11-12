@@ -1,0 +1,41 @@
+; uart_tx.mas -- 115200 8N1 transmitter on O8 = uo_out[2].  Bytes come from the host mailbox (v2 port of v1's example).
+;
+; Host protocol: write a byte to CTRL.HOSTIN (0x2404) when HOSTSTAT bit 0 (INV) is 0.  Thread 0 consumes it at the
+; next beat boundary.  Up to one byte per 10 bit times.
+;
+;   * Line 0 is the bit clock: one beat per bit, 115200 baud = 6/3125 of 60 MHz (calculated, exact).
+;   * Thread 0 runs one burst per beat and walks a small state machine whose state is its PC.
+;   * A symbol staged in a burst commits at the NEXT beat, so each bit lasts exactly one beat.
+;   * Symbol coding (O8 table): symbol bit 0 = 0 -> pin high (idle/stop/data 1), 1 -> pin low (start/data 0).
+;     Symbol 0 is the reset value, so the pin idles high as soon as the table is written.
+;   * Shifter 0 is used LSB first (reset default: length 8, MSB = 0).  F0 carries "a byte was loaded this beat".
+
+.clock 60e6
+
+.line 0
+    baud 115200
+    ctl run
+.end
+
+.thread 0
+    core 0
+    trigger L0.BEAT
+    start idle
+.end
+
+.out O8                        ; uo_out[2]
+    line 0
+    lut 1 if b0 == 0 else 0
+.end
+
+.budget thread 0 cycles 20     ; worst burst is 2 cycles; 520 are available
+
+.core 0
+idle:   when HOST.INV   ? #1 -> L.SYM, ? HOST.IN -> SH0.LD, ? ZERO -> FLAGS.SET
+        when F0   ? ZERO -> FLAGS.CLR   pause goto idle ifnot
+
+bit:    when SH0.OUT   ? ZERO -> L.SYM, ! #1 -> L.SYM, ZERO -> SH0.SH
+        when SH0.DONE   pause goto bit ifnot
+
+stop:   ZERO -> L.SYM
+        pause goto idle

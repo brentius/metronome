@@ -1,0 +1,173 @@
+{
+  "format": "metronome-image",
+  "version": 2,
+  "machine_version": 2,
+  "clock_hz": 60000000.0,
+  "source": "uart_8n1.receiver.mas",
+  "program": [
+    {
+      "core": 0,
+      "addr": 0,
+      "words": [
+        "0x000060018A0AD808",
+        "0x0000600180060001",
+        "0x00006C0262100031",
+        "0x58006F006210001F",
+        "0x000060018A0CD808",
+        "0x00006001F2231800",
+        "0x000060018C080008",
+        "0x00006001EA080010",
+        "0x0000600180060003"
+      ]
+    }
+  ],
+  "writes": [
+    {
+      "addr": 0,
+      "data": "08d80a8a01600000010006800160000031001062026c00001f001062006f005808d80c8a01600000001823f2016000000800088c01600000100008ea016000000300068001600000",
+      "note": "core 0 program words 0x00..0x08"
+    },
+    {
+      "addr": 8400,
+      "data": "01",
+      "note": "S0.MODE"
+    },
+    {
+      "addr": 8401,
+      "data": "0004",
+      "note": "S0.START"
+    },
+    {
+      "addr": 8403,
+      "data": "e003",
+      "note": "S0.LEN"
+    },
+    {
+      "addr": 8405,
+      "data": "0000",
+      "note": "S0.MARK"
+    },
+    {
+      "addr": 8192,
+      "data": "0600",
+      "note": "L0.INC"
+    },
+    {
+      "addr": 8194,
+      "data": "350c",
+      "note": "L0.MOD"
+    },
+    {
+      "addr": 8196,
+      "data": "350c",
+      "note": "L0.T0"
+    },
+    {
+      "addr": 8198,
+      "data": "1a06",
+      "note": "L0.T1"
+    },
+    {
+      "addr": 8200,
+      "data": "350c",
+      "note": "L0.T2"
+    },
+    {
+      "addr": 8202,
+      "data": "1200",
+      "note": "L0.PRE"
+    },
+    {
+      "addr": 8204,
+      "data": "0000",
+      "note": "L0.WLO"
+    },
+    {
+      "addr": 8206,
+      "data": "ffff",
+      "note": "L0.WHI"
+    },
+    {
+      "addr": 8208,
+      "data": "20",
+      "note": "L0.EDGE"
+    },
+    {
+      "addr": 8209,
+      "data": "0f",
+      "note": "L0.T0EDGE"
+    },
+    {
+      "addr": 8210,
+      "data": "f0",
+      "note": "L0.PINS"
+    },
+    {
+      "addr": 8211,
+      "data": "01",
+      "note": "L0.SNAP"
+    },
+    {
+      "addr": 8212,
+      "data": "cccccccc",
+      "note": "L0.LUT0"
+    },
+    {
+      "addr": 8216,
+      "data": "00000000",
+      "note": "L0.LUT1"
+    },
+    {
+      "addr": 8320,
+      "data": "18",
+      "note": "T0.CFG"
+    },
+    {
+      "addr": 9280,
+      "data": "00",
+      "note": "T0.PC"
+    },
+    {
+      "addr": 9281,
+      "data": "08",
+      "note": "T0.EN"
+    },
+    {
+      "addr": 9298,
+      "data": "01",
+      "note": "S0.REWIND"
+    },
+    {
+      "addr": 9234,
+      "data": "02",
+      "note": "L0.CTL"
+    },
+    {
+      "addr": 9216,
+      "data": "01",
+      "note": "CTRL.RUN"
+    }
+  ],
+  "labels": {
+    "R1": [
+      0,
+      0
+    ],
+    "R2": [
+      0,
+      2
+    ],
+    "R3l": [
+      0,
+      3
+    ],
+    "R4": [
+      0,
+      4
+    ],
+    "end": [
+      0,
+      5
+    ]
+  }
+}

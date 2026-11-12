@@ -1,0 +1,14 @@
+fit report: spi_mode0 / role controller
+  clock      generated; beat 60.000 cycles at 60 MHz = 1 MHz; inc/mod 1/60 (exact)
+  tap 1      phase 30/60 = 30.00 cycles (asked 50% = 30.00 cycles, error +0.00); split+sample miso
+  symbols    4 classes drive wires ['sck', 'cs_n', 'mosi']; encoding kind<<k | data bits (idle = 0); idle = code 0
+             code  0  <idle>, deselect
+             code  2  select
+             code  4  bit(0,0), bit(0,1)
+             code  5  bit(1,0), bit(1,1)
+  pins       sck -> O8 (sel bits (0, 1, 2)), cs_n -> O9 (sel bits (0, 1, 2)), mosi -> O10 (sel bits (0, 1, 2))
+  input      pins A=P1; data bit = IN0; 2 = [], 3 = violation
+  program    core 0: 9 instructions, core 1: 1 instructions
+  thread 0   core 0: longest burst 3 cycles; trigger -> last instruction 5; last symbol write at burst cycle 2
+  thread 1   core 1: longest burst 1 cycles; trigger -> last instruction 3; last input read at burst cycle 1
+  rate       fastest generated rate that fits: 10 MHz (6 cycles per beat; calculated from the burst lengths above)

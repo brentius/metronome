@@ -1,0 +1,20 @@
+fit report: spi_mode0 / role peripheral
+  clock      follow; MOD 120 cycles (longest clock period accepted)
+  symbols    3 classes drive wires ['miso']; encoding kind<<k | data bits (idle = 0); idle = code 0
+             code  0  <idle>
+             code  2  bit(0,0), bit(1,0)
+             code  3  bit(0,1), bit(1,1)
+  pins       miso -> O8 (sel bits (0, 1, 2))
+  input      pins A=P0; data bit = IN0; 2 = [], 3 = violation
+  program    core 0: 5 instructions, core 1: 6 instructions
+  thread 0   core 0: longest burst 1 cycles; trigger -> last instruction 8; last symbol write at burst cycle 1
+  thread 1   core 1: longest burst 1 cycles; trigger -> last instruction 9; last input read at burst cycle 1
+  thread 2   core 1: longest burst 5 cycles; trigger -> last instruction 9; last symbol write at burst cycle 3
+  thread 3   core 0: longest burst 4 cycles; trigger -> last instruction 8; last symbol write at burst cycle 1
+  note       follower: line period up to 120 cycles (MOD); assumes the clock is no faster than 30 cycles per period, 15 per half (check minperiod/minhalf)
+  warning    thread 2: trigger PINA.FALL is not a line event; its symbol-commit deadline cannot be checked
+  warning    thread 3: trigger PINA.RISE is not a line event; its symbol-commit deadline cannot be checked
+  warning    write group L0.CTL is written by threads [2, 3] on different cores (bursts can overlap: CONFLICT possible)
+  warning    write group L1.CTL is written by threads [2, 3] on different cores (bursts can overlap: CONFLICT possible)
+  warning    write group S0 is written by threads [0, 2, 3] on different cores (bursts can overlap: CONFLICT possible)
+  warning    write group S1 is written by threads [1, 2] on one core (bursts are serialised, but state is shared)

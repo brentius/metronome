@@ -1,0 +1,9 @@
+fit report: ethernet_10baset / role receiver
+  clock      recovered; beat 6.000 cycles at 60 MHz = 10 MHz; inc/mod 1/6 (exact)
+  tap 1      phase 49/6 = 49.00 cycles (asked 75% = 4.50 cycles, error +44.50); sample td
+  input      pins A=P2; data bit = IN0; 2 = [], 3 = violation
+  program    core 0: 40 instructions, core 1: 5 instructions
+  thread 0   core 0: longest burst 2 cycles; trigger -> last instruction 4; last input read at burst cycle 1
+  thread 5   core 1: longest burst 5 cycles; trigger -> last instruction 7
+  note       re-alignment: edges 5..7 cycles apart accepted (window phase 0..32 of MOD 97), generator beat 6.0625 cycles, sample 1 cycle(s) after the accepted edge (asked 1.50)
+  note       end-of-frame work: 36 beats after the frame

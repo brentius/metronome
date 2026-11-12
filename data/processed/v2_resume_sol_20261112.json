@@ -1,0 +1,48 @@
+{
+  "manifest": "data/raw/v2_resume_sol_20261112/final_manifest.json",
+  "manifest_sha256": "c2aea66b535fb0ef2b0d06fb89ea79ab5aa248adad409633d8dabbe760117f68",
+  "results": {
+    "score_and_compiler": {
+      "passed": 185,
+      "summary": "185 passed in 81.23s (0:01:21)",
+      "log": "data\\raw\\v2_resume_sol_20261112\\software_final.log"
+    },
+    "model": {
+      "passed": 43,
+      "summary": "43 passed in 1.64s",
+      "log": "data\\raw\\v2_resume_sol_20261112\\model_green.log"
+    },
+    "host_and_machine": {
+      "passed": 78,
+      "summary": "78 passed in 3.41s",
+      "log": "data\\raw\\v2_resume_sol_20261112\\host_map_final.log"
+    },
+    "blocks_lint_tables": {
+      "passed": 9,
+      "summary": "9 passed in 42.23s",
+      "log": "data\\raw\\v2_resume_sol_20261112\\rtl_blocks_green.log"
+    },
+    "pin_lockstep": {
+      "passed": 13,
+      "summary": "13 passed in 590.88s (0:09:50)",
+      "log": "data\\raw\\v2_resume_sol_20261112\\lockstep_final.log"
+    },
+    "template": {
+      "passed": 1,
+      "log": "data/raw/v2_resume_sol_20261112/template_final.log"
+    }
+  },
+  "synthesis": {
+    "standard_cell_area_um2": 274908.2868,
+    "cells_including_3_area_excluded_sram_blackboxes": 18534,
+    "library": "build/pdk/sg13cmos5l_stdcell_typ_1p20V_25C.lib",
+    "log": "data/raw/v2_resume_sol_20261112/area_final.log",
+    "limits": "pre-placement estimate, excludes SRAM, no full-v2 STA/DRC/LVS/GL/SDF result"
+  },
+  "limitations": [
+    "Compiler supports UART both roles, SPI mode0 both roles and Ethernet frame paths only; no I2C/tether/multiple groups/periodic link pulses",
+    "Lockstep covers 9 directed scenarios and random seeds1..4; compares external output bundles every cycle and memory only via actual SPI reads",
+    "Model memories and SRAM simulation initialized to zero for comparison; programs must not depend on silicon power-up values",
+    "No hardware measurements or full-v2 timing closure"
+  ]
+}

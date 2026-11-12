@@ -35,6 +35,8 @@ class Line:
         self.PINA, self.PINB = b[0x12] & 15, b[0x12] >> 4
         self.SNAP = b[0x13] & 3
         self.LUT0, self.LUT1 = _le(b, 0x14, 4), _le(b, 0x18, 4)
+        h = b[0x1C]
+        self.HPIN, self.HLVL, self.HTAP, self.HEN = h & 15, (h >> 4) & 1, (h >> 5) & 3, (h >> 7) & 1
 
     def reset_cfg(self):
         self.cfg[:] = bytes(self.STRIDE)
@@ -51,6 +53,9 @@ class Line:
         self.REM = 0
         self.STAGED = self.COMMITTED = 0
         self.TAPMISS = 0
+        self.FIRST = 0           # no boundary yet since the line started (D28)
+        self.HELD = 0
+        self.hold = False
         self.beat = 0
         self.tap = [0, 0, 0]
 
@@ -92,10 +97,18 @@ class Line:
             inwin = ph >= self.WLO or ph <= self.WHI
         self.start = bool(edge and self.ARM and not run)
         self.accept = bool(edge and run and self.REN and (not self.WEN or inwin))
-        self.adv = bool(run and not self.accept)
         n = ph + self.INC
         over = n >= self.MOD
         self.nx = (n - self.MOD) if over else n
+        # hold (SPEC v2 3.2a): stall while tap HTAP would be crossed and the pin is not at HLVL
+        self.hold = False
+        k = self.HTAP
+        if self.HEN and run and not self.accept and k < 3 and not (k == 0 and self.T0SRC) and self.T[k] < self.MOD:
+            t = self.T[k]
+            want = (t > ph or t <= self.nx) if over else (ph < t <= self.nx)
+            lvl = (lv >> self.HPIN) & 1 if self.HPIN < m.N_IN_PINS else 0
+            self.hold = bool(want and lvl != self.HLVL)
+        self.adv = bool(run and not self.accept and not self.hold)
         self.wrap = self.adv and over
         beat = self.accept if self.FOLLOW else self.wrap
         self.beat = int(beat)
@@ -120,7 +133,7 @@ class Line:
             tap[k] = int((cur and not fired_k) or nxt)
             cur_bits |= int(cur) << k
             nxt_bits |= int(nxt) << k
-            if beat and en and not fired_k and not cur:
+            if beat and en and not fired_k and not cur and not (k == 0 and self.T0SRC and self.FIRST):
                 miss = True
         self.tap = tap
         self.tapmiss_ev = miss
@@ -142,6 +155,7 @@ class Line:
     def commit(self, ctl, sym):
         """ctl: L.CTL move value or None. sym: new STAGED value from the winning symbol write, or None."""
         self.run_t = self.RUN
+        self.HELD = int(self.hold)
         in1 = self.IN >> 1
         self.PH = self.PRE if (self.start or self.accept) else (self.nx if self.adv else self.PH)
         self.RUN = int(self.RUN or self.start)
@@ -159,6 +173,8 @@ class Line:
         if self.beat:
             self.COMMITTED = self.STAGED
         self.FIRED = self.fired_next
+        if self.beat:
+            self.FIRST = 0
         self.fix_fired()
         if self.tapmiss_ev:
             self.TAPMISS = 1
@@ -171,6 +187,8 @@ class Line:
         """Apply the RUN-rising rule of SPEC 3.4 (called again after host writes to PHASE or CTL)."""
         if self.RUN and not self.run_t:
             self.FIRED = self.fired_at_start(self.PH)
+            self.FIRST = 1
+            self.COMMITTED = self.STAGED          # a line start commits the staged symbol (SPEC v2 3.6, D28)
 
     def sym_value(self, op, v):
         if op == "SYM":

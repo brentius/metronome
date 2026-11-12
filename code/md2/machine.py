@@ -232,6 +232,7 @@ LINE_CFG = {   # beat generator, edge sources, snapshot, pins, input tables
     "SNAP": 2,                      # snapshot tap
     "PINA": 4, "PINB": 4,
     "LUT0": 1 << LUT_IN_BITS, "LUT1": 1 << LUT_IN_BITS,
+    "HOLD": 8,                      # hold: pin 4, level 1, tap 2, enable 1 (SPEC v2 3.2a, D27)
 }
 THREAD_CFG = {"CORE": 1, "LINE": 2, "TRIG": 5, "W0C": 6, "W1C": 6, "W0H": 8, "W1H": 8}
 OUT_CFG = {"LINE": 2, "BOUND": 1, "SEL": 3 * 2, "LUT": 1 << PIN_LUT_IN_BITS}
@@ -294,6 +295,7 @@ LINE_REGS = {
     0x13: ("SNAP", 1, "W", "bits 1:0 snapshot point: 0..2 tap k, 3 the boundary"),
     0x14: ("LUT0", 4, "W", "input table 0, index {REM, B1, A2, A1, A0}"),
     0x18: ("LUT1", 4, "W", "input table 1, same index"),
+    0x1C: ("HOLD", 1, "W", "bits 3:0 HPIN, bit 4 HLVL, bits 6:5 HTAP (3 disables), bit 7 HEN"),
 }
 THREAD_REGS = {
     0x00: ("CFG", 1, "W", "bit 0 CORE, bits 2:1 LINE, bits 7:3 TRIG"),
@@ -328,7 +330,7 @@ CTRL_REGS = {
 }
 LRT_REGS = {
     0x00: ("PHASE", 2, "RW", "PH"),
-    0x02: ("CTL", 1, "RW", "bit 0 RUN, 1 ARM, 2 REN; read also bit 3 SYNC, bits 6:4 FIRED"),
+    0x02: ("CTL", 1, "RW", "bit 0 RUN, 1 ARM, 2 REN; read also bit 3 SYNC, bits 6:4 FIRED, bit 7 HELD"),
     0x03: ("SYM", 1, "R", "bits 3:0 STAGED, bits 7:4 COMMITTED"),
     0x04: ("INS", 1, "R", "bits 4:0 {REM, SN}, bits 6:5 IN"),
     0x05: ("STAT", 1, "W1C", "bit 0 TAPMISS"),

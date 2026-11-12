@@ -193,9 +193,14 @@ class Chip:
         self.sp, self.s2, self.s1 = self.s2, self.s1, raw
         for l, ln in enumerate(self.lines):
             ctl = winners.get(f"L{l}.CTL")
+            ctl_value = ctl[3] if ctl else None
+            # Resolve host priority before applying effects of a RUN transition.
+            # A host stop suppresses a simultaneous edge/move start (SPEC 3.2, 3.4).
+            if hdec is not None and hdec[0] == "LRT" and hdec[1] == l and hdec[4][0] == "CTL":
+                ctl_value = hw[1]
             sw = winners.get(("LSYM", l))
             sym = ln.sym_value(sw[2], sw[3]) if sw else None
-            ln.commit(ctl[3] if ctl else None, sym)
+            ln.commit(ctl_value, sym)
             if ln.tapmiss_ev:
                 self.events.add(("TAPMISS", l))
         disp = {c.dispatch[0]: c for c in self.cores if c.dispatch is not None}
@@ -248,6 +253,7 @@ class Chip:
                 ctl = (ctl or 0) | (srt_ctl[k] & 0x83)
             if s.commit(g, sword if g else 0, mv_adv, mv_rx, ctl):
                 self.events.add(("STARVED", k))
+        sh_cfg = []
         for key, (kind, k, op, v, t, l) in winners.items():
             if kind == "FLAGS":
                 n = v & 0xF
@@ -259,7 +265,7 @@ class Chip:
             elif kind == "SHLS":
                 (self.sh[k].ld if op == "LD" else self.sh[k].sh)(v)
             elif kind == "SHCFG":
-                self.sh[k].cfg(v)
+                sh_cfg.append((k, v))
             elif kind == "CNT":
                 self.cnt[k].op(op, v)
             elif kind == "LF":
@@ -273,6 +279,10 @@ class Chip:
             elif kind == "HOSTOUT":
                 host.OUTB, host.OUTV = v, 1
                 self.events.add("HOSTOUT")
+        # LD/SH and CFG have independent write groups, but LD/SH must use cycle-t
+        # LEN/MSB regardless of the winning moves' insertion order (SPEC v2 6).
+        for k, v in sh_cfg:
+            self.sh[k].cfg(v)
         if memhaz:
             ctrl.MEMHAZ = 1
             self.events.add("MEMHAZ")

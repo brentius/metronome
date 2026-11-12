@@ -299,11 +299,11 @@ Jump modes (on `jcond`): `next`=0, `always`=1, `if`=2, `ifnot`=3. Move guards (o
 | `L3.CTL` | `L3.CTL` |
 | `HOST.OUT` | `HOST.OUT` |
 
-## Latch configuration inventory (2052 bits)
+## Latch configuration inventory (2084 bits)
 
 | Block | Instances | Fields (bits) | Bits |
 |---|---|---|---|
-| line | 4 | INC 16, MOD 16, T0 16, T1 16, T2 16, PRE 16, WLO 16, WHI 16, WEN 1, EDGE 6, FOLLOW 1, T0EDGE 6, T0SRC 1, SNAP 2, PINA 4, PINB 4, LUT0 32, LUT1 32 | 868 |
+| line | 4 | INC 16, MOD 16, T0 16, T1 16, T2 16, PRE 16, WLO 16, WHI 16, WEN 1, EDGE 6, FOLLOW 1, T0EDGE 6, T0SRC 1, SNAP 2, PINA 4, PINB 4, LUT0 32, LUT1 32, HOLD 8 | 900 |
 | thread | 6 | CORE 1, LINE 2, TRIG 5, W0C 6, W1C 6, W0H 8, W1H 8 | 216 |
 | out | 14 | LINE 2, BOUND 1, SEL 6, LUT 32 | 574 |
 | oe | 8 | OE 32 | 256 |
@@ -353,6 +353,7 @@ Program bytes: `0x0000 + core*0x800 + 8*word + byte` (write-only). Data RAM: `0x
 | 0x13 | `SNAP` | 1 | W | bits 1:0 snapshot point: 0..2 tap k, 3 the boundary |
 | 0x14 | `LUT0` | 4 | W | input table 0, index {REM, B1, A2, A1, A0} |
 | 0x18 | `LUT1` | 4 | W | input table 1, same index |
+| 0x1C | `HOLD` | 1 | W | bits 3:0 HPIN, bit 4 HLVL, bits 6:5 HTAP (3 disables), bit 7 HEN |
 
 ### THREAD (0x2080 + 0x08 x k, k = 0..5)
 
@@ -407,7 +408,7 @@ Program bytes: `0x0000 + core*0x800 + 8*word + byte` (write-only). Data RAM: `0x
 | Offset | Register | Bytes | Access | Layout |
 |---|---|---|---|---|
 | 0x00 | `PHASE` | 2 | RW | PH |
-| 0x02 | `CTL` | 1 | RW | bit 0 RUN, 1 ARM, 2 REN; read also bit 3 SYNC, bits 6:4 FIRED |
+| 0x02 | `CTL` | 1 | RW | bit 0 RUN, 1 ARM, 2 REN; read also bit 3 SYNC, bits 6:4 FIRED, bit 7 HELD |
 | 0x03 | `SYM` | 1 | R | bits 3:0 STAGED, bits 7:4 COMMITTED |
 | 0x04 | `INS` | 1 | R | bits 4:0 {REM, SN}, bits 6:5 IN |
 | 0x05 | `STAT` | 1 | W1C | bit 0 TAPMISS |
