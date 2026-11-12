@@ -70,3 +70,36 @@ def test_config_inventory():
 def test_generated_files_current():
     p = subprocess.run([sys.executable, str(ROOT / "code/md2/gen.py"), "--check"], capture_output=True, text=True)
     assert p.returncode == 0, p.stdout + p.stderr
+
+
+def test_host_map_blocks_do_not_overlap_and_registers_fit():
+    spans = []
+    for b, (base, st, n, regs) in m.HOST_BLOCKS.items():
+        stride = m.HOST_STRIDE[st] if st else 0x10
+        for off, (name, nbytes, acc, _) in regs.items():
+            assert off + nbytes <= stride, (b, name)
+            assert acc in ("W", "R", "RW", "W1C"), (b, name)
+        offs = sorted((o, o + r[1]) for o, r in regs.items())
+        for (a0, a1), (b0, _) in zip(offs, offs[1:]):
+            assert a1 <= b0, (b, a0, b0)
+        lo = m.HOST_MAP[base]
+        spans.append((lo, lo + stride * n, b))
+    prog_hi = m.HOST_MAP["PROG_BASE"] + m.N_CORES * m.HOST_STRIDE["PROG_CORE"]
+    spans += [(m.HOST_MAP["PROG_BASE"], prog_hi, "PROG"),
+              (m.HOST_MAP["DATA_BASE"], m.HOST_MAP["DATA_BASE"] + m.DATA_BYTES, "DATA")]
+    assert m.HOST_STRIDE["PROG_CORE"] == 8 * m.PROG_WORDS
+    spans.sort()
+    for (a0, a1, x), (b0, _, y) in zip(spans, spans[1:]):
+        assert a1 <= b0, (x, y)
+    assert spans[-1][1] <= 0x10000
+
+
+def test_latch_config_fields_have_host_bytes():
+    # every latch configuration bit has a home in a write-only register of the matching block
+    w_bytes = {b: sum(r[1] for r in regs.values() if r[2] == "W")
+               for b, (_, _, _, regs) in m.HOST_BLOCKS.items()}
+    assert sum(m.LINE_CFG.values()) <= 8 * w_bytes["LINE"]
+    assert sum(m.THREAD_CFG.values()) <= 8 * w_bytes["THREAD"]
+    assert sum(m.OUT_CFG.values()) + sum(m.OE_CFG.values()) <= 8 * w_bytes["OUT"]
+    assert sum(m.STREAM_CFG.values()) <= 8 * w_bytes["STREAM"]
+    assert sum(m.LFSR_CFG.values()) <= 8 * w_bytes["LFSR"]

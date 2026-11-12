@@ -299,11 +299,11 @@ Jump modes (on `jcond`): `next`=0, `always`=1, `if`=2, `ifnot`=3. Move guards (o
 | `L3.CTL` | `L3.CTL` |
 | `HOST.OUT` | `HOST.OUT` |
 
-## Latch configuration inventory (2048 bits)
+## Latch configuration inventory (2052 bits)
 
 | Block | Instances | Fields (bits) | Bits |
 |---|---|---|---|
-| line | 4 | INC 16, MOD 16, T0 16, T1 16, T2 16, PRE 16, WLO 16, WHI 16, WEN 1, EDGE 6, T0EDGE 6, T0SRC 1, SNAP 2, PINA 4, PINB 4, LUT0 32, LUT1 32 | 864 |
+| line | 4 | INC 16, MOD 16, T0 16, T1 16, T2 16, PRE 16, WLO 16, WHI 16, WEN 1, EDGE 6, FOLLOW 1, T0EDGE 6, T0SRC 1, SNAP 2, PINA 4, PINB 4, LUT0 32, LUT1 32 | 868 |
 | thread | 6 | CORE 1, LINE 2, TRIG 5, W0C 6, W1C 6, W0H 8, W1H 8 | 216 |
 | out | 14 | LINE 2, BOUND 1, SEL 6, LUT 32 | 574 |
 | oe | 8 | OE 32 | 256 |
@@ -330,3 +330,100 @@ Jump modes (on `jcond`): `next`=0, `always`=1, `if`=2, `ifnot`=3. Move guards (o
 | 13 |  | uo[7] |
 
 Host link: SCK = ui[0], CS_N = ui[1], MOSI = ui[2], MISO = uo[0], IRQ = uo[1].
+
+## Host address map
+
+Program bytes: `0x0000 + core*0x800 + 8*word + byte` (write-only). Data RAM: `0x1000..0x17FF`. Access: W = write-only latch configuration (reads 0), R/RW/W1C = flop registers. Multi-byte fields are little-endian.
+
+### LINE (0x2000 + 0x20 x k, k = 0..3)
+
+| Offset | Register | Bytes | Access | Layout |
+|---|---|---|---|---|
+| 0x00 | `INC` | 2 | W | phase increment |
+| 0x02 | `MOD` | 2 | W | phase modulus |
+| 0x04 | `T0` | 2 | W | tap 0 phase |
+| 0x06 | `T1` | 2 | W | tap 1 phase |
+| 0x08 | `T2` | 2 | W | tap 2 phase |
+| 0x0A | `PRE` | 2 | W | phase loaded on start or accept |
+| 0x0C | `WLO` | 2 | W | window low |
+| 0x0E | `WHI` | 2 | W | window high |
+| 0x10 | `EDGE` | 1 | W | bits 3:0 pin, 5:4 polarity (0 none, 1 rise, 2 fall, 3 both), bit 6 WEN, bit 7 FOLLOW |
+| 0x11 | `T0EDGE` | 1 | W | bits 3:0 pin, 5:4 polarity, bit 6 T0SRC (tap 0 from this edge) |
+| 0x12 | `PINS` | 1 | W | bits 3:0 PINA, bits 7:4 PINB |
+| 0x13 | `SNAP` | 1 | W | bits 1:0 snapshot point: 0..2 tap k, 3 the boundary |
+| 0x14 | `LUT0` | 4 | W | input table 0, index {REM, B1, A2, A1, A0} |
+| 0x18 | `LUT1` | 4 | W | input table 1, same index |
+
+### THREAD (0x2080 + 0x08 x k, k = 0..5)
+
+| Offset | Register | Bytes | Access | Layout |
+|---|---|---|---|---|
+| 0x00 | `CFG` | 1 | W | bit 0 CORE, bits 2:1 LINE, bits 7:3 TRIG |
+| 0x01 | `W0C` | 1 | W | watcher 0 guard (bits 5:0, 0 disables) |
+| 0x02 | `W1C` | 1 | W | watcher 1 guard (bits 5:0, 0 disables) |
+| 0x03 | `W0H` | 1 | W | watcher 0 handler address |
+| 0x04 | `W1H` | 1 | W | watcher 1 handler address |
+
+### LFSR (0x20C0 + 0x08 x k, k = 0..1)
+
+| Offset | Register | Bytes | Access | Layout |
+|---|---|---|---|---|
+| 0x00 | `POLY` | 4 | W | polynomial, reflected form |
+
+### STREAM (0x20D0 + 0x08 x k, k = 0..1)
+
+| Offset | Register | Bytes | Access | Layout |
+|---|---|---|---|---|
+| 0x00 | `MODE` | 1 | W | bit 0 receive (0 transmit), bit 1 MSB first |
+| 0x01 | `START` | 2 | W | byte address, bits 10:0 |
+| 0x03 | `LEN` | 2 | W | length in bytes, bits 11:0, 0..2048 |
+| 0x05 | `MARK` | 2 | W | byte position for MARK, bits 11:0 |
+
+### OUT (0x2100 + 0x10 x k, k = 0..13)
+
+| Offset | Register | Bytes | Access | Layout |
+|---|---|---|---|---|
+| 0x00 | `BIND` | 1 | W | bits 1:0 LINE, bit 2 BOUND |
+| 0x01 | `SEL` | 1 | W | bits 1:0, 3:2, 5:4: symbol bit read as table inputs b0, b1, b2 |
+| 0x04 | `LUT` | 4 | W | output table, index {SEG[1:0], b2, b1, b0} |
+| 0x08 | `OE` | 4 | W | output-enable table, same index (pins O0..O7 only) |
+
+### CTRL (0x2400)
+
+| Offset | Register | Bytes | Access | Layout |
+|---|---|---|---|---|
+| 0x00 | `RUN` | 1 | RW | bit 0 RUN_global |
+| 0x01 | `STICKY` | 1 | W1C | bit 0 CONFLICT, bit 1 MEMHAZ |
+| 0x02 | `IRQEN` | 1 | RW | bit 0 HOST.OUTV, bit 1 any sticky error |
+| 0x03 | `DOORBELL` | 1 | W | bit t triggers thread t (reads 0) |
+| 0x04 | `HOSTIN` | 1 | RW | write: INB and set INV; read: INB |
+| 0x05 | `HOSTOUT` | 1 | R | OUTB (no side effect) |
+| 0x06 | `HOSTSTAT` | 1 | RW | read bit 0 INV, bit 1 OUTV; write 1 to bit 1 clears OUTV |
+| 0x07 | `ID` | 1 | R | 0xA0 | VERSION |
+| 0x08 | `ERRSUM` | 1 | R | bit 0 any LATE, 1 any OVR, 2 any TAPMISS, 3 any STARVED, 4 CONFLICT, 5 MEMHAZ |
+
+### LRT (0x2410 + 0x08 x k, k = 0..3)
+
+| Offset | Register | Bytes | Access | Layout |
+|---|---|---|---|---|
+| 0x00 | `PHASE` | 2 | RW | PH |
+| 0x02 | `CTL` | 1 | RW | bit 0 RUN, 1 ARM, 2 REN; read also bit 3 SYNC, bits 6:4 FIRED |
+| 0x03 | `SYM` | 1 | R | bits 3:0 STAGED, bits 7:4 COMMITTED |
+| 0x04 | `INS` | 1 | R | bits 4:0 {REM, SN}, bits 6:5 IN |
+| 0x05 | `STAT` | 1 | W1C | bit 0 TAPMISS |
+
+### TRT (0x2440 + 0x02 x k, k = 0..5)
+
+| Offset | Register | Bytes | Access | Layout |
+|---|---|---|---|---|
+| 0x00 | `PC` | 1 | RW | program counter |
+| 0x01 | `STAT` | 1 | RW | bit 0 READY, 1 RUNNING, 2 ARMED (read-only); bit 3 EN (read/write); bit 4 LATE, bit 5 OVR (write 1 to clear) |
+
+### SRT (0x2450 + 0x04 x k, k = 0..1)
+
+| Offset | Register | Bytes | Access | Layout |
+|---|---|---|---|---|
+| 0x00 | `POSL` | 1 | R | POS bits 7:0 |
+| 0x01 | `POSH` | 1 | R | bits 3:0 POS[11:8], bits 6:4 BIDX, bit 7 STARVED |
+| 0x02 | `CTL` | 1 | W | bit 0 rewind, bit 1 flush, bit 7 clear STARVED (reads 0) |
+

@@ -67,6 +67,10 @@ def as_json() -> str:
         "in_pins": m.IN_PINS, "out_pins": m.OUT_PINS, "host_pins": m.HOST_PINS,
         "config_blocks": {b: {"fields": f, "instances": n} for b, (f, n) in m.CONFIG_BLOCKS.items()},
         "config_bits": m.CONFIG_BITS, "config_bits_total": m.CONFIG_BITS_TOTAL,
+        "host_map": m.HOST_MAP, "host_stride": m.HOST_STRIDE,
+        "host_blocks": {b: {"base": m.HOST_MAP[base], "stride": m.HOST_STRIDE[st] if st else 0, "instances": n,
+                            "regs": {f"0x{o:02X}": list(r) for o, r in regs.items()}}
+                        for b, (base, st, n, regs) in m.HOST_BLOCKS.items()},
     }
     return json.dumps(d, indent=1) + "\n"
 
@@ -97,6 +101,18 @@ def tables() -> str:
     for i in range(max(m.N_IN_PINS, m.N_OUT_PINS)):
         o.append(f"| {i} | {m.IN_PINS[i] if i < m.N_IN_PINS else ''} | {m.OUT_PINS[i] if i < m.N_OUT_PINS else ''} |")
     o += ["", "Host link: " + ", ".join(f"{k} = {v}" for k, v in m.HOST_PINS.items()) + "."]
+    o += ["", "## Host address map", "",
+          "Program bytes: `0x%04X + core*0x%X + 8*word + byte` (write-only). Data RAM: `0x%04X..0x%04X`. "
+          % (m.HOST_MAP["PROG_BASE"], m.HOST_STRIDE["PROG_CORE"], m.HOST_MAP["DATA_BASE"],
+             m.HOST_MAP["DATA_BASE"] + m.DATA_BYTES - 1)
+          + "Access: W = write-only latch configuration (reads 0), R/RW/W1C = flop registers. "
+          "Multi-byte fields are little-endian.", ""]
+    for b, (base, st, n, regs) in m.HOST_BLOCKS.items():
+        b0 = m.HOST_MAP[base]
+        where = f"0x{b0:04X}" + (f" + 0x{m.HOST_STRIDE[st]:02X} x k, k = 0..{n - 1}" if st else "")
+        o += [f"### {b} ({where})", "", "| Offset | Register | Bytes | Access | Layout |", "|---|---|---|---|---|"]
+        o += [f"| 0x{off:02X} | `{r[0]}` | {r[1]} | {r[2]} | {r[3]} |" for off, r in regs.items()]
+        o.append("")
     return "\n".join(o) + "\n"
 
 
