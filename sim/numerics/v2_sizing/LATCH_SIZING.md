@@ -71,3 +71,6 @@ pins in `tt_v2_pnr/src/project.sdc`. The exception is valid only under the new *
 high on two consecutive rising edges (one host strobe per SPI byte guarantees it; a `COCOTB_SIM` check flags it).
 Back-to-back writes are therefore no longer supported; `test_back_to_back` became `test_spaced_writes` and
 `test_consecutive_write_flagged`. Flow result: HARDEN_LEDGER "v2 skeleton iterations", run `v2pnr_r4_20261112T0921`.
+
+Back-annotated gate-level check (V2_DESIGN 4.7) of the routed skeleton: passed at slow, typ and fast corners
+(`tt_v2_pnr/test/test_cfg.py`, evidence `data/raw/v2pnr_skeleton_20261112/v2pnr_r4_20261112T0921/sdf/`).

@@ -1,0 +1,54 @@
+20261111T003800Z smoke_template_8x4_r1 rc=1 wall_s=0
+20261111T003852Z smoke_template_8x4_r2 rc=1 wall_s=0
+20261111T012453Z smoke_template_8x4_r3 rc=0 wall_s=2534
+20261111T081850Z smoke_template_8x4_r3 precheck rc=1 wall_s=0
+20261111T083641Z smoke_template_8x4_r3 precheck rc=1 wall_s=0
+20261111T085005Z lockstep ihp_sram  rc=1 wall_s=113 args=-k smoke or regs or blink or random_1 or random_2
+20261111T085251Z lockstep ihp_sram  rc=1 wall_s=135 args=-k random_2
+20261111T085750Z lockstep ihp_sram  rc=1 wall_s=80 args=-k not random or random_1 or random_2 or random_3
+20261111T090433Z smoke_template_8x4_r3 precheck rc=1 wall_s=1496
+20261111T092754Z metronome_r1 rc=killed reason=superseded_by_area_pass (stopped in 40-globalrouting)
+20261111T095055Z smoke_template_8x4_r3 precheck rc=0 wall_s=1423
+20261111T094945Z lockstep ihp_sram  rc=1 wall_s=138 args=
+20261111T101614Z metronome_r2 rc=killed reason=GRT_overflow_unresolved_after_295_extra_iters (stopped in 40-globalrouting)
+20261111T101654Z metronome_r2__e1_grtadj015 rc=2 wall_s=0 last=None over={"GRT_ADJUSTMENT":0.15}
+20261111T101655Z metronome_r2__e2_dens45 rc=2 wall_s=0 last=None over={"PL_TARGET_DENSITY_PCT":45,"GRT_ADJUSTMENT":0.15}
+20261111T120235Z metronome_r2__e1_grtadj015 rc=1 wall_s=6279 last=06-openroad-detailedrouting over={"GRT_ADJUSTMENT":0.15}
+20261111T120236Z metronome_r2__e2_dens45 rc=1 wall_s=6277 last=17-openroad-detailedrouting over={"PL_TARGET_DENSITY_PCT":45,"GRT_ADJUSTMENT":0.15}
+20261111T132231Z metronome_r3_d17__map_delay4 rc=0 wall_s=119 last=12-openroad-staprepnr over={"SYNTH_STRATEGY":"DELAY 4","GRT_ADJUSTMENT":0.15,"GRT_ALLOW_CONGESTION":false,"OPENROAD_THREADS":8,"STA_THREADS":4}
+20261111T132415Z metronome_r3_d17__map_area0 rc=0 wall_s=102 last=12-openroad-staprepnr over={"SYNTH_STRATEGY":"AREA 0","GRT_ADJUSTMENT":0.15,"GRT_ALLOW_CONGESTION":false,"OPENROAD_THREADS":8,"STA_THREADS":4}
+20261111T132523Z lockstep gl metronome_r3_d17__map_area0 rc=0 wall_s=55 args=-k test_lockstep and (smoke or random_1)
+20261111T132910Z metronome_r3_d17__pnr_area0 rc=0 wall_s=167 last=28-openroad-globalrouting over={"SYNTH_STRATEGY":"AREA 0","GRT_ADJUSTMENT":0.15,"GRT_ALLOW_CONGESTION":false,"OPENROAD_THREADS":8,"STA_THREADS":4}
+20261111T133249Z metronome_r3_d17__sta_grt_mc rc=0 wall_s=32 last=01-openroad-stamidpnr over={"SYNTH_STRATEGY":"AREA 0","PNR_CORNERS":["nom_slow_1p08V_125C","nom_fast_1p32V_m40C","nom_typ_1p20V_25C"],"OPENROAD_THREADS":4,"STA_THREADS":4}
+20261111T133520Z metronome_r3_d17__sta_grt_slow_v2 rc=0 wall_s=20 last=01-openroad-stamidpnr over={"SYNTH_STRATEGY":"AREA 0","PNR_CORNERS":["nom_slow_1p08V_125C"],"DEFAULT_CORNER":"nom_slow_1p08V_125C","OPENROAD_THREADS":4,"STA_THREADS":4}
+20261111T134146Z metronome_r3_d17__repair_grt_area0 rc=0 wall_s=51 last=01-openroad-resizertimingpostgrt over={"SYNTH_STRATEGY":"AREA 0","RUN_POST_GRT_RESIZER_TIMING":true,"GRT_ADJUSTMENT":0.15,"GRT_ALLOW_CONGESTION":false,"GRT_RESIZER_SETUP_SLACK_MARGIN":0.1,"GRT_RESIZER_HOLD_SLACK_MARGIN":0.1,"OPENROAD_THREADS":4,"STA_THREADS":4}
+20261111T134404Z metronome_r3_d17__repaired_grt rc=0 wall_s=14 last=01-openroad-globalrouting over={"SYNTH_STRATEGY":"AREA 0","GRT_ADJUSTMENT":0.15,"GRT_ALLOW_CONGESTION":false,"OPENROAD_THREADS":4,"STA_THREADS":4}
+20261111T134424Z metronome_r3_d17__repaired_sta_slow rc=0 wall_s=18 last=01-openroad-stamidpnr over={"SYNTH_STRATEGY":"AREA 0","GRT_ADJUSTMENT":0.15,"GRT_ALLOW_CONGESTION":false,"OPENROAD_THREADS":4,"STA_THREADS":4,"PNR_CORNERS":["nom_slow_1p08V_125C"],"DEFAULT_CORNER":"nom_slow_1p08V_125C"}
+20261111T134438Z metronome_r3_d17__repaired_sta_fast rc=0 wall_s=12 last=01-openroad-stamidpnr over={"SYNTH_STRATEGY":"AREA 0","GRT_ADJUSTMENT":0.15,"GRT_ALLOW_CONGESTION":false,"OPENROAD_THREADS":4,"STA_THREADS":4,"PNR_CORNERS":["nom_fast_1p32V_m40C"],"DEFAULT_CORNER":"nom_fast_1p32V_m40C"}
+20261111T134759Z metronome_r3_d17__route_area0 rc=1 wall_s=1037 last=05-openroad-detailedrouting over={"SYNTH_STRATEGY":"AREA 0","GRT_ADJUSTMENT":0.15,"GRT_ALLOW_CONGESTION":false,"OPENROAD_THREADS":8,"STA_THREADS":4}
+20261111T141930Z metronome_r3_d17__route_repaired12 rc=1 wall_s=1886 last=22-netgen-lvs over={"SYNTH_STRATEGY":"AREA 0","GRT_ADJUSTMENT":0.15,"GRT_ALLOW_CONGESTION":false,"GRT_RESIZER_SETUP_SLACK_MARGIN":0.1,"GRT_RESIZER_HOLD_SLACK_MARGIN":0.1,"DRT_OPT_ITERS":12,"DRT_SAVE_DRC_REPORT_ITERS":1,"OPENROAD_THREADS":8,"STA_THREADS":4}
+20261111T151439Z metronome_r3_d17__r4_pdnoff_repair rc=1 wall_s=2534 last=55-netgen-lvs over={"SYNTH_STRATEGY":"AREA 0","GRT_ADJUSTMENT":0.15,"GRT_ALLOW_CONGESTION":false,"OPENROAD_THREADS":8,"STA_THREADS":4,"FP_PDN_VOFFSET":17.39,"RUN_POST_GRT_DESIGN_REPAIR":true,"RUN_POST_GRT_RESIZER_TIMING":true,"GRT_RESIZER_SETUP_SLACK_MARGIN":1.0,"GRT_RESIZER_HOLD_SLACK_MARGIN":0.1,"PL_RESIZER_SETUP_SLACK_MARGIN":1.0}
+20261111T160925Z metronome_r3_d17__r5_pmemx891 rc=2 wall_s=2838 last=61-misc-reportmanufacturability over={"SYNTH_STRATEGY":"AREA 0","GRT_ADJUSTMENT":0.15,"GRT_ALLOW_CONGESTION":false,"OPENROAD_THREADS":8,"STA_THREADS":4,"FP_PDN_VOFFSET":17.39,"RUN_POST_GRT_DESIGN_REPAIR":true,"RUN_POST_GRT_RESIZER_TIMING":true,"GRT_RESIZER_SETUP_SLACK_MARGIN":2.0,"GRT_RESIZER_HOLD_SLACK_MARGIN":0.1,"PL_RESIZER_SETUP_SLACK_MARGIN":2.0,"MACROS":{"RM_IHPSG13_1P_256x64_c2_bm_bist":{"instances":{"u_pmem0.u_sram":{"location":[891.32,3.78],"orientation":"FS"},"u_pmem1.u_sram":{"location":[891.32,585.9],"orientation":"N"}},"gds":["pdk_dir::libs.ref/sg13cmos5l_sram/gds/RM_IHPSG13_1P_256x64_c2_bm_bist.gds"],"lef":["pdk_dir::libs.ref/sg13cmos5l_sram/lef/RM_IHPSG13_1P_256x64_c2_bm_bist.lef"],"lib":{"*_typ_*":["pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_256x64_c2_bm_bist_typ_1p20V_25C.lib"],"*_fast_*":["pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_256x64_c2_bm_bist_fast_1p32V_m55C.lib"],"*_slow_*":["pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_256x64_c2_bm_bist_slow_1p08V_125C.lib"]}},"RM_IHPSG13_1P_512x32_c2_bm_bist":{"instances":{"u_dmem.u_sram":{"location":[3.36,3.78],"orientation":"FS"}},"gds":["pdk_dir::libs.ref/sg13cmos5l_sram/gds/RM_IHPSG13_1P_512x32_c2_bm_bist.gds"],"lef":["pdk_dir::libs.ref/sg13cmos5l_sram/lef/RM_IHPSG13_1P_512x32_c2_bm_bist.lef"],"lib":{"*_typ_*":["pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_512x32_c2_bm_bist_typ_1p20V_25C.lib"],"*_fast_*":["pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_512x32_c2_bm_bist_fast_1p32V_m55C.lib"],"*_slow_*":["pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_512x32_c2_bm_bist_slow_1p08V_125C.lib"]}}}}
+20261111T161907Z metronome_r3_d17__r5_pmemx891 precheck rc=1 wall_s=479
+20261111T161131Z lockstep gl metronome_r3_d17__r5_pmemx891 rc=0 wall_s=554 args=-k test_lockstep
+20261111T165856Z metronome_r3_d17__r5_pmemx891 precheck rc=0 wall_s=553
+20261111T170302Z metronome_r3_d17__r6_ant_setup rc=2 wall_s=3035 last=61-misc-reportmanufacturability over={"SYNTH_STRATEGY":"AREA 0","GRT_ADJUSTMENT":0.15,"GRT_ALLOW_CONGESTION":false,"OPENROAD_THREADS":8,"STA_THREADS":4,"FP_PDN_VOFFSET":17.39,"RUN_POST_GRT_DESIGN_REPAIR":true,"RUN_POST_GRT_RESIZER_TIMING":true,"GRT_RESIZER_SETUP_SLACK_MARGIN":3.0,"GRT_RESIZER_HOLD_SLACK_MARGIN":0.1,"PL_RESIZER_SETUP_SLACK_MARGIN":3.0,"GRT_RESIZER_SETUP_REPAIR_TNS_PCT":100,"PL_RESIZER_SETUP_REPAIR_TNS_PCT":100,"GRT_RESIZER_SETUP_MAX_BUFFER_PCT":80,"PL_RESIZER_SETUP_MAX_BUFFER_PCT":80,"GRT_RESIZER_GATE_CLONING":true,"GRT_ANTENNA_REPAIR_ITERS":10,"GRT_ANTENNA_REPAIR_MARGIN":15,"MACROS":{"RM_IHPSG13_1P_256x64_c2_bm_bist":{"instances":{"u_pmem0.u_sram":{"location":[891.32,3.78],"orientation":"FS"},"u_pmem1.u_sram":{"location":[891.32,585.9],"orientation":"N"}},"gds":["pdk_dir::libs.ref/sg13cmos5l_sram/gds/RM_IHPSG13_1P_256x64_c2_bm_bist.gds"],"lef":["pdk_dir::libs.ref/sg13cmos5l_sram/lef/RM_IHPSG13_1P_256x64_c2_bm_bist.lef"],"lib":{"*_typ_*":["pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_256x64_c2_bm_bist_typ_1p20V_25C.lib"],"*_fast_*":["pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_256x64_c2_bm_bist_fast_1p32V_m55C.lib"],"*_slow_*":["pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_256x64_c2_bm_bist_slow_1p08V_125C.lib"]}},"RM_IHPSG13_1P_512x32_c2_bm_bist":{"instances":{"u_dmem.u_sram":{"location":[3.36,3.78],"orientation":"FS"}},"gds":["pdk_dir::libs.ref/sg13cmos5l_sram/gds/RM_IHPSG13_1P_512x32_c2_bm_bist.gds"],"lef":["pdk_dir::libs.ref/sg13cmos5l_sram/lef/RM_IHPSG13_1P_512x32_c2_bm_bist.lef"],"lib":{"*_typ_*":["pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_512x32_c2_bm_bist_typ_1p20V_25C.lib"],"*_fast_*":["pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_512x32_c2_bm_bist_fast_1p32V_m55C.lib"],"*_slow_*":["pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_512x32_c2_bm_bist_slow_1p08V_125C.lib"]}}}}
+20261111T171136Z metronome_r3_d17__r6_ant_setup precheck rc=0 wall_s=403
+20261111T170454Z lockstep gl metronome_r3_d17__r6_ant_setup rc=0 wall_s=445 args=-k test_lockstep
+20261111T180442Z lockstep rtl  rc=0 wall_s=181 args=-k test_lockstep
+20261112T031710Z v2pnr_r1_20261112T0056 rc=1 wall_s=8420
+20261112T083944Z v2pnr_r2_20261112T0813 killed by user request at step 38-resizertimingpostcts (not a flow result)
+20261112T085055Z v2pnr_r3_20261112T0837 rc=1 wall_s=840
+20261112T093318Z v2pnr_r4_20261112T0921 rc=0 wall_s=673
+20261112T113804Z v2pnr_r4_20261112T0921 gl rc=0 wall_s=3
+20261112T114054Z v2pnr_r4_20261112T0921 precheck rc=0 wall_s=200
+20261112T120136Z v2pnr_r4_20261112T0921 sdf cfg_slow corner=slow test=test_cfg clk_ps=16666 rc=1 wall_s=7
+20261112T120158Z v2pnr_r4_20261112T0921 sdf cfg_slow corner=slow test=test_cfg clk_ps=16666 rc=1 wall_s=7
+20261112T121007Z v2pnr_r4_20261112T0921 sdf cfg_slow corner=slow test=test_cfg clk_ps=16666 rc=0 sdf_errors=0 wall_s=40
+20261112T121116Z v2pnr_r4_20261112T0921 sdf cfg_fast corner=fast test=test_cfg clk_ps=16666 rc=99 sdf_errors=1 wall_s=40
+20261112T121156Z v2pnr_r4_20261112T0921 sdf cfg_typ corner=typ test=test_cfg clk_ps=16666 rc=0 sdf_errors=0 wall_s=40
+20261112T121228Z v2pnr_r4_20261112T0921 sdf proj_slow corner=slow test=test clk_ps=16666 rc=0 sdf_errors=0 wall_s=32
+20261112T121303Z v2pnr_r4_20261112T0921 sdf proj_fast corner=fast test=test clk_ps=16666 rc=99 sdf_errors=1 wall_s=35
+20261112T121343Z v2pnr_r4_20261112T0921 sdf neg_cfg_slow_4ns corner=slow test=test_cfg clk_ps=4000 rc=0 sdf_errors=0 wall_s=40
+20261112T121547Z v2pnr_r4_20261112T0921 sdf cfg_fast corner=fast test=test_cfg clk_ps=16666 rc=0 sdf_errors=0 wall_s=42
+20261112T121619Z v2pnr_r4_20261112T0921 sdf proj_fast corner=fast test=test clk_ps=16666 rc=0 sdf_errors=0 wall_s=31

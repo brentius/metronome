@@ -1,0 +1,2 @@
+sdf_errors=0 other_sdf_warnings=1 timingcheck_unsupported=1105
+renamed 869 escaped instances; 10710 SDF cells kept, 3 SRAM macro cells dropped; INTERCONNECT kept 43 (top-level ports), dropped 27560 (cell to cell, largest 0.165 ns)
