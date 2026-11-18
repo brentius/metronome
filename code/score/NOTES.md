@@ -138,6 +138,26 @@ New ambiguities found while applying D29:
 * Derived points (no `sample` anywhere): middle of the latest differing segment; else a split where no symbol changes
   that wire's level; else E-FIT-TAP (checked against every role).
 
+## Update for part A 18, language extensions (2026-11-14)
+
+New modules: `constrain.py` (timing constraints measured on a waveform, 18.1) and `layer.py` (library scores in
+`code/score/lib/`, layered-score checks, `ByteCodec` and `LayeredCodec`, 18.2). New AST nodes: `Constraint`,
+`TEvent`, `EnumDecl`, `StateDecl`, `Assign`; `Score` gained `constraints`, `enums`, `states`, `imports`, `over`
+(all defaulted). Lexer: `<-` and a single `.` are now operators. Parser: enum members are pre-scanned so `NAME:`
+ends a sequence inside a switch (a field may not share a member's name); an unknown type name is an enum, resolved
+after the whole file is read (E-NAMES if none). Checks: `check_extensions` (names of the new declarations) and the
+role-consistency rule `role_expr` (E-ROLE, 18.4). Codec: enum members and state in the environment; state kept per
+(direction, role) on the `Codec` across calls (`reset_state()`); enum names accepted on encode; a received non-member
+raises `mismatch`. Tests: `code/tests/score/test_lang_ext.py` (34).
+
+Readings chosen:
+* **Constraint pairing.** Each A pairs with the first B strictly after it. `when W L` requires W at L on both cycles of
+  the edge, so an edge coincident with a W change is not counted. A released drive reads as the pull-up.
+* **Frame split in `LayeredCodec.decode`.** An idle run of at least 2/3 of the smallest upper `gap`; each split frame is
+  decoded with 8 cycles of lead and at least one character of tail.
+* **`<-` lexing.** `a<-1` lexes as a state update; write `a < -1` for a comparison with a negative number.
+* **Role mapping in layering** is positional; every upper field must be owned by the role that drives the lower payload.
+
 ## Update for spec decision D30 (2026-11-12)
 
 The two D29 findings above are resolved in the spec: tether (`split 50%`, `mark d "01"`, node window `80%..20%`) now passes all

@@ -82,8 +82,10 @@ def host_writes(prog: Program) -> list:
     """The ordered (address, bytes, note) list that configures the chip for `prog`.
 
     Order: program memory, data RAM, LFSR polynomials, stream and output configuration, line configuration, thread
-    configuration (CFG last), thread PC and EN, stream rewind (MODE/START apply at a rewind), line PHASE, line CTL
-    (starts the lines), IRQEN, CTRL.RUN last.  Program memory is written while RUN_global is 0 (SPEC v2 9a.8).
+    configuration (CFG last), thread PC and EN, stream rewind (MODE/START apply at a rewind), line PHASE, IRQEN,
+    CTRL.RUN, then line CTL. Dispatch must be enabled before generated lines start: otherwise their triggers queue
+    while dispatch is stopped and set LATE/OVR during the remaining SPI writes. Program memory is written while
+    RUN_global is 0 (SPEC v2 9a.8). Loading assumes a reset/stopped chip, not a live program replacement.
     """
     w = _W()
     for core in range(M.N_CORES):
@@ -142,13 +144,13 @@ def host_writes(prog: Program) -> list:
     for l, ln in sorted(prog.lines.items()):
         if ln.phase is not None:
             w.reg(lrt_addr(l, "PHASE"), ln.phase, 2, f"L{l}.PHASE")
-    for l, ln in sorted(prog.lines.items()):
-        if ln.ctl:
-            w.reg(lrt_addr(l, "CTL"), ln.ctl, 1, f"L{l}.CTL")
     if prog.irqen is not None:
         w.reg(ctrl_addr("IRQEN"), prog.irqen, 1, "CTRL.IRQEN")
     if prog.run:
         w.reg(ctrl_addr("RUN"), 1, 1, "CTRL.RUN")
+    for l, ln in sorted(prog.lines.items()):
+        if ln.ctl:
+            w.reg(lrt_addr(l, "CTL"), ln.ctl, 1, f"L{l}.CTL")
     return w.writes
 
 

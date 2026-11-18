@@ -1,0 +1,48 @@
+# Library score: I2C (UM10204) controller and target, spec 16.2 verbatim below this header.  Compiled by scorec's bus template
+# (both roles) and checked on the cycle model in code/tests/scorec/test_i2c.py and code/tests/score_lib/test_i2c_target.py.
+# Does: START / repeated START / STOP, 7-bit address, read and write, per-byte acknowledge, target address match by `param`.
+# Does not: 10-bit addressing, target clock stretching, arbitration, general call, speed modes beyond the rate you load.
+protocol i2c
+roles    controller, target
+
+wire scl out open-drain idle high by controller     # only the controller drives scl; the target reads it
+wire sda shared open-drain idle high
+
+clock 100 kHz
+  controller: generated, stretch on scl          # hold, part B 3.2a
+  target:     follow scl fall, capture on scl rise
+  split 25% 50% 75%
+
+symbols                                   # quarters of the controller's beat
+  bit(d)   scl "0110"  sda "dddd"   sample sda at scl rise
+  start    scl "1110"  sda "1000"   # SDA falls at 1/4, SCL at 3/4: tHD;STA = half a beat
+  rstart   scl "0111"  sda "1111"   # repeated START, first beat: SDA released, SCL raised (tSU;STA)
+  stop     scl "0111"  sda "0001"
+
+recognise
+  start_c   sda falls while scl high      # START or repeated START
+  stop_c    sda rises while scl high
+
+bits msb first
+
+grammar
+  bus          = transaction*
+  transaction  = start request (rstart start request)* stop
+
+  request      = addr:u7  by controller
+                 rw:bit   by controller
+                 ack:bit  by target = (addr == my_addr) ? 0 : 1
+                 body(rw) if ack == 0
+
+  body(0)      = { data:u8 by controller
+                   dack:bit by target = 0 }*                 # ends at stop or rstart
+
+  body(1)      = { data:u8 by target
+                   more:bit by controller } until more == 1  # NACK ends a read
+
+abort
+  on stop_c  -> bus
+  on start_c -> request
+
+param
+  my_addr : u7 for target

@@ -73,6 +73,9 @@ class Stream:
         self.PEND = self.PV = 0
         self.STARVED = 0
         self.rdword = 0          # word read when served, delivered at the end of the next cycle (LD)
+        self.CEN = 0             # v3: edge capture on this stream (S0 only; set by Chip each cycle, SPEC v2 12.4)
+        self.RPL = 0             # v4: edge replay from this stream (S0 only; set by Chip each cycle, SPEC v2 13.2)
+        self.NB = self.NV = 0    # v4 replay: second record buffer
 
     # ---------------------------------------------------------------- sources and guards
     @property
@@ -81,7 +84,7 @@ class Stream:
 
     @property
     def BIT(self):
-        if self.MODE or not self.CV or self.END:
+        if self.CEN or self.RPL or self.MODE or not self.CV or self.END:
             return 0
         b = 7 - self.BIDX if self.MSB else self.BIDX
         return (self.CUR >> b) & 1
@@ -99,17 +102,26 @@ class Stream:
         return int(self.BIDX == 0)
 
     def request(self):
+        if self.RPL:
+            return ("R", self.BA) if self.RQ else None
+        if self.CEN:
+            return ("WW", self.BA, self.WB) if self.PV else None
         if self.MODE:
             return ("W", self.BA, self.PEND) if self.PV else None
         return ("R", self.BA) if self.RQ else None
 
     # ---------------------------------------------------------------- phase 2
-    def commit(self, g, word, adv, rx, ctl):
+    def commit(self, g, word, adv, rx, ctl, rec=None, rpl=None):
         """g: served this cycle; word: the RAM word read if g and transmit; adv: ADV move; rx: RX move bit or None;
-        ctl: OR of CTL requests (move value and host bits) or None. Returns True on a starve event."""
+        ctl: OR of CTL requests (move value and host bits) or None; rec: v3 edge-capture record pushed this cycle
+        or None (SPEC v2 12.4). Returns True on a starve event."""
         ctl = ctl or 0
         starve = False
         end = self.POS == self.LEN
+        if self.RPL:
+            return self._commit_replay(g, word, ctl, end, *(rpl or (False, False)))
+        if self.CEN:
+            return self._commit_capture(g, rec, ctl, end)
         lane = self.BA & 3
         lb = (self.WB >> (8 * lane)) & 0xFF
         b = 7 - self.BIDX if self.MSB else self.BIDX
@@ -170,6 +182,66 @@ class Stream:
             self.BA = self.START
             self.CUR = self.CV = self.WV = self.RQ = self.LD = self.PV = 0
         return starve
+
+
+def _capture_commit(self, g, rec, ctl, end):
+    """Capture mode (SPEC v2 12.4): ADV, RX and flush have no effect; records are whole-word writes."""
+    starve = False
+    PV, BA, POS, WB = self.PV, self.BA, self.POS, self.WB
+    if self.PV and g:
+        PV, BA = 0, (self.BA + 4) & MASK11
+    if rec is not None and not end:
+        if self.PV and not g:
+            starve = True
+        else:
+            WB, PV, POS = rec, 1, (self.POS + 4) & 0xFFF
+    self.PV, self.BA, self.POS, self.WB = PV, BA, POS, WB
+    if ctl & 0x80:
+        self.STARVED = 0
+    if starve:
+        self.STARVED = 1
+    if ctl & 1:
+        self.POS = self.BIDX = 0
+        self.BA = self.START
+        self.CUR = self.CV = self.WV = self.RQ = self.LD = self.PV = 0
+    return starve
+
+
+Stream._commit_capture = _capture_commit
+
+
+def _replay_commit(self, g, word, ctl, end, consume, late):
+    """Replay mode (SPEC v2 13.2): whole-word record reads into a two-deep buffer (WB, then NB); ADV, RX and flush
+    have no effect. consume: the record in WB is applied this cycle; late: it was applied after its time."""
+    WB, WV, NB, NV, RQ, LD = self.WB, self.WV, self.NB, self.NV, self.RQ, self.LD
+    BA, POS = self.BA, self.POS
+    if consume:
+        WB, WV, NV = NB, NV, 0
+    if self.LD:
+        if not WV:
+            WB, WV = self.rdword, 1
+        else:
+            NB, NV = self.rdword, 1
+        LD = 0
+    if self.RQ and g:
+        RQ, LD = 0, 1
+        self.rdword = word
+        BA, POS = (self.BA + 4) & MASK11, (self.POS + 4) & 0xFFF
+    elif not self.RQ and not self.LD and not end and not (self.WV and self.NV):
+        RQ = 1
+    self.WB, self.WV, self.NB, self.NV, self.RQ, self.LD, self.BA, self.POS = WB, WV, NB, NV, RQ, LD, BA, POS
+    if ctl & 0x80:
+        self.STARVED = 0
+    if late:
+        self.STARVED = 1
+    if ctl & 1:
+        self.POS = self.BIDX = 0
+        self.BA = self.START
+        self.CUR = self.CV = self.WV = self.RQ = self.LD = self.PV = self.NV = 0
+    return late
+
+
+Stream._commit_replay = _replay_commit
 
 
 class Memory:
@@ -233,8 +305,32 @@ class Memory:
             r = self.sreq
             if r[0] == "W":
                 self.data[r[1]] = r[2]
+            elif r[0] == "WW":                     # v3 edge-capture record: one word, all four lanes
+                a = r[1] & ~3 & MASK11
+                self.data[a:a + 4] = (r[2] & 0xFFFFFFFF).to_bytes(4, "little")
             else:
                 sword = self.word(r[1])
         if host_newreq is not None:
             self.host_req = host_newreq
         return hland, sword
+
+    def commit_frozen(self, host_newreq, frzd):
+        """A frozen cycle (SPEC v2 12.3): only the host request is served; streams and the pointer hold, except
+        that a pointer read served in the last unfrozen cycle has its byte captured into D (the landing exception;
+        RDY follows in the first unfrozen cycle). A stream's captured word (WB) is invisible while LD, so the
+        model keeps it in rdword."""
+        hland, self.hpipe = self.hpipe, None
+        p = self.ptr
+        if p.pipe is not None and not frzd:
+            p.D = p.pipe
+        self.served = None
+        if self.host_req is not None:
+            self.served = "H"
+            r, self.host_req = self.host_req, None
+            if r[0] == "W":
+                self.data[r[1]] = r[2]
+            else:
+                self.hpipe = self.data[r[1]]
+        if host_newreq is not None:
+            self.host_req = host_newreq
+        return hland

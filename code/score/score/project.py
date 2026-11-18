@@ -124,6 +124,8 @@ class _P:
             return LNode("gap", {"qty": f"{n.qty.value} {n.qty.unit}"})
         if isinstance(n, Turnaround):
             return LNode("turnaround", {"beats": n.beats})
+        if isinstance(n, Assign):            # both roles keep the state and update it at the same point (18.3)
+            return LNode("state", {"name": n.name, "action": "update"})
         if isinstance(n, Ref):
             k = kind_of(S, n.name)
             o = n.by or owner

@@ -43,6 +43,8 @@ LUT_IN_BITS = N_SAMPLES + 1      # input tables: samples + remembered bit
 PIN_LUT_IN_BITS = 3 + 2          # pin tables: three selected symbol bits + 2-bit SEG
 STREAM_ADDR_BITS = 11            # byte address in the 2 KB RAM
 STREAM_LEN_BITS = 12             # byte count, 0..2048
+MISR_POLY = 0x04C11DB7           # v3 execution digest: CRC-32 polynomial, shift left (SPEC v2 12.2)
+ECAP_DC_BITS = 19                # v3 edge capture: cycles-since-last-edge field of a record (SPEC v2 12.4)
 
 # ----------------------------------------------------------------------------------------------------------------
 # Pins (unchanged from v1, D8)
@@ -154,6 +156,10 @@ DST: list[Port] = [
     *_fam("S", N_STREAMS, "CTL", "stream {k}: bus[0] rewind to start, bus[1] flush a partial receive byte", "stream"),
     *_fam("L", N_LINES, "CTL", "line {k} beat generator: bus[0] RUN, bus[1] ARM, bus[2] REN", "line"),
     Port("HOST.OUT", "byte to the host mailbox (sets HOST.OUTV, raises IRQ)", "host"),
+    # v4 (SPEC v2 13.1, model only): configuration written by the cores
+    Port("CW.AL", "v4 config-write address bits 7..0 := bus", "cw"),
+    Port("CW.AH", "v4 config-write address bits 15..8 := bus", "cw"),
+    Port("CW.D", "v4 queue a host-map write of bus to the config-write address; address += 1", "cw"),
 ]
 
 GUARD_CONDS: list[Port] = [
@@ -217,6 +223,7 @@ WRITE_GROUPS: dict[str, list[str]] = {
     **{f"S{k}": [f"S{k}.ADV", f"S{k}.RX", f"S{k}.CTL"] for k in range(N_STREAMS)},
     **{f"L{k}.CTL": [f"L{k}.CTL"] for k in range(N_LINES)},
     "HOST.OUT": ["HOST.OUT"],
+    "CW": ["CW.AL", "CW.AH", "CW.D"],
 }
 
 # ----------------------------------------------------------------------------------------------------------------
@@ -235,7 +242,7 @@ LINE_CFG = {   # beat generator, edge sources, snapshot, pins, input tables
     "HOLD": 8,                      # hold: pin 4, level 1, tap 2, enable 1 (SPEC v2 3.2a, D27)
 }
 THREAD_CFG = {"CORE": 1, "LINE": 2, "TRIG": 5, "W0C": 6, "W1C": 6, "W0H": 8, "W1H": 8}
-OUT_CFG = {"LINE": 2, "BOUND": 1, "SEL": 3 * 2, "LUT": 1 << PIN_LUT_IN_BITS}
+OUT_CFG = {"LINE": 2, "BOUND": 1, "LIVE": 2, "SEL": 3 * 2, "LUT": 1 << PIN_LUT_IN_BITS}   # LIVE: v3 (D38)
 OE_CFG = {"OE": 1 << PIN_LUT_IN_BITS}          # pins O0..O7 only
 LFSR_CFG = {"POLY": LFSR_WIDTH}
 STREAM_CFG = {"MODE": 1, "MSB": 1, "START": STREAM_ADDR_BITS, "LEN": STREAM_LEN_BITS, "MARK": STREAM_LEN_BITS}
@@ -279,9 +286,10 @@ HOST_MAP = {
     "LRT_BASE": 0x2410,      # line l runtime: + 0x08*l
     "TRT_BASE": 0x2440,      # thread t runtime: + 0x02*t
     "SRT_BASE": 0x2450,      # stream k runtime: + 0x04*k
+    "DBG_BASE": 0x2460,      # v3: freeze/step, execution digest, edge capture, debug readback (SPEC v2 12)
 }
 HOST_STRIDE = {"LINE": 0x20, "THREAD": 0x08, "LFSR": 0x08, "STREAM": 0x08, "OUT": 0x10, "LRT": 0x08, "TRT": 0x02,
-               "SRT": 0x04, "PROG_CORE": 0x800}
+               "SRT": 0x04, "DBG": 0x20, "PROG_CORE": 0x800}
 
 # offset: (name, bytes, access, layout)
 LINE_REGS = {
@@ -312,21 +320,23 @@ STREAM_REGS = {
     0x05: ("MARK", 2, "W", "byte position for MARK, bits 11:0"),
 }
 OUT_REGS = {
-    0x00: ("BIND", 1, "W", "bits 1:0 LINE, bit 2 BOUND"),
+    0x00: ("BIND", 1, "W", "bits 1:0 LINE, bit 2 BOUND; v3 LIVE: bit 3 b2 := PIN[PINA], bit 4 b1 := PIN[PINB] "
+                           "of the bound line"),
     0x01: ("SEL", 1, "W", "bits 1:0, 3:2, 5:4: symbol bit read as table inputs b0, b1, b2"),
     0x04: ("LUT", 4, "W", "output table, index {SEG[1:0], b2, b1, b0}"),
     0x08: ("OE", 4, "W", "output-enable table, same index (pins O0..O7 only)"),
 }
 CTRL_REGS = {
     0x00: ("RUN", 1, "RW", "bit 0 RUN_global"),
-    0x01: ("STICKY", 1, "W1C", "bit 0 CONFLICT, bit 1 MEMHAZ"),
+    0x01: ("STICKY", 1, "W1C", "bit 0 CONFLICT, bit 1 MEMHAZ, bit 2 CWOVR (v4)"),
     0x02: ("IRQEN", 1, "RW", "bit 0 HOST.OUTV, bit 1 any sticky error"),
     0x03: ("DOORBELL", 1, "W", "bit t triggers thread t (reads 0)"),
     0x04: ("HOSTIN", 1, "RW", "write: INB and set INV; read: INB"),
     0x05: ("HOSTOUT", 1, "R", "OUTB (no side effect)"),
     0x06: ("HOSTSTAT", 1, "RW", "read bit 0 INV, bit 1 OUTV; write 1 to bit 1 clears OUTV"),
     0x07: ("ID", 1, "R", "0xA0 | VERSION"),
-    0x08: ("ERRSUM", 1, "R", "bit 0 any LATE, 1 any OVR, 2 any TAPMISS, 3 any STARVED, 4 CONFLICT, 5 MEMHAZ"),
+    0x08: ("ERRSUM", 1, "R", "bit 0 any LATE, 1 any OVR, 2 any TAPMISS, 3 any STARVED, 4 CONFLICT, 5 MEMHAZ, "
+                            "6 CWOVR (v4)"),
 }
 LRT_REGS = {
     0x00: ("PHASE", 2, "RW", "PH"),
@@ -345,6 +355,20 @@ SRT_REGS = {
     0x01: ("POSH", 1, "R", "bits 3:0 POS[11:8], bits 6:4 BIDX, bit 7 STARVED"),
     0x02: ("CTL", 1, "W", "bit 0 rewind, bit 1 flush, bit 7 clear STARVED (reads 0)"),
 }
+# v3 (SPEC v2 section 12): runtime flops, one instance. All read 0 and do nothing after reset (v2 behaviour).
+DBG_REGS = {
+    0x00: ("DBG", 1, "RW", "bit 0 FREEZE; write 1 to bit 1 STEP: run exactly one cycle (reads 0)"),
+    0x01: ("MCTL", 1, "RW", "bit 0 MEN digest enable; write 1 to bit 1 clears MISR (reads 0)"),
+    0x02: ("ECTL", 1, "RW", "bit 0 CEN: edge capture into stream S0; bit 1 RPL (v4): edge replay from S0"),
+    0x04: ("MISR", 4, "R", "execution digest (32-bit MISR over OUT and OEN)"),
+    0x08: ("EMASK", 2, "RW", "edge-capture pin mask, bits 12:0 = P12..P0"),
+    0x0A: ("ACC", 1, "R", "accumulator A"),
+    0x0B: ("AFLG", 1, "R", "bit 0 Z, bit 1 C, bit 2 N"),
+    0x0C: ("FLAGS", 2, "R", "flags F15..F0"),
+    0x0E: ("CST", 2, "R", "byte c = core c: bits 2:0 XT, bit 3 XV, bit 4 RV"),
+    0x10: ("FPC", 2, "R", "byte c = core c FPC (while XV, the executing word is at FPC - 1)"),
+    0x12: ("RLV", 2, "RW", "v4 replay levels, bits 12:0 = P12..P0 (seen by the machine on EMASK pins while RPL)"),
+}
 HOST_BLOCKS = {   # block -> (base key, stride key or None, instances, registers)
     "LINE": ("LINE_BASE", "LINE", N_LINES, LINE_REGS),
     "THREAD": ("THREAD_BASE", "THREAD", N_THREADS, THREAD_REGS),
@@ -355,4 +379,5 @@ HOST_BLOCKS = {   # block -> (base key, stride key or None, instances, registers
     "LRT": ("LRT_BASE", "LRT", N_LINES, LRT_REGS),
     "TRT": ("TRT_BASE", "TRT", N_THREADS, TRT_REGS),
     "SRT": ("SRT_BASE", "SRT", N_STREAMS, SRT_REGS),
+    "DBG": ("DBG_BASE", "DBG", 1, DBG_REGS),
 }

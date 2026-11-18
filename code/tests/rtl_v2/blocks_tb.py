@@ -138,7 +138,7 @@ async def line_lockstep(dut):
     await clock(dut)
     dut.rst_n.value = 0
     for sig in (dut.cfg, dut.lvl, dut.rise, dut.fall, dut.ctl_we, dut.ctl_d, dut.sym_we, dut.sym_op, dut.sym_d,
-                dut.h_ph_we, dut.h_ctl_we, dut.h_stat_we, dut.h_d):
+                dut.h_ph_we, dut.h_ctl_we, dut.h_stat_we, dut.h_d, dut.frz):   # frz: v3 freeze off
         sig.value = 0
     await RisingEdge(dut.clk)
     await FallingEdge(dut.clk)
@@ -236,7 +236,8 @@ async def stream_run(dut, seed, cycles=3000):
 async def stream_lockstep(dut):
     await clock(dut)
     for sig in (dut.adv, dut.rx_we, dut.rx_bit, dut.rewind, dut.flush, dut.clr_starved, dut.gnt, dut.rdata,
-                dut.cfg_mode, dut.cfg_msb, dut.cfg_start, dut.cfg_len, dut.cfg_mark):
+                dut.cfg_mode, dut.cfg_msb, dut.cfg_start, dut.cfg_len, dut.cfg_mark,
+                dut.frz, dut.frzd, dut.cap_en, dut.cap_push, dut.cap_rec):     # v3 inputs off
         sig.value = 0
     n = 0
     for seed in range(1, 2 * SEEDS + 1):
@@ -293,7 +294,7 @@ async def mem_arbiter(dut):
     overwritten unserved request, host read landing."""
     await clock(dut)
     for sig in (dut.s_req, dut.s_we, dut.s_addr, dut.s_wd, dut.p_we, dut.p_sel, dut.p_d, dut.h_set, dut.h_wr,
-                dut.h_addr, dut.h_d, dut.m_rd):
+                dut.h_addr, dut.h_d, dut.m_rd, dut.frz, dut.frzd, dut.s0_word, dut.s0_wword):   # v3 inputs off
         sig.value = 0
     dut.rst_n.value = 0
     await FallingEdge(dut.clk)

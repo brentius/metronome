@@ -1,0 +1,50 @@
+# Library score: ARM Serial Wire Debug (ADIv5 / IHI 0031), one register transfer with the full acknowledge and both
+# turnaround cycles.  SWCLK idles low; every SWDIO bit is sampled on the rising edge and driven by its owner from the
+# falling edge before it.  Packet: start 1, APnDP, RnW, A[2:3], parity, stop 0, park 1; turnaround; ACK (3 bits, LSB
+# first: OK 001, WAIT 010, FAULT 100); for a read 32 data bits LSB first and an even parity bit from the target, then a
+# turnaround; for a write a turnaround, then 32 data bits and an even parity bit from the host.  WAIT / FAULT end the
+# packet after the acknowledge.
+# Modelling note: the codec resolves every `shared` wire as wired-AND with a pull-up, so SWDIO (push-pull in the real
+# standard, with a driver switch at each turnaround) is written open-drain and idles released (high).  The waveform on
+# the pin is the same; the electrical push-pull drive is not modelled.
+# Does: the request parity, the ACK, both turnarounds, the data parity, WAIT and FAULT.  Does not: the line reset
+# (50+ ones) and JTAG-to-SWD switch sequence, overrun ("sticky") WDATAERR handling, multi-drop select.
+protocol swd
+roles    host, target
+
+wire swclk out push-pull idle low by host
+wire swdio shared open-drain idle released
+
+clock 1 MHz
+  host:   generated
+  target: follow swclk fall, capture on swclk rise
+  split 50%
+
+symbols
+  bit(d)   swclk "01"  swdio "d"   sample swdio at swclk rise
+  ta       swclk "01"  swdio "1"    # turnaround: a clock with nobody driving SWDIO (the line floats high)
+  idle     swclk "0"   swdio "1"
+
+bits lsb first
+
+grammar
+  link     = transfer*
+  transfer = const bits "1"                               # start
+             apndp:bit
+             rnw:bit
+             a:u2
+             par: parity even over apndp..a
+             const bits "01"                              # stop 0, park 1
+             ta
+             ack:u3 by target
+             switch ack {
+               1:    data(rnw)
+               else: gap 0 beats
+             }
+             gap 8 beats
+  data(1)  = d:u32 by target
+             dp: parity even over d by target
+             ta
+  data(0)  = ta
+             d:u32 by host
+             dp: parity even over d by host

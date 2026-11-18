@@ -1,0 +1,38 @@
+# Library score: IEEE 1149.1 JTAG, one data-register scan: Test-Logic-Reset, Run-Test/Idle, Select-DR, Capture-DR, shift
+# eight bits (TDI out, TDO in on the same beats), Exit1-DR, Update-DR, Run-Test/Idle.  TCK idles low; TDI is driven
+# from the falling edge, TDO is read at the rising edge.
+# Partial, and honest about it: the exit clock is itself a ninth shift (a TAP shifts on the clock that leaves
+# Shift-DR), so this scans a 9-bit data register whose ninth bit is sent as 0.  The language cannot send TMS=1 together with
+# the last data bit, because every bit of a field uses the same `bit` symbol (see wiki/PROTOCOL_LIBRARY.md, gap G1).
+# Does: TAP navigation by TMS, an eight-bit TDI / TDO scan.  Does not: instruction scans with a chosen state path,
+# variable lengths, TRST*, RTCK, a final-bit TMS.
+protocol jtag_dr
+roles    probe, device
+
+wire tck out push-pull idle low by probe
+wire tms out push-pull idle low by probe
+wire tdi out push-pull idle low by probe
+wire tdo out push-pull idle low by device
+
+clock 1 MHz
+  probe:  generated
+  device: follow tck fall, capture on tck rise
+  split 50%
+
+symbols
+  bit(i, o)  tck "01"  tms "0"  tdi "i"  tdo "o"   sample tdo at tck rise
+  t0         tck "01"  tms "0"  tdi "0"
+  t1         tck "01"  tms "1"  tdi "0"
+  treset     tck "01"  tms "1"  tdi "0"      # the same clock as t1; a distinct name so a scan has its own first symbol
+  idle       tck "0"   tms "0"  tdi "0"
+
+bits lsb first
+
+grammar
+  link   = scan*
+  scan   = treset treset treset treset treset       # five TMS=1 clocks reach Test-Logic-Reset from any state
+           t0                                       # -> Run-Test/Idle
+           t1 t0 t0                                 # -> Select-DR -> Capture-DR -> Shift-DR
+           { tdi:u8 by probe || tdo:u8 by device }  # eight clocks in Shift-DR
+           t1                                       # ninth shift, leaves Shift-DR for Exit1-DR
+           t1 t0                                    # Update-DR, Run-Test/Idle

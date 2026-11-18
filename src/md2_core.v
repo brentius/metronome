@@ -16,6 +16,7 @@ module md2_core #(
     input  wire            clk,
     input  wire            rst_n,
     input  wire            run_g,      // RUN_global
+    input  wire            frz,        // v3: frozen cycle (SPEC v2 12.3): no execute/fetch/dispatch, state holds
     input  wire [63:0]     rdata,      // program word at address fpc (registered by the SRAM last cycle)
     output wire            fetch_en,
     output wire [7:0]      fetch_addr,
@@ -43,7 +44,10 @@ module md2_core #(
     output wire [2:0]      mv_en,
     output wire [17:0]     mv_src,
     output wire [17:0]     mv_dst,
-    output wire [23:0]     mv_data
+    output wire [23:0]     mv_data,
+    output wire            dbg_xv,     // v3 readback (SPEC v2 12.3): XV, RV, FPC
+    output wire            dbg_rv,
+    output wire [7:0]      dbg_fpc
 );
 /* verilator lint_off UNUSEDPARAM */
 `undef MD2_DEFS_VH
@@ -57,6 +61,8 @@ module md2_core #(
     reg [2:0]  xt, rr;
     reg [1:0]  xl;
     reg [63:0] ir;
+    wire       xa = xv & ~frz;
+    wire       ra = rv & ~frz;
 
     integer i;
 
@@ -126,7 +132,7 @@ module md2_core #(
     generate
         for (m = 0; m < 3; m = m + 1) begin : g_mv
             wire gok = (i_g[m] == GD_ALWAYS) | ((i_g[m] == GD_IF) & cc) | ((i_g[m] == GD_IFNOT) & ~cc);
-            assign mv_en[m]         = xv & gok;
+            assign mv_en[m]         = xa & gok;
             assign mv_src[6*m +: 6] = i_s[m];
             assign mv_dst[6*m +: 6] = i_d[m];
             assign mv_data[8*m +: 8] = src[8*i_s[m] +: 8];
@@ -134,13 +140,17 @@ module md2_core #(
     endgenerate
 
     // ---------------------------------------------------------------- sequencing
-    wire jmp  = xv & ~i_pause & taken;          // redirect: present imm, drop the R word
-    wire pse  = xv & i_pause;                   // retire the burst, drop the R word
-    wire load = rv & ~jmp & ~pse;               // R word goes to IR and X next cycle; fetch fpc + 1
-    wire free = pse | (~xv & ~rv);
+    // v3 freeze: xa/ra are XV/RV qualified by "not frozen" (both flops, so the gate is off the guard path)
+    wire jmp  = xa & ~i_pause & taken;          // redirect: present imm, drop the R word
+    wire pse  = xa & i_pause;                   // retire the burst, drop the R word
+    wire load = ra & ~jmp & ~pse;               // R word goes to IR and X next cycle; fetch fpc + 1
+    wire free = pse | (~xv & ~rv & ~frz);
     assign pause_o = pse;
     assign npc_o   = taken ? i_imm : fpc;
     assign xt_o    = xt;
+    assign dbg_xv  = xv;
+    assign dbg_rv  = rv;
+    assign dbg_fpc = fpc;
     assign xl_o    = xl;
 
     // ---------------------------------------------------------------- dispatch: first ready thread from rr
@@ -187,7 +197,7 @@ module md2_core #(
     assign fetch_addr = jmp ? i_imm : (load ? fpc + 8'd1 : dpc);
 
     always @(posedge clk) begin
-        ir <= rdata;
+        if (!frz) ir <= rdata;
         if (!rst_n) begin
             xv  <= 1'b0;
             rv  <= 1'b0;
@@ -195,7 +205,7 @@ module md2_core #(
             xt  <= 3'd0;
             xl  <= 2'd0;
             rr  <= 3'd0;
-        end else begin
+        end else if (!frz) begin
             xv <= load;
             rv <= fetch_en;
             if (fetch_en) fpc <= fetch_addr;

@@ -167,6 +167,48 @@ class ParamDecl:
 
 
 @dataclass
+class EnumDecl:
+    """`enum NAME : uN` with `MEMBER = VALUE` lines (part A 18.3). Members are global integer constants."""
+    name: str
+    width: int
+    members: dict            # member -> int
+    pos: Pos = None
+
+
+@dataclass
+class StateDecl:
+    """`state` line `NAME : uN = INIT` (part A 18.3): a value both roles keep across frames."""
+    name: str
+    width: int
+    init: int
+    pos: Pos = None
+
+
+@dataclass
+class TEvent:
+    """One side of a timing constraint: a wire edge (optionally qualified by another wire's level) or a
+    recognised event (part A 18.1)."""
+    kind: str                    # edge | event
+    wire: str | None = None
+    edge: str | None = None      # rise | fall | change
+    when_wire: str | None = None
+    when_level: str | None = None   # high | low
+    event: str | None = None
+    pos: Pos = None
+
+
+@dataclass
+class Constraint:
+    """`constrain` line `NAME  A -> B  >=|<=  QTY` (part A 18.1)."""
+    name: str
+    a: TEvent
+    b: TEvent
+    op: str                      # >= | <=
+    qty: Qty
+    pos: Pos = None
+
+
+@dataclass
 class AbortRule:
     event: str
     in_prod: str | None
@@ -186,6 +228,7 @@ class Type:
     parity: str | None = None
     first: str | None = None
     last: str | None = None
+    enum: str | None = None      # field typed by an enum: kind "u", width from the enum (18.3)
 
 
 @dataclass
@@ -300,6 +343,14 @@ class Retry:
 
 
 @dataclass
+class Assign:
+    """`NAME <- EXPR` in the grammar: update a state value (18.3). Both roles execute it at the same point."""
+    name: str
+    expr: object
+    pos: Pos = None
+
+
+@dataclass
 class AsmBlock:
     raw: str
     contract: dict = field(default_factory=dict)
@@ -340,8 +391,27 @@ class Score:
     params: list
     source: str = ""
     arbitrates: list = field(default_factory=list)
+    # part A 18 (language extensions); all optional, so older code that builds a Score keeps working
+    constraints: list = field(default_factory=list)     # [Constraint]
+    enums: dict = field(default_factory=dict)           # name -> EnumDecl
+    states: list = field(default_factory=list)          # [StateDecl]
+    imports: dict = field(default_factory=dict)         # alias -> library score name (`use LIB as ALIAS`)
+    over: tuple | None = None                           # (alias, production) for `protocol P over ALIAS.PROD`
 
     # -- lookups --
+    def consts(self) -> dict:
+        """Enum members as integer constants."""
+        out = {}
+        for e in self.enums.values():
+            out.update(e.members)
+        return out
+
+    def state(self, name):
+        for s in self.states:
+            if s.name == name:
+                return s
+        return None
+
     def wire(self, name):
         for w in self.all_wires():
             if w.name == name:

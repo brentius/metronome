@@ -1,0 +1,174 @@
+"""Exercise the v4 paths through the chip's SPI host link and pins."""
+import sys
+from pathlib import Path
+
+from scenarios import HM, I, Scn, lut, reg_addr
+
+
+def address_for(address):
+    return [I(("IMM", "CW.AL"), imm=address & 255),
+            I(("IMM", "CW.AH"), imm=address >> 8)]
+
+
+def config_write():
+    s = Scn("v4_config_write")
+    s.reset()
+    s.blk("LINE", 0, INC=0, MOD=8)
+    inc, _ = reg_addr("LINE", 0, "INC")
+    mask, _ = reg_addr("DBG", 0, "EMASK")
+    s.program(0, address_for(inc) + [
+        I(("IMM", "CW.D"), imm=1),
+        I(("IMM", "CW.D"), imm=0),
+        I(("IMM", "CW.D"), imm=0x55),  # third consecutive write must be dropped
+        I(),
+    ] + address_for(mask) + [
+        I(("IMM", "CW.D"), imm=0x25),
+        I(("ZERO", "T.STOP"), pause=1),
+    ])
+    s.thread(0, trig="ALWAYS")
+    s.blk("CTRL", IRQEN=2, RUN=1)
+    s.idle(40)
+    s.read(HM["CTRL_BASE"], 9)
+    s.read(mask, 2)
+    s.blk("CTRL", STICKY=4)
+    s.blk("LRT", 0, CTL=1)
+    s.idle(113)
+    s.read(HM["LRT_BASE"], 2)
+    s.read(HM["CTRL_BASE"], 9)
+    return s
+
+
+def replay():
+    s = Scn("v4_replay")
+    s.reset()
+    words = [(24 << 13) | 1, (12 << 13), (17 << 13) | 1, (21 << 13)]
+    s.data(0x80, b"".join(word.to_bytes(4, "little") for word in words))
+    s.blk("STREAM", 0, MODE=1, START=0x80, LEN=16)
+    s.blk("LINE", 0, PINS=0x10)
+    s.blk("OUT", 8, BIND=0b1100, LUT=lut(lambda index: (index >> 2) & 1))
+    s.blk("DBG", EMASK=1, RLV=0)
+    s.blk("SRT", 0, CTL=1)
+    s.blk("DBG", ECTL=2)
+    s.uio = 1  # Replay masks the physical pad even when it disagrees.
+    s.idle(110)
+    s.read(HM["DBG_BASE"], 0x14)
+    s.read(HM["SRT_BASE"], 3)
+    s.blk("DBG", DBG=1)
+    s.blk("DBG", RLV=1)
+    s.blk("DBG", DBG=0)
+    s.idle(12)
+    s.blk("DBG", ECTL=0)
+    s.blk("SRT", 0, CTL=1)
+    s.idle(8)
+    return s
+
+
+def stage1():
+    """Load real stage-1 firmware and drive an 8N1 stream at 80 clocks/bit."""
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "host2"))
+    from metronome2_tools.asm import assemble_text
+    from metronome2_tools.image import host_writes
+    from transcribe.fw_stage1 import RES, source
+
+    s = Scn("v4_stage1")
+    pin, clocks_per_bit = 5, 80
+    s.uio = 1 << pin
+    s.reset()
+    s.blk("LINE", 0, PINS=(pin << 4) | pin)
+    s.blk("OUT", 8, BIND=0b1100, LUT=lut(lambda index: (index >> 2) & 1))
+    for address, data, _ in host_writes(assemble_text(source(pin, replay_capture=True))):
+        s.write(address, data)
+    s.idle(100)
+    for value in (0x55, 0x67, 0xD3, 0xAE) * 4:
+        for level in [0] + [(value >> bit) & 1 for bit in range(8)] + [1]:
+            s.uio = level << pin
+            s.idle(clocks_per_bit)
+    replay_edges = []
+    previous = 1
+
+    def observe(tick, outs):
+        nonlocal previous
+        pin_value = (outs[0] >> 2) & 1
+        if pin_value != previous:
+            replay_edges.append((tick, pin_value))
+        previous = pin_value
+        return 1 << pin
+
+    # Wait for the real input to settle, then observe the dedicated output.
+    s.uio = 1 << pin
+    s.idle(12)
+    s.uio = observe
+    s.idle(68_000)
+    s.read(HM["DATA_BASE"] + RES, 6)
+    s.read(HM["CTRL_BASE"], 9)
+
+    def check(model):
+        result = model.mem.data[RES:RES+6]
+        assert tuple(result[:4]) == (1, 1, 0, 10), list(result)
+        assert (model.lines[0].INC, model.lines[0].MOD) == (32, clocks_per_bit * 32)
+        assert not model.contract_violations
+        assert not (model.ctrl.CWOVR or model.ctrl.CONFLICT or model.ctrl.MEMHAZ)
+        words = [int.from_bytes(model.mem.data[offset:offset+4], "little")
+                 for offset in range(0, 4 * 64, 4)]
+        assert not model.mem.streams[0].STARVED
+        assert len(replay_edges) == len(words)
+        assert [level for _, level in replay_edges] == [(word >> pin) & 1 for word in words]
+        intervals = [right[0] - left[0] for left, right in zip(replay_edges, replay_edges[1:])]
+        assert intervals == [word >> 13 for word in words[1:]]
+
+    s.check = check
+    return s
+
+
+def stage2():
+    """Infer UART framing and transmit complete words using the learned beat."""
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "host2"))
+    from metronome2_tools.asm import assemble_text
+    from metronome2_tools.image import host_writes
+    from transcribe.fw_stage1 import FRAME_RES, RES, source
+
+    s = Scn("v4_stage2")
+    pin, bit_period = 5, 24
+    payload = (0xA5, 0x5C, 0x38, 0xE7, 0x13, 0xF4, 0x89, 0x27) * 4
+    frames = [[0] + [(word >> bit) & 1 for bit in range(8)] + [1] for word in payload]
+    s.uio = 1 << pin
+    s.reset()
+    for address, data, _ in host_writes(assemble_text(source(pin, framing=True, transmit=True))):
+        s.write(address, data)
+    s.idle(100)
+    for frame in frames:
+        for level in frame:
+            s.uio = level << pin
+            s.idle(bit_period)
+
+    tx = []
+
+    def observe(_tick, outputs):
+        tx.append((outputs[0] >> 2) & 1)
+        return 1 << pin
+
+    s.uio = observe
+    s.idle(65_000)
+    s.read(HM["DATA_BASE"] + RES, 11)
+    s.read(HM["CTRL_BASE"], 9)
+
+    def check(model):
+        assert tuple(model.mem.data[RES:RES+4]) == (1, 1, 0, 3)
+        status, width, parity, count, stops = model.mem.data[FRAME_RES:FRAME_RES+5]
+        assert (status, width, parity, stops) == (1, 8, 0, 1)
+        assert 4 <= count < len(frames)
+        assert model.host.OUTV and model.host.OUTB == 1
+        assert not any(stream.STARVED for stream in model.mem.streams)
+        assert not any(thread.LATE or thread.OVR for thread in model.threads)
+        assert not (model.ctrl.CWOVR or model.ctrl.CONFLICT or model.ctrl.MEMHAZ or model.contract_violations)
+        idle = tx.index(1)
+        start = tx.index(0, idle + 1)
+        expected = [level for frame in frames[:count] for level in frame]
+        assert tx[start + bit_period // 2:start + bit_period * len(expected):bit_period] == expected
+        assert set(tx[start + bit_period * len(expected):]) == {1}
+
+    s.check = check
+    return s
+
+
+DIRECTED_V4 = {"v4_config_write": config_write, "v4_replay": replay, "v4_stage1": stage1, "v4_stage2": stage2}

@@ -67,7 +67,7 @@ The **reference codec** implements this relation directly in Python, and it is t
 - Numbers: decimal `42`, hex `0x2A`, binary `0b101010`, and two-digit bare hex inside `const` lists (`55 D5`).
 - Quantities with units:
   - frequency: `Hz kHz MHz`
-  - time: `ns us ms s`, `cycles`, `beats`
+  - time: `ns us ms s`, `cycles`, `beats`; in a layered score (18.2) also `chars`, the length of one carrier instance
   - fraction of a beat: `%`
 - A block is introduced by a keyword at the start of a line, and its contents are indented. Indentation is significant only to end a block.
 - Strings appear only as wave strings (section 5.3), in double quotes.
@@ -75,9 +75,10 @@ The **reference codec** implements this relation directly in Python, and it is t
 ## 4. File structure
 
 ```
-protocol NAME [version N]
+protocol NAME [version N] [over ALIAS.PROD]   # 'over': a layered score (18.2)
 roles    ROLE, ROLE             # exactly two
 use      LIBRARY                # optional: shared definitions (crc names, common symbols)
+use      LIBRARY as ALIAS       # layered scores only: the protocol this one runs over (18.2)
 
 wire ...                        # 5.1, one or more
 clock ...                       # 5.2, exactly one per line group
@@ -88,6 +89,9 @@ crc ...                         # 9, optional
 grammar ...                     # 7
 abort ...                       # 8.3, optional
 param ...                       # 10.3, optional
+constrain ...                   # 18.1, optional: the standard's timing requirements
+enum ...                        # 18.3, optional: named values
+state ...                       # 18.3, optional: values kept across frames
 ```
 
 Sections may appear in any order; names are resolved over the whole file. A score with wires on more than one clock declares a `group` per clock (section 5.5).
@@ -179,7 +183,7 @@ With no `sample` clause anywhere, the compiler derives the points. It prefers th
 
 - **R1.** At most 16 transmitted symbols per line, counting each parameter expansion. The output symbol is 4 bits (`OSYM_BITS`).
 - **R2.** Each wire's waveform may depend on at most 3 bits of the symbol, so a wire has at most 8 distinct waveforms. Each pin table takes 3 selected symbol bits plus `SEG` (`PIN_LUT_IN_BITS = 5`). The compiler chooses the symbol encoding so that every wire's waveform depends on at most 3 bits. If no such encoding exists, the score is rejected (E-FIT-ENC).
-- **R3.** At most 4 segments per beat. R3 is counted **per role** on each line (D29). The split points of the symbols that role transmits, plus its sample points, use at most 3 taps. A sample point that coincides with a split point shares its tap; this is only valid if no symbol received there changes level at that point. `SEG` counts fired taps (0..3).
+- **R3.** At most 4 segments per beat. R3 is counted **per role** on each line (D29). The split points of the symbols that role transmits, plus its sample points, use at most 3 taps. A wave that holds one level or one parameter for the whole beat (`"dddd"`) needs no split tap. A sample point that coincides with a split point shares its tap; this is only valid if no symbol received there changes level at that point. `SEG` counts fired taps (0..3).
 - **R4.** A line samples at most **two wires**:
   - wire A at up to three points;
   - wire B at exactly one point. In hardware, wire B is captured by tap 1, and the compiler assigns tap 1 to that point (D29).
@@ -450,6 +454,9 @@ E-TIME      grammar: 'body' worst case 9 cycles per beat; beat is 6 cycles at 10
 E-AMBIG     grammar: choice in 'frame' needs 2 symbols of lookahead: 'idle idle' vs 'idle bit'
 E-DUPLEX    grammar: '||' in 'transfer': 'out' is 8 bits, 'in' is 16 bits; both sides must be equal
 E-OWNER     grammar: 'ack' owned by target puts its value on 'scl', which only controller drives
+E-ROLE      grammar: an 'if' condition uses 'my_addr', a parameter private to target; every role
+            evaluates it, so the other role cannot follow (18.4)
+E-LAYER     'slave': u4 is not a whole number of bytes (a layered score carries bytes, 18.2)
 ```
 
 ## 13. Machine contract (what part B must provide)
@@ -547,8 +554,8 @@ clock 100 kHz
 
 symbols                                   # quarters of the controller's beat
   bit(d)   scl "0110"  sda "dddd"   sample sda at scl rise
-  start    scl "1110"  sda "1100"
-  rstart   scl "0110"  sda "1100"
+  start    scl "1110"  sda "1000"   # SDA falls at 1/4, SCL at 3/4: tHD;STA = half a beat
+  rstart   scl "0111"  sda "1111"   # repeated START, first beat: SDA released, SCL raised (tSU;STA)
   stop     scl "0111"  sda "0001"
 
 recognise
@@ -559,7 +566,7 @@ bits msb first
 
 grammar
   bus          = transaction*
-  transaction  = start request (rstart request)* stop
+  transaction  = start request (rstart start request)* stop
 
   request      = addr:u7  by controller
                  rw:bit   by controller
@@ -585,6 +592,7 @@ Notes:
 - **ACK needs no special syntax.** It falls out of open drain plus ownership. The target pulls SDA low only on an address match. If no target matches, SDA floats high and the controller reads a NACK.
 - **`scl` is `out` with open drain.** Only the controller drives it, including in the target's ACK and data beats, which keeps the clock from depending on beat ownership (D29). Clock stretching by a target, holding `scl` low, is visible to the controller through its hold. The target role in this score does not stretch.
 - **The two `body` productions end differently.** `body(0)` ends by one-symbol lookahead (7.6). `body(1)` ends on a value the *other* role drives.
+- **START timing meets UM10204 standard mode (O7).** `start` drops SDA at 1/4 and SCL at 3/4, so tHD;STA is half a beat (5.0 us at 100 kHz). A repeated START takes two beats, `rstart start`: `rstart` releases SDA while SCL is low, then raises SCL at 1/4, so tSU;STA is a full beat (10 us) before `start` drops SDA. One beat cannot hold a compliant repeated START: SCL low (4.7 us), high before SDA falls (4.7 us) and high after it (4.0 us) exceed the 10 us beat. The 18.1 certificate checks both on the score and on the compiled controller.
 
 ### 16.3 SPI mode 0, both roles
 
@@ -712,13 +720,151 @@ abort
 | O4 | ~~Received control bits (ACK, `rw`) in the host stream by default?~~ | **Decided (owner, 2026-11-12):** yes, unless `hidden` |
 | O5 | ~~One score per protocol, or allow several clocks per score?~~ | **Decided (owner, 2026-11-12):** groups (5.5); this supersedes D26's one-clock-per-file choice. Compiler support for more than one group is not yet implemented |
 | O6 | ~~Symbol limit~~ | **Checked 2026-11-12** against part B 8 and `machine.py`: R1–R5 in 5.3 |
+| O7 | ~~The 16.2 `start` and `rstart` symbols held SDA low for one quarter beat before SCL fell: 2.5 us at 100 kHz, below UM10204's tHD;STA = 4.0 us (and tSU;STA = 4.7 us for `rstart`). Found by the 18.1 certificate~~ | **Decided (owner, 2026-11-14):** fix the example to fit the compiler's bus template. `start` is `sda "1000"` (tHD;STA 5.0 us); a repeated START is two beats, `rstart start`; the template accepts one or more symbols before the repeated request. Certificate PASS on the score and the compiled controller |
+
+## 18. Language extensions (draft 3, 2026-11-14)
+
+Four additions that make the score a language rather than a format: it can state what the standard requires and check it (18.1), build one protocol on another (18.2), name values and keep state across frames (18.3), and say precisely when two roles stay in step (18.4). All four are implemented in the reference implementation (`code/score/`); compiler support is listed per section. None changes the meaning of an existing score.
+
+### 18.1 Constraints and the timing certificate
+
+```
+constrain
+  NAME  A -> B  >= DURATION
+  NAME  A -> B  <= DURATION
+```
+
+`A` and `B` are each a wire edge, `WIRE rise|fall|change [when WIRE high|low]`, or a recognised event of kind edge (5.4). The qualifier `when W L` keeps only edges during which `W` is at level `L` on both sides of the edge. For every occurrence of A, the interval to the **first B strictly after it** is measured; `>=` bounds the shortest such interval, `<=` the longest. `DURATION` is in `ns us ms s`, `cycles` or `beats`.
+
+UM10204 standard mode, written against 16.2:
+
+```
+constrain
+  fSCL     scl rise -> scl rise                  >= 10 us
+  tLOW     scl fall -> scl rise                  >= 4.7 us
+  tHIGH    scl rise -> scl fall                  >= 4 us
+  tSU_DAT  sda change when scl low -> scl rise   >= 250 ns
+  tHD_STA  start_c -> scl fall                   >= 4 us
+  tSU_STA  scl rise -> start_c                   >= 4.7 us
+  tSU_STO  scl rise -> stop_c                    >= 4 us
+  tBUF     stop_c -> start_c                     >= 4.7 us
+```
+
+**The certificate** checks each constraint on a waveform sampled once per chip cycle, and prints the bound, the worst interval seen, the margin, the number of pairs measured and a status:
+
+- **as written**: the reference codec's bus for given events. This checks the score against the standard.
+- **as compiled**: a pin trace of the compiled image on the cycle-level model (or a logic analyser at the chip clock). This checks what the chip does, including follower reaction time and tap quantisation.
+
+A constraint with no pair is `UNTESTED`, never `PASS`. The certificate is a measurement over the frames supplied, not a proof over every input; its resolution is one chip cycle (16.7 ns at 60 MHz). Implementation: `score/constrain.py` and `scorec/certify.py`.
+
+The certificate found two real issues on first use: the 16.2 START hold (O7, since fixed), and the compiled I2C target's SDA hold of 4 cycles (66.7 ns) after SCL falls. That hold meets UM10204's tHD;DAT minimum of 0 but not the 300 ns devices are expected to provide internally.
+
+### 18.2 Layering
+
+```
+use LIBRARY as ALIAS
+protocol NAME over ALIAS.PROD
+```
+
+A **layered score** runs over a production of another score, the **lower** protocol, taken from the library (`code/score/lib/LIBRARY.score`). The carrier production `PROD` must contain exactly one host field, of type `u8`; the lower start production must be `PROD*`. Each byte of the upper grammar is carried by one instance of `PROD`.
+
+A layered score has no physical layer: no `wire`, `clock`, `symbols`, `recognise`, `abort`, `arbitrate` or `constrain` (E-LAYER). `bits msb|lsb first` gives only the byte order of multi-byte fields; the bit order on the wire is the lower protocol's. The upper grammar uses:
+
+- fields of whole bytes (`u8`, `u16`, `s32`, enums of such widths), `bytes[N]`, and `bytes until eof`, which reads to the end of the frame (fixed-width fields after it are split off the end, as in 7.3);
+- `const`, `crc` (whole bytes; `crc NAME over F1..F2 [msb|lsb first]`), `switch`, `if`, repeats, production calls and state updates;
+- `gap DURATION`, in `chars` or time, which is silence on the lower line and marks the **frame boundary**.
+
+`|` is not available: a layered grammar decides by `switch` on a field, as byte protocols do.
+
+**Open crc range.** `crc NAME over F1..*` covers F1 through the last field before the crc. It is needed when the last field differs between `switch` arms, as in Modbus. It is available in every score.
+
+**Roles** map by position: the upper score's first role plays the lower score's first role. Every upper field must be owned by the role that drives the carrier's payload (E-OWNER); a protocol whose replies travel the other way is a second layered score over the other direction.
+
+**Decoding.** A receiver splits the line into frames at idle runs of at least 2/3 of the smallest upper `gap`, decodes each run with the lower protocol, and parses the bytes with the upper grammar. For Modbus this is 2.33 characters, between the 1.5-character maximum gap inside a frame and the 3.5-character frame gap.
+
+**Compilation** (`scorec.compile_layered`). The lower protocol is compiled for the chip in the mapped role; the upper grammar runs on the host (`ByteCodec`), turning events into byte runs and gaps and received frames back into events. Running the upper grammar on the chip is future work. `compile_score` refuses a layered score with E-LAYER.
+
+Modbus RTU requests over UART 8N1 (`code/score/examples/modbus_rtu.score`):
+
+```
+use uart_8n1 as uart
+protocol modbus_rtu over uart.char
+roles    master, slave
+
+crc crc16_modbus width 16 poly 0x8005 init 0xFFFF refin refout xorout 0
+
+enum fn : u8
+  READ_HOLDING   = 3
+  WRITE_SINGLE   = 6
+  WRITE_MULTIPLE = 16
+
+state
+  sent : u16 = 0
+
+grammar
+  bus    = frame*
+  frame  = slave:u8
+           func:fn
+           switch func {
+             READ_HOLDING:   start:u16  count:u16
+             WRITE_SINGLE:   reg:u16    value:u16
+             WRITE_MULTIPLE: start:u16  count:u16  nbytes:u8 = count * 2  regs:bytes[nbytes]
+           }
+           crc crc16_modbus over slave..* lsb first
+           sent <- sent + 1
+           gap 3.5 chars
+```
+
+"Read holding registers 0 to 9 of slave 1" encodes to `01 03 00 00 00 0A C5 CD`, the standard's reference frame.
+
+### 18.3 Enums and state
+
+```
+enum NAME : uN
+  MEMBER = VALUE
+  ...
+
+state
+  NAME : uN [= INIT]
+```
+
+- **Enums.** A field may be typed by an enum: `func:fn` is a `uN` field. Members are integer constants usable in any expression and as `switch` labels. The host may give a member name instead of a number. A received value that is not a member raises `mismatch`. Member names are global; a member may not share a name with a parameter or state value.
+- **State.** A state value persists across frames for the life of the role (the reference codec keeps it per role and direction, across calls). It is read in expressions like a field and updated by the grammar item `NAME <- EXPR`, which every role executes at the same point. Updates wrap modulo 2^N. Typical uses: sequence numbers (`n:u4 expect seq` then `seq <- seq + 1`), the USB DATA0/DATA1 toggle, credit counters.
+- **Compiler.** Enum-typed fields compile exactly like their integer type. State updates are refused with E-UNSUPPORTED (data RAM and accumulator lowering is future work); they are never compiled into something that ignores them.
+
+### 18.4 Role consistency
+
+Projection (10.1) gives each role its own program. The two programs stay in step when every decision either role takes is one the other can take too. The rule:
+
+- A parameter declared `for ROLE` is **private** to that role.
+- An expression may use a private parameter **only if that role alone evaluates it**:
+  - the value of a field the role owns (`= EXPR`);
+  - an `expect` on a field the role receives.
+- **Control expressions** are evaluated by every role, so they may use only what every role knows: fields already transmitted, global parameters, enum members and state values. They are:
+  - `if` conditions;
+  - `until` and `while` conditions;
+  - repeat counts and `bytes[N]` lengths;
+  - `switch` values;
+  - production arguments, which pick the variant;
+  - state updates.
+- Violations are E-ROLE.
+
+Together with 7.5 (values depend only on earlier fields) and 7.6 (choices decidable by the receiver), this is the language's consistency claim: **a role never branches on something the other role cannot know.**
+
+It is a static rule. The executable check is the duet test (`code/tests/scorec/test_duet.py`): both roles compiled from one score and run against each other.
 
 ## Appendix A. Grammar of the score language (EBNF, informal)
 
 ```
 score      = header { section } ;
-header     = "protocol" ID [ "version" INT ] NL "roles" ID "," ID NL { "use" ID NL } ;
-section    = wire | mirror | clock | symbols | recognise | bits | crc | grammar | abort | param | group ;
+header     = "protocol" ID [ "version" INT ] [ "over" ID "." ID ] NL "roles" ID "," ID NL
+             { "use" ID [ "as" ID ] NL } ;
+section    = wire | mirror | clock | symbols | recognise | bits | crc | grammar | abort | param | group
+           | constrain | enum | state ;
+constrain  = "constrain" NL INDENT { ID tevent "->" tevent ( ">=" | "<=" ) QTY NL } DEDENT ;
+tevent     = ID ( "rise" | "fall" | "change" ) [ "when" ID ( "high" | "low" ) ] | ID ;
+enum       = "enum" ID ":" UTYPE NL INDENT { ID "=" INT NL } DEDENT ;
+state      = "state" NL INDENT { ID ":" UTYPE [ "=" INT ] NL } DEDENT ;
 group      = "group" ID ":" NL INDENT { wire | mirror | clock } DEDENT ;
 wire       = "wire" ID dir [ drive ] [ "idle" level ] [ "by" ID ] NL ;
 dir        = "out" | "in" | "shared" ;
@@ -742,7 +888,9 @@ item       = atom [ "*" | "+" | "?" | "x" value ] [ "if" cond ] [ "within" QTY ]
 atom       = terminal | ID [ "(" args ")" ] | "{" expr "}" ( "until" | "while" ) cond
            | "switch" value "{" { value ":" expr } [ "else" ":" expr ] "}" | "every" QTY ":" expr ;
 terminal   = ID ":" type [ "by" ID ] [ "=" value | "expect" value ] [ "hidden" ] [ "notify" ]
-           | "const" { HEX } | "const" "bits" WAVE | "gap" QTY | "turnaround" INT "beats" ;
+           | "const" { HEX } | "const" "bits" WAVE | "gap" QTY | "turnaround" INT "beats"
+           | ID "<-" value ;                                   (* state update, 18.3 *)
+type       = ... | ENUM_ID | "crc" ID "over" ID ".." ( ID | "*" ) [ ( "msb" | "lsb" ) "first" ] ;
 ```
 
 The appendix is informative. Section text wins over it.

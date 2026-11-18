@@ -199,7 +199,10 @@
   "L1.CTL",
   "L2.CTL",
   "L3.CTL",
-  "HOST.OUT"
+  "HOST.OUT",
+  "CW.AL",
+  "CW.AH",
+  "CW.D"
  ],
  "guard_conds": [
   "TRUE",
@@ -438,6 +441,11 @@
   ],
   "HOST.OUT": [
    "HOST.OUT"
+  ],
+  "CW": [
+   "CW.AL",
+   "CW.AH",
+   "CW.D"
   ]
  },
  "in_pins": [
@@ -519,6 +527,7 @@
    "fields": {
     "LINE": 2,
     "BOUND": 1,
+    "LIVE": 2,
     "SEL": 6,
     "LUT": 32
    },
@@ -550,12 +559,12 @@
  "config_bits": {
   "line": 900,
   "thread": 216,
-  "out": 574,
+  "out": 602,
   "oe": 256,
   "lfsr": 64,
   "stream": 74
  },
- "config_bits_total": 2084,
+ "config_bits_total": 2112,
  "host_map": {
   "PROG_BASE": 0,
   "DATA_BASE": 4096,
@@ -567,7 +576,8 @@
   "CTRL_BASE": 9216,
   "LRT_BASE": 9232,
   "TRT_BASE": 9280,
-  "SRT_BASE": 9296
+  "SRT_BASE": 9296,
+  "DBG_BASE": 9312
  },
  "host_stride": {
   "LINE": 32,
@@ -578,6 +588,7 @@
   "LRT": 8,
   "TRT": 2,
   "SRT": 4,
+  "DBG": 32,
   "PROG_CORE": 2048
  },
  "host_blocks": {
@@ -768,7 +779,7 @@
      "BIND",
      1,
      "W",
-     "bits 1:0 LINE, bit 2 BOUND"
+     "bits 1:0 LINE, bit 2 BOUND; v3 LIVE: bit 3 b2 := PIN[PINA], bit 4 b1 := PIN[PINB] of the bound line"
     ],
     "0x01": [
      "SEL",
@@ -805,7 +816,7 @@
      "STICKY",
      1,
      "W1C",
-     "bit 0 CONFLICT, bit 1 MEMHAZ"
+     "bit 0 CONFLICT, bit 1 MEMHAZ, bit 2 CWOVR (v4)"
     ],
     "0x02": [
      "IRQEN",
@@ -847,7 +858,7 @@
      "ERRSUM",
      1,
      "R",
-     "bit 0 any LATE, 1 any OVR, 2 any TAPMISS, 3 any STARVED, 4 CONFLICT, 5 MEMHAZ"
+     "bit 0 any LATE, 1 any OVR, 2 any TAPMISS, 3 any STARVED, 4 CONFLICT, 5 MEMHAZ, 6 CWOVR (v4)"
     ]
    }
   },
@@ -929,6 +940,79 @@
      1,
      "W",
      "bit 0 rewind, bit 1 flush, bit 7 clear STARVED (reads 0)"
+    ]
+   }
+  },
+  "DBG": {
+   "base": 9312,
+   "stride": 32,
+   "instances": 1,
+   "regs": {
+    "0x00": [
+     "DBG",
+     1,
+     "RW",
+     "bit 0 FREEZE; write 1 to bit 1 STEP: run exactly one cycle (reads 0)"
+    ],
+    "0x01": [
+     "MCTL",
+     1,
+     "RW",
+     "bit 0 MEN digest enable; write 1 to bit 1 clears MISR (reads 0)"
+    ],
+    "0x02": [
+     "ECTL",
+     1,
+     "RW",
+     "bit 0 CEN: edge capture into stream S0; bit 1 RPL (v4): edge replay from S0"
+    ],
+    "0x04": [
+     "MISR",
+     4,
+     "R",
+     "execution digest (32-bit MISR over OUT and OEN)"
+    ],
+    "0x08": [
+     "EMASK",
+     2,
+     "RW",
+     "edge-capture pin mask, bits 12:0 = P12..P0"
+    ],
+    "0x0A": [
+     "ACC",
+     1,
+     "R",
+     "accumulator A"
+    ],
+    "0x0B": [
+     "AFLG",
+     1,
+     "R",
+     "bit 0 Z, bit 1 C, bit 2 N"
+    ],
+    "0x0C": [
+     "FLAGS",
+     2,
+     "R",
+     "flags F15..F0"
+    ],
+    "0x0E": [
+     "CST",
+     2,
+     "R",
+     "byte c = core c: bits 2:0 XT, bit 3 XV, bit 4 RV"
+    ],
+    "0x10": [
+     "FPC",
+     2,
+     "R",
+     "byte c = core c FPC (while XV, the executing word is at FPC - 1)"
+    ],
+    "0x12": [
+     "RLV",
+     2,
+     "RW",
+     "v4 replay levels, bits 12:0 = P12..P0 (seen by the machine on EMASK pins while RPL)"
     ]
    }
   }

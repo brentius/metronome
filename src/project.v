@@ -42,7 +42,11 @@ module tt_um_brentius_metronome (
 
     // ---------------------------------------------------------------- reset: async assert, synchronous release
     // rst_q = rst_n delayed by two rising edges (SPEC 1); every flop below resets synchronously on rst_q.
-    reg rst_m, rst_q;
+    reg rst_m;
+    // Configuration uses the same synchronized release and requires asynchronous clear.
+    /* verilator lint_off SYNCASYNCNET */
+    reg rst_q;
+    /* verilator lint_on SYNCASYNCNET */
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             rst_m <= 1'b0; rst_q <= 1'b0;
@@ -62,9 +66,14 @@ module tt_um_brentius_metronome (
         end
     end
     // input pins P0..P12 = uio_in[0..7], ui_in[3..7]; selects 13..15 read 0
-    wire [15:0] lvl  = {3'd0, s2[15:11], s2[7:0]};
-    wire [15:0] rise = {3'd0, s2[15:11] & ~sp[15:11], s2[7:0] & ~sp[7:0]};
-    wire [15:0] fall = {3'd0, ~s2[15:11] & sp[15:11], ~s2[7:0] & sp[7:0]};
+    reg replay;
+    reg [12:0] rlv, rlv_prev, emask;
+    wire [12:0] replay_mask = emask & {13{replay}};
+    wire [12:0] pins_level = ({s2[15:11], s2[7:0]} & ~replay_mask) | (rlv & replay_mask);
+    wire [12:0] pins_prev = ({sp[15:11], sp[7:0]} & ~replay_mask) | (rlv_prev & replay_mask);
+    wire [15:0] lvl  = {3'd0, pins_level};
+    wire [15:0] rise = {3'd0, pins_level & ~pins_prev};
+    wire [15:0] fall = {3'd0, ~pins_level & pins_prev};
 
     // ---------------------------------------------------------------- host link
     wire [15:0] ha;
@@ -88,12 +97,14 @@ module tt_um_brentius_metronome (
     wire [15:0] a_lrt = ha - HA_LRT_BASE;
     wire [15:0] a_trt = ha - HA_TRT_BASE;
     wire [15:0] a_srt = ha - HA_SRT_BASE;
+    wire [15:0] a_dbg = ha - HA_DBG_BASE;
     wire [15:0] a_cfg = ha - CFG_LO;
     wire [15:0] a_prg = ha - HA_PROG_BASE;
     wire in_ctl = (a_ctl < HSPAN_CTRL);
     wire in_lrt = (a_lrt < HSPAN_LRT);
     wire in_trt = (a_trt < HSPAN_TRT);
     wire in_srt = (a_srt < HSPAN_SRT);
+    wire in_dbg = (a_dbg < HSPAN_DBG);
     wire in_cfg = (a_cfg < HSPAN_CFG);
     wire in_prg = (a_prg < HSPAN_PROG);
     wire [15:0] i_lrt = a_lrt >> LRT_SH;
@@ -104,15 +115,45 @@ module tt_um_brentius_metronome (
     wire [31:0] o_lrt = {16'd0, a_lrt} & (HS_LRT - 1);
     wire [31:0] o_trt = {16'd0, a_trt} & (HS_TRT - 1);
     wire [31:0] o_srt = {16'd0, a_srt} & (HS_SRT - 1);
+    wire [31:0] o_dbg = {16'd0, a_dbg};
     wire w_ctl = h_wr & in_ctl;
     wire w_lrt = h_wr & in_lrt;
     wire w_trt = h_wr & in_trt;
     wire w_srt = h_wr & in_srt;
+    wire w_dbg = h_wr & in_dbg;
 
     // ---------------------------------------------------------------- configuration latches
+    reg frz;
+    // A single write stage feeds the line-local banks and the remaining host banks.
     wire [8*CFG_BYTES-1:0] cfg;
-    md2_cfg_bank #(.BYTES(CFG_BYTES), .MASK(CFG_MASK), .AW(9)) u_cfg (
-        .clk(clk), .rst_n(rst_n), .we(h_wr & in_cfg), .waddr(a_cfg[8:0]), .wdata(h_wd), .q(cfg)
+    wire cfg_we1;
+    wire [8:0] cfg_addr1;
+    wire [7:0] cfg_data1;
+    // CW and SPI use the same stage. The previous write strobe implements the D24 spacing interlock.
+    reg [15:0] cw_addr, cw_pending_addr;
+    reg [7:0] cw_pending_data;
+    reg cw_pending, cw_overrun;
+    wire cfg_host_now = h_wr & in_cfg & cfg_address_is_live(ha);
+    wire cw_is_cfg = cfg_address_is_live(cw_pending_addr);
+    wire cfg_issue, cfg_core_issue;
+    wire cw_drain = cw_pending & ~frz & (~cw_is_cfg | cfg_core_issue);
+    wire [8:0] cfg_issue_addr;
+    wire [7:0] cfg_issue_data;
+    md2_cfg_arb u_cfg_arb (
+        .clk(clk), .rst_s(rst_q), .previous_write(cfg_we1),
+        .host_valid(cfg_host_now), .host_addr(a_cfg[8:0]), .host_data(h_wd),
+        .core_valid(cw_pending & ~frz & cw_is_cfg), .core_addr(cw_pending_addr[8:0]),
+        .core_data(cw_pending_data), .core_issue(cfg_core_issue),
+        .bank_write(cfg_issue), .bank_addr(cfg_issue_addr), .bank_data(cfg_issue_data)
+    );
+    md2_cfg_stage u_cfg_stage (
+        .clk(clk), .rst_s(rst_q), .we(cfg_issue), .waddr(cfg_issue_addr),
+        .wdata(cfg_issue_data),
+        .we1(cfg_we1), .addr1(cfg_addr1), .data1(cfg_data1)
+    );
+    md2_cfg_cells #(.BYTES(CFG_BYTES), .MASK(CFG_MASK)) u_cfg (
+        .clk(clk), .rst_s(rst_q), .we1(cfg_we1), .addr1(cfg_addr1), .data1(cfg_data1),
+        .q(cfg)
     );
 
     // ---------------------------------------------------------------- global state declared ahead
@@ -122,6 +163,13 @@ module tt_um_brentius_metronome (
     reg  [15:0] fl, flp;
     reg  [7:0]  inb, outb;
     reg         inv, invp, outv;
+    // v3 (SPEC v2 12): freeze/step, execution digest, edge capture. All 0 after reset = v2 behaviour.
+    reg         freeze, frzd, men, cen;
+    reg  [NO-1:0]  o_out;      // output pin registers (SPEC 8), declared ahead for the digest
+    reg  [NOE-1:0] o_oe;
+    reg  [31:0] misr;
+    reg  [18:0] dc;
+    wire        cev = cen & ~replay & ~frz & |((rise[12:0] | fall[12:0]) & emask);
     wire [NL-1:0]   l_beat, l_run, l_sp, l_held, l_tapmiss, l_pina, l_pinb, l_parise, l_pafall;
     wire [3*NL-1:0] l_tap, l_fired;
     wire [2*NL-1:0] l_in, l_seg;
@@ -141,6 +189,8 @@ module tt_um_brentius_metronome (
     wire [5:0]  disp_e, xt;
     wire [3:0]  xl;
     wire [5:0]  c_en;
+    wire [1:0]  c_xv, c_rv;
+    wire [15:0] c_fpc;
     wire [35:0] c_src, c_dst;
     wire [47:0] c_dat;
     wire [63:0] pm_rd [0:1];
@@ -164,7 +214,7 @@ module tt_um_brentius_metronome (
     generate
         for (k = 0; k < MD_N_CORES; k = k + 1) begin : g_core
             md2_core #(.C(k), .NT(NT)) u_core (
-                .clk(clk), .rst_n(rst_q), .run_g(run_g), .rdata(pm_rd[k]), .fetch_en(fen[k]),
+                .clk(clk), .rst_n(rst_q), .run_g(run_g), .frz(frz), .rdata(pm_rd[k]), .fetch_en(fen[k]),
                 .fetch_addr(fadr[8*k +: 8]),
                 .t_ready(t_ready), .t_core(t_core), .t_line(t_line), .t_pc(t_pc),
                 .t_w0c(t_w0c), .t_w1c(t_w1c), .t_w0h(t_w0h), .t_w1h(t_w1h),
@@ -172,7 +222,8 @@ module tt_um_brentius_metronome (
                 .pause_o(pse[k]), .npc_o(npc[8*k +: 8]), .disp_o(dsp[k]), .disp_e(disp_e[3*k +: 3]),
                 .xt_o(xt[3*k +: 3]), .xl_o(xl[2*k +: 2]),
                 .mv_en(c_en[3*k +: 3]), .mv_src(c_src[18*k +: 18]), .mv_dst(c_dst[18*k +: 18]),
-                .mv_data(c_dat[24*k +: 24])
+                .mv_data(c_dat[24*k +: 24]),
+                .dbg_xv(c_xv[k]), .dbg_rv(c_rv[k]), .dbg_fpc(c_fpc[8*k +: 8])
             );
         end
     endgenerate
@@ -214,8 +265,25 @@ module tt_um_brentius_metronome (
     endgenerate
     wire conflict_ev = |(mv_valid & ~mv_win);
 
-    // winner of a group key: we, dst, data
-    function [14:0] pick;           // {we, dst[5:0], data[7:0]}
+    // Winner of a plain group (every group except L.SYM and T.STOP, whose key also holds a line or thread): the
+    // first enabled move, in priority order, whose destination is in the group. For a plain group this equals
+    // mv_win & (grp == G): same_key reduces to grp equality, so a move is blocked exactly by an earlier valid
+    // move of the same group. Timing (2026-11-15, slow corner): the late input is mv_en (guard evaluation), so the
+    // hit is a one-level priority on mv_en and the pick is a one-hot AND-OR instead of a six-deep priority chain.
+    // Behaviour is unchanged (proved equivalent to the earlier pick/hits form with Yosys equiv_*).
+    function [5:0] hits;
+        input [5:0]  en;
+        input [29:0] g;
+        input [4:0]  want;
+        reg   [5:0]  v;
+        integer q;
+        begin
+            for (q = 0; q < 6; q = q + 1) v[q] = en[q] & (g[5*q +: 5] == want);
+            hits[0] = v[0];
+            for (q = 1; q < 6; q = q + 1) hits[q] = v[q] & ~|(v & ((6'd1 << q) - 6'd1));
+        end
+    endfunction
+    function [14:0] pick;           // {we, dst[5:0], data[7:0]}; hit is one-hot or zero
         input [5:0]  hit;
         input [35:0] dst;
         input [47:0] dat;
@@ -223,21 +291,24 @@ module tt_um_brentius_metronome (
         begin
             pick = 15'd0;
             for (q = 0; q < 6; q = q + 1)
-                if (hit[q]) pick = {1'b1, dst[6*q +: 6], dat[8*q +: 8]};
-        end
-    endfunction
-    function [5:0] hits;
-        input [5:0] win;
-        input [29:0] g;
-        input [4:0] want;
-        integer q;
-        begin
-            for (q = 0; q < 6; q = q + 1) hits[q] = win[q] & (g[5*q +: 5] == want);
+                pick = pick | ({15{hit[q]}} & {1'b1, dst[6*q +: 6], dat[8*q +: 8]});
         end
     endfunction
     wire [29:0] grp_v = {grp[5], grp[4], grp[3], grp[2], grp[1], grp[0]};
-    // winner of a plain group (a macro, not a function, so that simulators see every operand)
-`define PICKG(G) pick(hits(mv_win, grp_v, G), c_dst, c_dat)
+    // (a macro, not a function, so that simulators see every operand)
+`define HITG(G) hits(mv_en, grp_v, G)
+    // per move: destination == want (from IR, early); `OPG(G, D) is "the winner of group G writes D", formed
+    // without decoding the late picked destination (same value as w[14] & (w[13:8] == D)).
+    function [5:0] dsteq;
+        input [35:0] dst;
+        input [5:0]  want;
+        integer q;
+        begin
+            for (q = 0; q < 6; q = q + 1) dsteq[q] = (dst[6*q +: 6] == want);
+        end
+    endfunction
+`define OPG(G, D) (|(`HITG(G) & dsteq(c_dst, D)))
+`define PICKG(G) pick(`HITG(G), c_dst, c_dat)
 
     // source side effects of enabled moves
     wire [5:0] rd_pd, rd_hin;
@@ -250,21 +321,49 @@ module tt_um_brentius_metronome (
 
     // ---------------------------------------------------------------- units
     wire [14:0] w_flags = `PICKG(DG_FLAGS);
-    wire [14:0] w_acc   = `PICKG(DG_ACC);
+    wire [14:0] w_cw = `PICKG(DG_CW);
+    wire cw_write_data = w_cw[14] & (w_cw[13:8] == D_CW_D);
+    wire cw_accept = cw_write_data & (~cw_pending | cw_drain);
+    always @(posedge clk) begin
+        if (!rst_q) begin
+            cw_addr <= 16'd0;
+            cw_pending <= 1'b0;
+            cw_pending_addr <= 16'd0;
+            cw_pending_data <= 8'd0;
+        end else begin
+            if (cw_drain) cw_pending <= 1'b0;
+            if (cw_accept) begin
+                cw_pending <= 1'b1;
+                cw_pending_addr <= cw_addr;
+                cw_pending_data <= w_cw[7:0];
+                cw_addr <= cw_addr + 16'd1;
+            end else if (w_cw[14] & (w_cw[13:8] == D_CW_AL)) begin
+                cw_addr[7:0] <= w_cw[7:0];
+            end else if (w_cw[14] & (w_cw[13:8] == D_CW_AH)) begin
+                cw_addr[15:8] <= w_cw[7:0];
+            end
+        end
+    end
     wire [14:0] w_p0    = `PICKG(DG_P0);
     wire [14:0] w_hout  = `PICKG(DG_HOST_OUT);
 
-    reg [2:0] acc_sel;
+    // Accumulator: the ALU result is computed per move from that move's own data and destination, before the
+    // late write-group hit selects one (timing, 2026-11-15: takes the add/subtract and zero detect off the
+    // guard -> hit path). acc_hit is one-hot or zero, so u_acc sees exactly the winner's op and data as before.
+    wire [5:0]  acc_hit = `HITG(DG_ACC);
+    reg  [17:0] acc_sel6;
+    integer am;
     always @* begin
-        case (w_acc[13:8])
-            D_ACC_LD:  acc_sel = 3'd0;
-            D_ACC_ADD: acc_sel = 3'd1;
-            D_ACC_SUB: acc_sel = 3'd2;
-            D_ACC_AND: acc_sel = 3'd3;
-            D_ACC_OR:  acc_sel = 3'd4;
-            D_ACC_XOR: acc_sel = 3'd5;
-            default:   acc_sel = 3'd6;     // D_ACC_CMP
-        endcase
+        for (am = 0; am < 6; am = am + 1)
+            case (c_dst[6*am +: 6])
+                D_ACC_LD:  acc_sel6[3*am +: 3] = 3'd0;
+                D_ACC_ADD: acc_sel6[3*am +: 3] = 3'd1;
+                D_ACC_SUB: acc_sel6[3*am +: 3] = 3'd2;
+                D_ACC_AND: acc_sel6[3*am +: 3] = 3'd3;
+                D_ACC_OR:  acc_sel6[3*am +: 3] = 3'd4;
+                D_ACC_XOR: acc_sel6[3*am +: 3] = 3'd5;
+                default:   acc_sel6[3*am +: 3] = 3'd6;     // D_ACC_CMP
+            endcase
     end
     wire [7:0]  acc_a;
     wire        acc_z, acc_c, acc_n;
@@ -280,7 +379,7 @@ module tt_um_brentius_metronome (
         end
     endgenerate
     md2_acc #(.NR(4)) u_acc (
-        .clk(clk), .rst_n(rst_q), .we(w_acc[14]), .sel(acc_sel), .d(w_acc[7:0]), .r_we(r_we), .r_d(r_d),
+        .clk(clk), .rst_n(rst_q), .hit(acc_hit), .sel(acc_sel6), .d(c_dat), .r_we(r_we), .r_d(r_d),
         .a(acc_a), .z(acc_z), .c(acc_c), .n(acc_n), .r(acc_r)
     );
 
@@ -292,8 +391,9 @@ module tt_um_brentius_metronome (
             wire [14:0] w = `PICKG(DG_SHK[5*k +: 5]);
             wire [14:0] c = `PICKG(DG_SHC[5*k +: 5]);
             wire _unused_c = &{1'b0, c[13:5]};
+            wire _unused_w = &{1'b0, w[13:8]};
             md2_shifter u (
-                .clk(clk), .rst_n(rst_q), .we(w[14]), .sel(w[13:8] == D_SHSH[6*k +: 6]), .d(w[7:0]),
+                .clk(clk), .rst_n(rst_q), .we(w[14]), .sel(`OPG(DG_SHK[5*k +: 5], D_SHSH[6*k +: 6])), .d(w[7:0]),
                 .cfg_we(c[14]), .cfg_d(c[4:0]), .dr(sh_d[8*k +: 8]), .o(sh_o[k]), .done(sh_done[k])
             );
         end
@@ -306,7 +406,10 @@ module tt_um_brentius_metronome (
     generate
         for (k = 0; k < MD_N_COUNTERS; k = k + 1) begin : g_cn
             wire [14:0] w = `PICKG(DG_CNK[5*k +: 5]);
-            wire [1:0] sel = (w[13:8] == D_CNLO[6*k +: 6]) ? 2'd0 : ((w[13:8] == D_CNHI[6*k +: 6]) ? 2'd1 : 2'd2);
+            wire op_lo = `OPG(DG_CNK[5*k +: 5], D_CNLO[6*k +: 6]);
+            wire op_hi = `OPG(DG_CNK[5*k +: 5], D_CNHI[6*k +: 6]);
+            wire _unused_w = &{1'b0, w[13:8]};
+            wire [1:0] sel = op_lo ? 2'd0 : (op_hi ? 2'd1 : 2'd2);
             md2_counter u (.clk(clk), .rst_n(rst_q), .we(w[14]), .sel(sel), .d(w[7:0]), .v(cn_v[16*k +: 16]),
                            .z(cn_z[k]));
         end
@@ -318,11 +421,12 @@ module tt_um_brentius_metronome (
     generate
         for (k = 0; k < MD_N_LFSRS; k = k + 1) begin : g_lf
             wire [14:0] w = `PICKG(DG_LFK[5*k +: 5]);
-            wire [5:0]  d = w[13:8];
-            wire [2:0] sel = (d == D_LFST[6*k +: 6])     ? 3'd0 :
-                             (d == D_LFB[6*(4*k) +: 6])   ? 3'd1 :
-                             (d == D_LFB[6*(4*k+1) +: 6]) ? 3'd2 :
-                             (d == D_LFB[6*(4*k+2) +: 6]) ? 3'd3 : 3'd4;
+            wire _unused_lf = &{1'b0, w[13:8]};
+            wire op_st = `OPG(DG_LFK[5*k +: 5], D_LFST[6*k +: 6]);
+            wire op_b0 = `OPG(DG_LFK[5*k +: 5], D_LFB[6*(4*k) +: 6]);
+            wire op_b1 = `OPG(DG_LFK[5*k +: 5], D_LFB[6*(4*k+1) +: 6]);
+            wire op_b2 = `OPG(DG_LFK[5*k +: 5], D_LFB[6*(4*k+2) +: 6]);
+            wire [2:0] sel = op_st ? 3'd0 : op_b0 ? 3'd1 : op_b1 ? 3'd2 : op_b2 ? 3'd3 : 3'd4;
             localparam integer PB = HAI_LFSR_BASE - CFG_LO_I + HS_LFSR * k + HO_LFSR_POLY;
             md2_lfsr u (.clk(clk), .rst_n(rst_q), .we(w[14]), .sel(sel), .d(w[7:0]), .poly(cfg[8*PB +: 32]),
                         .s(lf_s[32*k +: 32]));
@@ -330,7 +434,14 @@ module tt_um_brentius_metronome (
     endgenerate
 
     // data RAM, pointer, streams
-    wire [1:0]  s_req, s_we, s_gnt, s_bit, s_end, s_mark, s_bb, s_starved;
+    wire [1:0]  s_req, s_we, s_gnt, s_bit, s_end, s_mark, s_bb, s_starved, s_word;
+    wire [1:0] s_replay_valid;
+    wire [63:0] s_replay_word;
+    wire [19:0] replay_tick = {1'b0, dc} + 20'd1;
+    wire [19:0] replay_interval = {1'b0, s_replay_word[31:13]};
+    wire replay_apply = replay & ~frz & s_replay_valid[0] & (replay_tick >= replay_interval);
+    wire replay_late = replay_apply & (replay_tick > replay_interval);
+    wire [63:0] s_ww;
     wire [21:0] s_addr;
     wire [15:0] s_wd, s_byte;
     wire [23:0] s_pos;
@@ -342,24 +453,28 @@ module tt_um_brentius_metronome (
     generate
         for (k = 0; k < MD_N_STREAMS; k = k + 1) begin : g_s
             wire [14:0] w = `PICKG(DG_SK[5*k +: 5]);
-            wire        mctl = w[14] & (w[13:8] == D_SCTL[6*k +: 6]);
+            wire        mctl = `OPG(DG_SK[5*k +: 5], D_SCTL[6*k +: 6]);
             wire        hctl = w_srt & (i_srt == k) & (o_srt == HO_SRT_CTL);
             localparam integer SB = HAI_STREAM_BASE - CFG_LO_I + HS_STREAM * k;
             wire [7:0]  mode = cfg[8*(SB + HO_STREAM_MODE) +: 8];
-            wire _unused_s = &{1'b0, w[7:2], mode[7:2]};
-            md2_stream u (
-                .clk(clk), .rst_n(rst_q),
+            wire _unused_s = &{1'b0, w[14:8], w[7:2], mode[7:2]};
+            md2_stream #(.CAP(k == 0 ? 1 : 0)) u (
+                .clk(clk), .rst_n(rst_q), .frz(frz), .frzd(frzd),
+                .cap_en(cen & ~replay), .cap_push(cev), .cap_rec({dc, lvl[12:0]}),
+                .replay_en(replay), .replay_apply(replay_apply), .replay_late(replay_late),
+                .replay_valid(s_replay_valid[k]), .replay_word(s_replay_word[32*k +: 32]),
                 .cfg_mode(mode[0]), .cfg_msb(mode[1]),
                 .cfg_start(cfg[8*(SB + HO_STREAM_START) +: 11]),
                 .cfg_len(cfg[8*(SB + HO_STREAM_LEN) +: 12]),
                 .cfg_mark(cfg[8*(SB + HO_STREAM_MARK) +: 12]),
-                .adv(w[14] & (w[13:8] == D_SADV[6*k +: 6])),
-                .rx_we(w[14] & (w[13:8] == D_SRX[6*k +: 6])), .rx_bit(w[0]),
+                .adv(`OPG(DG_SK[5*k +: 5], D_SADV[6*k +: 6])),
+                .rx_we(`OPG(DG_SK[5*k +: 5], D_SRX[6*k +: 6])), .rx_bit(w[0]),
                 .rewind((mctl & w[0]) | (hctl & h_wd[0])), .flush((mctl & w[1]) | (hctl & h_wd[1])),
                 .clr_starved(hctl & h_wd[7]),
                 .bit_out(s_bit[k]), .byte_out(s_byte[8*k +: 8]), .g_end(s_end[k]), .g_mark(s_mark[k]),
                 .g_byte(s_bb[k]), .starved(s_starved[k]), .pos(s_pos[12*k +: 12]), .bidx(s_bidx[3*k +: 3]),
                 .req(s_req[k]), .req_we(s_we[k]), .req_addr(s_addr[11*k +: 11]), .req_wdata(s_wd[8*k +: 8]),
+                .req_word(s_word[k]), .req_wword(s_ww[32*k +: 32]),
                 .gnt(s_gnt[k]), .rdata(dm_rd)
             );
         end
@@ -374,8 +489,9 @@ module tt_um_brentius_metronome (
     wire [3:0] dm_be;
     wire [31:0] dm_wd;
     md2_mem u_mem (
-        .clk(clk), .rst_n(rst_q),
+        .clk(clk), .rst_n(rst_q), .frz(frz), .frzd(frzd),
         .s_req(s_req), .s_we(s_we), .s_addr(s_addr), .s_wd(s_wd), .s_gnt(s_gnt),
+        .s0_word(s_word[0]), .s0_wword(s_ww[31:0]),
         .p_we(w_p0[14]), .p_sel(p_sel), .p_d(w_p0[7:0]), .p_rdy(p_rdy), .p_dat(p_dat), .p_haz(p_haz),
         .h_set((h_wr | h_rd) & in_data), .h_wr(h_wr), .h_addr(a_dat[10:0]), .h_d(h_wd),
         .h_land(h_land), .h_land_d(h_land_d),
@@ -398,7 +514,8 @@ module tt_um_brentius_metronome (
             wire [1:0]  sop = (ws[13:8] == D_L_SYM) ? 2'd0 : ((ws[13:8] == D_L_DBIT) ? 2'd1 : 2'd2);
             wire        hl  = w_lrt & (i_lrt == k);
             md2_line #(.CFGW(8 * HS_LINE)) u (
-                .clk(clk), .rst_n(rst_q), .cfg(cfg[8*LB +: 8*HS_LINE]), .lvl(lvl), .rise(rise), .fall(fall),
+                .clk(clk), .rst_n(rst_q), .frz(frz), .cfg(cfg[8*LB +: 8*HS_LINE]), .lvl(lvl), .rise(rise),
+                .fall(fall),
                 .ctl_we(wc[14]), .ctl_d(wc[2:0]), .sym_we(ws[14]), .sym_op(sop), .sym_d(ws[3:0]),
                 .h_ph_we({hl & (o_lrt == HO_LRT_PHASE + 1), hl & (o_lrt == HO_LRT_PHASE)}),
                 .h_ctl_we(hl & (o_lrt == HO_LRT_CTL)), .h_stat_we(hl & (o_lrt == HO_LRT_STAT)), .h_d(h_wd),
@@ -456,7 +573,7 @@ module tt_um_brentius_metronome (
                                                    grp[2] == DG_T_STOP, grp[1] == DG_T_STOP, grp[0] == DG_T_STOP};
             wire       ht = w_trt & (i_trt == k);
             md2_thread u (
-                .clk(clk), .rst_n(rst_q), .ev(ev), .db(db[k]), .disp(disp), .pause(pause),
+                .clk(clk), .rst_n(rst_q), .ev(ev & ~frz), .db(db[k] & ~frz), .disp(disp), .pause(pause),
                 .npc((pse[1] & c1) ? npc[15:8] : npc[7:0]), .stop(|stop_mv), .late_set(|sym_mv & ~t_armed[k]),
                 .line_beat(l_beat[ln]),
                 .h_pc_we(ht & (o_trt == HO_TRT_PC)), .h_stat_we(ht & (o_trt == HO_TRT_STAT)), .h_d(h_wd),
@@ -538,31 +655,73 @@ module tt_um_brentius_metronome (
     wire c_wr_db    = w_ctl & (o_ctl == HO_CTRL_DOORBELL);
     wire c_wr_hin   = w_ctl & (o_ctl == HO_CTRL_HOSTIN);
     wire c_wr_hst   = w_ctl & (o_ctl == HO_CTRL_HOSTSTAT);
+    wire d_wr_dbg   = w_dbg & (o_dbg == HO_DBG_DBG);
+    wire d_wr_mctl  = w_dbg & (o_dbg == HO_DBG_MCTL);
+    wire [31:0] cw_dbg_off = {16'd0, cw_pending_addr} - {16'd0, HA_DBG_BASE};
+    wire h_ectl = w_dbg & (o_dbg == HO_DBG_ECTL);
+    wire h_em0  = w_dbg & (o_dbg == HO_DBG_EMASK);
+    wire h_em1  = w_dbg & (o_dbg == HO_DBG_EMASK + 1);
+    wire h_rlv0 = w_dbg & (o_dbg == HO_DBG_RLV);
+    wire h_rlv1 = w_dbg & (o_dbg == HO_DBG_RLV + 1);
+    wire d_wr_ectl = h_ectl | (cw_drain & (cw_dbg_off == HO_DBG_ECTL));
+    wire d_wr_em0  = h_em0  | (cw_drain & (cw_dbg_off == HO_DBG_EMASK));
+    wire d_wr_em1  = h_em1  | (cw_drain & (cw_dbg_off == HO_DBG_EMASK + 1));
+    wire d_wr_rlv0 = h_rlv0 | (cw_drain & (cw_dbg_off == HO_DBG_RLV));
+    wire d_wr_rlv1 = h_rlv1 | (cw_drain & (cw_dbg_off == HO_DBG_RLV + 1));
+    wire [12:0] replay_levels = replay_apply ?
+                    ((rlv & ~emask) | (s_replay_word[12:0] & emask)) : rlv;
+    localparam [31:0] MISR_POLY = 32'h04C11DB7;     // machine.MISR_POLY
     wire memhaz_ev  = p_haz | (|rd_pd & ~p_rdy);
-    wire err = conflict | memhaz | (|t_late) | (|t_ovr) | (|l_tapmiss) | (|s_starved);
+    wire err = conflict | memhaz | cw_overrun | (|t_late) | (|t_ovr) | (|l_tapmiss) | (|s_starved);
     always @(posedge clk) begin
         if (!rst_q) begin
             run_g <= 1'b0; conflict <= 1'b0; memhaz <= 1'b0; irq <= 1'b0; irqen <= 2'd0; db <= {NT{1'b0}};
             fl <= 16'd0; flp <= 16'd0; inb <= 8'd0; outb <= 8'd0; inv <= 1'b0; invp <= 1'b0; outv <= 1'b0;
+            freeze <= 1'b0; frz <= 1'b0; frzd <= 1'b0; men <= 1'b0; cen <= 1'b0; misr <= 32'd0; emask <= 13'd0;
+            cw_overrun <= 1'b0;
+            replay <= 1'b0; rlv <= 13'd0; rlv_prev <= 13'd0;
+            dc <= 19'd0;
         end else begin
-            flp <= fl;
+            if (!frz) flp <= fl;
             if (w_flags[14]) fl[w_flags[3:0]] <= (w_flags[13:8] == D_FLAGS_SET);
-            invp <= inv;
+            if (!frz) invp <= inv;
             if (c_wr_hin)         begin inb <= h_wd; inv <= 1'b1; end
             else if (|rd_hin)     inv <= 1'b0;
             if (w_hout[14])       begin outb <= w_hout[7:0]; outv <= 1'b1; end
             else if (c_wr_hst & h_wd[1]) outv <= 1'b0;
             conflict <= conflict_ev | (conflict & ~(c_wr_stk & h_wd[0]));
             memhaz   <= memhaz_ev   | (memhaz   & ~(c_wr_stk & h_wd[1]));
+            cw_overrun <= (cw_write_data & ~cw_accept) | (cw_overrun & ~(c_wr_stk & h_wd[2]));
             irq <= (irqen[0] & outv) | (irqen[1] & err);
             if (c_wr_run)   run_g <= h_wd[0];
             if (c_wr_irqen) irqen <= h_wd[1:0];
-            db <= c_wr_db ? h_wd[NT-1:0] : {NT{1'b0}};
+            db <= (c_wr_db ? h_wd[NT-1:0] : {NT{1'b0}}) | (frz ? db : {NT{1'b0}});   // held while frozen
+            // v3 freeze and step (SPEC v2 12.3)
+            frzd <= frz;
+            if (d_wr_dbg) begin freeze <= h_wd[0]; frz <= h_wd[0] & ~h_wd[1]; end
+            else          frz <= freeze;
+            // v3 execution digest (12.2): D = {OEN[7:0], OUT[13:0]}, the pin registers in this cycle
+            if (d_wr_mctl) men <= h_wd[0];
+            if (d_wr_mctl & h_wd[1]) misr <= 32'd0;
+            else if (men & ~frz)     misr <= {misr[30:0], 1'b0} ^ (misr[31] ? MISR_POLY : 32'd0) ^ {10'd0, o_oe, o_out};
+            // Edge capture and replay (12.4, 13.2). A host write wins to the same byte.
+            if (d_wr_ectl) {replay, cen} <= h_ectl ? h_wd[1:0] : cw_pending_data[1:0];
+            if (d_wr_em0)  emask[7:0]  <= h_em0 ? h_wd : cw_pending_data;
+            if (d_wr_em1)  emask[12:8] <= h_em1 ? h_wd[4:0] : cw_pending_data[4:0];
+            if (!frz) rlv_prev <= rlv;
+            rlv[7:0] <= d_wr_rlv0 ? (h_rlv0 ? h_wd : cw_pending_data) : replay_levels[7:0];
+            rlv[12:8] <= d_wr_rlv1 ? (h_rlv1 ? h_wd[4:0] : cw_pending_data[4:0]) : replay_levels[12:8];
+            if (d_wr_ectl) dc <= 19'd0;                         // any ECTL write restarts DC (12.4)
+            else if (!frz) begin
+                if (replay_apply | (~replay & ~cen)) dc <= 19'd0;
+                else if (cev)               dc <= 19'd1;
+                else if (dc != 19'h7FFFF)   dc <= dc + 19'd1;
+            end
         end
     end
 
     // ---------------------------------------------------------------- host register reads (value in cycle R)
-    wire [7:0] errsum = {2'd0, memhaz, conflict, |s_starved, |l_tapmiss, |t_ovr, |t_late};
+    wire [7:0] errsum = {1'b0, cw_overrun, memhaz, conflict, |s_starved, |l_tapmiss, |t_ovr, |t_late};
     wire [1:0] li = i_lrt[1:0];
     wire [2:0] ti = i_trt[2:0];
     wire       si = i_srt[0];
@@ -571,7 +730,7 @@ module tt_um_brentius_metronome (
         if (in_ctl) begin
             case (o_ctl)
                 HO_CTRL_RUN:      rd_val = {7'd0, run_g};
-                HO_CTRL_STICKY:   rd_val = {6'd0, memhaz, conflict};
+                HO_CTRL_STICKY:   rd_val = {5'd0, cw_overrun, memhaz, conflict};
                 HO_CTRL_IRQEN:    rd_val = {6'd0, irqen};
                 HO_CTRL_HOSTIN:   rd_val = inb;
                 HO_CTRL_HOSTOUT:  rd_val = outb;
@@ -602,31 +761,55 @@ module tt_um_brentius_metronome (
                 HO_SRT_POSH: rd_val = {s_starved[si], s_bidx[3*si +: 3], s_pos[12*si + 8 +: 4]};
                 default:     rd_val = 8'd0;
             endcase
+        end else if (in_dbg) begin
+            case (o_dbg)
+                HO_DBG_DBG:       rd_val = {7'd0, freeze};
+                HO_DBG_MCTL:      rd_val = {7'd0, men};
+                HO_DBG_ECTL:      rd_val = {6'd0, replay, cen};
+                HO_DBG_MISR:      rd_val = misr[7:0];
+                HO_DBG_MISR + 1:  rd_val = misr[15:8];
+                HO_DBG_MISR + 2:  rd_val = misr[23:16];
+                HO_DBG_MISR + 3:  rd_val = misr[31:24];
+                HO_DBG_EMASK:     rd_val = emask[7:0];
+                HO_DBG_EMASK + 1: rd_val = {3'd0, emask[12:8]};
+                HO_DBG_RLV:       rd_val = rlv[7:0];
+                HO_DBG_RLV + 1:   rd_val = {3'd0, rlv[12:8]};
+                HO_DBG_ACC:       rd_val = acc_a;
+                HO_DBG_AFLG:      rd_val = {5'd0, acc_n, acc_c, acc_z};
+                HO_DBG_FLAGS:     rd_val = fl[7:0];
+                HO_DBG_FLAGS + 1: rd_val = fl[15:8];
+                HO_DBG_CST:       rd_val = {3'd0, c_rv[0], c_xv[0], xt[2:0]};
+                HO_DBG_CST + 1:   rd_val = {3'd0, c_rv[1], c_xv[1], xt[5:3]};
+                HO_DBG_FPC:       rd_val = c_fpc[7:0];
+                HO_DBG_FPC + 1:   rd_val = c_fpc[15:8];
+                default:          rd_val = 8'd0;
+            endcase
         end
     end
 
     // ---------------------------------------------------------------- output pins (SPEC 8)
-    reg [NO-1:0]  o_out;
-    reg [NOE-1:0] o_oe;
     generate
         for (k = 0; k < NO; k = k + 1) begin : g_out
             localparam integer OB = HAI_OUT_BASE - CFG_LO_I + HS_OUT * k;
             wire [7:0]  obind = cfg[8*(OB + HO_OUT_BIND) +: 8];
             wire [7:0]  sel  = cfg[8*(OB + HO_OUT_SEL) +: 8];
-            wire _unused_o = &{1'b0, obind[7:3], sel[7:6]};
+            wire _unused_o = &{1'b0, obind[7:5], sel[7:6]};
             wire [31:0] lut  = cfg[8*(OB + HO_OUT_LUT) +: 32];
             wire [1:0]  ln   = obind[1:0];
             wire [3:0]  cm   = l_comm[4*ln +: 4];
-            wire [4:0]  idx  = obind[2] ? {l_seg[2*ln +: 2], cm[sel[5:4]], cm[sel[3:2]], cm[sel[1:0]]} : 5'd0;
+            // v3 LIVE (SPEC v2 12.1): bit 3 replaces b2 by PIN[PINA], bit 4 replaces b1 by PIN[PINB] of the line
+            wire        b2   = obind[3] ? l_pina[ln] : cm[sel[5:4]];
+            wire        b1   = obind[4] ? l_pinb[ln] : cm[sel[3:2]];
+            wire [4:0]  idx  = obind[2] ? {l_seg[2*ln +: 2], b2, b1, cm[sel[1:0]]} : 5'd0;
             always @(posedge clk) begin
-                if (!rst_q) o_out[k] <= 1'b0;
-                else        o_out[k] <= lut[idx];
+                if (!rst_q)    o_out[k] <= 1'b0;
+                else if (!frz) o_out[k] <= lut[idx];
             end
             if (k < NOE) begin : g_oe
                 wire [31:0] oe = cfg[8*(OB + HO_OUT_OE) +: 32];
                 always @(posedge clk) begin
-                    if (!rst_q) o_oe[k] <= 1'b0;
-                    else        o_oe[k] <= oe[idx];
+                    if (!rst_q)    o_oe[k] <= 1'b0;
+                    else if (!frz) o_oe[k] <= oe[idx];
                 end
             end
         end
@@ -638,7 +821,10 @@ module tt_um_brentius_metronome (
 
     // bits that exist only as configuration-window padding, or that a block does not use
     wire _unused = &{1'b0, ena, s1, sp[15:9], sp[7:0] & 8'd0, cfg, flp[15:8], t_trig, a_dat[15:11], a_prg[15:12], a_prg[2:0] & 3'd0,
-                     i_lrt[15:2], i_trt[15:3], i_srt[15:1], o_ctl, o_lrt, o_trt, o_srt, w_flags[7:4], w_hout[13:8]};
+                     i_lrt[15:2], i_trt[15:3], i_srt[15:1], o_ctl, o_lrt, o_trt, o_srt, w_flags[7:4], w_hout[13:8],
+                     o_dbg, s_word[1], s_ww[63:32], s_replay_valid[1], s_replay_word[63:32]};
 endmodule
 `undef PICKG
+`undef HITG
+`undef OPG
 `default_nettype wire

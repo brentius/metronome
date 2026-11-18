@@ -163,6 +163,9 @@ localparam [5:0] D_L1_CTL = 6'd54;
 localparam [5:0] D_L2_CTL = 6'd55;
 localparam [5:0] D_L3_CTL = 6'd56;
 localparam [5:0] D_HOST_OUT = 6'd57;
+localparam [5:0] D_CW_AL = 6'd58;
+localparam [5:0] D_CW_AH = 6'd59;
+localparam [5:0] D_CW_D = 6'd60;
 
 localparam [5:0] G_TRUE = 6'd0;
 localparam [5:0] G_F0 = 6'd1;

@@ -1,0 +1,29 @@
+# Modbus RTU requests over UART 8N1 (SPEC_V2_SCORE.md part A 18.2). A layered score: the bytes ride on the
+# library score's `char` production; this file describes only framing, function codes, the CRC and a counter.
+# Responses travel the other way, so they are a second score over a second UART direction (roles map by position).
+use uart_8n1 as uart
+protocol modbus_rtu over uart.char
+roles    master, slave
+
+crc crc16_modbus width 16 poly 0x8005 init 0xFFFF refin refout xorout 0
+
+enum fn : u8
+  READ_HOLDING   = 3
+  WRITE_SINGLE   = 6
+  WRITE_MULTIPLE = 16
+
+state
+  sent : u16 = 0          # requests sent; both ends count, so a host can compare
+
+grammar
+  bus    = frame*
+  frame  = slave:u8
+           func:fn
+           switch func {
+             READ_HOLDING:   start:u16  count:u16
+             WRITE_SINGLE:   reg:u16    value:u16
+             WRITE_MULTIPLE: start:u16  count:u16  nbytes:u8 = count * 2  regs:bytes[nbytes]
+           }
+           crc crc16_modbus over slave..* lsb first      # CRC low byte first; registers are big-endian
+           sent <- sent + 1
+           gap 3.5 chars                                 # the RTU frame boundary: silence on the line

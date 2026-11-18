@@ -1,17 +1,83 @@
-# Local agent instructions, plans and project-state documents.
+# Submission repository: keep the Tiny Tapeout project and the source, tests,
+# models and technical documentation supporting the Jane Street entry.
+# New top-level paths are private by default; add an exception when needed.
+/*
+!/.gitignore
+!/.github/
+!/.devcontainer/
+!/LICENSE
+!/README.md
+!/info.yaml
+!/requirements.txt
+!/librelane_plugin_sram_pdn.py
+!/odb_stripes.py
+!/src/
+!/test/
+!/docs/
+!/wiki/
+!/code/
+!/sim/
+
+# Local agent instructions, planning records and editor settings.
 /BOTS/
+/AGENTS.md
+/CLAUDE.md
+/.agents/
+/.claude/
+/.codex/
+/.vscode/
+/.idea/
+AGENTS.md
+CLAUDE.md
+plans/
+planning/
+PLAN.md
+PLANS.md
+STATUS.md
+DECISIONS.md
+*_PLAN.md
+*_plan.md
+*-plan.md
 
-# Claude Code local overrides (project settings.json stays tracked).
-/.claude/settings.local.json
-
-# Generated build and tool output.
-/code/.tools/
-/code/.build/
+# Local build workspaces, downloaded tools/PDKs and raw/derived run archives.
+# Preserve these on disk. Already tracked files require a separate index change.
 /build/
-/code/**/__pycache__/
-/sim/**/__pycache__/
+/data/
+/code/.build/
+/code/.tools/
 
-# FPGA tool artefacts (Vivado and similar).
+# Python environments, caches and package output.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+*.egg-info/
+.coverage
+.coverage.*
+htmlcov/
+
+# Simulator/formal output; retain test source, SRAM models and proof inputs.
+sim_build*/
+results*.xml
+*.vcd
+*.vvp
+*.fst
+*.fst.hier
+*.log
+/code/tests/formal/*_prove/
+/code/tests/formal/*_cover/
+
+# Tiny Tapeout/LibreLane generated configuration and physical-build products.
+runs/
+tt_submission/
+/src/user_config.json
+/src/config_merged.json
+/test/gate_level_netlist.v
+
+# FPGA tool output.
 *.jou
 *.backup.log
 .Xil/
@@ -20,37 +86,11 @@
 *.ip_user_files/
 *.runs/
 *.sim/
-*.vcd
-*.vvp
 
-# Python tool caches.
-.pytest_cache/
-
-# cocotb simulation builds and results.
-/code/tests/**/sim_build*/
-/code/tests/**/results*.xml
-*.fst
-
-# Large raw physical evidence kept on disk (and on the RunPod volume) but out of git.
-/data/raw/metronome_v1.0/r6_run_text.tgz
-/data/raw/metronome_v1.0/reports/nom_*/
-/data/raw/physical_resume_20261111_120036/metronome_r3_d17_checkpoint_grt_repaired.tgz
-
-# Tiny Tapeout template (ttihp-verilog-template @4b1204a)
+# Local credentials and operating-system files.
+.env
+.env.*
+!.env.example
 .DS_Store
-.idea
-*.fst.hier
-runs
-tt_submission
-src/user_config.json
-src/config_merged.json
-test/sim_build
-test/__pycache__/
-test/results.xml
-test/gate_level_netlist.v
-
-# Full failed CI archive retained locally; selected reports are versioned.
-/data/raw/template_ci_c83a7f4_20261111T2221/GDS_logs.zip
-/data/raw/template_ci_c83a7f4_20261111T2221/selected/runs/wokwi/58-openroad-stapostpnr/nom_*/
-/data/raw/v2pnr_skeleton_20261112/*/run_text.tgz
-/data/raw/v2pnr_skeleton_20261112/*/harden.log
+Thumbs.db
+Desktop.ini

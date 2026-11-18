@@ -1,0 +1,25 @@
+# Library score: WS2812 / WS2812B addressable LED, data wire only (Worldsemi datasheet timing).
+# Bit time 1.25 us (800 kHz). T0H 0.40 us, T0L 0.85 us, T1H 0.80 us, T1L 0.45 us, each +-150 ns; reset (latch) is the
+# line held low for > 50 us. One frame is a strip of 8 LEDs (24 bytes, G R B per LED, MSB first); resize `bytes[24]`
+# for a longer strip. Does not: read anything back (the chip has one output wire).
+protocol ws2812
+roles    sender, led
+
+wire din out push-pull idle low by sender
+
+clock 800 kHz
+  sender: generated
+  led:    recovered from din edges, window 90%..40%
+  split 32% 64%
+  tolerance 5%
+
+symbols
+  bit(d)   din "1d0"                 # high 0.4 us (bit 0) or 0.8 us (bit 1), then low to the end of the 1.25 us beat
+
+bits msb first
+
+grammar
+  strip  = frame*
+  frame  = led x 8                   # 8 LEDs; resize for a longer strip
+           gap 60 us                 # the reset / latch: low for > 50 us
+  led    = g:u8 r:u8 b:u8

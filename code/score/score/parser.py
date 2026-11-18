@@ -7,8 +7,9 @@ from fractions import Fraction
 from .ast import *  # noqa: F403
 from .lexer import Line, Tok, tokenize
 
-UNITS = {"Hz", "kHz", "MHz", "ns", "us", "ms", "s", "cycles", "beats"}
-SECTIONS = {"arbitrate", "wire", "mirror", "clock", "symbols", "recognise", "bits", "crc", "grammar", "abort", "param", "group"}
+UNITS = {"Hz", "kHz", "MHz", "ns", "us", "ms", "s", "cycles", "beats", "chars"}
+SECTIONS = {"arbitrate", "wire", "mirror", "clock", "symbols", "recognise", "bits", "crc", "grammar", "abort", "param",
+            "group", "constrain", "enum", "state"}
 BINPREC = [("||",), ("&&",), ("|",), ("^",), ("&",), ("==", "!="), ("<", ">", "<=", ">="), ("<<", ">>"),
            ("+", "-"), ("*", "/", "%")]
 
@@ -192,6 +193,8 @@ def _seq_end(ts: TS) -> bool:
         return True
     if t.kind == "id" and t.text == "else" and ts.at(":", 1):
         return True
+    if t.kind == "id" and t.text in getattr(ts, "labels", ()) and ts.at(":", 1):     # an enum switch label (18.3)
+        return True
     return False
 
 
@@ -280,7 +283,13 @@ def _parse_type(ts: TS) -> Type:
         ty.first = ts.ident("field").text
         ty.last = ty.first
         if ts.accept(".."):
-            ty.last = ts.ident("field").text
+            if ts.accept("*"):
+                ty.last = None          # open range F1..* : through the field just before the crc (18.2)
+            else:
+                ty.last = ts.ident("field").text
+        if ts.peek() and ts.peek().text in ("msb", "lsb") and ts.at("first", 1):   # byte order of the crc (18.2)
+            ty.order = ts.next().text
+            ts.next()
         return ty
     elif t.text == "parity":
         k = ts.ident("even or odd")
@@ -294,7 +303,9 @@ def _parse_type(ts: TS) -> Type:
             ty.last = ts.ident("field").text
         return ty
     else:
-        raise ScoreError(f"unknown type {t.text!r}", t.pos)
+        # an enum type (18.3); its width is filled in once the whole file is parsed (Parser._resolve)
+        ty = Type("u", 0, enum=t.text)
+        ty._pos = t.pos
     if ts.peek() and ts.peek().text in ("msb", "lsb") and ts.at("first", 1):
         ty.order = ts.next().text
         ts.next()
@@ -359,7 +370,12 @@ def _parse_atom(ts):
                 ts.expect(":")
                 other = parse_gexpr(ts)
             else:
-                v = expect_int(ts)
+                a = ts.peek()
+                if a is not None and a.kind == "id":        # an enum member, resolved in Parser._resolve
+                    ts.i += 1
+                    v = Name(a.text, a.pos)
+                else:
+                    v = expect_int(ts)
                 ts.expect(":")
                 arms.append((v, parse_gexpr(ts)))
         ts.expect("}")
@@ -412,6 +428,9 @@ def _parse_atom(ts):
         if not ts.accept("beats"):
             ts.accept("beat")
         return Turnaround(n, pos)
+    if ts.at("<-", 1):                                     # state update (18.3)
+        ts.i += 2
+        return Assign(t.text, parse_vexpr(ts), pos)
     if t.text in ("crc", "parity") and ts.peek(1) is not None and ts.peek(1).kind == "id" and not ts.at(":", 1):
         f = Field(None, _parse_type(ts), pos=pos)
         _parse_modifiers(ts, f)
@@ -467,7 +486,14 @@ class Parser:
         roles = None
         uses: list[str] = []
         sc = dict(wires=[], clock=None, groups=[], symbols=[], recognise=[], bits=None, crcs={}, prods=[],
-                  aborts=[], params=[], arbitrates=[])
+                  aborts=[], params=[], arbitrates=[], constraints=[], enums={}, states=[], imports={}, over=None)
+        # enum members first: they label switch arms, and the grammar may come before the enum section
+        self.labels = set()
+        for head, body in chunks:
+            if head.toks and head.toks[0].text == "enum":
+                for ln in body:
+                    if ln.toks and ln.toks[0].kind == "id":
+                        self.labels.add(ln.toks[0].text)
         for head, body in chunks:
             ts = TS(head.toks, (head.no, 1))
             kw = ts.next()
@@ -478,7 +504,22 @@ class Parser:
                 name = ts.ident("protocol name").text
                 if ts.accept("version"):
                     version = expect_int(ts)
+                if ts.accept("over"):                       # layering (18.2): protocol P over ALIAS.PROD
+                    alias = ts.ident("library alias").text
+                    ts.expect(".")
+                    sc["over"] = (alias, ts.ident("production of the lower protocol").text)
                 ts.expect_done()
+            elif k == "constrain":
+                ts.expect_done()
+                sc["constraints"] += [self.constraint(l) for l in body]
+            elif k == "enum":
+                e = self.enum(ts, kw, body)
+                if e.name in sc["enums"]:
+                    raise ScoreError(f"enum '{e.name}' declared twice", kw.pos, "E-NAMES")
+                sc["enums"][e.name] = e
+            elif k == "state":
+                ts.expect_done()
+                sc["states"] += [self.state(l) for l in body]
             elif k == "roles":
                 r1 = ts.ident("role").text
                 ts.expect(",")
@@ -488,7 +529,14 @@ class Parser:
                     raise ScoreError("the two roles must differ", kw.pos)
                 roles = (r1, r2)
             elif k == "use":
-                uses.append(ts.ident("library name").text)
+                lib = ts.ident("library name").text
+                if ts.accept("as"):                         # a protocol library (18.2): use uart_8n1 as uart
+                    alias = ts.ident("alias").text
+                    if alias in sc["imports"]:
+                        raise ScoreError(f"alias '{alias}' used twice", kw.pos, "E-NAMES")
+                    sc["imports"][alias] = lib
+                else:
+                    uses.append(lib)
                 ts.expect_done()
             elif k == "wire":
                 sc["wires"].append(self.wire(ts, kw))
@@ -531,10 +579,126 @@ class Parser:
             raise ScoreError("missing 'roles A, B' header", (1, 1))
         if not sc["prods"]:
             raise ScoreError("no grammar section", (1, 1))
-        return Score(name=name, version=version, roles=roles, uses=uses, wires=sc["wires"], clock=sc["clock"],
-                     groups=sc["groups"], symbols=sc["symbols"], recognise=sc["recognise"],
-                     bits=sc["bits"] or Bits(), crcs=sc["crcs"], prods=sc["prods"], aborts=sc["aborts"],
-                     params=sc["params"], source=self.src, arbitrates=sc["arbitrates"])
+        s = Score(name=name, version=version, roles=roles, uses=uses, wires=sc["wires"], clock=sc["clock"],
+                  groups=sc["groups"], symbols=sc["symbols"], recognise=sc["recognise"],
+                  bits=sc["bits"] or Bits(), crcs=sc["crcs"], prods=sc["prods"], aborts=sc["aborts"],
+                  params=sc["params"], source=self.src, arbitrates=sc["arbitrates"],
+                  constraints=sc["constraints"], enums=sc["enums"], states=sc["states"], imports=sc["imports"],
+                  over=sc["over"])
+        self._resolve(s)
+        return s
+
+    # -- resolution after the whole file is read (enums may be declared after the grammar) --
+    def _resolve(self, s: Score):
+        consts = {}
+        for e in s.enums.values():
+            for m, v in e.members.items():
+                if m in consts:
+                    raise ScoreError(f"enum member '{m}' declared twice", e.pos, "E-NAMES")
+                consts[m] = v
+        seen = set()
+
+        def walk(n):
+            if id(n) in seen or n is None:
+                return
+            seen.add(id(n))
+            if isinstance(n, Field) and n.type.enum:
+                e = s.enums.get(n.type.enum)
+                if e is None:
+                    raise ScoreError(f"unknown type {n.type.enum!r} (not a built-in type or an enum)",
+                                     getattr(n.type, "_pos", n.pos), "E-NAMES")
+                n.type.width = e.width
+            elif isinstance(n, Switch):
+                arms = []
+                for v, a in n.arms:
+                    if isinstance(v, Name):
+                        if v.name not in consts:
+                            raise ScoreError(f"switch arm '{v.name}' is not an enum member", v.pos, "E-NAMES")
+                        v = consts[v.name]
+                    arms.append((v, a))
+                    walk(a)
+                n.arms = arms
+                walk(n.other)
+            elif isinstance(n, Seq):
+                for i in n.items:
+                    walk(i)
+            elif isinstance(n, Choice):
+                for a in n.alts:
+                    walk(a)
+            elif isinstance(n, Dup):
+                walk(n.a)
+                walk(n.b)
+            elif isinstance(n, (Rep, If, Within, Every, Retry)):
+                walk(n.node)
+        for p in s.prods:
+            walk(p.body)
+
+    def constraint(self, ln):
+        ts = TS(ln.toks, (ln.no, 1))
+        name = ts.ident("constraint name")
+        a = self._tevent(ts)
+        ts.expect("->")
+        b = self._tevent(ts)
+        op = ts.next()
+        if op.text not in (">=", "<="):
+            raise ScoreError("expected '>=' or '<=' and a duration", op.pos)
+        q = parse_qty(ts)
+        if q.unit not in ("ns", "us", "ms", "s", "cycles", "beats"):
+            raise ScoreError("a constraint bound needs a time unit (ns, us, ms, s, cycles or beats)", q.pos)
+        ts.expect_done()
+        return Constraint(name.text, a, b, op.text, q, name.pos)
+
+    def _tevent(self, ts) -> TEvent:
+        t = ts.ident("wire or recognised event")
+        if ts.peek() is not None and ts.peek().text in ("rise", "fall", "change"):
+            ev = TEvent("edge", wire=t.text, edge=ts.next().text, pos=t.pos)
+            if ts.accept("when"):
+                ev.when_wire = ts.ident("wire").text
+                lv = ts.ident("high or low")
+                if lv.text not in ("high", "low"):
+                    raise ScoreError("expected high or low", lv.pos)
+                ev.when_level = lv.text
+            return ev
+        return TEvent("event", event=t.text, pos=t.pos)
+
+    def enum(self, ts, kw, body):
+        name = ts.ident("enum name").text
+        ts.expect(":")
+        ty = ts.ident("uN")
+        m = re.fullmatch(r"u(\d+)", ty.text)
+        if not m or not 1 <= int(m.group(1)) <= 32:
+            raise ScoreError("an enum's type must be uN, N = 1..32", ty.pos)
+        w = int(m.group(1))
+        ts.expect_done()
+        members = {}
+        for ln in body:
+            t = TS(ln.toks, (ln.no, 1))
+            mn = t.ident("member name")
+            t.expect("=")
+            v = expect_int(t)
+            t.expect_done()
+            if mn.text in members:
+                raise ScoreError(f"enum {name}: member '{mn.text}' given twice", mn.pos, "E-NAMES")
+            if not 0 <= v < (1 << w):
+                raise ScoreError(f"enum {name}: {mn.text} = {v} does not fit u{w}", mn.pos)
+            members[mn.text] = v
+        if not members:
+            raise ScoreError(f"enum {name} has no members", kw.pos)
+        return EnumDecl(name, w, members, kw.pos)
+
+    def state(self, ln):
+        ts = TS(ln.toks, (ln.no, 1))
+        name = ts.ident("state name")
+        ts.expect(":")
+        ty = ts.ident("uN")
+        m = re.fullmatch(r"u(\d+)", ty.text)
+        if not m or not 1 <= int(m.group(1)) <= 32:
+            raise ScoreError("a state value's type must be uN, N = 1..32", ty.pos)
+        init = 0
+        if ts.accept("="):
+            init = expect_int(ts)
+        ts.expect_done()
+        return StateDecl(name.text, int(m.group(1)), init, name.pos)
 
     # -- sections --
     def wire(self, ts, kw):
@@ -824,6 +988,7 @@ class Parser:
             for s in sub:
                 toks += s.toks
             ts = TS(toks, (head.no, 1))
+            ts.labels = getattr(self, "labels", set())
             name = ts.ident("production name")
             params = []
             if ts.accept("("):

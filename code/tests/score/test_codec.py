@@ -66,7 +66,7 @@ def i2c_case(rng, my_addr):
     nreq = rng.randrange(1, 4)
     for k in range(nreq):
         if k:
-            events.append(("rstart",))
+            events += [("rstart",), ("start",)]
             expect.append(("Sr",))
         addr = my_addr if rng.random() < 0.7 else rng.randrange(128)
         rw = rng.randrange(2)

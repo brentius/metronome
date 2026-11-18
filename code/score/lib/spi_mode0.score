@@ -1,0 +1,37 @@
+# Library score: SPI mode 0 controller and peripheral ("SPI target"), spec 16.3 verbatim below this header.  The peripheral role is
+# compiled as a follower of SCK; both roles are checked on the cycle model in code/tests/scorec/test_spi.py and
+# code/tests/score_lib/test_spi_target.py.
+# Does: CS_N framed transfers of whole bytes, MSB first, full duplex, mode 0 (CPOL 0, CPHA 0).
+# Does not: modes 1-3, LSB-first, non-byte word sizes, multi-lane (see QSPI in wiki/PROTOCOL_LIBRARY.md).
+protocol spi_mode0
+roles    controller, peripheral
+
+wire sck  out idle low  by controller
+wire cs_n out idle high by controller
+wire mosi out idle low  by controller
+wire miso out idle low  by peripheral
+
+clock 1 MHz
+  controller: generated
+  peripheral: follow sck fall, capture on sck rise
+  split 50%
+
+symbols
+  bit(m, s)  sck "01"  cs_n "0"  mosi "m"  miso "s"  sample mosi at sck rise  sample miso at sck rise
+  select     sck "0"   cs_n "0"
+  deselect   sck "0"   cs_n "1"
+
+recognise
+  cs_on   cs_n falls
+  cs_off  cs_n rises
+
+bits msb first
+
+grammar
+  bus      = transfer*
+  transfer = select
+             { out:u8 by controller  ||  in:u8 by peripheral }*
+             deselect
+
+abort
+  on cs_off -> bus

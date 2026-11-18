@@ -1,0 +1,24 @@
+[tasks]
+safe
+hazard
+cover
+
+[options]
+safe: mode bmc
+hazard: mode bmc
+cover: mode cover
+depth @DEPTH@
+multiclock off
+
+[engines]
+smtbmc bitwuzla
+
+[script]
+safe: read_slang --top fv_uart_tx -DSAFE -I . -I @GEN@ -I @SRC@ @FILES@ @FVSV@
+hazard: read_slang --top fv_uart_tx -I . -I @GEN@ -I @SRC@ @FILES@ @FVSV@
+cover: read_slang --top fv_uart_tx -DSAFE -DCOVER -I . -I @GEN@ -I @SRC@ @FILES@ @FVSV@
+prep -top fv_uart_tx
+async2sync
+
+[files]
+@FVSV@

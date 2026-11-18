@@ -280,6 +280,8 @@ OUT[o]' = LUT[idx];   OEN[o]' = OE[idx]   (o < 8)
 
 The pin outputs are these registers. After reset every pin drives 0 with its output enable off.
 
+**v3 note:** on `metronome-v3.0`, `LIVE` (BIND bits 4:3) may replace b2 and b1 by live pins, and the registers hold in a frozen cycle (12.1, 12.3).
+
 ## 9. Host link and host map
 
 **SPI target, mode 0, MSB first.** Let `SR` be the synchronised rising edge of SCK (section 2) in a cycle where the synchronised CS_N is low. While CS_N is high: the byte state returns to the command byte, the bit count clears and `TX' = 0`. `MISO = TX[7]`.
@@ -302,6 +304,7 @@ Runtime registers (flops):
 - Line runtime: `PHASE` reads and writes `PH`. `CTL` bits 0..2 read and write `RUN, ARM, REN` (section 3.2); reads also give `SYNC` in bit 3, `FIRED` in bits 6:4 and `HELD` in bit 7. `SYM` reads `{COMMITTED, STAGED}`. `INS` reads `{IN, REM, SN}` in bits 6:0. `STAT` bit 0 reads `TAPMISS`, write 1 to clear.
 - Thread runtime: `PC` reads and writes. `STAT` reads `{OVR, LATE, EN, ARMED, RUNNING, READY}` in bits 5..0; a write sets `EN` from bit 3 and clears `LATE` or `OVR` where bit 4 or 5 is 1. A host clearing `LATE` writes `EN` as well, so it must write the current `EN`.
 - Stream runtime: `POSL`, `POSH` (`{STARVED, BIDX, POS[11:8]}`), `CTL` (write-only; section 6.3).
+- **v3 (section 12):** block `DBG` at `0x2460`: `DBG` (freeze, step), `MCTL`/`MISR` (execution digest), `ECTL`/`EMASK` (edge capture), and read-only `ACC`, `AFLG`, `FLAGS`, `CST`, `FPC`. All are 0 after reset, which leaves the v2 behaviour unchanged.
 
 ## 9a. Resolutions of edge cases
 
@@ -346,3 +349,100 @@ Runtime registers (flops):
 | Units | 4 shifters, 4 counters, 2 pointers | 2 shifters, 3 counters, 1 pointer, 2 streams; LFSR output bit as a source |
 | Configuration | flops, cleared by synchronous reset | latches, cleared by reset, seen two cycles after a write; no consecutive writes |
 | Host map | `machine.HOST_MAP` (v1) | regenerated; ID `0xA2`; per-line `TAPMISS`, per-stream `STARVED`, `ERRSUM` |
+
+## 12. v3 additions (draft 2026-11-16, branch `metronome-v3.0`)
+
+**Status: normative for the v3 RTL and the v3 cycle model on `metronome-v3.0`; r4b (`metronome-v2.0`) does not have them.** Every addition is off after reset: with every v3 register at its reset value the machine is cycle-identical to sections 1 to 10 (all v2 lockstep scenarios pass unchanged). Names and addresses come from `machine.OUT_REGS` (`LIVE`) and `machine.DBG_REGS` (block `DBG` at `0x2460`, runtime flops with the section 9 access rules). Decisions D38 to D42.
+
+### 12.1 Live-pin inputs on the pin tables (`OUT.BIND` bits 4:3, `LIVE`)
+
+Section 8 becomes, with `ln = LINE`, `cm = COMMITTED(ln)` and `PINA(ln)`, `PINB(ln)` the bound line's pin selects (section 3.1; a select >= 13 reads 0):
+
+```
+b0  = cm[SEL0]
+b1  = LIVE[1] ? PIN[PINB(ln)] : cm[SEL1]
+b2  = LIVE[0] ? PIN[PINA(ln)] : cm[SEL2]
+idx = BOUND ? {SEG(ln), b2, b1, b0} : 0
+OUT[o]' = LUT[idx];   OEN[o]' = OE[idx]   (o < 8; both hold in a frozen cycle, 12.3)
+```
+
+`LIVE = 0` is v2. Latency (calculated): a level on a raw input in cycle t is `PIN` in t+2 (two synchronisers) and in the output register in t+3, so a table reacts three cycles after the wire changes (plus pad delays) instead of at the line's next boundary. The table still sees `SEG` and the other symbol bits, so one table can say "drive data bit b0, and from segment 2 release the wire if PINA reads back low": wired-AND read-back, I2C acknowledge, CAN or I2C arbitration loss, and pin-to-pin pass-through (a `LUT` that copies b2). Taking the pins from the bound line keeps the selection at two bits per output pin (28 latch bits in all, estimated about 1.3k µm² with the multiplexers); an output can follow any input pin by binding it to a line whose `PINA` or `PINB` selects that pin (an otherwise idle line works). The path is synchroniser to output register only; no guard, move or core path gains logic.
+
+### 12.2 Execution digest (`MCTL`, `MISR`)
+
+A 32-bit multiple-input signature register `M`. With `D = {OEN[7:0], OUT[13:0]}` (22 bits: `OUT[o]` in bit o, `OEN[o]` in bit 14+o), the pin registers' values in cycle t (the levels on the pads during t):
+
+```
+if the host writes MCTL with bit 1 set in cycle t:   M' = 0
+elif MEN && !FRZ:   M' = ((M << 1) mod 2^32) ^ (M[31] ? 0x04C11DB7 : 0) ^ D
+else:               M' = M
+```
+
+`MEN` is `MCTL` bit 0. The host reads `M` as `MISR` bytes 0..3 (little-endian, no side effect). The polynomial is the CRC-32 generator (`machine.MISR_POLY`) in Galois form, shifting left. The model computes the same value, so one read after millions of cycles checks every output and output-enable register against the model over the whole interval, for the same input stimulus. `MISO` and `IRQ` are excluded because they depend on host timing. A random error escapes with probability about 2^-32 (literature-derived property of a 32-bit MISR; not proven here for this input width).
+
+### 12.3 Debug: freeze, single-cycle step and readback (`DBG`, `ACC`, `AFLG`, `FLAGS`, `CST`, `FPC`)
+
+State: `FREEZE` (host bit, `DBG` bit 0), `FRZ` (this cycle is frozen) and `FRZD` (`FRZ` of the previous cycle). A host write of `DBG` in cycle W with byte d sets `FREEZE' = d[0]` and `FRZ' = d[0] && !d[1]`; without a `DBG` write, `FRZ' = FREEZE`. Always `FRZD' = FRZ`. Writing `0x01` freezes from W+1. With `FREEZE = 1`, writing `0x03` (STEP) runs exactly cycle W+1 and freezes again from W+2. Single-**cycle** stepping was chosen over single-beat stepping: it costs nothing beyond the freeze and is defined for every line at once; a beat step is a host loop of cycle steps that reads `LRT.CTL`.
+
+A cycle with `FRZ = 1` is **frozen**. In a frozen cycle:
+
+- No core executes, jumps, pauses, fetches or dispatches. `XV, RV, IR, FPC, XT, XL, RR` hold and there are no moves, so no unit, flag, pointer, stream, symbol, `T.STOP`, `CONFLICT`, `LATE` or `MEMHAZ` update comes from a move.
+- No line sees a pin edge and no line advances: as if `edge = e0 = 0` and `adv = 0` (no start, accept, boundary, tap, capture, snapshot or `TAPMISS` event). `HELD` holds.
+- No trigger is accepted (no `READY`, `ARMED` or `OVR` change). `FP` and `INVP` hold, so a flag or mailbox rise during the freeze triggers in the first unfrozen cycle. A doorbell pulse in a frozen cycle is held (`DB' = written bits | DB`) and delivered in the first unfrozen cycle.
+- Streams and the pointer make no autonomous update and are not served; the arbiter serves only the host request, so host data RAM reads and writes work while frozen. **Landing exception:** a stream or pointer read served in the last unfrozen cycle s has its word captured from the RAM output at the end of s+1 even if s+1 is frozen (into the stream's `WB` or the pointer's `D`), because a host read during the freeze would replace the RAM output. `LD`, `WV` and `RDY` update in the first unfrozen cycle as usual. `WB` is not visible while `LD = 1`; the pointer's `D` reads as the landed byte, not the stale byte of 9a.3, if a move reads `P0.D` in that first unfrozen cycle (the landing cycle, already a `MEMHAZ` hazard).
+- Output pin registers (`OUT`, `OEN`), `M` (12.2) and the edge-capture counter `DC` (12.4) hold, so the pads keep their levels.
+- Still running: the input synchronisers (an input edge that occurs and ends inside a freeze is not seen), the host link, configuration latches (W+2 rule), `IRQ`, and every host write with its section 9 effect: line `PHASE`, `CTL`, `STAT` (a host start still commits and sets `FIRED` and `FIRST`), thread `PC` and `STAT`, `CTRL` registers, stream `CTL` rewind and STARVED clear. A host stream **flush** is ignored while frozen.
+
+`RUN_global` and `FREEZE` are independent: `RUN_global = 0` stops dispatch only (bursts in flight finish and lines run), a freeze stops everything above. Program memory may be written while frozen only on a core with `XV = RV = 0` (read `CST`); otherwise 9a.8 applies. Readback, frozen or running (value in cycle R, no side effect): thread `PC` and `STAT` (section 9), `ACC` (A), `AFLG` (`{N, C, Z}` in bits 2..0), `FLAGS` (F15..F0), and per core `CST` (`{RV, XV, XT}` in bits 4, 3, 2..0) and `FPC` (while `XV`, the executing instruction is at `FPC - 1` and belongs to thread `XT`). Apart from the input and landing exceptions above, a freeze is **transparent**: deleting the frozen cycles from a run, with the same inputs in the remaining cycles, gives the same state sequence (checked by lockstep against the model, and the freeze hold of the stream and memory units is proved by k-induction in `code/tests/formal/v3_freeze.sby`; not proven for the whole chip).
+
+### 12.4 Edge capture into stream S0 (`ECTL`, `EMASK`)
+
+With `CEN` (`ECTL` bit 0) set, stream S0 becomes a capture stream. Its transmit and receive bit paths are disabled: moves to `S0.ADV` and `S0.RX` and flushes have no effect and raise no `STARVED`, `S0.BIT` reads 0 and `S0.BYTE` reads as 6.3 says for its `MODE`. Change `CEN` only together with a rewind of S0 (as 9a.13). State: `DC` (19 bits). In an unfrozen cycle t:
+
+```
+cev  = CEN && ((RISE | FALL)[12:0] & EMASK) != 0
+rec  = {DC[18:0], PIN[12:0]}                     (bits 31:13 DC; bits 12:0 the synchronised levels in t)
+DC'  = !CEN ? 0 : (cev ? 1 : min(DC + 1, 2^19 - 1))        (a host ECTL write sets DC' = 0, also while frozen)
+push = cev && !END
+if PV && g:  PV' = 0;  BA' = BA + 4              (the pending record is written to word BA[10:2], all four lanes)
+if push:     if PV && !g:  STARVED' = 1          (record dropped; POS unchanged)
+             else:         WB' = rec;  PV' = 1;  POS' = POS + 4
+```
+
+While `PV`, S0 requests a one-word write of `WB` at word `BA[10:2]`. `DC` counts cycles since the previous edge event (pushed or dropped); every `ECTL` write clears it (host priority, also in a frozen cycle), so it is 0 in the first cycle with `CEN = 1` after an `ECTL` write, and it saturates at 524,287 cycles (8.7 ms at 60 MHz). **Resolution:** one clock cycle. Records are little-endian words from `START`; use a word-aligned `START` and a `LEN` that is a multiple of 4 (`END` is `POS == LEN`, and `POS` counts bytes). Rewind, `END`, `MARK`, `POS` readback and the STARVED clear work as in 6.3.
+
+**Write width and back-to-back edges (calculated from 6.2 and the rules above).** A record is one RAM access. S0 has the highest arbiter priority, so a record pushed in cycle t is written in t+1 and a push in t+1 is accepted: an edge event every cycle is sustained without `STARVED` until `END`. While edges arrive every cycle, S1, P0 and the host get no RAM cycle; a host data RAM read must be served within 12 cycles (section 9), so the host should not read data RAM during a burst of more than about 11 consecutive edge cycles. Edges of several masked pins in one cycle make one record. This suits captures, not continuous full-rate streaming: a 2 KB region holds 512 records.
+
+### 12.5 Program-load contract (model diagnostic only)
+
+Configuration is not double-buffered (rejected for area, V3_RIVAL_IDEAS 7.6), so a field written while in use passes through mixed values (section 1, 9a.11). **Contract:** the host writes a configuration byte of a line only while that line has `RUN = 0` and `ARM = 0`; of an output pin only while it is unbound or its line has `RUN = 0` and `ARM = 0`; of a thread only while that thread has `EN = 0`, `READY = 0` and `RUNNING = 0`; of an LFSR polynomial only while `RUN_global = 0`; and writes program memory of a core only while `RUN_global = 0` and that core has `XV = RV = 0`. (Stream configuration is already defined by 6.3 and 9a.13: `MODE`, `MSB`, `START` act at the next rewind.) The hardware does not enforce the contract; writes take effect as sections 1 and 9 say. The cycle model records every host write that breaks it, in the cycle the write is issued (W), in `Chip.contract_violations` as `(cycle, address, reason)`. Strict harnesses assert that the list is empty; the v3 host loader refuses such writes (Track D).
+
+## 13. v4 additions (draft 2026-11-17, branch `metronome-v4.0`)
+
+**Status.** Sections 13.1–13.2 are implemented in the cycle model and RTL. Core writes and S0 replay have directed RTL lockstep checks, and the shared bank arbiter has an induction proof covering host priority and write spacing. The centralized A1/A2 build at 45% placement density passed extracted timing and Tiny Tapeout precheck at 16.667 ns. Every addition is off after reset. With `ECTL.RPL = 0` and no `CW.D` move, the machine follows sections 1 to 12. Destination codes 58..60 were `NULL` in v3 (9a.1). The encodings are in `machine.DST` (`CW.*`), `machine.DBG_REGS` (`RLV`, `ECTL` bit 1), `CTRL.STICKY` bit 2 and `ERRSUM` bit 6 (`CWOVR`).
+
+### 13.1 Configuration written by the cores (`CW.AL`, `CW.AH`, `CW.D`)
+
+State: `CWA` (16), `CWV`, `CWQ = (address, byte)`, sticky `CWOVR`; `BWP` (the configuration latch bank was written in the previous cycle) and `HH` (one held host configuration write). One write group `CW`.
+
+- `CW.AL`, `CW.AH`: `CWA[7:0]` or `CWA[15:8] := bus`.
+- `CW.D` in cycle t: if `CWV` and the pending write does not drain in t, `CWOVR' = 1` and the new write is dropped. Otherwise `CWQ' = (CWA, bus)`, `CWV' = 1`, `CWA' = CWA + 1`.
+- **Bank port.** The latch bank has one write port and is never written in two consecutive cycles (the `md2_cfg_bank` write spacing rule, which the 2-cycle latch timing exception of `project.sdc` relies on). In cycle t, from cycle-t state: a held host write `HH` is performed. Otherwise a host configuration write issued in t is performed, unless `BWP`, in which case it is held to t+1 (`HH`). If neither is performed and `CWV` holds a configuration address and `!BWP`, the core write is performed and drains. `BWP' = 1` if and only if a write was performed. A performed write is seen by the logic from t+2 (section 1). So a host configuration write normally keeps W+2, and it becomes W+3 only when a core write used the bank in W-1. Host writes are at least one SPI byte apart, so `HH` never holds two writes.
+- **Other targets.** A pending write to `DBG.ECTL`, `EMASK` or `RLV` drains in the next cycle as a runtime write (end of that cycle, before a host write in the same cycle, which wins). A pending write to any other address drains with no effect.
+- **Timing (calculated, checked in `code/tests/md2/test_v4_model.py`).** A `CW.D` executed in cycle t reaches the logic from t+3 when the bank is free. One write per two cycles is sustained. Three `CW.D` in consecutive cycles lose the third (`CWOVR`).
+- **Contract.** The section 12.5 contract applies to core writes. The model checks it when the write reaches the bank and records violations prefixed `core:`. Programs write a line's configuration only while it has `RUN = ARM = 0`.
+
+### 13.2 Edge replay from S0 (`ECTL.RPL`, `RLV`)
+
+`ECTL` bit 1 `RPL` turns S0 into a replay stream; it takes priority over `CEN` (capture is off while `RPL`). Change it only together with a rewind of S0. `RLV` (13 bits, read/write, `DBG` offset 0x12) holds the replay levels. While `RPL`, the synchronised level of every pin in `EMASK` is `RLV`, its previous level is `RLV` of the previous cycle, and the pad is ignored. Lines, triggers, guards and `PINS.*` all see the replayed waveform.
+
+S0 reads whole words, records of 12.4, from `START` in order, into a two-deep buffer (`WB`, then `NB`). A read is requested when the stream is not at `END`, no read is in flight and the buffer is not full; `POS` advances by 4 per word read. With `DC` reused as the replay timer (0 after an `ECTL` write):
+
+```
+apply = RPL && WV && DC + 1 >= WB.DC                     (WB.DC = WB[31:13])
+apply:  RLV' = (RLV & ~EMASK) | (WB[12:0] & EMASK);  DC' = 0;  WB' = NB, WV' = NV, NV' = 0
+else:   DC' = min(DC + 1, 2^19 - 1)
+late:   apply && DC + 1 > WB.DC   ->  STARVED' = 1
+```
+
+**Mirror property (checked by test):** if a capture starts with an `ECTL` write in cycle W and a replay with an `ECTL` write in W', with `RLV` = the pre-capture level of the masked pin, then the synchronised level in replay cycle W'+1+i equals the captured level in cycle W+1+i, for every i up to the last record. Edge intervals of at least 3 cycles never starve (measured on the model; 1-cycle intervals do starve). The initial level is `RLV`, not inferred from the records; a single masked pin is the supported case.

@@ -125,6 +125,8 @@ def _build_dst():
             info.append(("LCTL", a[0], "CTL"))
         elif n == "HOST.OUT":
             info.append(("HOSTOUT", 0, ""))
+        elif n.startswith("CW."):                      # v4 (SPEC v2 13.1)
+            info.append(("CW", 0, n[3:]))
         else:
             raise AssertionError(n)
     return info

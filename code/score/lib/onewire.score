@@ -1,0 +1,46 @@
+# Library score: Maxim 1-Wire, standard speed, one transaction: reset / presence, Skip ROM (0xCC), Read Scratchpad (0xBE),
+# eight scratchpad bytes read from the device and the Maxim CRC-8 over them (DS18B20 memory map).
+# Slot = one 80 us beat (12.5 kHz).  Segment edges 6 us, 15 us and 60 us: split 7.5% 18.75% 75%.
+#   write 0 : low for 60 us           write 1 : low for 6 us (released by 6 us)
+#   read    : master low 6 us, the device holds low through 60 us for a 0; the line is read at 15 us.
+#   reset   : master low for 7 beats = 560 us (>= 480 us); presence: the device pulls low from 60 us after the release,
+#             for 20 us + 60 us = 80 us (the standard asks 60..240 us).
+# Bytes go out LSB first.  Open drain: the line idles released (high through the pull-up).
+# Does: reset and presence, byte writes, byte reads, CRC-8 check.  Does not: the search-ROM arbitration slots, overdrive
+# speed, parasite power, a no-device branch (a missing device would be a NACK-like branch the score leaves out).
+# One reading choice to know: in a read slot the device's wave also holds the master's initiating low pulse (a wired-AND
+# bus resolves it identically); the language drives a shared wire only from the beat's terminal owner (spec 5.1).
+protocol onewire
+roles    master, device
+use      std
+
+wire dq shared open-drain idle released
+
+clock 12.5 kHz
+  master: generated
+  device: follow dq fall, capture on dq rise
+  split 7.5% 18.75% 75%
+
+symbols
+  bit(d)   dq "0dd1"                 sample dq at 18.75%
+  rst      dq "0"                    # 80 us low; seven in a row
+  pres1    dq "1110"                 # device low from 60 us after the release (the far edge of 15..60 us) ...
+  pres2    dq "0001"                 # ... to 60 us into the second beat (80 us in all, 60..240 us asked)
+
+recognise
+  resets   dq low for > 400 us
+
+bits lsb first
+
+crc crc8_maxim width 8 poly 0x31 init 0x00 refin refout xorout 0x00
+
+grammar
+  line = txn*
+  txn  = rst by master x 7
+         pres1 by device
+         pres2 by device
+         skip:u8 by master = 0xCC
+         cmd:u8  by master = 0xBE
+         spad:bytes[8] by device
+         chk: crc crc8_maxim over spad by device
+         gap 2 beats

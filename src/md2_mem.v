@@ -7,12 +7,16 @@
 module md2_mem (
     input  wire        clk,
     input  wire        rst_n,
+    input  wire        frz,         // v3: frozen cycle: only the host is served, P0 holds (SPEC v2 12.3)
+    input  wire        frzd,        // v3: the previous cycle was frozen (P0 landing capture)
     // streams
     input  wire [1:0]  s_req,
     input  wire [1:0]  s_we,
     input  wire [21:0] s_addr,      // 2 x byte address
     input  wire [15:0] s_wd,        // 2 x byte
     output wire [1:0]  s_gnt,
+    input  wire        s0_word,     // v3: S0 requests a whole-word write of s0_wword (edge capture)
+    input  wire [31:0] s0_wword,
     // pointer P0: winning move of its write group (sel 0 AL, 1 AH, 2 W, 3 R)
     input  wire        p_we,
     input  wire [1:0]  p_sel,
@@ -47,10 +51,11 @@ module md2_mem (
     reg [7:0]  hqd;
     reg [1:0]  hlane;
 
-    wire gs0 = s_req[0];
-    wire gs1 = ~s_req[0] & s_req[1];
-    wire gp  = ~(|s_req) & (rq != RQ_NONE);
-    wire gh  = ~(|s_req) & (rq == RQ_NONE) & hq;
+    wire gs0 = s_req[0] & ~frz;
+    wire gs1 = ~s_req[0] & s_req[1] & ~frz;
+    wire gp  = ~(|s_req) & (rq != RQ_NONE) & ~frz;
+    wire gh  = (frz | (~(|s_req) & (rq == RQ_NONE))) & hq;
+    wire gw  = gs0 & s0_word;
     assign s_gnt = {gs1, gs0};
 
     wire        pw = (rq == RQ_WRITE);
@@ -59,8 +64,8 @@ module md2_mem (
     assign m_we   = (gs0 & s_we[0]) | (gs1 & s_we[1]) | (gp & pw) | (gh & hqw);
     assign m_ren  = (gs0 | gs1 | gp | gh) & ~m_we;
     assign m_addr = a[10:2];
-    assign m_be   = 4'd1 << a[1:0];
-    assign m_wd   = {4{wd}};
+    assign m_be   = gw ? 4'hF : (4'd1 << a[1:0]);
+    assign m_wd   = gw ? s0_wword : {4{wd}};
     assign h_land_d = m_rd[8*hlane +: 8];
 
     // pointer (SPEC v1 9a.2/9a.3): every move sets a request and clears RDY; a request-setting move in the serve
@@ -77,12 +82,14 @@ module md2_mem (
             land <= 1'b0; lok <= 1'b0; plane <= 2'd0;
             hq <= 1'b0; hqw <= 1'b0; hqa <= 11'd0; hqd <= 8'd0; h_land <= 1'b0; hlane <= 2'd0;
         end else begin
-            land  <= gp & (rq == RQ_FETCH);
-            plane <= ptr[1:0];
-            lok   <= ~p_we;
-            if (land) p_dat <= m_rd[8*plane +: 8];
-            if (p_we)             p_rdy <= 1'b0;
-            else if (land & lok)  p_rdy <= 1'b1;
+            if (!frz) begin
+                land  <= gp & (rq == RQ_FETCH);
+                plane <= ptr[1:0];
+                lok   <= ~p_we;
+            end
+            if (land & ~frzd) p_dat <= m_rd[8*plane +: 8];      // v3: captured even in a frozen cycle (12.3)
+            if (p_we)                   p_rdy <= 1'b0;
+            else if (land & lok & ~frz) p_rdy <= 1'b1;
             if (op_al)            ptr <= {ptr[10:8], p_d};
             else if (op_ah)       ptr <= {p_d[2:0], ptr[7:0]};
             else if (op_w | op_r) ptr <= ptr + 11'd1;

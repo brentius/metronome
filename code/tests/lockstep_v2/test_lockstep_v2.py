@@ -19,6 +19,9 @@ from rtl_sources import SRC, rtl_files
 HERE = Path(__file__).resolve().parent
 SEEDS = int(os.environ.get("LOCKSTEP_SEEDS", "4"))
 DIRECTED = ["smoke", "eth_loopback", "follower", "hold", "taps", "units", "reset_mid", "spi_target", "shifter_parallel"]
+DIRECTED_V3 = ["v3_live_misr", "v3_freeze", "v3_ecap", "v3_freeze2"]                  # SPEC v2 section 12 (scenarios_v3.py)
+DIRECTED_V4 = ["v4_config_write", "v4_replay", "v4_stage1", "v4_stage2"]
+SEEDS_V3 = int(os.environ.get("LOCKSTEP_V3_SEEDS", "2"))
 
 pytestmark = pytest.mark.skipif(shutil.which("iverilog") is None, reason="needs iverilog (source code/tools/env.sh)")
 
@@ -39,6 +42,7 @@ def _run(scenario: str):
     assert not fails, f"{scenario}: {[f.get('message') for f in fails]}"
 
 
-@pytest.mark.parametrize("scenario", DIRECTED + [f"random_{s}" for s in range(1, SEEDS + 1)])
+@pytest.mark.parametrize("scenario", DIRECTED + [f"random_{s}" for s in range(1, SEEDS + 1)] + DIRECTED_V3
+                         + [f"random3_{s}" for s in range(1, SEEDS_V3 + 1)] + DIRECTED_V4)
 def test_lockstep(scenario):
     _run(scenario)

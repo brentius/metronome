@@ -1,0 +1,40 @@
+# Library score: IEEE 802.3 clause 22 MDIO management frame (station manager "sta" and PHY).
+# 32 preamble ones, start 01, opcode (10 read, 01 write), 5-bit PHY address, 5-bit register address, a two-bit turnaround
+# (write: 10 driven by the STA; read: released, then 0 driven by the PHY), 16 data bits MSB first.  MDC idles low; MDIO is
+# sampled on the rising edge of MDC and changes from the falling edge.
+# Does: read and write frames, the read turnaround.  Does not: clause 45 frames, preamble suppression, MDC above 2.5 MHz.
+protocol mdio
+roles    sta, phy
+
+wire mdc  out push-pull idle low by sta
+wire mdio shared open-drain idle released
+
+clock 2.5 MHz
+  sta: generated
+  phy: follow mdc fall, capture on mdc rise
+  split 50%
+
+symbols
+  bit(d)   mdc "01"  mdio "d"       sample mdio at mdc rise
+  tz       mdc "01"  mdio "1"       # turnaround: a clock with nobody driving MDIO (the pull-up holds it high)
+  idle     mdc "0"   mdio "1"
+
+bits msb first
+
+grammar
+  link   = frame*
+  frame  = const bits "11111111111111111111111111111111"   # preamble: 32 ones
+           const bits "01"                                  # start of frame
+           op:u2
+           phyad:u5
+           regad:u5
+           switch op {
+             2:    rd
+             1:    wr
+           }
+           gap 2 beats
+  rd     = tz
+           ta:bit by phy = 0
+           data:u16 by phy
+  wr     = const bits "10"
+           data:u16

@@ -14,11 +14,14 @@ def notes(writes):
     return [n for _, _, n in writes]
 
 
-def test_write_order_run_last_enable_after_thread_config_lines_start_late():
+def test_write_order_dispatch_ready_before_lines_start():
     prog = assemble_text(CFG)
     w = host_writes(prog)
     n = notes(w)
-    assert n[-1] == "CTRL.RUN"
+    assert n.index("CTRL.RUN") < n.index("L2.CTL")
+    if "CTRL.IRQEN" in n:
+        assert n.index("CTRL.IRQEN") < n.index("CTRL.RUN")
+    assert all(not x.startswith("core") for x in n[n.index("CTRL.RUN"):])
     assert n.index("T4.CFG") < n.index("T4.PC") < n.index("T4.EN")
     assert n.index("S1.REWIND") > n.index("S1.MODE") and n.index("S1.REWIND") > n.index("S1.START")   # applies at rewind
     first_prog = min(i for i, x in enumerate(n) if x.startswith("core"))

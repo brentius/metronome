@@ -20,7 +20,8 @@ from .emit import imm
 from .flatten import Step, crc_range, field_bits
 from .plan import CompileError, plan_rx
 
-F_MISMATCH, F_VIOL, F_CRC = 0, 1, 2     # flag numbers; flag 0 is the one `ZERO` names, used in the tightest burst
+LISTEN_POS_FLAG0 = 3                    # listener records: flags 3..7 mark a violation at the k-th checked terminal
+F_MISMATCH, F_VIOL, F_CRC = 0, 1, 2    # flag numbers; flag 0 is the one `ZERO` names, used in the tightest burst
 
 
 def _rev(v, w):
@@ -111,6 +112,8 @@ class RxGen:
         self.const_bytes = b""
         self.const_bits: list = []
         self.used_flags: set = set()
+        self.beat = 0                # beats from the frame start to the step being emitted (None once unknown)
+        self.positions: list = []    # listener: one entry per checked terminal (grammar position)
 
     def lab(self, tag=""):
         self.n += 1
@@ -136,10 +139,16 @@ class RxGen:
             raise CompileError("E-UNSUPPORTED", f"expect '{s.name}' repeated {s.count} times")
         v = s.args[rxp.data_param]
         c.label(self.lab())
+        flag = F_VIOL
+        if self.x.opts.get("listener"):
+            # listener: each checked terminal has its own flag, so the record names the grammar position
+            flag = min(LISTEN_POS_FLAG0 + len(self.positions), 7)
+            self.positions.append({"flag": flag, "terminal": f"{s.name}({', '.join(str(a) for a in s.args)})",
+                                   "beat": self.beat})
         # a violation unless IN == v: IN0 != v, or (when the tables can report one) IN1 set
-        c.i([f"{'?' if v == 0 else '!'} {self.setflag(F_VIOL)}"], when="L.IN0", note=f"expect {s.name}({v})")
+        c.i([f"{'?' if v == 0 else '!'} {self.setflag(flag)}"], when="L.IN0", note=f"expect {s.name}({v})")
         if rxp.lut1:
-            c.i([f"? {self.setflag(F_VIOL)}"], when="L.IN1")
+            c.i([f"? {self.setflag(flag)}"], when="L.IN1")
         if not last_inline:
             c.i([], pause=True)
 
@@ -192,6 +201,19 @@ class RxGen:
         c.label(ll)
         c.i(mv, when="L.SYNC", goto=ll, jmode="if", jcond="L.SYNC", pause=True,
             note=f"{s.f.name}: until a beat with no edge")
+
+
+def _advance_beat(beat, s):
+    if beat is None:
+        return None
+    if s.kind == "sym":
+        return beat + max(1, s.count)
+    if s.kind == "const":
+        return beat + 8 * len(s.data)
+    if s.kind == "field":
+        w = field_bits(s)
+        return None if w is None else beat + w
+    return None
 
 
 def _taps_text(x):
@@ -273,6 +295,7 @@ def compile_rx(x: Ctx):
                 raise CompileError("E-UNSUPPORTED", f"field '{s.f.name}': variable length without an end event")
         else:
             raise CompileError("E-UNSUPPORTED", f"step '{s.describe()}' in a receive frame")
+        g.beat = _advance_beat(g.beat, s)
     # ---- frame end: crc check, status to the host, re-arm, housekeeping.  With short beats every burst is cut to a
     # few instructions (one per beat); the line keeps running for the beats it needs, well inside the inter-frame gap.
     ctl_arm = 2 if mode == "started" else 6
@@ -300,6 +323,9 @@ def compile_rx(x: Ctx):
             emit([f"LF1.B{k} -> ACC.LD"])
             emit([imm((sig >> (8 * k)) & 0xFF, "ACC.XOR")])
             emit([f"! {g.setflag(F_MISMATCH)}"], when="ACC.Z", note="signature of the received const bits != expected")
+    if x.opts.get("listener"):
+        from . import listener
+        listener.emit_log_record(emit, ["FLAGS.LO"], ruler_regs=True)
     emit(["? FLAGS.LO -> HOST.OUT"], when="HOST.OUTE", note="frame status to the host mailbox")
     hk = []
     if g.crc:
@@ -319,7 +345,14 @@ def compile_rx(x: Ctx):
                    "end-of-frame work runs in the burst of the last beat")
     _close_loop(c, "R1")
     # ---- configuration
-    line = [f"inc {inc}", f"mod {mod}", f"taps {_taps_text(x)}", f"preset {pre}"]
+    ab = x.opts.get("autobaud") or {}
+    plan_a = ab.get("plan") == "A"
+    taps_txt = _taps_text(x)
+    if plan_a:                       # v4 on-chip autobaud: rate-independent normal form (autobaud_a.py)
+        from . import autobaud_a
+        x.opts["has_const"] = has_const
+        inc, mod, taps_txt, pre = autobaud_a.normal_form(x, clk.period)
+    line = [f"inc {inc}", f"mod {mod}", f"taps {taps_txt}", f"preset {pre}"]
     pol = rc.edge if mode == "started" else "both"
     line.append(f"edge P{pin} {pol}")
     if mode == "recovered":
@@ -328,12 +361,16 @@ def compile_rx(x: Ctx):
     line.append(f"lut0 0x{r.lut0:08X}")
     line.append(f"lut1 0x{r.lut1:08X}")
     line.append(f"snap {rx_snap}")
-    line.append("ctl arm" if mode == "started" else "ctl arm ren")
+    if x.opts.get("autobaud"):
+        if mode != "started":
+            raise CompileError("E-UNSUPPORTED", "autobaud: only 'started by' receivers (UART/LIN style) are supported")
+    else:
+        line.append("ctl arm" if mode == "started" else "ctl arm ren")
     x.b.block(".line 0", line)
     trig = f"L0.TAP{st.idx}" if mode == "started" else "L0.BEAT"
     S = g.rxs
     x.b.block(f".stream {S}", ["mode rx", f"order {'msb' if x.msb else 'lsb'}", f"start {RX_BASE}",
-                               f"len {CONST_BASE - RX_BASE}"])
+                               f"len {CONST_BASE - RX_BASE}"] + ([f"mark {autobaud_a.MARK}"] if plan_a else []))
     if has_const:
         x.b.cfg.append(f".lfsr 1 poly=0x{SIG_POLY:X} width=32 init=0")
     if g.crc:
@@ -343,7 +380,23 @@ def compile_rx(x: Ctx):
         for k in range((d.width + 7) // 8):
             x.init_moves.append(imm((init >> (8 * k)) & 0xFF, f"LF0.B{k}"))
     x.b.cfg.append("")
-    emit_threads(x, [(0, 0, 0, trig, "R1")])
-    emit_init_thread(x, 5)
+    threads = [(0, 0, 0, trig, "R1")]
+    if x.opts.get("autobaud"):
+        if plan_a:
+            threads += autobaud_a.add_onchip(x, pin, RX_BASE)
+        else:
+            from . import autobaud
+            threads += autobaud.add_measurement(x, pin)
+    if x.opts.get("listener"):
+        from . import listener
+        tb = int(x.opts.get("tick_beats") or max(1, -(-48 // max(1, int(float(clk.period))))))   # >= ~48 cycles per tick
+        if clk.mod * tb > 0xFFFF:
+            raise CompileError("E-FIT-TAP", "listener: ruler period does not fit 16 bits; lower tick_beats")
+        threads += listener.add_ruler(x, clk.inc, clk.mod * tb)
+        x.host["listener"] = {"protocol": "frame", "record_bytes": 3, "log_base": 0, "log_records": listener.LOG_RECORDS,
+                              "tick_beats": tb, "tick": f"{tb} beat(s)", "positions": g.positions, "frame_beats": g.beat,
+                              "fields": ["status", "ts_lo", "ts_hi"], "streams": {"data": 0}}
+    emit_threads(x, threads)
+    emit_init_thread(x, 5, core=0 if x.opts.get("autobaud") else 1)
     if x.host["rx_stream"]:
         x.host["rx_stream"]["capacity_bytes"] = CONST_BASE - RX_BASE

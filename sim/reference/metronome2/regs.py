@@ -64,7 +64,7 @@ def _byte(v, off_in_reg):
 def errsum(ch):
     return (int(any(t.LATE for t in ch.threads)) | int(any(t.OVR for t in ch.threads)) << 1
             | int(any(ln.TAPMISS for ln in ch.lines)) << 2 | int(any(s.STARVED for s in ch.mem.streams)) << 3
-            | ch.ctrl.CONFLICT << 4 | ch.ctrl.MEMHAZ << 5)
+            | ch.ctrl.CONFLICT << 4 | ch.ctrl.MEMHAZ << 5 | ch.ctrl.CWOVR << 6)
 
 
 def read(ch, addr):
@@ -76,7 +76,7 @@ def read(ch, addr):
     k = off - roff
     if b == "CTRL":
         c, h = ch.ctrl, ch.host
-        v = {"RUN": c.RUN, "STICKY": (c.MEMHAZ << 1) | c.CONFLICT, "IRQEN": c.IRQEN, "DOORBELL": 0,
+        v = {"RUN": c.RUN, "STICKY": (c.CWOVR << 2) | (c.MEMHAZ << 1) | c.CONFLICT, "IRQEN": c.IRQEN, "DOORBELL": 0,
              "HOSTIN": h.INB, "HOSTOUT": h.OUTB, "HOSTSTAT": (h.OUTV << 1) | h.INV, "ID": 0xA0 | m.VERSION,
              "ERRSUM": errsum(ch)}[name]
     elif b == "LRT":
@@ -90,6 +90,12 @@ def read(ch, addr):
     elif b == "SRT":
         s = ch.mem.streams[i]
         v = {"POSL": s.POS & 0xFF, "POSH": (s.POS >> 8) | s.BIDX << 4 | s.STARVED << 7, "CTL": 0}[name]
+    elif b == "DBG":          # v3 (SPEC v2 12)
+        a, c0, c1 = ch.acc, ch.cores[0], ch.cores[1]
+        cst = lambda c: c.XT | c.XV << 3 | c.RV << 4
+        v = {"DBG": ch.FREEZE, "MCTL": ch.MEN, "ECTL": ch.CEN | ch.RPL << 1, "MISR": ch.MISR, "EMASK": ch.EMASK, "ACC": a.A,
+             "AFLG": a.Z | a.C << 1 | a.N << 2, "FLAGS": ch.flags.F, "CST": cst(c0) | cst(c1) << 8,
+             "FPC": c0.FPC | c1.FPC << 8, "RLV": ch.RLV}[name]
     else:
         v = 0
     return _byte(v, k)
@@ -112,6 +118,8 @@ def write_runtime(ch, addr, v):
                 c.CONFLICT = 0
             if v & 2 and "MEMHAZ" not in ev:
                 c.MEMHAZ = 0
+            if v & 4 and "CWOVR" not in ev:
+                c.CWOVR = 0
         elif name == "IRQEN":
             c.IRQEN = v & 3
         elif name == "DOORBELL":
@@ -142,4 +150,20 @@ def write_runtime(ch, addr, v):
                 t.LATE = 0
             if v & 0x20 and ("OVR", i) not in ev:
                 t.OVR = 0
+    elif b == "DBG":          # v3 (SPEC v2 12)
+        if name == "DBG":
+            ch.FREEZE = v & 1
+            ch.dbg_write = (v & 1, (v >> 1) & 1)
+        elif name == "MCTL":
+            ch.MEN = v & 1
+            if v & 2:
+                ch.MISR = 0
+        elif name == "ECTL":
+            ch.CEN = v & 1
+            ch.RPL = (v >> 1) & 1        # v4 (SPEC v2 13.2)
+            ch.DC = 0                    # any ECTL write restarts DC (SPEC v2 12.4)
+        elif name == "EMASK":
+            ch.EMASK = ((ch.EMASK & ~(0xFF << 8 * k)) | (v << 8 * k)) & 0x1FFF
+        elif name == "RLV":              # v4 (SPEC v2 13.2)
+            ch.RLV = ((ch.RLV & ~(0xFF << 8 * k)) | (v << 8 * k)) & 0x1FFF
     # SRT CTL is applied inside the stream commit (Chip.step)

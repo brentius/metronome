@@ -8,7 +8,9 @@ rejected with E-UNSUPPORTED naming the construct.
 Shape (names are the score's own):
 
     TOP     = TRANS*
-    TRANS   = START REQ (RSTART REQ)* STOP             START, RSTART, STOP: symbols owned by the controller
+    TRANS   = START REQ (RSTART.. REQ)* STOP           START, STOP: symbols owned by the controller; RSTART..: one
+                                                       or more such symbols (16.2: rstart start, two beats so a
+                                                       repeated START meets tSU;STA and tHD;STA)
     REQ     = h1 .. hn                                 controller fields, 8 bits in all, the last one 1 bit (rw)
               ack:bit by target = (a == p) ? 0 : 1     a: a header field, p: a target parameter (or a constant)
               BODY(rw) if ack == 0
@@ -17,14 +19,14 @@ Shape (names are the score's own):
     abort   on E1 -> TOP;  on E2 -> REQ                 E1, E2: 'W rises|falls while V high|low' events
 
 Controller (generated clock, `stretch on V`): line 0 with three phase taps at the split points, the hold on the
-stretched wire at the first tap after its release, one thread triggered by the last tap (75 % for 16.2).  The burst
+stretched wire at the first tap after its release, one thread triggered by the hold tap (50 % for 16.2).  The burst
 in beat k stages beat k+1, so a value received in beat k (the acknowledge) already decides beat k+1.  The sample
 point `at V rise` maps to the hold tap: the tap fires at the observed rise, so a target that stretches the clock is
 sampled after it lets go (D35).
 
 Target (`follow V fall, capture on V rise`): line 0 follows the clock wire, its edge-sourced tap 0 captures the data
-wire and triggers the protocol thread; the burst at a rise stages the next beat, committed at the next fall.  Two
-threads on pin-A edges of the same line implement the recognised events: each sets a flag that a watcher of the
+wire and triggers the protocol thread; the burst at a rise stages the next beat, committed at the next fall with
+an 18-cycle drive hold. Two threads on pin-A edges of the same line implement the recognised events: each sets a flag that a watcher of the
 protocol thread turns into the abort target at its next dispatch, and stages idle so that a frame abandoned mid-way
 never drives the bus at the next fall.
 
@@ -87,7 +89,7 @@ class BusShape:
     top: str
     req: str
     start: str
-    rstart: str
+    rstart: tuple                 # symbols of a repeated START, in order
     stop: str
     header: list
     rw: str
@@ -120,12 +122,12 @@ def match_shape(score) -> BusShape:
     kinds = ["sym" if isinstance(x, Ref) and S.symbol(x.name) else "ref" if isinstance(x, Ref) else type(x).__name__
              for x in it]
     if kinds != ["sym", "ref", "Rep", "sym"] or it[2].kind != "star":
-        _unsup(f"transaction '{tr[0].name}' must be 'START REQUEST (RSTART REQUEST)* STOP'", tr[0].body)
+        _unsup(f"transaction '{tr[0].name}' must be 'START REQUEST (RSTART.. REQUEST)* STOP'", tr[0].body)
     rep = _items(it[2].node)
-    if len(rep) != 2 or not (isinstance(rep[0], Ref) and S.symbol(rep[0].name)) or \
-            not (isinstance(rep[1], Ref) and rep[1].name == it[1].name):
-        _unsup("the repeated part must be 'RSTART REQUEST'", it[2])
-    start, req, rstart, stop = it[0].name, it[1].name, rep[0].name, it[3].name
+    if len(rep) < 2 or not all(isinstance(r, Ref) and S.symbol(r.name) and not r.args for r in rep[:-1]) or \
+            not (isinstance(rep[-1], Ref) and rep[-1].name == it[1].name):
+        _unsup("the repeated part must be one or more symbols then the request ('RSTART.. REQUEST')", it[2])
+    start, req, rstart, stop = it[0].name, it[1].name, tuple(r.name for r in rep[:-1]), it[3].name
     rq = S.prods_named(req)
     if len(rq) != 1:
         _unsup(f"production '{req}' must have one variant")
@@ -287,7 +289,7 @@ def compile_controller(x: Ctx, sh: BusShape):
     # the hold tap: the first tap after the segment in which the controller releases the stretched wire
     rel = None
     for sd in score.symbols:
-        if sd.name not in (sh.start, sh.rstart, sh.stop, "bit"):
+        if sd.name not in (sh.start, *sh.rstart, sh.stop, "bit"):
             continue
         args = (0,) if sd.params else ()
         lv = seg_levels(score, clock, sd, args, sclw)
@@ -304,10 +306,11 @@ def compile_controller(x: Ctx, sh: BusShape):
     _recode(x.txp, [sclw, sda])
     c0, c1 = _codes(x)
     code = x.txp.code_of
-    START, RSTART, STOP = code[sh.start], code[sh.rstart], code[sh.stop]
-    trig_tap = 2
-    if trig_tap <= htap:
-        _unsup("the hold tap must precede the last tap")
+    START, STOP = code[sh.start], code[sh.stop]
+    RSTART = [code[s] for s in sh.rstart]
+    # Capture/snapshot commits on the tap cycle before the triggered burst
+    # dispatches, so the hold tap can also launch next-beat staging.
+    trig_tap = htap
     psda, osda, pscl, oscl = _pin(x, sda, "in"), _pin(x, sda, "out"), _pin(x, sclw, "in"), _pin(x, sclw, "out")
     if osda >= 8 or oscl >= 8:
         raise CompileError("E-BIND", "open-drain wires need output-enable tables: bind them to O0..O7 (R5)")
@@ -323,10 +326,14 @@ def compile_controller(x: Ctx, sh: BusShape):
     c = x.b.cores[0]
     hb = sum(_width(f) for f in sh.header)          # 8
     c.label("idle")
-    c.i([f"? {imm(START, 'L.SYM')}"], when="HOST.INV", note=f"go byte: stage {sh.start}")
-    c.i(["? HOST.IN -> NULL"], when="HOST.INV", goto="req", jmode="if", jcond="HOST.INV", pause=True,
-        note="consume the go byte")
+    # one sample of HOST.INV (the jump): staging and consuming on two separate samples could start a transaction whose
+    # first symbol was never staged when the go byte landed between them.
+    c.i([], goto="go", jmode="if", jcond="HOST.INV", note="idle: one sample of the mailbox")
+    c.i([], pause=True, note="idle, first beat")
     c.i([], goto="idle", pause=True, note="idle, second beat (no go)")
+    c.label("go")
+    c.i([f"{imm(START, 'L.SYM')}"], note=f"go byte: stage {sh.start}")
+    c.i(["HOST.IN -> NULL"], goto="req", pause=True, note="consume the go byte")
     # header: hb-1 address bits, then the direction bit (remembered in flag 1)
     c.label("req")
     c.i([imm(c0, "L.SYM")], note=f"{sh.req}: first header bit")
@@ -345,12 +352,14 @@ def compile_controller(x: Ctx, sh: BusShape):
     c.label("wdec")
     c.i(["ZERO -> S0.ADV"], goto="wd0", jmode="if", jcond="S0.BIT", note="choice bit: another data byte?")
     c.label("rdec")
-    c.i(["ZERO -> S0.ADV"], goto="rst", jmode="if", jcond="S0.BIT", note=f"choice bit: {sh.rstart} or {sh.stop}")
+    c.i(["ZERO -> S0.ADV"], goto="rst", jmode="if", jcond="S0.BIT", note=f"choice bit: {' '.join(sh.rstart)} or {sh.stop}")
     c.i([imm(STOP, "L.SYM")], note=f"stage {sh.stop}")
     c.i(["#2 -> S1.CTL"], note="flush the received bits")
     c.i(["ZERO -> HOST.OUT"], goto="aftstop", pause=True, note="report: completed")
     c.label("rst")
-    c.i([imm(RSTART, "L.SYM")], note=f"stage {sh.rstart}")
+    for name, rcode in zip(sh.rstart[:-1], RSTART[:-1]):        # a repeated START may take several beats
+        c.i([imm(rcode, "L.SYM")], pause=True, note=f"stage {name}")
+    c.i([imm(RSTART[-1], "L.SYM")], note=f"stage {sh.rstart[-1]}")
     c.i([], goto="req", pause=True)
     c.label("nack")
     c.i([imm(STOP, "L.SYM")], note=f"not acknowledged: stage {sh.stop}")
@@ -415,8 +424,8 @@ def compile_target(x: Ctx, sh: BusShape, follow_period, params):
     mod = int(follow_period or (4 * nominal if nominal else 0))
     if not mod:
         raise CompileError("E-RATE", "follower: pass follow_period=<longest clock period in cycles>")
-    minper = max(16, int(nominal / 2)) if nominal else 32
-    minhalf = max(8, minper // 2)
+    minper = max(36, int(nominal)) if nominal else 64
+    minhalf = max(18, minper // 2)
     clk.mod = mod
     # the parameter the acknowledge compares with: one data RAM byte, read through pointer 0
     params = dict(params or {})
@@ -453,6 +462,7 @@ def compile_target(x: Ctx, sh: BusShape, follow_period, params):
     c = x.b.cores[0]
     # ---- protocol thread: one burst per rise of the clock wire, stages the beat that starts at the next fall
     c.label("ign")
+    c.i(["ZERO -> L.SYM"], note="hold-normalize")
     c.i([], goto="ign", pause=True, note="not addressed / waiting for a START or STOP")
     c.label("on_top")
     c.i([imm(F_TOP, "FLAGS.CLR")], note="after a STOP")
@@ -481,6 +491,7 @@ def compile_target(x: Ctx, sh: BusShape, follow_period, params):
     # write body: release after the acknowledge; hold the first bit of each possible byte
     c.i(["ZERO -> L.SYM"], goto="w0", pause=True, note="release the data wire")
     c.label("w0")
+    c.i(["ZERO -> L.SYM"], note="hold-normalize")
     c.i(["? #2 -> FLAGS.SET", "! #2 -> FLAGS.CLR"], when="L.IN0", pause=True,
         note="first bit of a byte, or of a repeated START / STOP: hold it")
     c.i(["#1 -> S1.RX"], note="it was data: marker 1")
@@ -502,6 +513,7 @@ def compile_target(x: Ctx, sh: BusShape, follow_period, params):
     c.i(["S0.BIT -> L.DBIT", "ZERO -> S0.ADV", "ZERO -> CNT0.DEC"], goto="rl", jmode="ifnot", jcond="CNT0.Z",
         pause=True, note="data bits 6..0")
     c.i(["ZERO -> L.SYM"], pause=True, note=f"'{sh.read[1].name}' beat: release")
+    c.i(["ZERO -> L.SYM"], note="hold-normalize")
     c.i(["L.IN -> S1.RX"], goto="ign", jmode="if" if sh.read[2] else "ifnot", jcond="L.IN0",
         note=f"capture '{sh.read[1].name}'; == {sh.read[2]}: end")
     c.i([], goto="r0", note="another byte")
@@ -525,11 +537,65 @@ def compile_target(x: Ctx, sh: BusShape, follow_period, params):
             if sh.ack_param:
                 c.i([f"{q} {imm(PARAM_BASE >> 8, 'P0.AH')}"], when=g, note="refresh the parameter byte")
             c.i([], goto=lab, pause=True)
+    # Retain the previous target drive through the first 18 cycles after
+    # each FOLLOW edge.  Symbol bit 3 is the previous drive enable; F5
+    # remembers the most recently staged drive enable.  Tap 0 is edge
+    # sourced (capture on rise), so tap 1 alone advances SEG during low.
+    # The data encoding uses bit 0 for data and bit 1 for driven-data class.
+    if c0 != 2 or c1 != 3 or x.txp.idle_code != 0:
+        raise CompileError("E-FIT-ENC", "target hold requires data codes 2/3 and idle 0")
+    from .emit import Instr
+    staged = []
+    fresh_sym = False
+    for kind, ins in c.items:
+        if kind != "insn":
+            staged.append((kind, ins))
+            continue
+        sym = next((m for m in ins.moves if m.endswith(" -> L.SYM")), None)
+        dbit = next((m for m in ins.moves if m.endswith(" -> L.DBIT")), None)
+        if sym and ins.note == "hold-normalize":
+            staged.append((kind, ins))
+            fresh_sym = False
+            continue
+        if sym:
+            if sym.startswith(("? ", "! ")):
+                # Recognised START/STOP can only occur while the target is
+                # released. Invalid low-clock edges leave staging untouched.
+                staged.append(("insn", Instr([sym[:2] + "#5 -> FLAGS.CLR"], when=ins.when)))
+            else:
+                ins_tail = (ins.goto, ins.jmode, ins.jcond, ins.pause)
+                ins.goto = ins.jmode = ins.jcond = None
+                ins.pause = False
+                staged.append(("insn", ins))
+                staged.append(("insn", Instr(["? #8 -> L.XOR"], when="F5")))
+                v = 0 if sym.startswith("ZERO") else int(sym.split("#")[1].split()[0])
+                release = v == 0 or bool(v & 1)
+                staged.append(("insn", Instr([f"#5 -> FLAGS.{'CLR' if release else 'SET'}"])))
+                if ins_tail[0] or ins_tail[3]:
+                    staged.append(("insn", Instr([], goto=ins_tail[0], jmode=ins_tail[1], jcond=ins_tail[2], pause=ins_tail[3])))
+                fresh_sym = not ins_tail[3]
+                continue
+        elif dbit:
+            src = dbit.split(" -> ")[0]
+            if src.startswith("? "):
+                # Conditional ACK: the preceding full symbol already holds
+                # the old drive; only the matched-address data bit changes.
+                staged.append(("insn", Instr(["? #5 -> FLAGS.SET"], when=ins.when)))
+            else:
+                if not fresh_sym:
+                    staged.append(("insn", Instr(["#2 -> L.SYM"])))
+                    staged.append(("insn", Instr(["? #8 -> L.XOR"], when="F5")))
+                staged.append(("insn", Instr(["? #5 -> FLAGS.CLR", "! #5 -> FLAGS.SET"], when=src)))
+        staged.append((kind, ins))
+        fresh_sym = False
+    c.items = staged
     # ---- configuration
-    x.b.block(".line 0", ["inc 1", f"mod {mod}", "follow", f"edge P{pscl} {rc.edge}", f"t0edge P{pscl} {rc.cap_edge}",
+    x.b.block(".line 0", ["inc 1", f"mod {mod}", "taps - 18 -", "follow", f"edge P{pscl} {rc.edge}", f"t0edge P{pscl} {rc.cap_edge}",
                           f"pins A=P{psda}", f"lut0 0x{_lut_slot(0):08X}", "lut1 0x00000000", "snap tap0",
                           f"minperiod {minper}", f"minhalf {minhalf}", "ctl run ren"])
-    emit_out_pins(x, 0)
+    oe = sum(int(((i >> 2) & 1) if i < 8 else
+                     not ((i & 1) or not ((i >> 1) & 1))) << i for i in range(32))
+    x.b.block(f".out O{osda}", ["line 0", "sel 0 1 3", "lutraw 0x00000000", f"oeraw 0x{oe:08X}"])
     x.b.block(".stream 0", ["mode tx", "order msb", f"start {TX_BASE}", "len 0"])
     x.b.block(".stream 1", ["mode rx", "order msb", f"start {RX_BASE}", f"len {RX_CAP}"])
     x.b.cfg.append("")
@@ -547,8 +613,9 @@ def compile_target(x: Ctx, sh: BusShape, follow_period, params):
     x.b.cfg.insert(i + 2, f"    watch1 F{F_TOP} -> on_top")
     emit_init_thread(x, 5, core=0)
     x.notes.append(f"target: line 0 follows {sclw} {rc.edge}, captures {sda} on {sclw} {rc.cap_edge} (tap 0); "
-                   f"'{req_ev}' and '{top_ev}' are pin-A edge threads with watchers on the protocol thread; assumes "
-                   f"a clock no faster than {minper} cycles per period, {minhalf} per half (minperiod/minhalf)")
+                   f"'{req_ev}' and '{top_ev}' are pin-A edge threads with watchers on the protocol thread; "
+                   f"18-cycle previous-drive hold after each falling edge; "
+                   f"assumes a clock no faster than {minper} cycles per period, {minhalf} per half (minperiod/minhalf)")
 
 
 def compile_bus(x: Ctx, follow_period=None, params=None):

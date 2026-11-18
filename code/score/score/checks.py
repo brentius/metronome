@@ -22,7 +22,11 @@ MAX_GROUPS = 4
 def check(score: Score) -> list[Diag]:
     """All static checks that need no compiler. Returns diagnostics (errors have codes starting E-)."""
     d: list[Diag] = []
+    if score.over is not None:                       # a layered score has no physical layer of its own (18.2)
+        from .layer import check_layered
+        return check_layered(score)
     d += check_names(score)
+    d += check_extensions(score)
     if not any(x.code in ("E-NAMES",) for x in d):
         d += check_grammar(score)
         d += Analyzer(score).run()
@@ -63,7 +67,9 @@ def check_names(score: Score) -> list[Diag]:
     roles = set(score.roles)
     for u in score.uses:
         if u != "std":
-            E(f"unknown library '{u}' (only 'std' exists)")
+            E(f"unknown library '{u}' (only 'std' exists; protocol libraries are imported with 'use LIB as ALIAS')")
+    if score.imports:
+        E("'use LIB as ALIAS' is only meaningful in a layered score ('protocol P over ALIAS.PROD', 18.2)")
     wnames = {}
     for w in score.all_wires():
         if w.name in wnames:
@@ -155,6 +161,48 @@ def check_names(score: Score) -> list[Diag]:
     return d
 
 
+def check_extensions(score: Score) -> list[Diag]:
+    """Names of the part A 18 declarations: enums, state values and timing constraints."""
+    d: list[Diag] = []
+    E = lambda msg, pos=None, code="E-NAMES": d.append(Diag(code, msg, pos))   # noqa: E731
+    params = {p.name for p in score.params}
+    consts = score.consts()
+    for m in consts:
+        if m in params:
+            E(f"enum member '{m}' has the same name as a parameter")
+    seen = set()
+    for st in score.states:
+        if st.name in seen:
+            E(f"state '{st.name}' declared twice", st.pos)
+        seen.add(st.name)
+        if st.name in params or st.name in consts:
+            E(f"state '{st.name}' has the same name as a parameter or enum member", st.pos)
+        if not 0 <= st.init < (1 << st.width):
+            E(f"state '{st.name}': initial value {st.init} does not fit u{st.width}", st.pos)
+    wnames = {w.name for w in score.all_wires()}
+    clock = score.clock_for()
+    cn = set()
+    for c in score.constraints:
+        if c.name in cn:
+            E(f"constraint '{c.name}' declared twice", c.pos)
+        cn.add(c.name)
+        for ev in (c.a, c.b):
+            if ev.kind == "edge":
+                for wn in (ev.wire, ev.when_wire):
+                    if wn and wn not in wnames:
+                        E(f"constrain {c.name}: unknown wire '{wn}'", ev.pos)
+            else:
+                r = score.event(ev.event)
+                if r is None:
+                    E(f"constrain {c.name}: '{ev.event}' is not a wire edge or a recognised event", ev.pos)
+                elif r.kind not in ("edge", "edge_while"):
+                    E(f"constrain {c.name}: event '{ev.event}' is a {r.kind.replace('_', ' ')} event; constraints "
+                      f"measure from edge events only", ev.pos)
+        if c.qty.unit == "beats" and (clock is None or clock.rate is None):
+            E(f"constrain {c.name}: a bound in beats needs a fixed clock rate", c.pos)
+    return d
+
+
 # ---- grammar walk: scope, ownership, duplex --------------------------------------------------------------------
 class _GW:
     def __init__(self, score):
@@ -174,10 +222,28 @@ class _GW:
     def names_ok(self, e, scope, pos):
         if e is None:
             return
+        consts = self.s.consts()
         for n in expr_names(e):
-            if n not in scope and not self.s.param(n):
-                self.E("E-NAMES", f"'{n}' is not a field, parameter or production argument in scope here",
-                       getattr(e, "pos", None) or pos)
+            if n not in scope and not self.s.param(n) and n not in consts and not self.s.state(n):
+                self.E("E-NAMES", f"'{n}' is not a field, parameter, state, enum member or production argument "
+                                  f"in scope here", getattr(e, "pos", None) or pos)
+
+    def role_expr(self, e, evaluator, pos, what, scope=frozenset()):
+        """The role-consistency rule (18.4): an expression may use a parameter private to a role (`for ROLE`) only
+        if that role alone evaluates it. Control expressions (choices, repeats, switches, lengths, production
+        arguments, state updates) are evaluated by every role, so they may only use what every role knows."""
+        if e is None:
+            return
+        for n in expr_names(e):
+            p = self.s.param(n)
+            if p is None or p.for_role is None or n in scope:     # a field or argument of that name shadows it
+                continue
+            if evaluator is None:
+                self.E("E-ROLE", f"grammar: {what} uses '{n}', a parameter private to {p.for_role}; every role "
+                                 f"evaluates it, so the other role cannot follow (18.4)", getattr(e, "pos", None) or pos)
+            elif p.for_role != evaluator:
+                self.E("E-ROLE", f"grammar: {what} is evaluated by {evaluator} but uses '{n}', a parameter private to "
+                                 f"{p.for_role} (18.4)", getattr(e, "pos", None) or pos)
 
     def sym_check(self, sdef: SymbolDef, owner, pos, what, args=None):
         """Ownership of one symbol terminal (10.2, D29): a value (parameter) may only appear in the wave of a
@@ -267,13 +333,23 @@ class _GW:
         if isinstance(n, Rep):
             if n.kind == "times":
                 self.names_ok(n.arg, scope, n.pos)
+                self.role_expr(n.arg, None, n.pos, "a repeat count", scope)
             s1 = self.walk(n.node, scope, owner)
             if n.kind in ("until", "while"):
                 self.names_ok(n.arg, s1 if n.kind == "until" else scope, n.pos)
+                self.role_expr(n.arg, None, n.pos, f"a '{n.kind}' condition", s1)
             return s1
         if isinstance(n, If):
             self.names_ok(n.cond, scope, n.pos)
+            self.role_expr(n.cond, None, n.pos, "an 'if' condition", scope)
             return self.walk(n.node, scope, owner)
+        if isinstance(n, Assign):
+            st = S.state(n.name)
+            if st is None:
+                self.E("E-NAMES", f"'{n.name} <- ...': '{n.name}' is not declared in a 'state' section", n.pos)
+            self.names_ok(n.expr, scope, n.pos)
+            self.role_expr(n.expr, None, n.pos, f"the state update '{n.name} <- ...'", scope)
+            return scope
         if isinstance(n, (Within, Every)):
             return self.walk(n.node, scope, owner)
         if isinstance(n, Retry):
@@ -284,6 +360,7 @@ class _GW:
             return scope
         if isinstance(n, Switch):
             self.names_ok(n.expr, scope, n.pos)
+            self.role_expr(n.expr, None, n.pos, "a switch", scope)
             out = scope
             for _, a in n.arms:
                 out = out | self.walk(a, scope, owner)
@@ -296,6 +373,7 @@ class _GW:
             t = n.type
             if t.kind == "bytes" and t.length is not None:
                 self.names_ok(t.length, scope, n.pos)
+                self.role_expr(t.length, None, n.pos, f"the length of '{n.name}'", scope)
             if t.kind == "bytes" and t.until:
                 if kind_of(S, t.until) not in ("sym", "event"):
                     self.E("E-NAMES", f"'bytes until {t.until}': not a symbol or recognised event", n.pos)
@@ -303,12 +381,17 @@ class _GW:
                     self.E("E-AMBIG", "bytes until the data symbol can never end", n.pos)
             if t.kind in ("crc", "parity"):
                 for fn in (t.first, t.last):
-                    if fn not in scope:
+                    if fn is not None and fn not in scope:
                         self.E("E-NAMES", f"'{n.name or t.kind}': field '{fn}' is not in scope for the range", n.pos)
                 if t.kind == "crc" and t.crc not in S.crcs and not (t.crc in STD and "std" in S.uses):
                     self.E("E-NAMES", f"unknown crc '{t.crc}' (declare it with 'crc', or 'use std')", n.pos)
             self.names_ok(n.value, scope, n.pos)
             self.names_ok(n.expect, scope, n.pos)
+            self.role_expr(n.value, o, n.pos, f"the value of '{n.name}'", scope)
+            if n.expect is not None:
+                others = [r for r in S.roles if r != o]
+                self.role_expr(n.expect, others[0] if len(others) == 1 else None, n.pos,
+                               f"the expected value of '{n.name}'", scope)
             if n.value is not None and n.expect is not None:
                 self.E("E-NAMES", "a field cannot have both '= EXPR' and 'expect EXPR'", n.pos)
             if self.bitsym is None:
@@ -332,6 +415,8 @@ class _GW:
             k = kind_of(S, n.name)
             for a in n.args:
                 self.names_ok(a, scope, n.pos)
+                if k == "prod":           # the argument picks the variant, so every role must know it
+                    self.role_expr(a, None, n.pos, f"an argument of '{n.name}'", scope)
             if k is None:
                 self.E("E-NAMES", f"'{n.name}' is not a symbol, recognised event or production", n.pos)
             elif k == "sym":
@@ -570,7 +655,8 @@ def check_fit(score: Score) -> list[Diag]:
                     continue
                 for w, wave, pos in sd.waves:
                     wire = score.wire(w)
-                    if wire is None or len(parse_wave(wave, sd.params, pos)) <= 1:
+                    # a wave that holds one level (or one parameter) all beat, e.g. "dddd", needs no split tap
+                    if wire is None or len(set(parse_wave(wave, sd.params, pos))) <= 1:
                         continue
                     if wire.dir == "shared" or r in score.wire_owners(wire):
                         return set(clock.split)

@@ -175,6 +175,9 @@ async def lockstep(dut):
     await checker
     await done.wait()
     assert not mismatches, f"{len(mismatches)} mismatching cycles in {name}, first {mismatches[0][0]}"
+    check = getattr(scen, "check", None)
+    if check is not None:
+        check(model)
     dut._log.info(f"scenario {name}: {len(scen.steps)} cycles, outputs identical")
 '''
     destination.write_text(text[:test_start] + test, encoding="utf-8")
@@ -218,6 +221,7 @@ def main() -> int:
     ap.add_argument("--out", type=Path, required=True, help="new, empty output directory; existing path is refused")
     ap.add_argument("--sdf", type=Path, help="one corner SDF; invoke separately for typ, slow and fast")
     ap.add_argument("--seeds", type=int, default=4, help="random scenarios, seeds 1..N (default: 4)")
+    ap.add_argument("--scenario", action="append", help="run a named scenario instead of the default suite; repeatable")
     a = ap.parse_args()
 
     repo = a.repo.resolve(); netlist = a.netlist.resolve(); cells = a.cells.resolve()
@@ -251,7 +255,7 @@ def main() -> int:
     converter = repo / "sim/numerics/v2_sizing/tt_v2_pnr/test/sdf_for_icarus.py"
     if sdf and not converter.is_file():
         ap.error(f"SDF conversion helper is missing: {converter}")
-    scenarios = SCENARIOS + [f"random_{i}" for i in range(1, a.seeds + 1)]
+    scenarios = a.scenario or SCENARIOS + [f"random_{i}" for i in range(1, a.seeds + 1)]
     manifest: dict[str, Any] = {
         "started_utc": datetime.now(timezone.utc).isoformat(), "repo": str(repo),
         "netlist": str(netlist), "netlist_sha256": sha256(netlist), "cells": str(cells),

@@ -11,7 +11,7 @@ Usage (from the repository root):
   python code/flow/runpod/podctl.py pack OUT.tgz PATH...                tar.gz of repo paths with CRLF -> LF for text
   python code/flow/runpod/podctl.py ping                                check the server answers
 
-Env: JSC_POD = pod id. Token: ~/.jsc/jupyter_token (outside the repo, never committed).
+Env: JSC_POD = pod id. JSC_TOKEN_FILE overrides ~/.jsc/jupyter_token (outside the repo, never committed).
 From Git Bash, export MSYS_NO_PATHCONV=1 first, or MSYS rewrites "/workspace/..." arguments into Windows paths.
 Cloudflare rejects the default Python User-Agent, so every request sets its own.
 """
@@ -39,7 +39,8 @@ def _cfg():
     pod = os.environ.get("JSC_POD")
     if not pod:
         sys.exit("set JSC_POD to the pod id")
-    token = (Path.home() / ".jsc" / "jupyter_token").read_text().strip()
+    token_file = Path(os.environ.get("JSC_TOKEN_FILE", Path.home() / ".jsc" / "jupyter_token"))
+    token = token_file.expanduser().read_text(encoding="utf-8").strip()
     return pod, token
 
 

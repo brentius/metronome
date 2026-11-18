@@ -117,7 +117,7 @@ def run_controller(compiled, requests, peer, extra=0):
     for _ in range(40):
         chip.step(IDLE, 0b11)
     hostin(chip, 1)
-    beats = 4 + sum(10 + 9 * (len(a) if k == "w" else a) for _, k, a in requests)
+    beats = 4 + len(requests) + sum(10 + 9 * (len(a) if k == "w" else a) for _, k, a in requests)
     scl_l, sda_l = [], []
     uo, uio, oe = chip.step(IDLE, 0b11)
     for _ in range(beats * BEAT + extra):
@@ -135,7 +135,7 @@ def expected_events(requests, my, peer_reads):
     ev, rd = [("start",)], list(peer_reads)
     for i, (a, kind, arg) in enumerate(requests):
         if i:
-            ev.append(("rstart",))
+            ev += [("rstart",), ("start",)]
         ev += [("addr", a), ("rw", 0 if kind == "w" else 1)]
         if a != my:
             ev.append(("ack", 1))
@@ -153,9 +153,11 @@ def expected_events(requests, my, peer_reads):
 
 def checker_view(events):
     """The independent checker's events for a transaction given as codec events."""
-    out, hdr = [], None
+    out, hdr, prev = [], None, None
     for e in events:
-        if e[0] in ("start", "rstart"):
+        if e[0] == "start" and prev == "rstart":
+            pass                                    # `rstart start`: one repeated START (16.2)
+        elif e[0] in ("start", "rstart"):
             out.append(("S",) if e[0] == "start" else ("Sr",))
         elif e[0] == "addr":
             hdr = e[1] << 1
@@ -169,6 +171,7 @@ def checker_view(events):
             out.append(("B", d, e[1] == 0))
         elif e[0] == "stop":
             out.append(("P",))
+        prev = e[0]
     return out
 
 
@@ -307,7 +310,7 @@ def tgt_case(rng, my):
     ev, ctl_bits, rbytes = [("start",)], [], []
     for k in range(rng.randrange(1, 4)):
         if k:
-            ev.append(("rstart",))
+            ev += [("rstart",), ("start",)]
         addr = my if rng.random() < 0.75 else (my ^ (1 << rng.randrange(7)))
         rw = rng.randrange(2)
         ev += [("addr", addr), ("rw", rw), ("ack", 0 if addr == my else 1)]
@@ -375,7 +378,7 @@ def test_target_answers_codec_controller(i2c_score, seed):
 def test_target_follows_other_rates(i2c_score, rate):
     my = 0x5A
     ev = [("start",), ("addr", my), ("rw", 0), ("ack", 0), ("data", 0xC3), ("dack", 0),
-          ("rstart",), ("addr", my), ("rw", 1), ("ack", 0), ("data", 0x81), ("more", 0), ("data", 0x7E),
+          ("rstart",), ("start",), ("addr", my), ("rw", 1), ("ack", 0), ("data", 0x81), ("more", 0), ("data", 0x7E),
           ("more", 1), ("stop",)]
     c, chip, bus = run_target(ev, my, b"\x81\x7E", rate=rate)
     r = Codec(i2c_score, params={"my_addr": my}, rate=rate).decode("controller", ideal(bus))

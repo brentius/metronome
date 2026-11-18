@@ -1,0 +1,22 @@
+[tasks]
+prove
+cover
+
+[options]
+prove: mode prove
+prove: depth 3
+cover: mode cover
+cover: depth 8
+
+[engines]
+smtbmc bitwuzla
+
+[script]
+plugin -i slang
+read_slang --top fv_v3_top -I . md2_stream.v md2_mem.v fv_v3_freeze.sv
+prep -top fv_v3_top
+
+[files]
+../../../src/md2_stream.v
+../../../src/md2_mem.v
+fv_v3_freeze.sv

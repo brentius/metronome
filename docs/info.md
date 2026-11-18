@@ -9,14 +9,18 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Metronome is a protocol emulator that you program instead of rewire. Programs run on the protocol's own bit clock rather than the chip clock. Hardware beat generators produce or recover that bit clock. Short, loop-free bursts of move instructions run between beats, and pin reads and writes happen on beat taps, never on instruction count. A burst that misses its deadline raises a sticky flag instead of corrupting the waveform.
+Metronome v4 is a programmable protocol emulator. Four timing lines generate or follow protocol clocks and schedule pin samples and output changes at programmable points within a bit period. Two execution cores run short bursts of move instructions in response to those events. Each core has room for 256 program words. Sticky status flags report missed deadlines and other execution errors.
 
-*Status: v2.0 is in progress. The design in `src/` is the v1.0 Metronome RTL, ported into the official Tiny Tapeout template as the baseline for v2.0.*
+The same hardware can load programs for UART, SPI, I2C and other wire formats. One resident demonstration captures an unfamiliar UART waveform, learns its rate and framing, then transmits the validated prefix. The host loads the demonstration once over SPI.
 
 ## How to test
 
-A host microcontroller (the demo board's RP2350) loads the program and configuration over the SPI target port (HOST_SCK, HOST_CS_N, HOST_MOSI, HOST_MISO), then sets RUN. HOST_IRQ signals data for the host. Protocol pins are P0..P12 (inputs) and O0..O13 (outputs); uio pins are bidirectional, with output enable under program control.
+Supply a 60 MHz clock and pulse `rst_n` low before loading an image. Use SPI mode 0, MSB first, at up to 3.75 MHz. The host drives SCK on `ui[0]`, CS_N on `ui[1]` and MOSI on `ui[2]`, and reads MISO on `uo[0]`. Apply the image's ordered writes, including the write that enables execution. After a power cycle or project reselection, reset and reload the image.
+
+For the resident UART demonstration, run `python -m transcribe demo-image resident-uart.json` from `code/host2`. Load the image, send a 3.3 V UART signal to P5 (`uio[5]`), and capture the replay on O8 (`uo[2]`). The repository's `code/host2/transcribe/README.md` gives the stimulus, SPI transactions and expected readback.
+
+The centralized v4 design passed Tiny Tapeout precheck and extracted setup and hold at a 16.667 ns period across the three nominal corners. The resident demonstration ran in RTL and routed gate-level simulation.
 
 ## External hardware
 
-None required for 3.3 V protocols. Transceivers or pull-ups on a Pmod as the protocol needs (for example pull-ups for I2C, a 10BASE-T transformer and driver for Ethernet).
+Use 3.3 V logic and a common ground for the UART demonstration. Add external components as the protocol requires, such as pull-ups for I2C or a suitable transceiver for a different physical layer.

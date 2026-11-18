@@ -201,7 +201,7 @@ def bitlen(score: Score, n):
         return {"": 8 * len(n.data)}
     if isinstance(n, ConstBits):
         return {"": len(n.bits)}
-    if isinstance(n, (Gap, Turnaround)):
+    if isinstance(n, (Gap, Turnaround, Assign)):
         return {}
     if isinstance(n, Seq):
         r = {}

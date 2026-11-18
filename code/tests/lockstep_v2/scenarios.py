@@ -574,6 +574,14 @@ DIRECTED = {"smoke": smoke, "eth_loopback": eth_loopback, "follower": follower, 
 
 
 def build(name: str) -> Scn:
+    if name.startswith("v4_"):
+        from scenarios_v4 import DIRECTED_V4
+        return DIRECTED_V4[name]()
+    if name.startswith("random3_") or name.startswith("v3_"):     # v3 scenarios (scenarios_v3.py, SPEC v2 12)
+        import scenarios_v3
+        if name.startswith("random3_"):
+            return scenarios_v3.random3_scn(int(name.split("_")[1]))
+        return scenarios_v3.DIRECTED_V3[name]()
     if name.startswith("random_"):
         return random_scn(int(name.split("_")[1]))
     return DIRECTED[name]()

@@ -1,0 +1,33 @@
+# Library score: Wiegand 26-bit access-control frame (SIA AC-01), two data wires D0 / D1, idle high.
+# A 0 is a low pulse on D0, a 1 is a low pulse on D1; pulse 50 us, bit interval 2 ms (both within the usual window:
+# pulse 20..100 us, interval 200 us..20 ms).  Frame: leading even parity over the first 12 data bits, 8-bit facility code,
+# 16-bit card number, trailing odd parity over the last 12 data bits (the number is split 4 + 8 + 4 bits so every
+# field fits the chip's one-byte host mailbox).
+# Does: send frames; compute the trailing parity.  Does not: compute the leading parity (a score field may only depend
+# on earlier fields, spec 7.5, so the host supplies `pe`); read back; longer formats.
+protocol wiegand26
+roles    reader, panel
+
+wire d0 out push-pull idle high by reader
+wire d1 out push-pull idle high by reader
+
+clock 500 Hz
+  reader: generated
+  panel:  started by d0 fall
+  split 2.5%
+
+symbols
+  bit(d)   d0 "d1"  d1 "!d1"      # the bit's own wire goes low for the first 2.5 % of the 2 ms beat (50 us)
+  idle     d0 "1"   d1 "1"
+
+bits msb first
+
+grammar
+  line   = card*
+  card   = pe:bit                    # even parity over fc..card_hi (host-supplied, see above)
+           fc:u8
+           card_a:u4                  # card number = card_a . card_b . card_c (4 + 8 + 4 bits; each field is one host byte)
+           card_b:u8
+           card_c:u4
+           po:parity odd over card_b..card_c   # odd parity over the last 12 data bits
+           gap 4 beats

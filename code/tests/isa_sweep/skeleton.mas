@@ -1,0 +1,86 @@
+; Configuration for the single-instruction sweep (code/tests/isa_sweep).  The program memory contents are NOT taken
+; from this file: the sweep supplies its own preamble and test words (raw 64-bit encodings).  Only the configuration
+; (lines, streams, LFSRs, threads, output cells) and the runtime start writes (thread PC/EN, CTRL.RUN) are used.
+; Lines are left stopped (no `ctl run`): line phase is checked by the lockstep scenarios; here a program can start a
+; line itself with a L<k>.CTL move, which is one of the swept destinations.
+.clock 60e6
+
+.line 0
+    period 6
+    taps - 3 -
+.end
+.line 1
+    period 10
+    taps 3 - -
+    pins A=P1 B=P2
+.end
+.line 2
+    period 7
+    taps 2 4 -
+.end
+
+.stream 0
+    mode tx
+    order lsb
+    start 0
+    len 16
+.end
+.stream 1
+    mode rx
+    order msb
+    start 64
+    len 32
+.end
+
+.lfsr 0 poly=0x04C11DB7
+.lfsr 1 poly=0x8408 width=16
+
+.thread 0
+    core 0
+    line 0
+    trigger ALWAYS
+    start p0
+.end
+.thread 1
+    core 0
+    line 0
+    trigger ALWAYS
+    start p0
+.end
+.thread 2
+    core 0
+    line 1
+    trigger ALWAYS
+    start p0
+.end
+.thread 3
+    core 0
+    line 1
+    trigger ALWAYS
+    start p0
+.end
+.thread 4
+    core 0
+    line 2
+    trigger ALWAYS
+    start p0
+.end
+.thread 5
+    core 0
+    line 2
+    trigger ALWAYS
+    start p0
+.end
+
+.out O0
+    line 0
+    lut b0 ^ (seg & 1)
+    oe always
+.end
+.out O9
+    line 1
+    lut b0
+.end
+
+.core 0
+p0:     pause goto p0

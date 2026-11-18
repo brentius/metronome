@@ -14,6 +14,7 @@ localparam [15:0] HA_CTRL_BASE = 16'h2400;
 localparam [15:0] HA_LRT_BASE = 16'h2410;
 localparam [15:0] HA_TRT_BASE = 16'h2440;
 localparam [15:0] HA_SRT_BASE = 16'h2450;
+localparam [15:0] HA_DBG_BASE = 16'h2460;
 localparam integer HAI_PROG_BASE = 0;
 localparam integer HAI_DATA_BASE = 4096;
 localparam integer HAI_LINE_BASE = 8192;
@@ -25,6 +26,7 @@ localparam integer HAI_CTRL_BASE = 9216;
 localparam integer HAI_LRT_BASE = 9232;
 localparam integer HAI_TRT_BASE = 9280;
 localparam integer HAI_SRT_BASE = 9296;
+localparam integer HAI_DBG_BASE = 9312;
 localparam integer HS_LINE = 32;
 localparam integer HS_THREAD = 8;
 localparam integer HS_LFSR = 8;
@@ -33,6 +35,7 @@ localparam integer HS_OUT = 16;
 localparam integer HS_LRT = 8;
 localparam integer HS_TRT = 2;
 localparam integer HS_SRT = 4;
+localparam integer HS_DBG = 32;
 localparam integer HS_PROG_CORE = 2048;
 // 16-bit span of each block (stride x instances)
 localparam [15:0] HSPAN_LINE = 16'h0080;
@@ -44,6 +47,7 @@ localparam [15:0] HSPAN_CTRL = 16'h0010;
 localparam [15:0] HSPAN_LRT = 16'h0020;
 localparam [15:0] HSPAN_TRT = 16'h000C;
 localparam [15:0] HSPAN_SRT = 16'h0008;
+localparam [15:0] HSPAN_DBG = 16'h0020;
 localparam [15:0] HSPAN_PROG = 16'h1000;
 localparam [15:0] HSPAN_DATA = 16'h0800;
 
@@ -96,18 +100,48 @@ localparam integer HO_TRT_STAT = 1;   // 1 byte(s), RW
 localparam integer HO_SRT_POSL = 0;   // 1 byte(s), R
 localparam integer HO_SRT_POSH = 1;   // 1 byte(s), R
 localparam integer HO_SRT_CTL = 2;   // 1 byte(s), W
+localparam integer HO_DBG_DBG = 0;   // 1 byte(s), RW
+localparam integer HO_DBG_MCTL = 1;   // 1 byte(s), RW
+localparam integer HO_DBG_ECTL = 2;   // 1 byte(s), RW
+localparam integer HO_DBG_MISR = 4;   // 4 byte(s), R
+localparam integer HO_DBG_EMASK = 8;   // 2 byte(s), RW
+localparam integer HO_DBG_ACC = 10;   // 1 byte(s), R
+localparam integer HO_DBG_AFLG = 11;   // 1 byte(s), R
+localparam integer HO_DBG_FLAGS = 12;   // 2 byte(s), R
+localparam integer HO_DBG_CST = 14;   // 2 byte(s), R
+localparam integer HO_DBG_FPC = 16;   // 2 byte(s), R
+localparam integer HO_DBG_RLV = 18;   // 2 byte(s), RW
 
 // configuration window: host bytes CFG_LO .. CFG_LO + CFG_BYTES - 1; CFG_MASK bit 8a+b = latch exists
 localparam [15:0] CFG_LO = 16'h2000;
 localparam integer CFG_LO_I = 8192;
 localparam integer CFG_BYTES = 480;
 localparam [15:0] HSPAN_CFG = 16'h01E0;
-localparam integer CFG_LATCH_BITS = 2084;
-localparam [3839:0] CFG_MASK = 3840'h0000000000000000FFFFFFFF00003F070000000000000000FFFFFFFF00003F070000000000000000FFFFFFFF00003F070000000000000000FFFFFFFF00003F070000000000000000FFFFFFFF00003F070000000000000000FFFFFFFF00003F0700000000FFFFFFFFFFFFFFFF00003F0700000000FFFFFFFFFFFFFFFF00003F0700000000FFFFFFFFFFFFFFFF00003F0700000000FFFFFFFFFFFFFFFF00003F0700000000FFFFFFFFFFFFFFFF00003F0700000000FFFFFFFFFFFFFFFF00003F0700000000FFFFFFFFFFFFFFFF00003F0700000000FFFFFFFFFFFFFFFF00003F070000000000000000000000000000000000000000000000000000000000000000000FFF0FFF07FF03000FFF0FFF07FF0300000000FFFFFFFF00000000FFFFFFFF00000000000000000000000000000000000000FFFF3F3FFF000000FFFF3F3FFF000000FFFF3F3FFF000000FFFF3F3FFF000000FFFF3F3FFF000000FFFF3F3FFF000000FFFFFFFFFFFFFFFFFF03FF7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFF03FF7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFF03FF7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFF03FF7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF;
+localparam integer CFG_LATCH_BITS = 2112;
+localparam [3839:0] CFG_MASK = 3840'h0000000000000000FFFFFFFF00003F1F0000000000000000FFFFFFFF00003F1F0000000000000000FFFFFFFF00003F1F0000000000000000FFFFFFFF00003F1F0000000000000000FFFFFFFF00003F1F0000000000000000FFFFFFFF00003F1F00000000FFFFFFFFFFFFFFFF00003F1F00000000FFFFFFFFFFFFFFFF00003F1F00000000FFFFFFFFFFFFFFFF00003F1F00000000FFFFFFFFFFFFFFFF00003F1F00000000FFFFFFFFFFFFFFFF00003F1F00000000FFFFFFFFFFFFFFFF00003F1F00000000FFFFFFFFFFFFFFFF00003F1F00000000FFFFFFFFFFFFFFFF00003F1F0000000000000000000000000000000000000000000000000000000000000000000FFF0FFF07FF03000FFF0FFF07FF0300000000FFFFFFFF00000000FFFFFFFF00000000000000000000000000000000000000FFFF3F3FFF000000FFFF3F3FFF000000FFFF3F3FFF000000FFFF3F3FFF000000FFFF3F3FFF000000FFFF3F3FFF000000FFFFFFFFFFFFFFFFFF03FF7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFF03FF7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFF03FF7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFF03FF7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF;
+
+// Decode configured bytes, excluding unimplemented gaps and output-only OE.
+function cfg_address_is_live;
+    input [15:0] address;
+    localparam [31:0] CFG_VALID_LINE_0 = 32'h1FFFFFFF;
+    localparam [7:0] CFG_VALID_THREAD_0 = 8'h1F;
+    localparam [7:0] CFG_VALID_LFSR_0 = 8'hF;
+    localparam [7:0] CFG_VALID_STREAM_0 = 8'h7F;
+    localparam [15:0] CFG_VALID_OUT_0 = 16'hFF3;
+    localparam [15:0] CFG_VALID_OUT_8 = 16'hF3;
+    begin
+        cfg_address_is_live = (address >= 16'h2000 && address < 16'h2080 && CFG_VALID_LINE_0[address[4:0]]) ||
+                              (address >= 16'h2080 && address < 16'h20B0 && CFG_VALID_THREAD_0[address[2:0]]) ||
+                              (address >= 16'h20C0 && address < 16'h20D0 && CFG_VALID_LFSR_0[address[2:0]]) ||
+                              (address >= 16'h20D0 && address < 16'h20E0 && CFG_VALID_STREAM_0[address[2:0]]) ||
+                              (address >= 16'h2100 && address < 16'h2180 && CFG_VALID_OUT_0[address[3:0]]) ||
+                              (address >= 16'h2180 && address < 16'h21E0 && CFG_VALID_OUT_8[address[3:0]]);
+    end
+endfunction
 
 // table sizes
 localparam integer MD_N_SRC = 39;
-localparam integer MD_N_DST = 58;
+localparam integer MD_N_DST = 61;
 localparam integer MD_N_GUARD = 62;
 localparam integer MD_N_TRIG = 30;
 
@@ -137,7 +171,8 @@ localparam [4:0] DG_L1_CTL = 5'd21;
 localparam [4:0] DG_L2_CTL = 5'd22;
 localparam [4:0] DG_L3_CTL = 5'd23;
 localparam [4:0] DG_HOST_OUT = 5'd24;
+localparam [4:0] DG_CW = 5'd25;
 localparam [4:0] DG_NONE = 5'd31;
-localparam [319:0] DG_MAP = {5'd31, 5'd31, 5'd31, 5'd31, 5'd31, 5'd31, 5'd24, 5'd23, 5'd22, 5'd21, 5'd20, 5'd19, 5'd18, 5'd19, 5'd18, 5'd19, 5'd18, 5'd17, 5'd17, 5'd17, 5'd17, 5'd16, 5'd16, 5'd16, 5'd16, 5'd15, 5'd15, 5'd15, 5'd15, 5'd16, 5'd15, 5'd14, 5'd13, 5'd12, 5'd14, 5'd13, 5'd12, 5'd14, 5'd13, 5'd12, 5'd11, 5'd10, 5'd9, 5'd8, 5'd9, 5'd8, 5'd7, 5'd6, 5'd5, 5'd4, 5'd3, 5'd3, 5'd3, 5'd3, 5'd3, 5'd3, 5'd3, 5'd2, 5'd2, 5'd1, 5'd0, 5'd0, 5'd0, 5'd31};
+localparam [319:0] DG_MAP = {5'd31, 5'd31, 5'd31, 5'd25, 5'd25, 5'd25, 5'd24, 5'd23, 5'd22, 5'd21, 5'd20, 5'd19, 5'd18, 5'd19, 5'd18, 5'd19, 5'd18, 5'd17, 5'd17, 5'd17, 5'd17, 5'd16, 5'd16, 5'd16, 5'd16, 5'd15, 5'd15, 5'd15, 5'd15, 5'd16, 5'd15, 5'd14, 5'd13, 5'd12, 5'd14, 5'd13, 5'd12, 5'd14, 5'd13, 5'd12, 5'd11, 5'd10, 5'd9, 5'd8, 5'd9, 5'd8, 5'd7, 5'd6, 5'd5, 5'd4, 5'd3, 5'd3, 5'd3, 5'd3, 5'd3, 5'd3, 5'd3, 5'd2, 5'd2, 5'd1, 5'd0, 5'd0, 5'd0, 5'd31};
 
 `endif

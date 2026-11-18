@@ -31,6 +31,19 @@ from both sides.
 | `shifter_parallel` | Each core drives both shifters with simultaneous CFG and LD/SH in both move orders; shifter data and DONE-dependent bytes are exposed through the host mailbox |
 | `random_<seed>` | random line, pin, stream, LFSR configuration; random programs on both cores (bursts ending in a pause, random guards, jumps, out-of-table fields); random threads, input activity and host traffic (doorbells, runtime writes, live table rewrites, reads) |
 
+## v3 scenarios (`scenarios_v3.py`, SPEC v2 section 12, branch `metronome-v3.0`)
+
+| Name | Covers |
+|---|---|
+| `v3_live_misr` | live-pin tables (`LIVE` b2 and b1) on a wired-AND loopback: open-drain read-back, collision flag, pass-through, both live bits; digest enabled, read, paused, cleared |
+| `v3_freeze` | freeze over SPI with lines, threads, a transmit stream and a pointer loop running; frozen host RAM reads/writes, doorbell held, PHASE and OUT writes while frozen, single steps with `CST`/`FPC` reads, resume; digest over the whole run |
+| `v3_ecap` | edge capture on S0 against S1 receive and P0 reads: a 16-cycle burst of one edge per cycle, simultaneous edges, masked pins, edges inside a freeze, END; records and `POS` read back over SPI |
+| `random3_<seed>` | `random_<seed>` set-up plus random `LIVE` bits, digest, random edge-capture mask on S0, random freezes with steps and frozen reads (`LOCKSTEP_V3_SEEDS`, default 2) |
+
+The digest, debug block and capture records are compared through MISO like every other read. `mutate_v3.py` runs
+six RTL mutants (live pin swapped, digest polynomial, pins not held while frozen, step ignored, IR not held,
+capture `DC` restarting at 0); each must fail its scenario.
+
 ## Constraints on random stimulus (and why)
 
 - Program memory is written only before `RUN_global` is set: a host program write in the same cycle as a fetch is

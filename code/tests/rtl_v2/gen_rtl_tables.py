@@ -35,7 +35,7 @@ REG_MASK = {
     ("LFSR", "POLY"): [0xFF] * 4,
     ("STREAM", "MODE"): [0x03], ("STREAM", "START"): [0xFF, 0x07], ("STREAM", "LEN"): [0xFF, 0x0F],
     ("STREAM", "MARK"): [0xFF, 0x0F],
-    ("OUT", "BIND"): [0x07], ("OUT", "SEL"): [0x3F], ("OUT", "LUT"): [0xFF] * 4, ("OUT", "OE"): [0xFF] * 4,
+    ("OUT", "BIND"): [0x1F], ("OUT", "SEL"): [0x3F], ("OUT", "LUT"): [0xFF] * 4, ("OUT", "OE"): [0xFF] * 4,
 }
 CFG_BLOCKS = ["LINE", "THREAD", "LFSR", "STREAM", "OUT"]
 CFG_BITS_KEY = {"LINE": ["line"], "THREAD": ["thread"], "LFSR": ["lfsr"], "STREAM": ["stream"], "OUT": ["out", "oe"]}
@@ -104,6 +104,24 @@ def gen_map() -> str:
     L.append(f"localparam integer CFG_LATCH_BITS = {m.CONFIG_BITS_TOTAL};")
     hexs = "".join(f"{v:02X}" for v in reversed(mask))
     L.append(f"localparam [{8 * len(mask) - 1}:0] CFG_MASK = {8 * len(mask)}'h{hexs};")
+    L.extend(["", "// Decode configured bytes, excluding unimplemented gaps and output-only OE.",
+              "function cfg_address_is_live;", "    input [15:0] address;"])
+    terms = []
+    for b in CFG_BLOCKS:
+        base, stride, n, _ = _block_geom(b)
+        assert stride & (stride - 1) == 0 and base % stride == 0
+        offsets = (stride - 1).bit_length()
+        sections = [(0, n)] if b != "OUT" else [(0, m.N_OE_PINS), (m.N_OE_PINS, n)]
+        for first, limit in sections:
+            name = f"CFG_VALID_{b}_{first}"
+            lo_addr, hi_addr = base + stride * first, base + stride * limit
+            pattern = sum(bool(mask[lo_addr + j - lo]) << j for j in range(stride))
+            L.append(f"    localparam [{stride - 1}:0] {name} = {stride}'h{pattern:X};")
+            terms.append(f"(address >= 16'h{lo_addr:04X} && address < 16'h{hi_addr:04X}"
+                         + f" && {name}[address[{offsets - 1}:0]])")
+    L.append("    begin")
+    L.append("        cfg_address_is_live = " + " ||\n                              ".join(terms) + ";")
+    L.extend(["    end", "endfunction"])
     L.append("")
     L.append("// table sizes")
     L.append(f"localparam integer MD_N_SRC = {len(m.SRC)};")

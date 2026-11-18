@@ -7,8 +7,11 @@ from score.model import FCLK
 
 
 def fastest_period(rep, ctx) -> int | None:
-    """Smallest beat length in cycles at which every thread of a generated line meets its deadlines (calculated from
-    the static check's burst data: overrun n + 2 + Sigma + 1 <= beat, commit s + 2 + Sigma <= beat)."""
+    """Necessary burst-only period bound, not a sufficient schedulable rate.
+
+    Trigger phase, quantized taps and snapshot deadlines can impose a stricter
+    limit. The complete checker on an actually compiled rate remains decisive.
+    """
     need = 0
     for tr in rep.threads.values():
         if tr.gap_beat is None and tr.gap_self is None and tr.gap_snap is None:
@@ -22,7 +25,8 @@ def time_diag(ctx, prog, rep, err: str) -> str:
     s = f"E-TIME   grammar: {err}"
     if fp and ctx.clk.period:
         s += (f"\n         beat is {float(ctx.clk.period):.2f} cycles at {FCLK / float(ctx.clk.period) / 1e6:.4g} MHz; "
-              f"fastest rate that fits: {FCLK / fp / 1e6:.4g} MHz ({fp} cycles per beat)")
+              f"burst-only upper rate bound: {FCLK / fp / 1e6:.4g} MHz ({fp} cycles per beat; "
+              "not a validated maximum)")
     return s
 
 
@@ -59,8 +63,8 @@ def fit_report(c) -> str:
                      (f"; last input read at burst cycle {tr.in_max}" if tr.in_max else ""))
         fp = fastest_period(c.check_report, x)
         if fp and clk.mode == "generated":
-            L.append(f"  rate       fastest generated rate that fits: {FCLK / fp / 1e6:.4g} MHz ({fp} cycles per beat; "
-                     f"calculated from the burst lengths above)")
+            L.append(f"  rate       burst-only upper rate bound: {FCLK / fp / 1e6:.4g} MHz ({fp} cycles per beat; "
+                     "not a validated maximum; trigger phase, tap quantization and snapshot checks also apply)")
     for n in x.notes:
         L.append(f"  note       {n}")
     for w in c.warnings:

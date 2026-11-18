@@ -10,6 +10,7 @@ module md2_line #(
 ) (
     input  wire            clk,
     input  wire            rst_n,                // synchronous (rst_q)
+    input  wire            frz,                  // v3: frozen cycle (SPEC v2 12.3): no edge, no advance, HELD holds
     input  wire [CFGW-1:0] cfg,
     input  wire [15:0]     lvl,                  // synchronised pin levels P0..P12 (bits 13..15 are 0)
     input  wire [15:0]     rise,
@@ -94,8 +95,9 @@ module md2_line #(
     endfunction
 
     // ---------------------------------------------------------------- beat generator (3.2)
-    wire        edg   = esel(c_edge[3:0], c_edge[5:4], rise, fall);
-    wire        e0    = esel(c_t0e[3:0], c_t0e[5:4], rise, fall);
+    wire        edg   = esel(c_edge[3:0], c_edge[5:4], rise, fall) & ~frz;
+    wire        e0    = esel(c_t0e[3:0], c_t0e[5:4], rise, fall) & ~frz;
+    wire        runa  = run & ~frz;                  // v3: a frozen line does not advance
     wire        inwin = (c_wlo <= c_whi) ? ((c_wlo <= ph) && (ph <= c_whi)) : ((ph >= c_wlo) || (ph <= c_whi));
     wire        start  = edg & arm & ~run;
     wire        accept = edg & run & ren & (~c_wen | inwin);
@@ -129,8 +131,8 @@ module md2_line #(
     wire [15:0] th     = (c_htap == 2'd0) ? c_t0 : ((c_htap == 2'd1) ? c_t1 : c_t2);
     wire        h_tok  = (c_htap != 2'd3) & ~((c_htap == 2'd0) & c_t0src) &
                          ((c_htap == 2'd0) ? tlt[0] : ((c_htap == 2'd1) ? tlt[1] : tlt[2]));
-    wire        hold   = c_hen & run & ~accept & h_tok & crossing(th, ph, nx, over) & (lvl[c_hpin] != c_hlvl);
-    wire        adv    = run & ~accept & ~hold;
+    wire        hold   = c_hen & runa & ~accept & h_tok & crossing(th, ph, nx, over) & (lvl[c_hpin] != c_hlvl);
+    wire        adv    = runa & ~accept & ~hold;
     wire        wrap   = adv & over;
     assign beat = c_follow ? accept : wrap;
 
@@ -214,7 +216,7 @@ module md2_line #(
             ph <= 16'd0; run <= 1'b0; arm <= 1'b0; ren <= 1'b0; sc <= 1'b0; sp <= 1'b0; fired <= 3'd0;
             held <= 1'b0; first <= 1'b0; w <= 4'd0; sn <= 4'd0; rem <= 1'b0; staged <= 4'd0; committed <= 4'd0; tapmiss <= 1'b0;
         end else begin
-            held <= hold;
+            if (!frz) held <= hold;
             ph   <= ph_f;
             run  <= run_f;
             arm  <= h_ctl_we ? h_d[1] : arm_c;

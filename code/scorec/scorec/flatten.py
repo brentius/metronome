@@ -12,7 +12,7 @@ from fractions import Fraction
 
 from . import _paths  # noqa: F401
 from score.analysis import fields_in, kind_of
-from score.ast import (AsmBlock, Choice, ConstBits, ConstBytes, Dup, Every, Field, Gap, If, Num, Ref, Rep, Retry, Seq,
+from score.ast import (AsmBlock, Assign, Choice, ConstBits, ConstBytes, Dup, Every, Field, Gap, If, Num, Ref, Rep, Retry, Seq,
                        Switch, Turnaround, Within)
 from score.model import qty_cycles
 
@@ -60,6 +60,16 @@ def _unsup(what, pos=None):
                                         f"terminals, const, fixed-width fields, bytes, crc, gap, || pairs, star loops)")
 
 
+def _clone(st: Step) -> Step:
+    """A copy of a step that shares no mutable Step state (counts, nested lists) with the original."""
+    import copy
+    c = copy.copy(st)
+    c.body = [_clone(b) for b in st.body]
+    c.sides = tuple([_clone(b) for b in side] if isinstance(side, list) else side for side in st.sides)
+    c.bits = list(st.bits)
+    return c
+
+
 class Flattener:
     def __init__(self, score):
         self.s = score
@@ -85,7 +95,7 @@ class Flattener:
         if isinstance(n, Rep):
             if n.kind == "times" and isinstance(n.arg, Num):
                 one = self.walk(n.node, owner)
-                return one * n.arg.value
+                return [_clone(st) for _ in range(n.arg.value) for st in one]    # copies: merge_syms mutates counts
             if n.kind in ("star", "plus"):
                 return [Step("star", owner, body=self.walk(n.node, owner), pos=n.pos, name=n.kind)]
             _unsup(f"repeat '{n.kind}' with a computed condition", n.pos)
@@ -111,7 +121,7 @@ class Flattener:
             self.stack.pop()
             return out
         names = {Choice: "choice '|'", If: "'if'", Switch: "switch", Retry: "retry", Within: "'within'",
-                 Turnaround: "turnaround", AsmBlock: "inline assembly"}
+                 Turnaround: "turnaround", AsmBlock: "inline assembly", Assign: "state update '<-' (part A 18.3)"}
         _unsup(names.get(type(n), type(n).__name__), getattr(n, "pos", None))
 
 
@@ -167,6 +177,14 @@ def crc_range(frame: list[Step], f: Field) -> set[str]:
     """Names of the fields a crc/parity field covers (F1..F2 in field order)."""
     names = [s.f.name for s in frame if s.kind == "field" and s.f.name]
     a, b = f.type.first, f.type.last
+    if b is None:                       # open range F1..* (part A 18.2): through the field just before the crc
+        before = []
+        for s in frame:
+            if s.kind == "field" and s.f is f:
+                break
+            if s.kind == "field" and s.f.name:
+                before.append(s.f.name)
+        return set(before[before.index(a):]) if a in before else set()
     if a in names and b in names:
         return set(names[names.index(a):names.index(b) + 1])
     return set()

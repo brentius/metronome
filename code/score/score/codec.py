@@ -269,6 +269,16 @@ class Codec:
         self.bitsym = score.symbol(DATA_SYMBOL)
         self.roleclk = {r: self.clock.roles[r] for r in score.roles}
         self.last_stuff_note = None
+        self.consts = score.consts()
+        self.state: dict = {}           # (encode|decode, role) -> {state name: value}; persists across calls (18.3)
+
+    def state_for(self, key) -> dict:
+        if key not in self.state:
+            self.state[key] = {s.name: s.init for s in self.score.states}
+        return self.state[key]
+
+    def reset_state(self):
+        self.state.clear()
 
     # -- helpers --
     def _mk_inst(self, sd, args):
@@ -439,7 +449,8 @@ class Codec:
 class _Run:
     def __init__(self, c: Codec, enc: bool, events=None, bus=None, role=None):
         self.c, self.s, self.enc, self.role = c, c.score, enc, role
-        self.env: dict = dict(c.params)
+        self.st = c.state_for(("encode" if enc else "decode", role))
+        self.env: dict = {**c.consts, **c.params, **self.st}
         self.flog: list = []                    # (name, value, kind, width, order) of fields in this frame
         self.stack: list[str] = []
         self.bits = c.score.bits
@@ -1055,6 +1066,12 @@ class _Run:
     def w_Every(self, n, owner):
         pass        # periodic background activity (link pulses): out of scope for this codec
 
+    def w_Assign(self, n, owner):
+        st = self.s.state(n.name)
+        v = self.val(n.expr) & ((1 << st.width) - 1)
+        self.env[n.name] = v
+        self.st[n.name] = v
+
     def w_Switch(self, n, owner):
         v = self.val(n.expr)
         for a, node in n.arms:
@@ -1224,13 +1241,21 @@ class _Run:
                 v -= 1 << w
             self.record(f, v, w, order)
             self.check_expect(f, v)
+            if t.enum and v not in self.s.enums[t.enum].members.values():
+                self._mismatch(f.name, f"{v} is not a member of enum {t.enum}")
 
     def enc_value(self, f: Field):
-        """Value to send: the event if given, else '= EXPR'."""
+        """Value to send: the event if given, else '= EXPR'. An enum field also takes a member name."""
         e = self.peek_ev()
         if e is not None and e[0] == f.name:
             self.ei += 1
-            return e[1]
+            v = e[1]
+            if isinstance(v, str) and f.type.enum:
+                members = self.s.enums[f.type.enum].members
+                if v not in members:
+                    raise EncodeError(f"field {f.name}: '{v}' is not a member of enum {f.type.enum}")
+                v = members[v]
+            return v
         if f.value is not None:
             return self.val(f.value)
         got = "end of events" if e is None else repr(e)
@@ -1330,7 +1355,10 @@ class _Run:
     # -- crc / parity --
     def covered(self, f):
         t = f.type
-        last = max((i for i, e in enumerate(self.flog) if e[0] == t.last), default=None)
+        if t.last is None:                                     # open range F1..* (18.2)
+            last = len(self.flog) - 1 if self.flog else None
+        else:
+            last = max((i for i, e in enumerate(self.flog) if e[0] == t.last), default=None)
         if last is None:
             raise EvalError(f"crc/parity range end '{t.last}' has not occurred")
         first = max((i for i, e in enumerate(self.flog[:last + 1]) if e[0] == t.first), default=None)

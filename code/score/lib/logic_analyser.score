@@ -1,0 +1,28 @@
+# Library score: logic analyser personality.  The analyser's beat clock is started by the first rising edge on the input
+# pin (the trigger), then samples the pin at the middle of every beat and appends each bit to the receive stream in data
+# RAM (LSB first).  The host reads the stream back and dumps a VCD (code/score/examples/logic_analyser_host.py).  The
+# sample rate is the line rate chosen at load time (`rate_hz`).
+# Does: one channel, rising-edge trigger, 128 samples after the trigger beat (edit `bytes[16]`; the trigger beat is the
+# known 1 that starts the capture), a programmable sample rate.
+# Does not: more than one channel per score (a receive line samples one wire per beat), other trigger conditions, a
+# pre-trigger buffer, timestamps between edges, re-arming within a frame.
+protocol logic_analyser
+roles    target, analyser
+
+wire pin out push-pull idle low by target
+
+clock 1 MHz
+  target:   generated
+  analyser: started by pin rise
+  tolerance 3%
+
+symbols
+  bit(d)   pin "d"      sample pin at 50%
+
+bits lsb first
+
+grammar
+  capture = frame*
+  frame   = bit(1)                     # the trigger beat: the rising edge that starts the clock
+            samples:bytes[16] by target
+            gap 1 beats

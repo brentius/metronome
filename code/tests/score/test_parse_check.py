@@ -92,17 +92,18 @@ def test_e_fit_seg_too_many_splits():
 
 
 def four_seg(src, sample):
+    """Four segments; m1 changes level inside the beat, so the sender needs the split taps (R3)."""
     return src.replace("b: started by w rise", "b: started by w rise\n  split 25% 50% 75%").replace(
-        'w "d"  sample w at 50%', f'w "dddd"  sample w at {sample}').replace('m1      w "1"', 'm1      w "1111"').replace(
+        'w "d"  sample w at 50%', f'w "dddd"  sample w at {sample}').replace('m1      w "1"', 'm1      w "1110"').replace(
         'm2      w "0"', 'm2      w "0000"')
 
 
 def test_e_fit_tap():
-    assert "E-FIT-TAP" in codes(four_seg(mk("x:u8"), "62%"))
+    assert "E-FIT-TAP" in codes(four_seg(mk("x:u8 m1"), "62%"))
 
 
 def test_split_sample_share_tap_ok():
-    assert "E-FIT-TAP" not in codes(four_seg(mk("x:u8"), "50%"))
+    assert "E-FIT-TAP" not in codes(four_seg(mk("x:u8 m1"), "50%"))
 
 
 def one_wire(waves):

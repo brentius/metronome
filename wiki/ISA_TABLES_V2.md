@@ -67,7 +67,7 @@ Jump modes (on `jcond`): `next`=0, `always`=1, `if`=2, `ifnot`=3. Move guards (o
 | 37 | `S1.BYTE` | stream 1 last completed receive byte, or current transmit byte |
 | 38 | `HOST.IN` | byte from the host mailbox (reading clears HOST.INV) |
 
-## Destination ports (58 of 64)
+## Destination ports (61 of 64)
 
 | # | Name | Meaning |
 |---|---|---|
@@ -129,6 +129,9 @@ Jump modes (on `jcond`): `next`=0, `always`=1, `if`=2, `ifnot`=3. Move guards (o
 | 55 | `L2.CTL` | line 2 beat generator: bus[0] RUN, bus[1] ARM, bus[2] REN |
 | 56 | `L3.CTL` | line 3 beat generator: bus[0] RUN, bus[1] ARM, bus[2] REN |
 | 57 | `HOST.OUT` | byte to the host mailbox (sets HOST.OUTV, raises IRQ) |
+| 58 | `CW.AL` | v4 config-write address bits 7..0 := bus |
+| 59 | `CW.AH` | v4 config-write address bits 15..8 := bus |
+| 60 | `CW.D` | v4 queue a host-map write of bus to the config-write address; address += 1 |
 
 ## Guard conditions (62 of 64)
 
@@ -298,14 +301,15 @@ Jump modes (on `jcond`): `next`=0, `always`=1, `if`=2, `ifnot`=3. Move guards (o
 | `L2.CTL` | `L2.CTL` |
 | `L3.CTL` | `L3.CTL` |
 | `HOST.OUT` | `HOST.OUT` |
+| `CW` | `CW.AL`, `CW.AH`, `CW.D` |
 
-## Latch configuration inventory (2084 bits)
+## Latch configuration inventory (2112 bits)
 
 | Block | Instances | Fields (bits) | Bits |
 |---|---|---|---|
 | line | 4 | INC 16, MOD 16, T0 16, T1 16, T2 16, PRE 16, WLO 16, WHI 16, WEN 1, EDGE 6, FOLLOW 1, T0EDGE 6, T0SRC 1, SNAP 2, PINA 4, PINB 4, LUT0 32, LUT1 32, HOLD 8 | 900 |
 | thread | 6 | CORE 1, LINE 2, TRIG 5, W0C 6, W1C 6, W0H 8, W1H 8 | 216 |
-| out | 14 | LINE 2, BOUND 1, SEL 6, LUT 32 | 574 |
+| out | 14 | LINE 2, BOUND 1, LIVE 2, SEL 6, LUT 32 | 602 |
 | oe | 8 | OE 32 | 256 |
 | lfsr | 2 | POLY 32 | 64 |
 | stream | 2 | MODE 1, MSB 1, START 11, LEN 12, MARK 12 | 74 |
@@ -384,7 +388,7 @@ Program bytes: `0x0000 + core*0x800 + 8*word + byte` (write-only). Data RAM: `0x
 
 | Offset | Register | Bytes | Access | Layout |
 |---|---|---|---|---|
-| 0x00 | `BIND` | 1 | W | bits 1:0 LINE, bit 2 BOUND |
+| 0x00 | `BIND` | 1 | W | bits 1:0 LINE, bit 2 BOUND; v3 LIVE: bit 3 b2 := PIN[PINA], bit 4 b1 := PIN[PINB] of the bound line |
 | 0x01 | `SEL` | 1 | W | bits 1:0, 3:2, 5:4: symbol bit read as table inputs b0, b1, b2 |
 | 0x04 | `LUT` | 4 | W | output table, index {SEG[1:0], b2, b1, b0} |
 | 0x08 | `OE` | 4 | W | output-enable table, same index (pins O0..O7 only) |
@@ -394,14 +398,14 @@ Program bytes: `0x0000 + core*0x800 + 8*word + byte` (write-only). Data RAM: `0x
 | Offset | Register | Bytes | Access | Layout |
 |---|---|---|---|---|
 | 0x00 | `RUN` | 1 | RW | bit 0 RUN_global |
-| 0x01 | `STICKY` | 1 | W1C | bit 0 CONFLICT, bit 1 MEMHAZ |
+| 0x01 | `STICKY` | 1 | W1C | bit 0 CONFLICT, bit 1 MEMHAZ, bit 2 CWOVR (v4) |
 | 0x02 | `IRQEN` | 1 | RW | bit 0 HOST.OUTV, bit 1 any sticky error |
 | 0x03 | `DOORBELL` | 1 | W | bit t triggers thread t (reads 0) |
 | 0x04 | `HOSTIN` | 1 | RW | write: INB and set INV; read: INB |
 | 0x05 | `HOSTOUT` | 1 | R | OUTB (no side effect) |
 | 0x06 | `HOSTSTAT` | 1 | RW | read bit 0 INV, bit 1 OUTV; write 1 to bit 1 clears OUTV |
 | 0x07 | `ID` | 1 | R | 0xA0 | VERSION |
-| 0x08 | `ERRSUM` | 1 | R | bit 0 any LATE, 1 any OVR, 2 any TAPMISS, 3 any STARVED, 4 CONFLICT, 5 MEMHAZ |
+| 0x08 | `ERRSUM` | 1 | R | bit 0 any LATE, 1 any OVR, 2 any TAPMISS, 3 any STARVED, 4 CONFLICT, 5 MEMHAZ, 6 CWOVR (v4) |
 
 ### LRT (0x2410 + 0x08 x k, k = 0..3)
 
@@ -427,4 +431,20 @@ Program bytes: `0x0000 + core*0x800 + 8*word + byte` (write-only). Data RAM: `0x
 | 0x00 | `POSL` | 1 | R | POS bits 7:0 |
 | 0x01 | `POSH` | 1 | R | bits 3:0 POS[11:8], bits 6:4 BIDX, bit 7 STARVED |
 | 0x02 | `CTL` | 1 | W | bit 0 rewind, bit 1 flush, bit 7 clear STARVED (reads 0) |
+
+### DBG (0x2460 + 0x20 x k, k = 0..0)
+
+| Offset | Register | Bytes | Access | Layout |
+|---|---|---|---|---|
+| 0x00 | `DBG` | 1 | RW | bit 0 FREEZE; write 1 to bit 1 STEP: run exactly one cycle (reads 0) |
+| 0x01 | `MCTL` | 1 | RW | bit 0 MEN digest enable; write 1 to bit 1 clears MISR (reads 0) |
+| 0x02 | `ECTL` | 1 | RW | bit 0 CEN: edge capture into stream S0; bit 1 RPL (v4): edge replay from S0 |
+| 0x04 | `MISR` | 4 | R | execution digest (32-bit MISR over OUT and OEN) |
+| 0x08 | `EMASK` | 2 | RW | edge-capture pin mask, bits 12:0 = P12..P0 |
+| 0x0A | `ACC` | 1 | R | accumulator A |
+| 0x0B | `AFLG` | 1 | R | bit 0 Z, bit 1 C, bit 2 N |
+| 0x0C | `FLAGS` | 2 | R | flags F15..F0 |
+| 0x0E | `CST` | 2 | R | byte c = core c: bits 2:0 XT, bit 3 XV, bit 4 RV |
+| 0x10 | `FPC` | 2 | R | byte c = core c FPC (while XV, the executing word is at FPC - 1) |
+| 0x12 | `RLV` | 2 | RW | v4 replay levels, bits 12:0 = P12..P0 (seen by the machine on EMASK pins while RPL) |
 

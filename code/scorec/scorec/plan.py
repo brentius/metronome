@@ -121,6 +121,20 @@ class Tap:
     why: str
 
 
+def validate_taps(clk, taps):
+    """A requested interior split/sample must remain a distinct active phase."""
+    seen = set()
+    for tap in taps:
+        if not 0 < tap.T < clk.mod:
+            raise CompileError("E-FIT-TAP", f"clock: tap {tap.idx} at {float(tap.frac) * 100:g}% quantizes to phase "
+                                            f"{tap.T} outside the active interior of MOD {clk.mod}; "
+                                            "reduce the beat rate")
+        if tap.T in seen:
+            raise CompileError("E-FIT-TAP", f"clock: distinct tap positions quantize to the same phase {tap.T}; "
+                                            "reduce the beat rate")
+        seen.add(tap.T)
+
+
 def tx_split_points(score, clock, role, driven) -> list[Fraction]:
     """Split points at which a driven wire changes level for some symbol: those need a tap (R3)."""
     b = boundaries(clock)
@@ -154,6 +168,35 @@ def explicit_samples(score, clock, role, period) -> dict:
                 raise CompileError("E-NAMES", f"symbol '{sdef.name}': wire '{tr.wire}' has no {tr.edge} edge to sample at")
             got.setdefault(wn, set()).add(Fraction(fr))
     return got
+
+
+def validate_generated_turnaround(score, role, clk, taps, driven):
+    """Minimum pin round trip for samples tied to a locally generated edge.
+
+    A beat reaches a registered output, the peer's returned level crosses
+    two input synchronizer registers, and capture reads their old value.
+    Four cycles is a minimum; board propagation and peer tCO can add more.
+    Fractional clocks can wrap with any residual phase below INC, hence
+    floor(T/INC) is the conservative boundary-to-sample cycle budget.
+    This does not move the sample point requested by the score.
+    """
+    if clk.mode != "generated":
+        return
+    reads = set(read_wires(score, role))
+    clock = score.clock_for()
+    for symbol, args in symbol_instances(score):
+        for wire, when in symbol.samples:
+            wire = wire or (symbol.waves[0][0] if symbol.waves else None)
+            if wire not in reads or when.kind != "edge" or when.wire not in driven:
+                continue
+            frac = resolve_time(when, symbol, clock, args, clk.period)
+            tap = next((t for t in taps if t.frac == frac), None)
+            if tap is not None and tap.T // clk.inc < 4:
+                raise CompileError("E-TIME-IO", f"wire '{wire}' sampled at generated {when.wire} {when.edge}: "
+                                   f"only {tap.T // clk.inc} cycles from the beat boundary; at least 4 are needed "
+                                   "for the registered output and synchronized return path. Reduce the beat rate "
+                                   "or explicitly select a later legal sample point; external propagation may "
+                                   "require additional time.")
 
 
 def plan_taps(score, role, clk: ClockPlan, driven, rx_ptsmap, mode_note="") -> tuple[list[Tap], dict]:
@@ -196,6 +239,8 @@ def plan_taps(score, role, clk: ClockPlan, driven, rx_ptsmap, mode_note="") -> t
                 why.append(f"sample {w}")
         T = int(round(p * clk.mod)) if clk.mode != "follow" else int(round(p * clk.mod))
         taps.append(Tap(ix, p, T, "+".join(why)))
+    validate_taps(clk, taps)
+    validate_generated_turnaround(score, role, clk, taps, driven)
     slots = {}
     for t in taps:
         for w in wires:

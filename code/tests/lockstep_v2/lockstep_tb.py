@@ -85,6 +85,9 @@ async def lockstep(dut):
         await RisingEdge(dut.clk)
         await ReadOnly()
         got = (_val(dut.uo_out), _val(dut.uio_out), _val(dut.uio_oe))
+        if os.environ.get("LOCKSTEP_TRACE_MEM") and (_val(dut.frz) or _val(dut.frzd)) and _val(dut.u_mem.land):
+            dut._log.info(f"t={t} frz={_val(dut.frz)} frzd={_val(dut.frzd)} land={_val(dut.u_mem.land)} "
+                          f"p_dat={_val(dut.u_mem.p_dat):#x} m_rd={_val(dut.u_mem.m_rd):#x} gh={_val(dut.u_mem.gh)}")
         outs = exp
         if t >= scen.compare_from and got != exp:
             mismatches += 1
@@ -95,4 +98,6 @@ async def lockstep(dut):
             if mismatches <= 10:
                 dut._log.error(f"cycle {t}: rtl uo/uio/oe={got} model={exp} (ui={ui:#04x} uio={uio & 0xFF:#04x})")
     assert mismatches == 0, f"{mismatches} mismatching cycles in {name} ({len(scen.steps)} cycles), first {first}"
+    if scen.check is not None:
+        scen.check(model)
     dut._log.info(f"scenario {name}: {len(scen.steps)} cycles, outputs identical")

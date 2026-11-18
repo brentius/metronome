@@ -1,0 +1,28 @@
+# Library score: waveform / pattern generator personality.  One output wire plays back a host-supplied bit pattern
+# (64 bytes = 512 beats from data RAM, LSB of each byte first) at the line rate chosen at load time (`rate_hz`; up
+# to the compiler's burst bound, several MHz).  The pattern is the waveform: the host writes bytes, sends the go byte,
+# and the pin follows them one beat per bit, then returns to idle low.
+# Does: arbitrary single-pin patterns at a programmable rate, any frame length up to the RAM (edit `bytes[64]`).
+# Does not: more than one pin per pattern (one data bit per beat per owner, see PROTOCOL_LIBRARY.md gap G2), loops,
+# triggers, run-length compression.
+protocol pattern_gen
+roles    generator, dut
+
+wire pin out push-pull idle low by generator
+
+clock 1 MHz
+  generator: generated
+  dut:       started by pin rise
+  tolerance 3%
+
+symbols
+  bit(d)   pin "d"      sample pin at 50%
+  lead     pin "0"
+
+bits lsb first
+
+grammar
+  play   = frame*
+  frame  = lead
+           pat:bytes[64]
+           gap 2 beats

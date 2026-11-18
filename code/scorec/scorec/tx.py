@@ -31,7 +31,8 @@ class TxGen:
         self.n = 0
         self.kind_bit = False        # does the staged symbol already carry the data family's kind?
         self.gate = 0                # beats of capture-gate bookkeeping owed after a full-duplex loop
-        self.cfg_sh: dict = {}
+        # Runtime shifter state.  Reset LEN=0 means eight bits, LSB first.
+        self.cfg_sh: dict = {"SH0": (8, False)}
         self.crc = None              # CrcDecl of the frame's crc field
         self.covered: set = set()    # field names fed to the LFSR
         self.stream_tx = False
@@ -78,8 +79,10 @@ class TxGen:
         staged symbol already has the data kind; otherwise the code of bit 0 is written and L.XOR flips it."""
         c = self.c
         c0, c1 = self.codes()
+        invert = bool(invert) ^ bool(self.x.score.bits.invert)   # `bits ..., invert` complements every coded bit (6)
         a, b = (c1, c0) if invert else (c0, c1)           # staged code for bit value 0 / 1
-        if (a ^ b) == 1:
+        # the inverted single-bit form costs two moves; with two extra moves it would exceed 3 per instruction
+        if (a ^ b) == 1 and not ((a & 1) and len(extra) > 1):
             if not self.kind_bit:
                 c.i([imm(a, "L.SYM")])
                 self.kind_bit = True
@@ -125,8 +128,24 @@ class TxGen:
         c.label(self.lab())
         self.mailbox = True
         x.host["mailbox_in"].append(s.f.name)
+        if x.msb and w < 8:
+            # Host bytes are right-aligned; shift them into the MSB positions after loading.
+            cfg = (8, True)
+        else:
+            cfg = (w, x.msb)
+        if self.cfg_sh["SH0"] != cfg:
+            # Runtime CFG commits on this instruction's write edge. D31 makes a
+            # simultaneous LD consume the old configuration, so LD follows in
+            # the next instruction; no idle instructions are needed here.
+            c.i([imm((cfg[0] & 0xF) | (0x10 if cfg[1] else 0), "SH0.CFG")],
+                note=f"configure {s.f.name} shifter width")
+            self.cfg_sh["SH0"] = cfg
         c.i(["HOST.IN -> SH0.LD"], note=f"{s.f.name}: byte from the host mailbox")
-        self.cfg_sh["SH0"] = (w, x.msb)
+        if x.msb and w < 8:
+            # MSB mode shifts out from bit 7, but the host writes the value right-aligned: shift it up first.  LEN is
+            # 8 so DONE comes after the (8 - w) alignment shifts plus the w data shifts.
+            for _ in range(8 - w):
+                c.i(["ZERO -> SH0.SH"], note="align a narrow msb-first field")
         ll = self.lab("l")
         extra = ["ZERO -> SH0.SH"] + ([f"SH0.O -> LF{feed}.ST"] if feed is not None else [])
         self.stage("SH0.O", "SH0.OUT", extra, loop_label=ll)
@@ -241,8 +260,21 @@ class TxGen:
 def prepass(x: Ctx, g: TxGen):
     frame = x.frame
     crc_steps = [s for s in frame if s.kind == "field" and s.f.type.kind == "crc"]
-    if len(crc_steps) > 1:
-        raise CompileError("E-UNSUPPORTED", "more than one crc field in a frame")
+    par_steps = [s for s in frame if s.kind == "field" and s.f.type.kind == "parity"]
+    if len(crc_steps) + len(par_steps) > 1:
+        raise CompileError("E-UNSUPPORTED", "more than one crc or parity field in a frame (one LFSR is used)")
+    if x.score.bits.invert and (x.rxp is not None or any(s.kind == "star" for s in frame)):
+        raise CompileError("E-UNSUPPORTED", "'invert' with a sampled input (full duplex) is not compiled yet")
+    if par_steps:
+        # Parity is a width-1 CRC: poly 1 makes the LFSR a running XOR of the covered bits.  Shifting the parity bit
+        # out through LF0.ST returns the register to 0, so no reload is needed between frames.  Odd = xorout 1.
+        from score.ast import CrcDecl
+        s = par_steps[0]
+        lsb = x.order == "lsb"
+        g.crc = CrcDecl(f"parity_{s.f.type.parity}", 1, 1, 0, lsb, lsb, 1 if s.f.type.parity == "odd" else 0)
+        g.covered = crc_range(frame, s.f)
+        if not g.covered:
+            raise CompileError("E-UNSUPPORTED", f"parity '{s.f.name}': covered fields not found in the frame")
     if crc_steps:
         s = crc_steps[0]
         d = x.crc_decl(s.f.type.crc)
@@ -268,7 +300,18 @@ def gen_tx(x: Ctx) -> TxGen:
     prepass(x, g)
     c = g.c
     steps = x.frame
-    mailbox_frame = any(s.kind == "field" and s.f.type.kind != "crc" and s.f.type.kind != "bytes"
+    # The first field can be reached both after reset and after the frame
+    # loop. A reset default is only a safe entry fact when the last field
+    # leaves that same configuration behind.
+    mailbox_widths = [field_bits(s) for s in steps if s.kind == "field"
+                      and s.f.type.kind not in ("crc", "parity", "bytes")
+                      and field_bits(s) is not None and field_bits(s) <= 8]
+    if mailbox_widths:
+        last = mailbox_widths[-1]
+        final_cfg = (8 if x.msb and last < 8 else last, x.msb)
+        if final_cfg != (8, False):
+            g.cfg_sh["SH0"] = None
+    mailbox_frame = any(s.kind == "field" and s.f.type.kind not in ("crc", "parity", "bytes")
                         and (field_bits(s) or 99) <= 8 for s in steps)
     first = steps[0] if steps else None
     g.fuse_first = bool(first and first.kind == "sym" and first.count == 1 and mailbox_frame)
@@ -289,7 +332,7 @@ def gen_tx(x: Ctx) -> TxGen:
             g.star_duplex(s)
         elif s.kind == "field":
             t = s.f.type
-            if t.kind == "crc":
+            if t.kind in ("crc", "parity"):
                 g.crc_step(s)
             elif s.f.value is not None or s.f.expect is not None:
                 raise CompileError("E-UNSUPPORTED", f"field '{s.f.name}': computed or checked values are not compiled yet")
@@ -326,8 +369,15 @@ def finish_tx(x: Ctx, g: TxGen):
         first = x.frame[0]
         name = f"{first.name}({','.join(map(str, first.args))})" if first.args else first.name
         code = t.code_of[name]
-        c.i([f"? {imm(code, 'L.SYM')}", "! ZERO -> L.SYM", *clr], when="HOST.INV", note="idle / first symbol")
-        target = "after0"
+        # HOST.INV is sampled ONCE, by one instruction that both stages the symbol and jumps.  The old pair
+        # "stage if INV; jump if INV" sampled it twice: a mailbox byte landing between the two was consumed with the
+        # first symbol never staged, and the byte was lost (12-cycle idle loop at 10 Mbaud).  The symbol comes from
+        # R0 (loaded by the init thread) because an immediate would share the instruction's imm field with the jump
+        # target.
+        x.init_moves.append(imm(code, "R0"))
+        c.i(["? R0 -> L.SYM", "! ZERO -> L.SYM", *clr], when="HOST.INV", goto="after0", jmode="if", jcond="HOST.INV",
+            pause=True, note="idle / first symbol (one sample of the mailbox)")
+        c.i([], goto="idle", pause=True, note="idle, second beat (the not-taken path falls here)")
     else:
         mv = ["ZERO -> L.SYM", *clr]
         if needs_go:
@@ -335,10 +385,7 @@ def finish_tx(x: Ctx, g: TxGen):
         # the jump reads the state before the go byte is consumed, so it shares the instruction with the read
         c.i(mv, when="HOST.INV" if needs_go else None, goto="frame", jmode="if", jcond="HOST.INV", pause=True,
             note="idle: stage idle, consume the go byte, start the frame")
-        target = None
-    if target:
-        c.i([], goto=target, jmode="if", jcond="HOST.INV", pause=True)
-    c.i([], goto="idle", pause=True, note="idle, second beat (the not-taken path falls here)")
+        c.i([], goto="idle", pause=True, note="idle, second beat (the not-taken path falls here)")
     clk = x.clk
     taps = x.tap_text()
     line = [f"inc {clk.inc}", f"mod {clk.mod}", f"taps {taps}"]
@@ -366,9 +413,6 @@ def finish_tx(x: Ctx, g: TxGen):
         x.b.cores[1].label("rx")
         x.b.cores[1].i(["? L.IN -> S1.RX"], when="F0", pause=True, goto="rx", note="capture while flag 0 (data beats)")
         threads.append((1, 1, 0, f"L0.TAP{samp.idx}", "rx"))
-    for sh, (w, msb) in g.cfg_sh.items():
-        if (w, msb) != (8, False):                  # reset state is length 8, least significant bit first
-            x.init_moves.append(imm((w & 0xF) | (0x10 if msb else 0), f"{sh}.CFG"))
     if g.crc:
         d = g.crc
         x.b.cfg.append(f".lfsr 0 poly=0x{d.poly:X} width={d.width} init=0x{d.init:X}")

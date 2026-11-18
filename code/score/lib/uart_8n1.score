@@ -1,0 +1,22 @@
+# Library score: spec part A 16.1 (UART 8N1), copied verbatim. Imported with `use uart_8n1 as uart` (18.2).
+protocol uart_8n1
+roles    sender, receiver
+
+wire tx out push-pull idle high by sender
+
+clock 115200 Hz
+  sender:   generated
+  receiver: started by tx fall
+  tolerance 3%
+
+symbols
+  bit(d)   tx "d"          sample tx at 50%
+
+bits lsb first
+
+grammar
+  line   = char*
+  char   = bit(0)                     # start bit
+           data:u8
+           bit(1)                     # stop bit
+           gap 0 beats
