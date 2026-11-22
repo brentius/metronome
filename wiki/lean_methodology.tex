@@ -1,10 +1,22 @@
 % Methodology write-up: formal refinement of the Metronome v4 RTL in Lean 4.
-% Build: pdflatex lean_methodology.tex (run twice for references).
+% Build: tectonic lean_methodology.tex (XeTeX), or pdflatex twice.
 \documentclass[11pt,a4paper]{article}
 
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
+\usepackage{iftex}
+\ifXeTeX
+  \usepackage{fontspec}
+  \setmonofont{DejaVuSansMono.ttf}[Scale=0.85]
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+  \DeclareUnicodeCharacter{2192}{\ensuremath{\rightarrow}}\DeclareUnicodeCharacter{2190}{\ensuremath{\leftarrow}}
+  \DeclareUnicodeCharacter{2200}{\ensuremath{\forall}}\DeclareUnicodeCharacter{2203}{\ensuremath{\exists}}
+  \DeclareUnicodeCharacter{2227}{\ensuremath{\wedge}}\DeclareUnicodeCharacter{2228}{\ensuremath{\vee}}
+  \DeclareUnicodeCharacter{2260}{\ensuremath{\neq}}\DeclareUnicodeCharacter{2264}{\ensuremath{\leq}}
+  \DeclareUnicodeCharacter{27E8}{\ensuremath{\langle}}\DeclareUnicodeCharacter{27E9}{\ensuremath{\rangle}}
+  \DeclareUnicodeCharacter{2191}{\ensuremath{\uparrow}}\DeclareUnicodeCharacter{2115}{\ensuremath{\mathbb{N}}}
+\fi
 \usepackage[margin=25mm]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
@@ -14,7 +26,9 @@
 \usepackage{listings}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,fit}
+\usepackage{xurl}
 \usepackage[hidelinks]{hyperref}
+\urlstyle{tt}
 
 \setlist{itemsep=2pt,topsep=4pt}
 
@@ -25,12 +39,7 @@
   sensitive=true,
   morecomment=[l]{--},
   morecomment=[s]{/-}{-/},
-  morestring=[b]",
-  literate=
-    {→}{{$\rightarrow$}}1 {←}{{$\leftarrow$}}1 {∀}{{$\forall$}}1
-    {∃}{{$\exists$}}1 {∧}{{$\wedge$}}1 {∨}{{$\vee$}}1 {¬}{{$\neg$}}1
-    {≠}{{$\neq$}}1 {≤}{{$\leq$}}1 {⟨}{{$\langle$}}1 {⟩}{{$\rangle$}}1
-    {×}{{$\times$}}1 {↑}{{$\uparrow$}}1 {ℕ}{{$\mathbb{N}$}}1
+  morestring=[b]"
 }
 \lstset{
   language=Lean,
@@ -47,10 +56,19 @@
   xrightmargin=4pt,
   breaklines=true,
   aboveskip=6pt,
-  belowskip=6pt
+  belowskip=6pt,
+  escapeinside={(*}{*)}
 }
 
-\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\brkus}{\textunderscore\allowbreak}
+\ifXeTeX\else\lstset{
+  literate=
+    {→}{{$\rightarrow$}}1 {←}{{$\leftarrow$}}1 {∀}{{$\forall$}}1
+    {∃}{{$\exists$}}1 {∧}{{$\wedge$}}1 {∨}{{$\vee$}}1 {¬}{{$\neg$}}1
+    {≠}{{$\neq$}}1 {≤}{{$\leq$}}1 {⟨}{{$\langle$}}1 {⟩}{{$\rangle$}}1
+    {×}{{$\times$}}1 {↑}{{$\uparrow$}}1 {ℕ}{{$\mathbb{N}$}}1}\fi
+\newcommand{\code}[1]{{\let\_\brkus\texttt{#1}}}
+\emergencystretch=3em
 \newcommand{\lean}[1]{\texttt{\detokenize{#1}}}
 
 \title{Formalising a Tiny Tapeout ASIC in Lean~4:\\
@@ -91,7 +109,7 @@ the host port. The Verilog sources are in \code{src/}, with \code{project.v}
 as the chip top. The behavioural contract is \code{wiki/SPEC\_V2.md}.
 
 Two executable references already existed. One was a Python cycle model
-(\code{sim/reference/metronome2}). The other was an RTL-versus-model lockstep
+(\path{sim/reference/metronome2}). The other was an RTL-versus-model lockstep
 bench in cocotb. Both are simulation evidence: they show agreement on the
 scenarios that were run. The Lean work aimed for a statement over
 \emph{all} input sequences, with every assumption written down as a Lean
@@ -108,13 +126,13 @@ gate-level netlists after synthesis.
 The proof has five layers. Each layer has its own files, and each layer
 boundary is a Lean theorem or a checked Python property.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
 \centering
 \begin{tikzpicture}[
-  box/.style={draw,rounded corners,align=center,minimum width=33mm,
+  box/.style={draw,rounded corners,align=center,minimum width=30mm,
               minimum height=9mm,font=\small},
   arr/.style={-{Stealth[length=2mm]},thick},
-  node distance=6mm and 10mm]
+  node distance=6mm and 24mm]
 \node[box,fill=orange!15] (rtl) {Verilog \code{src/}\\(chip top + modules)};
 \node[box,fill=orange!15,below=of rtl] (ys) {Yosys RTLIL /\\JSON netlist};
 \node[box,fill=blue!10,below=of ys] (ext) {Extracted cut\\\lean{rtlStep}};
@@ -134,7 +152,7 @@ objects. Green: specification. The dashed arrow is the headline theorem.}
 \label{fig:layers}
 \end{figure}
 
-\begin{table}[h]
+\begin{table}[!ht]
 \centering\small
 \begin{tabular}{@{}llrr@{}}
 \toprule
@@ -201,8 +219,8 @@ receives the generated \lean{rtlStep} and proves:
 \begin{lstlisting}
 theorem rtlStep_eq_step (state : State) (input : Input) :
     rtlStep state input = step state input := by
-  obtain ⟨wr, bitc⟩ := state
-  obtain ⟨resetN, sck, sckPrev, csN, st, isRd⟩ := input
+  obtain (*⟨*)wr, bitc(*⟩*) := state
+  obtain (*⟨*)resetN, sck, sckPrev, csN, st, isRd(*⟩*) := input
   by_cases count : bitc = 7 <;> by_cases data : st = 3 <;>
     cases resetN <;> cases sck <;> cases sckPrev <;> cases csN <;> cases isRd <;>
     simp [rtlStep, step, wrNext, bitcNext, count, data] <;> rfl
@@ -212,7 +230,7 @@ Wide datapaths (address decode, 15-bit move words, byte packing) use
 \code{bv\_decide}, which bit-blasts the goal and checks an LRAT certificate.
 Equality lifts to traces by induction with a generic \lean{run_congr}:
 \begin{lstlisting}
-theorem rtlStateAt_eq (inputs : Nat → Input) (initial : State) (n : Nat) :
+theorem rtlStateAt_eq (inputs : Nat (*→*) Input) (initial : State) (n : Nat) :
     rtlStateAt inputs initial n = stateAt inputs initial n :=
   run_congr (fun state input => rtlStep_eq_step state input) inputs initial n
 \end{lstlisting}
@@ -315,10 +333,10 @@ example is \lean{Bridge.StreamB.AbsRelB} for the stream capture buffer.
 
 \subsection{The product state and the wiring}
 
-\code{ChipCut/State.lean} defines the product of all cut states plus memory
-contents. \code{ChipCut/Wire.lean} builds every cut's input record from the
+\path{ChipCut/State.lean} defines the product of all cut states plus memory
+contents. \path{ChipCut/Wire.lean} builds every cut's input record from the
 product state and the pins, following \code{project.v} line by line (bus
-packers, byte strobes, group picks, gates). \code{ChipCut/Step.lean} then
+packers, byte strobes, group picks, gates). \path{ChipCut/Step.lean} then
 defines \lean{ChipCut.step}. The wiring is the one hand-written view of the
 chip top in the development, so every field cites the \code{project.v} line
 that drives it. Section~\ref{sec:findings} lists the eight errors the proofs
@@ -331,9 +349,9 @@ found in it.
 \begin{lstlisting}
 structure ChipRel (s : State) (m : Machine.State) : Prop where
   rstM : s.rst.rstM = m.r1
-  lines : ∀ l : Fin 4, m.lines[l] = Bridge.Line.absSt (lineAt s l.val)
-  threads : ∀ t : Fin 6, m.threads[t] = Bridge.Thread.absState (threadAt s t.val)
-  streams : ∀ k : Fin 2, Bridge.StreamB.AbsRelB (k.val == 0) (streamAt s k.val) m.streams[k]
+  lines : (*∀*) l : Fin 4, m.lines[l] = Bridge.Line.absSt (lineAt s l.val)
+  threads : (*∀*) t : Fin 6, m.threads[t] = Bridge.Thread.absState (threadAt s t.val)
+  streams : (*∀*) k : Fin 2, Bridge.StreamB.AbsRelB (k.val == 0) (streamAt s k.val) m.streams[k]
   p0 : P0Rel m.p0 s.p0
   cw : CwRel m.cw s.cq s.arb
   bank : BankRel s.bank m.cfg
@@ -447,9 +465,9 @@ never be met. The development guards against this in three ways.
 \paragraph{Satisfiability witnesses.} Two theorems construct concrete inputs:
 \begin{lstlisting}
 theorem trace_premises_satisfiable (_tables : Tables) :
-    ∃ (pins : Nat → Machine.PinIn) (cont : Contents),
-      InitialConditions cont ∧
-        ∀ n, PinPremises (cutStateAt pins (resetState cont) n) (pins n)
+    (*∃*) (pins : Nat (*→*) Machine.PinIn) (cont : Contents),
+      InitialConditions cont (*∧*)
+        (*∀*) n, PinPremises (cutStateAt pins (resetState cont) n) (pins n)
 \end{lstlisting}
 The first uses idle pins and zeroed contents. The second,
 \lean{trace_premises_satisfiable_active}, releases reset, runs an active cycle
@@ -478,14 +496,14 @@ Lean as a theorem, not in a reviewer's head.
 \section{The final statement}
 
 \begin{lstlisting}
-theorem trace_refines' (pins : Nat → Machine.PinIn) (cont : Contents)
+theorem trace_refines' (pins : Nat (*→*) Machine.PinIn) (cont : Contents)
     (tables : Tables) (initial : InitialConditions cont)
-    (env : ∀ n, PinPremises (cutStateAt pins (resetState cont) n) (pins n)) (n : Nat) :
+    (env : (*∀*) n, PinPremises (cutStateAt pins (resetState cont) n) (pins n)) (n : Nat) :
     ChipRel (cutStateAt pins (resetState cont) n)
             (machineStateAt pins (absChip (resetState cont)) n)
 \end{lstlisting}
 
-\begin{table}[h]
+\begin{table}[!ht]
 \centering\small
 \begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}X@{}}
 \toprule
@@ -583,7 +601,7 @@ describe it.
 \item Yosys elaboration of \code{src/} (\code{proc}, \code{opt\_clean}).
 \item The Python RTLIL adapter, the per-cut adapters and their structural
   checks. These are exercised, but not proved, by the 129 planted faults.
-\item The hand-written chip-top wiring in \code{ChipCut/Wire.lean} and
+\item The hand-written chip-top wiring in \path{ChipCut/Wire.lean} and
   \code{Step.lean}.
 \item The behavioural latch, clock-gate and SRAM models standing in for the
   IHP cells (\code{sg13cmos5l\_lgcp\_1}, \code{sg13cmos5l\_dlhrq\_1}, SRAM
@@ -641,10 +659,13 @@ python code/tests/lean/coverage_check.py --strict --artifacts-dir <fresh dir>
 (cd code/tests/lean && lake build machine-sim)
 python -m pytest code/tests/machine_lockstep -q   # machine vs Python model
 \end{lstlisting}
-Evidence for this write-up: \code{data/raw/lean\_chipcut\_final\_v4\_20261122/},
-\code{data/raw/lean\_coverage\_v4\_20261122b/},
-\code{data/raw/lean\_full\_v4\_20261121c/} and
-\code{data/raw/lean\_machine\_lockstep\_20261122/}.
+Evidence for this write-up:
+\begin{itemize}
+\item \code{data/raw/lean\_chipcut\_final\_v4\_20261122/}
+\item \code{data/raw/lean\_coverage\_v4\_20261122b/}
+\item \code{data/raw/lean\_full\_v4\_20261121c/}
+\item \code{data/raw/lean\_machine\_lockstep\_20261122/}
+\end{itemize}
 The per-cut details are in \code{code/tests/lean/README.md}.
 
 \end{document}
