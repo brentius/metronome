@@ -1,0 +1,10 @@
+case	outcome	exit	expectation
+baseline	accepted	0	ok
+core_rr_plus_one	rejected (generated Lean: rejected by Lean (exit 1), rejected by `Rtl0.rtlFpc`)	1	ok
+core_rr_every_cycle	rejected (generated Lean: rejected by Lean (exit 1), rejected by `Rtl0.rtlXt`)	1	ok
+core_ifnot_uses_c	rejected (generated Lean: rejected by Lean (exit 1), rejected by `Rtl0.rtlMvEn`)	1	ok
+core_jmp_ignores_pause	rejected (generated Lean: rejected by Lean (exit 1), rejected by `Rtl0.rtlRv`)	1	ok
+core_load_ignores_jmp	rejected (generated Lean: rejected by Lean (exit 1), rejected by `Rtl0.rtlXv`)	1	ok
+core_watcher_order	rejected (generated Lean: rejected by Lean (exit 1), rejected by `Rtl0.rtlFpc`)	1	ok
+core_frz_not_hold	rejected (generated Lean: rejected by Lean (exit 1), rejected by `Rtl0.rtlXv`)	1	ok
+core1_wrong_binding	rejected (generated Lean: rejected by Lean (exit 1), rejected by `Rtl1.rtlRv`)	1	ok

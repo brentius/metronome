@@ -1,0 +1,17 @@
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+✔ [8/9] Built Metronome (11s)
+Build completed successfully (9 jobs).
+baseline: Lean verified the configuration transition, host write cone, both configuration-address decodes, the core pending-write queue, their traces and axiom dependencies
+'Metronome.Decode.rtlHostQual_eq_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlHostQual_eq_spec._native.bv_decide.ax_1_5]
+'Metronome.Decode.rtlCoreLive_eq_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlCoreLive_eq_spec._native.bv_decide.ax_1_5]
+Decode host outcome: accepted
+Decode core outcome: accepted
+Core queue outcome: accepted
+spacing: rejected by Lean configuration equivalence proof

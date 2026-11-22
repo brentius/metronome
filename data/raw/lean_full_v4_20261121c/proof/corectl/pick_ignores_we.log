@@ -1,0 +1,83 @@
+RTL snapshot SHA-256: 23650bd21714094e588d5810700548a16c52f398bf459f324c12d718368431c4
+Yosys command: read_verilog -I src src/cells_behav.v src/md2_acc.v src/md2_cfg_bank.v src/md2_core.v src/md2_counter.v src/md2_dmem.v src/md2_host.v src/md2_lfsr.v src/md2_line.v src/md2_mem.v src/md2_pmem.v src/md2_shifter.v src/md2_sram_bb.v src/md2_stream.v src/md2_thread.v src/project.v; hierarchy -check -top tt_um_brentius_metronome; proc; opt_clean; write_json design.json
+Warning: Latch inferred for signal `\cfg_lgcp_beh.\int_gate' from process `\cfg_lgcp_beh.$src/cells_behav.v:23$proc$3': $auto$proc_dlatch.cc:559:proc_dlatch$13210
+Warning: Latch inferred for signal `\cfg_dlhrq_beh.\Q' from process `\cfg_dlhrq_beh.$src/cells_behav.v:15$proc$1': $auto$proc_dlatch.cc:555:proc_dlatch$13231
+Pick: DG_CW = 25, 31 intermediate signals
+CTRL.STICKY at 0x2401 (clear bit 2), DBG.DBG at 0x2460
+C:\Users\b_yee23\AppData\Local\Temp\metronome-corectl-pick_ignores_we-uiid6kyc\CoreCtlProof.lean:127:2: error: The prover found a counterexample, consider the following assignment:
+grp = 25#30
+dat = 0#48
+dst = 0#36
+en = 0#6
+C:\Users\b_yee23\AppData\Local\Temp\metronome-corectl-pick_ignores_we-uiid6kyc\CoreCtlProof.lean:135:2: error: The prover found a counterexample, consider the following assignment:
+grp = 865920824#30
+dat = 281474976645375#48
+dst = 68719474687#36
+en = 60#6
+C:\Users\b_yee23\AppData\Local\Temp\metronome-corectl-pick_ignores_we-uiid6kyc\CoreCtlProof.lean:143:2: error: The prover found a counterexample, consider the following assignment:
+grp = 865920824#30
+dat = 281474976677887#48
+dst = 68719472703#36
+en = 60#6
+'Metronome.CoreCtl.codes_spec' does not depend on any axioms
+'Metronome.CoreCtl.rtlWcw_we' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.CoreCtl.rtlWcw_dst' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.CoreCtl.rtlWcw_data' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.CoreCtl.rtlWcw_eq_pack' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ makeWord_fields._native.bv_decide.ax_1_5]
+'Metronome.CoreCtl.rtlWcw_none' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ makeWord_fields._native.bv_decide.ax_1_5]
+'Metronome.CoreCtl.rtlWcw_unique_0' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ makeWord_fields._native.bv_decide.ax_1_5]
+'Metronome.CoreCtl.rtlFreezeStep_eq_step' depends on axioms: [propext]
+'Metronome.CoreCtl.rtlFreezeStateAt_eq' depends on axioms: [propext]
+'Metronome.CoreCtl.rtl_trace_freeze_low' depends on axioms: [propext, Quot.sound]
+'Metronome.CoreCtl.rtl_trace_frz_of_trigger' depends on axioms: [propext]
+'Metronome.CoreCtl.rtl_trace_frz_one_cycle' depends on axioms: [propext, Quot.sound]
+'Metronome.CoreCtl.rtl_trace_frz_of_host_trigger' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlDbgWrite_eq_spec._native.bv_decide.ax_1_6]
+'Metronome.CoreCtl.rtlSticky_eq_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlSticky_eq_spec._native.bv_decide.ax_1_6]
+'Metronome.CoreCtl.rtlStickyLeaf_eq_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlSticky_eq_spec._native.bv_decide.ax_1_6]
+'Metronome.CoreCtl.stickyBit_spec' does not depend on any axioms
+'Metronome.CoreCtl.rtlDbgWrite_eq_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlDbgWrite_eq_spec._native.bv_decide.ax_1_6]
+'Metronome.CoreCtl.queue_writeData' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.CoreCtl.queue_writeLow' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.CoreCtl.queue_writeHigh' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.CoreCtl.queue_cwData' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.CoreCtl.queue_hostClear' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlSticky_eq_spec._native.bv_decide.ax_1_6]
+'Metronome.CoreCtl.cwD_dropped_sets_overrun' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.CoreCtl.overrun_cleared_by_sticky' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlSticky_eq_spec._native.bv_decide.ax_1_6]
+'Metronome.CoreCtl.overrun_sticky_unless_sticky' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlSticky_eq_spec._native.bv_decide.ax_1_6]
+'Metronome.CoreCtl.frozen_queue_holds' depends on axioms: [propext, Quot.sound]
+'Metronome.CoreCtl.coreValid_of_queue' depends on axioms: [propext, Quot.sound]
+-- pick_ignores_we: rejected by Lean (exit 1)

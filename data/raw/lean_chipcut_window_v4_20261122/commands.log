@@ -1,0 +1,120 @@
+# lean_chipcut_window_v4_20261122 — commands and results
+
+Host: Windows, Lean 4.35.0 (commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc),
+Lake 5.0.0-src.  Repo: branch metronome-v4.0.
+Lean dir: code/tests/lean.  Environment: $env:PATH="$env:USERPROFILE/.elan/bin;$env:PATH".
+
+Acceptance target: `lake build Metronome.ChipCut.Discharge.WindowWire`
+(lakefile sets `moreLeanArgs = ["-DwarningAsError=true"]`).
+
+## 2026-11-22 build iterations (all run from code/tests/lean)
+
+1. lake build Metronome.ChipCut.Discharge.WindowWire
+   exit 1, wall 17.4 s
+   log: build1.log
+   (first draft; eight name/typing errors, all local proof-script issues)
+
+2. lake build Metronome.ChipCut.Discharge.WindowWire
+   exit 1, wall 3.8 s
+   log: build2.log
+   (one `obtain` consumed the `Quiet` hypothesis; one `simp` did not unfold
+   `resetCq`)
+
+3. lake build Metronome.ChipCut.Discharge.WindowWire
+   exit 0, wall 4.5 s
+   log: build3.log
+   "✔ [60/60] Built Metronome.ChipCut.Discharge.WindowWire
+    Build completed successfully (60 jobs)."
+
+4. (after adding `cwNext_performed_none` / `window_performed_none`)
+   lake build Metronome.ChipCut.Discharge.WindowWire
+   exit 0, wall 4.6 s
+   log: build4.log
+   "✔ [60/60] Built Metronome.ChipCut.Discharge.WindowWire
+    Build completed successfully (60 jobs)."
+
+## Axiom audit (2026-11-22)
+
+From code/tests/lean, with LEAN_PATH=.lake/build/lib/lean:
+
+    lean C:\Users\b_yee23\AppData\Local\Temp\opencode\window_axioms.lean \
+      > data/raw/lean_chipcut_window_v4_20261122/axioms.txt
+
+exit 0, wall 2.4 s.  The script `#check`s the deliverables and
+`#print axioms` the main theorems.  Output: axioms.txt.
+
+No `sorryAx` in any audited theorem.  The only non-logical axioms are the
+pre-existing `bv_decide` certificates of the imported bridge
+(`Metronome.Bridge.CfgWrite.pack_eq_append._native.bv_decide.ax`,
+`...wl_wh.ax`, `...wl_wd.ax`, `...wh_wd.ax`, `Metronome.CoreQueue.pack_take._native...`),
+reached through `premise_cw` / the CfgWrite bridge; the window lemmas
+(`cw_window_open`, `windowQuiet_*`, `cwNext_quiet`, `cwNext_performed_none`)
+use only `propext`, `Quot.sound`, `Classical.choice`.
+
+## Notes
+
+* `lake clean` was never run and no `.olean` was deleted.  Only the module
+  `Metronome.ChipCut.Discharge.WindowWire` was built (lake also reused already
+  built dependencies; no other module was rebuilt).
+* `src/` and `BOTS/` were not touched; `Assembly.lean` was not modified or
+  imported.
+
+## 2026-11-22 (continuation): machine-checked witness of the blocker
+
+Added to `WindowWire.lean` (after the existing green build): `mhcWindow_eq_true_iff`,
+`absChip_reset_rqh`, `absChip_reset_window_open`, `old_premise_false_at_zero`,
+`reset_premise_ok`.  These make the "the old premise is false" claim a Lean
+theorem about the exact machine state `trace_refines'` uses at `n = 0`, rather
+than prose.
+
+5. lake build Metronome.ChipCut.Discharge.WindowWire   (cached, unchanged source)
+   exit 0, wall 0.7 s   log: build5.log
+
+6. lake env lean -DwarningAsError=true -o $env:TEMP\ww_check\WindowWire.olean \
+       Metronome/ChipCut/Discharge/WindowWire.lean      (compile from source,
+   without touching `.lake`; lakefile also sets `-DwarningAsError=true`)
+   exit 0, wall 2.6 s   log: build6_fromsource.log
+
+7. same from-source compile after the witness lemmas were added
+   exit 0, wall 3.3 s   log: build7_fromsource.log
+
+8. lake build Metronome.ChipCut.Discharge.WindowWire   (real rebuild of the module)
+   exit 0, wall 2.2 s (2.6 s incl. process start)
+   "✔ [60/60] Built Metronome.ChipCut.Discharge.WindowWire (2.2s)
+    Build completed successfully (60 jobs)."
+   log: build8.log
+
+9. Axiom audit (regenerated, includes the witness lemmas):
+
+       $env:LEAN_PATH=".lake/build/lib/lean"
+       lean C:\Users\b_yee23\AppData\Local\Temp\opencode\window_axioms2.lean
+         > .../axioms2_raw.log      (axioms.txt is the same text, UTF-16)
+
+   exit 0, wall 1.7 s.  No `sorryAx` anywhere.  `mhcWindow_eq_true_iff`,
+   `absChip_reset_window_open` and `reset_premise_ok` use only `propext`,
+   `Quot.sound` (plus `Classical.choice` for `old_premise_false_at_zero`).
+
+10. Splice check against the *current* `Assembly.lean` (read-only; the module
+    itself does not import Assembly).  Scratch file
+    `$env:TEMP\opencode\window_splice_check.lean` imports
+    `Metronome.ChipCut.Assembly` and `...WindowWire` and checks three examples:
+
+      * the assembler's existing `premise_cw` call typechecks against
+        `WindowWire.cw_window_ok` when only the final argument is replaced by
+        `hq : WindowWire.WindowQuiet s` (all other arguments reused verbatim,
+        including `hexp.cwH19` and the `MovePayloadWire.cwMove` term);
+      * `windowQuiet_trace pins cont n` discharges the new field at the
+        assembler's trace `cutStateAt pins (resetState cont) n`;
+      * `old_premise_false_at_zero pins cont` shows the replaced field is false
+        at `n = 0`.
+
+        $env:LEAN_PATH=".lake/build/lib/lean"
+        lean .../window_splice_check.lean
+
+    exit 0, wall 171.4 s (dominated by loading the large `Assembly` olean).
+    log: splice_check.log
+
+
+Still no `lake clean`, no `.olean` deleted, `src/` and `BOTS/` untouched, and
+`Assembly.lean` neither imported nor modified.
+

@@ -1,0 +1,381 @@
+RTL snapshot SHA-256: 03d0d0a09c36763ccb808a81cf39eeb49450bc22d72460dd2a9f6fbf84087dd8
+Yosys command: read_verilog -I src src/cells_behav.v src/md2_acc.v src/md2_cfg_bank.v src/md2_core.v src/md2_counter.v src/md2_dmem.v src/md2_host.v src/md2_lfsr.v src/md2_line.v src/md2_mem.v src/md2_pmem.v src/md2_shifter.v src/md2_sram_bb.v src/md2_stream.v src/md2_thread.v src/project.v; hierarchy -check -top tt_um_brentius_metronome; proc; opt_clean; write_json design.json
+Warning: Latch inferred for signal `\cfg_lgcp_beh.\int_gate' from process `\cfg_lgcp_beh.$src/cells_behav.v:23$proc$3': $auto$proc_dlatch.cc:559:proc_dlatch$13760
+Warning: Latch inferred for signal `\cfg_dlhrq_beh.\Q' from process `\cfg_dlhrq_beh.$src/cells_behav.v:15$proc$1': $auto$proc_dlatch.cc:555:proc_dlatch$13781
+Sources: 39 slots, guards: 62 slots, D_FLAGS_SET = 5
+Extracted: {'sources': 64, 'guards': 64, 'lines': 4, 'control': 12, 'outputs': 14, 'oe': 8}
+C:\Users\b_yee23\AppData\Local\Temp\metronome-glue-glue_err_misses_cwovr-0u_keel3\GlueProofglue_err_misses_cwovr.lean:1626:12: error: The prover found a potentially spurious counterexample:
+- It abstracted the following unsupported expressions as opaque variables:
+  - i.tOvr
+  - i.lTapmiss
+  - i.conflict
+  - i.sStarved
+  - i.cwOverrun
+  - i.tLate
+  - i.memhaz
+Consider the following assignment:
+i.conflict = false
+i.memhaz = false
+i.tLate = 0#6
+i.tOvr = 0#6
+i.lTapmiss = 0#4
+i.sStarved = 0#2
+i.cwOverrun = true
+C:\Users\b_yee23\AppData\Local\Temp\metronome-glue-glue_err_misses_cwovr-0u_keel3\GlueProofglue_err_misses_cwovr.lean:1633:12: error: The prover found a potentially spurious counterexample:
+- It abstracted the following unsupported expressions as opaque variables:
+  - i.lTapmiss
+  - i.tOvr
+  - i.tLate
+  - s.irqEn
+  - i.conflict
+  - i.cwOverrun
+  - i.sStarved
+  - i.memhaz
+  - s.outv
+  - i.resetN
+Consider the following assignment:
+i.resetN = true
+s.irqEn = 2#2
+s.outv = true
+i.conflict = false
+i.memhaz = false
+i.tLate = 0#6
+i.tOvr = 0#6
+i.lTapmiss = 0#4
+i.sStarved = 0#2
+i.cwOverrun = true
+'Metronome.Glue.rtlSrc0_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc1_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc2_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc3_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc4_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc5_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc6_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc7_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc8_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc9_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc10_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc11_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc12_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc13_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc14_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc15_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Glue.rtlSrc16_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Glue.rtlSrc17_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc18_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc19_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc20_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc21_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc22_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc23_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc24_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc25_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc26_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc27_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc28_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc29_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc30_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc31_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Glue.rtlSrc32_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Glue.rtlSrc33_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc34_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Glue.rtlSrc35_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Glue.rtlSrc36_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc37_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc38_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc39_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc40_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc41_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc42_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc43_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc44_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc45_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc46_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc47_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc48_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc49_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc50_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc51_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc52_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc53_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc54_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc55_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc56_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc57_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc58_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc59_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc60_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc61_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc62_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlSrc63_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard0_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard1_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard2_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard3_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard4_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard5_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard6_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard7_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard8_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard9_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard10_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard11_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard12_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard13_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard14_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard15_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard16_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard17_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard18_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard19_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard20_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard21_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard22_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard23_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard24_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard25_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard26_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard27_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard28_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard29_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard30_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard31_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard32_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard33_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard34_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard35_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard36_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard37_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard38_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard39_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard40_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard41_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard42_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard43_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard44_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard45_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard46_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard47_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard48_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard49_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard50_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard51_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard52_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard53_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard54_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard55_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard56_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard57_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard58_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard59_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard60_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard61_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard62_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGuard63_spec' depends on axioms: [propext]
+'Metronome.Glue.rtlGLine0_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlGLine0_spec._native.bv_decide.ax_1_7]
+'Metronome.Glue.rtlGLine1_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlGLine1_spec._native.bv_decide.ax_1_7]
+'Metronome.Glue.rtlGLine2_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlGLine2_spec._native.bv_decide.ax_1_7]
+'Metronome.Glue.rtlGLine3_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlGLine3_spec._native.bv_decide.ax_1_7]
+'Metronome.Glue.rtlRunG_spec' depends on axioms: [propext, Quot.sound]
+'Metronome.Glue.rtlIrqEn_spec' depends on axioms: [propext, Quot.sound]
+'Metronome.Glue.rtlErr_spec' depends on axioms: [propext, sorryAx]
+'Metronome.Glue.rtlIrq_spec' depends on axioms: [propext, sorryAx, Quot.sound]
+'Metronome.Glue.rtlDb_spec' depends on axioms: [propext, Quot.sound]
+'Metronome.Glue.rtlFl_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlFl_spec._native.bv_decide.ax_1_20]
+'Metronome.Glue.rtlFlp_spec' depends on axioms: [propext, Quot.sound]
+'Metronome.Glue.rtlInB_spec' depends on axioms: [propext, Quot.sound]
+'Metronome.Glue.rtlInv_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Glue.rtlInvp_spec' depends on axioms: [propext, Quot.sound]
+'Metronome.Glue.rtlOutB_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Glue.rtlOutv_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Glue.rtlIdx0_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx0_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOut0_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx0_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOe0_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx0_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlIdx1_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx1_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOut1_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx1_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOe1_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx1_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlIdx2_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx2_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOut2_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx2_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOe2_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx2_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlIdx3_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx3_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOut3_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx3_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOe3_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx3_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlIdx4_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx4_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOut4_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx4_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOe4_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx4_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlIdx5_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx5_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOut5_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx5_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOe5_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx5_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlIdx6_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx6_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOut6_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx6_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOe6_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx6_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlIdx7_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx7_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOut7_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx7_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOe7_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx7_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlIdx8_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx8_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOut8_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx8_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlIdx9_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx9_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOut9_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx9_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlIdx10_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx10_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOut10_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx10_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlIdx11_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx11_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOut11_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx11_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlIdx12_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx12_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOut12_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx12_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlIdx13_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx13_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlOut13_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlIdx13_spec._native.bv_decide.ax_1_17]
+'Metronome.Glue.rtlPins_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Glue.rtlStep_eq_step' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlFl_spec._native.bv_decide.ax_1_20]
+'Metronome.Glue.rtlStateAt_eq' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlFl_spec._native.bv_decide.ax_1_20]
+'Metronome.Glue.rtl_trace_result' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlFl_spec._native.bv_decide.ax_1_20]
+'Metronome.Glue.rtl_trace_irq_quiet' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlFl_spec._native.bv_decide.ax_1_20]
+'Metronome.Glue.rtl_trace_flp_frozen' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlFl_spec._native.bv_decide.ax_1_20]
+'Metronome.Glue.rtl_trace_db_frozen' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlFl_spec._native.bv_decide.ax_1_20]
+-- glue_err_misses_cwovr: rejected by Lean (exit 1)

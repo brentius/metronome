@@ -1,0 +1,6 @@
+RTL snapshot SHA-256: ad6e7afdbcc99d8d5c51f9979ee0cbaf127d89cbfac9d7956744fb4f71f03537
+Yosys command: read_verilog -I src src/cells_behav.v src/md2_acc.v src/md2_cfg_bank.v src/md2_core.v src/md2_counter.v src/md2_dmem.v src/md2_host.v src/md2_lfsr.v src/md2_line.v src/md2_mem.v src/md2_pmem.v src/md2_shifter.v src/md2_sram_bb.v src/md2_stream.v src/md2_thread.v src/project.v; hierarchy -check -top tt_um_brentius_metronome; proc; opt_clean; write_json design.json
+Warning: Latch inferred for signal `\cfg_lgcp_beh.\int_gate' from process `\cfg_lgcp_beh.$src/cells_behav.v:23$proc$3': $auto$proc_dlatch.cc:559:proc_dlatch$13762
+Warning: Latch inferred for signal `\cfg_dlhrq_beh.\Q' from process `\cfg_dlhrq_beh.$src/cells_behav.v:15$proc$1': $auto$proc_dlatch.cc:555:proc_dlatch$13783
+Sources: 39 slots, guards: 62 slots, D_FLAGS_SET = 5
+-- glue_uo_out_irq: rejected by the extraction: uo_out[1]: the IRQ register is not in the design (is bit 1 still IRQ?)

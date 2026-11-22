@@ -1,0 +1,40 @@
+W3 HostPinWire evidence log (2026-11-21)
+========================================
+Working directory: code/tests/lean
+PATH: $env:USERPROFILE/.elan/bin prepended
+
+[baseline] lake build Metronome.ChipCut.Discharge.LineThread
+  exit 0, 189.3 s (cold, 59 jobs; dependency stack for the new module)
+
+[cached] lake build Metronome.ChipCut.Discharge.MemHostCfg
+  exit 0, 0.4 s (no rebuild; the file is owned by another thread and was only
+  read, never edited)
+
+[iterations] lake build Metronome.ChipCut.Discharge.HostPinWire
+  many intermediate runs exit 1 while the proofs were being written
+  (type errors / unsolved goals; no sorryAx, no partial commits).
+  Each incremental compile with the module's olean present: ~2-5 s.
+  A few concurrency stalls: the sibling MemHostCfg thread's lake build removed
+  oleans transiently (Lean reported "object file ... does not exist"); resolved
+  by waiting for the other build to finish, no source change.
+
+[final, clean rebuild of the module: olean removed]
+  lake build Metronome.ChipCut.Discharge.HostPinWire
+  exit 0, 88.8 s, "✔ [61/61] Built ... (88s)", -DwarningAsError=true
+  (the 88 s includes rebuilding the dependency chain invalidated by the
+  concurrent build; a warm rebuild of the file alone is ~5 s)
+
+[axioms] lake env lean ../../..\data\raw\lean_chipcut_wire_hostpin_v4_20261121\axioms.lean
+  exit 0, 4.2 s, output in axioms.txt:
+  propext / Classical.choice / Quot.sound only, plus the pre-existing
+  Bridge.Line.and_one_bne_zero_16 bv_decide certificate (wire_pinAgree,
+  wire_beat) and the new hostDbg_addr{8,9,18,19} bv_decide certificates
+  (dbgWire_hESC, dbgWire_hRSC).  No sorryAx.
+
+[scratch] temporary Check*.lean / Sect.lean files in this directory were used
+  for fast `lake env lean` iterations (~2-4 s each); they were removed after
+  the proofs were moved into Metronome/ChipCut/Discharge/HostPinWire.lean.
+
+Acceptance: lake build Metronome.ChipCut.Discharge.HostPinWire exits 0 with
+-DwarningAsError=true; no `sorry`, no `native_decide`; nothing outside the new
+file, this directory and WIRE_HOSTPIN_NOTES.md was edited.

@@ -1,0 +1,42 @@
+# Commands, exit codes and wall times (item 4N: glue control / flags / mailbox / g_line)
+
+Machine: Windows, Lean 4.35.0 (core libs only), Lake 5.0.0-src+eb6cafb.
+Working directory: `code/tests/lean`.  `PATH` includes `%USERPROFILE%/.elan/bin`.
+The project's `lakefile.toml` passes `-DwarningAsError=true`, so a deprecation or an
+unused-variable warning fails the build (the file sets `set_option linter.deprecated false`).
+
+| # | Command | Exit | Wall |
+|---|---|---|---|
+| 1 | `lake build Metronome.Bridge.Glue` (after deleting its `.olean`; full re-elaboration) | 0 | 32.4 s |
+| 2 | `lake build Metronome.Bridge.Glue` (incremental, final) | 0 | 0.4 s |
+| 3 | `lake env lean <evidence dir>/Axioms.lean` (221 `#print axioms` lines) | 0 | 1.8 s |
+| 4 | `git diff --quiet HEAD -- src` | 0 | 0.2 s |
+
+`Metronome.Bridge.Debug` is **not** part of this pass: it is another agent's
+in-progress file and its working-tree version fails at `Debug.lean:814`
+(`lake build Metronome.Bridge.Debug` → exit 1).  It does not import
+`Metronome.Bridge.Glue`, so it is independent of this change.
+
+Additional checks:
+
+* `Select-String -Path Metronome/Bridge/Glue.lean -Pattern 'sorry|native_decide'` →
+  one match, the doc-comment sentence "no `native_decide`".  No proofs use either.
+* `Metronome/Bridge/Glue.lean` now has 221 `theorem` declarations: the 163 names of
+  the 4L pass (all still present, checked against the old `glue_names.txt`) plus 58
+  new ones in this pass.
+* `axioms.txt` contains no `sorryAx`, no `Lean.ofReduceBool`; 167 theorems depend on
+  `[propext, Classical.choice, Quot.sound]`, 22 on `[propext, Quot.sound]`, 9 on
+  `[propext]`, 3 on nothing.
+* Both specs are untouched: no edits under `Metronome/Machine/` or to
+  `Metronome/Glue.lean`; `src/` is unchanged.
+
+Files:
+
+| Path | Role |
+|---|---|
+| `code/tests/lean/Metronome/Bridge/Glue.lean` | glue bridge, extended with the 4N groups |
+| `code/tests/lean/BRIDGE_GLUE_DEBUG_NOTES.md` | the 4N subsection (map, theorems, side conditions, gaps) |
+| `data/raw/lean_bridge_glue_v4_20261121b/Axioms.lean` | the axiom-audit source |
+| `data/raw/lean_bridge_glue_v4_20261121b/axioms.txt` | `#print axioms` output |
+| `data/raw/lean_bridge_glue_v4_20261121b/glue_names.txt` | the 221 theorem names |
+| `data/raw/lean_bridge_glue_v4_20261121b/build_glue_fresh.log` | fresh build log |

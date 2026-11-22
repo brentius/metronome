@@ -1,0 +1,36 @@
+lake build Metronome.ChipCut.Discharge.MemHostCfg Metronome.ChipCut.Discharge.BankWire
+✖ [60/60] Building Metronome.ChipCut.Discharge.MemHostCfg (8.4s)
+trace: .> LEAN_PATH=C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean c:\Users\b_yee23\.elan\toolchains\leanprover--lean4---v4.35.0\bin\lean.exe -DwarningAsError=true C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\Metronome\ChipCut\Discharge\MemHostCfg.lean -o C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean\Metronome\ChipCut\Discharge\MemHostCfg.olean -i C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean\Metronome\ChipCut\Discharge\MemHostCfg.ilean -c C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\ir\Metronome\ChipCut\Discharge\MemHostCfg.c --setup C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\ir\Metronome\ChipCut\Discharge\MemHostCfg.setup.json --json
+error: Metronome/ChipCut/Discharge/MemHostCfg.lean:947:4: unsolved goals
+case pos
+s : State
+m : Machine.State
+pin : Machine.PinIn
+hrel : ChipRel s m
+hinv : Inv s
+hact : runRst s pin = true
+bank_open_size : m.cfg.img.size = Machine.Util.cfgSize
+hq : (m.rq && pin.rstn) = true
+hbwp : m.cw.bwp = s.arb.previousWrite
+hbpa : m.cw.bwp = true → m.cw.bpa = ↑(Bridge.CfgWrite.addrOf s.arb.staged.addr)
+hbpd : m.cw.bwp = true → m.cw.bpd = s.arb.staged.data
+k : Fin Bank.BYTES
+hk : ¬s.bank.mask k = 0
+hklt : ↑k < Machine.Util.cfgSize
+hw : s.arb.previousWrite = true
+hbwp' : m.cw.bwp = true
+hbpaN : m.cw.bpa.toNat = Machine.Tables.LINE_BASE + s.arb.staged.addr.toNat
+hbpdN : m.cw.bpd.toNat = s.arb.staged.data.toNat
+hidx : s.arb.staged.addr.toNat = ↑k
+hg : Bank.gateOpen s.arb.previousWrite s.arb.staged.addr k = true
+⊢ s.arb.staged.data &&& s.bank.mask k = BitVec.setWidth 8 s.arb.staged.data &&& s.bank.mask k
+error: Metronome/ChipCut/Discharge/MemHostCfg.lean:974:16: Tactic `simp` failed with a nested error:
+maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+error: Metronome/ChipCut/Discharge/MemHostCfg.lean:984:48: Unknown constant `Bool.eq_false_of_not_eq_true`
+Some required targets logged failures:
+- Metronome.ChipCut.Discharge.MemHostCfg
+error: build failed
+
+Exit 1; wall 8.78 s

@@ -1,0 +1,67 @@
+# ChipCut evidence commands (item 4Q), 2026-11-21
+
+Machine: Windows 11, Lean 4.35.0 (elan), core libraries only, 10-core i5-1245U.
+Working directory: code/tests/lean unless stated otherwise.
+`$env:PATH = "$env:USERPROFILE/.elan/bin;$env:PATH"`.
+
+## Build
+
+Command:
+    Remove-Item -Recurse -Force .lake\build\lib\lean\Metronome\ChipCut,
+        .lake\build\lib\lean\Metronome\ChipCut.olean,
+        .lake\build\lib\lean\Metronome\ChipCut.ilean,
+        .lake\build\lib\lean\Metronome\ChipCut.trace
+    lake build Metronome.ChipCut
+
+Exit code: 0
+Wall time: 17.51 s (fresh compile of the four ChipCut modules; imports already built)
+Warnings: none (`-DwarningAsError=true` from lakefile.toml)
+Log: build.log
+
+Per-module times in that run:
+    Metronome.ChipCut.State   2.7 s
+    Metronome.ChipCut.Wire    3.9 s
+    Metronome.ChipCut.Step    2.4 s
+    Metronome.ChipCut.Proof   6.1 s
+    Metronome.ChipCut         2.1 s
+
+## Direct file check
+
+Command:
+    lake env lean Metronome/ChipCut/Proof.lean
+
+Exit code: 0
+Wall time: 5.1 s
+Warnings: none printed
+
+## Axioms
+
+Command:
+    lake env lean ../../../data/raw/lean_chipcut_v4_20261121/axioms.lean
+
+Exit code: 0
+Wall time: 2.39 s
+Output: axioms.txt
+Headline results: `chip_step_refines`, `trace_refines`, `inv_step`, `rstM/rstQ/rqh_step`,
+`mout/cfg/pmem/dmem/ramOut/ramOwner/ramLane_step` depend only on
+`propext`, `Classical.choice`, `Quot.sound`.  `inv_reset` uses `propext`,
+`Quot.sound`.  `accHit_oneHotOrZero` and `sideConds_of_frozen` additionally
+inherit the `Strobes` `bv_decide` certificates
+(`Metronome.Strobes.atMostOne_cases._native.bv_decide.ax_1_6`,
+`Metronome.Strobes.hitsMask_atMostOne._native.bv_decide.ax_1_7`).
+No `sorryAx`.
+
+## Source untouched
+
+Command (repository root):
+    git diff --quiet HEAD -- src
+
+Exit code: 0
+
+## No sorry / native_decide in the new files
+
+Command:
+    Select-String -Path Metronome/ChipCut*.lean, Metronome/ChipCut/*.lean
+        -Pattern 'sorry|native_decide'
+
+Matches: none (no output).

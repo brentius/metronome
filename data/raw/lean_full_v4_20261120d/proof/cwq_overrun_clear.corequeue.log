@@ -1,0 +1,20 @@
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-qclhkcfk\cwq_overrun_clear\CoreQueueProof.lean:59:22: error: Tactic `rfl` failed: The left-hand side
+  (rtlStep state input).overrun
+is not definitionally equal to the right-hand side
+  (step state input).overrun
+
+case overrun
+state : State
+input : Input
+⊢ (rtlStep state input).overrun = (step state input).overrun
+'Metronome.CoreQueue.rtlStep_eq_step' depends on axioms: [propext, sorryAx, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-qclhkcfk\cwq_overrun_clear\CoreQueueProof.lean:139:0: error: ❌️ Docstring on `#guard_msgs` does not match generated message:
+
+- info: 'Metronome.CoreQueue.rtlStep_eq_step' depends on axioms: [propext, Quot.sound]
++ info: 'Metronome.CoreQueue.rtlStep_eq_step' depends on axioms: [propext, sorryAx, Quot.sound]
+'Metronome.CoreQueue.rtl_trace_result' depends on axioms: [propext, sorryAx, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-qclhkcfk\cwq_overrun_clear\CoreQueueProof.lean:142:0: error: ❌️ Docstring on `#guard_msgs` does not match generated message:
+
+- info: 'Metronome.CoreQueue.rtl_trace_result' depends on axioms: [propext, Quot.sound]
++ info: 'Metronome.CoreQueue.rtl_trace_result' depends on axioms: [propext, sorryAx, Quot.sound]
+Core queue outcome: rejected

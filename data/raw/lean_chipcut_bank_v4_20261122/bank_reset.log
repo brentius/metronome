@@ -1,0 +1,9 @@
+lake build Metronome.ChipCut.Proof
+✔ [55/59] Built Metronome.ChipCut.State (2.1s)
+✔ [56/59] Built Metronome.ChipCut.Wire (2.8s)
+✔ [57/59] Built Metronome.ChipCut.Step (1.9s)
+✔ [58/59] Built Metronome.ChipCut.Rel (2.1s)
+✔ [59/59] Built Metronome.ChipCut.Proof (6.7s)
+Build completed successfully (59 jobs).
+
+Exit 0; wall 16.33 s

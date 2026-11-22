@@ -1,0 +1,1 @@
+Interrupted: the launching Claude Code session ended after the baseline and 'spacing' cases; superseded by lean_full_v4_20261120b.

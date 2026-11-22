@@ -1,0 +1,84 @@
+﻿'Metronome.ChipCut.Discharge.nbit_of_lt' depends on axioms: [propext]
+'Metronome.ChipCut.Discharge.toNat_append'' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.sel_pad13' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Line.and_one_bne_zero_16._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.protoPins_pinVec' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.pinLvl_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.pinPrev_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.wire_pinLvl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.wire_pinPrev' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.wire_pinAgree' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Line.and_one_bne_zero_16._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.linkRel_cmd' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.ltHw_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.hwAt_val' depends on axioms: [propext]
+'Metronome.ChipCut.Discharge.hwByte_eq' depends on axioms: [propext]
+'Metronome.ChipCut.Discharge.wire_hCtl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.wire_hPC' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.wire_hStat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.wire_hTapmissClr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.phase_bytes_all' does not depend on any axioms
+'Metronome.ChipCut.Discharge.phase_two' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.hostLocate_phase_byte' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.hwAt_loc' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.phase_pack_any' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.wire_hPhase' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.hostDbg_addr8' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ hostDbg_addr8._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.hostDbg_addr9' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ hostDbg_addr9._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.hostDbg_addr18' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ hostDbg_addr18._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.hostDbg_addr19' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ hostDbg_addr19._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.hwAt_of_loc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.dbgWire_hdbg' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.dbgWire_hESC' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ hostDbg_addr8._native.bv_decide.ax_1_5,
+ hostDbg_addr9._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.dbgWire_hRSC' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ hostDbg_addr18._native.bv_decide.ax_1_5,
+ hostDbg_addr19._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.hostPinInv_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.hostPinInv_reset' depends on axioms: [propext]
+'Metronome.ChipCut.Discharge.hostReq_open_strobe' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.quiet_wr' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.host_sck_spacing' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.host_open_quiet' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.ctrl_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.absChip_units_a' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.absChip_units_z' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.absChip_units_c' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.absChip_units_n' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.absChip_units_f' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.absChip_lines_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.absChip_threads_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.list_any_len_two' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.toList_any_two' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.vget_toList_any_two' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.streams_any_starved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.vget_streams_starved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.hostRead_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.host_open_regVal_of' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.host_open_regVal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.hcfg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.wire_beat' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Line.and_one_bne_zero_16._native.bv_decide.ax_1_5]

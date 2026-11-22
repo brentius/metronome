@@ -1,0 +1,43 @@
+# Bridge Units/Stream — commands, exit codes, wall times (2026-11-21)
+
+Working directory for all Lean runs: `code/tests/lean`
+(`$env:PATH="$env:USERPROFILE/.elan/bin;$env:PATH"`).
+Lean 4.35.0 (x86_64-w64-mingw32), core libraries only.
+
+| # | command | exit | wall |
+|---|---|---|---|
+| 1 | `lake build Metronome.Machine Metronome.Units Metronome.Stream` | 0 | (cached oleans already present) |
+| 2 | `lake env lean Metronome/Bridge/Units.lean` | 0 | 7.8 s |
+| 3 | `lake env lean Metronome/Bridge/Stream.lean` | 0 | 5 s |
+| 4 | `lake env lean -o .lake/build/lib/lean/Metronome/Bridge/Units.olean Metronome/Bridge/Units.lean` | 0 | 13.4 s (both files, incl. olean write) |
+| 5 | `lake env lean -o .lake/build/lib/lean/Metronome/Bridge/Stream.olean Metronome/Bridge/Stream.lean` | 0 | (same run as 4) |
+| 6 | `lake env lean build/lean_scratch_bridge_us/Axioms.lean` | 0 | 3.0 s |
+
+Notes
+
+* Both bridge files are *not* imported by `Metronome.lean` (that file is owned by
+  another workstream and was not edited), so `lake build` does not build them.
+  They are checked directly with `lake env lean`, and step 4 writes their oleans
+  into `.lake/build/lib/lean/Metronome/Bridge/` so that the `#print axioms` file
+  (step 6) can import them.
+* Step 2 and step 4 report warnings only: `if_pos`/`if_neg`/`if_true`/`if_false`
+  are deprecated names for `ite_eq_left`/`ite_eq_right`/`ite_true`/`ite_false`.
+  No error, no `sorry`.
+* The scratch directory `build/lean_scratch_bridge_us/` is temporary and deleted
+  after the run.
+* `git diff --quiet HEAD -- src` was run after the proofs: no output, so `src/`
+  is untouched.
+
+## `#print axioms` summary (see axioms.txt for the verbatim dump)
+
+| theorem | axioms |
+|---|---|
+| `bitAt_eq_bit`, `bitAt_eq_nbit`, `beq_zero_nat` | propext, Quot.sound (and Classical.choice) |
+| `CounterB.zOut_eq`, `ShifterB.done_eq`, `AccB.code7_z_disagrees` | propext, Quot.sound |
+| `ShifterB.abs_step`, `ShifterB.out_eq`, `LfsrB.out_eq` | propext, Classical.choice, Quot.sound |
+| `CounterB.abs_step` | + bv_decide LRAT certificates (`setByte_lo/hi`) |
+| `LfsrB.abs_step` | + bv_decide LRAT certificates (`setByte_p0..p3`) |
+| `AccB.rNext_bytes`, `AccB.rNext_eq` | + eight bv_decide LRAT certificates |
+| `StreamB.end_eq`, `mark_eq`, `byteAt_eq`, `byte_eq` | propext, Quot.sound (byte_eq: propext only) |
+
+No `sorryAx` in any bridge theorem.

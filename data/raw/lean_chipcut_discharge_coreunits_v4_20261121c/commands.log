@@ -1,0 +1,29 @@
+# Evidence: round c, ChipCut discharge (`cores`, `units`, move fabric)
+# Machine: Windows 10 (win32), Lean 4.35.0 (commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc),
+# elan toolchain from code/tests/lean/lean-toolchain, no Mathlib (core libraries only).
+# Date: 2026-11-21, branch metronome-v4.0.
+# Shell: PowerShell, $env:PATH = "$env:USERPROFILE/.elan/bin;$env:PATH".
+
+# --- clean rebuild of the touched/new modules (-DwarningAsError=true) ---
+# (removed .lake/build/lib/lean/Metronome/ChipCut/Discharge/{CoreUnits,MoveFabric}.olean first)
+cd code/tests/lean
+lake build Metronome.ChipCut Metronome.ChipCut.Discharge.CoreUnits Metronome.ChipCut.Discharge.MoveFabric
+#   exit 0, wall 14.7 s; log build.log ("Build completed successfully (61 jobs).")
+
+# --- #print axioms ---
+lake env lean ..\..\..\data\raw\lean_chipcut_discharge_coreunits_v4_20261121c\axioms.lean
+#   exit 0, wall 2.7 s; output axioms.txt
+#   premise_cores: [propext, Classical.choice, Quot.sound]
+#   premise_units: + the pre-existing bridge bv_decide certificates
+#   no sorryAx, no native_decide/admit in the new or edited files.
+
+# --- source hygiene ---
+Select-String -Path Metronome/ChipCut/Discharge/CoreUnits.lean -Pattern "sorry|native_decide|admit"
+#   no matches; 1114 lines
+Select-String -Path Metronome/ChipCut/Discharge/MoveFabric.lean -Pattern "sorry|native_decide|admit"
+#   no matches; 82 lines
+
+# --- RTL untouched ---
+cd ../../..
+git diff --quiet HEAD -- src
+#   exit 0

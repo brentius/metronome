@@ -1,0 +1,29 @@
+lake build Metronome.ChipCut.Discharge.BankWire
+✖ [54/54] Building Metronome.ChipCut.Discharge.BankWire (21s)
+trace: .> LEAN_PATH=C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean c:\Users\b_yee23\.elan\toolchains\leanprover--lean4---v4.35.0\bin\lean.exe -DwarningAsError=true C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\Metronome\ChipCut\Discharge\BankWire.lean -o C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean\Metronome\ChipCut\Discharge\BankWire.olean -i C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean\Metronome\ChipCut\Discharge\BankWire.ilean -c C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\ir\Metronome\ChipCut\Discharge\BankWire.c --setup C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\ir\Metronome\ChipCut\Discharge\BankWire.setup.json --json
+error: Metronome/ChipCut/Discharge/BankWire.lean:412:2: Tactic `decide` failed to reduce
+  @decide (∀ (k : Fin Bank.BYTES), cfgMaskFin k ≠ 0 → Machine.Config.isCfgAddr (LINE_BASE + ↑k) = true)
+    (Nat.decidableForallFin fun k => cfgMaskFin k ≠ 0 → Machine.Config.isCfgAddr (LINE_BASE + ↑k) = true)
+to `true` or `false`.
+
+After unfolding the instances `decidable_of_decidable_of_iff`, `decidable_of_iff`, `forall_prop_decidable`, `instDecidableEqBitVec`, `instDecidableEqBool`, `instDecidableEqFin`, `instDecidableEqNat`, `instDecidableNot`, `BitVec.decEq`, `Bool.decEq`, `isTrue`, `Nat.decEq`, `Nat.decLe`, `Nat.decidableBallLT`, and `Nat.decidableForallFin`, reduction got stuck at
+  Array.anyM.loop
+    (fun x =>
+      pure
+        ((fun x =>
+            match x with
+            | (name, base, stride, inst, regs) =>
+              cfgBlockNames.contains name &&
+                (List.range inst).any fun i =>
+                  regs.any fun x =>
+                    match x with
+                    | (off, fst, bytes, acc) =>
+                      acc == "W" && decide (base + stride * i + off ≤ LINE_BASE + ↑⟨0, ⋯⟩) &&
+                        decide (LINE_BASE + ↑⟨0, ⋯⟩ < base + stride * i + off + bytes))
+          x))
+    hostBlocks hostBlocks.size ⋯ 0
+Some required targets logged failures:
+- Metronome.ChipCut.Discharge.BankWire
+error: build failed
+
+Exit 1; wall 29.31 s

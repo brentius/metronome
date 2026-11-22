@@ -1,0 +1,48 @@
+# W2 (guard/source vectors) — commands, exit codes, wall time
+# Machine: Windows, PowerShell; Lean 4.35.0 via elan; core libraries only.
+# Date: 2026-11-21.  Shell preamble: $env:PATH = "$env:USERPROFILE/.elan/bin;$env:PATH"
+# (timings include contention: five other wiring/discharge tasks share this .lake cache)
+
+cd code/tests/lean
+
+# --- round b: proving the two CoreInputBus fields after the Wire.lean CAP fix ---
+
+# 1. first build of the predecessor's partial file (dependencies rebuilt after the
+#    Wire.lean edit: Bridge.Stream alone took 950 s under parallel load)
+lake build Metronome.ChipCut.Discharge.GuardSrc
+#   exit 1, 972.5 s
+#   3 errors: lineSlot/guardV simplification, lCap_slot rewrite order,
+#   `set` tactic unavailable in core Lean (unknown tactic at 1122)
+
+# 2-6. fix iterations (module-only rebuilds)
+lake build Metronome.ChipCut.Discharge.GuardSrc
+#   exit 1, 6.9 s   (remaining: srcVec_slice_2 needs setWidth8_toNat2; envG vs envS)
+lake build Metronome.ChipCut.Discharge.GuardSrc
+#   exit 1, 7.4 s   (sourcesOf_envS added; srcV imm still envS vs x)
+lake build Metronome.ChipCut.Discharge.GuardSrc
+#   exit 1, 5.8 s   (simpa needs srcV unfolded)
+lake build Metronome.ChipCut.Discharge.GuardSrc
+#   exit 1, 7.2 s   (simpa needs envS unfolded too)
+lake build Metronome.ChipCut.Discharge.GuardSrc
+#   exit 0, 5.0 s   "Build completed successfully (60 jobs)."
+#   lakefile.toml: moreLeanArgs = ["-DwarningAsError=true"] (no warnings emitted)
+
+# 7. axiom check of the two fields, the bundle, the adapter and the layer lemmas
+lake env lean ..\..\..\data\raw\lean_chipcut_wire_guardsrc_v4_20261121\axioms.lean
+#   exit 0, 3.7 s
+#   log: axioms.txt  propext/Classical.choice/Quot.sound + bv_decide certificates
+#        (5 new: accR_pack/and80_ne/and01_ne; plus pre-existing Bridge/Glue ones);
+#        no sorryAx, no native_decide, no admit
+
+# 8. the parent modules still build (read-only here, already up to date)
+lake build Metronome.ChipCut Metronome.ChipCut.Discharge.CoreUnits
+#   exit 0, 0.9 s ("Build completed successfully (60 jobs)")
+
+# 9. the submission RTL is untouched
+cd ../../..
+git diff --quiet HEAD -- src
+#   exit 0 (no diff)
+
+# 10. no forbidden placeholders in the new file
+Select-String -Path code\tests\lean\Metronome\ChipCut\Discharge\GuardSrc.lean -Pattern "sorry|admit|native_decide"
+#   no matches

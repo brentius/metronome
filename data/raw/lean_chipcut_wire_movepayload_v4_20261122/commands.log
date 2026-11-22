@@ -1,0 +1,59 @@
+# Commands, exit codes and wall times
+# Metronome.ChipCut.Discharge.MovePayloadWire (W-P), 2026-11-22
+# Lean 4.35.0, lakefile moreLeanArgs = ["-DwarningAsError=true"]
+# All runs from code/tests/lean with $env:PATH = "$env:USERPROFILE/.elan/bin;$env:PATH"
+# Wall times measured with [Diagnostics.Stopwatch] around the command.
+
+[01] lake build Metronome.ChipCut.Discharge.MoveFabricKeyed
+     exit 0   wall 11.1 s   "Build completed successfully (65 jobs)."
+     (baseline: dependencies of the new module are green before the edit)
+
+[02] lake build Metronome.ChipCut.Discharge.Glue
+     exit 0   wall 0.5 s    59 jobs
+
+[03] lake build Metronome.ChipCut.Assembly
+     exit 0   wall 1.3 s    73 jobs        (baseline before the edit)
+
+[04] lake env lean -DwarningAsError=true Metronome/ChipCut/Discharge/MovePayloadWire.lean
+     exit 0   wall 39.1 s   (module elaboration, no warnings)
+
+[05] lake build Metronome.ChipCut.Discharge.MovePayloadWire
+     exit 0   wall 40.2 s   "Build completed successfully (66 jobs)."   <-- ACCEPTANCE
+
+[06] lake env lean --run ..\..\..\data\raw\lean_chipcut_wire_movepayload_v4_20261122\decode_check_flagp0cw.lean
+     exit 0   wall 2.5 s    "checked 64 codes, 11 rows, failures = 0"
+     (compiled evaluation of Machine.dstOp for all 64 codes against every
+      DstFlagP0CwTable row and the CW group identity)
+
+[07] lake env lean -DwarningAsError=true ..\..\..\data\raw\lean_chipcut_wire_movepayload_v4_20261122\axioms.lean
+     exit 0   wall 2.1 s    31 #print axioms
+     no sorryAx, no Lean.trustCompiler, no native_decide axiom; the only
+     non-core axioms are the pre-existing bv_decide certificates of
+     Metronome.Moves.beq_comm_5 / hitsMask_bit_* and CoreCtl.makeWord_*.
+
+[08] lake env lean -DwarningAsError=true ..\..\..\data\raw\lean_chipcut_wire_movepayload_v4_20261122\statements.lean
+     exit 0   (exact statements of the five field theorems and the table)
+
+[09] lake env lean -DwarningAsError=true ..\..\..\data\raw\lean_chipcut_wire_movepayload_v4_20261122\check_assembly_fields.lean
+     exit 0   wall 3.2 s
+     (for each of the five fields: OpenWiring.<field> ho = <theorem> ... := rfl,
+      plus the check that (machineServed m pin == 3) = Mem.grantP0 s.p0 (memIn s pin)
+      is CoreCombWire.p0_open_served)
+
+[10] lake build Metronome.ChipCut
+     exit 0   wall 3.3 s    59 jobs        (regression)
+
+[11] lake build Metronome.ChipCut.Assembly
+     exit 0                 73 jobs        (regression, consumer of the fields)
+
+[12] git diff --stat HEAD -- src
+     empty (exit 0)        (src/ untouched)
+
+# Transient failures, all caused by other agents' concurrent edits of
+# LineThread.lean / MemHostCfg.lean / StreamDbg.lean (their .olean files were
+# deleted while rebuilding).  Each was retried unchanged once the dependency
+# settled; no lake clean, no .olean deletion, no edit outside this task's files.
+#
+#   "object file ...LineThread.olean ... does not exist"      (x3 runs)
+#   "object file ...MemHostCfg.olean ... does not exist"      (x2 runs)
+#   "object file ...StreamDbg.olean ... does not exist"       (x4 runs, one 128 s wait)

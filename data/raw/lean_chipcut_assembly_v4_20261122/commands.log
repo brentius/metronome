@@ -1,0 +1,56 @@
+# ChipCut assembly, round 12: commands, exit codes, wall times
+
+Host: Windows, PowerShell.  Lean 4.35.0 (elan), core libraries only.
+`lakefile.toml` sets `moreLeanArgs = ["-DwarningAsError=true"]`.
+Working directory: `code/tests/lean`, with
+`$env:PATH = "$env:USERPROFILE\.elan/bin;$env:PATH"`.
+
+## Edited files (SHA-256)
+
+| file | SHA-256 | bytes |
+|---|---|---|
+| `Metronome/ChipCut/Assembly.lean` | `AE75B0D0866F0791A75B63A912470980ACE78C8C5BF2997DB9B54B1F1F2A5781` | 53455 |
+| `Metronome/ChipCut/Discharge/StreamDbg.lean` | `FBE04171909718EDBC7F9BDB5DA2E9F401DF38145E49B69F00DBC89133A1861C` | 58752 |
+
+(`Discharge/CoreCombWire.lean` unchanged this round: `742B3D2A…208BD3`, 133111 B.
+`Machine/Debug.lean`, `Bridge/Debug.lean`, `DbgMapWire.lean`, `CapTrace.lean` are
+the orchestrator's/other agents' edits, untouched here.)
+
+## Acceptance run
+
+| # | command | exit | wall |
+|---|---|---|---|
+| 1 | `lake build Metronome.ChipCut.Assembly` (start of round, orchestrator's fix) | **0** | 0.4 s cached, 77 jobs |
+| 2 | `lake env lean Metronome/ChipCut/Discharge/StreamDbg.lean` (generalised `premise_dbg`) | **0** | 15.1 s |
+| 3 | `lake build Metronome.ChipCut.Assembly` (after deleting `rlvpFrozen` / `OpenWiring`) | **0** | 95.9 s chain, 77 jobs |
+| 4 | `lake build Metronome.ChipCut.Assembly` (final) | **0** | 5.5 s chain, 0.4 s cached |
+| 5 | `lake env lean -DwarningAsError=true …\axioms.lean` | **0** | **2.2 s**, 0 `sorryAx`, 0 errors |
+| 6 | `lake env lean …\statements.lean` | **0** | **2.4 s**, 0 errors |
+
+`git diff --quiet HEAD -- src` — exit 0 (0 changes).  No `lake clean`, no manual
+olean deletion.  `sorry`/`native_decide`/`admit`: 0 occurrences.
+
+## Round-12 summary
+
+* `premise_dbg` is now **FRZ-agnostic**: `DbgWire.real` (`frz = false`) deleted;
+  `hc8` (`RLVP`) splits on `(dbgCtrlIn s pin).frz` (frozen: `dbgNext_rlvp` gives
+  `m.dbg.rlvp`, `rlvPrevNext` gives `s.dbgCtrl.rlvPrev`, joined by
+  `DbgRel.rlvp_eq`).  All other fields were already `FRZ`-agnostic.
+* `ExplicitPremises.rlvpFrozen` deleted (false after the machine fix).
+* `OpenWiring` deleted (it held only `dbgReal`); `premises_of`,
+  `chip_step_refines'`, `trace_refines'_all`, `trace_refines'` and
+  `streamRelX_step` no longer take it.
+* Every one of the sixteen `Premises` fields is now discharged; the trace
+  theorem carries only `cont.ramOwner = 0`, the per-cycle mode-quietness contract
+  and `ExplicitPremises` (the global string tables, group packing, the two cycle
+  contracts, the two AMBIG configuration-write facts and the latch-bank
+  contract).
+
+## Evidence
+
+`data/raw/lean_chipcut_assembly_v4_20261122/`: `build.log`, `axioms.lean`/
+`axioms.txt`, `statements.lean`/`statements.txt` (final statements of
+`premise_dbg`, `premises_of`, `chip_step_refines'`, `trace_refines'_all`,
+`trace_refines'`), `commands.log`, and the round drafts `scratch_relxd.lean`,
+`scratch_bufrel.lean`, `scratch_relx.lean`, `scratch_shape.lean`,
+`scratch_w6d.lean`.

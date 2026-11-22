@@ -1,0 +1,11 @@
+name = "metronome-verification"
+version = "0.1.0"
+defaultTargets = ["Metronome"]
+moreLeanArgs = ["-DwarningAsError=true"]
+
+[[lean_lib]]
+name = "Metronome"
+
+[[lean_exe]]
+name = "machine-sim"
+root = "MachineSim.Main"

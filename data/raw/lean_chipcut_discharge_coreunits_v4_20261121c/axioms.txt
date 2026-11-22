@@ -1,0 +1,80 @@
+﻿'Metronome.ChipCut.Discharge.premise_cores' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.premise_units' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Strobes.atMostOne_cases._native.bv_decide.ax_1_6,
+ Metronome.Strobes.hitsMask_atMostOne._native.bv_decide.ax_1_7,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_11,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_16,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_21,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_26,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_31,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_36,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_41,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_6,
+ Metronome.Bridge.CounterB.setByte_hi._native.bv_decide.ax_1_5,
+ Metronome.Bridge.CounterB.setByte_lo._native.bv_decide.ax_1_5,
+ Metronome.Bridge.LfsrB.setByte_p0._native.bv_decide.ax_1_5,
+ Metronome.Bridge.LfsrB.setByte_p1._native.bv_decide.ax_1_5,
+ Metronome.Bridge.LfsrB.setByte_p2._native.bv_decide.ax_1_5,
+ Metronome.Bridge.LfsrB.setByte_p3._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.rel_coreOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.mine_false_bit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.core_next_congr' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.core_next_ir_irrel' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.guardVec_bit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.bitOf_setBit_same' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.bitOf_setBit_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.bitOf_lowMask_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.bitOf_lowMask_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.guardV_global' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.srcV_global' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Glue.slice48_24._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.slice48_8._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.slice64_16._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.slice64_24._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.slice64_8._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.rel_ready' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.rel_pcOf' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.rel_lineOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.rel_w0cOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.rel_w1cOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.rel_w0hOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.rel_w1hOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.rel_core_sIr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.rel_run' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.tPc_slot' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.tCore_bit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.guards_bit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.srcs_byte' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.accIn_sel' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.acc_hit_ne_seven' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Strobes.atMostOne_cases._native.bv_decide.ax_1_6,
+ Metronome.Strobes.hitsMask_atMostOne._native.bv_decide.ax_1_7]
+'Metronome.ChipCut.Discharge.agrees_machine_units' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Strobes.atMostOne_cases._native.bv_decide.ax_1_6,
+ Metronome.Strobes.hitsMask_atMostOne._native.bv_decide.ax_1_7,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_11,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_16,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_21,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_26,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_31,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_36,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_41,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_6]
+'Metronome.ChipCut.Discharge.bgetLE_lt' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.runStep_cores' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.runStep_units' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.MoveFabric.resolveAux_null' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.MoveFabric.resolveAux_filter_some' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Metronome.ChipCut.Discharge.MoveFabric.resolveMoves_filter_some' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

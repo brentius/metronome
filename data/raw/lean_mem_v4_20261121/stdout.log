@@ -1,0 +1,12 @@
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Build completed successfully (3 jobs).
+baseline: accepted (106 RTL cells, 116 emitted terms, 13.9 s)
+mem_p0_over_s1: rejected (generated Lean: rtlReq)
+mem_host_first: rejected (generated Lean: rtlHostQ)
+mem_host_lane: rejected (generated Lean: rtlHLane)
+mem_host_no_overwrite: rejected (generated Lean: rtlHostQ)
+mem_p0_rdy_early: rejected (generated Lean: rtlRdy)
+mem_ptr_wrap_1024: rejected (generated Lean: rtlPtr)
+mem_s0_word_be: rejected (generated Lean: rtlMBe)
+mem_dmem_lane: rejected (structural check: u_sram.A_BM: bit 0 is not be[0])

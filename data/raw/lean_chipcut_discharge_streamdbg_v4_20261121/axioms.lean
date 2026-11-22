@@ -1,0 +1,51 @@
+import Metronome.ChipCut.Discharge.StreamDbg
+
+open Metronome.ChipCut.Discharge
+
+#print axioms vecGet_ofFn
+#print axioms hitsMask_zero
+#print axioms dsteqMask_zero
+#print axioms opg_zero
+#print axioms runStep_streams
+#print axioms runStep_dbg
+#print axioms activeStep_streams
+#print axioms activeStep_streamAt_zero
+#print axioms activeStep_streamAt_one
+#print axioms activeStep_dbgCtrl
+#print axioms activeStep_dbgDigest
+#print axioms activeStep_freeze
+#print axioms cfgOf_streamIn
+#print axioms DbgRel.freeze_eq
+#print axioms DbgRel.frz_eq
+#print axioms DbgRel.frzd_eq
+#print axioms DbgRel.men_eq
+#print axioms DbgRel.misr_eq
+#print axioms DbgRel.cen_eq
+#print axioms DbgRel.rpl_eq
+#print axioms DbgRel.emask_eq
+#print axioms DbgRel.dc_eq
+#print axioms DbgRel.rlv_eq
+#print axioms DbgRel.rlvp_eq
+#print axioms absIn_gatedIn_one
+#print axioms streamNext_gate_irrel
+#print axioms AbsRelB.bufRel
+#print axioms frozen_rel
+#print axioms frozen_rel_rewind
+#print axioms streamsNext_eq
+#print axioms streams_field_0
+#print axioms streams_field_1
+#print axioms premise_streams
+#print axioms nbit_core
+#print axioms ctrl_step_replay
+#print axioms ctrl_step_cen
+#print axioms ctrl_step_emask
+#print axioms ctrl_step_rlv
+#print axioms ctrl_step_rlvPrev
+#print axioms ctrl_step_dc
+#print axioms digest_step_men
+#print axioms digest_step_misr
+#print axioms dbgNext_freeze
+#print axioms dbgNext_frz
+#print axioms dbgNext_frzd
+#print axioms machDbgNext_eq
+#print axioms premise_dbg

@@ -1,0 +1,35 @@
+﻿'Metronome.ChipCut.Discharge.premise_sync' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.premise_ctrl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.premise_out' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Glue.pack4b_0._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.pack4b_1._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.pack4b_2._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.pack4b_3._native.bv_decide.ax_1_5,
+ comm_eq._native.bv_decide.ax_1_9,
+ pack4_eq._native.bv_decide.ax_1_6,
+ seg_eq._native.bv_decide.ax_1_9]
+'Metronome.ChipCut.Discharge.premise_oen' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Glue.pack4b_0._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.pack4b_1._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.pack4b_2._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.pack4b_3._native.bv_decide.ax_1_5,
+ comm_eq._native.bv_decide.ax_1_9,
+ pack4_eq._native.bv_decide.ax_1_6,
+ seg_eq._native.bv_decide.ax_1_9]
+'Metronome.ChipCut.Discharge.outCfg_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ comm_eq._native.bv_decide.ax_1_9,
+ pack4_eq._native.bv_decide.ax_1_6,
+ seg_eq._native.bv_decide.ax_1_9]
+'Metronome.ChipCut.Discharge.ctrlWr' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.errTerms' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.ctrlRegsRel' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.cwovr_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.sticky_nbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.hostLocate_ctrl_sticky_byte' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.cvRange' depends on axioms: [propext, Classical.choice, Quot.sound]

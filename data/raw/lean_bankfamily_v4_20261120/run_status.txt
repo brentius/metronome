@@ -1,0 +1,7 @@
+case	outcome	exit	expectation
+baseline	accepted	0	ok
+bank_wrong_addr	rejected (generated Lean: rejected by Lean (exit 1): 154:2: error: The prover found a counterexample, consider the following assignment:)	1	ok
+bank_addr_bit	rejected (generated Lean: rejected by Lean (exit 1): 63:2: error: The prover found a counterexample, consider the following assignment:)	1	ok
+bank_shared_addr	rejected (generated Lean: rejected by Lean (exit 1): 76:2: error: The prover found a counterexample, consider the following assignment:)	1	ok
+bank_no_we1	rejected (structural check: u_cfg: byte 0 gate is not an AND enable)	0	ok
+bank_we1_polarity	rejected (structural check: u_cfg: byte 0 gate is not enabled by we1)	0	ok

@@ -1,0 +1,39 @@
+# Bridge Line evidence: commands, exit codes and wall times
+
+Item: prove the three `step_bridge` field hypotheses (`hfirst`, `hfired`,
+`hsnap`) as theorems and add `step_bridge'` (no field hypotheses).
+
+Repo: C:\Users\b_yee23\Documents\projects\jane street comp
+Branch: metronome-v4.0 (worktree has unrelated uncommitted changes; nothing committed)
+Lean: 4.35.0 (core libraries only), `code/tests/lean`,
+      `moreLeanArgs = ["-DwarningAsError=true"]`
+Environment: PowerShell, `$env:PATH="$env:USERPROFILE/.elan/bin;$env:PATH"`
+
+All commands were run from `code/tests/lean` unless stated otherwise.
+
+| # | Command | Exit | Wall time |
+|---|---|---|---|
+| 1 | `lake build Metronome.Bridge.Line` (full module compile, warnings as errors) | 0 | 19.4 s |
+| 2 | `lake build Metronome.Bridge.Line` (cached, build graph up to date) | 0 | 0.43 s |
+| 2b | `lake build Metronome.Bridge.Line` (final cached re-check, `build_final.log`) | 0 | 0.45 s |
+| 3 | `lake env lean Metronome/Bridge/Line.lean` (direct elaboration; empty `line.log`) | 0 | 18.0 s |
+| 4 | `lake env lean build/lean_scratch_bridge_line3/Axioms.lean` (`#print axioms` for the new theorems) | 0 | 3.6 s |
+| 5 | `git diff --stat -- src` (no `src/` change) | 0 | <0.1 s |
+| 6 | `Select-String` for `sorry`/`native_decide` in `Metronome/Bridge/Line.lean` | n/a | <0.1 s |
+
+Notes:
+
+* Command 1 was the last full build after the final edits; output
+  `Build completed successfully (22 jobs).` (`build_cached.log`).
+* No `sorry`, `sorryAx` or `native_decide` occurs in
+  `Metronome/Bridge/Line.lean` (the only textual hits are the pre-existing
+  doc-comment sentence and comment text).  `axioms.txt` holds the
+  `#print axioms` lines for the new declarations: only `propext`,
+  `Classical.choice`, `Quot.sound` and the pre-existing `bv_decide` native
+  certificates of the suite (`and_one_bne_zero_3/32`, `or3_as_pack3`,
+  `missBits_disj`) appear.
+* `git diff --stat -- src` is empty: `src/` was not modified.  Nothing was
+  committed.
+* Scratch directory `build/lean_scratch_bridge_line3/` was used for incremental
+  development (`Probe*.lean`); it is inside `build/` and is not part of the
+  library.

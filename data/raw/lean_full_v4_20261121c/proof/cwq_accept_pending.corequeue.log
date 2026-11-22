@@ -1,0 +1,56 @@
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-7fe9ry6l\cwq_accept_pending\CoreQueueProof.lean:56:22: error: Tactic `rfl` failed: The left-hand side
+  (rtlStep state input).addr
+is not definitionally equal to the right-hand side
+  (step state input).addr
+
+case addr
+state : State
+input : Input
+⊢ (rtlStep state input).addr = (step state input).addr
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-7fe9ry6l\cwq_accept_pending\CoreQueueProof.lean:56:22: error: Tactic `rfl` failed: The left-hand side
+  (rtlStep state input).pending
+is not definitionally equal to the right-hand side
+  (step state input).pending
+
+case pending
+state : State
+input : Input
+⊢ (rtlStep state input).pending = (step state input).pending
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-7fe9ry6l\cwq_accept_pending\CoreQueueProof.lean:56:22: error: Tactic `rfl` failed: The left-hand side
+  (rtlStep state input).pendingAddr
+is not definitionally equal to the right-hand side
+  (step state input).pendingAddr
+
+case pendingAddr
+state : State
+input : Input
+⊢ (rtlStep state input).pendingAddr = (step state input).pendingAddr
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-7fe9ry6l\cwq_accept_pending\CoreQueueProof.lean:56:22: error: Tactic `rfl` failed: The left-hand side
+  (rtlStep state input).pendingData
+is not definitionally equal to the right-hand side
+  (step state input).pendingData
+
+case pendingData
+state : State
+input : Input
+⊢ (rtlStep state input).pendingData = (step state input).pendingData
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-7fe9ry6l\cwq_accept_pending\CoreQueueProof.lean:56:22: error: Tactic `rfl` failed: The left-hand side
+  (rtlStep state input).overrun
+is not definitionally equal to the right-hand side
+  (step state input).overrun
+
+case overrun
+state : State
+input : Input
+⊢ (rtlStep state input).overrun = (step state input).overrun
+'Metronome.CoreQueue.rtlStep_eq_step' depends on axioms: [propext, sorryAx, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-7fe9ry6l\cwq_accept_pending\CoreQueueProof.lean:136:0: error: ❌️ Docstring on `#guard_msgs` does not match generated message:
+
+- info: 'Metronome.CoreQueue.rtlStep_eq_step' depends on axioms: [propext, Quot.sound]
++ info: 'Metronome.CoreQueue.rtlStep_eq_step' depends on axioms: [propext, sorryAx, Quot.sound]
+'Metronome.CoreQueue.rtl_trace_result' depends on axioms: [propext, sorryAx, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-7fe9ry6l\cwq_accept_pending\CoreQueueProof.lean:139:0: error: ❌️ Docstring on `#guard_msgs` does not match generated message:
+
+- info: 'Metronome.CoreQueue.rtl_trace_result' depends on axioms: [propext, Quot.sound]
++ info: 'Metronome.CoreQueue.rtl_trace_result' depends on axioms: [propext, sorryAx, Quot.sound]
+Core queue outcome: rejected

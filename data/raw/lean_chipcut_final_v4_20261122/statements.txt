@@ -1,0 +1,71 @@
+Metronome.ChipCut.trace_refines' (pins : Nat → Metronome.Machine.PinIn) (cont : Contents) (tables : Tables)
+  (initial : InitialConditions cont) (env : ∀ (n : Nat), PinPremises (cutStateAt pins (resetState cont) n) (pins n))
+  (n : Nat) : ChipRel (cutStateAt pins (resetState cont) n) (machineStateAt pins (absChip (resetState cont)) n)
+Metronome.ChipCut.trace_refines'_all (pins : Nat → Metronome.Machine.PinIn) (cont : Contents) (tables : Tables)
+  (initial : InitialConditions cont) (env : ∀ (n : Nat), PinPremises (cutStateAt pins (resetState cont) n) (pins n))
+  (n : Nat) :
+  ChipRel (cutStateAt pins (resetState cont) n) (machineStateAt pins (absChip (resetState cont)) n) ∧
+    Discharge.CapInv (cutStateAt pins (resetState cont) n) (machineStateAt pins (absChip (resetState cont)) n) ∧
+      StreamRelX (cutStateAt pins (resetState cont) n) (machineStateAt pins (absChip (resetState cont)) n)
+Metronome.ChipCut.chip_step_refines' (s : State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn)
+  (hrel : ChipRel s m) (hinv : Metronome.ChipCut.Inv s) (habs : Discharge.AbsInv s) (hexec : Discharge.ExecInv s)
+  (hpinv : Discharge.HostPinInv s) (hldm : Discharge.ldModeInv s) (hlp0 : Discharge.LandingP0 s)
+  (hls : Discharge.LandingStream s) (hlane : Discharge.laneInv s) (hcap : Discharge.CapInv s m)
+  (hshape : streamShapeInv s) (hX : StreamRelX s m) (tables : Tables) (hspacing : Discharge.host_sck_spacing s pin)
+  (h19 : ¬(s.arb.heldValid = true ∧ (hostCfgOf s).isSome = true)) (hwindow : Discharge.WindowWire.WindowQuiet s)
+  (hsize : m.cfg.img.size = Metronome.Machine.Util.cfgSize)
+  (hrelease :
+    runRst s pin = false → pin.rstn = true → Discharge.BankWire.MaskedZero (Metronome.Machine.cfgNext m.cfg m.cw)) :
+  ChipRel (step s pin) (Metronome.Machine.step m pin)
+Metronome.ChipCut.premises_of (s : State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn)
+  (hrel : ChipRel s m) (hinv : Metronome.ChipCut.Inv s) (habs : Discharge.AbsInv s) (hexec : Discharge.ExecInv s)
+  (hpinv : Discharge.HostPinInv s) (hldm : Discharge.ldModeInv s) (hlp0 : Discharge.LandingP0 s)
+  (hls : Discharge.LandingStream s) (hlane : Discharge.laneInv s) (hcap : Discharge.CapInv s m)
+  (hshape : streamShapeInv s) (hX : StreamRelX s m) (tables : Tables) (hspacing : Discharge.host_sck_spacing s pin)
+  (h19 : ¬(s.arb.heldValid = true ∧ (hostCfgOf s).isSome = true)) (hwindow : Discharge.WindowWire.WindowQuiet s)
+  (hsize : m.cfg.img.size = Metronome.Machine.Util.cfgSize) (hact : runRst s pin = true) : Premises s m pin
+Metronome.ChipCut.trace_premises_satisfiable (_tables : Tables) :
+  ∃ pins cont, InitialConditions cont ∧ ∀ (n : Nat), PinPremises (cutStateAt pins (resetState cont) n) (pins n)
+Metronome.ChipCut.trace_premises_satisfiable_active :
+  ∃ pins cont,
+    InitialConditions cont ∧
+      (∀ (n : Nat), PinPremises (cutStateAt pins (resetState cont) n) (pins n)) ∧
+        ∃ n,
+          runRst (cutStateAt pins (resetState cont) n) (pins n) = true ∧
+            (streamAt (cutStateAt pins (resetState cont) (n + 1)) 0).rq = true
+structure Metronome.ChipCut.Tables : Prop
+number of parameters: 0
+fields:
+  Metronome.ChipCut.Tables.srcTable : Metronome.Bridge.Glue.SrcTable
+  Metronome.ChipCut.Tables.guardTable : Metronome.Bridge.Glue.GuardTable
+  Metronome.ChipCut.Tables.jgTable : Discharge.MoveFabricKeyed.JGTable
+  Metronome.ChipCut.Tables.dstKind : Metronome.Bridge.Moves.DstKindTable
+  Metronome.ChipCut.Tables.dstPayload : Discharge.MoveFabric.DstPayloadTable
+  Metronome.ChipCut.Tables.dstFlagP0Cw : Discharge.MovePayloadWire.DstFlagP0CwTable
+  Metronome.ChipCut.Tables.dstPort : Discharge.MoveFabric.DstPortTable
+  Metronome.ChipCut.Tables.dstStreamLine : Discharge.MoveFabricKeyed.DstStreamLineTable
+constructor:
+  Metronome.ChipCut.Tables.mk (srcTable : Metronome.Bridge.Glue.SrcTable)
+    (guardTable : Metronome.Bridge.Glue.GuardTable) (jgTable : Discharge.MoveFabricKeyed.JGTable)
+    (dstKind : Metronome.Bridge.Moves.DstKindTable) (dstPayload : Discharge.MoveFabric.DstPayloadTable)
+    (dstFlagP0Cw : Discharge.MovePayloadWire.DstFlagP0CwTable) (dstPort : Discharge.MoveFabric.DstPortTable)
+    (dstStreamLine : Discharge.MoveFabricKeyed.DstStreamLineTable) : Tables
+structure Metronome.ChipCut.InitialConditions (cont : Contents) : Prop
+number of parameters: 1
+fields:
+  Metronome.ChipCut.InitialConditions.ramOwner : cont.ramOwner = 0
+  Metronome.ChipCut.InitialConditions.maskedZero : Discharge.BankWire.MaskedZero cont.cfg
+  Metronome.ChipCut.InitialConditions.cfgSize : cont.cfg.img.size = Metronome.Machine.Util.cfgSize
+constructor:
+  Metronome.ChipCut.InitialConditions.mk {cont : Contents} (ramOwner : cont.ramOwner = 0)
+    (maskedZero : Discharge.BankWire.MaskedZero cont.cfg)
+    (cfgSize : cont.cfg.img.size = Metronome.Machine.Util.cfgSize) : InitialConditions cont
+structure Metronome.ChipCut.PinPremises (s : State) (pin : Metronome.Machine.PinIn) : Prop
+number of parameters: 2
+fields:
+  Metronome.ChipCut.PinPremises.hostSckSpacing : Discharge.host_sck_spacing s pin
+  Metronome.ChipCut.PinPremises.streamModeQuiet : Discharge.stream_mode_quiet s pin
+constructor:
+  Metronome.ChipCut.PinPremises.mk {s : State} {pin : Metronome.Machine.PinIn}
+    (hostSckSpacing : Discharge.host_sck_spacing s pin) (streamModeQuiet : Discharge.stream_mode_quiet s pin) :
+    PinPremises s pin

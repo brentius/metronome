@@ -1,0 +1,348 @@
+lake build Metronome.ChipCut.Assembly | exit 0 | wall 18.17 s
+✔ [77/80] Built Metronome.ChipCut.Discharge.PremiseWire (4.6s)
+✔ [78/80] Built Metronome.ChipCut.Discharge.WindowWire (4.7s)
+✔ [79/80] Built Metronome.ChipCut.Discharge.CoreCombCbs (10s)
+✔ [80/80] Built Metronome.ChipCut.Assembly (6.7s)
+Build completed successfully (80 jobs).
+
+lake env lean -DwarningAsError=true C:\Users\b_yee23\AppData\Local\Temp/lean_final_idle.lean | exit 4294967295 | wall 148.55 s
+
+lake env lean -DwarningAsError=true C:\Users\b_yee23\AppData\Local\Temp/lean_final_pulse.lean | exit 4294967295 | wall 77.97 s
+
+lake env lean -DwarningAsError=true C:\Users\b_yee23\AppData\Local\Temp/lean_final_witness.lean | exit 1 | wall 2.55 s
+C:\Users\b_yee23\AppData\Local\Temp/lean_final_witness.lean:26:4: error: Tactic `rfl` failed: The left-hand side
+  SpiPins.sck (resetChip (idleState (n + 4)) (idlePins (n + 4))).sync
+is not definitionally equal to the right-hand side
+  false
+
+n✝ n : Nat
+⊢ SpiPins.sck (resetChip (idleState (n + 4)) (idlePins (n + 4))).sync = false
+C:\Users\b_yee23\AppData\Local\Temp/lean_final_witness.lean:38:38: error: Tactic `rfl` failed: The left-hand side
+  streamAt (idleState 4) ↑0
+is not definitionally equal to the right-hand side
+  Stream.resetState
+
+case inl
+n : Nat
+⊢ streamAt (idleState 4) ↑0 = Stream.resetState
+C:\Users\b_yee23\AppData\Local\Temp/lean_final_witness.lean:38:38: error: Tactic `rfl` failed: The left-hand side
+  streamAt (idleState 4) ↑1
+is not definitionally equal to the right-hand side
+  Stream.resetState
+
+case inr
+n : Nat
+⊢ streamAt (idleState 4) ↑1 = Stream.resetState
+
+lake env lean -DwarningAsError=true --run ../../../data/raw/lean_bridge_moves_v4_20261121b/decode_check.lean | exit 0 | wall 2.16 s
+machine dst kinds  (0 NULL, 1 L.SYM, 2 T.STOP, 3 other): [0, 1, 1, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0]
+cut dgTable codes (31 = none): [31, 0, 0, 0, 1, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 5, 6, 7, 8, 9, 8, 9, 10, 11, 12, 13, 14, 12, 13, 14, 12, 13, 14, 15, 16, 15, 15, 15, 15, 16, 16, 16, 16, 17, 17, 17, 17, 18, 19, 18, 19, 18, 19, 20, 21, 22, 23, 24, 25, 25, 25, 31, 31, 31]
+source classes: 33 -> 1 (1 = P0.D), 38 -> 2 (2 = HOST.IN)
+DECODE CHECK OK: 64 destination kinds, 64 destination groups, 2 source codes
+
+lake env lean -DwarningAsError=true --run ../../../data/raw/lean_chipcut_wire_movefabric_v4_20261121/decode_check_payload.lean | exit 0 | wall 2.05 s
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.acc: group 3, codes [7, 8, 9, 10, 11, 12, 13]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.flags: group 2, codes [5, 6]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.reg 0: group 4, codes [14]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.reg 1: group 5, codes [15]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.reg 2: group 6, codes [16]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.reg 3: group 7, codes [17]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.sh 0: group 8, codes [18, 20]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.sh 1: group 9, codes [19, 21]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.shCfg 0: group 10, codes [22]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.shCfg 1: group 11, codes [23]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.cnt 0: group 12, codes [24, 27, 30]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.cnt 1: group 13, codes [25, 28, 31]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.cnt 2: group 14, codes [26, 29, 32]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.lf 0: group 15, codes [33, 35, 36, 37, 38]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.lf 1: group 16, codes [34, 39, 40, 41, 42]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.p0: group 17, codes [43, 44, 45, 46]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.stream 0: group 18, codes [47, 49, 51]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.stream 1: group 19, codes [48, 50, 52]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.lCtl 0: group 20, codes [53]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.lCtl 1: group 21, codes [54]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.lCtl 2: group 22, codes [55]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.lCtl 3: group 23, codes [56]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.hostOut: group 24, codes [57]
+checked 23 families x 64 codes (+ nonkeyed + codeOf + accRange); failures = 0
+DstPayloadTable: OK (compiled evaluation)
+
+lake env lean -DwarningAsError=true --run ../../../data/raw/lean_chipcut_wire_movepayload_v4_20261122/decode_check_flagp0cw.lean | exit 0 | wall 1.94 s
+ok   fset  (d = 5)
+ok   fclr  (d = 6)
+ok   pAl   (d = 43)
+ok   pAh   (d = 44)
+ok   pW    (d = 45)
+ok   pR    (d = 46)
+ok   cwAl  (d = 58)
+ok   cwAh  (d = 59)
+ok   cwD   (d = 60)
+ok   cwGroup (CW codes)
+ok   cwGroupId (58/59/60 one non-keyed group)
+checked 64 codes, 11 rows, failures = 0
+
+lake env lean -DwarningAsError=true --run ../../../data/raw/lean_chipcut_wire_movefabric_units_v4_20261122/decode_check_ports.lean | exit 0 | wall 2.06 s
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.sh 0: group 8, codes [18, 20]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.sh 1: group 9, codes [19, 21]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.cnt 0: group 12, codes [24, 27, 30]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.cnt 1: group 13, codes [25, 28, 31]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.cnt 2: group 14, codes [26, 29, 32]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.lf 0: group 15, codes [33, 35, 36, 37, 38]
+fam Metronome.ChipCut.Discharge.MoveFabric.Fam.lf 1: group 16, codes [34, 39, 40, 41, 42]
+checked 20 (family, code) ports; failures = 0
+DstPortTable: OK (compiled evaluation)
+
+lake env lean -DwarningAsError=true --run ../../../data/raw/lean_chipcut_wire_movefabric_keyed_v4_20261122/decode_check_streamline.lean | exit 0 | wall 1.97 s
+decode_check_streamline: codes = 64, failures = 0
+bad codes = []
+
+lake env lean -DwarningAsError=true C:\Users\b_yee23\AppData\Local\Temp/lean_final_witness.lean | exit 1 | wall 2.48 s
+C:\Users\b_yee23\AppData\Local\Temp/lean_final_witness.lean:41:45: error: Application type mismatch: The argument
+  rfl
+has type
+  ?m.330 = ?m.330
+but is expected to have type
+  (streamAt (idleState 4) ↑0).rq = false
+in the application
+  And.intro rfl
+C:\Users\b_yee23\AppData\Local\Temp/lean_final_witness.lean:41:45: error: Application type mismatch: The argument
+  rfl
+has type
+  ?m.330 = ?m.330
+but is expected to have type
+  (streamAt (idleState 4) ↑1).rq = false
+in the application
+  And.intro rfl
+
+lake env lean -DwarningAsError=true C:\Users\b_yee23\AppData\Local\Temp/lean_final_witness.lean | exit 1 | wall 2.66 s
+C:\Users\b_yee23\AppData\Local\Temp/lean_final_witness.lean:43:50: error: unsolved goals
+n✝ : Nat
+k : Fin 2
+hk : k = 0 ∨ k = 1
+n : Nat
+hr : (idlePins (n + 4)).rstn = false
+⊢ (if k = 0 ∧ Debug.Ctrl.resetState.replay = true then 3
+    else
+      if k = 0 ∧ Debug.Ctrl.resetState.cen = true then 2
+      else if (Machine.cfgView Machine.Config.zero).streams[↑k].rx = true then 1 else 0) =
+    if k = 0 ∧ Debug.Ctrl.resetState.replay = true then 3
+    else
+      if k = 0 ∧ Debug.Ctrl.resetState.cen = true then 2
+      else if (Machine.cfgView Machine.Config.zero).streams[↑k].rx = true then 1 else 0
+
+lake env lean -DwarningAsError=true C:\Users\b_yee23\AppData\Local\Temp/lean_final_witness.lean | exit 0 | wall 2.78 s
+
+lake env lean -DwarningAsError=true --run ../../../data/raw/lean_chipcut_final_v4_20261122/check_tables.lean | exit 0 | wall 2.03 s
+SrcTable failures (codes 0..64): []
+GuardTable failures (codes 0..64): []
+JGTable failures (codes 0..32): []
+
+lake build Metronome.ChipCut.Assembly | exit 1 | wall 4.72 s
+✖ [80/80] Building Metronome.ChipCut.Assembly (4.3s)
+trace: .> LEAN_PATH=C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean c:\Users\b_yee23\.elan\toolchains\leanprover--lean4---v4.35.0\bin\lean.exe -DwarningAsError=true C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\Metronome\ChipCut\Assembly.lean -o C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean\Metronome\ChipCut\Assembly.olean -i C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean\Metronome\ChipCut\Assembly.ilean -c C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\ir\Metronome\ChipCut\Assembly.c --setup C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\ir\Metronome\ChipCut\Assembly.setup.json --json
+error: Metronome/ChipCut/Assembly.lean:1016:33: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+error: Metronome/ChipCut/Assembly.lean:1016:33: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+error: Metronome/ChipCut/Assembly.lean:1016:33: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+error: Metronome/ChipCut/Assembly.lean:1016:33: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+error: Metronome/ChipCut/Assembly.lean:1016:33: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+error: Metronome/ChipCut/Assembly.lean:1025:33: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+error: Metronome/ChipCut/Assembly.lean:1032:0: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+error: Metronome/ChipCut/Assembly.lean:1044:8: (kernel) unknown constant 'Metronome.ChipCut.trace_premises_satisfiable_active'
+Some required targets logged failures:
+- Metronome.ChipCut.Assembly
+error: build failed
+
+lake build Metronome.ChipCut.Assembly | exit 0 | wall 5.20 s
+✔ [80/80] Built Metronome.ChipCut.Assembly (4.7s)
+Build completed successfully (80 jobs).
+
+lake env lean -DwarningAsError=true ..\..\..\data\raw\lean_chipcut_final_v4_20261122\statements.lean | exit 0 | wall 1.88 s
+Metronome.ChipCut.trace_refines' (pins : Nat → Metronome.Machine.PinIn) (cont : Contents) (tables : Tables)
+  (initial : InitialConditions cont) (env : ∀ (n : Nat), PinPremises (cutStateAt pins (resetState cont) n) (pins n))
+  (n : Nat) : ChipRel (cutStateAt pins (resetState cont) n) (machineStateAt pins (absChip (resetState cont)) n)
+Metronome.ChipCut.trace_refines'_all (pins : Nat → Metronome.Machine.PinIn) (cont : Contents) (tables : Tables)
+  (initial : InitialConditions cont) (env : ∀ (n : Nat), PinPremises (cutStateAt pins (resetState cont) n) (pins n))
+  (n : Nat) :
+  ChipRel (cutStateAt pins (resetState cont) n) (machineStateAt pins (absChip (resetState cont)) n) ∧
+    Discharge.CapInv (cutStateAt pins (resetState cont) n) (machineStateAt pins (absChip (resetState cont)) n) ∧
+      StreamRelX (cutStateAt pins (resetState cont) n) (machineStateAt pins (absChip (resetState cont)) n)
+Metronome.ChipCut.chip_step_refines' (s : State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn)
+  (hrel : ChipRel s m) (hinv : Metronome.ChipCut.Inv s) (habs : Discharge.AbsInv s) (hexec : Discharge.ExecInv s)
+  (hpinv : Discharge.HostPinInv s) (hldm : Discharge.ldModeInv s) (hlp0 : Discharge.LandingP0 s)
+  (hls : Discharge.LandingStream s) (hlane : Discharge.laneInv s) (hcap : Discharge.CapInv s m)
+  (hshape : streamShapeInv s) (hX : StreamRelX s m) (tables : Tables) (hspacing : Discharge.host_sck_spacing s pin)
+  (h19 : ¬(s.arb.heldValid = true ∧ (hostCfgOf s).isSome = true)) (hwindow : Discharge.WindowWire.WindowQuiet s)
+  (hsize : m.cfg.img.size = Metronome.Machine.Util.cfgSize)
+  (hrelease :
+    runRst s pin = false → pin.rstn = true → Discharge.BankWire.MaskedZero (Metronome.Machine.cfgNext m.cfg m.cw)) :
+  ChipRel (step s pin) (Metronome.Machine.step m pin)
+Metronome.ChipCut.premises_of (s : State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn)
+  (hrel : ChipRel s m) (hinv : Metronome.ChipCut.Inv s) (habs : Discharge.AbsInv s) (hexec : Discharge.ExecInv s)
+  (hpinv : Discharge.HostPinInv s) (hldm : Discharge.ldModeInv s) (hlp0 : Discharge.LandingP0 s)
+  (hls : Discharge.LandingStream s) (hlane : Discharge.laneInv s) (hcap : Discharge.CapInv s m)
+  (hshape : streamShapeInv s) (hX : StreamRelX s m) (tables : Tables) (hspacing : Discharge.host_sck_spacing s pin)
+  (h19 : ¬(s.arb.heldValid = true ∧ (hostCfgOf s).isSome = true)) (hwindow : Discharge.WindowWire.WindowQuiet s)
+  (hsize : m.cfg.img.size = Metronome.Machine.Util.cfgSize) (hact : runRst s pin = true) : Premises s m pin
+Metronome.ChipCut.trace_premises_satisfiable (_tables : Tables) :
+  ∃ pins cont, InitialConditions cont ∧ ∀ (n : Nat), PinPremises (cutStateAt pins (resetState cont) n) (pins n)
+Metronome.ChipCut.trace_premises_satisfiable_active :
+  ∃ pins cont,
+    InitialConditions cont ∧
+      (∀ (n : Nat), PinPremises (cutStateAt pins (resetState cont) n) (pins n)) ∧
+        ∃ n,
+          runRst (cutStateAt pins (resetState cont) n) (pins n) = true ∧
+            (streamAt (cutStateAt pins (resetState cont) (n + 1)) 0).rq = true
+structure Metronome.ChipCut.Tables : Prop
+number of parameters: 0
+fields:
+  Metronome.ChipCut.Tables.srcTable : Metronome.Bridge.Glue.SrcTable
+  Metronome.ChipCut.Tables.guardTable : Metronome.Bridge.Glue.GuardTable
+  Metronome.ChipCut.Tables.jgTable : Discharge.MoveFabricKeyed.JGTable
+  Metronome.ChipCut.Tables.dstKind : Metronome.Bridge.Moves.DstKindTable
+  Metronome.ChipCut.Tables.dstPayload : Discharge.MoveFabric.DstPayloadTable
+  Metronome.ChipCut.Tables.dstFlagP0Cw : Discharge.MovePayloadWire.DstFlagP0CwTable
+  Metronome.ChipCut.Tables.dstPort : Discharge.MoveFabric.DstPortTable
+  Metronome.ChipCut.Tables.dstStreamLine : Discharge.MoveFabricKeyed.DstStreamLineTable
+constructor:
+  Metronome.ChipCut.Tables.mk (srcTable : Metronome.Bridge.Glue.SrcTable)
+    (guardTable : Metronome.Bridge.Glue.GuardTable) (jgTable : Discharge.MoveFabricKeyed.JGTable)
+    (dstKind : Metronome.Bridge.Moves.DstKindTable) (dstPayload : Discharge.MoveFabric.DstPayloadTable)
+    (dstFlagP0Cw : Discharge.MovePayloadWire.DstFlagP0CwTable) (dstPort : Discharge.MoveFabric.DstPortTable)
+    (dstStreamLine : Discharge.MoveFabricKeyed.DstStreamLineTable) : Tables
+structure Metronome.ChipCut.InitialConditions (cont : Contents) : Prop
+number of parameters: 1
+fields:
+  Metronome.ChipCut.InitialConditions.ramOwner : cont.ramOwner = 0
+  Metronome.ChipCut.InitialConditions.maskedZero : Discharge.BankWire.MaskedZero cont.cfg
+  Metronome.ChipCut.InitialConditions.cfgSize : cont.cfg.img.size = Metronome.Machine.Util.cfgSize
+constructor:
+  Metronome.ChipCut.InitialConditions.mk {cont : Contents} (ramOwner : cont.ramOwner = 0)
+    (maskedZero : Discharge.BankWire.MaskedZero cont.cfg)
+    (cfgSize : cont.cfg.img.size = Metronome.Machine.Util.cfgSize) : InitialConditions cont
+structure Metronome.ChipCut.PinPremises (s : State) (pin : Metronome.Machine.PinIn) : Prop
+number of parameters: 2
+fields:
+  Metronome.ChipCut.PinPremises.hostSckSpacing : Discharge.host_sck_spacing s pin
+  Metronome.ChipCut.PinPremises.streamModeQuiet : Discharge.stream_mode_quiet s pin
+constructor:
+  Metronome.ChipCut.PinPremises.mk {s : State} {pin : Metronome.Machine.PinIn}
+    (hostSckSpacing : Discharge.host_sck_spacing s pin) (streamModeQuiet : Discharge.stream_mode_quiet s pin) :
+    PinPremises s pin
+
+lake env lean -DwarningAsError=true ..\..\..\data\raw\lean_chipcut_final_v4_20261122\axioms.lean | exit 0 | wall 1.94 s
+'Metronome.ChipCut.trace_refines'' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.CoreCtl.makeWord_data._native.bv_decide.ax_1_5,
+ Metronome.CoreCtl.makeWord_dst._native.bv_decide.ax_1_5,
+ Metronome.CoreCtl.makeWord_we._native.bv_decide.ax_1_5,
+ Metronome.CoreQueue.pack_take._native.bv_decide.ax_1_9,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_12,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_17,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_22,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_7,
+ Metronome.HostCmd.ah_completion._native.bv_decide.ax_1_21,
+ Metronome.HostCmd.al_completion._native.bv_decide.ax_1_21,
+ Metronome.HostCmd.data_completion._native.bv_decide.ax_1_21,
+ Metronome.HostCmd.ign_holds._native.bv_decide.ax_1_21,
+ Metronome.HostCmd.tagged_step._native.bv_decide.ax_1_22,
+ Metronome.Mem.grants_exclusive._native.bv_decide.ax_1_15,
+ Metronome.Mem.grants_exclusive._native.bv_decide.ax_1_20,
+ Metronome.Mem.grants_exclusive._native.bv_decide.ax_1_25,
+ Metronome.Mem.grants_exclusive._native.bv_decide.ax_1_30,
+ Metronome.Mem.grants_exclusive._native.bv_decide.ax_1_35,
+ Metronome.Mem.reqNext_three._native.bv_decide.ax_1_10,
+ Metronome.Moves.beq_comm_5._native.bv_decide.ax_1_5,
+ Metronome.Moves.hitsMask_bit_0._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_1._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_2._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_3._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_4._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_5._native.bv_decide.ax_1_10,
+ Metronome.Moves.sameKey_comm._native.bv_decide.ax_1_6,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_14,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_19,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_24,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_29,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_34,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_9,
+ Metronome.Strobes.atMostOne_cases._native.bv_decide.ax_1_6,
+ Metronome.Strobes.dsteqMask_pick._native.bv_decide.ax_1_7,
+ Metronome.Strobes.hitsMask_atMostOne._native.bv_decide.ax_1_7,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_11,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_16,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_21,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_26,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_31,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_36,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_41,
+ Metronome.Bridge.AccB.rNext_bytes._native.bv_decide.ax_1_6,
+ Metronome.Bridge.CfgWrite.pack_eq_append._native.bv_decide.ax_1_5,
+ Metronome.Bridge.CfgWrite.wh_wd._native.bv_decide.ax_1_8,
+ Metronome.Bridge.CfgWrite.wl_wd._native.bv_decide.ax_1_8,
+ Metronome.Bridge.CfgWrite.wl_wh._native.bv_decide.ax_1_8,
+ Metronome.Bridge.CounterB.setByte_hi._native.bv_decide.ax_1_5,
+ Metronome.Bridge.CounterB.setByte_lo._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.pack4b_0._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.pack4b_1._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.pack4b_2._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.pack4b_3._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.slice48_24._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.slice48_8._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.slice64_16._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.slice64_24._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Glue.slice64_8._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Host.bv2_cases._native.bv_decide.ax_1_5,
+ Metronome.Bridge.LfsrB.setByte_p0._native.bv_decide.ax_1_5,
+ Metronome.Bridge.LfsrB.setByte_p1._native.bv_decide.ax_1_5,
+ Metronome.Bridge.LfsrB.setByte_p2._native.bv_decide.ax_1_5,
+ Metronome.Bridge.LfsrB.setByte_p3._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Line.and_one_bne_zero_16._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Line.and_one_bne_zero_3._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Line.and_one_bne_zero_32._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Line.missBits_disj._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Line.or3_as_pack3._native.bv_decide.ax_1_7,
+ Discharge.accR_pack._native.bv_decide.ax_1_5,
+ Discharge.and01_ne._native.bv_decide.ax_1_5,
+ Discharge.and80_ne._native.bv_decide.ax_1_5,
+ Discharge.comm_eq._native.bv_decide.ax_1_9,
+ Discharge.inData_bv._native.bv_decide.ax_1_5,
+ Discharge.pack4_eq._native.bv_decide.ax_1_6,
+ Discharge.pin_csn_eq._native.bv_decide.ax_1_5,
+ Discharge.pin_mosi_eq._native.bv_decide.ax_1_5,
+ Discharge.pin_sck_eq._native.bv_decide.ax_1_5,
+ Discharge.seg_eq._native.bv_decide.ax_1_9,
+ Discharge.stream_rqLd_step._native.bv_decide.ax_1_5,
+ Discharge.LineMoveWire.truncate_four_makeWord._native.bv_decide.ax_1_10,
+ Discharge.LineMoveWire.truncate_four_makeWord._native.bv_decide.ax_1_5,
+ Discharge.MoveFabric.slice_makeWord_0_4._native.bv_decide.ax_1_10,
+ Discharge.MoveFabric.slice_makeWord_0_4._native.bv_decide.ax_1_5,
+ Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_11,
+ Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_16,
+ Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_21,
+ Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_26,
+ Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_31,
+ Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_6,
+ Discharge.PremiseWire.pack6_slice._native.bv_decide.ax_1_12,
+ Discharge.PremiseWire.pack6_slice._native.bv_decide.ax_1_17,
+ Discharge.PremiseWire.pack6_slice._native.bv_decide.ax_1_22,
+ Discharge.PremiseWire.pack6_slice._native.bv_decide.ax_1_27,
+ Discharge.PremiseWire.pack6_slice._native.bv_decide.ax_1_32,
+ Discharge.PremiseWire.pack6_slice._native.bv_decide.ax_1_7]
+'Metronome.ChipCut.trace_premises_satisfiable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.trace_premises_satisfiable_active' depends on axioms: [propext, Classical.choice, Quot.sound]
+

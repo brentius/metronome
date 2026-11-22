@@ -1,0 +1,37 @@
+# Commands, exit codes, wall times (item 4P, evidence dir lean_bridge_v4_20261121c)
+
+Shell: PowerShell (Windows), `$env:PATH="$env:USERPROFILE/.elan/bin;$env:PATH"`, cwd
+`code/tests/lean` unless stated. Lean 4.35.0 (x86_64-w64-windows-gnu), lakefile
+`moreLeanArgs = ["-DwarningAsError=true"]`, core libs only (no Mathlib, no
+`native_decide`). Files: `Metronome/Bridge/Host.lean` (extended, 119 theorems),
+`Metronome/Bridge/CfgWrite.lean` (extended, 42 theorems). Nothing else touched
+(`git diff --quiet -- src` exits 0).
+
+| # | command | exit | wall |
+|---|---|---|---|
+| 1 | `lake build Metronome.Bridge.Host Metronome.Bridge.CfgWrite` (both `.olean`/`.ilean` removed first, so both modules recompile from scratch with `-DwarningAsError=true`) | 0 | 17.0 s |
+| 2 | `lake env lean Metronome/Bridge/Host.lean` (final file, single-file check) | 0 | 8.2 s |
+| 3 | `lake env lean Metronome/Bridge/CfgWrite.lean` (final file, single-file check) | 0 | 14.8 s |
+| 4 | `lake env lean data/raw/lean_bridge_v4_20261121c/scratch/Axioms.lean` -> `axioms.txt`: 170 `#print axioms` lines (127 `Metronome.Bridge.Host`, 43 `Metronome.Bridge.CfgWrite`; no `sorryAx`, no unknown identifiers) | 0 | 2.1 s |
+| 5 | `git diff --quiet -- src` (repo root; no RTL/machine-spec edits) | 0 | <1 s |
+| 6 | search `sorry` / `native_decide` in both files | matches only in docstrings ("No `sorry`, no `native_decide`", "kernel `decide`, no `native_decide`") | <1 s |
+| 7 | search `sorryAx` in `axioms.txt` | 0 matches | <1 s |
+| 8 | theorem-name set diff against the previous evidence dir `lean_bridge_v4_20261121b` | 0 pre-existing names missing, 39 theorems added | <1 s |
+
+Notes.
+
+* Command 1 recompiled the whole dependency chain (28 jobs) after the oleans were
+  removed; `Metronome.Bridge.Host` and `Metronome.Bridge.CfgWrite` build without
+  warnings under `-DwarningAsError=true`.
+* `axioms.txt` shows only `propext`, `Classical.choice` and `Quot.sound`, or no
+  axioms (e.g. `blockOk_all`, `ack_bridge`, `drain_bridge`, `rackv_witness`).
+  Theorems that go through the cut specs' `bv_decide` certificates carry those
+  certificate axioms as well (`linkRelR_step`: `HostCmd.ah_completion`,
+  `al_completion`, `data_completion`, `ign_holds`, `Bridge.Host.bv2_cases`;
+  `queue_fields_arb`/`cfg_compose_bridge`: `CoreQueue.pack_take` and this file's
+  existing `pack_eq_append`/`wl_wd`/`wh_wd`/`wl_wh`).  These are inherited from
+  the pre-existing cut proofs; the new proofs introduce no `bv_decide` and no
+  `native_decide`.  The one kernel computation in the additions is
+  `blockOk_all := by decide` (a finite check of the block table).
+* Scratch files (probes, generated axioms file, per-run logs) are in
+  `data/raw/lean_bridge_v4_20261121c/scratch/`.

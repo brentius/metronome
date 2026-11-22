@@ -1,0 +1,15 @@
+Metronome.BankEquivalence.any_enable_spec: propext, Quot.sound
+Metronome.BankEquivalence.enableAt_spec: propext, Classical.choice, Quot.sound
+Metronome.BankEquivalence.liveAt_addrOf: propext, Classical.choice, Quot.sound
+Metronome.BankEquivalence.liveBytes_getLsb: propext
+Metronome.BankEquivalence.enableAt_eq_gateOpen: propext, Classical.choice, Quot.sound
+Metronome.BankEquivalence.enableAt_hole: propext, Classical.choice, Quot.sound
+Metronome.BankEquivalence.rtl_gates_exclusive: propext, Classical.choice, Quot.sound
+Metronome.BankEquivalence.bank_step_read: propext, Classical.choice, Quot.sound
+Metronome.BankEquivalence.bank_write_exact_all: propext, Classical.choice, Quot.sound
+Metronome.BankEquivalence.bank_write_others_all: propext, Classical.choice, Quot.sound
+Metronome.BankEquivalence.witness_live_mask: propext
+Metronome.BankEquivalence.witness_hole_mask: propext
+Metronome.BankEquivalence.witness_gate_open: propext, Classical.choice, Quot.sound
+Metronome.BankEquivalence.witness_hole_closed: propext, Classical.choice, Quot.sound
+Metronome.BankEquivalence.bank_hole_noop: propext, Classical.choice, Quot.sound

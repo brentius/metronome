@@ -1,0 +1,1102 @@
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.false.false.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.false.false.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.false.true.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.false.true.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.true.false.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.true.false.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.true.true.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.true.true.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.false.false.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.false.false.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.false.true.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.false.true.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.true.false.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.true.false.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.true.true.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.true.true.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.false.false.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.false.false.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.false.true.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.false.true.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.true.false.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.true.false.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.true.true.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.true.true.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.false.false.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.false.false.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.false.true.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.false.true.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.true.false.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.true.false.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.true.true.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.true.true.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.false.false.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.false.false.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.false.true.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.false.true.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.true.false.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.true.false.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.true.true.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.true.true.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.false.false.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.false.true.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.false.true.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.true.false.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.true.false.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.true.true.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.true.true.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.false.false.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.false.false.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.false.true.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.false.true.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.true.false.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.true.false.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.true.true.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.true.true.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: The left-hand side
+  st
+is not definitionally equal to the right-hand side
+  3#3
+
+case neg.true.true.false.false.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : ¬st = 3
+⊢ st = 3#3
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.false.false.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.false.true.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.false.true.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.true.false.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.true.false.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.true.true.false
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.true.true.true
+wr : Bool
+bitc st : BitVec 3
+count : bitc = 7
+guest : ¬st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.false.false.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.false.false.true
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.false.true.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.false.true.true
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.true.false.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.true.false.true
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.true.true.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.true.true.true
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.false.false.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.false.false.true
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.false.true.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.false.true.true
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.true.false.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.true.false.true
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.true.true.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.true.true.true.true
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.false.false.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.false.false.true
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.false.true.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.false.true.true
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.true.false.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.true.false.true
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.true.true.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.false.true.true.true
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.false.false.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.false.false.true
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.false.true.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.false.true.true
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.true.false.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.true.false.true
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.true.true.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case neg.true.true.true.true.true
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : st = 6
+data : ¬st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.false.false.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.false.false.true
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.false.true.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.false.true.true
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case pos.true.false.true.false.false
+wr : Bool
+bitc st : BitVec 3
+count : ¬bitc = 7
+guest : ¬st = 6
+data : st = 3
+⊢ False
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yz35l5dr\host_gate\HostProof.lean:45:67: error: maximum number of errors (100; from option `maxErrors`) reached, exiting

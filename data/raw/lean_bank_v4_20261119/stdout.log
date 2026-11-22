@@ -1,0 +1,8 @@
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Build completed successfully (2 jobs).
+baseline: accepted (284/480 live bytes, 2112 latch bits)
+bank_wrong_addr: rejected (generated Lean: rejected by Lean (exit 1): 208:2: error: The prover found a counterexample, consider the following assignment:)
+bank_addr_bit: rejected (generated Lean: rejected by Lean (exit 1): 47:2: error: The prover found a counterexample, consider the following assignment:)
+bank_no_we1: rejected (structural check: u_cfg: byte 0 gate is not an AND enable)
+bank_we1_polarity: rejected (structural check: u_cfg: byte 0 gate is not enabled by we1)

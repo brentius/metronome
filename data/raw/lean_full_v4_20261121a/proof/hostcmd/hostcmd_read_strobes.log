@@ -1,0 +1,157 @@
+RTL snapshot SHA-256: 234c4ebb721254a481f3581e460f4251c54e03620dff0127e78b90f43e2e5642
+Yosys command: read_verilog -I src src/cells_behav.v src/md2_acc.v src/md2_cfg_bank.v src/md2_core.v src/md2_counter.v src/md2_dmem.v src/md2_host.v src/md2_lfsr.v src/md2_line.v src/md2_mem.v src/md2_pmem.v src/md2_shifter.v src/md2_sram_bb.v src/md2_stream.v src/md2_thread.v src/project.v; hierarchy -check -top tt_um_brentius_metronome; proc; opt_clean; write_json design.json
+Warning: Latch inferred for signal `\cfg_lgcp_beh.\int_gate' from process `\cfg_lgcp_beh.$src/cells_behav.v:23$proc$3': $auto$proc_dlatch.cc:559:proc_dlatch$13761
+Warning: Latch inferred for signal `\cfg_dlhrq_beh.\Q' from process `\cfg_dlhrq_beh.$src/cells_behav.v:15$proc$1': $auto$proc_dlatch.cc:555:proc_dlatch$13782
+Host cut: 9 registers extracted, command-byte history variable uses 6 RTL gates
+C:\Users\b_yee23\AppData\Local\Temp\metronome-hostcmd-hostcmd_read_strobes-n5lpodmq\HostCmdProof.lean:138:2: error: The prover found a potentially spurious counterexample:
+- It abstracted the following unsupported expressions as opaque variables:
+  - state.isRd
+  - input.sck
+  - input.resetN
+  - input.csN
+  - input.sckPrev
+  - state.phase
+  - state.bitc
+Consider the following assignment:
+input.resetN = true
+input.csN = false
+input.sck = true
+input.sckPrev = false
+state.bitc = 7#3
+state.phase = 3#3
+state.isRd = true
+'Metronome.HostCmd.rtlWr' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.HostCmd.rtlAddr' depends on axioms: [propext, Classical.choice, Quot.sound, rtlAddr._native.bv_decide.ax_1_6]
+'Metronome.HostCmd.rtlStep_eq_step' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlAddr._native.bv_decide.ax_1_6,
+ rtlIsRd._native.bv_decide.ax_1_6,
+ rtlPhase._native.bv_decide.ax_1_6,
+ rtlRd._native.bv_decide.ax_1_6,
+ rtlRx._native.bv_decide.ax_1_6,
+ rtlWdata._native.bv_decide.ax_1_6]
+'Metronome.HostCmd.rtlStateAt_eq' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlAddr._native.bv_decide.ax_1_6,
+ rtlIsRd._native.bv_decide.ax_1_6,
+ rtlPhase._native.bv_decide.ax_1_6,
+ rtlRd._native.bv_decide.ax_1_6,
+ rtlRx._native.bv_decide.ax_1_6,
+ rtlWdata._native.bv_decide.ax_1_6]
+'Metronome.HostCmd.rtl_trace_wr_cmd' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlAddr._native.bv_decide.ax_1_6,
+ rtlIsRd._native.bv_decide.ax_1_6,
+ rtlPhase._native.bv_decide.ax_1_6,
+ rtlRd._native.bv_decide.ax_1_6,
+ rtlRx._native.bv_decide.ax_1_6,
+ rtlWdata._native.bv_decide.ax_1_6,
+ tagged_step._native.bv_decide.ax_1_22,
+ trace_wr_cmd._native.bv_decide.ax_1_22]
+'Metronome.HostCmd.rtl_trace_next_data_strobe' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ midByte_complete._native.bv_decide.ax_1_21,
+ midByte_step._native.bv_decide.ax_1_22,
+ rtlAddr._native.bv_decide.ax_1_6,
+ rtlIsRd._native.bv_decide.ax_1_6,
+ rtlPhase._native.bv_decide.ax_1_6,
+ rtlRd._native.bv_decide.ax_1_6,
+ rtlRx._native.bv_decide.ax_1_6,
+ rtlWdata._native.bv_decide.ax_1_6,
+ strobe_enters_midByte._native.bv_decide.ax_1_22]
+'Metronome.HostCmd.rtl_al_enters_byteStart' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ al_enters_byteStart._native.bv_decide.ax_1_22,
+ rtlAddr._native.bv_decide.ax_1_6,
+ rtlIsRd._native.bv_decide.ax_1_6,
+ rtlPhase._native.bv_decide.ax_1_6,
+ rtlRd._native.bv_decide.ax_1_6,
+ rtlRx._native.bv_decide.ax_1_6,
+ rtlWdata._native.bv_decide.ax_1_6]
+'Metronome.HostCmd.rtl_first_data_strobe' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ byteStart_enter._native.bv_decide.ax_1_22,
+ midByte_complete._native.bv_decide.ax_1_21,
+ midByte_step._native.bv_decide.ax_1_22,
+ rtlAddr._native.bv_decide.ax_1_6,
+ rtlIsRd._native.bv_decide.ax_1_6,
+ rtlPhase._native.bv_decide.ax_1_6,
+ rtlRd._native.bv_decide.ax_1_6,
+ rtlRx._native.bv_decide.ax_1_6,
+ rtlWdata._native.bv_decide.ax_1_6]
+'Metronome.HostCmd.rtl_data_strobe_index' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ byteStart_enter._native.bv_decide.ax_1_22,
+ midByte_complete._native.bv_decide.ax_1_21,
+ midByte_step._native.bv_decide.ax_1_22,
+ rtlAddr._native.bv_decide.ax_1_6,
+ rtlIsRd._native.bv_decide.ax_1_6,
+ rtlPhase._native.bv_decide.ax_1_6,
+ rtlRd._native.bv_decide.ax_1_6,
+ rtlRx._native.bv_decide.ax_1_6,
+ rtlWdata._native.bv_decide.ax_1_6,
+ strobe_enters_midByte._native.bv_decide.ax_1_22]
+'Metronome.HostCmd.rtl_trace_al_burst_index' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ al_enters_byteStart._native.bv_decide.ax_1_22,
+ byteStart_enter._native.bv_decide.ax_1_22,
+ midByte_complete._native.bv_decide.ax_1_21,
+ midByte_step._native.bv_decide.ax_1_22,
+ rtlAddr._native.bv_decide.ax_1_6,
+ rtlIsRd._native.bv_decide.ax_1_6,
+ rtlPhase._native.bv_decide.ax_1_6,
+ rtlRd._native.bv_decide.ax_1_6,
+ rtlRx._native.bv_decide.ax_1_6,
+ rtlWdata._native.bv_decide.ax_1_6,
+ strobe_enters_midByte._native.bv_decide.ax_1_22]
+'Metronome.HostCmd.rtl_host_stateAt' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlAddr._native.bv_decide.ax_1_6,
+ rtlIsRd._native.bv_decide.ax_1_6,
+ rtlPhase._native.bv_decide.ax_1_6,
+ rtlRd._native.bv_decide.ax_1_6,
+ rtlRx._native.bv_decide.ax_1_6,
+ rtlWdata._native.bv_decide.ax_1_6,
+ wrNext_eq_host._native.bv_decide.ax_1_8]
+'Metronome.HostCmd.rtl_spaced_of_hostcmd' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlAddr._native.bv_decide.ax_1_6,
+ rtlIsRd._native.bv_decide.ax_1_6,
+ rtlPhase._native.bv_decide.ax_1_6,
+ rtlRd._native.bv_decide.ax_1_6,
+ rtlRx._native.bv_decide.ax_1_6,
+ rtlWdata._native.bv_decide.ax_1_6,
+ wrNext_eq_host._native.bv_decide.ax_1_8]
+'Metronome.HostCmd.rtl_config_host_service_from_hostcmd' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlAddr._native.bv_decide.ax_1_6,
+ rtlIsRd._native.bv_decide.ax_1_6,
+ rtlPhase._native.bv_decide.ax_1_6,
+ rtlRd._native.bv_decide.ax_1_6,
+ rtlRx._native.bv_decide.ax_1_6,
+ rtlWdata._native.bv_decide.ax_1_6,
+ wrNext_eq_host._native.bv_decide.ax_1_8]
+'Metronome.HostCmd.rtl_cmd_premise_witness' depends on axioms: [propext, Quot.sound]
+-- hostcmd_read_strobes: rejected by Lean (exit 1)

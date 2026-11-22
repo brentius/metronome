@@ -1,0 +1,319 @@
+namespace Metronome.Units.Counter
+
+set_option linter.unusedSimpArgs false
+
+/-! ## The extracted transition is the specification -/
+
+/-- The extracted counter value is the specification's. -/
+theorem rtlV (state : State) (input : Input) :
+    (rtlStep state input).v = (step state input).v := by
+  simp only [rtlStep, step, vNext, loadLow, loadHigh, decrement]
+  bv_decide
+
+/-- The extracted `Z` output is `V == 0`. -/
+theorem rtlZ_eq_spec (state : State) : rtlZ state = zOut state := by
+  simp only [rtlZ, zOut]
+  bv_decide
+
+/-- The extracted counter transition equals the SPEC v1 §6.1 counter for every
+state and input. -/
+theorem rtlStep_eq_step (state : State) (input : Input) :
+    rtlStep state input = step state input := by
+  simp only [rtlStep, step, vNext, loadLow, loadHigh, decrement, State.mk.injEq]
+  exact rtlV state input
+
+/-! ## The elaborated port-code decode -/
+
+/-- The elaborated `LO`/`HI`/`DEC` priority mux is the documented code map. -/
+theorem rtlSel0_eq_spec (opLo opHi : Bool) :
+    rtlSel0 opLo opHi = selOf opLo opHi := by
+  simp only [rtlSel0, selOf]
+  bv_decide
+
+theorem rtlSel1_eq_spec (opLo opHi : Bool) :
+    rtlSel1 opLo opHi = selOf opLo opHi := by
+  simp only [rtlSel1, selOf]
+  bv_decide
+
+theorem rtlSel2_eq_spec (opLo opHi : Bool) :
+    rtlSel2 opLo opHi = selOf opLo opHi := by
+  simp only [rtlSel2, selOf]
+  bv_decide
+
+/-! ## Trace lifting -/
+
+def rtlStateAt (inputs : Nat → Input) (initial : State) (n : Nat) : State :=
+  run (fun state input => rtlStep state input) inputs initial n
+
+theorem rtlStateAt_eq (inputs : Nat → Input) (initial : State) (n : Nat) :
+    rtlStateAt inputs initial n = stateAt inputs initial n :=
+  run_congr (fun state input => rtlStep_eq_step state input) inputs initial n
+
+theorem rtl_trace_result (inputs : Nat → Input) (initial : State) (n : Nat) :
+    rtlStep (rtlStateAt inputs initial n) (inputs n) =
+      step (stateAt inputs initial n) (inputs n) := by
+  rw [rtlStateAt_eq, rtlStep_eq_step]
+
+#print axioms rtlV
+#print axioms rtlZ_eq_spec
+#print axioms rtlStep_eq_step
+#print axioms rtlSel0_eq_spec
+#print axioms rtlStateAt_eq
+
+end Metronome.Units.Counter
+
+namespace Metronome.Units.Shifter
+
+set_option linter.unusedSimpArgs false
+
+/-! ## The extracted transition is the specification -/
+
+theorem rtlDr (state : State) (input : Input) :
+    (rtlStep state input).dr = (step state input).dr := by
+  simp only [rtlStep, step, drNext, shifted, bitAt]
+  bv_decide
+
+theorem rtlCnt (state : State) (input : Input) :
+    (rtlStep state input).cnt = (step state input).cnt := by
+  simp only [rtlStep, step, cntNext, loadCount, shiftCount]
+  bv_decide
+
+theorem rtlLen (state : State) (input : Input) :
+    (rtlStep state input).len = (step state input).len := by
+  simp only [rtlStep, step, lenNext, slice]
+  bv_decide
+
+theorem rtlMsb (state : State) (input : Input) :
+    (rtlStep state input).msb = (step state input).msb := by
+  simp only [rtlStep, step, msbNext, bitAt]
+  bv_decide
+
+/-- The extracted `O` output is `MSB ? D[7] : D[0]`. -/
+theorem rtlO_eq_spec (state : State) : rtlO state = out state := by
+  simp only [rtlO, out, bitAt]
+  bv_decide
+
+/-- The extracted `DONE` output is `CNT == 0`. -/
+theorem rtlDone_eq_spec (state : State) : rtlDone state = done state := by
+  simp only [rtlDone, done]
+  bv_decide
+
+/-- The extracted shifter transition equals the SPEC v1 §6.1 shifter for every
+state and input: `D`, `CNT`, `LEN` and `MSB`. -/
+theorem rtlStep_eq_step (state : State) (input : Input) :
+    rtlStep state input = step state input := by
+  simp only [rtlStep, step, drNext, cntNext, lenNext, msbNext, shifted, loadCount,
+    shiftCount, slice, bitAt, State.mk.injEq]
+  exact ⟨rtlDr state input, rtlCnt state input, rtlLen state input,
+    rtlMsb state input⟩
+
+/-! ## Trace lifting -/
+
+def rtlStateAt (inputs : Nat → Input) (initial : State) (n : Nat) : State :=
+  run (fun state input => rtlStep state input) inputs initial n
+
+theorem rtlStateAt_eq (inputs : Nat → Input) (initial : State) (n : Nat) :
+    rtlStateAt inputs initial n = stateAt inputs initial n :=
+  run_congr (fun state input => rtlStep_eq_step state input) inputs initial n
+
+theorem rtl_trace_result (inputs : Nat → Input) (initial : State) (n : Nat) :
+    rtlStep (rtlStateAt inputs initial n) (inputs n) =
+      step (stateAt inputs initial n) (inputs n) := by
+  rw [rtlStateAt_eq, rtlStep_eq_step]
+
+#print axioms rtlDr
+#print axioms rtlCnt
+#print axioms rtlLen
+#print axioms rtlMsb
+#print axioms rtlO_eq_spec
+#print axioms rtlDone_eq_spec
+#print axioms rtlStep_eq_step
+#print axioms rtlStateAt_eq
+
+end Metronome.Units.Shifter
+
+namespace Metronome.Units.Lfsr
+
+set_option linter.unusedSimpArgs false
+
+/-! ## The extracted transition is the specification -/
+
+/-- The extracted LFSR state is the SPEC v1 §6.1 `ST`/`B0..B3` equation for
+every state and input. -/
+theorem rtlS (state : State) (input : Input) :
+    (rtlStep state input).s = (step state input).s := by
+  simp only [rtlStep, step, sNext, stepBit, feedback, loadByte0, loadByte1,
+    loadByte2, loadByte3, bitAt]
+  bv_decide
+
+theorem rtlStep_eq_step (state : State) (input : Input) :
+    rtlStep state input = step state input := by
+  simp only [rtlStep, step, sNext, stepBit, feedback, loadByte0, loadByte1,
+    loadByte2, loadByte3, bitAt, State.mk.injEq]
+  exact rtlS state input
+
+/-- The elaborated `ST`/`B0..B3` priority mux is the documented code map. -/
+theorem rtlSel0_eq_spec (opSt opB0 opB1 opB2 : Bool) :
+    rtlSel0 opSt opB0 opB1 opB2 = selOf opSt opB0 opB1 opB2 := by
+  simp only [rtlSel0, selOf]
+  bv_decide
+
+theorem rtlSel1_eq_spec (opSt opB0 opB1 opB2 : Bool) :
+    rtlSel1 opSt opB0 opB1 opB2 = selOf opSt opB0 opB1 opB2 := by
+  simp only [rtlSel1, selOf]
+  bv_decide
+
+/-! ## Trace lifting -/
+
+def rtlStateAt (inputs : Nat → Input) (initial : State) (n : Nat) : State :=
+  run (fun state input => rtlStep state input) inputs initial n
+
+theorem rtlStateAt_eq (inputs : Nat → Input) (initial : State) (n : Nat) :
+    rtlStateAt inputs initial n = stateAt inputs initial n :=
+  run_congr (fun state input => rtlStep_eq_step state input) inputs initial n
+
+theorem rtl_trace_result (inputs : Nat → Input) (initial : State) (n : Nat) :
+    rtlStep (rtlStateAt inputs initial n) (inputs n) =
+      step (stateAt inputs initial n) (inputs n) := by
+  rw [rtlStateAt_eq, rtlStep_eq_step]
+
+#print axioms rtlS
+#print axioms rtlStep_eq_step
+#print axioms rtlSel0_eq_spec
+#print axioms rtlStateAt_eq
+
+end Metronome.Units.Lfsr
+
+namespace Metronome.Units.Acc
+
+set_option linter.unusedSimpArgs false
+
+/-! ## The extracted transition is the specification -/
+
+theorem rtlA (state : State) (input : Input)
+    (h : OneHotOrZero input.hit) :
+    (rtlStep state input).a = (step state input).a := by
+  rcases state with ⟨a, z, c, n, r⟩
+  rcases input with ⟨resetN, hit, sel, d, rWe, rD⟩
+  simp only [OneHotOrZero] at h
+  simp only [rtlStep, step, aNext, winnerWa, winnerRes, aluWa, aluRes, opSel, opData, slice, bitAt]
+  cases resetN <;> cases z <;> cases c <;> cases n <;> bv_decide
+
+theorem rtlZ (state : State) (input : Input)
+    (h : OneHotOrZero input.hit) :
+    (rtlStep state input).z = (step state input).z := by
+  rcases state with ⟨a, z, c, n, r⟩
+  rcases input with ⟨resetN, hit, sel, d, rWe, rD⟩
+  simp only [OneHotOrZero] at h
+  simp only [rtlStep, step, zNext, winnerZ, aluZ, opSel, opData, slice, bitAt]
+  cases resetN <;> cases z <;> cases c <;> cases n <;> bv_decide
+
+theorem rtlC (state : State) (input : Input)
+    (h : OneHotOrZero input.hit) :
+    (rtlStep state input).c = (step state input).c := by
+  rcases state with ⟨a, z, c, n, r⟩
+  rcases input with ⟨resetN, hit, sel, d, rWe, rD⟩
+  simp only [OneHotOrZero] at h
+  simp only [rtlStep, step, cNext, winnerWc, winnerCy, aluWc, aluCy, opSel, opData, slice, bitAt]
+  cases resetN <;> cases z <;> cases c <;> cases n <;> bv_decide
+
+theorem rtlN (state : State) (input : Input)
+    (h : OneHotOrZero input.hit) :
+    (rtlStep state input).n = (step state input).n := by
+  rcases state with ⟨a, z, c, n, r⟩
+  rcases input with ⟨resetN, hit, sel, d, rWe, rD⟩
+  simp only [OneHotOrZero] at h
+  simp only [rtlStep, step, nNext, winnerN, aluN, opSel, opData, slice, bitAt]
+  cases resetN <;> cases z <;> cases c <;> cases n <;> bv_decide
+
+theorem rtlR (state : State) (input : Input) :
+    (rtlStep state input).r = (step state input).r := by
+  rcases state with ⟨a, z, c, n, r⟩
+  rcases input with ⟨resetN, hit, sel, d, rWe, rD⟩
+  simp only [rtlStep, step, rNext, bitAt]
+  cases resetN <;> bv_decide
+
+/-- The extracted accumulator transition equals the SPEC v1 §6.1 accumulator for
+every state and input: the one hit slot's op and data, with `CMP` leaving `A`
+and the four scratch groups independent. -/
+theorem rtlStep_eq_step (state : State) (input : Input)
+    (h : OneHotOrZero input.hit) :
+    rtlStep state input = step state input := by
+  simp only [rtlStep, step, State.mk.injEq]
+  exact ⟨rtlA state input h, rtlZ state input h, rtlC state input h,
+    rtlN state input h, rtlR state input⟩
+
+/-! ## The elaborated destination decode -/
+
+/-- Slot `m`'s elaborated `case` implements the documented destination-code map. -/
+theorem rtlSel0_eq_spec (cDst : BitVec 36) :
+    rtlSel0 cDst = opCodeOf (slice cDst 0 6) := by
+  simp only [rtlSel0, opCodeOf, slice]
+  bv_decide
+
+theorem rtlSel1_eq_spec (cDst : BitVec 36) :
+    rtlSel1 cDst = opCodeOf (slice cDst 6 6) := by
+  simp only [rtlSel1, opCodeOf, slice]
+  bv_decide
+
+theorem rtlSel2_eq_spec (cDst : BitVec 36) :
+    rtlSel2 cDst = opCodeOf (slice cDst 12 6) := by
+  simp only [rtlSel2, opCodeOf, slice]
+  bv_decide
+
+theorem rtlSel3_eq_spec (cDst : BitVec 36) :
+    rtlSel3 cDst = opCodeOf (slice cDst 18 6) := by
+  simp only [rtlSel3, opCodeOf, slice]
+  bv_decide
+
+theorem rtlSel4_eq_spec (cDst : BitVec 36) :
+    rtlSel4 cDst = opCodeOf (slice cDst 24 6) := by
+  simp only [rtlSel4, opCodeOf, slice]
+  bv_decide
+
+theorem rtlSel5_eq_spec (cDst : BitVec 36) :
+    rtlSel5 cDst = opCodeOf (slice cDst 30 6) := by
+  simp only [rtlSel5, opCodeOf, slice]
+  bv_decide
+
+/-! ## Trace lifting -/
+
+def rtlStateAt (inputs : Nat → Input) (initial : State) (n : Nat) : State :=
+  run (fun state input => rtlStep state input) inputs initial n
+
+/-- Every sampled cycle must respect the write-group contract. -/
+theorem rtlStateAt_eq (inputs : Nat → Input) (initial : State)
+    (h : ∀ n, OneHotOrZero (inputs n).hit) (n : Nat) :
+    rtlStateAt inputs initial n = stateAt inputs initial n := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+    rw [show rtlStateAt inputs initial (n + 1) =
+          rtlStep (rtlStateAt inputs initial n) (inputs n) from rfl,
+        show stateAt inputs initial (n + 1) =
+          step (stateAt inputs initial n) (inputs n) from rfl,
+        ih, rtlStep_eq_step _ _ (h n)]
+
+theorem rtl_trace_result (inputs : Nat → Input) (initial : State)
+    (h : ∀ n, OneHotOrZero (inputs n).hit) (n : Nat) :
+    rtlStep (rtlStateAt inputs initial n) (inputs n) =
+      step (stateAt inputs initial n) (inputs n) := by
+  rw [rtlStateAt_eq inputs initial h n, rtlStep_eq_step _ _ (h n)]
+
+#print axioms rtlA
+#print axioms rtlZ
+#print axioms rtlC
+#print axioms rtlN
+#print axioms rtlR
+#print axioms rtlStep_eq_step
+#print axioms rtlSel0_eq_spec
+#print axioms rtlStateAt_eq
+#print axioms Metronome.Units.Acc.slotsPacked_eq_winner
+#print axioms Metronome.Units.Acc.unpack_pack
+
+end Metronome.Units.Acc
+
+#print axioms Metronome.Units.Counter.rtlStep_eq_step
+#print axioms Metronome.Units.Shifter.rtlStep_eq_step
+#print axioms Metronome.Units.Lfsr.rtlStep_eq_step
+#print axioms Metronome.Units.Acc.rtlStep_eq_step

@@ -1,0 +1,14 @@
+Metronome.SpiPins.rtlS1: propext, Classical.choice, Quot.sound, rtlS1._native.bv_decide.ax_1_6
+Metronome.SpiPins.rtlS2: propext, Quot.sound
+Metronome.SpiPins.rtlSp: propext, Quot.sound
+Metronome.SpiPins.rtlStep_eq_step: propext, Classical.choice, Quot.sound, rtlS1._native.bv_decide.ax_1_6
+Metronome.SpiPins.hostSck_eq: propext, Classical.choice, Quot.sound, hostSck_eq._native.bv_decide.ax_1_5
+Metronome.SpiPins.hostSckPrev_eq: propext, Classical.choice, Quot.sound, hostSckPrev_eq._native.bv_decide.ax_1_5
+Metronome.SpiPins.hostCsN_eq: propext, Classical.choice, Quot.sound, hostCsN_eq._native.bv_decide.ax_1_5
+Metronome.SpiPins.hostMosi_eq: propext, Classical.choice, Quot.sound, hostMosi_eq._native.bv_decide.ax_1_5
+Metronome.SpiPins.hostWord_eq: propext, Classical.choice, Quot.sound, hostCsN_eq._native.bv_decide.ax_1_5, hostMosi_eq._native.bv_decide.ax_1_5, hostSckPrev_eq._native.bv_decide.ax_1_5, hostSck_eq._native.bv_decide.ax_1_5
+Metronome.SpiPins.rtlSyncAt_eq: propext, Classical.choice, Quot.sound, rtlS1._native.bv_decide.ax_1_6
+Metronome.SpiPins.rtlHostInputs_eq: propext, Classical.choice, Quot.sound, hostCsN_eq._native.bv_decide.ax_1_5, hostMosi_eq._native.bv_decide.ax_1_5, hostSckPrev_eq._native.bv_decide.ax_1_5, hostSck_eq._native.bv_decide.ax_1_5, rtlS1._native.bv_decide.ax_1_6
+Metronome.SpiPins.rtl_sr_pins: propext, Classical.choice, Quot.sound, hostCsN_eq._native.bv_decide.ax_1_5, hostMosi_eq._native.bv_decide.ax_1_5, hostSckPrev_eq._native.bv_decide.ax_1_5, hostSck_eq._native.bv_decide.ax_1_5, rtlS1._native.bv_decide.ax_1_6
+Metronome.SpiPins.rtl_stateAt_eq: propext, Classical.choice, Quot.sound, hostCsN_eq._native.bv_decide.ax_1_5, hostMosi_eq._native.bv_decide.ax_1_5, hostSckPrev_eq._native.bv_decide.ax_1_5, hostSck_eq._native.bv_decide.ax_1_5, rtlS1._native.bv_decide.ax_1_6
+Metronome.SpiPins.rtl_transaction_strobes: propext, Classical.choice, Quot.sound, byte8_bits._native.bv_decide.ax_1_5, hostCsN_eq._native.bv_decide.ax_1_5, hostMosi_eq._native.bv_decide.ax_1_5, hostSckPrev_eq._native.bv_decide.ax_1_5, hostSck_eq._native.bv_decide.ax_1_5, pack7_shifted_out._native.bv_decide.ax_1_5, prog_complete_ah._native.bv_decide.ax_1_6, prog_complete_al._native.bv_decide.ax_1_6, prog_complete_cmd._native.bv_decide.ax_1_6, prog_complete_data._native.bv_decide.ax_1_6, prog_edge._native.bv_decide.ax_1_6, rtlS1._native.bv_decide.ax_1_6

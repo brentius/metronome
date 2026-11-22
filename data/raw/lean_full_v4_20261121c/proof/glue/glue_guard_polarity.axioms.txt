@@ -1,0 +1,187 @@
+Metronome.Glue.rtlSrc0_spec: propext
+Metronome.Glue.rtlSrc1_spec: propext
+Metronome.Glue.rtlSrc2_spec: propext
+Metronome.Glue.rtlSrc3_spec: propext
+Metronome.Glue.rtlSrc4_spec: propext
+Metronome.Glue.rtlSrc5_spec: propext
+Metronome.Glue.rtlSrc6_spec: propext
+Metronome.Glue.rtlSrc7_spec: propext
+Metronome.Glue.rtlSrc8_spec: propext
+Metronome.Glue.rtlSrc9_spec: propext
+Metronome.Glue.rtlSrc10_spec: propext
+Metronome.Glue.rtlSrc11_spec: propext
+Metronome.Glue.rtlSrc12_spec: propext
+Metronome.Glue.rtlSrc13_spec: propext
+Metronome.Glue.rtlSrc14_spec: propext
+Metronome.Glue.rtlSrc15_spec: propext, Classical.choice, Quot.sound
+Metronome.Glue.rtlSrc16_spec: propext, Classical.choice, Quot.sound
+Metronome.Glue.rtlSrc17_spec: propext
+Metronome.Glue.rtlSrc18_spec: propext
+Metronome.Glue.rtlSrc19_spec: propext
+Metronome.Glue.rtlSrc20_spec: propext
+Metronome.Glue.rtlSrc21_spec: propext
+Metronome.Glue.rtlSrc22_spec: propext
+Metronome.Glue.rtlSrc23_spec: propext
+Metronome.Glue.rtlSrc24_spec: propext
+Metronome.Glue.rtlSrc25_spec: propext
+Metronome.Glue.rtlSrc26_spec: propext
+Metronome.Glue.rtlSrc27_spec: propext
+Metronome.Glue.rtlSrc28_spec: propext
+Metronome.Glue.rtlSrc29_spec: propext
+Metronome.Glue.rtlSrc30_spec: propext
+Metronome.Glue.rtlSrc31_spec: propext, Classical.choice, Quot.sound
+Metronome.Glue.rtlSrc32_spec: propext, Classical.choice, Quot.sound
+Metronome.Glue.rtlSrc33_spec: propext
+Metronome.Glue.rtlSrc34_spec: propext, Classical.choice, Quot.sound
+Metronome.Glue.rtlSrc35_spec: propext, Classical.choice, Quot.sound
+Metronome.Glue.rtlSrc36_spec: propext
+Metronome.Glue.rtlSrc37_spec: propext
+Metronome.Glue.rtlSrc38_spec: propext
+Metronome.Glue.rtlSrc39_spec: propext
+Metronome.Glue.rtlSrc40_spec: propext
+Metronome.Glue.rtlSrc41_spec: propext
+Metronome.Glue.rtlSrc42_spec: propext
+Metronome.Glue.rtlSrc43_spec: propext
+Metronome.Glue.rtlSrc44_spec: propext
+Metronome.Glue.rtlSrc45_spec: propext
+Metronome.Glue.rtlSrc46_spec: propext
+Metronome.Glue.rtlSrc47_spec: propext
+Metronome.Glue.rtlSrc48_spec: propext
+Metronome.Glue.rtlSrc49_spec: propext
+Metronome.Glue.rtlSrc50_spec: propext
+Metronome.Glue.rtlSrc51_spec: propext
+Metronome.Glue.rtlSrc52_spec: propext
+Metronome.Glue.rtlSrc53_spec: propext
+Metronome.Glue.rtlSrc54_spec: propext
+Metronome.Glue.rtlSrc55_spec: propext
+Metronome.Glue.rtlSrc56_spec: propext
+Metronome.Glue.rtlSrc57_spec: propext
+Metronome.Glue.rtlSrc58_spec: propext
+Metronome.Glue.rtlSrc59_spec: propext
+Metronome.Glue.rtlSrc60_spec: propext
+Metronome.Glue.rtlSrc61_spec: propext
+Metronome.Glue.rtlSrc62_spec: propext
+Metronome.Glue.rtlSrc63_spec: propext
+Metronome.Glue.rtlGuard0_spec: propext
+Metronome.Glue.rtlGuard1_spec: propext
+Metronome.Glue.rtlGuard2_spec: propext
+Metronome.Glue.rtlGuard3_spec: propext
+Metronome.Glue.rtlGuard4_spec: propext
+Metronome.Glue.rtlGuard5_spec: propext
+Metronome.Glue.rtlGuard6_spec: propext
+Metronome.Glue.rtlGuard7_spec: propext
+Metronome.Glue.rtlGuard8_spec: propext
+Metronome.Glue.rtlGuard9_spec: propext
+Metronome.Glue.rtlGuard10_spec: propext
+Metronome.Glue.rtlGuard11_spec: propext
+Metronome.Glue.rtlGuard12_spec: propext
+Metronome.Glue.rtlGuard13_spec: propext
+Metronome.Glue.rtlGuard14_spec: propext
+Metronome.Glue.rtlGuard15_spec: propext
+Metronome.Glue.rtlGuard16_spec: propext
+Metronome.Glue.rtlGuard17_spec: propext
+Metronome.Glue.rtlGuard18_spec: propext
+Metronome.Glue.rtlGuard19_spec: propext
+Metronome.Glue.rtlGuard20_spec: propext
+Metronome.Glue.rtlGuard21_spec: propext
+Metronome.Glue.rtlGuard22_spec: propext
+Metronome.Glue.rtlGuard23_spec: propext
+Metronome.Glue.rtlGuard24_spec: propext, sorryAx
+Metronome.Glue.rtlGuard25_spec: propext
+Metronome.Glue.rtlGuard26_spec: propext
+Metronome.Glue.rtlGuard27_spec: propext
+Metronome.Glue.rtlGuard28_spec: propext
+Metronome.Glue.rtlGuard29_spec: propext
+Metronome.Glue.rtlGuard30_spec: propext
+Metronome.Glue.rtlGuard31_spec: propext
+Metronome.Glue.rtlGuard32_spec: propext
+Metronome.Glue.rtlGuard33_spec: propext
+Metronome.Glue.rtlGuard34_spec: propext
+Metronome.Glue.rtlGuard35_spec: propext
+Metronome.Glue.rtlGuard36_spec: propext
+Metronome.Glue.rtlGuard37_spec: propext
+Metronome.Glue.rtlGuard38_spec: propext
+Metronome.Glue.rtlGuard39_spec: propext
+Metronome.Glue.rtlGuard40_spec: propext
+Metronome.Glue.rtlGuard41_spec: propext
+Metronome.Glue.rtlGuard42_spec: propext
+Metronome.Glue.rtlGuard43_spec: propext
+Metronome.Glue.rtlGuard44_spec: propext
+Metronome.Glue.rtlGuard45_spec: propext
+Metronome.Glue.rtlGuard46_spec: propext
+Metronome.Glue.rtlGuard47_spec: propext
+Metronome.Glue.rtlGuard48_spec: propext
+Metronome.Glue.rtlGuard49_spec: propext
+Metronome.Glue.rtlGuard50_spec: propext
+Metronome.Glue.rtlGuard51_spec: propext
+Metronome.Glue.rtlGuard52_spec: propext
+Metronome.Glue.rtlGuard53_spec: propext
+Metronome.Glue.rtlGuard54_spec: propext
+Metronome.Glue.rtlGuard55_spec: propext
+Metronome.Glue.rtlGuard56_spec: propext
+Metronome.Glue.rtlGuard57_spec: propext
+Metronome.Glue.rtlGuard58_spec: propext
+Metronome.Glue.rtlGuard59_spec: propext
+Metronome.Glue.rtlGuard60_spec: propext
+Metronome.Glue.rtlGuard61_spec: propext
+Metronome.Glue.rtlGuard62_spec: propext
+Metronome.Glue.rtlGuard63_spec: propext
+Metronome.Glue.rtlGLine0_spec: propext, Classical.choice, Quot.sound, rtlGLine0_spec._native.bv_decide.ax_1_7
+Metronome.Glue.rtlGLine1_spec: propext, Classical.choice, Quot.sound, rtlGLine1_spec._native.bv_decide.ax_1_7
+Metronome.Glue.rtlGLine2_spec: propext, Classical.choice, Quot.sound, rtlGLine2_spec._native.bv_decide.ax_1_7
+Metronome.Glue.rtlGLine3_spec: propext, Classical.choice, Quot.sound, rtlGLine3_spec._native.bv_decide.ax_1_7
+Metronome.Glue.rtlRunG_spec: propext, Quot.sound
+Metronome.Glue.rtlIrqEn_spec: propext, Quot.sound
+Metronome.Glue.rtlErr_spec: propext
+Metronome.Glue.rtlIrq_spec: propext, Quot.sound
+Metronome.Glue.rtlDb_spec: propext, Quot.sound
+Metronome.Glue.rtlFl_spec: propext, Classical.choice, Quot.sound, rtlFl_spec._native.bv_decide.ax_1_20
+Metronome.Glue.rtlFlp_spec: propext, Quot.sound
+Metronome.Glue.rtlInB_spec: propext, Quot.sound
+Metronome.Glue.rtlInv_spec: propext, Classical.choice, Quot.sound
+Metronome.Glue.rtlInvp_spec: propext, Quot.sound
+Metronome.Glue.rtlOutB_spec: propext, Classical.choice, Quot.sound
+Metronome.Glue.rtlOutv_spec: propext, Classical.choice, Quot.sound
+Metronome.Glue.rtlIdx0_spec: propext, Classical.choice, Quot.sound, rtlIdx0_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOut0_full: propext, Classical.choice, Quot.sound, rtlIdx0_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOe0_full: propext, Classical.choice, Quot.sound, rtlIdx0_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlIdx1_spec: propext, Classical.choice, Quot.sound, rtlIdx1_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOut1_full: propext, Classical.choice, Quot.sound, rtlIdx1_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOe1_full: propext, Classical.choice, Quot.sound, rtlIdx1_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlIdx2_spec: propext, Classical.choice, Quot.sound, rtlIdx2_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOut2_full: propext, Classical.choice, Quot.sound, rtlIdx2_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOe2_full: propext, Classical.choice, Quot.sound, rtlIdx2_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlIdx3_spec: propext, Classical.choice, Quot.sound, rtlIdx3_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOut3_full: propext, Classical.choice, Quot.sound, rtlIdx3_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOe3_full: propext, Classical.choice, Quot.sound, rtlIdx3_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlIdx4_spec: propext, Classical.choice, Quot.sound, rtlIdx4_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOut4_full: propext, Classical.choice, Quot.sound, rtlIdx4_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOe4_full: propext, Classical.choice, Quot.sound, rtlIdx4_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlIdx5_spec: propext, Classical.choice, Quot.sound, rtlIdx5_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOut5_full: propext, Classical.choice, Quot.sound, rtlIdx5_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOe5_full: propext, Classical.choice, Quot.sound, rtlIdx5_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlIdx6_spec: propext, Classical.choice, Quot.sound, rtlIdx6_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOut6_full: propext, Classical.choice, Quot.sound, rtlIdx6_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOe6_full: propext, Classical.choice, Quot.sound, rtlIdx6_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlIdx7_spec: propext, Classical.choice, Quot.sound, rtlIdx7_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOut7_full: propext, Classical.choice, Quot.sound, rtlIdx7_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOe7_full: propext, Classical.choice, Quot.sound, rtlIdx7_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlIdx8_spec: propext, Classical.choice, Quot.sound, rtlIdx8_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOut8_full: propext, Classical.choice, Quot.sound, rtlIdx8_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlIdx9_spec: propext, Classical.choice, Quot.sound, rtlIdx9_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOut9_full: propext, Classical.choice, Quot.sound, rtlIdx9_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlIdx10_spec: propext, Classical.choice, Quot.sound, rtlIdx10_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOut10_full: propext, Classical.choice, Quot.sound, rtlIdx10_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlIdx11_spec: propext, Classical.choice, Quot.sound, rtlIdx11_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOut11_full: propext, Classical.choice, Quot.sound, rtlIdx11_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlIdx12_spec: propext, Classical.choice, Quot.sound, rtlIdx12_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOut12_full: propext, Classical.choice, Quot.sound, rtlIdx12_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlIdx13_spec: propext, Classical.choice, Quot.sound, rtlIdx13_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlOut13_full: propext, Classical.choice, Quot.sound, rtlIdx13_spec._native.bv_decide.ax_1_17
+Metronome.Glue.rtlPins_spec: propext, Classical.choice, Quot.sound
+Metronome.Glue.rtlStep_eq_step: propext, Classical.choice, Quot.sound, rtlFl_spec._native.bv_decide.ax_1_20
+Metronome.Glue.rtlStateAt_eq: propext, Classical.choice, Quot.sound, rtlFl_spec._native.bv_decide.ax_1_20
+Metronome.Glue.rtl_trace_result: propext, Classical.choice, Quot.sound, rtlFl_spec._native.bv_decide.ax_1_20
+Metronome.Glue.rtl_trace_irq_quiet: propext, Classical.choice, Quot.sound, rtlFl_spec._native.bv_decide.ax_1_20
+Metronome.Glue.rtl_trace_flp_frozen: propext, Classical.choice, Quot.sound, rtlFl_spec._native.bv_decide.ax_1_20
+Metronome.Glue.rtl_trace_db_frozen: propext, Classical.choice, Quot.sound, rtlFl_spec._native.bv_decide.ax_1_20

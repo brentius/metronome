@@ -1,0 +1,91 @@
+RTL snapshot SHA-256: 5119a904ecf062f376f4ca6af796f4ae34ec1e12b899f602c5b868ce5ddd98d6
+Yosys command: read_verilog -I src src/cells_behav.v src/md2_acc.v src/md2_cfg_bank.v src/md2_core.v src/md2_counter.v src/md2_dmem.v src/md2_host.v src/md2_lfsr.v src/md2_line.v src/md2_mem.v src/md2_pmem.v src/md2_shifter.v src/md2_sram_bb.v src/md2_stream.v src/md2_thread.v src/project.v; hierarchy -check -top tt_um_brentius_metronome; proc; opt_clean; write_json design.json
+Warning: Latch inferred for signal `\cfg_lgcp_beh.\int_gate' from process `\cfg_lgcp_beh.$src/cells_behav.v:23$proc$3': $auto$proc_dlatch.cc:559:proc_dlatch$13762
+Warning: Latch inferred for signal `\cfg_dlhrq_beh.\Q' from process `\cfg_dlhrq_beh.$src/cells_behav.v:15$proc$1': $auto$proc_dlatch.cc:555:proc_dlatch$13783
+Pin cut: 4 registers extracted, host wiring sck = s2[8]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-spipins-spipins_sp_stage_dropped-ly0w6172\SpiPinsProof.lean:63:56: error: unsolved goals
+case pos
+state : Sync
+input : Input
+h : input.resetN = true
+⊢ state.s1 = state.s2
+'Metronome.SpiPins.rtlS1' depends on axioms: [propext, Classical.choice, Quot.sound, rtlS1._native.bv_decide.ax_1_6]
+'Metronome.SpiPins.rtlS2' depends on axioms: [propext, Quot.sound]
+'Metronome.SpiPins.rtlSp' depends on axioms: [propext, sorryAx, Quot.sound]
+'Metronome.SpiPins.rtlStep_eq_step' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlS1._native.bv_decide.ax_1_6]
+'Metronome.SpiPins.hostSck_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ hostSck_eq._native.bv_decide.ax_1_5]
+'Metronome.SpiPins.hostSckPrev_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ hostSckPrev_eq._native.bv_decide.ax_1_5]
+'Metronome.SpiPins.hostCsN_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ hostCsN_eq._native.bv_decide.ax_1_5]
+'Metronome.SpiPins.hostMosi_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ hostMosi_eq._native.bv_decide.ax_1_5]
+'Metronome.SpiPins.hostWord_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ hostCsN_eq._native.bv_decide.ax_1_5,
+ hostMosi_eq._native.bv_decide.ax_1_5,
+ hostSckPrev_eq._native.bv_decide.ax_1_5,
+ hostSck_eq._native.bv_decide.ax_1_5]
+'Metronome.SpiPins.rtlSyncAt_eq' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlS1._native.bv_decide.ax_1_6]
+'Metronome.SpiPins.rtlHostInputs_eq' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ hostCsN_eq._native.bv_decide.ax_1_5,
+ hostMosi_eq._native.bv_decide.ax_1_5,
+ hostSckPrev_eq._native.bv_decide.ax_1_5,
+ hostSck_eq._native.bv_decide.ax_1_5,
+ rtlS1._native.bv_decide.ax_1_6]
+'Metronome.SpiPins.rtl_sr_pins' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ hostCsN_eq._native.bv_decide.ax_1_5,
+ hostMosi_eq._native.bv_decide.ax_1_5,
+ hostSckPrev_eq._native.bv_decide.ax_1_5,
+ hostSck_eq._native.bv_decide.ax_1_5,
+ rtlS1._native.bv_decide.ax_1_6]
+'Metronome.SpiPins.rtl_stateAt_eq' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ hostCsN_eq._native.bv_decide.ax_1_5,
+ hostMosi_eq._native.bv_decide.ax_1_5,
+ hostSckPrev_eq._native.bv_decide.ax_1_5,
+ hostSck_eq._native.bv_decide.ax_1_5,
+ rtlS1._native.bv_decide.ax_1_6]
+'Metronome.SpiPins.rtl_transaction_strobes' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ byte8_bits._native.bv_decide.ax_1_5,
+ hostCsN_eq._native.bv_decide.ax_1_5,
+ hostMosi_eq._native.bv_decide.ax_1_5,
+ hostSckPrev_eq._native.bv_decide.ax_1_5,
+ hostSck_eq._native.bv_decide.ax_1_5,
+ pack7_shifted_out._native.bv_decide.ax_1_5,
+ prog_complete_ah._native.bv_decide.ax_1_6,
+ prog_complete_al._native.bv_decide.ax_1_6,
+ prog_complete_cmd._native.bv_decide.ax_1_6,
+ prog_complete_data._native.bv_decide.ax_1_6,
+ prog_edge._native.bv_decide.ax_1_6,
+ rtlS1._native.bv_decide.ax_1_6]
+-- spipins_sp_stage_dropped: rejected by Lean (exit 1)

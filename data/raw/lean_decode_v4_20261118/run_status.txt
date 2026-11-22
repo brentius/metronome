@@ -1,0 +1,10 @@
+command: python code/tests/lean/verify.py --mutations --artifacts-dir data/raw/lean_decode_v4_20261118/proof
+exit_code: 0
+case_count: 13 (baseline plus 12 mutations)
+baseline_rtl_snapshot_sha256: 434c6ae6e52b85991f0be864394e5c93382f4aa239c9302ae0ef91d19dab2b3b
+lean: Lake 5.0.0-src+eb6cafb (Lean 4.35.0)
+yosys: 0.70+190 (git sha1 485b63564)
+completed_utc: 2026-11-18
+notes: the per-case RTL snapshot hash and Yosys command are in proof/<case>.log;
+       tool versions are in proof/tools.log. The command exit code was captured
+       from the wrapper because Tee-Object only retained stdout.

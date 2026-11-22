@@ -1,0 +1,5 @@
+lake build Metronome.ChipCut.Discharge.MemHostCfg Metronome.ChipCut.Discharge.BankWire
+✔ [60/60] Built Metronome.ChipCut.Discharge.MemHostCfg (8.2s)
+Build completed successfully (60 jobs).
+
+Exit 0; wall 8.69 s

@@ -1,0 +1,205 @@
+RTL snapshot SHA-256: 1f50624422c2e1e2b47729997f0b8035611fc513a7ad4d590d2b0274604693af
+Yosys command: read_verilog -I src src/cells_behav.v src/md2_acc.v src/md2_cfg_bank.v src/md2_core.v src/md2_counter.v src/md2_dmem.v src/md2_host.v src/md2_lfsr.v src/md2_line.v src/md2_mem.v src/md2_pmem.v src/md2_shifter.v src/md2_sram_bb.v src/md2_stream.v src/md2_thread.v src/project.v; hierarchy -check -top tt_um_brentius_metronome; proc; opt_clean; write_json design.json
+Warning: Latch inferred for signal `\cfg_lgcp_beh.\int_gate' from process `\cfg_lgcp_beh.$src/cells_behav.v:23$proc$3': $auto$proc_dlatch.cc:559:proc_dlatch$13762
+Warning: Latch inferred for signal `\cfg_dlhrq_beh.\Q' from process `\cfg_dlhrq_beh.$src/cells_behav.v:15$proc$1': $auto$proc_dlatch.cc:555:proc_dlatch$13783
+C = 0: 259 extracted signals
+C = 1: 257 extracted signals
+C:\Users\b_yee23\AppData\Local\Temp\metronome-core-core_watcher_order-t_kc4l0s\CoreProof.lean:320:67: error: The prover found a potentially spurious counterexample:
+- It abstracted the following unsupported expressions as opaque variables:
+  - input.tCore
+  - state.xl
+  - input.tW1c
+  - input.tLine
+  - input.runG
+  - input.tPc
+  - input.guards
+  - input.gLine
+  - input.tW0h
+  - state.rv
+  - input.frz
+  - input.tW0c
+  - state.rr
+  - state.fpc
+  - input.tW1h
+  - state.xv
+  - input.tReady
+  - state.ir
+  - input.resetN
+Consider the following assignment:
+input.resetN = true
+input.frz = false
+state.xv = false
+state.ir = 1729382256910268431#64
+input.guards = 17293839942245416955#64
+input.gLine = 803957#20
+input.tW0c = 14646509567#36
+state.xl = 1#2
+input.tW0h = 2199023255551#48
+state.rv = false
+input.tW1c = 66001567743#36
+input.runG = true
+input.tReady = 63#6
+input.tCore = 31#6
+input.tPc = 1099511627775#48
+state.fpc = 0#8
+input.tLine = 2047#12
+state.rr = 5#3
+input.tW1h = 1099511627775#48
+C:\Users\b_yee23\AppData\Local\Temp\metronome-core-core_watcher_order-t_kc4l0s\CoreProof.lean:355:77: error: The prover found a potentially spurious counterexample:
+- It abstracted the following unsupported expressions as opaque variables:
+  - input.tW0h
+  - input.frz
+  - state.rr
+  - input.runG
+  - state.ir
+  - state.rv
+  - input.tPc
+  - input.tW1h
+  - input.tW1c
+  - input.tReady
+  - state.fpc
+  - input.tLine
+  - input.gLine
+  - input.tCore
+  - input.tW0c
+  - state.xv
+  - input.guards
+  - state.xl
+Consider the following assignment:
+state.xv = true
+input.frz = false
+state.ir = 7493989779944504805#64
+input.guards = 17224083140601702955#64
+input.tW0c = 17179880915#36
+input.gLine = 103435#20
+state.xl = 3#2
+input.tW0h = 277626702593279#48
+input.tW1c = 12349079568#36
+state.rv = true
+state.fpc = 251#8
+input.tPc = 278159278539007#48
+input.runG = true
+input.tReady = 56#6
+input.tLine = 2562#12
+input.tCore = 0#6
+state.rr = 5#3
+input.tW1h = 207799116233984#48
+'Metronome.Core.Rtl0.rtlStep_eq_step' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl0.rtlOut_eq_out' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlDisp._native.bv_decide.ax_1_47,
+ rtlDispE._native.bv_decide.ax_1_47,
+ rtlFetchEn._native.bv_decide.ax_1_47,
+ rtlMvData._native.bv_decide.ax_1_47,
+ rtlMvEn._native.bv_decide.ax_1_47,
+ rtlNpc._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl0.rtlStateAt_eq' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl0.rtl_trace_result' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl0.rtl_trace_dispatch_idle' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl0.rtl_trace_jump_idle' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-core-core_watcher_order-t_kc4l0s\CoreProof.lean:783:63: error: unsolved goals
+state : State
+input : Input
+⊢ (rtlStep state input).fpc = (step true state input).fpc
+C:\Users\b_yee23\AppData\Local\Temp\metronome-core-core_watcher_order-t_kc4l0s\CoreProof.lean:818:73: error: unsolved goals
+state : State
+input : Input
+⊢ (rtlOut state input).fetchAddr = (out true state input).fetchAddr
+'Metronome.Core.Rtl1.rtlStep_eq_step' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl1.rtlOut_eq_out' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlDisp._native.bv_decide.ax_1_47,
+ rtlDispE._native.bv_decide.ax_1_47,
+ rtlFetchEn._native.bv_decide.ax_1_47,
+ rtlMvData._native.bv_decide.ax_1_47,
+ rtlMvEn._native.bv_decide.ax_1_47,
+ rtlNpc._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl1.rtlStateAt_eq' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl1.rtl_trace_result' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl1.rtl_trace_dispatch_idle' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl1.rtl_trace_jump_idle' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+-- core_watcher_order: rejected by Lean (exit 1)

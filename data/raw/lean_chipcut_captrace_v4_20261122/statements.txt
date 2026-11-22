@@ -1,0 +1,91 @@
+﻿CapInv : Metronome.ChipCut.State ÔåÆ Metronome.Machine.State ÔåÆ Prop
+capInv_reset : ÔêÇ (cont : Metronome.ChipCut.Contents),
+  CapInv (Metronome.ChipCut.resetState cont) (Metronome.ChipCut.absChip (Metronome.ChipCut.resetState cont))
+capInv_step_active : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.runRst s pin = true ÔåÆ
+      CapInv s m ÔåÆ
+        (ÔêÇ (k : Fin 2), StreamInputAgree m (Metronome.ChipCut.streamAt s Ôåæk) (Metronome.ChipCut.streamIn s pin Ôåæk) k) ÔåÆ
+          stream_mode_quiet s pin ÔåÆ CapInv (Metronome.ChipCut.step s pin) (Metronome.Machine.step m pin)
+capInv_step_reset : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.runRst s pin = false ÔåÆ
+    CapInv s m ÔåÆ CapInv (Metronome.ChipCut.step s pin) (Metronome.Machine.step m pin)
+capInv_step_of_input : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    CapInv s m ÔåÆ
+      (ÔêÇ (k : Fin 2), StreamInputAgree m (Metronome.ChipCut.streamAt s Ôåæk) (Metronome.ChipCut.streamIn s pin Ôåæk) k) ÔåÆ
+        stream_mode_quiet s pin ÔåÆ CapInv (Metronome.ChipCut.step s pin) (Metronome.Machine.step m pin)
+capInv_step : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      CapInv s m ÔåÆ
+        StreamWire s m pin ÔåÆ
+          stream_mode_quiet s pin ÔåÆ CapInv (Metronome.ChipCut.step s pin) (Metronome.Machine.step m pin)
+capInv_trace : ÔêÇ (pins : Nat ÔåÆ Metronome.Machine.PinIn) (cont : Metronome.ChipCut.Contents),
+  (ÔêÇ (n : Nat),
+      Metronome.ChipCut.ChipRel (Metronome.ChipCut.cutStateAt pins (Metronome.ChipCut.resetState cont) n)
+        (Metronome.ChipCut.machineStateAt pins (Metronome.ChipCut.absChip (Metronome.ChipCut.resetState cont)) n)) ÔåÆ
+    (ÔêÇ (n : Nat),
+        Metronome.ChipCut.runRst (Metronome.ChipCut.cutStateAt pins (Metronome.ChipCut.resetState cont) n) (pins n) =
+            true ÔåÆ
+          ÔêÇ (k : Fin 2),
+            StreamInputAgree
+              (Metronome.ChipCut.machineStateAt pins (Metronome.ChipCut.absChip (Metronome.ChipCut.resetState cont)) n)
+              (Metronome.ChipCut.streamAt (Metronome.ChipCut.cutStateAt pins (Metronome.ChipCut.resetState cont) n) Ôåæk)
+              (Metronome.ChipCut.streamIn (Metronome.ChipCut.cutStateAt pins (Metronome.ChipCut.resetState cont) n)
+                (pins n) Ôåæk)
+              k) ÔåÆ
+      (ÔêÇ (n : Nat),
+          stream_mode_quiet (Metronome.ChipCut.cutStateAt pins (Metronome.ChipCut.resetState cont) n) (pins n)) ÔåÆ
+        ÔêÇ (n : Nat),
+          CapInv (Metronome.ChipCut.cutStateAt pins (Metronome.ChipCut.resetState cont) n)
+            (Metronome.ChipCut.machineStateAt pins (Metronome.ChipCut.absChip (Metronome.ChipCut.resetState cont)) n)
+contentsWb_of_capInv : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (k : Fin 2),
+  CapInv s m ÔåÆ
+    stateMode s k = 2 ÔåÆ
+      (Metronome.ChipCut.streamAt s Ôåæk).pv = true ÔåÆ m.streams[k].wb = (Metronome.ChipCut.streamAt s Ôåæk).wb
+capLd_of_capInv : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (k : Fin 2),
+  CapInv s m ÔåÆ stateMode s k = 2 ÔåÆ (Metronome.ChipCut.streamAt s Ôåæk).ld = false
+streamReq_congr_cap : ÔêÇ (mode : Nat) (a b : Metronome.Machine.StreamSt),
+  a.ba = b.ba ÔåÆ
+    a.rq = b.rq ÔåÆ
+      a.pv = b.pv ÔåÆ
+        a.pend = b.pend ÔåÆ
+          (mode = 2 ÔåÆ a.pv = true ÔåÆ a.wb = b.wb) ÔåÆ
+            Metronome.Machine.streamReq mode a = Metronome.Machine.streamReq mode b
+mhcModesReq_abs_cap : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn)
+  (k : Fin 2),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    (ÔêÇ (k : Fin 2), machMode m k = Metronome.Bridge.StreamB.modeOf (Ôåæk == 0) (Metronome.ChipCut.streamIn s pin Ôåæk)) ÔåÆ
+      (ÔêÇ (k : Fin 2),
+          stateMode s k = 2 ÔåÆ
+            (Metronome.ChipCut.streamAt s Ôåæk).pv = true ÔåÆ m.streams[k].wb = (Metronome.ChipCut.streamAt s Ôåæk).wb) ÔåÆ
+        (mhcModesReq m pin)[k] = (mhcModesReq (Metronome.ChipCut.absChip s) pin)[k]
+mhcModesReq_abs_cap0 : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    (ÔêÇ (k : Fin 2), machMode m k = Metronome.Bridge.StreamB.modeOf (Ôåæk == 0) (Metronome.ChipCut.streamIn s pin Ôåæk)) ÔåÆ
+      (ÔêÇ (k : Fin 2),
+          stateMode s k = 2 ÔåÆ
+            (Metronome.ChipCut.streamAt s Ôåæk).pv = true ÔåÆ m.streams[k].wb = (Metronome.ChipCut.streamAt s Ôåæk).wb) ÔåÆ
+        (mhcModesReq m pin)[0] = (mhcModesReq (Metronome.ChipCut.absChip s) pin)[0]
+mhcModesReq_abs_cap1 : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    (ÔêÇ (k : Fin 2), machMode m k = Metronome.Bridge.StreamB.modeOf (Ôåæk == 0) (Metronome.ChipCut.streamIn s pin Ôåæk)) ÔåÆ
+      (ÔêÇ (k : Fin 2),
+          stateMode s k = 2 ÔåÆ
+            (Metronome.ChipCut.streamAt s Ôåæk).pv = true ÔåÆ m.streams[k].wb = (Metronome.ChipCut.streamAt s Ôåæk).wb) ÔåÆ
+        (mhcModesReq m pin)[1] = (mhcModesReq (Metronome.ChipCut.absChip s) pin)[1]
+contents_open_req_cap : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      (ÔêÇ (k : Fin 2), machMode m k = Metronome.Bridge.StreamB.modeOf (Ôåæk == 0) (Metronome.ChipCut.streamIn s pin Ôåæk)) ÔåÆ
+        CapInv s m ÔåÆ mhcReq m pin = mhcReq (Metronome.ChipCut.absChip s) pin
+machMode_eq_stateMode : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State),
+  Metronome.ChipCut.ChipRel s m ÔåÆ ÔêÇ (k : Fin 2), machMode m k = stateMode s k
+stateMode_modeOf : ÔêÇ (s : Metronome.ChipCut.State) (pin : Metronome.Machine.PinIn) (k : Fin 2),
+  stateMode s k = Metronome.Bridge.StreamB.modeOf (Ôåæk == 0) (Metronome.ChipCut.streamIn s pin Ôåæk)
+streamAt_activeStep' : ÔêÇ (s : Metronome.ChipCut.State) (pin : Metronome.Machine.PinIn) (k : Fin 2),
+  Metronome.ChipCut.streamAt (Metronome.ChipCut.activeStep s pin) Ôåæk =
+    Metronome.Stream.step (Ôåæk == 0) (Metronome.ChipCut.streamAt s Ôåæk) (Metronome.ChipCut.streamIn s pin Ôåæk)
+ldNext_false : ÔêÇ (cap : Bool) (st : Metronome.Stream.State) (i : Metronome.Stream.Input),
+  i.resetN = true ÔåÆ st.ld = false ÔåÆ st.rq = false ÔåÆ Metronome.Stream.ldNext cap st i = false

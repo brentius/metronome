@@ -1,0 +1,10 @@
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Build completed successfully (3 jobs).
+baseline: accepted (11 registers)
+unit_counter_wrap: rejected (generated Lean: rejected by Lean (exit 1): 474:2: error: The prover found a potentially spurious counterexample:)
+unit_counter_bytes_swap: rejected (generated Lean: rejected by Lean (exit 1): 476:2: error: The prover found a potentially spurious counterexample:)
+unit_shifter_len_zero: rejected (generated Lean: rejected by Lean (exit 1): 542:2: error: The prover found a potentially spurious counterexample:)
+unit_lfsr_feedback_bit: rejected (generated Lean: rejected by Lean (exit 1): 612:2: error: The prover found a potentially spurious counterexample:)
+unit_acc_sub_carry: rejected (generated Lean: rejected by Lean (exit 1): 683:55: error: The prover found a counterexample, consider the following assignment:)
+unit_acc_cmp_writes_a: rejected (generated Lean: rejected by Lean (exit 1): 671:55: error: The prover found a counterexample, consider the following assignment:)

@@ -1,0 +1,10 @@
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Build completed successfully (4 jobs).
+baseline: accepted (7 registers, 6 instances)
+thread_pause_dispatch: rejected (generated Lean: rejected by Lean (exit 1): 92:14: error: The prover found a counterexample, consider the following assignment:)
+thread_pc_pause_wins: rejected (generated Lean: rejected by Lean (exit 1): 92:14: error: The prover found a potentially spurious counterexample:)
+thread_ovr_clear_wins: rejected (generated Lean: rejected by Lean (exit 1): 92:14: error: The prover found a counterexample, consider the following assignment:)
+thread_ev_not_frozen: rejected (generated Lean: rejected by Lean (exit 1): 1183:12: error: The prover found a counterexample, consider the following assignment:)
+thread3_line2_beat: rejected (generated Lean: rejected by Lean (exit 1): 1461:12: error: The prover found a counterexample, consider the following assignment:)
+thread_always_ignores_running: rejected (generated Lean: rejected by Lean (exit 1): 1189:12: error: The prover found a counterexample, consider the following assignment:)

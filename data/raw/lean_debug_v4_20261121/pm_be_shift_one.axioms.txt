@@ -1,0 +1,50 @@
+Metronome.Debug.Pins.rtlPinsLevel_eq: propext, Classical.choice, Quot.sound, Pins.rtlPinsLevel_eq._native.bv_decide.ax_1_11
+Metronome.Debug.Pins.rtlPinsPrev_eq: propext, Classical.choice, Quot.sound, Pins.rtlPinsPrev_eq._native.bv_decide.ax_1_11
+Metronome.Debug.Pins.rtlLvl_eq: propext, Quot.sound
+Metronome.Debug.Pins.rtlRise_eq: propext, Quot.sound
+Metronome.Debug.Pins.rtlFall_eq: propext, Quot.sound
+Metronome.Debug.Pins.rtl_level_masked: propext, Classical.choice, Quot.sound, Pins.level_masked._native.bv_decide.ax_1_5, Pins.rtlPinsLevel_eq._native.bv_decide.ax_1_11
+Metronome.Debug.Pins.rtl_lvl_high_zero: propext, Classical.choice, Quot.sound
+Metronome.Debug.Pins.rtl_rise_level: propext, Classical.choice, Quot.sound, Pins.rtlPinsLevel_eq._native.bv_decide.ax_1_11, Pins.rtlPinsPrev_eq._native.bv_decide.ax_1_11
+Metronome.Debug.Pins.rtl_fall_level: propext, Classical.choice, Quot.sound, Pins.rtlPinsLevel_eq._native.bv_decide.ax_1_11, Pins.rtlPinsPrev_eq._native.bv_decide.ax_1_11
+Metronome.Debug.Digest.rtlMen_eq: propext, Classical.choice, Quot.sound
+Metronome.Debug.Digest.rtlMisr_eq: propext, Classical.choice, Quot.sound, Digest.rtlMisr_eq._native.bv_decide.ax_1_13
+Metronome.Debug.Digest.rtlStep_eq_step: propext, Classical.choice, Quot.sound, Digest.rtlMisr_eq._native.bv_decide.ax_1_13
+Metronome.Debug.Digest.rtlStateAt_eq: propext, Classical.choice, Quot.sound, Digest.rtlMisr_eq._native.bv_decide.ax_1_13
+Metronome.Debug.Digest.rtl_trace_result: propext, Classical.choice, Quot.sound, Digest.rtlMisr_eq._native.bv_decide.ax_1_13
+Metronome.Debug.Digest.rtl_trace_misr_frozen: propext, Classical.choice, Quot.sound, Digest.rtlMisr_eq._native.bv_decide.ax_1_13
+Metronome.Debug.Ctrl.rtlTick_eq: propext, Classical.choice, Quot.sound
+Metronome.Debug.Ctrl.rtlInterval_eq: propext, Classical.choice, Quot.sound, Ctrl.rtlInterval_eq._native.bv_decide.ax_1_8
+Metronome.Debug.Ctrl.rtlApply_eq: propext, Classical.choice, Quot.sound, Ctrl.rtlApply_eq._native.bv_decide.ax_1_12
+Metronome.Debug.Ctrl.rtlLate_eq: propext, Classical.choice, Quot.sound, Ctrl.rtlLate_eq._native.bv_decide.ax_1_12
+Metronome.Debug.Ctrl.rtlReplayLevels_eq: propext, Quot.sound
+Metronome.Debug.Ctrl.rtlCev_eq: propext, Classical.choice, Quot.sound, Ctrl.rtlCev_eq._native.bv_decide.ax_1_8
+Metronome.Debug.Ctrl.rtlReplay_eq: propext, Classical.choice, Quot.sound, Ctrl.rtlReplay_eq._native.bv_decide.ax_1_10
+Metronome.Debug.Ctrl.rtlCen_eq: propext, Classical.choice, Quot.sound, Ctrl.rtlCen_eq._native.bv_decide.ax_1_10
+Metronome.Debug.Ctrl.rtlEmask_eq: propext, Classical.choice, Quot.sound, Ctrl.rtlEmask_eq._native.bv_decide.ax_1_11
+Metronome.Debug.Ctrl.rtlRlv_eq: propext, Classical.choice, Quot.sound, Ctrl.rtlRlv_eq._native.bv_decide.ax_1_12
+Metronome.Debug.Ctrl.rtlRlvPrev_eq: propext, Classical.choice, Quot.sound
+Metronome.Debug.Ctrl.rtlDc_eq: propext, Classical.choice, Quot.sound
+Metronome.Debug.Ctrl.rtlStep_eq_step: propext, Classical.choice, Quot.sound, Ctrl.rtlCen_eq._native.bv_decide.ax_1_10, Ctrl.rtlEmask_eq._native.bv_decide.ax_1_11, Ctrl.rtlReplay_eq._native.bv_decide.ax_1_10, Ctrl.rtlRlv_eq._native.bv_decide.ax_1_12
+Metronome.Debug.Ctrl.rtlStateAt_eq: propext, Classical.choice, Quot.sound, Ctrl.rtlCen_eq._native.bv_decide.ax_1_10, Ctrl.rtlEmask_eq._native.bv_decide.ax_1_11, Ctrl.rtlReplay_eq._native.bv_decide.ax_1_10, Ctrl.rtlRlv_eq._native.bv_decide.ax_1_12
+Metronome.Debug.Ctrl.rtl_trace_result: propext, Classical.choice, Quot.sound, Ctrl.rtlCen_eq._native.bv_decide.ax_1_10, Ctrl.rtlEmask_eq._native.bv_decide.ax_1_11, Ctrl.rtlReplay_eq._native.bv_decide.ax_1_10, Ctrl.rtlRlv_eq._native.bv_decide.ax_1_12
+Metronome.Debug.Ctrl.rtl_trace_frozen: propext, Classical.choice, Quot.sound, Ctrl.rtlCen_eq._native.bv_decide.ax_1_10, Ctrl.rtlEmask_eq._native.bv_decide.ax_1_11, Ctrl.rtlReplay_eq._native.bv_decide.ax_1_10, Ctrl.rtlRlv_eq._native.bv_decide.ax_1_12
+Metronome.Debug.Ctrl.rtl_trace_dc_ectl: propext, Classical.choice, Quot.sound, Ctrl.rtlCen_eq._native.bv_decide.ax_1_10, Ctrl.rtlEmask_eq._native.bv_decide.ax_1_11, Ctrl.rtlReplay_eq._native.bv_decide.ax_1_10, Ctrl.rtlRlv_eq._native.bv_decide.ax_1_12
+Metronome.Debug.Ctrl.rtl_trace_ectl_host_wins: propext, Classical.choice, Quot.sound, Ctrl.rtlCen_eq._native.bv_decide.ax_1_10, Ctrl.rtlEmask_eq._native.bv_decide.ax_1_11, Ctrl.rtlReplay_eq._native.bv_decide.ax_1_10, Ctrl.rtlRlv_eq._native.bv_decide.ax_1_12
+Metronome.Debug.Pmem.rtlPmWe0_eq: propext
+Metronome.Debug.Pmem.rtlPmWe1_eq: propext
+Metronome.Debug.Pmem.rtlPmBe_eq: propext, sorryAx
+Metronome.Debug.Pmem.rtlPmAddr0_eq: propext
+Metronome.Debug.Pmem.rtlPmAddr1_eq: propext
+Metronome.Debug.Pmem.rtl_pm_lane_nonzero: propext, sorryAx, Classical.choice, Quot.sound, Pmem.be_ne_zero._native.bv_decide.ax_1_5
+Metronome.Debug.Pmem.rtl_pm_exclusive: propext
+Metronome.Debug.Pmem.rtl_pm_port0: propext
+Metronome.Debug.Pmem.rtl_pm_port1: propext
+Metronome.Debug.Reset.rtlRstM_eq: propext, Classical.choice, Quot.sound
+Metronome.Debug.Reset.rtlRstQ_eq: propext, Classical.choice, Quot.sound
+Metronome.Debug.Reset.rtlStep_eq_step: propext, Classical.choice, Quot.sound
+Metronome.Debug.Reset.rtlStateAt_eq: propext, Classical.choice, Quot.sound
+Metronome.Debug.Reset.rtl_trace_result: propext, Classical.choice, Quot.sound
+Metronome.Debug.Reset.rtl_trace_rstq_low: propext, Classical.choice, Quot.sound
+Metronome.Debug.Reset.rtl_trace_rstq_low_one_more: propext, Classical.choice, Quot.sound
+Metronome.Debug.Reset.rtl_trace_rstq_after_two: propext, Classical.choice, Quot.sound

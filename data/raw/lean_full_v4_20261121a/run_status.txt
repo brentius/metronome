@@ -1,0 +1,8 @@
+run: python code/tests/lean/verify.py --mutations --artifacts-dir data/raw/lean_full_v4_20261121a/proof (build/run_lean_full_awake.ps1, detached)
+started: 2026-11-21 ~11:35 local; finished: 13:15 local (log mtime)
+exit: EXIT=0
+baselines accepted: 13 (verify.py cuts + bank, hostcmd, corectl, hostmap, hostread, spipins, mem, thread, stream, units, moves, line)
+planted faults rejected: 95
+mutants accepted: 0
+not included (integrated after launch): core, debug, glue, hostpins
+stderr bytes: 0

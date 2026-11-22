@@ -1,0 +1,12 @@
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Build completed successfully (3 jobs).
+baseline: accepted (37 pick signals, CTRL.STICKY at 0x2401 bit 2, DBG.DBG at 0x2460)
+pick_ignores_we: rejected (generated Lean: rejected by Lean (exit 1): 127:2: error: The prover found a counterexample, consider the following assignment:)
+pick_wrong_group: rejected (extraction: w_cw: group comparator 0 compares with [2], not DG_CW = 25)
+frz_wrong_reset: rejected (generated Lean: rejected by Lean (exit 1): 244:74: error: The prover found a potentially spurious counterexample:)
+frz_never_clears: rejected (generated Lean: rejected by Lean (exit 1): 245:74: error: The prover found a potentially spurious counterexample:)
+sticky_wrong_offset: rejected (extraction: c_wr_stk: offset 2 is not the host map's)
+sticky_wrong_block: rejected (extraction: c_wr_stk: expected one subtraction, one span comparison and one offset comparison, found ['$and', '$eq', '$lt', '$sub'])
+sticky_no_write: rejected (generated Lean: rejected by Lean (exit 1): 316:2: error: The prover found a counterexample, consider the following assignment:)
+sticky_wrong_bit: rejected (generated Lean: rejected by Lean (exit 1): 308:45: error: Tactic `decide` proved that the proposition)

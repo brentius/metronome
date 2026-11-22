@@ -1,0 +1,86 @@
+﻿# PremiseWire evidence log  (2026-11-22T06:40:38)
+# machine: WC23-30B22373BF ; cwd: code/tests/lean ; lean: leanprover/lean4:v4.35.0
+
+$ lake build Metronome.ChipCut.Discharge.PremiseWire
+  Build completed successfully (68 jobs).
+  EXIT=0  WALL=1.4s
+
+$ lake env lean ../../../data/raw/lean_chipcut_premise_v4_20261122/check_fields.lean
+  'Metronome.ChipCut.Discharge.PremiseWire.grpPacked_holds' depends on axioms: [propext,
+   Classical.choice,
+   Quot.sound,
+   ChipCut.Discharge.PremiseWire.pack6_slice._native.bv_decide.ax_1_12,
+   ChipCut.Discharge.PremiseWire.pack6_slice._native.bv_decide.ax_1_17,
+   ChipCut.Discharge.PremiseWire.pack6_slice._native.bv_decide.ax_1_22,
+   ChipCut.Discharge.PremiseWire.pack6_slice._native.bv_decide.ax_1_27,
+   ChipCut.Discharge.PremiseWire.pack6_slice._native.bv_decide.ax_1_32,
+   ChipCut.Discharge.PremiseWire.pack6_slice._native.bv_decide.ax_1_7]
+  'Metronome.ChipCut.Discharge.PremiseWire.cwH19_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'Metronome.ChipCut.Discharge.PremiseWire.mapOfWith_slice' depends on axioms: [propext,
+   Classical.choice,
+   Quot.sound,
+   ChipCut.Discharge.PremiseWire.pack6_slice._native.bv_decide.ax_1_12,
+   ChipCut.Discharge.PremiseWire.pack6_slice._native.bv_decide.ax_1_17,
+   ChipCut.Discharge.PremiseWire.pack6_slice._native.bv_decide.ax_1_22,
+   ChipCut.Discharge.PremiseWire.pack6_slice._native.bv_decide.ax_1_27,
+   ChipCut.Discharge.PremiseWire.pack6_slice._native.bv_decide.ax_1_32,
+   ChipCut.Discharge.PremiseWire.pack6_slice._native.bv_decide.ax_1_7]
+  EXIT=0  WALL=3.3s
+
+$ git status --short
+   M AGENTS.md
+   M CLAUDE.md
+   M code/flow/runpod/verify_v2_gates.py
+   M code/host2/transcribe/README.md
+   M code/host2/transcribe/__main__.py
+   M code/host2/transcribe/fw_stage1.py
+   M code/scorec/README.md
+   M code/tests/lockstep_v2/README.md
+   M code/tests/lockstep_v2/lockstep_tb.py
+   M code/tests/lockstep_v2/scenarios_v4.py
+   M code/tests/lockstep_v2/test_lockstep_v2.py
+   M code/tests/transcribe/test_demo_image.py
+   M code/tests/transcribe/test_fw_stage1.py
+   M wiki/EVIDENCE.md
+   M wiki/SPEC_V2.md
+   M wiki/VERIFICATION.md
+  ?? code/host2/board/
+  ?? code/host2/examples/vendor/
+  ?? code/host2/transcribe/fw_crc.py
+  ?? code/scorec/scorec/envelope.py
+  ?? code/tests/board_twin/
+  ?? code/tests/cdc/
+  ?? code/tests/lean/
+  ?? code/tests/lockstep_v2/check_uart_peer.py
+  ?? code/tests/machine_lockstep/
+  ?? code/tests/scorec/test_envelope.py
+  ?? code/tests/transcribe/test_fw_crc.py
+  ?? code/tests/vendor_models/
+  ?? code/tests/xinit/
+
+$ git diff --stat -- src
+  (empty above = src untouched)
+
+# from-source type-check of the module itself (ignores any cached olean), warnings as errors
+$ lake env lean -DwarningAsError=true -o %TEMP%/PremiseWire.olean Metronome/ChipCut/Discharge/PremiseWire.lean
+  EXIT=0  WALL=3.6s  (no output above = no diagnostics)
+
+$ lake env lean ../../../data/raw/lean_chipcut_premise_v4_20261122/statements.lean > statements.txt
+  EXIT=0  WALL=2.8s
+
+$ lake env lean ../../../data/raw/lean_chipcut_premise_v4_20261122/axioms.lean > axioms.txt
+  EXIT=0  WALL=2.7s
+
+# 2026-11-22 final acceptance re-run
+$ lake build Metronome.ChipCut.Discharge.PremiseWire -DwarningAsError=true
+  lake: error: unknown short option '-D'   (Lake rejects the flag; the lakefile.toml already sets
+  moreLeanArgs = ["-DwarningAsError=true"] for every build target, so plain `lake build` is already warnings-as-errors)
+$ lake build Metronome.ChipCut.Discharge.PremiseWire
+  Build completed successfully (68 jobs).
+  EXIT=0  WALL=0.3s
+$ lake env lean -DwarningAsError=true -o %TEMP%/PremiseWire.olean Metronome/ChipCut/Discharge/PremiseWire.lean   (from source, no cached olean)
+  EXIT=0  WALL=2.9s  (no diagnostic lines above)
+$ git check-ignore -v data/raw/.../commands.log
+  .gitignore:45:/data/  -> evidence dir is Git-ignored (local only)
+$ git diff --quiet HEAD -- src ; git diff --quiet HEAD -- code/tests/lean/Metronome/ChipCut/Assembly.lean
+  both exit 0 (untouched)

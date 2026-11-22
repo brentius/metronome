@@ -1,0 +1,14 @@
+# ChipCut discharge (MemHostCfg) evidence - revision b, Lean 4.35.0, core libs only, -DwarningAsError=true
+## 1. lake build Metronome.ChipCut
+exit=0 wall=0.4s
+Build completed successfully (59 jobs).
+## 2. lake build Metronome.ChipCut.Discharge.MemHostCfg (from removed discharge oleans)
+exit=0 wall=151.5s
+Ô£ö [59/59] Built Metronome.ChipCut.Discharge.MemHostCfg (151s)
+Build completed successfully (59 jobs).
+## 3. axioms
+exit=0 wall=4.1s
+## 4. sorry scan
+17: No `sorry`, no `native_decide`.
+## 5. src untouched
+git diff --quiet HEAD -- src -> exit=0

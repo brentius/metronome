@@ -1,0 +1,3052 @@
+RTL snapshot SHA-256: 4a6c28a649f418577beffa948701180953d1f020c4a9e5332f6ee42b57cb4984
+Yosys command: read_verilog -I src src/cells_behav.v src/md2_acc.v src/md2_cfg_bank.v src/md2_core.v src/md2_counter.v src/md2_dmem.v src/md2_host.v src/md2_lfsr.v src/md2_line.v src/md2_mem.v src/md2_pmem.v src/md2_shifter.v src/md2_sram_bb.v src/md2_stream.v src/md2_thread.v src/project.v; hierarchy -check -top tt_um_brentius_metronome; proc; opt_clean; write_json design.json
+Warning: Latch inferred for signal `\cfg_lgcp_beh.\int_gate' from process `\cfg_lgcp_beh.$src/cells_behav.v:23$proc$3': $auto$proc_dlatch.cc:559:proc_dlatch$13762
+Warning: Latch inferred for signal `\cfg_dlhrq_beh.\Q' from process `\cfg_dlhrq_beh.$src/cells_behav.v:15$proc$1': $auto$proc_dlatch.cc:555:proc_dlatch$13783
+Build completed successfully (3 jobs).
+Line cut: 15 registers, 15 checked window fields, module $paramod\md2_line\CFGW=s32'00000000000000000000000100000000
+Window fields:
+  inc: c_inc = window bytes 0..1
+  mod: c_mod = window bytes 2..3
+  t0: c_t0 = window bytes 4..5
+  t1: c_t1 = window bytes 6..7
+  t2: c_t2 = window bytes 8..9
+  pre: c_pre = window bytes 10..11
+  wlo: c_wlo = window bytes 12..13
+  whi: c_whi = window bytes 14..15
+  edge: c_edge = window bytes 16..16
+  t0edge: c_t0e = window bytes 17..17
+  pins: c_pins = window bytes 18..18
+  snap: c_snap = window bytes 19..19
+  lut0: c_lut0 = window bytes 20..23
+  lut1: c_lut1 = window bytes 24..27
+  hold: c_hold = window bytes 28..28
+C:\Users\b_yee23\AppData\Local\Temp\metronome-line-line_tap0_cross-6f5gzovi\LineProof.lean:611:548: error: Tactic `rfl` failed: The left-hand side
+  beat state input &&
+    ((((if decide (input.cfg.t2 < input.cfg.mod) = true then 1 else 0) ++
+                if decide (input.cfg.t1 < input.cfg.mod) = true then 1 else 0) ++
+              if
+                  (if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                      BitVec.truncate 2 (input.cfg.t0edge.ushiftRight 4) != 0
+                    else decide (input.cfg.t0 < input.cfg.mod)) =
+                    true then
+                1
+              else 0) &&&
+            ~~~state.fired &&&
+          ~~~(((if
+                    ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                          if over state input = true then
+                            decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                          else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                        !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t2 ≤ nx state input))) =
+                      true then
+                  1
+                else 0) ++
+                if
+                    ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                          if over state input = true then
+                            decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                          else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                        !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t1 ≤ nx state input))) =
+                      true then
+                  1
+                else 0) ++
+              if
+                  ((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then state.run && e0 state input
+                      else
+                        adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                          if over state input = true then
+                            decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                          else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                      !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                          state.run && e0 state input && beat state input
+                        else
+                          (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t0 ≤ nx state input)) =
+                    true then
+                1
+              else 0) &&&
+        3 ++ if (!(BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0 && state.first)) = true then 1 else 0) !=
+      0
+is not definitionally equal to the right-hand side
+  beat state input &&
+    ((((if decide (input.cfg.t2 < input.cfg.mod) = true then 1 else 0) ++
+                if decide (input.cfg.t1 < input.cfg.mod) = true then 1 else 0) ++
+              if
+                  (if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                      BitVec.truncate 2 (input.cfg.t0edge.ushiftRight 4) != 0
+                    else decide (input.cfg.t0 < input.cfg.mod)) =
+                    true then
+                1
+              else 0) &&&
+            ~~~state.fired &&&
+          ~~~(((if
+                    ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                          if over state input = true then
+                            decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                          else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                        !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t2 ≤ nx state input))) =
+                      true then
+                  1
+                else 0) ++
+                if
+                    ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                          if over state input = true then
+                            decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                          else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                        !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t1 ≤ nx state input))) =
+                      true then
+                  1
+                else 0) ++
+              if
+                  ((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then state.run && e0 state input
+                      else
+                        adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                          if over state input = true then
+                            decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                          else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                      !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                          state.run && e0 state input && beat state input
+                        else
+                          (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t0 ≤ nx state input)) =
+                    true then
+                1
+              else 0) &&&
+        ((if True then 1 else 0) ++ if True then 1 else 0) ++
+          if (!(BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0 && state.first)) = true then 1 else 0) !=
+      0
+
+state : State
+input : Input
+⊢ (beat state input &&
+      ((((if decide (input.cfg.t2 < input.cfg.mod) = true then 1 else 0) ++
+                  if decide (input.cfg.t1 < input.cfg.mod) = true then 1 else 0) ++
+                if
+                    (if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                        BitVec.truncate 2 (input.cfg.t0edge.ushiftRight 4) != 0
+                      else decide (input.cfg.t0 < input.cfg.mod)) =
+                      true then
+                  1
+                else 0) &&&
+              ~~~state.fired &&&
+            ~~~(((if
+                      ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                          !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t2 ≤ nx state input))) =
+                        true then
+                    1
+                  else 0) ++
+                  if
+                      ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                          !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t1 ≤ nx state input))) =
+                        true then
+                    1
+                  else 0) ++
+                if
+                    ((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                          state.run && e0 state input
+                        else
+                          adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                        !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                            state.run && e0 state input && beat state input
+                          else
+                            (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t0 ≤ nx state input)) =
+                      true then
+                  1
+                else 0) &&&
+          3 ++ if (!(BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0 && state.first)) = true then 1 else 0) !=
+        0) =
+    (beat state input &&
+      ((((if decide (input.cfg.t2 < input.cfg.mod) = true then 1 else 0) ++
+                  if decide (input.cfg.t1 < input.cfg.mod) = true then 1 else 0) ++
+                if
+                    (if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                        BitVec.truncate 2 (input.cfg.t0edge.ushiftRight 4) != 0
+                      else decide (input.cfg.t0 < input.cfg.mod)) =
+                      true then
+                  1
+                else 0) &&&
+              ~~~state.fired &&&
+            ~~~(((if
+                      ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                          !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t2 ≤ nx state input))) =
+                        true then
+                    1
+                  else 0) ++
+                  if
+                      ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                          !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t1 ≤ nx state input))) =
+                        true then
+                    1
+                  else 0) ++
+                if
+                    ((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                          state.run && e0 state input
+                        else
+                          adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                        !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                            state.run && e0 state input && beat state input
+                          else
+                            (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t0 ≤ nx state input)) =
+                      true then
+                  1
+                else 0) &&&
+          ((if True then 1 else 0) ++ if True then 1 else 0) ++
+            if (!(BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0 && state.first)) = true then 1 else 0) !=
+        0)
+C:\Users\b_yee23\AppData\Local\Temp\metronome-line-line_tap0_cross-6f5gzovi\LineProof.lean:614:554: error: Tactic `rfl` failed: The left-hand side
+  if beat state input = true then
+    ((if
+            ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                    beat state input &&
+                  over state input &&
+                decide (input.cfg.t2 ≤ nx state input)) =
+              true then
+          1
+        else 0) ++
+        if
+            ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                    beat state input &&
+                  over state input &&
+                decide (input.cfg.t1 ≤ nx state input)) =
+              true then
+          1
+        else 0) ++
+      if
+          (if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+              state.run && e0 state input && beat state input
+            else
+              (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                    beat state input &&
+                  over state input &&
+                decide (input.cfg.t0 ≤ nx state input)) =
+            true then
+        1
+      else 0
+  else
+    state.fired |||
+      ((if
+              ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                    if over state input = true then
+                      decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                    else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                  !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                          beat state input &&
+                        over state input &&
+                      decide (input.cfg.t2 ≤ nx state input))) =
+                true then
+            1
+          else 0) ++
+          if
+              ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                    if over state input = true then
+                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                  !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                          beat state input &&
+                        over state input &&
+                      decide (input.cfg.t1 ≤ nx state input))) =
+                true then
+            1
+          else 0) ++
+        if
+            ((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then state.run && e0 state input
+                else
+                  adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                    if over state input = true then
+                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                    state.run && e0 state input && beat state input
+                  else
+                    (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                          beat state input &&
+                        over state input &&
+                      decide (input.cfg.t0 ≤ nx state input)) =
+              true then
+          1
+        else 0
+is not definitionally equal to the right-hand side
+  if beat state input = true then
+    ((if
+            ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                    beat state input &&
+                  over state input &&
+                decide (input.cfg.t2 ≤ nx state input)) =
+              true then
+          1
+        else 0) ++
+        if
+            ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                    beat state input &&
+                  over state input &&
+                decide (input.cfg.t1 ≤ nx state input)) =
+              true then
+          1
+        else 0) ++
+      if
+          (if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+              state.run && e0 state input && beat state input
+            else
+              (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                    beat state input &&
+                  over state input &&
+                decide (input.cfg.t0 ≤ nx state input)) =
+            true then
+        1
+      else 0
+  else
+    state.fired |||
+      ((if
+              ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                    if over state input = true then
+                      decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                    else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                  !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                          beat state input &&
+                        over state input &&
+                      decide (input.cfg.t2 ≤ nx state input))) =
+                true then
+            1
+          else 0) ++
+          if
+              ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                    if over state input = true then
+                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                  !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                          beat state input &&
+                        over state input &&
+                      decide (input.cfg.t1 ≤ nx state input))) =
+                true then
+            1
+          else 0) ++
+        if
+            ((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then state.run && e0 state input
+                else
+                  adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                    if over state input = true then
+                      decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                    else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                    state.run && e0 state input && beat state input
+                  else
+                    (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                          beat state input &&
+                        over state input &&
+                      decide (input.cfg.t0 ≤ nx state input)) =
+              true then
+          1
+        else 0
+
+state : State
+input : Input
+⊢ (if beat state input = true then
+      ((if
+              ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                        if over state input = true then
+                          decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                        else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                      beat state input &&
+                    over state input &&
+                  decide (input.cfg.t2 ≤ nx state input)) =
+                true then
+            1
+          else 0) ++
+          if
+              ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                        if over state input = true then
+                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                        else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                      beat state input &&
+                    over state input &&
+                  decide (input.cfg.t1 ≤ nx state input)) =
+                true then
+            1
+          else 0) ++
+        if
+            (if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                state.run && e0 state input && beat state input
+              else
+                (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                        if over state input = true then
+                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                        else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                      beat state input &&
+                    over state input &&
+                  decide (input.cfg.t0 ≤ nx state input)) =
+              true then
+          1
+        else 0
+    else
+      state.fired |||
+        ((if
+                ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                    !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                            beat state input &&
+                          over state input &&
+                        decide (input.cfg.t2 ≤ nx state input))) =
+                  true then
+              1
+            else 0) ++
+            if
+                ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                    !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            beat state input &&
+                          over state input &&
+                        decide (input.cfg.t1 ≤ nx state input))) =
+                  true then
+              1
+            else 0) ++
+          if
+              ((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then state.run && e0 state input
+                  else
+                    adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                  !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                      state.run && e0 state input && beat state input
+                    else
+                      (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            beat state input &&
+                          over state input &&
+                        decide (input.cfg.t0 ≤ nx state input)) =
+                true then
+            1
+          else 0) =
+    if beat state input = true then
+      ((if
+              ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                        if over state input = true then
+                          decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                        else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                      beat state input &&
+                    over state input &&
+                  decide (input.cfg.t2 ≤ nx state input)) =
+                true then
+            1
+          else 0) ++
+          if
+              ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                        if over state input = true then
+                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                        else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                      beat state input &&
+                    over state input &&
+                  decide (input.cfg.t1 ≤ nx state input)) =
+                true then
+            1
+          else 0) ++
+        if
+            (if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                state.run && e0 state input && beat state input
+              else
+                (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                        if over state input = true then
+                          decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                        else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                      beat state input &&
+                    over state input &&
+                  decide (input.cfg.t0 ≤ nx state input)) =
+              true then
+          1
+        else 0
+    else
+      state.fired |||
+        ((if
+                ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                    !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                            beat state input &&
+                          over state input &&
+                        decide (input.cfg.t2 ≤ nx state input))) =
+                  true then
+              1
+            else 0) ++
+            if
+                ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                    !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            beat state input &&
+                          over state input &&
+                        decide (input.cfg.t1 ≤ nx state input))) =
+                  true then
+              1
+            else 0) ++
+          if
+              ((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then state.run && e0 state input
+                  else
+                    adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                  !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                      state.run && e0 state input && beat state input
+                    else
+                      (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                            beat state input &&
+                          over state input &&
+                        decide (input.cfg.t0 ≤ nx state input)) =
+                true then
+            1
+          else 0
+C:\Users\b_yee23\AppData\Local\Temp\metronome-line-line_tap0_cross-6f5gzovi\LineProof.lean:617:544: error: Tactic `rfl` failed: The left-hand side
+  if (input.cfg.snap == 3) = true then beat state input
+  else
+    (((if
+                    ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                            !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t2 ≤ nx state input)) &&
+                          !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+                        (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                              beat state input &&
+                            over state input &&
+                          decide (input.cfg.t2 ≤ nx state input)) =
+                      true then
+                  1
+                else 0) ++
+                if
+                    ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t1 ≤ nx state input)) &&
+                          !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                        (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              beat state input &&
+                            over state input &&
+                          decide (input.cfg.t1 ≤ nx state input)) =
+                      true then
+                  1
+                else 0) ++
+              if
+                  (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                            state.run && e0 state input
+                          else
+                            adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                          !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                              state.run && e0 state input && beat state input
+                            else
+                              (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t0 ≤ nx state input)) &&
+                        !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+                      if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                        state.run && e0 state input && beat state input
+                      else
+                        (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              beat state input &&
+                            over state input &&
+                          decide (input.cfg.t0 ≤ nx state input)) =
+                    true then
+                1
+              else 0).ushiftRight
+          input.cfg.snap.toNat &&&
+        1 !=
+      0
+is not definitionally equal to the right-hand side
+  if (input.cfg.snap == 3) = true then beat state input
+  else
+    (((if
+                    ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                            !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t2 ≤ nx state input)) &&
+                          !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+                        (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                              beat state input &&
+                            over state input &&
+                          decide (input.cfg.t2 ≤ nx state input)) =
+                      true then
+                  1
+                else 0) ++
+                if
+                    ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t1 ≤ nx state input)) &&
+                          !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                        (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              beat state input &&
+                            over state input &&
+                          decide (input.cfg.t1 ≤ nx state input)) =
+                      true then
+                  1
+                else 0) ++
+              if
+                  (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                            state.run && e0 state input
+                          else
+                            adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                          !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                              state.run && e0 state input && beat state input
+                            else
+                              (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t0 ≤ nx state input)) &&
+                        !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+                      if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                        state.run && e0 state input && beat state input
+                      else
+                        (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                              beat state input &&
+                            over state input &&
+                          decide (input.cfg.t0 ≤ nx state input)) =
+                    true then
+                1
+              else 0).ushiftRight
+          input.cfg.snap.toNat &&&
+        1 !=
+      0
+
+state : State
+input : Input
+⊢ (if (input.cfg.snap == 3) = true then beat state input
+    else
+      (((if
+                      ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                              !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t2 ≤ nx state input)) &&
+                            !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+                          (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t2 ≤ nx state input)) =
+                        true then
+                    1
+                  else 0) ++
+                  if
+                      ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t1 ≤ nx state input)) &&
+                            !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                          (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t1 ≤ nx state input)) =
+                        true then
+                    1
+                  else 0) ++
+                if
+                    (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                              state.run && e0 state input
+                            else
+                              adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                                state.run && e0 state input && beat state input
+                              else
+                                (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t0 ≤ nx state input)) &&
+                          !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+                        if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                          state.run && e0 state input && beat state input
+                        else
+                          (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t0 ≤ nx state input)) =
+                      true then
+                  1
+                else 0).ushiftRight
+            input.cfg.snap.toNat &&&
+          1 !=
+        0) =
+    if (input.cfg.snap == 3) = true then beat state input
+    else
+      (((if
+                      ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                              !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t2 ≤ nx state input)) &&
+                            !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+                          (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t2 ≤ nx state input)) =
+                        true then
+                    1
+                  else 0) ++
+                  if
+                      ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t1 ≤ nx state input)) &&
+                            !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                          (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t1 ≤ nx state input)) =
+                        true then
+                    1
+                  else 0) ++
+                if
+                    (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                              state.run && e0 state input
+                            else
+                              adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                            !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                                state.run && e0 state input && beat state input
+                              else
+                                (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t0 ≤ nx state input)) &&
+                          !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+                        if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                          state.run && e0 state input && beat state input
+                        else
+                          (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t0 ≤ nx state input)) =
+                      true then
+                  1
+                else 0).ushiftRight
+            input.cfg.snap.toNat &&&
+          1 !=
+        0
+C:\Users\b_yee23\AppData\Local\Temp\metronome-line-line_tap0_cross-6f5gzovi\LineProof.lean:659:545: error: Tactic `rfl` failed: The left-hand side
+  ((if
+          ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                    if over state input = true then
+                      decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                    else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                  !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                          beat state input &&
+                        over state input &&
+                      decide (input.cfg.t2 ≤ nx state input)) &&
+                !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+              (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                    beat state input &&
+                  over state input &&
+                decide (input.cfg.t2 ≤ nx state input)) =
+            true then
+        1
+      else 0) ++
+      if
+          ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                    if over state input = true then
+                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                  !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                          beat state input &&
+                        over state input &&
+                      decide (input.cfg.t1 ≤ nx state input)) &&
+                !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+              (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                    beat state input &&
+                  over state input &&
+                decide (input.cfg.t1 ≤ nx state input)) =
+            true then
+        1
+      else 0) ++
+    if
+        (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then state.run && e0 state input
+                else
+                  adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                    if over state input = true then
+                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                    state.run && e0 state input && beat state input
+                  else
+                    (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                          beat state input &&
+                        over state input &&
+                      decide (input.cfg.t0 ≤ nx state input)) &&
+              !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+            if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+              state.run && e0 state input && beat state input
+            else
+              (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                    beat state input &&
+                  over state input &&
+                decide (input.cfg.t0 ≤ nx state input)) =
+          true then
+      1
+    else 0
+is not definitionally equal to the right-hand side
+  ((if
+          ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                    if over state input = true then
+                      decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                    else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                  !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                          beat state input &&
+                        over state input &&
+                      decide (input.cfg.t2 ≤ nx state input)) &&
+                !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+              (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                    beat state input &&
+                  over state input &&
+                decide (input.cfg.t2 ≤ nx state input)) =
+            true then
+        1
+      else 0) ++
+      if
+          ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                    if over state input = true then
+                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                  !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                          beat state input &&
+                        over state input &&
+                      decide (input.cfg.t1 ≤ nx state input)) &&
+                !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+              (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                    beat state input &&
+                  over state input &&
+                decide (input.cfg.t1 ≤ nx state input)) =
+            true then
+        1
+      else 0) ++
+    if
+        (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then state.run && e0 state input
+                else
+                  adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                    if over state input = true then
+                      decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                    else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                    state.run && e0 state input && beat state input
+                  else
+                    (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                          beat state input &&
+                        over state input &&
+                      decide (input.cfg.t0 ≤ nx state input)) &&
+              !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+            if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+              state.run && e0 state input && beat state input
+            else
+              (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                    beat state input &&
+                  over state input &&
+                decide (input.cfg.t0 ≤ nx state input)) =
+          true then
+      1
+    else 0
+
+state : State
+input : Input
+⊢ (((if
+            ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                    !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                            beat state input &&
+                          over state input &&
+                        decide (input.cfg.t2 ≤ nx state input)) &&
+                  !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+                (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                        if over state input = true then
+                          decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                        else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                      beat state input &&
+                    over state input &&
+                  decide (input.cfg.t2 ≤ nx state input)) =
+              true then
+          1
+        else 0) ++
+        if
+            ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                    !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            beat state input &&
+                          over state input &&
+                        decide (input.cfg.t1 ≤ nx state input)) &&
+                  !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                        if over state input = true then
+                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                        else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                      beat state input &&
+                    over state input &&
+                  decide (input.cfg.t1 ≤ nx state input)) =
+              true then
+          1
+        else 0) ++
+      if
+          (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then state.run && e0 state input
+                  else
+                    adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                  !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                      state.run && e0 state input && beat state input
+                    else
+                      (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            beat state input &&
+                          over state input &&
+                        decide (input.cfg.t0 ≤ nx state input)) &&
+                !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+              if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                state.run && e0 state input && beat state input
+              else
+                (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                        if over state input = true then
+                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                        else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                      beat state input &&
+                    over state input &&
+                  decide (input.cfg.t0 ≤ nx state input)) =
+            true then
+        1
+      else 0) =
+    ((if
+            ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                    !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                            beat state input &&
+                          over state input &&
+                        decide (input.cfg.t2 ≤ nx state input)) &&
+                  !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+                (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                        if over state input = true then
+                          decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                        else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                      beat state input &&
+                    over state input &&
+                  decide (input.cfg.t2 ≤ nx state input)) =
+              true then
+          1
+        else 0) ++
+        if
+            ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                    !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            beat state input &&
+                          over state input &&
+                        decide (input.cfg.t1 ≤ nx state input)) &&
+                  !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                        if over state input = true then
+                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                        else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                      beat state input &&
+                    over state input &&
+                  decide (input.cfg.t1 ≤ nx state input)) =
+              true then
+          1
+        else 0) ++
+      if
+          (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then state.run && e0 state input
+                  else
+                    adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                      if over state input = true then
+                        decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                      else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                  !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                      state.run && e0 state input && beat state input
+                    else
+                      (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                            beat state input &&
+                          over state input &&
+                        decide (input.cfg.t0 ≤ nx state input)) &&
+                !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+              if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                state.run && e0 state input && beat state input
+              else
+                (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                        if over state input = true then
+                          decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                        else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                      beat state input &&
+                    over state input &&
+                  decide (input.cfg.t0 ≤ nx state input)) =
+            true then
+        1
+      else 0
+C:\Users\b_yee23\AppData\Local\Temp\metronome-line-line_tap0_cross-6f5gzovi\LineProof.lean:712:544: error: Tactic `rfl` failed: The left-hand side
+  if input.resetN = true then
+    (((if
+              (if
+                    ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t1 ≤ nx state input)) &&
+                          !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                        (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              beat state input &&
+                            over state input &&
+                          decide (input.cfg.t1 ≤ nx state input)) =
+                      true then
+                  pinb input
+                else BitVec.truncate 1 (state.w.ushiftRight 3) != 0) =
+                true then
+            1
+          else 0) ++
+          if
+              (if
+                    ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                            !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t2 ≤ nx state input)) &&
+                          !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+                        (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                              beat state input &&
+                            over state input &&
+                          decide (input.cfg.t2 ≤ nx state input)) =
+                      true then
+                  pina input
+                else BitVec.truncate 1 (state.w.ushiftRight 2) != 0) =
+                true then
+            1
+          else 0) ++
+        if
+            (if
+                  ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                          !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t1 ≤ nx state input)) &&
+                        !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                      (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            beat state input &&
+                          over state input &&
+                        decide (input.cfg.t1 ≤ nx state input)) =
+                    true then
+                pina input
+              else BitVec.truncate 1 (state.w.ushiftRight 1) != 0) =
+              true then
+          1
+        else 0) ++
+      if
+          (if
+                (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then state.run && e0 state input
+                        else
+                          adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                        !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                            state.run && e0 state input && beat state input
+                          else
+                            (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t0 ≤ nx state input)) &&
+                      !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+                    if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                      state.run && e0 state input && beat state input
+                    else
+                      (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            beat state input &&
+                          over state input &&
+                        decide (input.cfg.t0 ≤ nx state input)) =
+                  true then
+              pina input
+            else BitVec.truncate 1 (state.w.ushiftRight 0) != 0) =
+            true then
+        1
+      else 0
+  else 0
+is not definitionally equal to the right-hand side
+  if input.resetN = true then
+    (((if
+              (if
+                    ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t1 ≤ nx state input)) &&
+                          !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                        (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              beat state input &&
+                            over state input &&
+                          decide (input.cfg.t1 ≤ nx state input)) =
+                      true then
+                  pinb input
+                else BitVec.truncate 1 (state.w.ushiftRight 3) != 0) =
+                true then
+            1
+          else 0) ++
+          if
+              (if
+                    ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                            !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t2 ≤ nx state input)) &&
+                          !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+                        (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                              beat state input &&
+                            over state input &&
+                          decide (input.cfg.t2 ≤ nx state input)) =
+                      true then
+                  pina input
+                else BitVec.truncate 1 (state.w.ushiftRight 2) != 0) =
+                true then
+            1
+          else 0) ++
+        if
+            (if
+                  ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                          !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t1 ≤ nx state input)) &&
+                        !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                      (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            beat state input &&
+                          over state input &&
+                        decide (input.cfg.t1 ≤ nx state input)) =
+                    true then
+                pina input
+              else BitVec.truncate 1 (state.w.ushiftRight 1) != 0) =
+              true then
+          1
+        else 0) ++
+      if
+          (if
+                (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then state.run && e0 state input
+                        else
+                          adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                            if over state input = true then
+                              decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                            else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                        !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                            state.run && e0 state input && beat state input
+                          else
+                            (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t0 ≤ nx state input)) &&
+                      !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+                    if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                      state.run && e0 state input && beat state input
+                    else
+                      (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                            beat state input &&
+                          over state input &&
+                        decide (input.cfg.t0 ≤ nx state input)) =
+                  true then
+              pina input
+            else BitVec.truncate 1 (state.w.ushiftRight 0) != 0) =
+            true then
+        1
+      else 0
+  else 0
+
+state : State
+input : Input
+⊢ (if input.resetN = true then
+      (((if
+                (if
+                      ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t1 ≤ nx state input)) &&
+                            !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                          (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t1 ≤ nx state input)) =
+                        true then
+                    pinb input
+                  else BitVec.truncate 1 (state.w.ushiftRight 3) != 0) =
+                  true then
+              1
+            else 0) ++
+            if
+                (if
+                      ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                              !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t2 ≤ nx state input)) &&
+                            !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+                          (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t2 ≤ nx state input)) =
+                        true then
+                    pina input
+                  else BitVec.truncate 1 (state.w.ushiftRight 2) != 0) =
+                  true then
+              1
+            else 0) ++
+          if
+              (if
+                    ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t1 ≤ nx state input)) &&
+                          !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                        (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              beat state input &&
+                            over state input &&
+                          decide (input.cfg.t1 ≤ nx state input)) =
+                      true then
+                  pina input
+                else BitVec.truncate 1 (state.w.ushiftRight 1) != 0) =
+                true then
+            1
+          else 0) ++
+        if
+            (if
+                  (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                            state.run && e0 state input
+                          else
+                            adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                          !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                              state.run && e0 state input && beat state input
+                            else
+                              (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t0 ≤ nx state input)) &&
+                        !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+                      if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                        state.run && e0 state input && beat state input
+                      else
+                        (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              beat state input &&
+                            over state input &&
+                          decide (input.cfg.t0 ≤ nx state input)) =
+                    true then
+                pina input
+              else BitVec.truncate 1 (state.w.ushiftRight 0) != 0) =
+              true then
+          1
+        else 0
+    else 0) =
+    if input.resetN = true then
+      (((if
+                (if
+                      ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t1 ≤ nx state input)) &&
+                            !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                          (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t1 ≤ nx state input)) =
+                        true then
+                    pinb input
+                  else BitVec.truncate 1 (state.w.ushiftRight 3) != 0) =
+                  true then
+              1
+            else 0) ++
+            if
+                (if
+                      ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                              !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t2 ≤ nx state input)) &&
+                            !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+                          (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t2 ≤ nx state input)) =
+                        true then
+                    pina input
+                  else BitVec.truncate 1 (state.w.ushiftRight 2) != 0) =
+                  true then
+              1
+            else 0) ++
+          if
+              (if
+                    ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t1 ≤ nx state input)) &&
+                          !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                        (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              beat state input &&
+                            over state input &&
+                          decide (input.cfg.t1 ≤ nx state input)) =
+                      true then
+                  pina input
+                else BitVec.truncate 1 (state.w.ushiftRight 1) != 0) =
+                true then
+            1
+          else 0) ++
+        if
+            (if
+                  (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                            state.run && e0 state input
+                          else
+                            adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                          !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                              state.run && e0 state input && beat state input
+                            else
+                              (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t0 ≤ nx state input)) &&
+                        !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+                      if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                        state.run && e0 state input && beat state input
+                      else
+                        (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                              beat state input &&
+                            over state input &&
+                          decide (input.cfg.t0 ≤ nx state input)) =
+                    true then
+                pina input
+              else BitVec.truncate 1 (state.w.ushiftRight 0) != 0) =
+              true then
+          1
+        else 0
+    else 0
+C:\Users\b_yee23\AppData\Local\Temp\metronome-line-line_tap0_cross-6f5gzovi\LineProof.lean:716:544: error: Tactic `rfl` failed: The left-hand side
+  if input.resetN = true then
+    if snap state input = true then
+      (((if
+                (if
+                      ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t1 ≤ nx state input)) &&
+                            !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                          (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t1 ≤ nx state input)) =
+                        true then
+                    pinb input
+                  else BitVec.truncate 1 (state.w.ushiftRight 3) != 0) =
+                  true then
+              1
+            else 0) ++
+            if
+                (if
+                      ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                              !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t2 ≤ nx state input)) &&
+                            !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+                          (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t2 ≤ nx state input)) =
+                        true then
+                    pina input
+                  else BitVec.truncate 1 (state.w.ushiftRight 2) != 0) =
+                  true then
+              1
+            else 0) ++
+          if
+              (if
+                    ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t1 ≤ nx state input)) &&
+                          !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                        (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              beat state input &&
+                            over state input &&
+                          decide (input.cfg.t1 ≤ nx state input)) =
+                      true then
+                  pina input
+                else BitVec.truncate 1 (state.w.ushiftRight 1) != 0) =
+                true then
+            1
+          else 0) ++
+        if
+            (if
+                  (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                            state.run && e0 state input
+                          else
+                            adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                          !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                              state.run && e0 state input && beat state input
+                            else
+                              (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t0 ≤ nx state input)) &&
+                        !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+                      if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                        state.run && e0 state input && beat state input
+                      else
+                        (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              beat state input &&
+                            over state input &&
+                          decide (input.cfg.t0 ≤ nx state input)) =
+                    true then
+                pina input
+              else BitVec.truncate 1 (state.w.ushiftRight 0) != 0) =
+              true then
+          1
+        else 0
+    else state.sn
+  else 0
+is not definitionally equal to the right-hand side
+  if input.resetN = true then
+    if snap state input = true then
+      (((if
+                (if
+                      ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t1 ≤ nx state input)) &&
+                            !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                          (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t1 ≤ nx state input)) =
+                        true then
+                    pinb input
+                  else BitVec.truncate 1 (state.w.ushiftRight 3) != 0) =
+                  true then
+              1
+            else 0) ++
+            if
+                (if
+                      ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                              !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t2 ≤ nx state input)) &&
+                            !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+                          (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t2 ≤ nx state input)) =
+                        true then
+                    pina input
+                  else BitVec.truncate 1 (state.w.ushiftRight 2) != 0) =
+                  true then
+              1
+            else 0) ++
+          if
+              (if
+                    ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t1 ≤ nx state input)) &&
+                          !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                        (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              beat state input &&
+                            over state input &&
+                          decide (input.cfg.t1 ≤ nx state input)) =
+                      true then
+                  pina input
+                else BitVec.truncate 1 (state.w.ushiftRight 1) != 0) =
+                true then
+            1
+          else 0) ++
+        if
+            (if
+                  (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                            state.run && e0 state input
+                          else
+                            adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                              if over state input = true then
+                                decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                              else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                          !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                              state.run && e0 state input && beat state input
+                            else
+                              (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t0 ≤ nx state input)) &&
+                        !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+                      if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                        state.run && e0 state input && beat state input
+                      else
+                        (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                              beat state input &&
+                            over state input &&
+                          decide (input.cfg.t0 ≤ nx state input)) =
+                    true then
+                pina input
+              else BitVec.truncate 1 (state.w.ushiftRight 0) != 0) =
+              true then
+          1
+        else 0
+    else state.sn
+  else 0
+
+state : State
+input : Input
+⊢ (if input.resetN = true then
+      if snap state input = true then
+        (((if
+                  (if
+                        ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                          if over state input = true then
+                                            decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                          else
+                                            decide (state.ph < input.cfg.t1) &&
+                                              decide (input.cfg.t1 ≤ nx state input)) &&
+                                        beat state input &&
+                                      over state input &&
+                                    decide (input.cfg.t1 ≤ nx state input)) &&
+                              !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                            (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t1 ≤ nx state input)) =
+                          true then
+                      pinb input
+                    else BitVec.truncate 1 (state.w.ushiftRight 3) != 0) =
+                    true then
+                1
+              else 0) ++
+              if
+                  (if
+                        ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                          if over state input = true then
+                                            decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                          else
+                                            decide (state.ph < input.cfg.t2) &&
+                                              decide (input.cfg.t2 ≤ nx state input)) &&
+                                        beat state input &&
+                                      over state input &&
+                                    decide (input.cfg.t2 ≤ nx state input)) &&
+                              !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+                            (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t2 ≤ nx state input)) =
+                          true then
+                      pina input
+                    else BitVec.truncate 1 (state.w.ushiftRight 2) != 0) =
+                    true then
+                1
+              else 0) ++
+            if
+                (if
+                      ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t1 ≤ nx state input)) &&
+                            !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                          (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t1 ≤ nx state input)) =
+                        true then
+                    pina input
+                  else BitVec.truncate 1 (state.w.ushiftRight 1) != 0) =
+                  true then
+              1
+            else 0) ++
+          if
+              (if
+                    (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                              state.run && e0 state input
+                            else
+                              adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                                state.run && e0 state input && beat state input
+                              else
+                                (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t0 ≤ nx state input)) &&
+                          !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+                        if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                          state.run && e0 state input && beat state input
+                        else
+                          (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t0 ≤ nx state input)) =
+                      true then
+                  pina input
+                else BitVec.truncate 1 (state.w.ushiftRight 0) != 0) =
+                true then
+            1
+          else 0
+      else state.sn
+    else 0) =
+    if input.resetN = true then
+      if snap state input = true then
+        (((if
+                  (if
+                        ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                          if over state input = true then
+                                            decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                          else
+                                            decide (state.ph < input.cfg.t1) &&
+                                              decide (input.cfg.t1 ≤ nx state input)) &&
+                                        beat state input &&
+                                      over state input &&
+                                    decide (input.cfg.t1 ≤ nx state input)) &&
+                              !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                            (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t1 ≤ nx state input)) =
+                          true then
+                      pinb input
+                    else BitVec.truncate 1 (state.w.ushiftRight 3) != 0) =
+                    true then
+                1
+              else 0) ++
+              if
+                  (if
+                        ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                          if over state input = true then
+                                            decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                          else
+                                            decide (state.ph < input.cfg.t2) &&
+                                              decide (input.cfg.t2 ≤ nx state input)) &&
+                                        beat state input &&
+                                      over state input &&
+                                    decide (input.cfg.t2 ≤ nx state input)) &&
+                              !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+                            (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t2 ≤ nx state input)) =
+                          true then
+                      pina input
+                    else BitVec.truncate 1 (state.w.ushiftRight 2) != 0) =
+                    true then
+                1
+              else 0) ++
+            if
+                (if
+                      ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t1 ≤ nx state input)) &&
+                            !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                          (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t1 ≤ nx state input)) =
+                        true then
+                    pina input
+                  else BitVec.truncate 1 (state.w.ushiftRight 1) != 0) =
+                  true then
+              1
+            else 0) ++
+          if
+              (if
+                    (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                              state.run && e0 state input
+                            else
+                              adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                            !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                                state.run && e0 state input && beat state input
+                              else
+                                (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t0 ≤ nx state input)) &&
+                          !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+                        if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                          state.run && e0 state input && beat state input
+                        else
+                          (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t0 > state.ph) || decide (input.cfg.t0 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t0) && decide (input.cfg.t0 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t0 ≤ nx state input)) =
+                      true then
+                  pina input
+                else BitVec.truncate 1 (state.w.ushiftRight 0) != 0) =
+                true then
+            1
+          else 0
+      else state.sn
+    else 0
+C:\Users\b_yee23\AppData\Local\Temp\metronome-line-line_tap0_cross-6f5gzovi\LineProof.lean:739:32: error: Tactic `rfl` failed: The left-hand side
+  { ph := if input.resetN = true then phF state input else 0,
+    run := if input.resetN = true then runF state input else false,
+    arm :=
+      if input.resetN = true then
+        if input.hCtlWe = true then BitVec.truncate 1 (input.hD.ushiftRight 1) != 0 else armC state input
+      else false,
+    ren :=
+      if input.resetN = true then
+        if input.hCtlWe = true then BitVec.truncate 1 (input.hD.ushiftRight 2) != 0 else renC state input
+      else false,
+    held := if input.resetN = true then if input.frz = true then state.held else hold state input else false,
+    first := if input.resetN = true then starting state input || state.first && !beat state input else false,
+    sc :=
+      if input.resetN = true then
+        if (BitVec.truncate 1 (input.cfg.edge.ushiftRight 7) != 0) = true then false
+        else if accept state input = true then true else if beat state input = true then false else state.sc
+      else false,
+    sp :=
+      if input.resetN = true then
+        if (BitVec.truncate 1 (input.cfg.edge.ushiftRight 7) != 0) = true then
+          if beat state input = true then true else if wrap state input = true then false else state.sp
+        else if beat state input = true then state.sc else state.sp
+      else false,
+    fired :=
+      if input.resetN = true then
+        if starting state input = true then
+          ((if (decide (input.cfg.t2 < input.cfg.mod) && decide (input.cfg.t2 ≤ phF state input)) = true then 1
+              else 0) ++
+              if (decide (input.cfg.t1 < input.cfg.mod) && decide (input.cfg.t1 ≤ phF state input)) = true then 1
+              else 0) ++
+            if
+                (!BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0 && decide (input.cfg.t0 < input.cfg.mod) &&
+                    decide (input.cfg.t0 ≤ phF state input)) =
+                  true then
+              1
+            else 0
+        else firedNext state input
+      else 0,
+    w :=
+      if input.resetN = true then
+        (((if
+                  (if
+                        ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                          if over state input = true then
+                                            decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                          else
+                                            decide (state.ph < input.cfg.t1) &&
+                                              decide (input.cfg.t1 ≤ nx state input)) &&
+                                        beat state input &&
+                                      over state input &&
+                                    decide (input.cfg.t1 ≤ nx state input)) &&
+                              !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                            (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t1 ≤ nx state input)) =
+                          true then
+                      pinb input
+                    else BitVec.truncate 1 (state.w.ushiftRight 3) != 0) =
+                    true then
+                1
+              else 0) ++
+              if
+                  (if
+                        ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                          if over state input = true then
+                                            decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                          else
+                                            decide (state.ph < input.cfg.t2) &&
+                                              decide (input.cfg.t2 ≤ nx state input)) &&
+                                        beat state input &&
+                                      over state input &&
+                                    decide (input.cfg.t2 ≤ nx state input)) &&
+                              !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+                            (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t2 ≤ nx state input)) =
+                          true then
+                      pina input
+                    else BitVec.truncate 1 (state.w.ushiftRight 2) != 0) =
+                    true then
+                1
+              else 0) ++
+            if
+                (if
+                      ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t1 ≤ nx state input)) &&
+                            !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                          (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t1 ≤ nx state input)) =
+                        true then
+                    pina input
+                  else BitVec.truncate 1 (state.w.ushiftRight 1) != 0) =
+                  true then
+              1
+            else 0) ++
+          if
+              (if
+                    (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                              state.run && e0 state input
+                            else
+                              adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                if over state input = true then
+                                  decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                            !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                                state.run && e0 state input && beat state input
+                              else
+                                (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t0 ≤ nx state input)) &&
+                          !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+                        if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                          state.run && e0 state input && beat state input
+                        else
+                          (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                beat state input &&
+                              over state input &&
+                            decide (input.cfg.t0 ≤ nx state input)) =
+                      true then
+                  pina input
+                else BitVec.truncate 1 (state.w.ushiftRight 0) != 0) =
+                true then
+            1
+          else 0
+      else 0,
+    sn :=
+      if input.resetN = true then
+        if snap state input = true then
+          (((if
+                    (if
+                          ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                  !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                            if over state input = true then
+                                              decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                            else
+                                              decide (state.ph < input.cfg.t1) &&
+                                                decide (input.cfg.t1 ≤ nx state input)) &&
+                                          beat state input &&
+                                        over state input &&
+                                      decide (input.cfg.t1 ≤ nx state input)) &&
+                                !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                              (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t1 ≤ nx state input)) =
+                            true then
+                        pinb input
+                      else BitVec.truncate 1 (state.w.ushiftRight 3) != 0) =
+                      true then
+                  1
+                else 0) ++
+                if
+                    (if
+                          ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                  !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                            if over state input = true then
+                                              decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                            else
+                                              decide (state.ph < input.cfg.t2) &&
+                                                decide (input.cfg.t2 ≤ nx state input)) &&
+                                          beat state input &&
+                                        over state input &&
+                                      decide (input.cfg.t2 ≤ nx state input)) &&
+                                !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+                              (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t2 ≤ nx state input)) =
+                            true then
+                        pina input
+                      else BitVec.truncate 1 (state.w.ushiftRight 2) != 0) =
+                      true then
+                  1
+                else 0) ++
+              if
+                  (if
+                        ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                          if over state input = true then
+                                            decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                          else
+                                            decide (state.ph < input.cfg.t1) &&
+                                              decide (input.cfg.t1 ≤ nx state input)) &&
+                                        beat state input &&
+                                      over state input &&
+                                    decide (input.cfg.t1 ≤ nx state input)) &&
+                              !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                            (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t1 ≤ nx state input)) =
+                          true then
+                      pina input
+                    else BitVec.truncate 1 (state.w.ushiftRight 1) != 0) =
+                    true then
+                1
+              else 0) ++
+            if
+                (if
+                      (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                                state.run && e0 state input
+                              else
+                                adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                                  state.run && e0 state input && beat state input
+                                else
+                                  (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                          if over state input = true then
+                                            decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                          else
+                                            decide (state.ph < input.cfg.t1) &&
+                                              decide (input.cfg.t1 ≤ nx state input)) &&
+                                        beat state input &&
+                                      over state input &&
+                                    decide (input.cfg.t0 ≤ nx state input)) &&
+                            !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+                          if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                            state.run && e0 state input && beat state input
+                          else
+                            (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t0 ≤ nx state input)) =
+                        true then
+                    pina input
+                  else BitVec.truncate 1 (state.w.ushiftRight 0) != 0) =
+                  true then
+              1
+            else 0
+        else state.sn
+      else 0,
+    rem :=
+      if input.resetN = true then
+        if snap state input = true then
+          input.cfg.lut1.ushiftRight
+                ((if state.rem = true then 1 else 0) ++ BitVec.truncate 4 (state.sn.ushiftRight 0)).toNat &&&
+              1 !=
+            0
+        else state.rem
+      else false,
+    staged := if input.resetN = true then stagedNext state input else 0,
+    committed :=
+      if input.resetN = true then
+        if (beat state input || starting state input) = true then stagedNext state input else state.committed
+      else 0,
+    tapmiss :=
+      if input.resetN = true then
+        missEv state input || state.tapmiss && !(input.hStatWe && BitVec.truncate 1 (input.hD.ushiftRight 0) != 0)
+      else false }
+is not definitionally equal to the right-hand side
+  { ph := if input.resetN = true then phF state input else 0,
+    run := if input.resetN = true then runF state input else false,
+    arm := if input.resetN = true then armF state input else false,
+    ren := if input.resetN = true then renF state input else false,
+    held := if input.resetN = true then if input.frz = true then state.held else hold state input else false,
+    first := if input.resetN = true then starting state input || state.first && !beat state input else false,
+    sc := if input.resetN = true then scNext state input else false,
+    sp := if input.resetN = true then spNext state input else false,
+    fired :=
+      if input.resetN = true then if starting state input = true then startBits state input else firedNext state input
+      else 0,
+    w := if input.resetN = true then wNext state input else 0,
+    sn := if input.resetN = true then if snap state input = true then wNext state input else state.sn else 0,
+    rem :=
+      if input.resetN = true then if snap state input = true then sel (cap state).toNat input.cfg.lut1 else state.rem
+      else false,
+    staged := if input.resetN = true then stagedNext state input else 0,
+    committed := if input.resetN = true then committedNext state input else 0,
+    tapmiss :=
+      if input.resetN = true then missEv state input || state.tapmiss && !(input.hStatWe && bitAt 0 input.hD)
+      else false }
+
+state : State
+input : Input
+⊢ { ph := if input.resetN = true then phF state input else 0,
+      run := if input.resetN = true then runF state input else false,
+      arm :=
+        if input.resetN = true then
+          if input.hCtlWe = true then BitVec.truncate 1 (input.hD.ushiftRight 1) != 0 else armC state input
+        else false,
+      ren :=
+        if input.resetN = true then
+          if input.hCtlWe = true then BitVec.truncate 1 (input.hD.ushiftRight 2) != 0 else renC state input
+        else false,
+      held := if input.resetN = true then if input.frz = true then state.held else hold state input else false,
+      first := if input.resetN = true then starting state input || state.first && !beat state input else false,
+      sc :=
+        if input.resetN = true then
+          if (BitVec.truncate 1 (input.cfg.edge.ushiftRight 7) != 0) = true then false
+          else if accept state input = true then true else if beat state input = true then false else state.sc
+        else false,
+      sp :=
+        if input.resetN = true then
+          if (BitVec.truncate 1 (input.cfg.edge.ushiftRight 7) != 0) = true then
+            if beat state input = true then true else if wrap state input = true then false else state.sp
+          else if beat state input = true then state.sc else state.sp
+        else false,
+      fired :=
+        if input.resetN = true then
+          if starting state input = true then
+            ((if (decide (input.cfg.t2 < input.cfg.mod) && decide (input.cfg.t2 ≤ phF state input)) = true then 1
+                else 0) ++
+                if (decide (input.cfg.t1 < input.cfg.mod) && decide (input.cfg.t1 ≤ phF state input)) = true then 1
+                else 0) ++
+              if
+                  (!BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0 && decide (input.cfg.t0 < input.cfg.mod) &&
+                      decide (input.cfg.t0 ≤ phF state input)) =
+                    true then
+                1
+              else 0
+          else firedNext state input
+        else 0,
+      w :=
+        if input.resetN = true then
+          (((if
+                    (if
+                          ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                  !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                            if over state input = true then
+                                              decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                            else
+                                              decide (state.ph < input.cfg.t1) &&
+                                                decide (input.cfg.t1 ≤ nx state input)) &&
+                                          beat state input &&
+                                        over state input &&
+                                      decide (input.cfg.t1 ≤ nx state input)) &&
+                                !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                              (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t1 ≤ nx state input)) =
+                            true then
+                        pinb input
+                      else BitVec.truncate 1 (state.w.ushiftRight 3) != 0) =
+                      true then
+                  1
+                else 0) ++
+                if
+                    (if
+                          ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                  !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                            if over state input = true then
+                                              decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                            else
+                                              decide (state.ph < input.cfg.t2) &&
+                                                decide (input.cfg.t2 ≤ nx state input)) &&
+                                          beat state input &&
+                                        over state input &&
+                                      decide (input.cfg.t2 ≤ nx state input)) &&
+                                !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+                              (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t2 ≤ nx state input)) =
+                            true then
+                        pina input
+                      else BitVec.truncate 1 (state.w.ushiftRight 2) != 0) =
+                      true then
+                  1
+                else 0) ++
+              if
+                  (if
+                        ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                          if over state input = true then
+                                            decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                          else
+                                            decide (state.ph < input.cfg.t1) &&
+                                              decide (input.cfg.t1 ≤ nx state input)) &&
+                                        beat state input &&
+                                      over state input &&
+                                    decide (input.cfg.t1 ≤ nx state input)) &&
+                              !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                            (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t1 ≤ nx state input)) =
+                          true then
+                      pina input
+                    else BitVec.truncate 1 (state.w.ushiftRight 1) != 0) =
+                    true then
+                1
+              else 0) ++
+            if
+                (if
+                      (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                                state.run && e0 state input
+                              else
+                                adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                  if over state input = true then
+                                    decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                  else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                              !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                                  state.run && e0 state input && beat state input
+                                else
+                                  (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                          if over state input = true then
+                                            decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                          else
+                                            decide (state.ph < input.cfg.t1) &&
+                                              decide (input.cfg.t1 ≤ nx state input)) &&
+                                        beat state input &&
+                                      over state input &&
+                                    decide (input.cfg.t0 ≤ nx state input)) &&
+                            !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+                          if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                            state.run && e0 state input && beat state input
+                          else
+                            (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                  beat state input &&
+                                over state input &&
+                              decide (input.cfg.t0 ≤ nx state input)) =
+                        true then
+                    pina input
+                  else BitVec.truncate 1 (state.w.ushiftRight 0) != 0) =
+                  true then
+              1
+            else 0
+        else 0,
+      sn :=
+        if input.resetN = true then
+          if snap state input = true then
+            (((if
+                      (if
+                            ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                    !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                              if over state input = true then
+                                                decide (input.cfg.t1 > state.ph) ||
+                                                  decide (input.cfg.t1 ≤ nx state input)
+                                              else
+                                                decide (state.ph < input.cfg.t1) &&
+                                                  decide (input.cfg.t1 ≤ nx state input)) &&
+                                            beat state input &&
+                                          over state input &&
+                                        decide (input.cfg.t1 ≤ nx state input)) &&
+                                  !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                                (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t1 ≤ nx state input)) =
+                              true then
+                          pinb input
+                        else BitVec.truncate 1 (state.w.ushiftRight 3) != 0) =
+                        true then
+                    1
+                  else 0) ++
+                  if
+                      (if
+                            ((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                    !((adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                              if over state input = true then
+                                                decide (input.cfg.t2 > state.ph) ||
+                                                  decide (input.cfg.t2 ≤ nx state input)
+                                              else
+                                                decide (state.ph < input.cfg.t2) &&
+                                                  decide (input.cfg.t2 ≤ nx state input)) &&
+                                            beat state input &&
+                                          over state input &&
+                                        decide (input.cfg.t2 ≤ nx state input)) &&
+                                  !BitVec.truncate 1 (state.fired.ushiftRight 2) != 0 ||
+                                (adv state input && decide (input.cfg.t2 < input.cfg.mod) &&
+                                        if over state input = true then
+                                          decide (input.cfg.t2 > state.ph) || decide (input.cfg.t2 ≤ nx state input)
+                                        else
+                                          decide (state.ph < input.cfg.t2) && decide (input.cfg.t2 ≤ nx state input)) &&
+                                      beat state input &&
+                                    over state input &&
+                                  decide (input.cfg.t2 ≤ nx state input)) =
+                              true then
+                          pina input
+                        else BitVec.truncate 1 (state.w.ushiftRight 2) != 0) =
+                        true then
+                    1
+                  else 0) ++
+                if
+                    (if
+                          ((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                  !((adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                            if over state input = true then
+                                              decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                            else
+                                              decide (state.ph < input.cfg.t1) &&
+                                                decide (input.cfg.t1 ≤ nx state input)) &&
+                                          beat state input &&
+                                        over state input &&
+                                      decide (input.cfg.t1 ≤ nx state input)) &&
+                                !BitVec.truncate 1 (state.fired.ushiftRight 1) != 0 ||
+                              (adv state input && decide (input.cfg.t1 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t1 ≤ nx state input)) =
+                            true then
+                        pina input
+                      else BitVec.truncate 1 (state.w.ushiftRight 1) != 0) =
+                      true then
+                  1
+                else 0) ++
+              if
+                  (if
+                        (((if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                                  state.run && e0 state input
+                                else
+                                  adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                    if over state input = true then
+                                      decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                    else decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                !if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                                    state.run && e0 state input && beat state input
+                                  else
+                                    (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                            if over state input = true then
+                                              decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                            else
+                                              decide (state.ph < input.cfg.t1) &&
+                                                decide (input.cfg.t1 ≤ nx state input)) &&
+                                          beat state input &&
+                                        over state input &&
+                                      decide (input.cfg.t0 ≤ nx state input)) &&
+                              !BitVec.truncate 1 (state.fired.ushiftRight 0) != 0 ||
+                            if (BitVec.truncate 1 (input.cfg.t0edge.ushiftRight 6) != 0) = true then
+                              state.run && e0 state input && beat state input
+                            else
+                              (adv state input && decide (input.cfg.t0 < input.cfg.mod) &&
+                                      if over state input = true then
+                                        decide (input.cfg.t1 > state.ph) || decide (input.cfg.t1 ≤ nx state input)
+                                      else
+                                        decide (state.ph < input.cfg.t1) && decide (input.cfg.t1 ≤ nx state input)) &&
+                                    beat state input &&
+                                  over state input &&
+                                decide (input.cfg.t0 ≤ nx state input)) =
+                          true then
+                      pina input
+                    else BitVec.truncate 1 (state.w.ushiftRight 0) != 0) =
+                    true then
+                1
+              else 0
+          else state.sn
+        else 0,
+      rem :=
+        if input.resetN = true then
+          if snap state input = true then
+            input.cfg.lut1.ushiftRight
+                  ((if state.rem = true then 1 else 0) ++ BitVec.truncate 4 (state.sn.ushiftRight 0)).toNat &&&
+                1 !=
+              0
+          else state.rem
+        else false,
+      staged := if input.resetN = true then stagedNext state input else 0,
+      committed :=
+        if input.resetN = true then
+          if (beat state input || starting state input) = true then stagedNext state input else state.committed
+        else 0,
+      tapmiss :=
+        if input.resetN = true then
+          missEv state input || state.tapmiss && !(input.hStatWe && BitVec.truncate 1 (input.hD.ushiftRight 0) != 0)
+        else false } =
+    { ph := if input.resetN = true then phF state input else 0,
+      run := if input.resetN = true then runF state input else false,
+      arm := if input.resetN = true then armF state input else false,
+      ren := if input.resetN = true then renF state input else false,
+      held := if input.resetN = true then if input.frz = true then state.held else hold state input else false,
+      first := if input.resetN = true then starting state input || state.first && !beat state input else false,
+      sc := if input.resetN = true then scNext state input else false,
+      sp := if input.resetN = true then spNext state input else false,
+      fired :=
+        if input.resetN = true then if starting state input = true then startBits state input else firedNext state input
+        else 0,
+      w := if input.resetN = true then wNext state input else 0,
+      sn := if input.resetN = true then if snap state input = true then wNext state input else state.sn else 0,
+      rem :=
+        if input.resetN = true then if snap state input = true then sel (cap state).toNat input.cfg.lut1 else state.rem
+        else false,
+      staged := if input.resetN = true then stagedNext state input else 0,
+      committed := if input.resetN = true then committedNext state input else 0,
+      tapmiss :=
+        if input.resetN = true then missEv state input || state.tapmiss && !(input.hStatWe && bitAt 0 input.hD)
+        else false }
+C:\Users\b_yee23\AppData\Local\Temp\metronome-line-line_tap0_cross-6f5gzovi\LineProof.lean:776:2: error: Type mismatch
+  trace_frz_holds inputs initial n hreset hfrz hfollow hctl hsym hph hhctl hhstat
+has type
+  stateAt inputs initial (n + 1) = stateAt inputs initial n
+but is expected to have type
+  stateAt inputs initial (n + 1) = rtlStateAt inputs initial n
+'Metronome.Line.rtlStep_eq_step' depends on axioms: [propext, sorryAx, Quot.sound]
+'Metronome.Line.rtlStateAt_eq' depends on axioms: [propext, sorryAx, Quot.sound]
+'Metronome.Line.rtl_trace_frz_holds' depends on axioms: [propext, sorryAx, Quot.sound]
+'Metronome.Line.rtlEdg_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlE0_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlRuna_eq' depends on axioms: [propext]
+'Metronome.Line.rtlInwin_eq' depends on axioms: [propext]
+'Metronome.Line.rtlStart_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlAccept_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlN_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlOver_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlNxw_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlNx_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlTh_eq' depends on axioms: [propext]
+'Metronome.Line.rtlHTok_eq' depends on axioms: [propext]
+'Metronome.Line.rtlHold_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlAdv_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlWrap_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlBeatOut_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlMissEv_eq' depends on axioms: [propext, sorryAx, Quot.sound]
+'Metronome.Line.rtlFiredNext_eq' depends on axioms: [propext, sorryAx, Quot.sound]
+'Metronome.Line.rtlSnap_eq' depends on axioms: [propext, sorryAx, Quot.sound]
+'Metronome.Line.rtlPhC_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlPhF_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlRunC_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlArmC_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlRenC_eq' depends on axioms: [propext]
+'Metronome.Line.rtlRunF_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlStarting_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlStagedN_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlSegValue_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlPinaIn_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlPinbIn_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlPinaRiseIn_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlPinaFallIn_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlTapOut_eq' depends on axioms: [propext, sorryAx, Quot.sound]
+'Metronome.Line.rtlInSymOut_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlCapValue_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtl_trace_reset' depends on axioms: [propext, sorryAx, Quot.sound]
+'Metronome.Line.rtlPh' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlRun' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlArm' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlRen' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlHeld' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlFirst' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlSc' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlSp' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlFired' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlW' depends on axioms: [propext, sorryAx, Quot.sound]
+'Metronome.Line.rtlSn' depends on axioms: [propext, sorryAx, Quot.sound]
+'Metronome.Line.rtlRem' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlStaged' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlCommitted' depends on axioms: [propext, Quot.sound]
+'Metronome.Line.rtlTapmiss' depends on axioms: [propext, Quot.sound]
+-- line_tap0_cross: rejected by Lean (exit 1)

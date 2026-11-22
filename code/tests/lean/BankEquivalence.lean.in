@@ -1,0 +1,210 @@
+
+/-! ## The family law
+
+The per-byte theorems above are the RTL link one live byte at a time. The
+assembly is a single lemma over the gate list: it uses each gate's own theorem
+once and never enumerates the 480 offsets. -/
+
+/-- `a || (a && b) = a`: the only open gate absorbs the closed rest. -/
+private theorem or_and_self (a b : Bool) : (a || (a && b)) = a := by
+  cases a <;> simp
+
+/-- **The family law.** A list of gates whose cones each implement their own
+offset comparison yields, at byte index `k`, exactly the gate at `k`: an index
+that is not an offset in the list carries no gate, and the only open gate is the
+gate whose offset is `k`. -/
+theorem any_enable_spec (l : List Gate) (k : BitVec 9) (we1 : Bool)
+    (addr1 : BitVec 9) :
+    l.any (fun g => k.toNat == g.off && g.fn we1 addr1) =
+      (we1 && (addr1 == k) && l.any (fun g => k.toNat == g.off)) := by
+  induction l with
+  | nil => simp
+  | cons g rest ih =>
+    simp only [List.any_cons]
+    rw [g.spec we1 addr1, ih]
+    cases hc : (k.toNat == g.off)
+    · simp
+    · have h1 : k.toNat = g.off := by simpa using hc
+      have hk : k = BitVec.ofNat 9 g.off := by
+        apply BitVec.toNat_inj.mp
+        rw [BitVec.toNat_ofNat, Nat.mod_eq_of_lt (by simpa using g.off_lt)]
+        exact h1
+      rw [hk]
+      simp only [Bool.true_and, Bool.true_or, Bool.and_true]
+      exact or_and_self _ _
+
+/-- **The family theorem.** The whole extracted gate family — every inlined
+`g_byte[k].g_used.u_cg` cone — is the arithmetic per-byte rule, and it carries no
+gate at a mask-zero or out-of-window index. No hypothesis, no per-offset case
+analysis: this is the statement the composition used to assume. -/
+theorem enableAt_spec (k : BitVec 9) (we1 : Bool) (addr1 : BitVec 9) :
+    enableAt k we1 addr1 = (we1 && (addr1 == k) && liveAt k) :=
+  any_enable_spec gates k we1 addr1
+
+/-- The family's live set at a window offset is exactly "the elaborated `MASK`
+byte is non-zero", so the gates and the latches agree on which offsets exist.
+Kernel reduction over the 480 offsets. -/
+theorem liveAt_addrOf (i : Fin cfgBytes) :
+    liveAt (Metronome.Bank.addrOf i) = paramLive i := by
+  decide +revert
+
+/-- The same live set as the bit vector the address-decode cut uses: bit `k` is
+set iff `MASK` byte `k` is non-zero. -/
+theorem liveBytes_getLsb (i : Fin cfgBytes) :
+    liveBytes.getLsb i = paramLive i := by
+  decide +revert
+
+/-- A non-zero `MASK` byte has a gate. -/
+theorem liveAt_of_live (i : Fin cfgBytes) (h : paramMask i ≠ 0) :
+    liveAt (Metronome.Bank.addrOf i) = true := by
+  rw [liveAt_addrOf]
+  simpa [paramLive] using h
+
+/-- A mask-zero offset has no gate. -/
+theorem liveAt_of_hole (i : Fin cfgBytes) (h : paramMask i = 0) :
+    liveAt (Metronome.Bank.addrOf i) = false := by
+  rw [liveAt_addrOf]
+  simp [paramLive, h]
+
+/-! ## Composition with the latch-bank specification -/
+
+/-- Every live byte's extracted gate is its specification gate. -/
+theorem enableAt_eq_gateOpen (i : Fin cfgBytes) (h : paramMask i ≠ 0)
+    (we1 : Bool) (addr1 : BitVec 9) :
+    enableAt (Metronome.Bank.addrOf i) we1 addr1 =
+      Metronome.Bank.gateOpen we1 addr1 i := by
+  rw [enableAt_spec, liveAt_of_live i h, Metronome.Bank.gateOpen]
+  simp
+
+/-- A mask-zero offset carries no gate at all, so its clock gate does not exist
+rather than staying closed: the family is closed there. -/
+theorem enableAt_hole (i : Fin cfgBytes) (h : paramMask i = 0)
+    (we1 : Bool) (addr1 : BitVec 9) :
+    enableAt (Metronome.Bank.addrOf i) we1 addr1 = false := by
+  rw [enableAt_spec, liveAt_of_hole i h]
+  simp
+
+/-- At most one extracted gate of the bank is open at a time. -/
+theorem rtl_gates_exclusive (i j : Fin cfgBytes) (h : i ≠ j) (we1 : Bool)
+    (addr1 : BitVec 9) :
+    (enableAt (Metronome.Bank.addrOf i) we1 addr1 &&
+      enableAt (Metronome.Bank.addrOf j) we1 addr1) = false := by
+  by_cases hi : paramMask i = 0
+  · rw [enableAt_hole i hi]
+    simp
+  · by_cases hj : paramMask j = 0
+    · rw [enableAt_hole j hj]
+      simp
+    · rw [enableAt_eq_gateOpen i hi, enableAt_eq_gateOpen j hj]
+      exact Metronome.Bank.gateOpen_exclusive i j h we1 addr1
+
+/-- The elaborated bank state: the elaborated `MASK` and an arbitrary latch
+content. -/
+def latchState (latch : Fin cfgBytes → BitVec 8) : Metronome.Bank.State :=
+  ⟨paramMask, latch⟩
+
+/-- **Hypothesis-free write step.** A transparency phase of the *extracted*
+gate family has the read value of the specified write step, for any staged
+write word and any latch content. -/
+theorem bank_step_read (latch : Fin cfgBytes → BitVec 8) (we1 : Bool)
+    (addr1 : BitVec 9) (data1 : BitVec 8) :
+    Metronome.Bank.read
+        (Metronome.Bank.phase (latchState latch)
+          (fun k => enableAt (Metronome.Bank.addrOf k) we1 addr1) data1) =
+      Metronome.Bank.read
+        (Metronome.Bank.step (latchState latch) we1 addr1 data1) :=
+  Metronome.Bank.phase_read_of_live_gates (latchState latch)
+    (fun k we1 addr1 => enableAt (Metronome.Bank.addrOf k) we1 addr1)
+    (fun k we1 addr1 h => enableAt_eq_gateOpen k h we1 addr1)
+    (fun k we1 addr1 h => enableAt_hole k h we1 addr1)
+    we1 addr1 data1
+
+/-- **The write contract, unconditionally.** An issued write to byte `k` of the
+elaborated bank sets exactly that byte's mask bits to `data1 & MASK`. -/
+theorem bank_write_exact_all (latch : Fin cfgBytes → BitVec 8)
+    (k : Fin cfgBytes) (data1 : BitVec 8) :
+    Metronome.Bank.read
+        (Metronome.Bank.phase (latchState latch)
+          (fun j => enableAt (Metronome.Bank.addrOf j) true
+            (Metronome.Bank.addrOf k)) data1) k =
+      data1 &&& paramMask k :=
+  Metronome.Bank.write_exact_of_live_gates (latchState latch)
+    (fun j we1 addr1 => enableAt (Metronome.Bank.addrOf j) we1 addr1)
+    (fun j we1 addr1 h => enableAt_eq_gateOpen j h we1 addr1)
+    (fun j we1 addr1 h => enableAt_hole j h we1 addr1)
+    k data1
+
+/-- ... and leaves every other byte unchanged. -/
+theorem bank_write_others_all (latch : Fin cfgBytes → BitVec 8)
+    (k j : Fin cfgBytes) (h : j ≠ k) (data1 : BitVec 8) :
+    Metronome.Bank.read
+        (Metronome.Bank.phase (latchState latch)
+          (fun i => enableAt (Metronome.Bank.addrOf i) true
+            (Metronome.Bank.addrOf k)) data1) j =
+      Metronome.Bank.read (latchState latch) j :=
+  Metronome.Bank.write_others_of_live_gates (latchState latch)
+    (fun i we1 addr1 => enableAt (Metronome.Bank.addrOf i) we1 addr1)
+    (fun i we1 addr1 h => enableAt_eq_gateOpen i h we1 addr1)
+    (fun i we1 addr1 h => enableAt_hole i h we1 addr1)
+    k j h data1
+
+/-! ## Concrete witnesses on the elaborated mask -/
+
+/-- A live witness offset: its gate and latch set are checked below. -/
+abbrev liveWitness : Fin cfgBytes := ⟨{{LIVE}}, by decide⟩
+
+/-- A mask-zero witness offset: no gate and no latch. -/
+abbrev holeWitness : Fin cfgBytes := ⟨{{HOLE}}, by decide⟩
+
+/-- The live witness offset has a non-zero mask byte, so it has latches. -/
+theorem witness_live_mask : paramMask liveWitness ≠ 0 := by
+  decide
+
+/-- The hole witness offset has a zero mask byte. -/
+theorem witness_hole_mask : paramMask holeWitness = 0 := by
+  decide
+
+/-- The extracted gate of the live witness offset opens at that offset. -/
+theorem witness_gate_open :
+    enableAt (Metronome.Bank.addrOf liveWitness) true
+      (Metronome.Bank.addrOf liveWitness) = true := by
+  rw [enableAt_spec, liveAt_of_live liveWitness witness_live_mask]
+  simp
+
+/-- The hole witness offset has no gate even when addressed directly. -/
+theorem witness_hole_closed :
+    enableAt (Metronome.Bank.addrOf holeWitness) true
+      (Metronome.Bank.addrOf holeWitness) = false := by
+  rw [enableAt_hole holeWitness witness_hole_mask]
+
+/-- A write to the mask-zero witness offset changes nothing on the elaborated
+mask, whatever the strobe, address and data. -/
+theorem bank_hole_noop (latch : Fin cfgBytes → BitVec 8) (we1 : Bool)
+    (data1 : BitVec 8) :
+    Metronome.Bank.read
+        (Metronome.Bank.phase (latchState latch)
+          (fun j => enableAt (Metronome.Bank.addrOf j) we1
+            (Metronome.Bank.addrOf holeWitness)) data1) =
+      Metronome.Bank.read (latchState latch) :=
+  Metronome.Bank.write_mask_zero_of_live_gates (latchState latch)
+    (fun j w a => enableAt (Metronome.Bank.addrOf j) w a)
+    (fun j w a h => enableAt_eq_gateOpen j h w a)
+    (fun j w a h => enableAt_hole j h w a)
+    holeWitness witness_hole_mask we1 data1
+
+-- Axiom audit. `bank_check.py` records these and rejects `sorryAx`.
+#print axioms any_enable_spec
+#print axioms enableAt_spec
+#print axioms liveAt_addrOf
+#print axioms liveBytes_getLsb
+#print axioms enableAt_eq_gateOpen
+#print axioms enableAt_hole
+#print axioms rtl_gates_exclusive
+#print axioms bank_step_read
+#print axioms bank_write_exact_all
+#print axioms bank_write_others_all
+#print axioms witness_live_mask
+#print axioms witness_hole_mask
+#print axioms witness_gate_open
+#print axioms witness_hole_closed
+#print axioms bank_hole_noop

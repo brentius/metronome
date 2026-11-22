@@ -1,0 +1,63 @@
+# Evidence: frozen-cycle stream bridge with a host rewind (round d)
+
+Date: 2026-11-21.  Toolchain: `leanprover/lean4:v4.35.0`, core libraries only,
+lake project `code/tests/lean` (`moreLeanArgs = ["-DwarningAsError=true"]`).
+Shell: Windows PowerShell 5.1, `$env:PATH="$env:USERPROFILE/.elan/bin;$env:PATH"`.
+Scope: `Metronome/Bridge/Stream.lean` (`abs_step_frozen_rewind`) and
+`Metronome/ChipCut/Discharge/StreamDbg.lean` (`frozen_rel_rewind`, and the
+rewind branch of `streams_field_0/1`).  No `src/`, `BOTS/` or other module was
+edited.
+
+## 1. Acceptance build
+
+```
+cd code/tests/lean
+lake build Metronome.Bridge.Stream Metronome.ChipCut.Discharge.StreamDbg
+```
+
+| stage | exit | wall | note |
+|---|---|---|---|
+| `Metronome.Bridge.Stream` (from source) | 0 | 862 s | with the new `abs_step_frozen_rewind`; 1.6e6/2e6 heartbeats for the rewind proof; `-DwarningAsError=true`, no warnings |
+| `Metronome.ChipCut.Discharge.StreamDbg`, first run | 1 | 26 s | two hard errors, `693:14`/`753:14` `Unknown identifier cfgStart_bv` (the lemma lives in `Metronome.Bridge.StreamB`); fixed by qualifying as `Bridge.StreamB.cfgStart_bv`, no proof changed |
+| `Metronome.ChipCut.Discharge.StreamDbg`, after the fix | 0 | 14 s | full re-elaboration of the module, dependencies cached |
+| acceptance command, both modules, immediately after | 0 | 0.4 s | nothing left to build |
+
+Logs: `build.log` (final acceptance run; `Build completed successfully (59 jobs).`).
+The two long numbers above were measured with `Measure-Command` around the same
+command in the same checkout; the 862 s includes rebuilding the imported
+`Metronome.Stream`/`Metronome.Machine` stack for this checkout.
+
+## 2. Axiom audit
+
+```
+cd code/tests/lean
+lake env lean ..\..\..\data\raw\lean_bridge_stream_frozen_v4_20261121\axioms.lean
+```
+
+* exit code 0, wall 3.3 s, output `axioms.txt` (13 lines).
+* Every line is `propext`, `Classical.choice` and/or `Quot.sound`; there is no
+  `sorryAx` line.
+* The two new theorems: `abs_step_frozen_rewind` and `frozen_rel_rewind` both
+  `[propext, Classical.choice, Quot.sound]`; the three witnesses
+  (`freeze_starved_disagrees`, `frozen_replay_buffer_disagrees`,
+  `frozen_rewind_inert_nv_disagrees`) are `[propext, Quot.sound]` (kernel
+  `decide`, no `native_decide`).
+
+## 3. No unproved steps
+
+```
+cd code/tests/lean
+Select-String -Path Metronome/Bridge/Stream.lean, Metronome/ChipCut/Discharge/StreamDbg.lean `
+  -Pattern "sorry|admit|native_decide"
+```
+
+* exit code 0, `matches=0`.
+
+## 4. The submission RTL is untouched
+
+```
+cd <repo root>
+git diff --quiet HEAD -- src
+```
+
+* exit code 0.

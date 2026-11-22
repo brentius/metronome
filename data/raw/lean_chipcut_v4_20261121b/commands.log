@@ -1,0 +1,29 @@
+# ChipCut v4 review-fix evidence (lean_chipcut_v4_20261121b)
+# machine: WC23-30B22373BF; PowerShell; lean toolchain from code/tests/lean/lean-toolchain
+
+[clean] Remove-Item -Recurse -Force .lake\build\lib\lean\Metronome\ChipCut,.lake\build\lib\lean\Metronome\ChipCut.olean -ErrorAction SilentlyContinue; exit 0
+  exit=0 wall=0.48s
+[clean] exit=0 wall=0.48s  (ChipCut oleans removed)
+[build] $env:PATH='C:\Users\b_yee23\.elan\bin;' + $env:PATH; lake build Metronome.ChipCut
+  exit=0 wall=24.44s
+[build] exit=0 wall=24.44s  (log: build.log)
+
+[axioms] $env:PATH='C:\Users\b_yee23\.elan\bin;' + $env:PATH; lake env lean ..\..\..\data\raw\lean_chipcut_v4_20261121b\axioms.lean
+  exit=0 wall=2.49s
+[axioms] exit=0 wall=2.49s  (log: axioms.txt)
+
+[src-unchanged] git diff --quiet HEAD -- src; exit $LASTEXITCODE
+  exit=0 wall=0.52s
+[src-unchanged] exit=0 wall=0.52s  (no output = src/ matches HEAD)
+
+[no-sorry] Select-String -Path Metronome\ChipCut\*.lean,Metronome\ChipCut.lean -Pattern 'sorry|native_decide|admit' | ForEach-Object { $_.Line }
+  exit=0 wall=0.49s
+[no-sorry] exit=0 wall=0.49s  (empty scan = none; log: sorry_scan.txt)
+
+files changed by this task:
+  code/tests/lean/Metronome/ChipCut/Wire.lean
+  code/tests/lean/Metronome/ChipCut/Step.lean
+  code/tests/lean/Metronome/ChipCut/Rel.lean   (new)
+  code/tests/lean/Metronome/ChipCut/Proof.lean
+  code/tests/lean/CHIPCUT_NOTES.md
+  data/raw/lean_chipcut_v4_20261121b/ (this evidence)

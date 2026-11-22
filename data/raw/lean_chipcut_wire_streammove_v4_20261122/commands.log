@@ -1,0 +1,112 @@
+# W-S (stream move picks) -- commands, exit codes, wall times
+# Lean 4.35.0, core libraries only.  Working directory: code/tests/lean
+# $env:PATH = "$env:USERPROFILE\.elan\bin;$env:PATH"
+# Date: 2026-11-22
+#
+# Owned paths only:
+#   code/tests/lean/Metronome/ChipCut/Discharge/StreamMoveWire.lean   (new)
+#   code/tests/lean/WIRE_STREAMMOVE_NOTES.md                          (new)
+#   data/raw/lean_chipcut_wire_streammove_v4_20261122/                (this dir)
+# No lake clean, no .olean deletion, src/ and BOTS/ untouched.
+
+# ===================== round 1 (rx + conditional control) =====================
+
+# --- dependency check before starting (W1b's module, read-only) ---
+# exit 0, 0.4 s  (up to date, 65 jobs)
+lake build Metronome.ChipCut.Discharge.MoveFabricKeyed
+
+# --- development: scratch file next to lakefile.toml, 9 iterations ---
+# exit 1 (errors) x4, then exit 0.  Wall times 2.3 s .. 3.6 s each.
+lake env lean -DwarningAsError=true scratch_streammove.lean
+
+# --- acceptance: the module builds warning-free ---
+# exit 0, 3.1 s  (66 jobs; the module itself 2.6 s, fresh elaboration)
+lake build Metronome.ChipCut.Discharge.StreamMoveWire
+
+# --- axioms dump (no sorryAx, no Lean.trustCompiler) ---
+# exit 0, 3.56 s, 13 #print axioms lines.
+# Non-core axioms are only the pre-existing bv_decide certificates of
+# Moves.hitsMask_bit_*, Moves.beq_comm_5 and
+# Strobes.dsteqMask_pick/hitsMask_atMostOne (reached via pickScan_mWs,
+# byte_mod_two) -- the same class MoveFabric/MoveFabricKeyed use.
+lake env lean -DwarningAsError=true ..\..\..\data\raw\lean_chipcut_wire_streammove_v4_20261122\axioms.lean
+
+# --- regressions ---
+# exit 0, 0.5 s (up to date, 59 jobs)
+lake build Metronome.ChipCut
+# exit 0, 0.4 s (up to date, 54 jobs)
+lake build Metronome
+
+# --- src/ untouched ---
+# exit 0, empty diff
+git diff HEAD -- src
+
+# --- hygiene ---
+# scratch_streammove.lean and the scratch build logs were deleted.
+# No file outside the three owned paths was created or edited.
+
+# Notes on the development failures (all fixed, none left in the file):
+# * `cases h : Machine.dstOp mv.dst` already substitutes the discriminant, so a
+#   following `rw [h]` fails; the `Option.map` side is closed by `simp [hj]`.
+# * `rw [getD_ite_some]` rewrites only the first occurrence (its `c`/`x`
+#   metavariables get fixed); `simp only [getD_ite_some]` is needed to rewrite
+#   both the ctlMove and the hCtl occurrence.
+# * `ofNat6_beq_of_ne`'s `{a b}` are implicit, so the codes must be passed as
+#   `(a := ...) (b := ...)`.
+# * `Strobes.opg_eq_pick` needs `dat` passed explicitly (`opg` does not mention
+#   it), otherwise the pick's data stays a metavariable.
+# * `a || b = c` parses as `a || (b = c)` in Lean 4: the equality's left side
+#   needs explicit parentheses in the control statements.
+# * `let` binders in a theorem statement are *local definitions* in the proof
+#   and `simp` does not unfold them; the control identity is stated with the
+#   `if ... then ... else 0` terms spelled out instead.
+
+# ================= round 2 (the three control side hypotheses) =================
+
+# --- dependency check (MoveFabricKeyed now has streams_adv/hPQ_stream_adv) ---
+# exit 0, 0.4 s (up to date, 65 jobs)
+lake build Metronome.ChipCut.Discharge.MoveFabricKeyed
+
+# --- development: scratch_streammove2.lean imports the round-1 module, so only
+#     the new section is re-elaborated.  4 iterations: exit 1 x3, exit 0.
+#     Wall times 2.4 s, 2.5 s, 3.5 s, 5.4 s.
+lake env lean -DwarningAsError=true scratch_streammove2.lean
+
+# --- acceptance (spliced module) ---
+# exit 1, 5.5 s  (one error: a now-unnecessary `rfl` -> "No goals to be solved")
+# exit 0, 7.1 s  (FINAL: 66 jobs; the module 2.8 s after the splice)
+lake build Metronome.ChipCut.Discharge.StreamMoveWire
+
+# --- axioms dump (round 1 + round 2, no sorryAx, no Lean.trustCompiler) ---
+# exit 0, 2.70 s, 22 #print axioms lines (9 new).
+lake env lean -DwarningAsError=true ..\..\..\data\raw\lean_chipcut_wire_streammove_v4_20261122\axioms.lean
+
+# --- regressions after the splice ---
+# exit 0 (up to date)
+lake build Metronome.ChipCut
+# exit 0 (up to date)
+lake build Metronome
+
+# --- src/ untouched ---
+# exit 0, empty diff
+git diff HEAD -- src
+
+# --- hygiene: scratch_streammove2.lean, s2.log, b*.log deleted ---
+
+# Notes on the round-2 development failures:
+# * `import Metronome.ChipCut.Discharge.HostPinWire` FAILS: it redeclares
+#   `Metronome.ChipCut.Discharge.bgetLE_lt`, which `CoreUnits` (via MoveFabric)
+#   already defines -> "environment already contains ...".  `ltHw_eq`/`hwByte_eq`
+#   were therefore re-derived locally (`ltHw_eq'`, `hwAt_val'`, `hwByte_eq'`)
+#   from `MemHostCfg.linkRel_cut`.
+# * `rw` closes a goal only when it becomes *syntactically* reflexive: the
+#   `if (streamPick ...).we && ... then ... else none = if (pickWord ...).we && ...
+#   then ... else none` goal needs an explicit `rfl` (defeq).  Conversely, after
+#   the splice the two `machStreamIn_*` rewrites closed by themselves, so the
+#   same `rfl` then errored with "No goals to be solved" -- the two versions
+#   differ in whether the `match` in the imported vs same-file statement is
+#   syntactically identical.
+# * a scratch `have hscan := pickScan_mWs ...` without an explicit type keeps
+#   the raw `Moves.pickWord` terms; the follow-up `by_cases` on `streamPick`
+#   then does not match syntactically, so the type is annotated with
+#   `streamPick` (as in the round-1 `rx` proof).

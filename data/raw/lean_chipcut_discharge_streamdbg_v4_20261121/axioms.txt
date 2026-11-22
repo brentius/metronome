@@ -1,0 +1,47 @@
+'Metronome.ChipCut.Discharge.vecGet_ofFn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.hitsMask_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.dsteqMask_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.opg_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.runStep_streams' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.runStep_dbg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.activeStep_streams' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.activeStep_streamAt_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.activeStep_streamAt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.activeStep_dbgCtrl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.activeStep_dbgDigest' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.activeStep_freeze' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.cfgOf_streamIn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgRel.freeze_eq' does not depend on any axioms
+'Metronome.ChipCut.Discharge.DbgRel.frz_eq' does not depend on any axioms
+'Metronome.ChipCut.Discharge.DbgRel.frzd_eq' does not depend on any axioms
+'Metronome.ChipCut.Discharge.DbgRel.men_eq' does not depend on any axioms
+'Metronome.ChipCut.Discharge.DbgRel.misr_eq' does not depend on any axioms
+'Metronome.ChipCut.Discharge.DbgRel.cen_eq' does not depend on any axioms
+'Metronome.ChipCut.Discharge.DbgRel.rpl_eq' does not depend on any axioms
+'Metronome.ChipCut.Discharge.DbgRel.emask_eq' does not depend on any axioms
+'Metronome.ChipCut.Discharge.DbgRel.dc_eq' does not depend on any axioms
+'Metronome.ChipCut.Discharge.DbgRel.rlv_eq' does not depend on any axioms
+'Metronome.ChipCut.Discharge.DbgRel.rlvp_eq' does not depend on any axioms
+'Metronome.ChipCut.Discharge.absIn_gatedIn_one' depends on axioms: [propext]
+'Metronome.ChipCut.Discharge.streamNext_gate_irrel' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.AbsRelB.bufRel' does not depend on any axioms
+'Metronome.ChipCut.Discharge.frozen_rel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.frozen_rel_rewind' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.streamsNext_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.streams_field_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.streams_field_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.premise_streams' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.nbit_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.ctrl_step_replay' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.ctrl_step_cen' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.ctrl_step_emask' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.ctrl_step_rlv' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.ctrl_step_rlvPrev' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.ctrl_step_dc' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.digest_step_men' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.digest_step_misr' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.dbgNext_freeze' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.dbgNext_frz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.dbgNext_frzd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.machDbgNext_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.premise_dbg' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,2 @@
+case	outcome	exit	expectation
+baseline	accepted	0	ok

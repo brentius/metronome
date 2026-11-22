@@ -1,0 +1,6 @@
+case	outcome	exit	expectation
+baseline	accepted	0	ok
+hostmap_overlap	rejected (generated Lean: rejected by Lean (exit 1): 173:2: error: The prover found a counterexample, consider the following assignment:)	1	ok
+hostmap_thread_instance	rejected (generated Lean: rejected by Lean (exit 1): 613:2: error: The prover found a counterexample, consider the following assignment:)	1	ok
+hostmap_pm_lane	rejected (generated Lean: rejected by Lean (exit 1): 1017:2: error: The prover found a counterexample, consider the following assignment:)	1	ok
+hostmap_readonly_write	rejected (generated Lean: rejected by Lean (exit 1): 847:2: error: The prover found a counterexample, consider the following assignment:)	1	ok

@@ -1,0 +1,28 @@
+﻿# lean bridge evidence commands (PowerShell, from code/tests/lean, Lean 4.35.0)
+# toolchain: leanprover/lean4:v4.35.0
+
+CMD: lake env lean Metronome/Bridge/Thread.lean
+EXIT: 0
+WALL_SECONDS: 5
+
+CMD: lake env lean Metronome/Bridge/Mem.lean
+EXIT: 0
+WALL_SECONDS: 11.1
+
+CMD: lake env lean Metronome/Bridge/Host.lean
+EXIT: 0
+WALL_SECONDS: 4
+
+CMD: lake env lean Metronome/Bridge/CfgWrite.lean
+EXIT: 0
+WALL_SECONDS: 6
+
+CMD: lake build Metronome.Bridge.Thread Metronome.Bridge.Mem Metronome.Bridge.Host Metronome.Bridge.CfgWrite   (also -DwarningAsError=true from lakefile)
+EXIT: 0
+WALL_SECONDS: 7.4 (warm; 13.7 cold)
+
+CMD: lake env lean build/lean_scratch_bridge/Axioms.lean   (output in axioms.txt)
+EXIT: 0
+WALL_SECONDS: 4.1
+
+

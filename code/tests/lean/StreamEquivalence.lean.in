@@ -1,0 +1,306 @@
+/-! ## The extracted transition is the specification
+
+`rtlStep` and `rtlOut` above are generated from the elaborated `md2_stream`
+cells; the right-hand sides are `Metronome.Stream`'s equations at this variant's
+`CAP` (@@CAP@@).  Each field is proved on its own cone, so `bv_decide` never sees
+the whole state at once. -/
+
+/-- Unfold the specification's equations and close the field equality.
+
+The extracted definition is unfolded by each theorem first, so a proof only ever
+sees its own cone.  The full `simp` after the unfolding normalises the `Bool`
+guards (`true && x`, a negated `RESET_N`, an `if` with swapped branches) so that
+`bv_decide` bit-blasts the residual instead of abstracting an `if` expression. -/
+macro "spec_close" : tactic =>
+  `(tactic| (simp only [step, out, posNext, bidxNext, baNext, curNext, cvNext,
+    wbNext, wvNext, rqNext, ldNext, pendNext, pvNext, starvedNext, nbNext, nvNext,
+    advT, starveTx, starveRx, starveEvent, push, done, bitin, fl, endC, last,
+    txMode, rxMode, cen, rpl, occupied, landing, lb, bsel, nsh, bitAt, bitOut, byteOut,
+    bitOut, gEnd, gMark, gByte, req, reqWe, reqAddr, reqWdata, reqWord, reqWword,
+    replayValid, replayWord, State.mk.injEq, Out.mk.injEq] at * <;>
+    ((try simp) <;>
+     (repeat (first | rfl | bv_decide | (split <;> simp_all) | contradiction)))))
+
+/-! ### Next state, field by field -/
+
+/-- The extracted `POS` next state is §6.3's. -/
+theorem rtlPos_eq (state : State) (input : Input) :
+    (rtlStep state input).pos = (step capValue state input).pos := by
+  simp only [rtlStep, rtlPos]
+  spec_close
+
+/-- The extracted `BIDX` next state is §6.3's. -/
+theorem rtlBidx_eq (state : State) (input : Input) :
+    (rtlStep state input).bidx = (step capValue state input).bidx := by
+  simp only [rtlStep, rtlBidx]
+  spec_close
+
+/-- The extracted `BA` next state is §6.3's (byte address steps of 1, §12.4's
+word write of 4 and §13.2's whole-word read of 4). -/
+theorem rtlBa_eq (state : State) (input : Input) :
+    (rtlStep state input).ba = (step capValue state input).ba := by
+  simp only [rtlStep, rtlBa]
+  spec_close
+
+/-- The extracted `CUR` next state is §6.3's: `LB` from `WB` in transmit, the
+assembly register in receive. -/
+theorem rtlCur_eq (state : State) (input : Input) :
+    (rtlStep state input).cur = (step capValue state input).cur := by
+  simp only [rtlStep, rtlCur]
+  spec_close
+
+/-- The extracted `CV` next state is §6.3's. -/
+theorem rtlCv_eq (state : State) (input : Input) :
+    (rtlStep state input).cv = (step capValue state input).cv := by
+  simp only [rtlStep, rtlCv]
+  spec_close
+
+/-- The extracted `WB` next state is §6.3's lookahead load, §12.3's landing
+exception, §12.4's record and §13.2's two-deep buffer. -/
+theorem rtlWb_eq (state : State) (input : Input) :
+    (rtlStep state input).wb = (step capValue state input).wb := by
+  simp only [rtlStep, rtlWb]
+  spec_close
+
+/-- The extracted `WV` next state is §6.3's. -/
+theorem rtlWv_eq (state : State) (input : Input) :
+    (rtlStep state input).wv = (step capValue state input).wv := by
+  simp only [rtlStep, rtlWv]
+  spec_close
+
+/-- The extracted `RQ` next state is §6.3's request rule and §13.2's. -/
+theorem rtlRq_eq (state : State) (input : Input) :
+    (rtlStep state input).rq = (step capValue state input).rq := by
+  simp only [rtlStep, rtlRq]
+  spec_close
+
+/-- The extracted `LD` next state is §6.3's. -/
+theorem rtlLd_eq (state : State) (input : Input) :
+    (rtlStep state input).ld = (step capValue state input).ld := by
+  simp only [rtlStep, rtlLd]
+  spec_close
+
+/-- The extracted `PEND` next state is §6.3's, including the drop when a byte
+still waits. -/
+theorem rtlPend_eq (state : State) (input : Input) :
+    (rtlStep state input).pend = (step capValue state input).pend := by
+  simp only [rtlStep, rtlPend]
+  spec_close
+
+/-- The extracted `PV` next state is §6.3's. -/
+theorem rtlPv_eq (state : State) (input : Input) :
+    (rtlStep state input).pv = (step capValue state input).pv := by
+  simp only [rtlStep, rtlPv]
+  spec_close
+
+/-- The extracted sticky `STARVED` next state is §6.3's, including §13.2's
+`late`. -/
+theorem rtlStarved_eq (state : State) (input : Input) :
+    (rtlStep state input).starved = (step capValue state input).starved := by
+  simp only [rtlStep, rtlStarved]
+  spec_close
+
+/-- The extracted second replay buffer slot `NB` is §13.2's (inert for a
+`CAP = 0` stream). -/
+theorem rtlNb_eq (state : State) (input : Input) :
+    (rtlStep state input).nb = (step capValue state input).nb := by
+  simp only [rtlStep, rtlNb]
+  spec_close
+
+/-- The extracted second replay buffer flag `NV` is §13.2's. -/
+theorem rtlNv_eq (state : State) (input : Input) :
+    (rtlStep state input).nv = (step capValue state input).nv := by
+  simp only [rtlStep, rtlNv]
+  spec_close
+
+/-! ### Outputs, field by field -/
+
+/-- `Sk.BIT` is §6.3's `CV && !END && CUR[b]`, disabled in receive, capture and
+replay. -/
+theorem rtlBit_eq (state : State) (input : Input) :
+    rtlBit state input = bitOut capValue state input := by
+  simp only [rtlBit]
+  spec_close
+
+/-- Source `Sk.BYTE` is `CUR` in transmit and `PEND` in receive. -/
+theorem rtlByteOut_eq (state : State) (input : Input) :
+    rtlByteOut state input = byteOut capValue state input := by
+  simp only [rtlByteOut]
+  spec_close
+
+/-- Guard `Sk.END` compares `POS` with the live `LEN`. -/
+theorem rtlGEnd_eq (state : State) (input : Input) :
+    rtlGEnd state input = gEnd state input := by
+  simp only [rtlGEnd]
+  spec_close
+
+/-- Guard `Sk.MARK` compares `POS` with the live `MARK` and requires `BIDX = 0`. -/
+theorem rtlGMark_eq (state : State) (input : Input) :
+    rtlGMark state input = gMark state input := by
+  simp only [rtlGMark]
+  spec_close
+
+/-- Guard `Sk.BYTE` is `BIDX = 0`. -/
+theorem rtlGByte_eq (state : State) (input : Input) :
+    rtlGByte state input = gByte state input := by
+  simp only [rtlGByte]
+  spec_close
+
+/-- The RAM request is `RQ`, `PV` or §12.4's whole-word write, by mode. -/
+theorem rtlReq_eq (state : State) (input : Input) :
+    rtlReq state input = req capValue state input := by
+  simp only [rtlReq]
+  spec_close
+
+/-- The write flag is set in receive and capture mode only. -/
+theorem rtlReqWe_eq (state : State) (input : Input) :
+    rtlReqWe state input = reqWe capValue state input := by
+  simp only [rtlReqWe]
+  spec_close
+
+/-- The request address is `BA`. -/
+theorem rtlReqAddr_eq (state : State) (input : Input) :
+    rtlReqAddr state input = reqAddr capValue state input := by
+  simp only [rtlReqAddr]
+  spec_close
+
+/-- The write byte is `PEND`. -/
+theorem rtlReqWdata_eq (state : State) (input : Input) :
+    rtlReqWdata state input = reqWdata capValue state input := by
+  simp only [rtlReqWdata]
+  spec_close
+
+/-- The whole-word write flag is `CEN` (§12.4). -/
+theorem rtlReqWord_eq (state : State) (input : Input) :
+    rtlReqWord state input = reqWord capValue state input := by
+  simp only [rtlReqWord]
+  spec_close
+
+/-- The write word is `WB`. -/
+theorem rtlReqWword_eq (state : State) (input : Input) :
+    rtlReqWword state input = reqWword capValue state input := by
+  simp only [rtlReqWword]
+  spec_close
+
+/-- §13.2's replay level may be updated exactly while replaying with a word. -/
+theorem rtlReplayValid_eq (state : State) (input : Input) :
+    rtlReplayValid state input = replayValid capValue state input := by
+  simp only [rtlReplayValid]
+  spec_close
+
+/-- §13.2's replay record is `WB`; a `CAP = 0` stream presents nothing. -/
+theorem rtlReplayWord_eq (state : State) (input : Input) :
+    rtlReplayWord state input = replayWord capValue state input := by
+  simp only [rtlReplayWord]
+  spec_close
+
+/-! ### The whole transition and the whole output word -/
+
+/-- The extracted stream transition matches the independent SPEC_V2 §6.3 /
+§12.3 / §12.4 / §13.2 specification for every state and input: all fourteen
+register values. -/
+theorem rtlStep_eq_step (state : State) (input : Input) :
+    rtlStep state input = step capValue state input := by
+  simp only [rtlStep, step, State.mk.injEq]
+  exact ⟨rtlPos_eq state input, rtlBidx_eq state input, rtlBa_eq state input,
+    rtlCur_eq state input, rtlCv_eq state input, rtlWb_eq state input, rtlWv_eq state input,
+    rtlRq_eq state input, rtlLd_eq state input, rtlPend_eq state input, rtlPv_eq state input,
+    rtlStarved_eq state input, rtlNb_eq state input, rtlNv_eq state input⟩
+
+/-- The extracted combinational outputs match the specification for every state
+and input: the bit, byte, guards, request lines and replay presentation. -/
+theorem rtlOut_eq_out (state : State) (input : Input) :
+    rtlOut state input = out capValue state input := by
+  simp only [rtlOut, out, Out.mk.injEq]
+  exact ⟨rtlBit_eq state input, rtlByteOut_eq state input, rtlGEnd_eq state input,
+    rtlGMark_eq state input, rtlGByte_eq state input, rtlReq_eq state input,
+    rtlReqWe_eq state input, rtlReqAddr_eq state input, rtlReqWdata_eq state input,
+    rtlReqWord_eq state input, rtlReqWword_eq state input, rtlReplayValid_eq state input,
+    rtlReplayWord_eq state input⟩
+
+/-! ### Trace lifting -/
+
+/-- The extracted state during cycle `n`. -/
+def rtlStateAt (inputs : Nat → Input) (initial : State) (n : Nat) : State :=
+  run (fun state input => rtlStep state input) inputs initial n
+
+theorem rtlStateAt_succ (inputs : Nat → Input) (initial : State) (n : Nat) :
+    rtlStateAt inputs initial (n + 1) = rtlStep (rtlStateAt inputs initial n) (inputs n) :=
+  rfl
+
+/-- The extracted trace is the specified trace at every cycle. -/
+theorem rtlStateAt_eq (inputs : Nat → Input) (initial : State) (n : Nat) :
+    rtlStateAt inputs initial n = stateAt capValue inputs initial n :=
+  run_congr (fun state input => rtlStep_eq_step state input) inputs initial n
+
+theorem rtl_trace_step (inputs : Nat → Input) (initial : State) (n : Nat) :
+    rtlStep (rtlStateAt inputs initial n) (inputs n) =
+      step capValue (stateAt capValue inputs initial n) (inputs n) := by
+  rw [rtlStateAt_eq, rtlStep_eq_step]
+
+/-! ### Lifted safety facts -/
+
+/-- A rewind in cycle `n` rewinds the extracted stream, whatever else happens. -/
+theorem rtl_trace_rewind (inputs : Nat → Input) (initial : State) (n : Nat)
+    (h : (inputs n).rewind = true) (hreset : (inputs n).resetN = true) :
+    (rtlStateAt inputs initial (n + 1)).pos = 0 ∧
+      (rtlStateAt inputs initial (n + 1)).bidx = 0 ∧
+      (rtlStateAt inputs initial (n + 1)).ba = (inputs n).cfgStart ∧
+      (rtlStateAt inputs initial (n + 1)).cur = 0 ∧
+      (rtlStateAt inputs initial (n + 1)).cv = false ∧
+      (rtlStateAt inputs initial (n + 1)).wv = false ∧
+      (rtlStateAt inputs initial (n + 1)).rq = false ∧
+      (rtlStateAt inputs initial (n + 1)).ld = false ∧
+      (rtlStateAt inputs initial (n + 1)).pv = false := by
+  rw [rtlStateAt_eq]
+  exact trace_rewind capValue inputs initial n h hreset
+
+/-- A transmit advance with no byte sets `STARVED` and is ignored on the
+extracted trace. -/
+theorem rtl_trace_adv_without_cur (inputs : Nat → Input) (initial : State) (n : Nat)
+    (hmode : txMode capValue (inputs n) = true) (hcv : (stateAt capValue inputs initial n).cv = false)
+    (hadv : (inputs n).adv = true) (hend : endC (stateAt capValue inputs initial n) (inputs n) = false)
+    (hfrz : (inputs n).frz = false) (hrew : (inputs n).rewind = false)
+    (hreset : (inputs n).resetN = true) (hwv : (stateAt capValue inputs initial n).wv = false) :
+    (rtlStateAt inputs initial (n + 1)).pos = (rtlStateAt inputs initial n).pos ∧
+      (rtlStateAt inputs initial (n + 1)).bidx = (rtlStateAt inputs initial n).bidx ∧
+      (rtlStateAt inputs initial (n + 1)).ba = (rtlStateAt inputs initial n).ba ∧
+      (rtlStateAt inputs initial (n + 1)).cur = (rtlStateAt inputs initial n).cur ∧
+      (rtlStateAt inputs initial (n + 1)).starved = true := by
+  rw [rtlStateAt_succ, rtlStateAt_eq, rtlStep_eq_step]
+  exact adv_without_cur capValue _ _ hmode hcv hadv hend hfrz hrew hreset hwv
+
+/-- `STARVED`, once set on the extracted trace, stays set until a cycle clears
+it (host `CTL` bit 7). -/
+theorem rtl_trace_starved_persists (inputs : Nat → Input) (initial : State)
+    (n m : Nat) (hnm : n ≤ m)
+    (hset : (rtlStateAt inputs initial (n + 1)).starved = true)
+    (hclear : ∀ j, n + 1 ≤ j → j ≤ m → (inputs j).clrStarved = false)
+    (hreset : ∀ j, n + 1 ≤ j → j ≤ m → (inputs j).resetN = true) :
+    (rtlStateAt inputs initial (m + 1)).starved = true := by
+  have htrace : rtlStateAt inputs initial (m + 1) = stateAt capValue inputs initial (m + 1) :=
+    rtlStateAt_eq inputs initial (m + 1)
+  have hstart : (stateAt capValue inputs initial (n + 1)).starved = true := by
+    rw [← rtlStateAt_eq inputs initial (n + 1)]
+    exact hset
+  rw [htrace]
+  exact trace_starved_persists capValue inputs initial n m hnm hstart hclear hreset
+
+/-! ## Axiom audit
+
+`stream_check.py` records these records and fails the case if `sorryAx` appears.
+The extracted equalities use `bv_decide`, so the large ones may carry a
+per-theorem native certificate axiom in addition to `propext`,
+`Classical.choice` and `Quot.sound`. -/
+
+#print axioms rtlPos_eq
+#print axioms rtlWb_eq
+#print axioms rtlStarved_eq
+#print axioms rtlBit_eq
+#print axioms rtlReqWord_eq
+#print axioms rtlStep_eq_step
+#print axioms rtlOut_eq_out
+#print axioms rtlStateAt_eq
+#print axioms rtl_trace_rewind
+#print axioms rtl_trace_adv_without_cur
+#print axioms rtl_trace_starved_persists

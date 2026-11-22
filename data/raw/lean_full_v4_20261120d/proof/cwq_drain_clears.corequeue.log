@@ -1,0 +1,20 @@
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-qclhkcfk\cwq_drain_clears\CoreQueueProof.lean:61:22: error: Tactic `rfl` failed: The left-hand side
+  (rtlStep state input).pending
+is not definitionally equal to the right-hand side
+  (step state input).pending
+
+case pending
+state : State
+input : Input
+⊢ (rtlStep state input).pending = (step state input).pending
+'Metronome.CoreQueue.rtlStep_eq_step' depends on axioms: [propext, sorryAx, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-qclhkcfk\cwq_drain_clears\CoreQueueProof.lean:141:0: error: ❌️ Docstring on `#guard_msgs` does not match generated message:
+
+- info: 'Metronome.CoreQueue.rtlStep_eq_step' depends on axioms: [propext, Quot.sound]
++ info: 'Metronome.CoreQueue.rtlStep_eq_step' depends on axioms: [propext, sorryAx, Quot.sound]
+'Metronome.CoreQueue.rtl_trace_result' depends on axioms: [propext, sorryAx, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-qclhkcfk\cwq_drain_clears\CoreQueueProof.lean:144:0: error: ❌️ Docstring on `#guard_msgs` does not match generated message:
+
+- info: 'Metronome.CoreQueue.rtl_trace_result' depends on axioms: [propext, Quot.sound]
++ info: 'Metronome.CoreQueue.rtl_trace_result' depends on axioms: [propext, sorryAx, Quot.sound]
+Core queue outcome: rejected

@@ -1,0 +1,11 @@
+# Bridge/Core evidence: commands, exit codes, wall times (Lean 4.35.0, lake, -DwarningAsError=true)
+2026-11-21 14:02:48 | exit=0 | wall=0.5s | lake build Metronome.Machine Metronome.Core
+2026-11-21 14:02:49 | exit=0 | wall=0.4s | lake build Metronome.Core Metronome.Machine
+2026-11-21 14:02:49 | exit=0 | wall=0.4s | lake build Metronome.Bridge.Core
+2026-11-21 14:03:03 | exit=0 | wall=14.3s | lake env lean Metronome/Bridge/Core.lean
+2026-11-21 14:03:06 | exit=0 | wall=2.6s | lake env lean build/lean_scratch_bridge_core/Axioms.lean
+2026-11-21 14:03:06 | exit=0 | wall=0.1s | git diff --quiet HEAD -- src
+2026-11-21 14:03:06 | exit=0 | wall=0.1s | git status --short src
+2026-11-21 14:05:34 | exit=0 | wall=0.7s | lake build Metronome.Bridge.Core  # final, scratch removed
+2026-11-21 14:05:57 | exit=0 | wall=23.5s | lake env lean Metronome/Bridge/Core.lean  # final, scratch removed
+2026-11-21 14:05:58 | exit=0 | wall=0.1s | git diff --quiet HEAD -- src  # final

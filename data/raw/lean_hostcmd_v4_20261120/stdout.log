@@ -1,0 +1,9 @@
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Build completed successfully (6 jobs).
+baseline: accepted (9 registers, command-byte history variable on 6 RTL gates)
+hostcmd_read_strobes: rejected (generated Lean: rejected by Lean (exit 1): 138:2: error: The prover found a potentially spurious counterexample:)
+hostcmd_al_next: rejected (generated Lean: rejected by Lean (exit 1): 104:2: error: The prover found a potentially spurious counterexample:)
+hostcmd_cs_hold: rejected (generated Lean: rejected by Lean (exit 1): 104:2: error: The prover found a potentially spurious counterexample:)
+hostcmd_no_addr_step: rejected (generated Lean: rejected by Lean (exit 1): 131:2: error: The prover found a potentially spurious counterexample:)
+hostcmd_addr_bytes_swap: rejected (generated Lean: rejected by Lean (exit 1): 132:2: error: The prover found a potentially spurious counterexample:)

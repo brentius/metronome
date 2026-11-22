@@ -1,0 +1,31 @@
+'Metronome.ChipCut.Discharge.premise_p0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.premise_hostReq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ inData_bv._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.premise_host' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.HostCmd.ah_completion._native.bv_decide.ax_1_21,
+ Metronome.HostCmd.al_completion._native.bv_decide.ax_1_21,
+ Metronome.HostCmd.data_completion._native.bv_decide.ax_1_21,
+ Metronome.HostCmd.ign_holds._native.bv_decide.ax_1_21,
+ Metronome.Bridge.Host.bv2_cases._native.bv_decide.ax_1_5,
+ pin_csn_eq._native.bv_decide.ax_1_5,
+ pin_mosi_eq._native.bv_decide.ax_1_5,
+ pin_sck_eq._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.premise_cw' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.CoreQueue.pack_take._native.bv_decide.ax_1_9,
+ Metronome.Bridge.CfgWrite.pack_eq_append._native.bv_decide.ax_1_5,
+ Metronome.Bridge.CfgWrite.wh_wd._native.bv_decide.ax_1_8,
+ Metronome.Bridge.CfgWrite.wl_wd._native.bv_decide.ax_1_8,
+ Metronome.Bridge.CfgWrite.wl_wh._native.bv_decide.ax_1_8]
+'Metronome.ChipCut.Discharge.premise_bank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.premise_contents' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.p0Next_rel' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.p0Next_stale_landRdy' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.cwNext_st_congr' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.cwNext_abs_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.mhcHw_bridge' depends on axioms: [propext, Quot.sound]

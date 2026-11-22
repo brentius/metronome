@@ -1,0 +1,34 @@
+﻿'Metronome.Bridge.Line.prod_snd_ite' depends on axioms: [propext]
+'Metronome.Bridge.Line.prod_fst_ite' depends on axioms: [propext]
+'Metronome.Bridge.Line.or3_bits' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Line.or3_as_pack3._native.bv_decide.ax_1_7]
+'Metronome.Bridge.Line.sel_pack3' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Line.and_one_bne_zero_3._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Line.absSt_ph' does not depend on any axioms
+'Metronome.Bridge.Line.absSt_fired' does not depend on any axioms
+'Metronome.Bridge.Line.starting_st' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Line.first_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Line.fired_bridge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Line.or3_as_pack3._native.bv_decide.ax_1_7]
+'Metronome.Bridge.Line.snap_bridge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Line.and_one_bne_zero_3._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Line.step_bridge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Line.and_one_bne_zero_32._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Line.missBits_disj._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Line.step_bridge'' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Line.and_one_bne_zero_3._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Line.and_one_bne_zero_32._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Line.missBits_disj._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Line.or3_as_pack3._native.bv_decide.ax_1_7]

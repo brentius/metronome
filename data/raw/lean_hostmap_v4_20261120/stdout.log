@@ -1,0 +1,8 @@
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Build completed successfully (2 jobs).
+baseline: accepted (43 write enables, 8 block windows)
+hostmap_overlap: rejected (generated Lean: rejected by Lean (exit 1): 173:2: error: The prover found a counterexample, consider the following assignment:)
+hostmap_thread_instance: rejected (generated Lean: rejected by Lean (exit 1): 613:2: error: The prover found a counterexample, consider the following assignment:)
+hostmap_pm_lane: rejected (generated Lean: rejected by Lean (exit 1): 1017:2: error: The prover found a counterexample, consider the following assignment:)
+hostmap_readonly_write: rejected (generated Lean: rejected by Lean (exit 1): 847:2: error: The prover found a counterexample, consider the following assignment:)

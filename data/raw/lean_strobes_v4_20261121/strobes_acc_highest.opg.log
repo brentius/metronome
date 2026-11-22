@@ -1,0 +1,266 @@
+RTL snapshot SHA-256: e4eb22e5d2f31e5167920e4ddaaeb58cc79003dd77de3558c2517112f255c152
+Yosys command: read_verilog -I src src/cells_behav.v src/md2_acc.v src/md2_cfg_bank.v src/md2_core.v src/md2_counter.v src/md2_dmem.v src/md2_host.v src/md2_lfsr.v src/md2_line.v src/md2_mem.v src/md2_pmem.v src/md2_shifter.v src/md2_sram_bb.v src/md2_stream.v src/md2_thread.v src/project.v; hierarchy -check -top tt_um_brentius_metronome; proc; opt_clean; write_json design.json
+Warning: Latch inferred for signal `\cfg_lgcp_beh.\int_gate' from process `\cfg_lgcp_beh.$src/cells_behav.v:23$proc$3': $auto$proc_dlatch.cc:559:proc_dlatch$13762
+Warning: Latch inferred for signal `\cfg_dlhrq_beh.\Q' from process `\cfg_dlhrq_beh.$src/cells_behav.v:15$proc$1': $auto$proc_dlatch.cc:555:proc_dlatch$13783
+OPG strobes: 22, selectors: 3 counters + 2 LFSRs + 2 shifters, lines: 4, streams: 2, DBG bytes: 5
+  rtlOpgCnt0Lo: group 12, 34 signals
+  rtlOpgCnt0Hi: group 12, 34 signals
+  rtlOpgCnt1Lo: group 13, 34 signals
+  rtlOpgCnt1Hi: group 13, 34 signals
+  rtlOpgCnt2Lo: group 14, 34 signals
+  rtlOpgCnt2Hi: group 14, 34 signals
+  rtlOpgLf0St: group 15, 34 signals
+  rtlOpgLf0B0: group 15, 34 signals
+  rtlOpgLf0B1: group 15, 34 signals
+  rtlOpgLf0B2: group 15, 34 signals
+  rtlOpgLf1St: group 16, 34 signals
+  rtlOpgLf1B0: group 16, 34 signals
+  rtlOpgLf1B1: group 16, 34 signals
+  rtlOpgLf1B2: group 16, 34 signals
+  rtlOpgSh0Sh: group 8, 34 signals
+  rtlOpgSh1Sh: group 9, 34 signals
+  rtlOpgS0Ctl: group 18, 34 signals
+  rtlOpgS0Adv: group 18, 34 signals
+  rtlOpgS0Rx: group 18, 34 signals
+  rtlOpgS1Ctl: group 19, 34 signals
+  rtlOpgS1Adv: group 19, 34 signals
+  rtlOpgS1Rx: group 19, 34 signals
+== opg strobes ==
+C:\Users\b_yee23\AppData\Local\Temp\metronome-strobes-strobes_acc_highest-hw3b5ien\Strobesstrobes_acc_highestopg.lean:1080:2: error: The prover found a counterexample, consider the following assignment:
+en = 1#6
+grp = 100663296#30
+'Metronome.Strobes.rtlAccHit_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.Strobes.rtlAccHit_oneHotOrZero' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ atMostOne_cases._native.bv_decide.ax_1_6,
+ hitsMask_atMostOne._native.bv_decide.ax_1_7]
+'Metronome.Strobes.rtlOpgCnt0Lo_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgCnt0Lo_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgCnt0Hi_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgCnt0Hi_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgCnt1Lo_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgCnt1Lo_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgCnt1Hi_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgCnt1Hi_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgCnt2Lo_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgCnt2Lo_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgCnt2Hi_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgCnt2Hi_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgLf0St_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgLf0St_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgLf0B0_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgLf0B0_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgLf0B1_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgLf0B1_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgLf0B2_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgLf0B2_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgLf1St_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgLf1St_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgLf1B0_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgLf1B0_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgLf1B1_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgLf1B1_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgLf1B2_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgLf1B2_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgSh0Sh_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgSh0Sh_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgSh1Sh_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgSh1Sh_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgS0Ctl_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgS0Ctl_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgS0Adv_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgS0Adv_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgS0Rx_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgS0Rx_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgS1Ctl_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgS1Ctl_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgS1Adv_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgS1Adv_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlOpgS1Rx_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgS1Rx_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlSelSh0_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgSh0Sh_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlSelSh1_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlOpgSh1Sh_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.counterSel0_ops' depends on axioms: [propext, Quot.sound]
+'Metronome.Strobes.counterSel1_ops' depends on axioms: [propext, Quot.sound]
+'Metronome.Strobes.counterSel2_ops' depends on axioms: [propext, Quot.sound]
+'Metronome.Strobes.counterSel0_exclusive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ dsteqMask_pick._native.bv_decide.ax_1_7,
+ hitsMask_atMostOne._native.bv_decide.ax_1_7]
+'Metronome.Strobes.counterSel1_exclusive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ dsteqMask_pick._native.bv_decide.ax_1_7,
+ hitsMask_atMostOne._native.bv_decide.ax_1_7]
+'Metronome.Strobes.counterSel2_exclusive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ dsteqMask_pick._native.bv_decide.ax_1_7,
+ hitsMask_atMostOne._native.bv_decide.ax_1_7]
+'Metronome.Strobes.lfsrSel0_ops' depends on axioms: [propext, Quot.sound]
+'Metronome.Strobes.lfsrSel1_ops' depends on axioms: [propext, Quot.sound]
+'Metronome.Strobes.lfsrSel0_exclusive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ dsteqMask_pick._native.bv_decide.ax_1_7,
+ hitsMask_atMostOne._native.bv_decide.ax_1_7]
+'Metronome.Strobes.lfsrSel1_exclusive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ dsteqMask_pick._native.bv_decide.ax_1_7,
+ hitsMask_atMostOne._native.bv_decide.ax_1_7]
+== selectors ==
+'Metronome.Strobes.rtlSelCn0_spec' depends on axioms: [propext]
+'Metronome.Strobes.rtlSelCn1_spec' depends on axioms: [propext]
+'Metronome.Strobes.rtlSelCn2_spec' depends on axioms: [propext]
+'Metronome.Strobes.rtlSelCn0_opg' depends on axioms: [propext, Quot.sound]
+'Metronome.Strobes.rtlSelCn1_opg' depends on axioms: [propext, Quot.sound]
+'Metronome.Strobes.rtlSelCn2_opg' depends on axioms: [propext, Quot.sound]
+'Metronome.Strobes.rtlSelLf0_spec' depends on axioms: [propext]
+'Metronome.Strobes.rtlSelLf1_spec' depends on axioms: [propext]
+'Metronome.Strobes.rtlSelLf0_opg' depends on axioms: [propext, Quot.sound]
+'Metronome.Strobes.rtlSelLf1_opg' depends on axioms: [propext, Quot.sound]
+'Metronome.Strobes.rtlPSel_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Strobes.rtlPSel_word' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ pack_dst._native.bv_decide.ax_1_7]
+'Metronome.Strobes.rtlLineSop0_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Strobes.rtlLineSop1_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Strobes.rtlLineSop2_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Strobes.rtlLineSop3_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Strobes.rtlLineSop0_word' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Strobes.rtlLineSop1_word' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Strobes.rtlLineSop2_word' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Strobes.rtlLineSop3_word' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Strobes.rtlAccSel0_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlAccSel0_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlAccSel1_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlAccSel1_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlAccSel2_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlAccSel2_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlAccSel3_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlAccSel3_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlAccSel4_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlAccSel4_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlAccSel5_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlAccSel5_spec._native.bv_decide.ax_1_8]
+== stream and DBG control ==
+'Metronome.Strobes.rtlCwDbgOff_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Strobes.rtlRewindS0_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlRewindS0_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlRewindS1_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlRewindS1_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlRewindS0_word' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ pack_data._native.bv_decide.ax_1_7,
+ rtlRewindS0_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlRewindS1_word' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ pack_data._native.bv_decide.ax_1_7,
+ rtlRewindS1_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlFlushS0_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlFlushS0_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlFlushS1_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlFlushS1_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlFlushS0_word' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ pack_data._native.bv_decide.ax_1_7,
+ rtlFlushS0_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlFlushS1_word' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ pack_data._native.bv_decide.ax_1_7,
+ rtlFlushS1_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlClrS0_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlClrS0_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlClrS1_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlClrS1_spec._native.bv_decide.ax_1_8]
+'Metronome.Strobes.rtlCapEnS0_spec' does not depend on any axioms
+'Metronome.Strobes.rtlCapEnS1_spec' does not depend on any axioms
+'Metronome.Strobes.rtlDbgEctl_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Strobes.rtlDbgEm0_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Strobes.rtlDbgEm1_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Strobes.rtlDbgRlv0_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Strobes.rtlDbgRlv1_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+-- strobes_acc_highest: rejected by Lean: opg strobes (exit 1)

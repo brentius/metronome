@@ -1,0 +1,173 @@
+RTL snapshot SHA-256: 3960c7404ce72cd5ce0e1efe8a3d5f6d1557dcb4d3b8d87c91a8e8884281d815
+Yosys command: read_verilog -I src src/cells_behav.v src/md2_acc.v src/md2_cfg_bank.v src/md2_core.v src/md2_counter.v src/md2_dmem.v src/md2_host.v src/md2_lfsr.v src/md2_line.v src/md2_mem.v src/md2_pmem.v src/md2_shifter.v src/md2_sram_bb.v src/md2_stream.v src/md2_thread.v src/project.v; hierarchy -check -top tt_um_brentius_metronome; proc; opt_clean; write_json design.json
+Warning: Latch inferred for signal `\cfg_lgcp_beh.\int_gate' from process `\cfg_lgcp_beh.$src/cells_behav.v:23$proc$3': $auto$proc_dlatch.cc:559:proc_dlatch$13762
+Warning: Latch inferred for signal `\cfg_dlhrq_beh.\Q' from process `\cfg_dlhrq_beh.$src/cells_behav.v:15$proc$1': $auto$proc_dlatch.cc:555:proc_dlatch$13783
+Groups: 23 unit words, 4 line picks
+CTRL.STICKY at 0x2401
+== moves ==
+C:\Users\b_yee23\AppData\Local\Temp\metronome-moves-moves_clear_beats_event-4xwww7_u\MovesProofmoves_clear_beats_event.lean:420:2: error: Tactic `rfl` failed: The left-hand side
+  rtlConflictStep state resetN ev stk hd
+is not definitionally equal to the right-hand side
+  stickyNext state { resetN := resetN, event := ev, clear := stk && bitAt hd 0 }
+
+state resetN ev stk : Bool
+hd : BitVec 8
+⊢ rtlConflictStep state resetN ev stk hd =
+    stickyNext state { resetN := resetN, event := ev, clear := stk && bitAt hd 0 }
+'Metronome.Moves.machineTable_spec' does not depend on any axioms
+'Metronome.Moves.rtlGrpV_spec' depends on axioms: [propext, Quot.sound]
+'Metronome.Moves.rtlValid_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Moves.rtlWin_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWin_spec._native.bv_decide.ax_1_10]
+'Metronome.Moves.rtlConflictEv_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlConflictEv_spec._native.bv_decide.ax_1_10]
+'Metronome.Moves.rtlSticky_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlSticky_spec._native.bv_decide.ax_1_6]
+'Metronome.Moves.rtlConflictStep_spec' depends on axioms: [propext, sorryAx]
+'Metronome.Moves.rtl_conflict_sticky' depends on axioms: [propext]
+'Metronome.Moves.rtlMemhazStep_spec' depends on axioms: [propext]
+'Metronome.Moves.rtlMemhazEv_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlMemhazEv_spec._native.bv_decide.ax_1_7]
+'Metronome.Moves.rtlRdHin_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Moves.rtlRdPd_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Moves.rtlInvStep_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlInvStep_spec._native.bv_decide.ax_1_6]
+'Metronome.Moves.rtl_inv_read' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlInvStep_spec._native.bv_decide.ax_1_6]
+'Metronome.Moves.rtl_memhaz_read' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlMemhazEv_spec._native.bv_decide.ax_1_7]
+'Metronome.Moves.winAt_spec' depends on axioms: [propext, Quot.sound]
+'Metronome.Moves.winners_unique' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ sameKey_comm._native.bv_decide.ax_1_6]
+'Metronome.Moves.conflictEv_iff_pairs' depends on axioms: [propext, Quot.sound]
+'Metronome.Moves.pick_is_winner_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Moves.pick_is_winner_5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Moves.sticky_event_beats_clear' depends on axioms: [propext]
+'Metronome.Moves.trace_sticky_low' depends on axioms: [propext, Quot.sound]
+'Metronome.Moves.memhaz_of_read' depends on axioms: [propext, Quot.sound]
+== words ==
+'Metronome.Moves.rtlWordFlags_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordFlags_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordCw_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordCw_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordP0_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordP0_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordHostOut_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordHostOut_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordR0_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordR0_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordR1_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordR1_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordR2_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordR2_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordR3_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordR3_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordSh0_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordSh0_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordSh1_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordSh1_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordSh0Cfg_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordSh0Cfg_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordSh1Cfg_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordSh1Cfg_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordCnt0_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordCnt0_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordCnt1_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordCnt1_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordCnt2_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordCnt2_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordLf0_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordLf0_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordLf1_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordLf1_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordS0_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordS0_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordS1_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordS1_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordLine0Ctl_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordLine0Ctl_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordLine1Ctl_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordLine1Ctl_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordLine2Ctl_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordLine2Ctl_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlWordLine3Ctl_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWordLine3Ctl_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlSymWordSym0_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlSymWordSym0_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlSymWordSym1_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlSymWordSym1_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlSymWordSym2_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlSymWordSym2_spec._native.bv_decide.ax_1_9]
+'Metronome.Moves.rtlSymWordSym3_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlSymWordSym3_spec._native.bv_decide.ax_1_9]
+-- moves_clear_beats_event: rejected by Lean: moves (exit 1)

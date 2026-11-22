@@ -1,0 +1,43 @@
+﻿'Metronome.Bridge.StreamB.abs_step_frozen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.StreamB.freeze_starved_disagrees' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.StreamB.frozen_replay_buffer_disagrees' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.StreamB.frozen_rewind_inert_nv_disagrees' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.StreamB.lane_val' depends on axioms: [propext]
+'Metronome.Bridge.StreamB.lb_eq' depends on axioms: [propext]
+'Metronome.Bridge.StreamB.lb_eq_m' depends on axioms: [propext]
+'Metronome.Bridge.StreamB.streamLB_congr' does not depend on any axioms
+'Metronome.Bridge.StreamB.nbit_clr1' depends on axioms: [propext]
+'Metronome.Bridge.StreamB.bne_nat' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.StreamB.ReplayRel' does not depend on any axioms
+'Metronome.Bridge.StreamB.AbsRel' does not depend on any axioms
+'Metronome.Bridge.StreamB.BufRel' does not depend on any axioms
+'Metronome.Bridge.StreamB.AbsRelB' does not depend on any axioms
+'Metronome.Bridge.StreamB.ReplayRel.wv_eq' depends on axioms: [propext]
+'Metronome.Bridge.StreamB.ReplayRel.wb_of_wv' depends on axioms: [propext]
+'Metronome.Bridge.StreamB.ReplayRel.toBufRel' does not depend on any axioms
+'Metronome.Bridge.StreamB.BufRel.wv_eq' depends on axioms: [propext]
+'Metronome.Bridge.StreamB.BufRel.wb_of_wv' depends on axioms: [propext]
+'Metronome.Bridge.StreamB.BufRel.nv_eq' does not depend on any axioms
+'Metronome.Bridge.StreamB.BufRel.nb_of_nv' does not depend on any axioms
+'Metronome.Bridge.StreamB.endC_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.StreamB.last_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.StreamB.lane_three' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.StreamB.cfgStart_bv' depends on axioms: [propext]
+'Metronome.Bridge.StreamB.advT_eq' depends on axioms: [propext]
+'Metronome.Bridge.StreamB.bsel_eq_m' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.StreamB.bitin_eq' depends on axioms: [propext]
+'Metronome.Bridge.StreamB.shift_one_nat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.StreamB.nsh_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.StreamB.absIn_rx_isSome' depends on axioms: [propext]
+'Metronome.Bridge.StreamB.absIn_bus0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.StreamB.pos_step_unfrozen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.StreamB.bidx_step_unfrozen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.StreamB.ba_step_unfrozen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.StreamB.cur_step_unfrozen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.StreamB.cv_step_unfrozen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.StreamB.rq_step_unfrozen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.StreamB.ld_step_unfrozen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.StreamB.pend_step_unfrozen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.StreamB.pv_step_unfrozen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.StreamB.starved_step_unfrozen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.StreamB.abs_step_unfrozen' depends on axioms: [propext, Classical.choice, Quot.sound]

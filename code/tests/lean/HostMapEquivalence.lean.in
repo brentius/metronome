@@ -1,0 +1,105 @@
+import Metronome.HostMap
+import Std.Tactic.BVDecide
+
+-- Generated from Yosys RTLIL. SHA-256 of the RTL snapshot: {{FINGERPRINT}}
+--
+-- Host write decode cut (SPEC_V2 §9).  The definitions above the fold are the
+-- elaborated cones of `src/project.v`: the eight block region flags, their
+-- offset buses, and every host write enable of the design.  The theorems
+-- below them are checked against `Metronome.HostMap`, the independent host
+-- map table, so a decode that drifted from the map fails the proof.
+--
+-- Everything here is `bv_decide` over a 16-bit address (or 17 bits with the
+-- write strobe), plus the composition theorems over the specification.
+
+set_option autoImplicit false
+set_option maxHeartbeats 4000000
+set_option maxRecDepth 100000
+
+namespace Metronome.HostMapCheck
+
+open Metronome Metronome.HostMap
+
+{{REGIONS}}
+
+{{ENABLES}}
+
+{{SEMANTICS}}
+
+/-! ## Write data corollaries
+
+The cones above are the flop input logic; these are the documented behaviours,
+each with the enable and the free event inputs pinned. -/
+
+/-- A host write of `1` to `CTRL.STICKY` bit 0 clears a quiet `CONFLICT`. -/
+theorem sticky_conflict_cleared (q : Bool) :
+    rtlStickyConflict false q true true = false := by
+  rw [rtlStickyConflict_spec]
+  exact sticky_cleared _ _ _ _ rfl rfl rfl
+
+/-- A host write of `1` to `CTRL.STICKY` bit 1 clears a quiet `MEMHAZ`. -/
+theorem sticky_memhaz_cleared (q : Bool) :
+    rtlStickyMemhaz false q true true = false := by
+  rw [rtlStickyMemhaz_spec]
+  exact sticky_cleared _ _ _ _ rfl rfl rfl
+
+/-- A host write of `1` to `CTRL.STICKY` bit 2 clears a quiet `CWOVR`. -/
+theorem sticky_overrun_cleared (acc q : Bool) :
+    rtlStickyOverrun false acc q true true = false := by
+  rw [rtlStickyOverrun_spec]
+  exact sticky_cleared _ _ _ _ rfl rfl rfl
+
+/-- A host write of `0` to the same bit does not clear the flag. -/
+theorem sticky_conflict_held (ev q : Bool) :
+    rtlStickyConflict ev q true false = (ev || q) := by
+  rw [rtlStickyConflict_spec]
+  exact sticky_held _ _ _ _ rfl
+
+/-- A new event sets the flag even when the same write clears it. -/
+theorem sticky_conflict_set (q stk bit : Bool) :
+    rtlStickyConflict true q stk bit = true := by
+  rw [rtlStickyConflict_spec]
+  exact sticky_set _ _ _ _ rfl
+
+/-- The doorbell registers the host word for one cycle. -/
+theorem doorbell_write_pulse (q : BitVec 6) (d : BitVec 8) :
+    rtlDoorbell true false q d = d.truncate 6 := by
+  rw [rtlDoorbell_spec]
+  exact doorbell_pulse _ _ rfl
+
+/-- Without a write the doorbell word drops to zero in the next cycle. -/
+theorem doorbell_write_idle (q : BitVec 6) (d : BitVec 8) :
+    rtlDoorbell false false q d = 0 := by
+  rw [rtlDoorbell_spec]
+  exact doorbell_idle _ _ rfl
+
+/-- A frozen machine holds the doorbell word. -/
+theorem doorbell_frozen_hold (q : BitVec 6) (d : BitVec 8) :
+    rtlDoorbell false true q d = q := by
+  rw [rtlDoorbell_spec]
+  exact doorbell_held _ _ rfl
+
+/-- A frozen machine cannot drop a new doorbell word: it is ORed into the
+pending one. -/
+theorem doorbell_frozen_adds (q : BitVec 6) (d : BitVec 8) :
+    rtlDoorbell true true q d = (d.truncate 6 ||| q) := by
+  rw [rtlDoorbell_spec]
+  exact doorbell_frozen_new _ _ _ rfl
+
+/-- `HOSTIN` sets the input-valid flag. -/
+theorem hostin_sets_inv (q rd : Bool) :
+    rtlInv true q rd = true := by
+  rw [rtlInv_spec]
+  exact inv_set _ _
+
+/-- `HOSTIN` loads the mailbox byte. -/
+theorem hostin_loads_mailbox (q : BitVec 8) (d : BitVec 8) :
+    rtlMailbox true q d = d := by
+  rw [rtlMailbox_spec]
+  exact mailbox_loaded _ _
+
+/-! ## Axiom audit -/
+
+{{AXIOMS}}
+
+end Metronome.HostMapCheck

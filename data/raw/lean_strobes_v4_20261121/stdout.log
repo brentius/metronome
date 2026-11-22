@@ -1,0 +1,12 @@
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Build completed successfully (6 jobs).
+baseline: accepted (22 OPG strobes, 4 lines, 2 streams, 5 DBG bytes)
+strobes_counter_swap: rejected (generated Lean: rejected by Lean: opg strobes (exit 1): C:\Users\b_yee23\AppData\Local\Temp\metronome-strobes-strobes_counter_swap-0cv5d_pp\Strobesstrobes_counter_swapopg.lean:78:2: error: The prover found a counterexample, consider the following assignmen)
+strobes_lfsr_b1: rejected (generated Lean: rejected by Lean: opg strobes (exit 1): C:\Users\b_yee23\AppData\Local\Temp\metronome-strobes-strobes_lfsr_b1-_abjs8ew\Strobesstrobes_lfsr_b1opg.lean:446:2: error: The prover found a counterexample, consider the following assignment:)
+strobes_shifter_ld: rejected (generated Lean: rejected by Lean: opg strobes (exit 1): C:\Users\b_yee23\AppData\Local\Temp\metronome-strobes-strobes_shifter_ld-s4ah7hlb\Strobesstrobes_shifter_ldopg.lean:722:2: error: The prover found a counterexample, consider the following assignment:)
+strobes_p0_swap: rejected (generated Lean: rejected by Lean: selectors (exit 1): C:\Users\b_yee23\AppData\Local\Temp\metronome-strobes-strobes_p0_swap-xhpgt42s\Strobesstrobes_p0_swapsel.lean:140:2: error: The prover found a counterexample, consider the following assignment:)
+strobes_rewind_no_host: rejected (generated Lean: rejected by Lean: stream and DBG control (exit 1): C:\Users\b_yee23\AppData\Local\Temp\metronome-strobes-strobes_rewind_no_host-5i0sfksq\Strobesstrobes_rewind_no_hostctl.lean:47:2: error: The prover found a counterexample, consider the following assig)
+strobes_sop_dbit: rejected (generated Lean: rejected by Lean: selectors (exit 1): C:\Users\b_yee23\AppData\Local\Temp\metronome-strobes-strobes_sop_dbit-icdkfsl2\Strobesstrobes_sop_dbitsel.lean:162:2: error: The prover found a counterexample, consider the following assignment:)
+strobes_dbg_em1: rejected (generated Lean: rejected by Lean: stream and DBG control (exit 1): C:\Users\b_yee23\AppData\Local\Temp\metronome-strobes-strobes_dbg_em1-lurpsdsm\Strobesstrobes_dbg_em1ctl.lean:262:2: error: The prover found a counterexample, consider the following assignment:)
+strobes_acc_highest: rejected (generated Lean: rejected by Lean: opg strobes (exit 1): C:\Users\b_yee23\AppData\Local\Temp\metronome-strobes-strobes_acc_highest-hw3b5ien\Strobesstrobes_acc_highestopg.lean:1080:2: error: The prover found a counterexample, consider the following assignmen)

@@ -1,0 +1,8 @@
+case	outcome	exit	expectation
+lake-env-lean-HostPins	accepted	0	ok
+lake-build-Metronome.HostPins	accepted	0	ok
+axioms-audit	accepted	0	ok	(no sorryAx in axioms.txt)
+rtl-baseline	accepted	0	ok	(python hostpins_check.py --artifacts-dir .../rtl)
+rtl-mutants-hostpins_tx_early	rejected	1	ok
+rtl-mutants-hostpins_sck_from_s1	rejected	0	ok	(rejected by the structural check)
+git-diff-HEAD-src	clean	0	ok

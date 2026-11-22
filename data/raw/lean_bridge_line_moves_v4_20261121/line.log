@@ -1,0 +1,28 @@
+﻿Metronome/Bridge/Line.lean:377:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i╠Áf╠Á_╠Áp╠Áo╠Ás╠Ái╠▓t╠▓e╠▓_╠▓e╠▓q╠▓_╠▓l╠▓e╠▓f╠▓t╠▓
+Metronome/Bridge/Line.lean:377:19: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i╠Áf╠Á_╠Áp╠Áo╠Ás╠Ái╠▓t╠▓e╠▓_╠▓e╠▓q╠▓_╠▓l╠▓e╠▓f╠▓t╠▓
+Metronome/Bridge/Line.lean:380:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i╠Áf╠Á_╠Án╠Áe╠Ág╠Ái╠▓t╠▓e╠▓_╠▓e╠▓q╠▓_╠▓r╠▓i╠▓g╠▓h╠▓t╠▓
+Metronome/Bridge/Line.lean:380:19: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i╠Áf╠Á_╠Án╠Áe╠Ág╠Ái╠▓t╠▓e╠▓_╠▓e╠▓q╠▓_╠▓r╠▓i╠▓g╠▓h╠▓t╠▓
+Metronome/Bridge/Line.lean:367:68: warning: Variable name `hpin` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hpin
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Metronome/Bridge/Line.lean:444:68: warning: Variable name `hpin` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hpin
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`

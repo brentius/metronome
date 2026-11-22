@@ -1,0 +1,364 @@
+/-! ## The extracted transition is the specification
+
+Each register and each combinational output is proved from its own cone: the
+generated function is the elaborated next-state logic, the right-hand side is
+`Metronome.Mem`'s independent statement of the specification.  `mem_unfold`
+unfolds both sides and `bv_decide` bit-blasts the (small) residual goal. -/
+
+local macro "mem_unfold" : tactic =>
+  `(tactic| simp only [rtlStep, rtlOuts, step, outs, ptrNext, reqNext, reqAddrNext,
+    reqDataNext, rdyNext, datNext, landNext, landLaneNext, landRdyNext, hostQNext,
+    hostWrNext, hostAddrNext, hostDataNext, hLandNext, hLaneNext, mWe, mRen, mAddr,
+    mBe, mWd, haz, hLandD, wholeWord, byteAddr, writeByte, grantS0, grantS1, grantP0,
+    grantHost, s0Req, s1Req, streamReq, pending, writing, fetching, bit0, bit1, opAl,
+    opAh, opW, opR, PS_AL, PS_AH, PS_W, PS_R, RQ_NONE, RQ_FETCH, RQ_WRITE, ptrHigh,
+    ptrLow, addrLow, addrHigh, wordAddr, lane, oneHotLane, word4, mulC, byteAt,
+    laneShift, BitVec.ushiftRight_zero])
+
+/-- Unfold both sides, split the residual `if`s, and bit-blast each leaf.  The
+specification and the RTL write the same equations in different but equivalent
+shapes (the reset polarity, `&&` order, a concatenation built bit by bit), so
+the proof discharges them case by case rather than by literal matching. -/
+local macro "mem_decide" : tactic =>
+  `(tactic| (mem_unfold; repeat' split <;> all_goals simp_all <;>
+      all_goals try bv_decide))
+
+/-- `PTR`: byte-address loads and the 11-bit wrap step. -/
+theorem rtlPtr (state : State) (input : Input) :
+    (rtlStep state input).ptr = ptrNext state input := by
+  mem_decide
+
+/-- `REQ`: request set, replace and serve-clear. -/
+theorem rtlReq (state : State) (input : Input) :
+    (rtlStep state input).req = reqNext state input := by
+  mem_decide
+
+/-- The write request's address latch. -/
+theorem rtlReqAddr (state : State) (input : Input) :
+    (rtlStep state input).reqAddr = reqAddrNext state input := by
+  mem_decide
+
+/-- The write request's data latch. -/
+theorem rtlReqData (state : State) (input : Input) :
+    (rtlStep state input).reqData = reqDataNext state input := by
+  mem_decide
+
+/-- `RDY`: cleared by a move, set by a landing, held while frozen. -/
+theorem rtlRdy (state : State) (input : Input) :
+    (rtlStep state input).rdy = rdyNext state input := by
+  mem_decide
+
+/-- `D`: the landing byte, captured once from the presented word. -/
+theorem rtlDat (state : State) (input : Input) :
+    (rtlStep state input).dat = datNext state input := by
+  mem_decide
+
+/-- The fetch-served record. -/
+theorem rtlLand (state : State) (input : Input) :
+    (rtlStep state input).land = landNext state input := by
+  mem_decide
+
+/-- The landing's byte lane. -/
+theorem rtlLandLane (state : State) (input : Input) :
+    (rtlStep state input).landLane = landLaneNext state input := by
+  mem_decide
+
+/-- Whether the landing may raise `RDY`. -/
+theorem rtlLandRdy (state : State) (input : Input) :
+    (rtlStep state input).landRdy = landRdyNext state input := by
+  mem_decide
+
+/-- The host request slot's occupancy: a new request overwrites, a served one
+clears. -/
+theorem rtlHostQ (state : State) (input : Input) :
+    (rtlStep state input).hostQ = hostQNext state input := by
+  mem_decide
+
+/-- The host request's write flag. -/
+theorem rtlHostWr (state : State) (input : Input) :
+    (rtlStep state input).hostWr = hostWrNext state input := by
+  mem_decide
+
+/-- The host request's address. -/
+theorem rtlHostAddr (state : State) (input : Input) :
+    (rtlStep state input).hostAddr = hostAddrNext state input := by
+  mem_decide
+
+/-- The host request's write byte. -/
+theorem rtlHostData (state : State) (input : Input) :
+    (rtlStep state input).hostData = hostDataNext state input := by
+  mem_decide
+
+/-- The host landing strobe. -/
+theorem rtlHLand (state : State) (input : Input) :
+    (rtlStep state input).hLand = hLandNext state input := by
+  mem_decide
+
+/-- The host landing's byte lane. -/
+theorem rtlHLane (state : State) (input : Input) :
+    (rtlStep state input).hLane = hLaneNext state input := by
+  mem_decide
+
+/-- The extracted transition is the specification's, register by register. -/
+theorem rtlStep_eq_step (state : State) (input : Input) :
+    rtlStep state input = step state input :=
+  State.ext (rtlPtr state input) (rtlReq state input) (rtlReqAddr state input)
+    (rtlReqData state input) (rtlRdy state input) (rtlDat state input)
+    (rtlLand state input) (rtlLandLane state input) (rtlLandRdy state input)
+    (rtlHostQ state input) (rtlHostWr state input) (rtlHostAddr state input)
+    (rtlHostData state input) (rtlHLand state input) (rtlHLane state input)
+
+/-! ## The extracted outputs are the specification's -/
+
+/-- `s_gnt = {S1, S0}`. -/
+theorem rtlSGnt (state : State) (input : Input) :
+    (rtlOuts state input).sGnt = (outs state input).sGnt := by
+  mem_decide
+
+/-- The RAM write strobe. -/
+theorem rtlMWe (state : State) (input : Input) :
+    (rtlOuts state input).mWe = mWe state input := by
+  mem_decide
+
+/-- The RAM read strobe. -/
+theorem rtlMRen (state : State) (input : Input) :
+    (rtlOuts state input).mRen = mRen state input := by
+  mem_decide
+
+/-- The RAM word address `a[10:2]`. -/
+theorem rtlMAddr (state : State) (input : Input) :
+    (rtlOuts state input).mAddr = mAddr state input := by
+  mem_decide
+
+/-- The RAM byte-lane enables. -/
+theorem rtlMBe (state : State) (input : Input) :
+    (rtlOuts state input).mBe = mBe state input := by
+  mem_decide
+
+/-- The RAM write data. -/
+theorem rtlMWd (state : State) (input : Input) :
+    (rtlOuts state input).mWd = mWd state input := by
+  mem_decide
+
+/-- The `MEMHAZ` event. -/
+theorem rtlHazEvent (state : State) (input : Input) :
+    (rtlOuts state input).haz = haz state input := by
+  mem_decide
+
+/-- The host landing byte. -/
+theorem rtlHLandD (state : State) (input : Input) :
+    (rtlOuts state input).hLandD = hLandD state input := by
+  mem_decide
+
+/-- `P0.RDY` is the register `p_rdy`, with no extra logic. -/
+theorem rtlPRdy (state : State) (input : Input) :
+    (rtlOuts state input).pRdy = state.rdy := by
+  mem_unfold
+
+/-- `P0.D` is the register `p_dat`. -/
+theorem rtlPDat (state : State) (input : Input) :
+    (rtlOuts state input).pDat = state.dat := by
+  mem_unfold
+
+/-- `h_land` is the arbiter's landing register. -/
+theorem rtlHLandOut (state : State) (input : Input) :
+    (rtlOuts state input).hLand = state.hLand := by
+  mem_unfold
+
+/-- The extracted outputs are the specification's. -/
+theorem rtlOuts_eq_outs (state : State) (input : Input) :
+    rtlOuts state input = outs state input :=
+  Outs.ext (rtlSGnt state input) (rtlMWe state input) (rtlMRen state input)
+    (rtlMAddr state input) (rtlMBe state input) (rtlMWd state input)
+    (rtlHazEvent state input) (rtlHLandD state input) (rtlPRdy state input)
+    (rtlPDat state input) (rtlHLandOut state input)
+
+/-! ## The RTL trace is the specification trace
+
+Every theorem of `Metronome.Mem` is a statement about `stateAt`; this says the
+elaborated transition's trace is that trace, so those theorems hold of the RTL.
+The cut is unconditional (no well-formedness hypothesis: the equations are
+total, and `stateAt_req_ne_three` shows the unused request code is unreachable).
+-/
+
+/-- The register state during cycle `n` of the elaborated transition. -/
+def rtlStateAt (inputs : Nat → Input) (initial : State) : Nat → State
+  | 0 => initial
+  | n + 1 => rtlStep (rtlStateAt inputs initial n) (inputs n)
+
+theorem rtlStateAt_eq (inputs : Nat → Input) (initial : State) (n : Nat) :
+    rtlStateAt inputs initial n = stateAt inputs initial n := by
+  induction n with
+  | zero => rfl
+  | succ n ih => rw [rtlStateAt, stateAt_succ, ih, rtlStep_eq_step]
+
+/-- The elaborated transition's trace is the specification's, at every cycle. -/
+theorem rtl_trace_result (inputs : Nat → Input) (initial : State) (n : Nat) :
+    rtlStateAt inputs initial n = stateAt inputs initial n :=
+  rtlStateAt_eq inputs initial n
+
+/-- The elaborated outputs in cycle `n` are the specification's. -/
+theorem rtl_trace_outputs (inputs : Nat → Input) (initial : State) (n : Nat) :
+    rtlOuts (rtlStateAt inputs initial n) (inputs n) =
+      outs (stateAt inputs initial n) (inputs n) := by
+  rw [rtlStateAt_eq, rtlOuts_eq_outs]
+
+/-! ## What the elaborated arbiter does -/
+
+/-- At most one requester is served per cycle and the order is S0, S1, P0, host. -/
+theorem rtl_trace_grants_exclusive (inputs : Nat → Input) (initial : State)
+    (n : Nat) :
+    (grantS0 (inputs n) && grantS1 (inputs n)) = false ∧
+      (grantS0 (inputs n) && grantP0 (stateAt inputs initial n) (inputs n)) = false ∧
+      (grantS0 (inputs n) && grantHost (stateAt inputs initial n) (inputs n)) = false ∧
+      (grantS1 (inputs n) && grantP0 (stateAt inputs initial n) (inputs n)) = false ∧
+      (grantS1 (inputs n) && grantHost (stateAt inputs initial n) (inputs n)) = false ∧
+      (grantP0 (stateAt inputs initial n) (inputs n) &&
+        grantHost (stateAt inputs initial n) (inputs n)) = false :=
+  grants_exclusive (stateAt inputs initial n) (inputs n)
+
+/-- Bounded wait: a pointer request visible in cycle `n` is served in `n` itself
+when no stream requests and the machine is not frozen, so a request set at the
+end of `n-1` is served in `n` (`rtl_trace_request_visible`). -/
+theorem rtl_trace_p0_served (inputs : Nat → Input) (initial : State) (n : Nat)
+    (hpending : pending (stateAt inputs initial n) = true)
+    (hstream : streamReq (inputs n) = false) (hfrz : (inputs n).frz = false) :
+    grantP0 (stateAt inputs initial n) (inputs n) = true :=
+  grantP0_served (stateAt inputs initial n) (inputs n) hpending hstream hfrz
+
+/-- The host is served in the cycle its request is visible when nobody else
+wants the port, or in any frozen cycle. -/
+theorem rtl_trace_host_served (inputs : Nat → Input) (initial : State) (n : Nat)
+    (hhost : (stateAt inputs initial n).hostQ = true)
+    (hfree : (inputs n).frz = true ∨
+      (streamReq (inputs n) = false ∧ (stateAt inputs initial n).req = RQ_NONE)) :
+    grantHost (stateAt inputs initial n) (inputs n) = true :=
+  grantHost_served (stateAt inputs initial n) (inputs n) hhost hfree
+
+/-- A pointer move leaves a request pending in the next cycle. -/
+theorem rtl_trace_request_visible (inputs : Nat → Input) (initial : State) (n : Nat)
+    (hreset : (inputs n).resetN = true)
+    (hmove : opAl (inputs n) = true ∨ opAh (inputs n) = true ∨
+      opW (inputs n) = true ∨ opR (inputs n) = true) :
+    pending (rtlStateAt inputs initial (n + 1)) = true := by
+  rw [rtlStateAt_eq]
+  exact trace_request_visible inputs initial n hreset hmove
+
+/-- The unused request code is unreachable from a sampled reset. -/
+theorem rtl_trace_req_ne_three (inputs : Nat → Input) (initial : State)
+    (reset : (inputs 0).resetN = false) (n : Nat) :
+    (rtlStateAt inputs initial (n + 1)).req ≠ 3 := by
+  rw [rtlStateAt_eq]
+  exact stateAt_req_ne_three inputs initial reset n
+
+/-- A host read served in cycle `n` lands in `n+1`, in the served request's byte
+lane, from the word the RAM presents in `n+1`: the landing premise of the host
+read cut, in terms of the arbiter's RAM word input. -/
+theorem rtl_trace_host_read_lands (inputs : Nat → Input) (initial : State) (n : Nat)
+    (hreset : (inputs n).resetN = true)
+    (hserved : grantHost (rtlStateAt inputs initial n) (inputs n) = true)
+    (hread : (rtlStateAt inputs initial n).hostWr = false) :
+    (rtlStateAt inputs initial (n + 1)).hLand = true ∧
+      (rtlStateAt inputs initial (n + 1)).hLane =
+        lane (rtlStateAt inputs initial n).hostAddr ∧
+      hLandD (rtlStateAt inputs initial (n + 1)) (inputs (n + 1)) =
+        byteAt (inputs (n + 1)).ramWord (lane (rtlStateAt inputs initial n).hostAddr) := by
+  simp only [rtlStateAt_eq] at *
+  exact trace_host_read_lands inputs initial n hreset hserved hread
+
+/-- With the SRAM macro contract, that byte is the data-RAM byte at the served
+address. -/
+theorem rtl_trace_host_read_data (inputs : Nat → Input) (initial : State) (n : Nat)
+    (ram : BitVec 9 → BitVec 32)
+    (hram : RamContract ram (fun k => (inputs k).ramWord)
+      (fun k => mAddr (rtlStateAt inputs initial k) (inputs k)))
+    (hreset : (inputs n).resetN = true)
+    (hserved : grantHost (rtlStateAt inputs initial n) (inputs n) = true)
+    (hread : (rtlStateAt inputs initial n).hostWr = false) :
+    hLandD (rtlStateAt inputs initial (n + 1)) (inputs (n + 1)) =
+      byteAt (ram (mAddr (rtlStateAt inputs initial n) (inputs n)))
+        (lane (rtlStateAt inputs initial n).hostAddr) := by
+  simp only [rtlStateAt_eq] at *
+  exact trace_host_read_data inputs initial n ram hram hreset hserved hread
+
+/-- A pointer write served in cycle `n` writes the latched address and byte. -/
+theorem rtl_trace_p0_write (inputs : Nat → Input) (initial : State) (n : Nat)
+    (hserved : grantP0 (stateAt inputs initial n) (inputs n) = true)
+    (hwrite : writing (stateAt inputs initial n) = true) :
+    mWe (stateAt inputs initial n) (inputs n) = true ∧
+      mAddr (stateAt inputs initial n) (inputs n) =
+        wordAddr (stateAt inputs initial n).reqAddr ∧
+      mBe (stateAt inputs initial n) (inputs n) =
+        oneHotLane (lane (stateAt inputs initial n).reqAddr) ∧
+      mWd (stateAt inputs initial n) (inputs n) =
+        word4 (stateAt inputs initial n).reqData :=
+  served_write_ports (stateAt inputs initial n) (inputs n) hserved hwrite
+
+/-- A pointer fetch served in cycle `n` reads `PTR` and makes its byte visible
+with `RDY` in cycle `n+2` (§6.2). -/
+theorem rtl_trace_p0_read_lands (inputs : Nat → Input) (initial : State) (n : Nat)
+    (hserved : grantP0 (rtlStateAt inputs initial n) (inputs n) = true)
+    (hfetch : fetching (rtlStateAt inputs initial n) = true)
+    (hreset : (inputs n).resetN = true) (hreset1 : (inputs (n + 1)).resetN = true)
+    (hnofrz : (inputs n).frz = false) (hnopwe : (inputs n).pWe = false)
+    (hnofrz1 : (inputs (n + 1)).frz = false)
+    (hnopwe1 : (inputs (n + 1)).pWe = false)
+    (hfrzd1 : (inputs (n + 1)).frzd = false) :
+    (rtlStateAt inputs initial (n + 2)).rdy = true ∧
+      (rtlStateAt inputs initial (n + 2)).dat =
+        byteAt (inputs (n + 1)).ramWord (lane (rtlStateAt inputs initial n).ptr) := by
+  simp only [rtlStateAt_eq] at *
+  exact trace_p0_read_lands inputs initial n hserved hfetch hreset hreset1 hnofrz
+    hnopwe hnofrz1 hnopwe1 hfrzd1
+
+/-- A pointer move that replaces an unserved request raises `MEMHAZ` (§9a.2). -/
+theorem rtl_trace_haz_replaced (inputs : Nat → Input) (initial : State) (n : Nat)
+    (hpwe : (inputs n).pWe = true)
+    (hpending : pending (stateAt inputs initial n) = true)
+    (hnotserved : grantP0 (stateAt inputs initial n) (inputs n) = false) :
+    haz (stateAt inputs initial n) (inputs n) = true :=
+  haz_replaced (stateAt inputs initial n) (inputs n) hpwe hpending hnotserved
+
+/-- A move in the cycle its request is served raises no hazard (§9a.2). -/
+theorem rtl_trace_no_haz_when_served (inputs : Nat → Input) (initial : State)
+    (n : Nat) (hserved : grantP0 (stateAt inputs initial n) (inputs n) = true) :
+    haz (stateAt inputs initial n) (inputs n) = false :=
+  no_haz_when_served (stateAt inputs initial n) (inputs n) hserved
+
+/-- A frozen cycle serves only the host and the pointer holds (§12.3). -/
+theorem rtl_trace_frozen (inputs : Nat → Input) (initial : State) (n : Nat)
+    (hreset : (inputs n).resetN = true) (hfrz : (inputs n).frz = true)
+    (hpwe : (inputs n).pWe = false) :
+    grantS0 (inputs n) = false ∧ grantS1 (inputs n) = false ∧
+      grantP0 (stateAt inputs initial n) (inputs n) = false ∧
+      grantHost (stateAt inputs initial n) (inputs n) =
+        (stateAt inputs initial n).hostQ ∧
+      (rtlStateAt inputs initial (n + 1)).ptr = (rtlStateAt inputs initial n).ptr ∧
+      (rtlStateAt inputs initial (n + 1)).req = (rtlStateAt inputs initial n).req ∧
+      (rtlStateAt inputs initial (n + 1)).rdy = (rtlStateAt inputs initial n).rdy ∧
+      mAddr (stateAt inputs initial n) (inputs n) = wordAddr (stateAt inputs initial n).hostAddr := by
+  obtain ⟨h0, h1, hp, hgh, hptr, hreq, _hra, _hrd, hrdy, _hland, _hlane, _hlrdy,
+    _hdat⟩ := frozen_holds (stateAt inputs initial n) (inputs n) hreset hfrz hpwe
+  obtain ⟨_, _, hmaddr⟩ :=
+    frozen_access_is_host (stateAt inputs initial n) (inputs n) hreset hfrz hpwe
+  simp only [rtlStateAt_eq] at *
+  rw [stateAt_succ]
+  exact ⟨h0, h1, hp, hgh, hptr, hreq, hrdy, hmaddr⟩
+
+/-- A served S0 edge-capture write covers all four lanes (§12.4). -/
+theorem rtl_trace_s0_word_write (inputs : Nat → Input) (initial : State) (n : Nat)
+    (hserved : grantS0 (inputs n) = true) (hword : (inputs n).s0Word = true) :
+    mBe (stateAt inputs initial n) (inputs n) = 0xF ∧
+      mWd (stateAt inputs initial n) (inputs n) = (inputs n).s0WWord :=
+  s0_word_write (stateAt inputs initial n) (inputs n) hserved hword
+
+/-! ## Axiom audit -/
+
+#print axioms rtlStep_eq_step
+#print axioms rtlOuts_eq_outs
+#print axioms rtlStateAt_eq
+#print axioms rtl_trace_host_read_lands
+#print axioms rtl_trace_p0_read_lands
+#print axioms rtl_trace_frozen
+
+end Metronome.Mem

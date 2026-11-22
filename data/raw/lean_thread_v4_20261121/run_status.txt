@@ -1,0 +1,8 @@
+case	outcome	exit	expectation
+baseline	accepted	0	ok
+thread_pause_dispatch	rejected (generated Lean: rejected by Lean (exit 1): 92:14: error: The prover found a counterexample, consider the following assignment:)	1	ok
+thread_pc_pause_wins	rejected (generated Lean: rejected by Lean (exit 1): 92:14: error: The prover found a potentially spurious counterexample:)	1	ok
+thread_ovr_clear_wins	rejected (generated Lean: rejected by Lean (exit 1): 92:14: error: The prover found a counterexample, consider the following assignment:)	1	ok
+thread_ev_not_frozen	rejected (generated Lean: rejected by Lean (exit 1): 1183:12: error: The prover found a counterexample, consider the following assignment:)	1	ok
+thread3_line2_beat	rejected (generated Lean: rejected by Lean (exit 1): 1461:12: error: The prover found a counterexample, consider the following assignment:)	1	ok
+thread_always_ignores_running	rejected (generated Lean: rejected by Lean (exit 1): 1189:12: error: The prover found a counterexample, consider the following assignment:)	1	ok

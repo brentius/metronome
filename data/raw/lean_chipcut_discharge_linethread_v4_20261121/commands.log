@@ -1,0 +1,19 @@
+# Premise discharge: lines/threads (Lean 4.35.0, core only, -DwarningAsError=true)
+# host: Windows, 2026-11-21T20:00:18
+
+lake build Metronome.ChipCut
+exit=0 elapsed_s=0.4
+Build completed successfully (59 jobs).
+
+lake build Metronome.ChipCut.Discharge.LineThread  (olean removed first)
+exit=0 elapsed_s=10.5
+Build completed successfully (59 jobs).
+
+lake env lean data/raw/lean_chipcut_discharge_linethread_v4_20261121/axioms.lean
+exit=0 elapsed_s=3.2
+
+git diff --quiet HEAD -- src
+exit=0
+
+sorry/admit/native_decide matches in Metronome/ChipCut/Discharge/LineThread.lean: 0
+file lines: 672

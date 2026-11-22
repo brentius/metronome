@@ -1,0 +1,37 @@
+# Commands, exit codes and wall times (item 4L)
+
+Machine: Windows, Lean 4.35.0 (core libs only), Lake 5.0.0-src+eb6cafb.
+Working directory: `code/tests/lean`.  `PATH` includes `%USERPROFILE%/.elan/bin`.
+The project's `lakefile.toml` passes `-DwarningAsError=true`, so a deprecation or an
+unused-variable warning fails the build.
+
+| # | Command | Exit | Wall |
+|---|---|---|---|
+| 1 | `lake build Metronome.Bridge.Glue` (after deleting its `.olean`; full re-elaboration) | 0 | 38.6 s |
+| 2 | `lake build Metronome.Bridge.Debug` (after deleting its `.olean`) | 0 | 3.2 s |
+| 3 | `lake build Metronome.Bridge.Glue Metronome.Bridge.Debug` (final, both targets) | 0 | 0.6 s |
+| 4 | `lake env lean ../../data/raw/lean_bridge_glue_debug_v4_20261121/Axioms.lean` (179 `#print axioms` lines; 173 carry axioms) | 0 | 17.1 s |
+| 5 | `git diff --quiet HEAD -- src` | 0 | 0.2 s |
+
+Additional checks:
+
+* `Select-String -Path Metronome/Bridge/Glue.lean,Metronome/Bridge/Debug.lean -Pattern 'sorry|native_decide'`
+  → no matches.
+* `Metronome/Bridge/Glue.lean` contains 163 `theorem` declarations;
+  `Metronome/Bridge/Debug.lean` contains 16.
+* `axioms.txt` contains no `sorryAx` and no `Lean.ofReduceBool`/native
+  certificate axioms; the theorems proved by `decide` depend on no axioms at all,
+  the rest only on `propext`, `Classical.choice`, `Quot.sound`.
+
+Files:
+
+| Path | Role |
+|---|---|
+| `code/tests/lean/Metronome/Bridge/Glue.lean` | glue bridge (new) |
+| `code/tests/lean/Metronome/Bridge/Debug.lean` | debug bridge (new) |
+| `code/tests/lean/BRIDGE_GLUE_DEBUG_NOTES.md` | per-component maps, theorems, side conditions, disagreements, gaps |
+| `data/raw/lean_bridge_glue_debug_v4_20261121/Axioms.lean` | the axiom-audit source |
+| `data/raw/lean_bridge_glue_debug_v4_20261121/axioms.txt` | `#print axioms` output (173 records) |
+| `data/raw/lean_bridge_glue_debug_v4_20261121/glue_names.txt` | the 163 glue theorem names |
+| `data/raw/lean_bridge_glue_debug_v4_20261121/debug_names.txt` | the 16 debug theorem names |
+| `data/raw/lean_bridge_glue_debug_v4_20261121/build*.log` | build logs |

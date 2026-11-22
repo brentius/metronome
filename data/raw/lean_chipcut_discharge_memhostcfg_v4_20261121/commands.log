@@ -1,0 +1,13 @@
+# ChipCut discharge (MemHostCfg) evidence - Lean 4.35.0, core libs only, -DwarningAsError=true
+## 1. build from removed olean (installed toolchain)
+command: lake build Metronome.ChipCut.Discharge.MemHostCfg
+Ô£ö [59/59] Built Metronome.ChipCut.Discharge.MemHostCfg (8.8s)
+Build completed successfully (59 jobs).
+exit=0 wall=9.1s
+## 2. axioms
+command: lake env lean data/raw/lean_chipcut_discharge_memhostcfg_v4_20261121/axioms.lean
+exit=0 wall=2.7s
+## 3. sorry scan
+No `sorry`, no `native_decide`.
+## 4. src untouched
+command: git diff --quiet HEAD -- src -> exit=0

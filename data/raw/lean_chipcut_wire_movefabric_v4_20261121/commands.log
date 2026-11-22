@@ -1,0 +1,93 @@
+﻿# W1 move fabric: commands, exit codes, wall times (2026-11-21/22)
+# Shell: PowerShell, $env:PATH = "$env:USERPROFILE/.elan/bin;$env:PATH"
+# cwd for lean runs: code/tests/lean
+
+# --- resume ---
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 1  790.2 s  (deps StreamDbg/MemHostCfg
+                                                                       mid-edit by parallel tasks:
+                                                                       StreamDbg.lean:693/753 unknown cfgStart_bv,
+                                                                       MemHostCfg.lean:1360 type mismatch)
+# (+~4 min) retried after the parallel tasks finished their oleans:
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 1   19.1 s  (MoveFabric own errors:
+                                                                       the previous agent's group-pick
+                                                                       section was left mid-edit)
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 1   15.5 s
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 1   11.1 s
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 1    1.8 s
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 1   17.0 s
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 1   11.3 s
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 0   11.3 s   <-- pickScan + pickScan_mWs green
+# --- consumer fields ---
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 1   16.4 s
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 1  209.9 s
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 1    9.1 s
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 1   13.4 s
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 1   12.5 s
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 1    9.0 s
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 1    8.8 s
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 0   13.5 s   <-- final (build_final.log)
+
+lake env lean -DwarningAsError=true ..\..\..\data\raw\lean_chipcut_wire_movefabric_v4_20261121\axioms.lean
+                                                      exit 0    1.9 s   (antioms.txt)
+lake build Metronome.ChipCut                          exit 0    0.6 s   (chipcut_regression.log)
+git diff --quiet HEAD -- src                          exit 0
+
+# Final module rebuild (after touching the file) is the 13.5 s run above; the
+# cached no-op build is ~2 s.
+
+# --- round b: DstPayloadTable ---
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 1   14.1 s   (table + hPQ_of_payload;
+                                                                       first single-code Fam)
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 1   17.9 s   (unitInputs_reg draft:
+                                                                       BitVec.ofNat_ofNat unknown;
+                                                                       `decide` on symbolic famG)
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 0   25.2 s   (group-based table +
+                                                                       hostOut_of_table green)
+lake env lean --run ..\..\..\data\raw\lean_chipcut_wire_movefabric_v4_20261121\decode_check_payload.lean
+                                                      exit 0    2.6 s   (23 families x 64 codes,
+                                                                       0 failures; log kept)
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 1   12.2 s   (famG_nonkeyed draft:
+                                                                       dstOp 0 does not reduce)
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 1   13.7 s   (nor does dstOp 61)
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 0   14.0 s   (final; famG_nonkeyed
+                                                                       removed, blocker recorded)
+lake env lean -DwarningAsError=true ..\..\..\data\raw\lean_chipcut_wire_movefabric_v4_20261121\axioms.lean
+                                                      exit 0    2.1 s   (no sorryAx/trustCompiler)
+lake build Metronome.ChipCut                          exit 0    0.4 s
+git diff --quiet HEAD -- src                          exit 0
+
+
+# --- round c: nonkeyed table component + MoveBus.src + UnitInputs.reg ---
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 0   16.6 s   (MoveBus.src, out_src_congr,
+                                                                       mvSrc_slot, structure
+                                                                       DstPayloadTable{payload,nonkeyed})
+lake env lean --run ..\..\..\data\raw\lean_chipcut_wire_movefabric_v4_20261121\decode_check_payload.lean
+                                                      exit 0    2.4 s   (23 families x 64 codes +
+                                                                       nonkeyed; 0 failures)
+lake env lean -DwarningAsError=true ...\scratch_reg.lean
+                                                      exit 0    ~2 s    (scratch: unitInputs_reg proof)
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 0   16.0 s   (unitInputs_reg spliced)
+lake env lean -DwarningAsError=true ..\..\..\data\raw\lean_chipcut_wire_movefabric_v4_20261121\axioms.lean
+                                                      exit 0    2.2 s   (no sorryAx)
+lake build Metronome.ChipCut                          exit 0    0.4 s
+git diff --quiet HEAD -- src                          exit 0
+
+# --- round d: table codeOf + pickWord_we_exists (acc/shCfg still open) ---
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 0  203 s     (full dep rebuild; + codeOf field)
+lake env lean --run ..\..\..\data\raw\lean_chipcut_wire_movefabric_v4_20261121\decode_check_payload.lean
+                                                      exit 0    2.7 s   (+ nonkeyed + codeOf; 0 failures)
+lake env lean -DwarningAsError=true ...\scratch_d.lean
+                                                      exit 0    ~2 s    (scratch: pickWord_we_exists)
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 0   (spliced pickWord_we_exists)
+lake env lean -DwarningAsError=true ..\..\..\data\raw\lean_chipcut_wire_movefabric_v4_20261121\axioms.lean
+                                                      exit 0    3.1 s   (no sorryAx)
+lake build Metronome.ChipCut                          exit 0    0.5 s
+git diff --quiet HEAD -- src                          exit 0
+
+# --- round e ---
+lake env lean -DwarningAsError=true ...\scratch_e.lean
+                                                      exit 0    ~2 s    (truncate_five_toNat + shCfg_data_witness)
+lake build Metronome.ChipCut.Discharge.MoveFabric     exit 0   20 s     (spliced; 2 new lemmas)
+# hitsMask_onehot_first / unitInputs_acc / unitInputs_shCfg_low5: not attempted to completion this round.
+# Remaining sub-lemma identified: bitAt_one_shift (k i < 6) : bitAt ((1:BV6) <<< k) i = (i == k), and the
+# m >= 6 case of 1 <<< m = 0 for the atMostOne route.

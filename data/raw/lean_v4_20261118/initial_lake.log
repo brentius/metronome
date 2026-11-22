@@ -1,0 +1,12 @@
+✖ [3/5] Building Metronome.Config (3.0s)
+trace: .> LEAN_PATH=C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean c:\Users\b_yee23\.elan\toolchains\leanprover--lean4---v4.35.0\bin\lean.exe -DwarningAsError=true C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\Metronome\Config.lean -o C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean\Metronome\Config.olean -i C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean\Metronome\Config.ilean -c C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\ir\Metronome\Config.c --setup C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\ir\Metronome\Config.setup.json --json
+error: Metronome/Config.lean:96:16: This simp argument is unused:
+  selected
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, beforeEdge, active]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Some required targets logged failures:
+- Metronome.Config
+error: build failed

@@ -1,0 +1,1 @@
+INTERRUPTED: python exited 127 at ~14:44 after 'hostmap baseline: accepted' (no stderr, no failed case); superseded by lean_full_v4_20261121c

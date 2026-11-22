@@ -1,0 +1,12 @@
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Build completed successfully (3 jobs).
+baseline: accepted (259 / 257 extracted signals)
+core_rr_plus_one: rejected (generated Lean: rejected by Lean (exit 1), rejected by `Rtl0.rtlFpc`)
+core_rr_every_cycle: rejected (generated Lean: rejected by Lean (exit 1), rejected by `Rtl0.rtlXt`)
+core_ifnot_uses_c: rejected (generated Lean: rejected by Lean (exit 1), rejected by `Rtl0.rtlMvEn`)
+core_jmp_ignores_pause: rejected (generated Lean: rejected by Lean (exit 1), rejected by `Rtl0.rtlRv`)
+core_load_ignores_jmp: rejected (generated Lean: rejected by Lean (exit 1), rejected by `Rtl0.rtlXv`)
+core_watcher_order: rejected (generated Lean: rejected by Lean (exit 1), rejected by `Rtl0.rtlFpc`)
+core_frz_not_hold: rejected (generated Lean: rejected by Lean (exit 1), rejected by `Rtl0.rtlXv`)
+core1_wrong_binding: rejected (generated Lean: rejected by Lean (exit 1), rejected by `Rtl1.rtlRv`)

@@ -1,0 +1,40 @@
+import Metronome.ChipCut.Discharge.MoveFabric
+
+open Metronome ChipCut.Discharge.MoveFabric
+
+#print axioms pickScan
+#print axioms pickScan_mWs
+#print axioms winAt_false_of_later_hit
+#print axioms range_find?_before
+#print axioms hitsMask_eq_zero
+#print axioms findSome?_congr
+#print axioms findSome?_snd_map
+#print axioms findSome?_map_ext
+#print axioms findSome?_pair_ext
+#print axioms bitAt_makeWord_14
+#print axioms slice_makeWord_8_6
+#print axioms slice_makeWord_0_8
+#print axioms slice_makeWord_0_4
+#print axioms truncate_four_toNat
+#print axioms ctrlMoveFabric_hostOut
+#print axioms unitInputs_flag_low4
+#print axioms flag_data_witness
+#print axioms ctrlMoveFabric_conflict_of_chipRel
+#print axioms winners_machMove
+#print axioms resolveMoves_mAllMoves_of_chipRel
+#print axioms moveTable_of_bus
+#print axioms sym_data_witness
+#print axioms ctl_data_witness
+#print axioms PayloadGroup
+#print axioms DstPayloadTable
+#print axioms PayloadGroup.of_table
+#print axioms hPQ_of_payload
+#print axioms ctrlMoveFabric_hostOut_of_table
+#print axioms unitInputs_reg
+#print axioms unitInputs_acc
+#print axioms opCodeOf_add
+#print axioms pickWord_we_exists
+#print axioms truncate_five_toNat
+#print axioms shCfg_data_witness
+#print axioms out_src_congr
+#print axioms mvSrc_slot

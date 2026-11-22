@@ -1,0 +1,29 @@
+﻿'Metronome.ChipCut.Discharge.PremiseWire.grpPacked_holds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ pack6_slice._native.bv_decide.ax_1_12,
+ pack6_slice._native.bv_decide.ax_1_17,
+ pack6_slice._native.bv_decide.ax_1_22,
+ pack6_slice._native.bv_decide.ax_1_27,
+ pack6_slice._native.bv_decide.ax_1_32,
+ pack6_slice._native.bv_decide.ax_1_7]
+'Metronome.ChipCut.Discharge.PremiseWire.cwH19_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.PremiseWire.cwH19_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.PremiseWire.mapOfWith_slice' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ pack6_slice._native.bv_decide.ax_1_12,
+ pack6_slice._native.bv_decide.ax_1_17,
+ pack6_slice._native.bv_decide.ax_1_22,
+ pack6_slice._native.bv_decide.ax_1_27,
+ pack6_slice._native.bv_decide.ax_1_32,
+ pack6_slice._native.bv_decide.ax_1_7]
+'Metronome.ChipCut.Discharge.PremiseWire.pack6_slice' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ pack6_slice._native.bv_decide.ax_1_12,
+ pack6_slice._native.bv_decide.ax_1_17,
+ pack6_slice._native.bv_decide.ax_1_22,
+ pack6_slice._native.bv_decide.ax_1_27,
+ pack6_slice._native.bv_decide.ax_1_32,
+ pack6_slice._native.bv_decide.ax_1_7]

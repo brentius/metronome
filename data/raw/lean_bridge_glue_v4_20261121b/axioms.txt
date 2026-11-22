@@ -1,0 +1,299 @@
+﻿'Metronome.Bridge.Glue.bitAt_eq_nbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.slice_toNat' depends on axioms: [propext]
+'Metronome.Bridge.Glue.bitByte_toNat' does not depend on any axioms
+'Metronome.Bridge.Glue.bv_toNat' depends on axioms: [propext]
+'Metronome.Bridge.Glue.b2n_lt' does not depend on any axioms
+'Metronome.Bridge.Glue.bit_eq_nbit' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.b2n_nbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.bit_two' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.bit_three' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.bit_four' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.bv_two_toNat' depends on axioms: [propext]
+'Metronome.Bridge.Glue.bv_three_toNat' depends on axioms: [propext]
+'Metronome.Bridge.Glue.bv_four_toNat' depends on axioms: [propext]
+'Metronome.Bridge.Glue.slice64_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.slice64_8' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Glue.slice64_8._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Glue.slice64_16' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Glue.slice64_16._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Glue.slice64_24' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Glue.slice64_24._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Glue.slice64_32' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.slice64_40' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.slice64_48' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.slice64_56' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.slice48_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.slice48_8' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Glue.slice48_8._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Glue.slice48_16' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.slice48_24' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Glue.slice48_24._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Glue.slice48_32' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.slice48_40' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.slice_bytes_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.slice_bytes_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.slice_bytes_2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.slice_bytes_3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.slice16_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.slice16_8' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.nbits_low' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.nbits_high' depends on axioms: [propext]
+'Metronome.Bridge.Glue.srcOp_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guardOp_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.srcOp_fixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guardOp_fixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_6' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_7' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_8' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_9' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_10' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_11' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_12' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_13' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_14' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_15' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_16' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_17' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_18' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_19' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Glue.slice48_8._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Glue.src_slot_21' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Glue.slice48_24._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Glue.src_slot_22' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_23' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_24' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Glue.slice64_8._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Glue.src_slot_25' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Glue.slice64_16._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Glue.src_slot_26' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Glue.slice64_24._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Glue.src_slot_27' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_28' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_29' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_30' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_31' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_32' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_33' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_34' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_35' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.streamByte_lt' does not depend on any axioms
+'Metronome.Bridge.Glue.src_slot_36' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_37' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_38' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_39' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_40' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_41' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_42' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_43' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_44' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_45' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_46' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_47' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_48' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_49' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_50' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_51' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_52' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_53' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_54' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_55' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_56' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_57' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_58' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_59' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_60' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_61' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_62' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.src_slot_63' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_6' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_7' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_8' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_9' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_10' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_11' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_12' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_13' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_14' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_15' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_16' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_17' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_18' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_19' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_20' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_21' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_22' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_23' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_24' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_25' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_26' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_32' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_33' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_34' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_35' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_36' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_37' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_38' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_39' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_40' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_41' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_42' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_43' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_44' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_45' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_46' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_47' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_48' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_49' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_50' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_51' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_52' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_53' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_54' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_55' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_56' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_57' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_58' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_59' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_60' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_61' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_62' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.guard_slot_63' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.symOf_lt' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.nbit_quad_low' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.nbit_quad_shift' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.inn_bit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.sp_bit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.pinA_bit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.pinB_bit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.line_guard_0' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_12,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_17,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_22,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_7]
+'Metronome.Bridge.Glue.line_guard_1' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_12,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_17,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_22,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_7]
+'Metronome.Bridge.Glue.line_guard_2' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_12,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_17,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_22,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_7]
+'Metronome.Bridge.Glue.line_guard_3' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_12,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_17,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_22,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_7]
+'Metronome.Bridge.Glue.line_guard_4' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_12,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_17,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_22,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_7]
+'Metronome.Bridge.Glue.lineGuard_bridge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_12,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_17,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_22,
+ Metronome.Glue.lineGuard_at._native.bv_decide.ax_1_7]
+'Metronome.Bridge.Glue.bitAt_eq_nbit'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.bit_eq_nbit'' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.nbit_eq_testBit' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.getLsbD_eq_testBit' depends on axioms: [propext]
+'Metronome.Bridge.Glue.bitAt_eq_getLsbD' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.bv_toNat_slice' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.testBit_succ_of_even' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.testBit_add_two_pow' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.testBit_sub_two_pow' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.setBit_getLsbD' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.setFlag_getLsbD' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.setBit_eq_setFlag' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.list_any_or' depends on axioms: [propext]
+'Metronome.Bridge.Glue.err_bridge' depends on axioms: [propext]
+'Metronome.Bridge.Glue.ctrl_outb' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.ctrl_outv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.ctrl_run' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.ctrl_irqen' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.ctrl_db' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.ctrl_inb' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.ctrl_inv' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.ctrl_invp' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.ctrl_irq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.flags_f' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.flags_fp' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Glue.ctrl_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.bindPack_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.bindPack_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.bindPack_live0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.bindPack_live1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.selPack_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.selPack_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.selPack_2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.segPack_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.segPack_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.segPack_2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.segPack_3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.commPack_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.commPack_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.commPack_2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.commPack_3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Glue.pack4b_0' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Glue.pack4b_0._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Glue.pack4b_1' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Glue.pack4b_1._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Glue.pack4b_2' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Glue.pack4b_2._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Glue.pack4b_3' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Glue.pack4b_3._native.bv_decide.ax_1_5]

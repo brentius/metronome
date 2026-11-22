@@ -1,0 +1,1521 @@
+lake build Metronome.ChipCut.Discharge.MemHostCfg Metronome.ChipCut.Discharge.BankWire
+✖ [59/60] Building Metronome.ChipCut.Proof (6.8s)
+trace: .> LEAN_PATH=C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean c:\Users\b_yee23\.elan\toolchains\leanprover--lean4---v4.35.0\bin\lean.exe -DwarningAsError=true C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\Metronome\ChipCut\Proof.lean -o C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean\Metronome\ChipCut\Proof.olean -i C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean\Metronome\ChipCut\Proof.ilean -c C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\ir\Metronome\ChipCut\Proof.c --setup C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\ir\Metronome\ChipCut\Proof.setup.json --json
+error: Metronome/ChipCut/Proof.lean:705:4: unsolved goals
+case pos
+pins : Nat → Machine.PinIn
+cont : Contents
+n : Nat
+s : State := cutStateAt pins (resetState cont) n
+pin : Machine.PinIn := pins n
+ih :
+  (s.rst.rstQ = true → s.rst.rstM = true) ∧
+    ((cutStateAt pins (resetState cont) n).rst.rstQ = false →
+      (∀ (k : Fin Bank.BYTES), Bank.read (cutStateAt pins (resetState cont) n).bank k = 0) ∧
+        (cutStateAt pins (resetState cont) n).arb.previousWrite = false)
+hact : runRst s pin = true
+hrun : (s.rst.rstQ && pin.rstn) = true
+hq : s.rst.rstQ = true
+hn : pin.rstn = true
+hm : s.rst.rstM = true
+⊢ (if runRst (cutStateAt pins (resetState cont) n) (pins n) = true then
+            {
+              sync :=
+                SpiPins.step (cutStateAt pins (resetState cont) n).sync
+                  (spiIn (cutStateAt pins (resetState cont) n) (pins n)),
+              rst :=
+                if (pins n).rstn = true then { rstM := true, rstQ := (cutStateAt pins (resetState cont) n).rst.rstM }
+                else Debug.Reset.resetState,
+              rqh := rqhNext (cutStateAt pins (resetState cont) n) (pins n),
+              freeze :=
+                CoreCtl.freezeStep (cutStateAt pins (resetState cont) n).freeze
+                  (freezeIn (cutStateAt pins (resetState cont) n) (pins n)),
+              lines :=
+                Vector.ofFn fun l =>
+                  Line.step (lineAt (cutStateAt pins (resetState cont) n) ↑l)
+                    (lineIn (cutStateAt pins (resetState cont) n) (pins n) ↑l),
+              threads :=
+                Vector.ofFn fun t =>
+                  Thread.step (threadAt (cutStateAt pins (resetState cont) n) ↑t)
+                    (threadIn (cutStateAt pins (resetState cont) n) (pins n) ↑t),
+              cores :=
+                Vector.ofFn fun c =>
+                  Core.step (↑c == 1) (cutStateAt pins (resetState cont) n).cores[↑c]
+                    (coreIn (cutStateAt pins (resetState cont) n) (pins n) ↑c),
+              cnt :=
+                Vector.ofFn fun k =>
+                  Units.Counter.step (cntAt (cutStateAt pins (resetState cont) n) ↑k)
+                    (cntIn (cutStateAt pins (resetState cont) n) (pins n) ↑k),
+              sh :=
+                Vector.ofFn fun k =>
+                  Units.Shifter.step (shAt (cutStateAt pins (resetState cont) n) ↑k)
+                    (shIn (cutStateAt pins (resetState cont) n) (pins n) ↑k),
+              lf :=
+                Vector.ofFn fun k =>
+                  Units.Lfsr.step (lfAt (cutStateAt pins (resetState cont) n) ↑k)
+                    (lfIn (cutStateAt pins (resetState cont) n) (pins n) ↑k),
+              acc :=
+                Units.Acc.step (cutStateAt pins (resetState cont) n).acc
+                  (accIn (cutStateAt pins (resetState cont) n) (pins n)),
+              p0 :=
+                Mem.step (cutStateAt pins (resetState cont) n).p0
+                  (memIn (cutStateAt pins (resetState cont) n) (pins n)),
+              streams :=
+                Vector.ofFn fun k =>
+                  Stream.step (↑k == 0) (streamAt (cutStateAt pins (resetState cont) n) ↑k)
+                    (streamIn (cutStateAt pins (resetState cont) n) (pins n) ↑k),
+              hostCmd :=
+                HostCmd.step (cutStateAt pins (resetState cont) n).hostCmd
+                  (hostCmdIn (cutStateAt pins (resetState cont) n) (pins n)),
+              hostRead :=
+                HostRead.step (cutStateAt pins (resetState cont) n).hostRead
+                  (hostReadIn (cutStateAt pins (resetState cont) n) (pins n)),
+              hostWr :=
+                Host.step (cutStateAt pins (resetState cont) n).hostWr
+                  (hostWrIn (cutStateAt pins (resetState cont) n) (pins n)),
+              cq :=
+                CoreQueue.step (cutStateAt pins (resetState cont) n).cq
+                  (cqIn (cutStateAt pins (resetState cont) n) (pins n)),
+              arb := (arbStep (cutStateAt pins (resetState cont) n)).next,
+              bank :=
+                Bank.step (cutStateAt pins (resetState cont) n).bank
+                  (cutStateAt pins (resetState cont) n).arb.previousWrite
+                  (cutStateAt pins (resetState cont) n).arb.staged.addr
+                  (cutStateAt pins (resetState cont) n).arb.staged.data,
+              glue :=
+                Glue.step (cutStateAt pins (resetState cont) n).glue
+                  (glueIn (cutStateAt pins (resetState cont) n) (pins n)),
+              dbgCtrl :=
+                Debug.Ctrl.step (cutStateAt pins (resetState cont) n).dbgCtrl
+                  (dbgCtrlIn (cutStateAt pins (resetState cont) n) (pins n)),
+              dbgDigest :=
+                Debug.Digest.step (cutStateAt pins (resetState cont) n).dbgDigest
+                  (dbgDigestIn (cutStateAt pins (resetState cont) n) (pins n)),
+              outPins := outNextPins (cutStateAt pins (resetState cont) n) (pins n),
+              oenPins := oenNextPins (cutStateAt pins (resetState cont) n) (pins n),
+              conflict :=
+                Moves.stickyNext (cutStateAt pins (resetState cont) n).conflict
+                  { resetN := runRst (cutStateAt pins (resetState cont) n) (pins n),
+                    event :=
+                      Moves.conflictOf (mvEn (cutStateAt pins (resetState cont) n) (pins n))
+                        (mvGrp (cutStateAt pins (resetState cont) n) (pins n))
+                        (mvXl (cutStateAt pins (resetState cont) n)) (mvXt (cutStateAt pins (resetState cont) n)),
+                    clear := stickyClear (cutStateAt pins (resetState cont) n) 0 },
+              memhaz :=
+                Moves.stickyNext (cutStateAt pins (resetState cont) n).memhaz
+                  { resetN := runRst (cutStateAt pins (resetState cont) n) (pins n),
+                    event :=
+                      Moves.memhazEvent (mvEn (cutStateAt pins (resetState cont) n) (pins n))
+                        (mvSrc (cutStateAt pins (resetState cont) n) (pins n))
+                        (Mem.haz (cutStateAt pins (resetState cont) n).p0
+                          (memIn (cutStateAt pins (resetState cont) n) (pins n)))
+                        (cutStateAt pins (resetState cont) n).p0.rdy,
+                    clear := stickyClear (cutStateAt pins (resetState cont) n) 1 },
+              cont := contentsNext (cutStateAt pins (resetState cont) n) (pins n) }
+          else resetChip (cutStateAt pins (resetState cont) n) (pins n)).rst.rstQ =
+      false →
+    (∀ (k : Fin Bank.BYTES),
+        Bank.read
+            (if runRst (cutStateAt pins (resetState cont) n) (pins n) = true then
+                {
+                  sync :=
+                    SpiPins.step (cutStateAt pins (resetState cont) n).sync
+                      (spiIn (cutStateAt pins (resetState cont) n) (pins n)),
+                  rst :=
+                    if (pins n).rstn = true then
+                      { rstM := true, rstQ := (cutStateAt pins (resetState cont) n).rst.rstM }
+                    else Debug.Reset.resetState,
+                  rqh := rqhNext (cutStateAt pins (resetState cont) n) (pins n),
+                  freeze :=
+                    CoreCtl.freezeStep (cutStateAt pins (resetState cont) n).freeze
+                      (freezeIn (cutStateAt pins (resetState cont) n) (pins n)),
+                  lines :=
+                    Vector.ofFn fun l =>
+                      Line.step (lineAt (cutStateAt pins (resetState cont) n) ↑l)
+                        (lineIn (cutStateAt pins (resetState cont) n) (pins n) ↑l),
+                  threads :=
+                    Vector.ofFn fun t =>
+                      Thread.step (threadAt (cutStateAt pins (resetState cont) n) ↑t)
+                        (threadIn (cutStateAt pins (resetState cont) n) (pins n) ↑t),
+                  cores :=
+                    Vector.ofFn fun c =>
+                      Core.step (↑c == 1) (cutStateAt pins (resetState cont) n).cores[↑c]
+                        (coreIn (cutStateAt pins (resetState cont) n) (pins n) ↑c),
+                  cnt :=
+                    Vector.ofFn fun k =>
+                      Units.Counter.step (cntAt (cutStateAt pins (resetState cont) n) ↑k)
+                        (cntIn (cutStateAt pins (resetState cont) n) (pins n) ↑k),
+                  sh :=
+                    Vector.ofFn fun k =>
+                      Units.Shifter.step (shAt (cutStateAt pins (resetState cont) n) ↑k)
+                        (shIn (cutStateAt pins (resetState cont) n) (pins n) ↑k),
+                  lf :=
+                    Vector.ofFn fun k =>
+                      Units.Lfsr.step (lfAt (cutStateAt pins (resetState cont) n) ↑k)
+                        (lfIn (cutStateAt pins (resetState cont) n) (pins n) ↑k),
+                  acc :=
+                    Units.Acc.step (cutStateAt pins (resetState cont) n).acc
+                      (accIn (cutStateAt pins (resetState cont) n) (pins n)),
+                  p0 :=
+                    Mem.step (cutStateAt pins (resetState cont) n).p0
+                      (memIn (cutStateAt pins (resetState cont) n) (pins n)),
+                  streams :=
+                    Vector.ofFn fun k =>
+                      Stream.step (↑k == 0) (streamAt (cutStateAt pins (resetState cont) n) ↑k)
+                        (streamIn (cutStateAt pins (resetState cont) n) (pins n) ↑k),
+                  hostCmd :=
+                    HostCmd.step (cutStateAt pins (resetState cont) n).hostCmd
+                      (hostCmdIn (cutStateAt pins (resetState cont) n) (pins n)),
+                  hostRead :=
+                    HostRead.step (cutStateAt pins (resetState cont) n).hostRead
+                      (hostReadIn (cutStateAt pins (resetState cont) n) (pins n)),
+                  hostWr :=
+                    Host.step (cutStateAt pins (resetState cont) n).hostWr
+                      (hostWrIn (cutStateAt pins (resetState cont) n) (pins n)),
+                  cq :=
+                    CoreQueue.step (cutStateAt pins (resetState cont) n).cq
+                      (cqIn (cutStateAt pins (resetState cont) n) (pins n)),
+                  arb := (arbStep (cutStateAt pins (resetState cont) n)).next,
+                  bank :=
+                    Bank.step (cutStateAt pins (resetState cont) n).bank
+                      (cutStateAt pins (resetState cont) n).arb.previousWrite
+                      (cutStateAt pins (resetState cont) n).arb.staged.addr
+                      (cutStateAt pins (resetState cont) n).arb.staged.data,
+                  glue :=
+                    Glue.step (cutStateAt pins (resetState cont) n).glue
+                      (glueIn (cutStateAt pins (resetState cont) n) (pins n)),
+                  dbgCtrl :=
+                    Debug.Ctrl.step (cutStateAt pins (resetState cont) n).dbgCtrl
+                      (dbgCtrlIn (cutStateAt pins (resetState cont) n) (pins n)),
+                  dbgDigest :=
+                    Debug.Digest.step (cutStateAt pins (resetState cont) n).dbgDigest
+                      (dbgDigestIn (cutStateAt pins (resetState cont) n) (pins n)),
+                  outPins := outNextPins (cutStateAt pins (resetState cont) n) (pins n),
+                  oenPins := oenNextPins (cutStateAt pins (resetState cont) n) (pins n),
+                  conflict :=
+                    Moves.stickyNext (cutStateAt pins (resetState cont) n).conflict
+                      { resetN := runRst (cutStateAt pins (resetState cont) n) (pins n),
+                        event :=
+                          Moves.conflictOf (mvEn (cutStateAt pins (resetState cont) n) (pins n))
+                            (mvGrp (cutStateAt pins (resetState cont) n) (pins n))
+                            (mvXl (cutStateAt pins (resetState cont) n)) (mvXt (cutStateAt pins (resetState cont) n)),
+                        clear := stickyClear (cutStateAt pins (resetState cont) n) 0 },
+                  memhaz :=
+                    Moves.stickyNext (cutStateAt pins (resetState cont) n).memhaz
+                      { resetN := runRst (cutStateAt pins (resetState cont) n) (pins n),
+                        event :=
+                          Moves.memhazEvent (mvEn (cutStateAt pins (resetState cont) n) (pins n))
+                            (mvSrc (cutStateAt pins (resetState cont) n) (pins n))
+                            (Mem.haz (cutStateAt pins (resetState cont) n).p0
+                              (memIn (cutStateAt pins (resetState cont) n) (pins n)))
+                            (cutStateAt pins (resetState cont) n).p0.rdy,
+                        clear := stickyClear (cutStateAt pins (resetState cont) n) 1 },
+                  cont := contentsNext (cutStateAt pins (resetState cont) n) (pins n) }
+              else resetChip (cutStateAt pins (resetState cont) n) (pins n)).bank
+            k =
+          0#8) ∧
+      (if runRst (cutStateAt pins (resetState cont) n) (pins n) = true then
+              {
+                sync :=
+                  SpiPins.step (cutStateAt pins (resetState cont) n).sync
+                    (spiIn (cutStateAt pins (resetState cont) n) (pins n)),
+                rst :=
+                  if (pins n).rstn = true then { rstM := true, rstQ := (cutStateAt pins (resetState cont) n).rst.rstM }
+                  else Debug.Reset.resetState,
+                rqh := rqhNext (cutStateAt pins (resetState cont) n) (pins n),
+                freeze :=
+                  CoreCtl.freezeStep (cutStateAt pins (resetState cont) n).freeze
+                    (freezeIn (cutStateAt pins (resetState cont) n) (pins n)),
+                lines :=
+                  Vector.ofFn fun l =>
+                    Line.step (lineAt (cutStateAt pins (resetState cont) n) ↑l)
+                      (lineIn (cutStateAt pins (resetState cont) n) (pins n) ↑l),
+                threads :=
+                  Vector.ofFn fun t =>
+                    Thread.step (threadAt (cutStateAt pins (resetState cont) n) ↑t)
+                      (threadIn (cutStateAt pins (resetState cont) n) (pins n) ↑t),
+                cores :=
+                  Vector.ofFn fun c =>
+                    Core.step (↑c == 1) (cutStateAt pins (resetState cont) n).cores[↑c]
+                      (coreIn (cutStateAt pins (resetState cont) n) (pins n) ↑c),
+                cnt :=
+                  Vector.ofFn fun k =>
+                    Units.Counter.step (cntAt (cutStateAt pins (resetState cont) n) ↑k)
+                      (cntIn (cutStateAt pins (resetState cont) n) (pins n) ↑k),
+                sh :=
+                  Vector.ofFn fun k =>
+                    Units.Shifter.step (shAt (cutStateAt pins (resetState cont) n) ↑k)
+                      (shIn (cutStateAt pins (resetState cont) n) (pins n) ↑k),
+                lf :=
+                  Vector.ofFn fun k =>
+                    Units.Lfsr.step (lfAt (cutStateAt pins (resetState cont) n) ↑k)
+                      (lfIn (cutStateAt pins (resetState cont) n) (pins n) ↑k),
+                acc :=
+                  Units.Acc.step (cutStateAt pins (resetState cont) n).acc
+                    (accIn (cutStateAt pins (resetState cont) n) (pins n)),
+                p0 :=
+                  Mem.step (cutStateAt pins (resetState cont) n).p0
+                    (memIn (cutStateAt pins (resetState cont) n) (pins n)),
+                streams :=
+                  Vector.ofFn fun k =>
+                    Stream.step (↑k == 0) (streamAt (cutStateAt pins (resetState cont) n) ↑k)
+                      (streamIn (cutStateAt pins (resetState cont) n) (pins n) ↑k),
+                hostCmd :=
+                  HostCmd.step (cutStateAt pins (resetState cont) n).hostCmd
+                    (hostCmdIn (cutStateAt pins (resetState cont) n) (pins n)),
+                hostRead :=
+                  HostRead.step (cutStateAt pins (resetState cont) n).hostRead
+                    (hostReadIn (cutStateAt pins (resetState cont) n) (pins n)),
+                hostWr :=
+                  Host.step (cutStateAt pins (resetState cont) n).hostWr
+                    (hostWrIn (cutStateAt pins (resetState cont) n) (pins n)),
+                cq :=
+                  CoreQueue.step (cutStateAt pins (resetState cont) n).cq
+                    (cqIn (cutStateAt pins (resetState cont) n) (pins n)),
+                arb := (arbStep (cutStateAt pins (resetState cont) n)).next,
+                bank :=
+                  Bank.step (cutStateAt pins (resetState cont) n).bank
+                    (cutStateAt pins (resetState cont) n).arb.previousWrite
+                    (cutStateAt pins (resetState cont) n).arb.staged.addr
+                    (cutStateAt pins (resetState cont) n).arb.staged.data,
+                glue :=
+                  Glue.step (cutStateAt pins (resetState cont) n).glue
+                    (glueIn (cutStateAt pins (resetState cont) n) (pins n)),
+                dbgCtrl :=
+                  Debug.Ctrl.step (cutStateAt pins (resetState cont) n).dbgCtrl
+                    (dbgCtrlIn (cutStateAt pins (resetState cont) n) (pins n)),
+                dbgDigest :=
+                  Debug.Digest.step (cutStateAt pins (resetState cont) n).dbgDigest
+                    (dbgDigestIn (cutStateAt pins (resetState cont) n) (pins n)),
+                outPins := outNextPins (cutStateAt pins (resetState cont) n) (pins n),
+                oenPins := oenNextPins (cutStateAt pins (resetState cont) n) (pins n),
+                conflict :=
+                  Moves.stickyNext (cutStateAt pins (resetState cont) n).conflict
+                    { resetN := runRst (cutStateAt pins (resetState cont) n) (pins n),
+                      event :=
+                        Moves.conflictOf (mvEn (cutStateAt pins (resetState cont) n) (pins n))
+                          (mvGrp (cutStateAt pins (resetState cont) n) (pins n))
+                          (mvXl (cutStateAt pins (resetState cont) n)) (mvXt (cutStateAt pins (resetState cont) n)),
+                      clear := stickyClear (cutStateAt pins (resetState cont) n) 0 },
+                memhaz :=
+                  Moves.stickyNext (cutStateAt pins (resetState cont) n).memhaz
+                    { resetN := runRst (cutStateAt pins (resetState cont) n) (pins n),
+                      event :=
+                        Moves.memhazEvent (mvEn (cutStateAt pins (resetState cont) n) (pins n))
+                          (mvSrc (cutStateAt pins (resetState cont) n) (pins n))
+                          (Mem.haz (cutStateAt pins (resetState cont) n).p0
+                            (memIn (cutStateAt pins (resetState cont) n) (pins n)))
+                          (cutStateAt pins (resetState cont) n).p0.rdy,
+                      clear := stickyClear (cutStateAt pins (resetState cont) n) 1 },
+                cont := contentsNext (cutStateAt pins (resetState cont) n) (pins n) }
+            else resetChip (cutStateAt pins (resetState cont) n) (pins n)).arb.previousWrite =
+        false
+error: Metronome/ChipCut/Proof.lean:710:4: unsolved goals
+case neg.false
+pins : Nat → Machine.PinIn
+cont : Contents
+n : Nat
+s : State := cutStateAt pins (resetState cont) n
+pin : Machine.PinIn := pins n
+ih :
+  (s.rst.rstQ = true → s.rst.rstM = true) ∧
+    ((cutStateAt pins (resetState cont) n).rst.rstQ = false →
+      (∀ (k : Fin Bank.BYTES), Bank.read (cutStateAt pins (resetState cont) n).bank k = 0) ∧
+        (cutStateAt pins (resetState cont) n).arb.previousWrite = false)
+hact : ¬runRst s pin = true
+hn : pin.rstn = false
+⊢ (if
+              runRst
+                  (cutStateAt pins
+                    { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                      freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                      threads := Vector.replicate 6 Thread.resetState,
+                      cores :=
+                        Vector.replicate 2
+                          { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                      cnt := Vector.replicate 3 Units.Counter.resetState,
+                      sh := Vector.replicate 2 Units.Shifter.resetState, lf := Vector.replicate 2 Units.Lfsr.resetState,
+                      acc := Units.Acc.resetState, p0 := Mem.resetState,
+                      streams := Vector.replicate 2 Stream.resetState, hostCmd := HostCmd.resetState,
+                      hostRead := HostRead.resetState, hostWr := Host.resetState,
+                      cq :=
+                        { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                      arb :=
+                        { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                          staged := { addr := 0#9, data := 0#8 } },
+                      bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                      dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                      oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                    n)
+                  (pins n) =
+                true then
+            activeStep
+              (cutStateAt pins
+                { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                  freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                  threads := Vector.replicate 6 Thread.resetState,
+                  cores :=
+                    Vector.replicate 2
+                      { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                  cnt := Vector.replicate 3 Units.Counter.resetState, sh := Vector.replicate 2 Units.Shifter.resetState,
+                  lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState, p0 := Mem.resetState,
+                  streams := Vector.replicate 2 Stream.resetState, hostCmd := HostCmd.resetState,
+                  hostRead := HostRead.resetState, hostWr := Host.resetState,
+                  cq := { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                  arb :=
+                    { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                      staged := { addr := 0#9, data := 0#8 } },
+                  bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                  dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                  oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                n)
+              (pins n)
+          else
+            { sync := SpiPins.resetState,
+              rst :=
+                if (pins n).rstn = true then
+                  { rstM := true,
+                    rstQ :=
+                      (cutStateAt pins
+                            { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                              freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                              threads := Vector.replicate 6 Thread.resetState,
+                              cores :=
+                                Vector.replicate 2
+                                  { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                              cnt := Vector.replicate 3 Units.Counter.resetState,
+                              sh := Vector.replicate 2 Units.Shifter.resetState,
+                              lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                              p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                              hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                              cq :=
+                                { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                  overrun := false },
+                              arb :=
+                                { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                                  staged := { addr := 0#9, data := 0#8 } },
+                              bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                              dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                              oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                            n).rst.rstM }
+                else { rstM := false, rstQ := false },
+              rqh :=
+                rqhNext
+                  (cutStateAt pins
+                    { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                      freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                      threads := Vector.replicate 6 Thread.resetState,
+                      cores :=
+                        Vector.replicate 2
+                          { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                      cnt := Vector.replicate 3 Units.Counter.resetState,
+                      sh := Vector.replicate 2 Units.Shifter.resetState, lf := Vector.replicate 2 Units.Lfsr.resetState,
+                      acc := Units.Acc.resetState, p0 := Mem.resetState,
+                      streams := Vector.replicate 2 Stream.resetState, hostCmd := HostCmd.resetState,
+                      hostRead := HostRead.resetState, hostWr := Host.resetState,
+                      cq :=
+                        { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                      arb :=
+                        { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                          staged := { addr := 0#9, data := 0#8 } },
+                      bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                      dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                      oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                    n)
+                  (pins n),
+              freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+              threads := Vector.replicate 6 Thread.resetState,
+              cores :=
+                Vector.replicate 2
+                  { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+              cnt := Vector.replicate 3 Units.Counter.resetState, sh := Vector.replicate 2 Units.Shifter.resetState,
+              lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState, p0 := Mem.resetState,
+              streams := Vector.replicate 2 Stream.resetState, hostCmd := HostCmd.resetState,
+              hostRead := HostRead.resetState, hostWr := Host.resetState,
+              cq := { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+              arb :=
+                { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                  staged := { addr := 0#9, data := 0#8 } },
+              bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+              dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14, oenPins := 0#8,
+              conflict := false, memhaz := false,
+              cont :=
+                contentsReset
+                  (cutStateAt pins
+                    { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                      freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                      threads := Vector.replicate 6 Thread.resetState,
+                      cores :=
+                        Vector.replicate 2
+                          { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                      cnt := Vector.replicate 3 Units.Counter.resetState,
+                      sh := Vector.replicate 2 Units.Shifter.resetState, lf := Vector.replicate 2 Units.Lfsr.resetState,
+                      acc := Units.Acc.resetState, p0 := Mem.resetState,
+                      streams := Vector.replicate 2 Stream.resetState, hostCmd := HostCmd.resetState,
+                      hostRead := HostRead.resetState, hostWr := Host.resetState,
+                      cq :=
+                        { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                      arb :=
+                        { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                          staged := { addr := 0#9, data := 0#8 } },
+                      bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                      dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                      oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                    n)
+                  (pins n) }).rst.rstQ =
+      false →
+    (∀ (k : Fin Bank.BYTES),
+        (if
+                      runRst
+                          (cutStateAt pins
+                            { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                              freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                              threads := Vector.replicate 6 Thread.resetState,
+                              cores :=
+                                Vector.replicate 2
+                                  { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                              cnt := Vector.replicate 3 Units.Counter.resetState,
+                              sh := Vector.replicate 2 Units.Shifter.resetState,
+                              lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                              p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                              hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                              cq :=
+                                { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                  overrun := false },
+                              arb :=
+                                { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                                  staged := { addr := 0#9, data := 0#8 } },
+                              bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                              dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                              oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                            n)
+                          (pins n) =
+                        true then
+                    activeStep
+                      (cutStateAt pins
+                        { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                          freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                          threads := Vector.replicate 6 Thread.resetState,
+                          cores :=
+                            Vector.replicate 2
+                              { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                          cnt := Vector.replicate 3 Units.Counter.resetState,
+                          sh := Vector.replicate 2 Units.Shifter.resetState,
+                          lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                          p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                          hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                          cq :=
+                            { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                              overrun := false },
+                          arb :=
+                            { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                              staged := { addr := 0#9, data := 0#8 } },
+                          bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                          dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                          oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                        n)
+                      (pins n)
+                  else
+                    { sync := SpiPins.resetState,
+                      rst :=
+                        if (pins n).rstn = true then
+                          { rstM := true,
+                            rstQ :=
+                              (cutStateAt pins
+                                    { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                                      freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                                      threads := Vector.replicate 6 Thread.resetState,
+                                      cores :=
+                                        Vector.replicate 2
+                                          { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3,
+                                            ir := 0#64 },
+                                      cnt := Vector.replicate 3 Units.Counter.resetState,
+                                      sh := Vector.replicate 2 Units.Shifter.resetState,
+                                      lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                                      p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                                      hostCmd := HostCmd.resetState, hostRead := HostRead.resetState,
+                                      hostWr := Host.resetState,
+                                      cq :=
+                                        { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                          overrun := false },
+                                      arb :=
+                                        { previousWrite := false, heldValid := false,
+                                          held := { addr := 0#9, data := 0#8 },
+                                          staged := { addr := 0#9, data := 0#8 } },
+                                      bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                                      dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState,
+                                      outPins := 0#14, oenPins := 0#8, conflict := false, memhaz := false,
+                                      cont := cont }
+                                    n).rst.rstM }
+                        else { rstM := false, rstQ := false },
+                      rqh :=
+                        rqhNext
+                          (cutStateAt pins
+                            { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                              freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                              threads := Vector.replicate 6 Thread.resetState,
+                              cores :=
+                                Vector.replicate 2
+                                  { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                              cnt := Vector.replicate 3 Units.Counter.resetState,
+                              sh := Vector.replicate 2 Units.Shifter.resetState,
+                              lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                              p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                              hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                              cq :=
+                                { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                  overrun := false },
+                              arb :=
+                                { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                                  staged := { addr := 0#9, data := 0#8 } },
+                              bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                              dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                              oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                            n)
+                          (pins n),
+                      freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                      threads := Vector.replicate 6 Thread.resetState,
+                      cores :=
+                        Vector.replicate 2
+                          { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                      cnt := Vector.replicate 3 Units.Counter.resetState,
+                      sh := Vector.replicate 2 Units.Shifter.resetState, lf := Vector.replicate 2 Units.Lfsr.resetState,
+                      acc := Units.Acc.resetState, p0 := Mem.resetState,
+                      streams := Vector.replicate 2 Stream.resetState, hostCmd := HostCmd.resetState,
+                      hostRead := HostRead.resetState, hostWr := Host.resetState,
+                      cq :=
+                        { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                      arb :=
+                        { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                          staged := { addr := 0#9, data := 0#8 } },
+                      bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                      dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                      oenPins := 0#8, conflict := false, memhaz := false,
+                      cont :=
+                        contentsReset
+                          (cutStateAt pins
+                            { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                              freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                              threads := Vector.replicate 6 Thread.resetState,
+                              cores :=
+                                Vector.replicate 2
+                                  { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                              cnt := Vector.replicate 3 Units.Counter.resetState,
+                              sh := Vector.replicate 2 Units.Shifter.resetState,
+                              lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                              p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                              hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                              cq :=
+                                { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                  overrun := false },
+                              arb :=
+                                { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                                  staged := { addr := 0#9, data := 0#8 } },
+                              bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                              dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                              oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                            n)
+                          (pins n) }).bank.latch
+              k &&&
+            (if
+                      runRst
+                          (cutStateAt pins
+                            { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                              freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                              threads := Vector.replicate 6 Thread.resetState,
+                              cores :=
+                                Vector.replicate 2
+                                  { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                              cnt := Vector.replicate 3 Units.Counter.resetState,
+                              sh := Vector.replicate 2 Units.Shifter.resetState,
+                              lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                              p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                              hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                              cq :=
+                                { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                  overrun := false },
+                              arb :=
+                                { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                                  staged := { addr := 0#9, data := 0#8 } },
+                              bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                              dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                              oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                            n)
+                          (pins n) =
+                        true then
+                    activeStep
+                      (cutStateAt pins
+                        { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                          freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                          threads := Vector.replicate 6 Thread.resetState,
+                          cores :=
+                            Vector.replicate 2
+                              { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                          cnt := Vector.replicate 3 Units.Counter.resetState,
+                          sh := Vector.replicate 2 Units.Shifter.resetState,
+                          lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                          p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                          hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                          cq :=
+                            { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                              overrun := false },
+                          arb :=
+                            { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                              staged := { addr := 0#9, data := 0#8 } },
+                          bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                          dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                          oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                        n)
+                      (pins n)
+                  else
+                    { sync := SpiPins.resetState,
+                      rst :=
+                        if (pins n).rstn = true then
+                          { rstM := true,
+                            rstQ :=
+                              (cutStateAt pins
+                                    { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                                      freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                                      threads := Vector.replicate 6 Thread.resetState,
+                                      cores :=
+                                        Vector.replicate 2
+                                          { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3,
+                                            ir := 0#64 },
+                                      cnt := Vector.replicate 3 Units.Counter.resetState,
+                                      sh := Vector.replicate 2 Units.Shifter.resetState,
+                                      lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                                      p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                                      hostCmd := HostCmd.resetState, hostRead := HostRead.resetState,
+                                      hostWr := Host.resetState,
+                                      cq :=
+                                        { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                          overrun := false },
+                                      arb :=
+                                        { previousWrite := false, heldValid := false,
+                                          held := { addr := 0#9, data := 0#8 },
+                                          staged := { addr := 0#9, data := 0#8 } },
+                                      bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                                      dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState,
+                                      outPins := 0#14, oenPins := 0#8, conflict := false, memhaz := false,
+                                      cont := cont }
+                                    n).rst.rstM }
+                        else { rstM := false, rstQ := false },
+                      rqh :=
+                        rqhNext
+                          (cutStateAt pins
+                            { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                              freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                              threads := Vector.replicate 6 Thread.resetState,
+                              cores :=
+                                Vector.replicate 2
+                                  { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                              cnt := Vector.replicate 3 Units.Counter.resetState,
+                              sh := Vector.replicate 2 Units.Shifter.resetState,
+                              lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                              p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                              hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                              cq :=
+                                { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                  overrun := false },
+                              arb :=
+                                { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                                  staged := { addr := 0#9, data := 0#8 } },
+                              bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                              dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                              oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                            n)
+                          (pins n),
+                      freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                      threads := Vector.replicate 6 Thread.resetState,
+                      cores :=
+                        Vector.replicate 2
+                          { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                      cnt := Vector.replicate 3 Units.Counter.resetState,
+                      sh := Vector.replicate 2 Units.Shifter.resetState, lf := Vector.replicate 2 Units.Lfsr.resetState,
+                      acc := Units.Acc.resetState, p0 := Mem.resetState,
+                      streams := Vector.replicate 2 Stream.resetState, hostCmd := HostCmd.resetState,
+                      hostRead := HostRead.resetState, hostWr := Host.resetState,
+                      cq :=
+                        { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                      arb :=
+                        { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                          staged := { addr := 0#9, data := 0#8 } },
+                      bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                      dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                      oenPins := 0#8, conflict := false, memhaz := false,
+                      cont :=
+                        contentsReset
+                          (cutStateAt pins
+                            { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                              freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                              threads := Vector.replicate 6 Thread.resetState,
+                              cores :=
+                                Vector.replicate 2
+                                  { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                              cnt := Vector.replicate 3 Units.Counter.resetState,
+                              sh := Vector.replicate 2 Units.Shifter.resetState,
+                              lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                              p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                              hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                              cq :=
+                                { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                  overrun := false },
+                              arb :=
+                                { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                                  staged := { addr := 0#9, data := 0#8 } },
+                              bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                              dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                              oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                            n)
+                          (pins n) }).bank.mask
+              k =
+          0#8) ∧
+      (if
+                runRst
+                    (cutStateAt pins
+                      { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                        freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                        threads := Vector.replicate 6 Thread.resetState,
+                        cores :=
+                          Vector.replicate 2
+                            { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                        cnt := Vector.replicate 3 Units.Counter.resetState,
+                        sh := Vector.replicate 2 Units.Shifter.resetState,
+                        lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                        p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                        hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                        cq :=
+                          { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                        arb :=
+                          { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                            staged := { addr := 0#9, data := 0#8 } },
+                        bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                        dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                        oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                      n)
+                    (pins n) =
+                  true then
+              activeStep
+                (cutStateAt pins
+                  { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                    freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                    threads := Vector.replicate 6 Thread.resetState,
+                    cores :=
+                      Vector.replicate 2
+                        { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                    cnt := Vector.replicate 3 Units.Counter.resetState,
+                    sh := Vector.replicate 2 Units.Shifter.resetState, lf := Vector.replicate 2 Units.Lfsr.resetState,
+                    acc := Units.Acc.resetState, p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                    hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                    cq := { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                    arb :=
+                      { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                        staged := { addr := 0#9, data := 0#8 } },
+                    bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                    dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                    oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                  n)
+                (pins n)
+            else
+              { sync := SpiPins.resetState,
+                rst :=
+                  if (pins n).rstn = true then
+                    { rstM := true,
+                      rstQ :=
+                        (cutStateAt pins
+                              { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                                freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                                threads := Vector.replicate 6 Thread.resetState,
+                                cores :=
+                                  Vector.replicate 2
+                                    { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3,
+                                      ir := 0#64 },
+                                cnt := Vector.replicate 3 Units.Counter.resetState,
+                                sh := Vector.replicate 2 Units.Shifter.resetState,
+                                lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                                p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                                hostCmd := HostCmd.resetState, hostRead := HostRead.resetState,
+                                hostWr := Host.resetState,
+                                cq :=
+                                  { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                    overrun := false },
+                                arb :=
+                                  { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                                    staged := { addr := 0#9, data := 0#8 } },
+                                bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                                dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                                oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                              n).rst.rstM }
+                  else { rstM := false, rstQ := false },
+                rqh :=
+                  rqhNext
+                    (cutStateAt pins
+                      { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                        freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                        threads := Vector.replicate 6 Thread.resetState,
+                        cores :=
+                          Vector.replicate 2
+                            { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                        cnt := Vector.replicate 3 Units.Counter.resetState,
+                        sh := Vector.replicate 2 Units.Shifter.resetState,
+                        lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                        p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                        hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                        cq :=
+                          { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                        arb :=
+                          { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                            staged := { addr := 0#9, data := 0#8 } },
+                        bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                        dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                        oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                      n)
+                    (pins n),
+                freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                threads := Vector.replicate 6 Thread.resetState,
+                cores :=
+                  Vector.replicate 2
+                    { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                cnt := Vector.replicate 3 Units.Counter.resetState, sh := Vector.replicate 2 Units.Shifter.resetState,
+                lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState, p0 := Mem.resetState,
+                streams := Vector.replicate 2 Stream.resetState, hostCmd := HostCmd.resetState,
+                hostRead := HostRead.resetState, hostWr := Host.resetState,
+                cq := { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                arb :=
+                  { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                    staged := { addr := 0#9, data := 0#8 } },
+                bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14, oenPins := 0#8,
+                conflict := false, memhaz := false,
+                cont :=
+                  contentsReset
+                    (cutStateAt pins
+                      { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                        freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                        threads := Vector.replicate 6 Thread.resetState,
+                        cores :=
+                          Vector.replicate 2
+                            { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                        cnt := Vector.replicate 3 Units.Counter.resetState,
+                        sh := Vector.replicate 2 Units.Shifter.resetState,
+                        lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                        p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                        hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                        cq :=
+                          { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                        arb :=
+                          { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                            staged := { addr := 0#9, data := 0#8 } },
+                        bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                        dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                        oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                      n)
+                    (pins n) }).arb.previousWrite =
+        false
+
+case neg.true
+pins : Nat → Machine.PinIn
+cont : Contents
+n : Nat
+s : State := cutStateAt pins (resetState cont) n
+pin : Machine.PinIn := pins n
+ih :
+  (s.rst.rstQ = true → s.rst.rstM = true) ∧
+    ((cutStateAt pins (resetState cont) n).rst.rstQ = false →
+      (∀ (k : Fin Bank.BYTES), Bank.read (cutStateAt pins (resetState cont) n).bank k = 0) ∧
+        (cutStateAt pins (resetState cont) n).arb.previousWrite = false)
+hact : ¬runRst s pin = true
+hn : pin.rstn = true
+⊢ (if
+              runRst
+                  (cutStateAt pins
+                    { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                      freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                      threads := Vector.replicate 6 Thread.resetState,
+                      cores :=
+                        Vector.replicate 2
+                          { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                      cnt := Vector.replicate 3 Units.Counter.resetState,
+                      sh := Vector.replicate 2 Units.Shifter.resetState, lf := Vector.replicate 2 Units.Lfsr.resetState,
+                      acc := Units.Acc.resetState, p0 := Mem.resetState,
+                      streams := Vector.replicate 2 Stream.resetState, hostCmd := HostCmd.resetState,
+                      hostRead := HostRead.resetState, hostWr := Host.resetState,
+                      cq :=
+                        { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                      arb :=
+                        { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                          staged := { addr := 0#9, data := 0#8 } },
+                      bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                      dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                      oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                    n)
+                  (pins n) =
+                true then
+            activeStep
+              (cutStateAt pins
+                { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                  freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                  threads := Vector.replicate 6 Thread.resetState,
+                  cores :=
+                    Vector.replicate 2
+                      { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                  cnt := Vector.replicate 3 Units.Counter.resetState, sh := Vector.replicate 2 Units.Shifter.resetState,
+                  lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState, p0 := Mem.resetState,
+                  streams := Vector.replicate 2 Stream.resetState, hostCmd := HostCmd.resetState,
+                  hostRead := HostRead.resetState, hostWr := Host.resetState,
+                  cq := { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                  arb :=
+                    { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                      staged := { addr := 0#9, data := 0#8 } },
+                  bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                  dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                  oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                n)
+              (pins n)
+          else
+            { sync := SpiPins.resetState,
+              rst :=
+                if (pins n).rstn = true then
+                  { rstM := true,
+                    rstQ :=
+                      (cutStateAt pins
+                            { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                              freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                              threads := Vector.replicate 6 Thread.resetState,
+                              cores :=
+                                Vector.replicate 2
+                                  { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                              cnt := Vector.replicate 3 Units.Counter.resetState,
+                              sh := Vector.replicate 2 Units.Shifter.resetState,
+                              lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                              p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                              hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                              cq :=
+                                { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                  overrun := false },
+                              arb :=
+                                { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                                  staged := { addr := 0#9, data := 0#8 } },
+                              bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                              dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                              oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                            n).rst.rstM }
+                else { rstM := false, rstQ := false },
+              rqh :=
+                rqhNext
+                  (cutStateAt pins
+                    { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                      freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                      threads := Vector.replicate 6 Thread.resetState,
+                      cores :=
+                        Vector.replicate 2
+                          { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                      cnt := Vector.replicate 3 Units.Counter.resetState,
+                      sh := Vector.replicate 2 Units.Shifter.resetState, lf := Vector.replicate 2 Units.Lfsr.resetState,
+                      acc := Units.Acc.resetState, p0 := Mem.resetState,
+                      streams := Vector.replicate 2 Stream.resetState, hostCmd := HostCmd.resetState,
+                      hostRead := HostRead.resetState, hostWr := Host.resetState,
+                      cq :=
+                        { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                      arb :=
+                        { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                          staged := { addr := 0#9, data := 0#8 } },
+                      bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                      dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                      oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                    n)
+                  (pins n),
+              freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+              threads := Vector.replicate 6 Thread.resetState,
+              cores :=
+                Vector.replicate 2
+                  { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+              cnt := Vector.replicate 3 Units.Counter.resetState, sh := Vector.replicate 2 Units.Shifter.resetState,
+              lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState, p0 := Mem.resetState,
+              streams := Vector.replicate 2 Stream.resetState, hostCmd := HostCmd.resetState,
+              hostRead := HostRead.resetState, hostWr := Host.resetState,
+              cq := { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+              arb :=
+                { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                  staged := { addr := 0#9, data := 0#8 } },
+              bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+              dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14, oenPins := 0#8,
+              conflict := false, memhaz := false,
+              cont :=
+                contentsReset
+                  (cutStateAt pins
+                    { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                      freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                      threads := Vector.replicate 6 Thread.resetState,
+                      cores :=
+                        Vector.replicate 2
+                          { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                      cnt := Vector.replicate 3 Units.Counter.resetState,
+                      sh := Vector.replicate 2 Units.Shifter.resetState, lf := Vector.replicate 2 Units.Lfsr.resetState,
+                      acc := Units.Acc.resetState, p0 := Mem.resetState,
+                      streams := Vector.replicate 2 Stream.resetState, hostCmd := HostCmd.resetState,
+                      hostRead := HostRead.resetState, hostWr := Host.resetState,
+                      cq :=
+                        { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                      arb :=
+                        { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                          staged := { addr := 0#9, data := 0#8 } },
+                      bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                      dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                      oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                    n)
+                  (pins n) }).rst.rstQ =
+      false →
+    (∀ (k : Fin Bank.BYTES),
+        (if
+                      runRst
+                          (cutStateAt pins
+                            { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                              freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                              threads := Vector.replicate 6 Thread.resetState,
+                              cores :=
+                                Vector.replicate 2
+                                  { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                              cnt := Vector.replicate 3 Units.Counter.resetState,
+                              sh := Vector.replicate 2 Units.Shifter.resetState,
+                              lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                              p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                              hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                              cq :=
+                                { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                  overrun := false },
+                              arb :=
+                                { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                                  staged := { addr := 0#9, data := 0#8 } },
+                              bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                              dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                              oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                            n)
+                          (pins n) =
+                        true then
+                    activeStep
+                      (cutStateAt pins
+                        { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                          freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                          threads := Vector.replicate 6 Thread.resetState,
+                          cores :=
+                            Vector.replicate 2
+                              { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                          cnt := Vector.replicate 3 Units.Counter.resetState,
+                          sh := Vector.replicate 2 Units.Shifter.resetState,
+                          lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                          p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                          hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                          cq :=
+                            { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                              overrun := false },
+                          arb :=
+                            { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                              staged := { addr := 0#9, data := 0#8 } },
+                          bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                          dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                          oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                        n)
+                      (pins n)
+                  else
+                    { sync := SpiPins.resetState,
+                      rst :=
+                        if (pins n).rstn = true then
+                          { rstM := true,
+                            rstQ :=
+                              (cutStateAt pins
+                                    { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                                      freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                                      threads := Vector.replicate 6 Thread.resetState,
+                                      cores :=
+                                        Vector.replicate 2
+                                          { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3,
+                                            ir := 0#64 },
+                                      cnt := Vector.replicate 3 Units.Counter.resetState,
+                                      sh := Vector.replicate 2 Units.Shifter.resetState,
+                                      lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                                      p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                                      hostCmd := HostCmd.resetState, hostRead := HostRead.resetState,
+                                      hostWr := Host.resetState,
+                                      cq :=
+                                        { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                          overrun := false },
+                                      arb :=
+                                        { previousWrite := false, heldValid := false,
+                                          held := { addr := 0#9, data := 0#8 },
+                                          staged := { addr := 0#9, data := 0#8 } },
+                                      bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                                      dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState,
+                                      outPins := 0#14, oenPins := 0#8, conflict := false, memhaz := false,
+                                      cont := cont }
+                                    n).rst.rstM }
+                        else { rstM := false, rstQ := false },
+                      rqh :=
+                        rqhNext
+                          (cutStateAt pins
+                            { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                              freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                              threads := Vector.replicate 6 Thread.resetState,
+                              cores :=
+                                Vector.replicate 2
+                                  { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                              cnt := Vector.replicate 3 Units.Counter.resetState,
+                              sh := Vector.replicate 2 Units.Shifter.resetState,
+                              lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                              p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                              hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                              cq :=
+                                { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                  overrun := false },
+                              arb :=
+                                { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                                  staged := { addr := 0#9, data := 0#8 } },
+                              bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                              dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                              oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                            n)
+                          (pins n),
+                      freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                      threads := Vector.replicate 6 Thread.resetState,
+                      cores :=
+                        Vector.replicate 2
+                          { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                      cnt := Vector.replicate 3 Units.Counter.resetState,
+                      sh := Vector.replicate 2 Units.Shifter.resetState, lf := Vector.replicate 2 Units.Lfsr.resetState,
+                      acc := Units.Acc.resetState, p0 := Mem.resetState,
+                      streams := Vector.replicate 2 Stream.resetState, hostCmd := HostCmd.resetState,
+                      hostRead := HostRead.resetState, hostWr := Host.resetState,
+                      cq :=
+                        { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                      arb :=
+                        { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                          staged := { addr := 0#9, data := 0#8 } },
+                      bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                      dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                      oenPins := 0#8, conflict := false, memhaz := false,
+                      cont :=
+                        contentsReset
+                          (cutStateAt pins
+                            { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                              freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                              threads := Vector.replicate 6 Thread.resetState,
+                              cores :=
+                                Vector.replicate 2
+                                  { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                              cnt := Vector.replicate 3 Units.Counter.resetState,
+                              sh := Vector.replicate 2 Units.Shifter.resetState,
+                              lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                              p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                              hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                              cq :=
+                                { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                  overrun := false },
+                              arb :=
+                                { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                                  staged := { addr := 0#9, data := 0#8 } },
+                              bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                              dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                              oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                            n)
+                          (pins n) }).bank.latch
+              k &&&
+            (if
+                      runRst
+                          (cutStateAt pins
+                            { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                              freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                              threads := Vector.replicate 6 Thread.resetState,
+                              cores :=
+                                Vector.replicate 2
+                                  { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                              cnt := Vector.replicate 3 Units.Counter.resetState,
+                              sh := Vector.replicate 2 Units.Shifter.resetState,
+                              lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                              p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                              hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                              cq :=
+                                { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                  overrun := false },
+                              arb :=
+                                { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                                  staged := { addr := 0#9, data := 0#8 } },
+                              bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                              dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                              oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                            n)
+                          (pins n) =
+                        true then
+                    activeStep
+                      (cutStateAt pins
+                        { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                          freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                          threads := Vector.replicate 6 Thread.resetState,
+                          cores :=
+                            Vector.replicate 2
+                              { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                          cnt := Vector.replicate 3 Units.Counter.resetState,
+                          sh := Vector.replicate 2 Units.Shifter.resetState,
+                          lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                          p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                          hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                          cq :=
+                            { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                              overrun := false },
+                          arb :=
+                            { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                              staged := { addr := 0#9, data := 0#8 } },
+                          bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                          dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                          oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                        n)
+                      (pins n)
+                  else
+                    { sync := SpiPins.resetState,
+                      rst :=
+                        if (pins n).rstn = true then
+                          { rstM := true,
+                            rstQ :=
+                              (cutStateAt pins
+                                    { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                                      freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                                      threads := Vector.replicate 6 Thread.resetState,
+                                      cores :=
+                                        Vector.replicate 2
+                                          { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3,
+                                            ir := 0#64 },
+                                      cnt := Vector.replicate 3 Units.Counter.resetState,
+                                      sh := Vector.replicate 2 Units.Shifter.resetState,
+                                      lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                                      p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                                      hostCmd := HostCmd.resetState, hostRead := HostRead.resetState,
+                                      hostWr := Host.resetState,
+                                      cq :=
+                                        { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                          overrun := false },
+                                      arb :=
+                                        { previousWrite := false, heldValid := false,
+                                          held := { addr := 0#9, data := 0#8 },
+                                          staged := { addr := 0#9, data := 0#8 } },
+                                      bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                                      dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState,
+                                      outPins := 0#14, oenPins := 0#8, conflict := false, memhaz := false,
+                                      cont := cont }
+                                    n).rst.rstM }
+                        else { rstM := false, rstQ := false },
+                      rqh :=
+                        rqhNext
+                          (cutStateAt pins
+                            { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                              freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                              threads := Vector.replicate 6 Thread.resetState,
+                              cores :=
+                                Vector.replicate 2
+                                  { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                              cnt := Vector.replicate 3 Units.Counter.resetState,
+                              sh := Vector.replicate 2 Units.Shifter.resetState,
+                              lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                              p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                              hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                              cq :=
+                                { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                  overrun := false },
+                              arb :=
+                                { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                                  staged := { addr := 0#9, data := 0#8 } },
+                              bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                              dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                              oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                            n)
+                          (pins n),
+                      freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                      threads := Vector.replicate 6 Thread.resetState,
+                      cores :=
+                        Vector.replicate 2
+                          { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                      cnt := Vector.replicate 3 Units.Counter.resetState,
+                      sh := Vector.replicate 2 Units.Shifter.resetState, lf := Vector.replicate 2 Units.Lfsr.resetState,
+                      acc := Units.Acc.resetState, p0 := Mem.resetState,
+                      streams := Vector.replicate 2 Stream.resetState, hostCmd := HostCmd.resetState,
+                      hostRead := HostRead.resetState, hostWr := Host.resetState,
+                      cq :=
+                        { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                      arb :=
+                        { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                          staged := { addr := 0#9, data := 0#8 } },
+                      bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                      dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                      oenPins := 0#8, conflict := false, memhaz := false,
+                      cont :=
+                        contentsReset
+                          (cutStateAt pins
+                            { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                              freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                              threads := Vector.replicate 6 Thread.resetState,
+                              cores :=
+                                Vector.replicate 2
+                                  { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                              cnt := Vector.replicate 3 Units.Counter.resetState,
+                              sh := Vector.replicate 2 Units.Shifter.resetState,
+                              lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                              p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                              hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                              cq :=
+                                { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                  overrun := false },
+                              arb :=
+                                { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                                  staged := { addr := 0#9, data := 0#8 } },
+                              bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                              dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                              oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                            n)
+                          (pins n) }).bank.mask
+              k =
+          0#8) ∧
+      (if
+                runRst
+                    (cutStateAt pins
+                      { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                        freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                        threads := Vector.replicate 6 Thread.resetState,
+                        cores :=
+                          Vector.replicate 2
+                            { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                        cnt := Vector.replicate 3 Units.Counter.resetState,
+                        sh := Vector.replicate 2 Units.Shifter.resetState,
+                        lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                        p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                        hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                        cq :=
+                          { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                        arb :=
+                          { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                            staged := { addr := 0#9, data := 0#8 } },
+                        bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                        dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                        oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                      n)
+                    (pins n) =
+                  true then
+              activeStep
+                (cutStateAt pins
+                  { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                    freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                    threads := Vector.replicate 6 Thread.resetState,
+                    cores :=
+                      Vector.replicate 2
+                        { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                    cnt := Vector.replicate 3 Units.Counter.resetState,
+                    sh := Vector.replicate 2 Units.Shifter.resetState, lf := Vector.replicate 2 Units.Lfsr.resetState,
+                    acc := Units.Acc.resetState, p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                    hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                    cq := { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                    arb :=
+                      { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                        staged := { addr := 0#9, data := 0#8 } },
+                    bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                    dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                    oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                  n)
+                (pins n)
+            else
+              { sync := SpiPins.resetState,
+                rst :=
+                  if (pins n).rstn = true then
+                    { rstM := true,
+                      rstQ :=
+                        (cutStateAt pins
+                              { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                                freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                                threads := Vector.replicate 6 Thread.resetState,
+                                cores :=
+                                  Vector.replicate 2
+                                    { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3,
+                                      ir := 0#64 },
+                                cnt := Vector.replicate 3 Units.Counter.resetState,
+                                sh := Vector.replicate 2 Units.Shifter.resetState,
+                                lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                                p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                                hostCmd := HostCmd.resetState, hostRead := HostRead.resetState,
+                                hostWr := Host.resetState,
+                                cq :=
+                                  { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8,
+                                    overrun := false },
+                                arb :=
+                                  { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                                    staged := { addr := 0#9, data := 0#8 } },
+                                bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                                dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                                oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                              n).rst.rstM }
+                  else { rstM := false, rstQ := false },
+                rqh :=
+                  rqhNext
+                    (cutStateAt pins
+                      { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                        freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                        threads := Vector.replicate 6 Thread.resetState,
+                        cores :=
+                          Vector.replicate 2
+                            { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                        cnt := Vector.replicate 3 Units.Counter.resetState,
+                        sh := Vector.replicate 2 Units.Shifter.resetState,
+                        lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                        p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                        hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                        cq :=
+                          { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                        arb :=
+                          { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                            staged := { addr := 0#9, data := 0#8 } },
+                        bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                        dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                        oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                      n)
+                    (pins n),
+                freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                threads := Vector.replicate 6 Thread.resetState,
+                cores :=
+                  Vector.replicate 2
+                    { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                cnt := Vector.replicate 3 Units.Counter.resetState, sh := Vector.replicate 2 Units.Shifter.resetState,
+                lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState, p0 := Mem.resetState,
+                streams := Vector.replicate 2 Stream.resetState, hostCmd := HostCmd.resetState,
+                hostRead := HostRead.resetState, hostWr := Host.resetState,
+                cq := { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                arb :=
+                  { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                    staged := { addr := 0#9, data := 0#8 } },
+                bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14, oenPins := 0#8,
+                conflict := false, memhaz := false,
+                cont :=
+                  contentsReset
+                    (cutStateAt pins
+                      { sync := SpiPins.resetState, rst := { rstM := false, rstQ := false }, rqh := 0#2,
+                        freeze := CoreCtl.freezeReset, lines := Vector.replicate 4 Line.resetState,
+                        threads := Vector.replicate 6 Thread.resetState,
+                        cores :=
+                          Vector.replicate 2
+                            { xv := false, rv := false, fpc := 0#8, xt := 0#3, xl := 0#2, rr := 0#3, ir := 0#64 },
+                        cnt := Vector.replicate 3 Units.Counter.resetState,
+                        sh := Vector.replicate 2 Units.Shifter.resetState,
+                        lf := Vector.replicate 2 Units.Lfsr.resetState, acc := Units.Acc.resetState,
+                        p0 := Mem.resetState, streams := Vector.replicate 2 Stream.resetState,
+                        hostCmd := HostCmd.resetState, hostRead := HostRead.resetState, hostWr := Host.resetState,
+                        cq :=
+                          { addr := 0#16, pending := false, pendingAddr := 0#16, pendingData := 0#8, overrun := false },
+                        arb :=
+                          { previousWrite := false, heldValid := false, held := { addr := 0#9, data := 0#8 },
+                            staged := { addr := 0#9, data := 0#8 } },
+                        bank := { mask := cfgMaskFin, latch := fun x => 0#8 }, glue := Glue.resetState,
+                        dbgCtrl := Debug.Ctrl.resetState, dbgDigest := Debug.Digest.resetState, outPins := 0#14,
+                        oenPins := 0#8, conflict := false, memhaz := false, cont := cont }
+                      n)
+                    (pins n) }).arb.previousWrite =
+        false
+Some required targets logged failures:
+- Metronome.ChipCut.Proof
+error: build failed
+
+Exit 1; wall 7.16 s

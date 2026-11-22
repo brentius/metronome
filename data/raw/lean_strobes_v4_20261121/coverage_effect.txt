@@ -1,0 +1,929 @@
+Coverage effect of the operation-strobe cut (item 3J)
+Read-only basis: data/raw/lean_coverage_v4_20261121/coverage.json (830 uncovered
+cells, 35 UNCLOSED leaves). Elaborated with the same recipe (-D USE_IHP_SRAM)
+and walked with the same driver index from this cut's roots.
+
+cells read by the strobe cut: 904; of the 830 uncovered: 830
+  project.v:281 $and: 138
+  project.v:281 $eq: 138
+  project.v:283 $and: 115
+  project.v:283 $logic_not: 115
+  project.v:283 $reduce_or: 92
+  project.v:307 $eq: 132
+  project.v:396 $and: 2
+  project.v:396 $reduce_or: 2
+  project.v:409 $and: 3
+  project.v:409 $reduce_or: 3
+  project.v:410 $and: 3
+  project.v:410 $reduce_or: 3
+  project.v:425 $and: 2
+  project.v:425 $reduce_or: 2
+  project.v:426 $and: 2
+  project.v:426 $reduce_or: 2
+  project.v:427 $and: 2
+  project.v:427 $reduce_or: 2
+  project.v:428 $and: 2
+  project.v:428 $reduce_or: 2
+  project.v:456 $and: 2
+  project.v:456 $reduce_or: 2
+  project.v:463 $and: 2
+  project.v:463 $not: 2
+  project.v:470 $and: 2
+  project.v:470 $reduce_or: 2
+  project.v:471 $and: 2
+  project.v:471 $reduce_or: 2
+  project.v:472 $and: 8
+  project.v:472 $or: 4
+  project.v:473 $and: 2
+  project.v:485 $eq: 2
+  project.v:485 $mux: 2
+  project.v:486 $eq: 1
+  project.v:486 $mux: 1
+  project.v:514 $eq: 8
+  project.v:514 $mux: 8
+  project.v:660 $sub: 1
+  project.v:666 $and: 1
+  project.v:666 $eq: 1
+  project.v:666 $or: 1
+  project.v:667 $and: 1
+  project.v:667 $eq: 1
+  project.v:667 $or: 1
+  project.v:668 $and: 1
+  project.v:668 $eq: 1
+  project.v:668 $or: 1
+  project.v:669 $and: 1
+  project.v:669 $eq: 1
+  project.v:669 $or: 1
+  project.v:670 $and: 1
+  project.v:670 $eq: 1
+  project.v:670 $or: 1
+remaining uncovered cells: 0
+
+The 35 UNCLOSED leaves are roots of this cut (one theorem each):
+  mem md2_mem.p_sel [2]
+  stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000001.cap_en [1]
+  stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000001.adv [1]
+  stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000001.rx_we [1]
+  stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000001.rewind [1]
+  stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000001.flush [1]
+  stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000001.clr_starved [1]
+  stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000000.cap_en [1]
+  stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000000.adv [1]
+  stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000000.rx_we [1]
+  stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000000.rewind [1]
+  stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000000.flush [1]
+  stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000000.clr_starved [1]
+  units md2_shifter.sel [1]
+  units $paramod\md2_acc\NR=s32'00000000000000000000000000000100.hit [6]
+  units tt_um_brentius_metronome.g_cn[0].op_lo [1]
+  units tt_um_brentius_metronome.g_cn[0].op_hi [1]
+  units tt_um_brentius_metronome.g_cn[1].op_lo [1]
+  units tt_um_brentius_metronome.g_cn[1].op_hi [1]
+  units tt_um_brentius_metronome.g_cn[2].op_lo [1]
+  units tt_um_brentius_metronome.g_cn[2].op_hi [1]
+  units tt_um_brentius_metronome.g_lf[0].op_st [1]
+  units tt_um_brentius_metronome.g_lf[0].op_b0 [1]
+  units tt_um_brentius_metronome.g_lf[0].op_b1 [1]
+  units tt_um_brentius_metronome.g_lf[0].op_b2 [1]
+  units tt_um_brentius_metronome.g_lf[1].op_st [1]
+  units tt_um_brentius_metronome.g_lf[1].op_b0 [1]
+  units tt_um_brentius_metronome.g_lf[1].op_b1 [1]
+  units tt_um_brentius_metronome.g_lf[1].op_b2 [1]
+  line $paramod\md2_line\CFGW=s32'00000000000000000000000100000000.sym_op [2]
+  debug tt_um_brentius_metronome.d_wr_ectl [1]
+  debug tt_um_brentius_metronome.d_wr_em0 [1]
+  debug tt_um_brentius_metronome.d_wr_em1 [1]
+  debug tt_um_brentius_metronome.d_wr_rlv0 [1]
+  debug tt_um_brentius_metronome.d_wr_rlv1 [1]
+
+exact previously-uncovered cells read by the strobe cut: 830
+  $src/project.v:281$and$10002
+  $src/project.v:281$and$10004
+  $src/project.v:281$and$10006
+  $src/project.v:281$and$10008
+  $src/project.v:281$and$10010
+  $src/project.v:281$and$10012
+  $src/project.v:281$and$10054
+  $src/project.v:281$and$10056
+  $src/project.v:281$and$10058
+  $src/project.v:281$and$10060
+  $src/project.v:281$and$10062
+  $src/project.v:281$and$10064
+  $src/project.v:281$and$10168
+  $src/project.v:281$and$10170
+  $src/project.v:281$and$10172
+  $src/project.v:281$and$10174
+  $src/project.v:281$and$10176
+  $src/project.v:281$and$10178
+  $src/project.v:281$and$10225
+  $src/project.v:281$and$10227
+  $src/project.v:281$and$10229
+  $src/project.v:281$and$10231
+  $src/project.v:281$and$10233
+  $src/project.v:281$and$10235
+  $src/project.v:281$and$10275
+  $src/project.v:281$and$10277
+  $src/project.v:281$and$10279
+  $src/project.v:281$and$10281
+  $src/project.v:281$and$10283
+  $src/project.v:281$and$10285
+  $src/project.v:281$and$10396
+  $src/project.v:281$and$10398
+  $src/project.v:281$and$10400
+  $src/project.v:281$and$10402
+  $src/project.v:281$and$10404
+  $src/project.v:281$and$10406
+  $src/project.v:281$and$10453
+  $src/project.v:281$and$10455
+  $src/project.v:281$and$10457
+  $src/project.v:281$and$10459
+  $src/project.v:281$and$10461
+  $src/project.v:281$and$10463
+  $src/project.v:281$and$10503
+  $src/project.v:281$and$10505
+  $src/project.v:281$and$10507
+  $src/project.v:281$and$10509
+  $src/project.v:281$and$10511
+  $src/project.v:281$and$10513
+  $src/project.v:281$and$8458
+  $src/project.v:281$and$8460
+  $src/project.v:281$and$8462
+  $src/project.v:281$and$8464
+  $src/project.v:281$and$8466
+  $src/project.v:281$and$8468
+  $src/project.v:281$and$8851
+  $src/project.v:281$and$8853
+  $src/project.v:281$and$8855
+  $src/project.v:281$and$8857
+  $src/project.v:281$and$8859
+  $src/project.v:281$and$8861
+  $src/project.v:281$and$9021
+  $src/project.v:281$and$9023
+  $src/project.v:281$and$9025
+  $src/project.v:281$and$9027
+  $src/project.v:281$and$9029
+  $src/project.v:281$and$9031
+  $src/project.v:281$and$9131
+  $src/project.v:281$and$9133
+  $src/project.v:281$and$9135
+  $src/project.v:281$and$9137
+  $src/project.v:281$and$9139
+  $src/project.v:281$and$9141
+  $src/project.v:281$and$9183
+  $src/project.v:281$and$9185
+  $src/project.v:281$and$9187
+  $src/project.v:281$and$9189
+  $src/project.v:281$and$9191
+  $src/project.v:281$and$9193
+  $src/project.v:281$and$9296
+  $src/project.v:281$and$9298
+  $src/project.v:281$and$9300
+  $src/project.v:281$and$9302
+  $src/project.v:281$and$9304
+  $src/project.v:281$and$9306
+  $src/project.v:281$and$9348
+  $src/project.v:281$and$9350
+  $src/project.v:281$and$9352
+  $src/project.v:281$and$9354
+  $src/project.v:281$and$9356
+  $src/project.v:281$and$9358
+  $src/project.v:281$and$9461
+  $src/project.v:281$and$9463
+  $src/project.v:281$and$9465
+  $src/project.v:281$and$9467
+  $src/project.v:281$and$9469
+  $src/project.v:281$and$9471
+  $src/project.v:281$and$9513
+  $src/project.v:281$and$9515
+  $src/project.v:281$and$9517
+  $src/project.v:281$and$9519
+  $src/project.v:281$and$9521
+  $src/project.v:281$and$9523
+  $src/project.v:281$and$9627
+  $src/project.v:281$and$9629
+  $src/project.v:281$and$9631
+  $src/project.v:281$and$9633
+  $src/project.v:281$and$9635
+  $src/project.v:281$and$9637
+  $src/project.v:281$and$9679
+  $src/project.v:281$and$9681
+  $src/project.v:281$and$9683
+  $src/project.v:281$and$9685
+  $src/project.v:281$and$9687
+  $src/project.v:281$and$9689
+  $src/project.v:281$and$9731
+  $src/project.v:281$and$9733
+  $src/project.v:281$and$9735
+  $src/project.v:281$and$9737
+  $src/project.v:281$and$9739
+  $src/project.v:281$and$9741
+  $src/project.v:281$and$9783
+  $src/project.v:281$and$9785
+  $src/project.v:281$and$9787
+  $src/project.v:281$and$9789
+  $src/project.v:281$and$9791
+  $src/project.v:281$and$9793
+  $src/project.v:281$and$9898
+  $src/project.v:281$and$9900
+  $src/project.v:281$and$9902
+  $src/project.v:281$and$9904
+  $src/project.v:281$and$9906
+  $src/project.v:281$and$9908
+  $src/project.v:281$and$9950
+  $src/project.v:281$and$9952
+  $src/project.v:281$and$9954
+  $src/project.v:281$and$9956
+  $src/project.v:281$and$9958
+  $src/project.v:281$and$9960
+  $src/project.v:281$eq$10001
+  $src/project.v:281$eq$10003
+  $src/project.v:281$eq$10005
+  $src/project.v:281$eq$10007
+  $src/project.v:281$eq$10009
+  $src/project.v:281$eq$10011
+  $src/project.v:281$eq$10053
+  $src/project.v:281$eq$10055
+  $src/project.v:281$eq$10057
+  $src/project.v:281$eq$10059
+  $src/project.v:281$eq$10061
+  $src/project.v:281$eq$10063
+  $src/project.v:281$eq$10167
+  $src/project.v:281$eq$10169
+  $src/project.v:281$eq$10171
+  $src/project.v:281$eq$10173
+  $src/project.v:281$eq$10175
+  $src/project.v:281$eq$10177
+  $src/project.v:281$eq$10224
+  $src/project.v:281$eq$10226
+  $src/project.v:281$eq$10228
+  $src/project.v:281$eq$10230
+  $src/project.v:281$eq$10232
+  $src/project.v:281$eq$10234
+  $src/project.v:281$eq$10274
+  $src/project.v:281$eq$10276
+  $src/project.v:281$eq$10278
+  $src/project.v:281$eq$10280
+  $src/project.v:281$eq$10282
+  $src/project.v:281$eq$10284
+  $src/project.v:281$eq$10395
+  $src/project.v:281$eq$10397
+  $src/project.v:281$eq$10399
+  $src/project.v:281$eq$10401
+  $src/project.v:281$eq$10403
+  $src/project.v:281$eq$10405
+  $src/project.v:281$eq$10452
+  $src/project.v:281$eq$10454
+  $src/project.v:281$eq$10456
+  $src/project.v:281$eq$10458
+  $src/project.v:281$eq$10460
+  $src/project.v:281$eq$10462
+  $src/project.v:281$eq$10502
+  $src/project.v:281$eq$10504
+  $src/project.v:281$eq$10506
+  $src/project.v:281$eq$10508
+  $src/project.v:281$eq$10510
+  $src/project.v:281$eq$10512
+  $src/project.v:281$eq$8457
+  $src/project.v:281$eq$8459
+  $src/project.v:281$eq$8461
+  $src/project.v:281$eq$8463
+  $src/project.v:281$eq$8465
+  $src/project.v:281$eq$8467
+  $src/project.v:281$eq$8850
+  $src/project.v:281$eq$8852
+  $src/project.v:281$eq$8854
+  $src/project.v:281$eq$8856
+  $src/project.v:281$eq$8858
+  $src/project.v:281$eq$8860
+  $src/project.v:281$eq$9020
+  $src/project.v:281$eq$9022
+  $src/project.v:281$eq$9024
+  $src/project.v:281$eq$9026
+  $src/project.v:281$eq$9028
+  $src/project.v:281$eq$9030
+  $src/project.v:281$eq$9130
+  $src/project.v:281$eq$9132
+  $src/project.v:281$eq$9134
+  $src/project.v:281$eq$9136
+  $src/project.v:281$eq$9138
+  $src/project.v:281$eq$9140
+  $src/project.v:281$eq$9182
+  $src/project.v:281$eq$9184
+  $src/project.v:281$eq$9186
+  $src/project.v:281$eq$9188
+  $src/project.v:281$eq$9190
+  $src/project.v:281$eq$9192
+  $src/project.v:281$eq$9295
+  $src/project.v:281$eq$9297
+  $src/project.v:281$eq$9299
+  $src/project.v:281$eq$9301
+  $src/project.v:281$eq$9303
+  $src/project.v:281$eq$9305
+  $src/project.v:281$eq$9347
+  $src/project.v:281$eq$9349
+  $src/project.v:281$eq$9351
+  $src/project.v:281$eq$9353
+  $src/project.v:281$eq$9355
+  $src/project.v:281$eq$9357
+  $src/project.v:281$eq$9460
+  $src/project.v:281$eq$9462
+  $src/project.v:281$eq$9464
+  $src/project.v:281$eq$9466
+  $src/project.v:281$eq$9468
+  $src/project.v:281$eq$9470
+  $src/project.v:281$eq$9512
+  $src/project.v:281$eq$9514
+  $src/project.v:281$eq$9516
+  $src/project.v:281$eq$9518
+  $src/project.v:281$eq$9520
+  $src/project.v:281$eq$9522
+  $src/project.v:281$eq$9626
+  $src/project.v:281$eq$9628
+  $src/project.v:281$eq$9630
+  $src/project.v:281$eq$9632
+  $src/project.v:281$eq$9634
+  $src/project.v:281$eq$9636
+  $src/project.v:281$eq$9678
+  $src/project.v:281$eq$9680
+  $src/project.v:281$eq$9682
+  $src/project.v:281$eq$9684
+  $src/project.v:281$eq$9686
+  $src/project.v:281$eq$9688
+  $src/project.v:281$eq$9730
+  $src/project.v:281$eq$9732
+  $src/project.v:281$eq$9734
+  $src/project.v:281$eq$9736
+  $src/project.v:281$eq$9738
+  $src/project.v:281$eq$9740
+  $src/project.v:281$eq$9782
+  $src/project.v:281$eq$9784
+  $src/project.v:281$eq$9786
+  $src/project.v:281$eq$9788
+  $src/project.v:281$eq$9790
+  $src/project.v:281$eq$9792
+  $src/project.v:281$eq$9897
+  $src/project.v:281$eq$9899
+  $src/project.v:281$eq$9901
+  $src/project.v:281$eq$9903
+  $src/project.v:281$eq$9905
+  $src/project.v:281$eq$9907
+  $src/project.v:281$eq$9949
+  $src/project.v:281$eq$9951
+  $src/project.v:281$eq$9953
+  $src/project.v:281$eq$9955
+  $src/project.v:281$eq$9957
+  $src/project.v:281$eq$9959
+  $src/project.v:283$and$10016
+  $src/project.v:283$and$10020
+  $src/project.v:283$and$10024
+  $src/project.v:283$and$10028
+  $src/project.v:283$and$10032
+  $src/project.v:283$and$10068
+  $src/project.v:283$and$10072
+  $src/project.v:283$and$10076
+  $src/project.v:283$and$10080
+  $src/project.v:283$and$10084
+  $src/project.v:283$and$10182
+  $src/project.v:283$and$10186
+  $src/project.v:283$and$10190
+  $src/project.v:283$and$10194
+  $src/project.v:283$and$10198
+  $src/project.v:283$and$10239
+  $src/project.v:283$and$10243
+  $src/project.v:283$and$10247
+  $src/project.v:283$and$10251
+  $src/project.v:283$and$10255
+  $src/project.v:283$and$10289
+  $src/project.v:283$and$10293
+  $src/project.v:283$and$10297
+  $src/project.v:283$and$10301
+  $src/project.v:283$and$10305
+  $src/project.v:283$and$10410
+  $src/project.v:283$and$10414
+  $src/project.v:283$and$10418
+  $src/project.v:283$and$10422
+  $src/project.v:283$and$10426
+  $src/project.v:283$and$10467
+  $src/project.v:283$and$10471
+  $src/project.v:283$and$10475
+  $src/project.v:283$and$10479
+  $src/project.v:283$and$10483
+  $src/project.v:283$and$10517
+  $src/project.v:283$and$10521
+  $src/project.v:283$and$10525
+  $src/project.v:283$and$10529
+  $src/project.v:283$and$10533
+  $src/project.v:283$and$8472
+  $src/project.v:283$and$8476
+  $src/project.v:283$and$8480
+  $src/project.v:283$and$8484
+  $src/project.v:283$and$8488
+  $src/project.v:283$and$8865
+  $src/project.v:283$and$8869
+  $src/project.v:283$and$8873
+  $src/project.v:283$and$8877
+  $src/project.v:283$and$8881
+  $src/project.v:283$and$9035
+  $src/project.v:283$and$9039
+  $src/project.v:283$and$9043
+  $src/project.v:283$and$9047
+  $src/project.v:283$and$9051
+  $src/project.v:283$and$9145
+  $src/project.v:283$and$9149
+  $src/project.v:283$and$9153
+  $src/project.v:283$and$9157
+  $src/project.v:283$and$9161
+  $src/project.v:283$and$9197
+  $src/project.v:283$and$9201
+  $src/project.v:283$and$9205
+  $src/project.v:283$and$9209
+  $src/project.v:283$and$9213
+  $src/project.v:283$and$9310
+  $src/project.v:283$and$9314
+  $src/project.v:283$and$9318
+  $src/project.v:283$and$9322
+  $src/project.v:283$and$9326
+  $src/project.v:283$and$9362
+  $src/project.v:283$and$9366
+  $src/project.v:283$and$9370
+  $src/project.v:283$and$9374
+  $src/project.v:283$and$9378
+  $src/project.v:283$and$9475
+  $src/project.v:283$and$9479
+  $src/project.v:283$and$9483
+  $src/project.v:283$and$9487
+  $src/project.v:283$and$9491
+  $src/project.v:283$and$9527
+  $src/project.v:283$and$9531
+  $src/project.v:283$and$9535
+  $src/project.v:283$and$9539
+  $src/project.v:283$and$9543
+  $src/project.v:283$and$9641
+  $src/project.v:283$and$9645
+  $src/project.v:283$and$9649
+  $src/project.v:283$and$9653
+  $src/project.v:283$and$9657
+  $src/project.v:283$and$9693
+  $src/project.v:283$and$9697
+  $src/project.v:283$and$9701
+  $src/project.v:283$and$9705
+  $src/project.v:283$and$9709
+  $src/project.v:283$and$9745
+  $src/project.v:283$and$9749
+  $src/project.v:283$and$9753
+  $src/project.v:283$and$9757
+  $src/project.v:283$and$9761
+  $src/project.v:283$and$9797
+  $src/project.v:283$and$9801
+  $src/project.v:283$and$9805
+  $src/project.v:283$and$9809
+  $src/project.v:283$and$9813
+  $src/project.v:283$and$9912
+  $src/project.v:283$and$9916
+  $src/project.v:283$and$9920
+  $src/project.v:283$and$9924
+  $src/project.v:283$and$9928
+  $src/project.v:283$and$9964
+  $src/project.v:283$and$9968
+  $src/project.v:283$and$9972
+  $src/project.v:283$and$9976
+  $src/project.v:283$and$9980
+  $src/project.v:283$logic_not$10015
+  $src/project.v:283$logic_not$10019
+  $src/project.v:283$logic_not$10023
+  $src/project.v:283$logic_not$10027
+  $src/project.v:283$logic_not$10031
+  $src/project.v:283$logic_not$10067
+  $src/project.v:283$logic_not$10071
+  $src/project.v:283$logic_not$10075
+  $src/project.v:283$logic_not$10079
+  $src/project.v:283$logic_not$10083
+  $src/project.v:283$logic_not$10181
+  $src/project.v:283$logic_not$10185
+  $src/project.v:283$logic_not$10189
+  $src/project.v:283$logic_not$10193
+  $src/project.v:283$logic_not$10197
+  $src/project.v:283$logic_not$10238
+  $src/project.v:283$logic_not$10242
+  $src/project.v:283$logic_not$10246
+  $src/project.v:283$logic_not$10250
+  $src/project.v:283$logic_not$10254
+  $src/project.v:283$logic_not$10288
+  $src/project.v:283$logic_not$10292
+  $src/project.v:283$logic_not$10296
+  $src/project.v:283$logic_not$10300
+  $src/project.v:283$logic_not$10304
+  $src/project.v:283$logic_not$10409
+  $src/project.v:283$logic_not$10413
+  $src/project.v:283$logic_not$10417
+  $src/project.v:283$logic_not$10421
+  $src/project.v:283$logic_not$10425
+  $src/project.v:283$logic_not$10466
+  $src/project.v:283$logic_not$10470
+  $src/project.v:283$logic_not$10474
+  $src/project.v:283$logic_not$10478
+  $src/project.v:283$logic_not$10482
+  $src/project.v:283$logic_not$10516
+  $src/project.v:283$logic_not$10520
+  $src/project.v:283$logic_not$10524
+  $src/project.v:283$logic_not$10528
+  $src/project.v:283$logic_not$10532
+  $src/project.v:283$logic_not$8471
+  $src/project.v:283$logic_not$8475
+  $src/project.v:283$logic_not$8479
+  $src/project.v:283$logic_not$8483
+  $src/project.v:283$logic_not$8487
+  $src/project.v:283$logic_not$8864
+  $src/project.v:283$logic_not$8868
+  $src/project.v:283$logic_not$8872
+  $src/project.v:283$logic_not$8876
+  $src/project.v:283$logic_not$8880
+  $src/project.v:283$logic_not$9034
+  $src/project.v:283$logic_not$9038
+  $src/project.v:283$logic_not$9042
+  $src/project.v:283$logic_not$9046
+  $src/project.v:283$logic_not$9050
+  $src/project.v:283$logic_not$9144
+  $src/project.v:283$logic_not$9148
+  $src/project.v:283$logic_not$9152
+  $src/project.v:283$logic_not$9156
+  $src/project.v:283$logic_not$9160
+  $src/project.v:283$logic_not$9196
+  $src/project.v:283$logic_not$9200
+  $src/project.v:283$logic_not$9204
+  $src/project.v:283$logic_not$9208
+  $src/project.v:283$logic_not$9212
+  $src/project.v:283$logic_not$9309
+  $src/project.v:283$logic_not$9313
+  $src/project.v:283$logic_not$9317
+  $src/project.v:283$logic_not$9321
+  $src/project.v:283$logic_not$9325
+  $src/project.v:283$logic_not$9361
+  $src/project.v:283$logic_not$9365
+  $src/project.v:283$logic_not$9369
+  $src/project.v:283$logic_not$9373
+  $src/project.v:283$logic_not$9377
+  $src/project.v:283$logic_not$9474
+  $src/project.v:283$logic_not$9478
+  $src/project.v:283$logic_not$9482
+  $src/project.v:283$logic_not$9486
+  $src/project.v:283$logic_not$9490
+  $src/project.v:283$logic_not$9526
+  $src/project.v:283$logic_not$9530
+  $src/project.v:283$logic_not$9534
+  $src/project.v:283$logic_not$9538
+  $src/project.v:283$logic_not$9542
+  $src/project.v:283$logic_not$9640
+  $src/project.v:283$logic_not$9644
+  $src/project.v:283$logic_not$9648
+  $src/project.v:283$logic_not$9652
+  $src/project.v:283$logic_not$9656
+  $src/project.v:283$logic_not$9692
+  $src/project.v:283$logic_not$9696
+  $src/project.v:283$logic_not$9700
+  $src/project.v:283$logic_not$9704
+  $src/project.v:283$logic_not$9708
+  $src/project.v:283$logic_not$9744
+  $src/project.v:283$logic_not$9748
+  $src/project.v:283$logic_not$9752
+  $src/project.v:283$logic_not$9756
+  $src/project.v:283$logic_not$9760
+  $src/project.v:283$logic_not$9796
+  $src/project.v:283$logic_not$9800
+  $src/project.v:283$logic_not$9804
+  $src/project.v:283$logic_not$9808
+  $src/project.v:283$logic_not$9812
+  $src/project.v:283$logic_not$9911
+  $src/project.v:283$logic_not$9915
+  $src/project.v:283$logic_not$9919
+  $src/project.v:283$logic_not$9923
+  $src/project.v:283$logic_not$9927
+  $src/project.v:283$logic_not$9963
+  $src/project.v:283$logic_not$9967
+  $src/project.v:283$logic_not$9971
+  $src/project.v:283$logic_not$9975
+  $src/project.v:283$logic_not$9979
+  $src/project.v:283$reduce_or$10018
+  $src/project.v:283$reduce_or$10022
+  $src/project.v:283$reduce_or$10026
+  $src/project.v:283$reduce_or$10030
+  $src/project.v:283$reduce_or$10070
+  $src/project.v:283$reduce_or$10074
+  $src/project.v:283$reduce_or$10078
+  $src/project.v:283$reduce_or$10082
+  $src/project.v:283$reduce_or$10184
+  $src/project.v:283$reduce_or$10188
+  $src/project.v:283$reduce_or$10192
+  $src/project.v:283$reduce_or$10196
+  $src/project.v:283$reduce_or$10241
+  $src/project.v:283$reduce_or$10245
+  $src/project.v:283$reduce_or$10249
+  $src/project.v:283$reduce_or$10253
+  $src/project.v:283$reduce_or$10291
+  $src/project.v:283$reduce_or$10295
+  $src/project.v:283$reduce_or$10299
+  $src/project.v:283$reduce_or$10303
+  $src/project.v:283$reduce_or$10412
+  $src/project.v:283$reduce_or$10416
+  $src/project.v:283$reduce_or$10420
+  $src/project.v:283$reduce_or$10424
+  $src/project.v:283$reduce_or$10469
+  $src/project.v:283$reduce_or$10473
+  $src/project.v:283$reduce_or$10477
+  $src/project.v:283$reduce_or$10481
+  $src/project.v:283$reduce_or$10519
+  $src/project.v:283$reduce_or$10523
+  $src/project.v:283$reduce_or$10527
+  $src/project.v:283$reduce_or$10531
+  $src/project.v:283$reduce_or$8474
+  $src/project.v:283$reduce_or$8478
+  $src/project.v:283$reduce_or$8482
+  $src/project.v:283$reduce_or$8486
+  $src/project.v:283$reduce_or$8867
+  $src/project.v:283$reduce_or$8871
+  $src/project.v:283$reduce_or$8875
+  $src/project.v:283$reduce_or$8879
+  $src/project.v:283$reduce_or$9037
+  $src/project.v:283$reduce_or$9041
+  $src/project.v:283$reduce_or$9045
+  $src/project.v:283$reduce_or$9049
+  $src/project.v:283$reduce_or$9147
+  $src/project.v:283$reduce_or$9151
+  $src/project.v:283$reduce_or$9155
+  $src/project.v:283$reduce_or$9159
+  $src/project.v:283$reduce_or$9199
+  $src/project.v:283$reduce_or$9203
+  $src/project.v:283$reduce_or$9207
+  $src/project.v:283$reduce_or$9211
+  $src/project.v:283$reduce_or$9312
+  $src/project.v:283$reduce_or$9316
+  $src/project.v:283$reduce_or$9320
+  $src/project.v:283$reduce_or$9324
+  $src/project.v:283$reduce_or$9364
+  $src/project.v:283$reduce_or$9368
+  $src/project.v:283$reduce_or$9372
+  $src/project.v:283$reduce_or$9376
+  $src/project.v:283$reduce_or$9477
+  $src/project.v:283$reduce_or$9481
+  $src/project.v:283$reduce_or$9485
+  $src/project.v:283$reduce_or$9489
+  $src/project.v:283$reduce_or$9529
+  $src/project.v:283$reduce_or$9533
+  $src/project.v:283$reduce_or$9537
+  $src/project.v:283$reduce_or$9541
+  $src/project.v:283$reduce_or$9643
+  $src/project.v:283$reduce_or$9647
+  $src/project.v:283$reduce_or$9651
+  $src/project.v:283$reduce_or$9655
+  $src/project.v:283$reduce_or$9695
+  $src/project.v:283$reduce_or$9699
+  $src/project.v:283$reduce_or$9703
+  $src/project.v:283$reduce_or$9707
+  $src/project.v:283$reduce_or$9747
+  $src/project.v:283$reduce_or$9751
+  $src/project.v:283$reduce_or$9755
+  $src/project.v:283$reduce_or$9759
+  $src/project.v:283$reduce_or$9799
+  $src/project.v:283$reduce_or$9803
+  $src/project.v:283$reduce_or$9807
+  $src/project.v:283$reduce_or$9811
+  $src/project.v:283$reduce_or$9914
+  $src/project.v:283$reduce_or$9918
+  $src/project.v:283$reduce_or$9922
+  $src/project.v:283$reduce_or$9926
+  $src/project.v:283$reduce_or$9966
+  $src/project.v:283$reduce_or$9970
+  $src/project.v:283$reduce_or$9974
+  $src/project.v:283$reduce_or$9978
+  $src/project.v:307$eq$10038
+  $src/project.v:307$eq$10039
+  $src/project.v:307$eq$10040
+  $src/project.v:307$eq$10041
+  $src/project.v:307$eq$10042
+  $src/project.v:307$eq$10043
+  $src/project.v:307$eq$10090
+  $src/project.v:307$eq$10091
+  $src/project.v:307$eq$10092
+  $src/project.v:307$eq$10093
+  $src/project.v:307$eq$10094
+  $src/project.v:307$eq$10095
+  $src/project.v:307$eq$10204
+  $src/project.v:307$eq$10205
+  $src/project.v:307$eq$10206
+  $src/project.v:307$eq$10207
+  $src/project.v:307$eq$10208
+  $src/project.v:307$eq$10209
+  $src/project.v:307$eq$10261
+  $src/project.v:307$eq$10262
+  $src/project.v:307$eq$10263
+  $src/project.v:307$eq$10264
+  $src/project.v:307$eq$10265
+  $src/project.v:307$eq$10266
+  $src/project.v:307$eq$10311
+  $src/project.v:307$eq$10312
+  $src/project.v:307$eq$10313
+  $src/project.v:307$eq$10314
+  $src/project.v:307$eq$10315
+  $src/project.v:307$eq$10316
+  $src/project.v:307$eq$10432
+  $src/project.v:307$eq$10433
+  $src/project.v:307$eq$10434
+  $src/project.v:307$eq$10435
+  $src/project.v:307$eq$10436
+  $src/project.v:307$eq$10437
+  $src/project.v:307$eq$10489
+  $src/project.v:307$eq$10490
+  $src/project.v:307$eq$10491
+  $src/project.v:307$eq$10492
+  $src/project.v:307$eq$10493
+  $src/project.v:307$eq$10494
+  $src/project.v:307$eq$10539
+  $src/project.v:307$eq$10540
+  $src/project.v:307$eq$10541
+  $src/project.v:307$eq$10542
+  $src/project.v:307$eq$10543
+  $src/project.v:307$eq$10544
+  $src/project.v:307$eq$8887
+  $src/project.v:307$eq$8888
+  $src/project.v:307$eq$8889
+  $src/project.v:307$eq$8890
+  $src/project.v:307$eq$8891
+  $src/project.v:307$eq$8892
+  $src/project.v:307$eq$9057
+  $src/project.v:307$eq$9058
+  $src/project.v:307$eq$9059
+  $src/project.v:307$eq$9060
+  $src/project.v:307$eq$9061
+  $src/project.v:307$eq$9062
+  $src/project.v:307$eq$9167
+  $src/project.v:307$eq$9168
+  $src/project.v:307$eq$9169
+  $src/project.v:307$eq$9170
+  $src/project.v:307$eq$9171
+  $src/project.v:307$eq$9172
+  $src/project.v:307$eq$9219
+  $src/project.v:307$eq$9220
+  $src/project.v:307$eq$9221
+  $src/project.v:307$eq$9222
+  $src/project.v:307$eq$9223
+  $src/project.v:307$eq$9224
+  $src/project.v:307$eq$9332
+  $src/project.v:307$eq$9333
+  $src/project.v:307$eq$9334
+  $src/project.v:307$eq$9335
+  $src/project.v:307$eq$9336
+  $src/project.v:307$eq$9337
+  $src/project.v:307$eq$9384
+  $src/project.v:307$eq$9385
+  $src/project.v:307$eq$9386
+  $src/project.v:307$eq$9387
+  $src/project.v:307$eq$9388
+  $src/project.v:307$eq$9389
+  $src/project.v:307$eq$9497
+  $src/project.v:307$eq$9498
+  $src/project.v:307$eq$9499
+  $src/project.v:307$eq$9500
+  $src/project.v:307$eq$9501
+  $src/project.v:307$eq$9502
+  $src/project.v:307$eq$9549
+  $src/project.v:307$eq$9550
+  $src/project.v:307$eq$9551
+  $src/project.v:307$eq$9552
+  $src/project.v:307$eq$9553
+  $src/project.v:307$eq$9554
+  $src/project.v:307$eq$9663
+  $src/project.v:307$eq$9664
+  $src/project.v:307$eq$9665
+  $src/project.v:307$eq$9666
+  $src/project.v:307$eq$9667
+  $src/project.v:307$eq$9668
+  $src/project.v:307$eq$9715
+  $src/project.v:307$eq$9716
+  $src/project.v:307$eq$9717
+  $src/project.v:307$eq$9718
+  $src/project.v:307$eq$9719
+  $src/project.v:307$eq$9720
+  $src/project.v:307$eq$9767
+  $src/project.v:307$eq$9768
+  $src/project.v:307$eq$9769
+  $src/project.v:307$eq$9770
+  $src/project.v:307$eq$9771
+  $src/project.v:307$eq$9772
+  $src/project.v:307$eq$9819
+  $src/project.v:307$eq$9820
+  $src/project.v:307$eq$9821
+  $src/project.v:307$eq$9822
+  $src/project.v:307$eq$9823
+  $src/project.v:307$eq$9824
+  $src/project.v:307$eq$9934
+  $src/project.v:307$eq$9935
+  $src/project.v:307$eq$9936
+  $src/project.v:307$eq$9937
+  $src/project.v:307$eq$9938
+  $src/project.v:307$eq$9939
+  $src/project.v:307$eq$9986
+  $src/project.v:307$eq$9987
+  $src/project.v:307$eq$9988
+  $src/project.v:307$eq$9989
+  $src/project.v:307$eq$9990
+  $src/project.v:307$eq$9991
+  $src/project.v:396$and$8893
+  $src/project.v:396$and$9063
+  $src/project.v:396$reduce_or$8894
+  $src/project.v:396$reduce_or$9064
+  $src/project.v:409$and$9173
+  $src/project.v:409$and$9338
+  $src/project.v:409$and$9503
+  $src/project.v:409$reduce_or$9174
+  $src/project.v:409$reduce_or$9339
+  $src/project.v:409$reduce_or$9504
+  $src/project.v:410$and$9225
+  $src/project.v:410$and$9390
+  $src/project.v:410$and$9555
+  $src/project.v:410$reduce_or$9226
+  $src/project.v:410$reduce_or$9391
+  $src/project.v:410$reduce_or$9556
+  $src/project.v:425$and$9669
+  $src/project.v:425$and$9940
+  $src/project.v:425$reduce_or$9670
+  $src/project.v:425$reduce_or$9941
+  $src/project.v:426$and$9721
+  $src/project.v:426$and$9992
+  $src/project.v:426$reduce_or$9722
+  $src/project.v:426$reduce_or$9993
+  $src/project.v:427$and$10044
+  $src/project.v:427$and$9773
+  $src/project.v:427$reduce_or$10045
+  $src/project.v:427$reduce_or$9774
+  $src/project.v:428$and$10096
+  $src/project.v:428$and$9825
+  $src/project.v:428$reduce_or$10097
+  $src/project.v:428$reduce_or$9826
+  $src/project.v:456$and$10210
+  $src/project.v:456$and$10438
+  $src/project.v:456$reduce_or$10211
+  $src/project.v:456$reduce_or$10439
+  $src/project.v:463$and$10318
+  $src/project.v:463$and$10546
+  $src/project.v:463$not$10317
+  $src/project.v:463$not$10545
+  $src/project.v:470$and$10319
+  $src/project.v:470$and$10547
+  $src/project.v:470$reduce_or$10320
+  $src/project.v:470$reduce_or$10548
+  $src/project.v:471$and$10321
+  $src/project.v:471$and$10549
+  $src/project.v:471$reduce_or$10322
+  $src/project.v:471$reduce_or$10550
+  $src/project.v:472$and$10323
+  $src/project.v:472$and$10324
+  $src/project.v:472$and$10326
+  $src/project.v:472$and$10327
+  $src/project.v:472$and$10551
+  $src/project.v:472$and$10552
+  $src/project.v:472$and$10554
+  $src/project.v:472$and$10555
+  $src/project.v:472$or$10325
+  $src/project.v:472$or$10328
+  $src/project.v:472$or$10553
+  $src/project.v:472$or$10556
+  $src/project.v:473$and$10329
+  $src/project.v:473$and$10557
+  $src/project.v:485$eq$7588
+  $src/project.v:485$eq$7589
+  $src/project.v:485$ternary$7592
+  $src/project.v:485$ternary$7593
+  $src/project.v:486$eq$7590
+  $src/project.v:486$ternary$7591
+  $src/project.v:514$eq$10660
+  $src/project.v:514$eq$10661
+  $src/project.v:514$eq$10776
+  $src/project.v:514$eq$10777
+  $src/project.v:514$eq$10892
+  $src/project.v:514$eq$10893
+  $src/project.v:514$eq$11008
+  $src/project.v:514$eq$11009
+  $src/project.v:514$ternary$10662
+  $src/project.v:514$ternary$10663
+  $src/project.v:514$ternary$10778
+  $src/project.v:514$ternary$10779
+  $src/project.v:514$ternary$10894
+  $src/project.v:514$ternary$10895
+  $src/project.v:514$ternary$11010
+  $src/project.v:514$ternary$11011
+  $src/project.v:660$sub$7634
+  $src/project.v:666$and$7646
+  $src/project.v:666$eq$7645
+  $src/project.v:666$or$7647
+  $src/project.v:667$and$7649
+  $src/project.v:667$eq$7648
+  $src/project.v:667$or$7650
+  $src/project.v:668$and$7652
+  $src/project.v:668$eq$7651
+  $src/project.v:668$or$7653
+  $src/project.v:669$and$7655
+  $src/project.v:669$eq$7654
+  $src/project.v:669$or$7656
+  $src/project.v:670$and$7658
+  $src/project.v:670$eq$7657
+  $src/project.v:670$or$7659

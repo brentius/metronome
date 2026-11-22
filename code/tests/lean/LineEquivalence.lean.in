@@ -1,0 +1,37 @@
+set_option linter.unusedSimpArgs false
+
+/-! ## Traces
+
+The layer and register equations above say the elaborated transition is the
+specification's; the specification's `stateAt` theorems therefore hold of the
+RTL. -/
+
+/-- The register state of the extracted transition during cycle `n`. -/
+def rtlStateAt (inputs : Nat → Input) (initial : State) (n : Nat) : State :=
+  run (fun state input => rtlStep state input) inputs initial n
+
+theorem rtlStateAt_eq (inputs : Nat → Input) (initial : State) (n : Nat) :
+    rtlStateAt inputs initial n = stateAt inputs initial n :=
+  run_congr (fun state input => rtlStep_eq_step state input) inputs initial n
+
+theorem rtl_trace_result (inputs : Nat → Input) (initial : State) (n : Nat) :
+    rtlStep (rtlStateAt inputs initial n) (inputs n) =
+      step (stateAt inputs initial n) (inputs n) := by
+  rw [rtlStateAt_eq, rtlStep_eq_step]
+
+/-- A sampled reset edge of the extracted trace leaves the reset state. -/
+theorem rtl_trace_reset (inputs : Nat → Input) (initial : State)
+    (reset : (inputs 0).resetN = false) : rtlStateAt inputs initial 1 = resetState := by
+  rw [rtlStateAt_eq]
+  exact stateAt_one_reset inputs initial reset
+
+/-- A frozen `FOLLOW = 0` cycle with no move and no host write of the extracted
+trace leaves it unchanged: deleting it gives the same state sequence (§12.3). -/
+theorem rtl_trace_frz_holds (inputs : Nat → Input) (initial : State) (n : Nat)
+    (hreset : (inputs n).resetN = true) (hfrz : (inputs n).frz = true)
+    (hfollow : (inputs n).cfg.follow = false) (hctl : (inputs n).ctlWe = false)
+    (hsym : (inputs n).symWe = false) (hph : (inputs n).phWe = 0)
+    (hhctl : (inputs n).hCtlWe = false) (hhstat : (inputs n).hStatWe = false) :
+    rtlStateAt inputs initial (n + 1) = rtlStateAt inputs initial n := by
+  rw [rtlStateAt_eq]
+  exact trace_frz_holds inputs initial n hreset hfrz hfollow hctl hsym hph hhctl hhstat

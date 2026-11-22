@@ -1,0 +1,67 @@
+RTL snapshot SHA-256: a2065d3d3c0df5de02de85cdf49f83b933e2a1b789a12a31bcccfd6ea1bb4298
+Yosys command: read_verilog -I src src/cells_behav.v src/md2_acc.v src/md2_cfg_bank.v src/md2_core.v src/md2_counter.v src/md2_dmem.v src/md2_host.v src/md2_lfsr.v src/md2_line.v src/md2_mem.v src/md2_pmem.v src/md2_shifter.v src/md2_sram_bb.v src/md2_stream.v src/md2_thread.v src/project.v; hierarchy -check -top tt_um_brentius_metronome; proc; opt_clean; write_json design.json
+Warning: Latch inferred for signal `\cfg_lgcp_beh.\int_gate' from process `\cfg_lgcp_beh.$src/cells_behav.v:23$proc$3': $auto$proc_dlatch.cc:559:proc_dlatch$13762
+Warning: Latch inferred for signal `\cfg_dlhrq_beh.\Q' from process `\cfg_dlhrq_beh.$src/cells_behav.v:15$proc$1': $auto$proc_dlatch.cc:555:proc_dlatch$13783
+Build completed successfully (7 jobs).
+Host read cut: 11 registers, 134 read-map cells (200 don't-care bits), MISO cone ((BitVec.truncate 1 (BitVec.ushiftRight state.tx 7)) != 0)
+C:\Users\b_yee23\AppData\Local\Temp\metronome-hostread-hostread_ackv_swap-xjedzhkq\HostReadProof.lean:294:53: error: unsolved goals
+state : State
+input : Input
+⊢ (if input.resetN = true then
+      if input.csN = true then 0#8
+      else
+        if (input.csN = false ∧ input.sck = true) ∧ input.sckPrev = false then
+          if state.bitc = 7#3 then
+            if state.rack = true ∨ input.hland = true then if state.rack = true then input.hlandD else state.rackv
+            else state.tx
+          else
+            ((((((if BitVec.setWidth 1 state.tx = 0#1 then 0#8 else 2#8) |||
+                        if BitVec.setWidth 1 (state.tx >>> 1) = 0#1 then 0#8 else 4#8) |||
+                      if BitVec.setWidth 1 (state.tx >>> 2) = 0#1 then 0#8 else 8#8) |||
+                    if BitVec.setWidth 1 (state.tx >>> 3) = 0#1 then 0#8 else 16#8) |||
+                  if BitVec.setWidth 1 (state.tx >>> 4) = 0#1 then 0#8 else 32#8) |||
+                if BitVec.setWidth 1 (state.tx >>> 5) = 0#1 then 0#8 else 64#8) |||
+              if BitVec.setWidth 1 (state.tx >>> 6) = 0#1 then 0#8 else 128#8
+        else
+          if state.rack = true ∨ input.hland = true then if state.rack = true then input.hlandD else state.rackv
+          else state.tx
+    else 0#8) =
+    if input.resetN = false then 0#8
+    else
+      if input.csN = true then 0#8
+      else
+        if ((input.csN = false ∧ input.sck = true) ∧ input.sckPrev = false) ∧ ¬state.bitc = 7#3 then state.tx <<< 1
+        else
+          if state.rack = true ∨ input.hland = true then if state.rack = true then state.rackv else input.hlandD
+          else state.tx
+'Metronome.HostRead.rtlStep_eq_step' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlIsRd._native.bv_decide.ax_1_9,
+ rtlPhase._native.bv_decide.ax_1_9,
+ rtlRd._native.bv_decide.ax_1_9,
+ rtlRx._native.bv_decide.ax_1_14,
+ rtlRx._native.bv_decide.ax_1_9,
+ rtlWdata._native.bv_decide.ax_1_9,
+ rtlWr._native.bv_decide.ax_1_9]
+'Metronome.HostRead.rtlStateAt_eq' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlIsRd._native.bv_decide.ax_1_9,
+ rtlPhase._native.bv_decide.ax_1_9,
+ rtlRd._native.bv_decide.ax_1_9,
+ rtlRx._native.bv_decide.ax_1_14,
+ rtlRx._native.bv_decide.ax_1_9,
+ rtlWdata._native.bv_decide.ax_1_9,
+ rtlWr._native.bv_decide.ax_1_9]
+'Metronome.HostRead.rtlRdVal_eq_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlRdVal_eq_spec._native.bv_decide.ax_1_7]
+'Metronome.HostRead.rtlMiso_eq_tx7' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlMiso_eq_tx7._native.bv_decide.ax_1_6]
+-- hostread_ackv_swap: rejected by Lean (exit 1)

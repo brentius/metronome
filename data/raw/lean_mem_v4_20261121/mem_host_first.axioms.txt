@@ -1,0 +1,6 @@
+Metronome.Mem.rtlStep_eq_step: propext, sorryAx, Classical.choice, Quot.sound
+Metronome.Mem.rtlOuts_eq_outs: propext, sorryAx, Classical.choice, Quot.sound, rtlSGnt._native.bv_decide.ax_1_19
+Metronome.Mem.rtlStateAt_eq: propext, sorryAx, Classical.choice, Quot.sound
+Metronome.Mem.rtl_trace_host_read_lands: propext, sorryAx, Classical.choice, Quot.sound
+Metronome.Mem.rtl_trace_p0_read_lands: propext, sorryAx, Classical.choice, Quot.sound
+Metronome.Mem.rtl_trace_frozen: propext, sorryAx, Classical.choice, Quot.sound, frozen_access_is_host._native.bv_decide.ax_1_7

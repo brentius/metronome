@@ -1,0 +1,12 @@
+﻿ok   fset  (d = 5)
+ok   fclr  (d = 6)
+ok   pAl   (d = 43)
+ok   pAh   (d = 44)
+ok   pW    (d = 45)
+ok   pR    (d = 46)
+ok   cwAl  (d = 58)
+ok   cwAh  (d = 59)
+ok   cwD   (d = 60)
+ok   cwGroup (CW codes)
+ok   cwGroupId (58/59/60 one non-keyed group)
+checked 64 codes, 11 rows, failures = 0

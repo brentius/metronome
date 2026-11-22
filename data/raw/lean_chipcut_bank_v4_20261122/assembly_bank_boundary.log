@@ -1,0 +1,47 @@
+lake build Metronome.ChipCut.Assembly
+✔ [62/78] Built Metronome.ChipCut.Discharge.Glue (14s)
+✔ [63/78] Built Metronome.ChipCut.Discharge.LineThread (14s)
+✔ [64/78] Built Metronome.ChipCut.Discharge.StreamDbg (15s)
+✔ [65/78] Built Metronome.ChipCut.Discharge.CoreUnits (25s)
+✖ [66/78] Building Metronome.ChipCut.Discharge.DbgMapWire (18s)
+trace: .> LEAN_PATH=C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean c:\Users\b_yee23\.elan\toolchains\leanprover--lean4---v4.35.0\bin\lean.exe -DwarningAsError=true C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\Metronome\ChipCut\Discharge\DbgMapWire.lean -o C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean\Metronome\ChipCut\Discharge\DbgMapWire.olean -i C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean\Metronome\ChipCut\Discharge\DbgMapWire.ilean -c C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\ir\Metronome\ChipCut\Discharge\DbgMapWire.c --setup C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\ir\Metronome\ChipCut\Discharge\DbgMapWire.setup.json --json
+error: Metronome/ChipCut/Discharge/DbgMapWire.lean:277:4: Type mismatch
+  bankRel_reset ?m.291
+has type
+  BankWire.MaskedZero ?m.291 → BankRel { mask := BankWire.cfgMaskFin, latch := fun x => 0 } ?m.291
+but is expected to have type
+  BankRel (witState cont ha hq).bank (witState cont ha hq).cont.cfg
+✔ [67/78] Built Metronome.ChipCut.Discharge.HostPinWire (19s)
+✔ [68/78] Built Metronome.ChipCut.Discharge.GuardSrc (31s)
+✔ [69/78] Built Metronome.ChipCut.Discharge.MoveFabric (31s)
+✔ [70/78] Built Metronome.ChipCut.Discharge.CoreCombWire (31s)
+✔ [71/78] Built Metronome.ChipCut.Discharge.MoveFabricUnits (11s)
+✔ [72/78] Built Metronome.ChipCut.Discharge.MoveFabricKeyed (11s)
+✔ [73/78] Built Metronome.ChipCut.Discharge.CapTrace (13s)
+✖ [74/78] Building Metronome.ChipCut.Discharge.CoreCombCbs (13s)
+trace: .> LEAN_PATH=C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean c:\Users\b_yee23\.elan\toolchains\leanprover--lean4---v4.35.0\bin\lean.exe -DwarningAsError=true C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\Metronome\ChipCut\Discharge\CoreCombCbs.lean -o C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean\Metronome\ChipCut\Discharge\CoreCombCbs.olean -i C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\lib\lean\Metronome\ChipCut\Discharge\CoreCombCbs.ilean -c C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\ir\Metronome\ChipCut\Discharge\CoreCombCbs.c --setup C:\Users\b_yee23\Documents\projects\jane street comp\code\tests\lean\.lake\build\ir\Metronome\ChipCut\Discharge\CoreCombCbs.setup.json --json
+error: Metronome/ChipCut/Discharge/CoreCombCbs.lean:271:9: Tactic `rcases` failed: `h : BankWire.MaskedZero cont.cfg →
+  ChipRel (resetState cont) (absChip (resetState cont))` is not an inductive datatype
+error: Metronome/ChipCut/Discharge/CoreCombCbs.lean:1135:13: Function expected at
+  h.right ⟨0, ?m.32⟩
+but this term has type
+  Bank.read bankBroken.bank ⟨0, ?m.32⟩ =
+    BitVec.ofNat 8 (Machine.Util.cfgByte bankBroken.cont.cfg (Machine.Tables.LINE_BASE + ↑⟨0, ?m.32⟩)) &&&
+      bankBroken.bank.mask ⟨0, ?m.32⟩
+
+Note: Expected a function because this term is being applied to the argument
+  hk0
+error: Metronome/ChipCut/Discharge/CoreCombCbs.lean:1131:82: unsolved goals
+h : BankRel bankBroken.bank bankBroken.cont.cfg
+hk : bankBroken.bank.mask ⟨0, ⋯⟩ = 255
+hk0 : bankBroken.bank.mask ⟨0, ⋯⟩ ≠ 0
+⊢ False
+✔ [75/78] Built Metronome.ChipCut.Discharge.StreamMoveWire (27s)
+✔ [76/78] Built Metronome.ChipCut.Discharge.LineMoveWire (27s)
+✔ [77/78] Built Metronome.ChipCut.Discharge.MovePayloadWire (27s)
+Some required targets logged failures:
+- Metronome.ChipCut.Discharge.DbgMapWire
+- Metronome.ChipCut.Discharge.CoreCombCbs
+error: build failed
+
+Exit 1; wall 96.81 s

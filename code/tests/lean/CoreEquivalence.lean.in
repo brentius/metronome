@@ -1,0 +1,206 @@
+/-! ## The extracted `{{CELL}}` transition (C = {{C}}) -/
+
+namespace {{NS}}
+
+/-- The elaborated `md2_core` next state and combinational outputs as one
+function of the register values and the sampled module ports (the free leaves).
+{{SIGNALS}} intermediate signals. -/
+def rtlStepOut (state : State) (input : Input) : State × Out :=
+{{LETS}}
+  (⟨{{REGS}}⟩, ⟨{{OUTS}}⟩)
+
+/-- The elaborated next state. -/
+def rtlStep (state : State) (input : Input) : State := (rtlStepOut state input).1
+
+/-- The elaborated combinational outputs. -/
+def rtlOut (state : State) (input : Input) : Out := (rtlStepOut state input).2
+
+/-- Unfold the extracted transition and the specification to their `BitVec`
+primitives. -/
+macro "core_simp" : tactic =>
+  `(tactic| simp only [rtlStep, rtlStepOut, rtlOut, out, step, next,
+      xv_next, rv_next, fpc_next, xt_next, xl_next, rr_next, ir_next,
+      load, ra, jmp, pse, xa, free, taken, cc, jc, npc,
+      guardVec, lineSlot, lowMask, setBit, bitOf, slice,
+      srcVec, withSlot, srcByte, jumpGuardBit,
+      cand, mine, winOf, selIdx, selSlot, disp, dispE, dLine, dPc, dW0c, dW1c,
+      dW0h, dW1h, watcher0, watcher1, dpc, fetchAddr, fetchEn, rrNext,
+      i_pause, i_jmode, i_imm, i_cond, i_jcond, i_g, i_s, i_d,
+      mvEnAt, moveGuardOk, boolMask,
+      G_TRUE, G_L_IN0, G_L_IN1, G_L_SYNC, G_L_PINA, G_L_PINB,
+      MD_N_GUARD, MD_N_SRC, S_ZERO, S_IMM, S_L_IN, S_L_CAP,
+      JM_ALWAYS, JM_IF, JM_IFNOT, GD_ALWAYS, GD_IF, GD_IFNOT,
+      LAST_T, N_THREADS])
+
+macro "core_proof" : tactic => `(tactic| core_simp <;> bv_decide)
+
+/-! ### Registers (§5: `XV'`, `RV'`, `FPC'`, `IR'`, `XT'`, `XL'`, `RR'`) -/
+
+theorem rtlXv (state : State) (input : Input) :
+    (rtlStep state input).xv = (step {{C}} state input).xv := by core_proof
+
+theorem rtlRv (state : State) (input : Input) :
+    (rtlStep state input).rv = (step {{C}} state input).rv := by core_proof
+
+theorem rtlFpc (state : State) (input : Input) :
+    (rtlStep state input).fpc = (step {{C}} state input).fpc := by core_proof
+
+theorem rtlXt (state : State) (input : Input) :
+    (rtlStep state input).xt = (step {{C}} state input).xt := by core_proof
+
+theorem rtlXl (state : State) (input : Input) :
+    (rtlStep state input).xl = (step {{C}} state input).xl := by core_proof
+
+theorem rtlRr (state : State) (input : Input) :
+    (rtlStep state input).rr = (step {{C}} state input).rr := by core_proof
+
+theorem rtlIr (state : State) (input : Input) :
+    (rtlStep state input).ir = (step {{C}} state input).ir := by core_proof
+
+/-- The extracted transition is the independent SPEC_V2 §5/§6/§7/§12.3
+transition for every state and input. -/
+theorem rtlStep_eq_step (state : State) (input : Input) :
+    rtlStep state input = step {{C}} state input := by
+  have h1 : rtlStep state input =
+      ⟨(rtlStep state input).xv, (rtlStep state input).rv, (rtlStep state input).fpc,
+       (rtlStep state input).xt, (rtlStep state input).xl, (rtlStep state input).rr,
+       (rtlStep state input).ir⟩ := rfl
+  have h2 : step {{C}} state input =
+      ⟨(step {{C}} state input).xv, (step {{C}} state input).rv,
+       (step {{C}} state input).fpc, (step {{C}} state input).xt,
+       (step {{C}} state input).xl, (step {{C}} state input).rr,
+       (step {{C}} state input).ir⟩ := rfl
+  rw [h1, h2, rtlXv, rtlRv, rtlFpc, rtlXt, rtlXl, rtlRr, rtlIr]
+
+/-! ### Outputs (§5: fetch, pause, dispatch, watchers, moves; §12.3 readback) -/
+
+theorem rtlFetchEn (state : State) (input : Input) :
+    (rtlOut state input).fetchEn = (out {{C}} state input).fetchEn := by core_proof
+
+theorem rtlFetchAddr (state : State) (input : Input) :
+    (rtlOut state input).fetchAddr = (out {{C}} state input).fetchAddr := by core_proof
+
+theorem rtlPause (state : State) (input : Input) :
+    (rtlOut state input).pauseO = (out {{C}} state input).pauseO := by core_proof
+
+theorem rtlNpc (state : State) (input : Input) :
+    (rtlOut state input).npcO = (out {{C}} state input).npcO := by core_proof
+
+theorem rtlDisp (state : State) (input : Input) :
+    (rtlOut state input).dispO = (out {{C}} state input).dispO := by core_proof
+
+theorem rtlDispE (state : State) (input : Input) :
+    (rtlOut state input).dispE = (out {{C}} state input).dispE := by core_proof
+
+theorem rtlXtO (state : State) (input : Input) :
+    (rtlOut state input).xtO = (out {{C}} state input).xtO := by core_proof
+
+theorem rtlXlO (state : State) (input : Input) :
+    (rtlOut state input).xlO = (out {{C}} state input).xlO := by core_proof
+
+theorem rtlMvEn (state : State) (input : Input) :
+    (rtlOut state input).mvEn = (out {{C}} state input).mvEn := by core_proof
+
+theorem rtlMvSrc (state : State) (input : Input) :
+    (rtlOut state input).mvSrc = (out {{C}} state input).mvSrc := by core_proof
+
+theorem rtlMvDst (state : State) (input : Input) :
+    (rtlOut state input).mvDst = (out {{C}} state input).mvDst := by core_proof
+
+theorem rtlMvData (state : State) (input : Input) :
+    (rtlOut state input).mvData = (out {{C}} state input).mvData := by core_proof
+
+/-- §12.3 readback: `CST.RV`, `CST.XV` and `FPC` are the state registers. -/
+theorem rtlDbg (state : State) (input : Input) :
+    (rtlOut state input).dbgXv = (out {{C}} state input).dbgXv ∧
+      (rtlOut state input).dbgRv = (out {{C}} state input).dbgRv ∧
+      (rtlOut state input).dbgFpc = (out {{C}} state input).dbgFpc := by
+  simp [rtlOut, rtlStepOut, out]
+
+/-- The extracted outputs are the specification's outputs. -/
+theorem rtlOut_eq_out (state : State) (input : Input) :
+    rtlOut state input = out {{C}} state input := by
+  obtain ⟨hdxv, hdrv, hdfpc⟩ := rtlDbg state input
+  have h1 : rtlOut state input =
+      ⟨(rtlOut state input).fetchEn, (rtlOut state input).fetchAddr,
+       (rtlOut state input).pauseO, (rtlOut state input).npcO, (rtlOut state input).dispO,
+       (rtlOut state input).dispE, (rtlOut state input).xtO, (rtlOut state input).xlO,
+       (rtlOut state input).mvEn, (rtlOut state input).mvSrc, (rtlOut state input).mvDst,
+       (rtlOut state input).mvData, (rtlOut state input).dbgXv,
+       (rtlOut state input).dbgRv, (rtlOut state input).dbgFpc⟩ := rfl
+  have h2 : out {{C}} state input =
+      ⟨(out {{C}} state input).fetchEn, (out {{C}} state input).fetchAddr,
+       (out {{C}} state input).pauseO, (out {{C}} state input).npcO,
+       (out {{C}} state input).dispO, (out {{C}} state input).dispE,
+       (out {{C}} state input).xtO, (out {{C}} state input).xlO,
+       (out {{C}} state input).mvEn, (out {{C}} state input).mvSrc,
+       (out {{C}} state input).mvDst, (out {{C}} state input).mvData,
+       (out {{C}} state input).dbgXv, (out {{C}} state input).dbgRv,
+       (out {{C}} state input).dbgFpc⟩ := rfl
+  rw [h1, h2, rtlFetchEn, rtlFetchAddr, rtlPause, rtlNpc, rtlDisp, rtlDispE,
+    rtlXtO, rtlXlO, rtlMvEn, rtlMvSrc, rtlMvDst, rtlMvData, hdxv, hdrv, hdfpc]
+
+/-! ### Trace lifting -/
+
+def rtlStateAt (inputs : Nat → Input) (initial : State) (n : Nat) : State :=
+  run (fun state input => rtlStep state input) inputs initial n
+
+/-- The extracted trace is the specification trace at every cycle. -/
+theorem rtlStateAt_eq (inputs : Nat → Input) (initial : State) (n : Nat) :
+    rtlStateAt inputs initial n = stateAt {{C}} inputs initial n :=
+  run_congr (fun state input => rtlStep_eq_step state input) inputs initial n
+
+theorem rtl_trace_result (inputs : Nat → Input) (initial : State) (n : Nat) :
+    rtlStep (rtlStateAt inputs initial n) (inputs n) =
+      step {{C}} (stateAt {{C}} inputs initial n) (inputs n) := by
+  rw [rtlStateAt_eq, rtlStep_eq_step]
+
+/-- SPEC §5 "Consequences" (`t + 3`) on the extracted trace. -/
+theorem rtl_trace_dispatch_idle (inputs : Nat → Input) (initial : State) (n : Nat)
+    (hxv : (rtlStateAt inputs initial n).xv = false)
+    (hrv : (rtlStateAt inputs initial n).rv = false)
+    (hfrz : (inputs n).frz = false) (hreset : (inputs n).resetN = true)
+    (hcand : cand {{C}} (inputs n) ≠ 0)
+    (hfrz1 : (inputs (n + 1)).frz = false) (hreset1 : (inputs (n + 1)).resetN = true) :
+    (rtlStateAt inputs initial (n + 1)).rv = true ∧
+      (rtlStateAt inputs initial (n + 1)).xv = false ∧
+      (rtlStateAt inputs initial (n + 1)).fpc =
+        dpc {{C}} (rtlStateAt inputs initial n) (inputs n) ∧
+      (rtlStateAt inputs initial (n + 2)).xv = true ∧
+      (rtlStateAt inputs initial (n + 2)).fpc =
+        dpc {{C}} (rtlStateAt inputs initial n) (inputs n) + 1 ∧
+      (rtlStateAt inputs initial (n + 2)).ir = (inputs (n + 1)).rdata := by
+  simp only [rtlStateAt_eq] at hxv hrv ⊢
+  exact trace_dispatch_idle {{C}} inputs initial n hxv hrv hfrz hreset hcand hfrz1 hreset1
+
+/-- SPEC §5 "Consequences" (taken jump, one idle cycle) on the extracted trace. -/
+theorem rtl_trace_jump_idle (inputs : Nat → Input) (initial : State) (n : Nat)
+    (hxv : (rtlStateAt inputs initial n).xv = true)
+    (hfrz : (inputs n).frz = false) (hreset : (inputs n).resetN = true)
+    (hjmp : jmp (rtlStateAt inputs initial n) (inputs n) = true)
+    (hfrz1 : (inputs (n + 1)).frz = false) (hreset1 : (inputs (n + 1)).resetN = true) :
+    (rtlStateAt inputs initial (n + 1)).xv = false ∧
+      (rtlStateAt inputs initial (n + 1)).rv = true ∧
+      (rtlStateAt inputs initial (n + 1)).fpc =
+        i_imm (rtlStateAt inputs initial n) ∧
+      (rtlStateAt inputs initial (n + 2)).xv = true ∧
+      (rtlStateAt inputs initial (n + 2)).fpc =
+        i_imm (rtlStateAt inputs initial n) + 1 ∧
+      (rtlStateAt inputs initial (n + 2)).ir = (inputs (n + 1)).rdata := by
+  simp only [rtlStateAt_eq] at hxv hjmp ⊢
+  exact trace_jump_idle {{C}} inputs initial n hxv hfrz hreset hjmp hfrz1 hreset1
+
+/-! ### Axiom audit
+
+`core_check.py` records these records and rejects `sorryAx`.  The per-field
+equalities are `bv_decide` goals; the shared lemmas use `decide` over the six
+threads. -/
+
+#print axioms rtlStep_eq_step
+#print axioms rtlOut_eq_out
+#print axioms rtlStateAt_eq
+#print axioms rtl_trace_result
+#print axioms rtl_trace_dispatch_idle
+#print axioms rtl_trace_jump_idle
+
+end {{NS}}

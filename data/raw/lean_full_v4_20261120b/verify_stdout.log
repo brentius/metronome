@@ -1,0 +1,39 @@
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Build completed successfully (9 jobs).
+baseline: Lean verified the configuration transition, host write cone, both configuration-address decodes, the core pending-write queue, their traces and axiom dependencies
+'Metronome.Decode.rtlHostQual_eq_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlHostQual_eq_spec._native.bv_decide.ax_1_5]
+'Metronome.Decode.rtlCoreLive_eq_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlCoreLive_eq_spec._native.bv_decide.ax_1_5]
+Decode host outcome: accepted
+Decode core outcome: accepted
+Core queue outcome: accepted
+spacing: rejected by Lean configuration equivalence proof
+priority: rejected by Lean configuration equivalence proof
+held_addr: rejected by Lean configuration equivalence proof
+held_data: rejected by Lean configuration equivalence proof
+stage_capture: rejected by Lean configuration equivalence proof
+feedback: rejected by top-level wiring check
+host_gate: rejected by Lean host equivalence proof
+host_counter: rejected by Lean host equivalence proof
+host_filter: rejected by chip-top host filter check
+decode_permissive: rejected by both Lean decode equivalence proofs
+decode_core_bypass: rejected by Lean core decode equivalence proof
+decode_mask_byte: rejected by both Lean decode equivalence proofs
+decode_core_addr: rejected by core arbiter address check
+cwq_drain_clears: rejected by Lean core pending-write queue proof
+cwq_hold_addr: rejected by Lean core pending-write queue proof
+cwq_accept_pending: rejected by Lean core pending-write queue proof
+cwq_frz_gate: rejected by Lean core pending-write queue proof
+cwq_overrun_clear: rejected by Lean core pending-write queue proof
+bank baseline: accepted (284/480 live bytes, 2112 latch bits)
+bank_wrong_addr: rejected by latch-bank generated Lean: rejected by Lean (exit 1): 208:2: error: The prover found a counterexample, consider the following assignment:
+bank_addr_bit: rejected by latch-bank generated Lean: rejected by Lean (exit 1): 47:2: error: The prover found a counterexample, consider the following assignment:
+bank_no_we1: rejected by latch-bank structural check: u_cfg: byte 0 gate is not an AND enable
+bank_we1_polarity: rejected by latch-bank structural check: u_cfg: byte 0 gate is not enabled by we1
+EXIT=0

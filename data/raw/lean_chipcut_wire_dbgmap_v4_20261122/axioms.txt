@@ -1,0 +1,438 @@
+﻿Metronome.ChipCut.Discharge.DbgMapWire.dbgHEH : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State)
+  (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        Metronome.Machine.Util.hwAt (Metronome.ChipCut.Discharge.machHw m) "DBG" 0 "EMASK" =
+          Metronome.Bridge.Debug.hostOpt2 (Metronome.Bridge.Debug.emaskPort0 (Metronome.ChipCut.dbgCtrlIn s pin))
+            (Metronome.Bridge.Debug.emaskPort1 (Metronome.ChipCut.dbgCtrlIn s pin))
+Metronome.ChipCut.Discharge.DbgMapWire.dbgHESH : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State)
+  (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        ((Metronome.ChipCut.dbgCtrlIn s pin).dWrEm0 && (Metronome.ChipCut.dbgCtrlIn s pin).hEm0 &&
+              (Metronome.ChipCut.dbgCtrlIn s pin).dWrEm1 &&
+            (Metronome.ChipCut.dbgCtrlIn s pin).hEm1) =
+          false
+Metronome.ChipCut.Discharge.DbgMapWire.dbgHRH : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State)
+  (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        Metronome.Machine.Util.hwAt (Metronome.ChipCut.Discharge.machHw m) "DBG" 0 "RLV" =
+          Metronome.Bridge.Debug.hostOpt2 (Metronome.Bridge.Debug.rlvPort0 (Metronome.ChipCut.dbgCtrlIn s pin))
+            (Metronome.Bridge.Debug.rlvPort1 (Metronome.ChipCut.dbgCtrlIn s pin))
+Metronome.ChipCut.Discharge.DbgMapWire.dbgHRSH : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State)
+  (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        ((Metronome.ChipCut.dbgCtrlIn s pin).dWrRlv0 && (Metronome.ChipCut.dbgCtrlIn s pin).hRlv0 &&
+              (Metronome.ChipCut.dbgCtrlIn s pin).dWrRlv1 &&
+            (Metronome.ChipCut.dbgCtrlIn s pin).hRlv1) =
+          false
+Metronome.ChipCut.Discharge.DbgMapWire.dbgHEC_false : Ôêâ s m pin,
+  Metronome.ChipCut.ChipRel s m Ôêº
+    Metronome.ChipCut.Inv s Ôêº
+      Metronome.ChipCut.runRst s pin = true Ôêº
+        Metronome.Machine.Util.hwAt (Metronome.ChipCut.Discharge.machCw m) "DBG" 0 "EMASK" Ôëá
+          Metronome.Bridge.Debug.coreOpt2 (Metronome.Bridge.Debug.emaskPort0 (Metronome.ChipCut.dbgCtrlIn s pin))
+            (Metronome.Bridge.Debug.emaskPort1 (Metronome.ChipCut.dbgCtrlIn s pin))
+Metronome.ChipCut.Discharge.DbgMapWire.dbgHRC_false : Ôêâ s m pin,
+  Metronome.ChipCut.ChipRel s m Ôêº
+    Metronome.ChipCut.Inv s Ôêº
+      Metronome.ChipCut.runRst s pin = true Ôêº
+        Metronome.Machine.Util.hwAt (Metronome.ChipCut.Discharge.machCw m) "DBG" 0 "RLV" Ôëá
+          Metronome.Bridge.Debug.coreOpt2 (Metronome.Bridge.Debug.rlvPort0 (Metronome.ChipCut.dbgCtrlIn s pin))
+            (Metronome.Bridge.Debug.rlvPort1 (Metronome.ChipCut.dbgCtrlIn s pin))
+Metronome.ChipCut.Discharge.DbgMapWire.dbgRlvValue_of_wv : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State)
+  (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        ((Metronome.ChipCut.streamAt s 0).wv = true ÔåÆ
+            (Metronome.Machine.Util.vget m.streams 0).wb = (Metronome.ChipCut.streamAt s 0).wb) ÔåÆ
+          (Metronome.ChipCut.Discharge.machApplyLate m).fst =
+              Metronome.Debug.Ctrl.apply s.dbgCtrl.replay (Metronome.ChipCut.dbgCtrlIn s pin).frz
+                (Metronome.Debug.bitAt (Metronome.ChipCut.dbgCtrlIn s pin).replayValid 0) s.dbgCtrl.dc
+                (Metronome.ChipCut.dbgCtrlIn s pin).replayWord ÔåÆ
+            (Metronome.ChipCut.Discharge.machDbgNext m).rlv =
+              (Metronome.Debug.Ctrl.step s.dbgCtrl (Metronome.ChipCut.dbgCtrlIn s pin)).rlv
+Metronome.ChipCut.Discharge.DbgMapWire.dbgRlvValue_of : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State)
+  (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        (Metronome.Machine.Util.vget m.streams 0).wb = (Metronome.ChipCut.streamAt s 0).wb ÔåÆ
+          (Metronome.ChipCut.Discharge.machApplyLate m).fst =
+              Metronome.Debug.Ctrl.apply s.dbgCtrl.replay (Metronome.ChipCut.dbgCtrlIn s pin).frz
+                (Metronome.Debug.bitAt (Metronome.ChipCut.dbgCtrlIn s pin).replayValid 0) s.dbgCtrl.dc
+                (Metronome.ChipCut.dbgCtrlIn s pin).replayWord ÔåÆ
+            (Metronome.ChipCut.Discharge.machDbgNext m).rlv =
+              (Metronome.Debug.Ctrl.step s.dbgCtrl (Metronome.ChipCut.dbgCtrlIn s pin)).rlv
+@Metronome.ChipCut.Discharge.DbgMapWire.rlv_value_of_apply : ÔêÇ {s : Metronome.ChipCut.State}
+  {m : Metronome.Machine.State} {pin : Metronome.Machine.PinIn},
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.runRst s pin = true ÔåÆ
+      ((Metronome.ChipCut.Discharge.machApplyLate m).fst = true ÔåÆ
+          (Metronome.Machine.Util.vget m.streams 0).wb = (Metronome.ChipCut.streamAt s 0).wb) ÔåÆ
+        (Metronome.ChipCut.Discharge.machApplyLate m).fst =
+            Metronome.Debug.Ctrl.apply s.dbgCtrl.replay (Metronome.ChipCut.dbgCtrlIn s pin).frz
+              (Metronome.Debug.bitAt (Metronome.ChipCut.dbgCtrlIn s pin).replayValid 0) s.dbgCtrl.dc
+              (Metronome.ChipCut.dbgCtrlIn s pin).replayWord ÔåÆ
+          (Metronome.Machine.Util.hwAt (Metronome.ChipCut.Discharge.machHw m) "DBG" 0 "RLV" =
+              if
+                  Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "RLV")
+                      0 =
+                    true then
+                some (0, (Metronome.ChipCut.hwData s).toNat)
+              else
+                if
+                    Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "RLV")
+                        1 =
+                      true then
+                  some (1, (Metronome.ChipCut.hwData s).toNat)
+                else none) ÔåÆ
+            (Metronome.Machine.Util.hwAt (Metronome.ChipCut.Discharge.machCw m) "DBG" 0 "RLV" =
+                if (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 18#32) = true then
+                  some (0, s.cq.pendingData.toNat)
+                else
+                  if (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 19#32) = true then
+                    some (1, s.cq.pendingData.toNat)
+                  else none) ÔåÆ
+              (Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "RLV") 0 =
+                    true ÔåÆ
+                  Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "RLV")
+                      1 =
+                    false) ÔåÆ
+                ((Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 18#32) = true ÔåÆ
+                    (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 19#32) = false) ÔåÆ
+                  (Metronome.ChipCut.Discharge.machDbgNext m).rlv =
+                    (Metronome.Debug.Ctrl.step s.dbgCtrl (Metronome.ChipCut.dbgCtrlIn s pin)).rlv
+@Metronome.ChipCut.Discharge.DbgMapWire.rlv_value_of : ÔêÇ {s : Metronome.ChipCut.State} {m : Metronome.Machine.State}
+  {pin : Metronome.Machine.PinIn},
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.runRst s pin = true ÔåÆ
+      (Metronome.Machine.Util.vget m.streams 0).wb = (Metronome.ChipCut.streamAt s 0).wb ÔåÆ
+        (Metronome.ChipCut.Discharge.machApplyLate m).fst =
+            Metronome.Debug.Ctrl.apply s.dbgCtrl.replay (Metronome.ChipCut.dbgCtrlIn s pin).frz
+              (Metronome.Debug.bitAt (Metronome.ChipCut.dbgCtrlIn s pin).replayValid 0) s.dbgCtrl.dc
+              (Metronome.ChipCut.dbgCtrlIn s pin).replayWord ÔåÆ
+          (Metronome.Machine.Util.hwAt (Metronome.ChipCut.Discharge.machHw m) "DBG" 0 "RLV" =
+              if
+                  Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "RLV")
+                      0 =
+                    true then
+                some (0, (Metronome.ChipCut.hwData s).toNat)
+              else
+                if
+                    Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "RLV")
+                        1 =
+                      true then
+                  some (1, (Metronome.ChipCut.hwData s).toNat)
+                else none) ÔåÆ
+            (Metronome.Machine.Util.hwAt (Metronome.ChipCut.Discharge.machCw m) "DBG" 0 "RLV" =
+                if (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 18#32) = true then
+                  some (0, s.cq.pendingData.toNat)
+                else
+                  if (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 19#32) = true then
+                    some (1, s.cq.pendingData.toNat)
+                  else none) ÔåÆ
+              (Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "RLV") 0 =
+                    true ÔåÆ
+                  Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "RLV")
+                      1 =
+                    false) ÔåÆ
+                ((Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 18#32) = true ÔåÆ
+                    (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 19#32) = false) ÔåÆ
+                  (Metronome.ChipCut.Discharge.machDbgNext m).rlv =
+                    (Metronome.Debug.Ctrl.step s.dbgCtrl (Metronome.ChipCut.dbgCtrlIn s pin)).rlv
+@Metronome.ChipCut.Discharge.DbgMapWire.dbg_wb_of_wv : ÔêÇ {s : Metronome.ChipCut.State} {m : Metronome.Machine.State},
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    (Metronome.ChipCut.streamAt s 0).wv = true ÔåÆ
+      (Metronome.Machine.Util.vget m.streams 0).wb = (Metronome.ChipCut.streamAt s 0).wb
+Metronome.ChipCut.Discharge.DbgMapWire.dbg_bitAt_replayValid : ÔêÇ (s : Metronome.ChipCut.State)
+  (pin : Metronome.Machine.PinIn),
+  Metronome.Debug.bitAt (Metronome.ChipCut.dbgCtrlIn s pin).replayValid 0 = (Metronome.ChipCut.streamAt s 0).wv
+Metronome.ChipCut.Discharge.DbgMapWire.dbg_vget_streams_zero : ÔêÇ (m : Metronome.Machine.State),
+  Metronome.Machine.Util.vget m.streams 0 = m.streams[0]
+Metronome.ChipCut.Discharge.DbgMapWire.dbgHmctl : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State)
+  (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        Metronome.Machine.Util.hwByte (Metronome.ChipCut.Discharge.machHw m) "DBG" 0 "MCTL" =
+          if (Metronome.ChipCut.dbgDigestIn s pin).dWrMctl = true then
+            some (Metronome.ChipCut.dbgDigestIn s pin).hWd.toNat
+          else none
+Metronome.ChipCut.Discharge.DbgMapWire.dbgHectl : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State)
+  (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        Metronome.Bridge.Debug.pickByte (Metronome.ChipCut.Discharge.machHw m) (Metronome.ChipCut.Discharge.machCw m)
+            "ECTL" =
+          { strobe := (Metronome.ChipCut.dbgCtrlIn s pin).dWrEctl, host := (Metronome.ChipCut.dbgCtrlIn s pin).hEctl,
+              hWd := (Metronome.ChipCut.dbgCtrlIn s pin).hWd, cwData := (Metronome.ChipCut.dbgCtrlIn s pin).cwData }.ok
+Metronome.ChipCut.Discharge.DbgMapWire.dbgEmaskValue_of : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State)
+  (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        (Metronome.ChipCut.Discharge.machDbgNext m).emask =
+          (Metronome.Debug.Ctrl.step s.dbgCtrl (Metronome.ChipCut.dbgCtrlIn s pin)).emask
+Metronome.ChipCut.Discharge.DbgMapWire.dbgRlvValue_of : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State)
+  (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        (Metronome.Machine.Util.vget m.streams 0).wb = (Metronome.ChipCut.streamAt s 0).wb ÔåÆ
+          (Metronome.ChipCut.Discharge.machApplyLate m).fst =
+              Metronome.Debug.Ctrl.apply s.dbgCtrl.replay (Metronome.ChipCut.dbgCtrlIn s pin).frz
+                (Metronome.Debug.bitAt (Metronome.ChipCut.dbgCtrlIn s pin).replayValid 0) s.dbgCtrl.dc
+                (Metronome.ChipCut.dbgCtrlIn s pin).replayWord ÔåÆ
+            (Metronome.ChipCut.Discharge.machDbgNext m).rlv =
+              (Metronome.Debug.Ctrl.step s.dbgCtrl (Metronome.ChipCut.dbgCtrlIn s pin)).rlv
+@Metronome.ChipCut.Discharge.DbgMapWire.emask_value_of : ÔêÇ {s : Metronome.ChipCut.State} {m : Metronome.Machine.State}
+  {pin : Metronome.Machine.PinIn},
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.runRst s pin = true ÔåÆ
+      (Metronome.Machine.Util.hwAt (Metronome.ChipCut.Discharge.machHw m) "DBG" 0 "EMASK" =
+          if
+              Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "EMASK") 0 =
+                true then
+            some (0, (Metronome.ChipCut.hwData s).toNat)
+          else
+            if
+                Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "EMASK")
+                    1 =
+                  true then
+              some (1, (Metronome.ChipCut.hwData s).toNat)
+            else none) ÔåÆ
+        (Metronome.Machine.Util.hwAt (Metronome.ChipCut.Discharge.machCw m) "DBG" 0 "EMASK" =
+            if (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 8#32) = true then
+              some (0, s.cq.pendingData.toNat)
+            else
+              if (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 9#32) = true then
+                some (1, s.cq.pendingData.toNat)
+              else none) ÔåÆ
+          (Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "EMASK") 0 =
+                true ÔåÆ
+              Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "EMASK") 1 =
+                false) ÔåÆ
+            ((Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 8#32) = true ÔåÆ
+                (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 9#32) = false) ÔåÆ
+              (Metronome.ChipCut.Discharge.machDbgNext m).emask =
+                (Metronome.Debug.Ctrl.step s.dbgCtrl (Metronome.ChipCut.dbgCtrlIn s pin)).emask
+@Metronome.ChipCut.Discharge.DbgMapWire.rlv_value_of : ÔêÇ {s : Metronome.ChipCut.State} {m : Metronome.Machine.State}
+  {pin : Metronome.Machine.PinIn},
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.runRst s pin = true ÔåÆ
+      (Metronome.Machine.Util.vget m.streams 0).wb = (Metronome.ChipCut.streamAt s 0).wb ÔåÆ
+        (Metronome.ChipCut.Discharge.machApplyLate m).fst =
+            Metronome.Debug.Ctrl.apply s.dbgCtrl.replay (Metronome.ChipCut.dbgCtrlIn s pin).frz
+              (Metronome.Debug.bitAt (Metronome.ChipCut.dbgCtrlIn s pin).replayValid 0) s.dbgCtrl.dc
+              (Metronome.ChipCut.dbgCtrlIn s pin).replayWord ÔåÆ
+          (Metronome.Machine.Util.hwAt (Metronome.ChipCut.Discharge.machHw m) "DBG" 0 "RLV" =
+              if
+                  Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "RLV")
+                      0 =
+                    true then
+                some (0, (Metronome.ChipCut.hwData s).toNat)
+              else
+                if
+                    Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "RLV")
+                        1 =
+                      true then
+                  some (1, (Metronome.ChipCut.hwData s).toNat)
+                else none) ÔåÆ
+            (Metronome.Machine.Util.hwAt (Metronome.ChipCut.Discharge.machCw m) "DBG" 0 "RLV" =
+                if (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 18#32) = true then
+                  some (0, s.cq.pendingData.toNat)
+                else
+                  if (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 19#32) = true then
+                    some (1, s.cq.pendingData.toNat)
+                  else none) ÔåÆ
+              (Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "RLV") 0 =
+                    true ÔåÆ
+                  Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "RLV")
+                      1 =
+                    false) ÔåÆ
+                ((Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 18#32) = true ÔåÆ
+                    (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 19#32) = false) ÔåÆ
+                  (Metronome.ChipCut.Discharge.machDbgNext m).rlv =
+                    (Metronome.Debug.Ctrl.step s.dbgCtrl (Metronome.ChipCut.dbgCtrlIn s pin)).rlv
+Metronome.ChipCut.Discharge.DbgMapWire.byteW2_value : ÔêÇ (x : Nat),
+  x < 2 ^ 13 ÔåÆ
+    ÔêÇ (hwd cwd : BitVec 8) (h0 h1 d0 d1 : Bool) (hw cw : Option Metronome.Machine.HostWr) (r : String),
+      (Metronome.Machine.Util.hwAt hw "DBG" 0 r =
+          if h0 = true then some (0, hwd.toNat) else if h1 = true then some (1, hwd.toNat) else none) ÔåÆ
+        (Metronome.Machine.Util.hwAt cw "DBG" 0 r =
+            if d0 = true then some (0, cwd.toNat) else if d1 = true then some (1, cwd.toNat) else none) ÔåÆ
+          (h0 = true ÔåÆ h1 = false) ÔåÆ
+            (d0 = true ÔåÆ d1 = false) ÔåÆ
+              Metronome.Machine.Util.bv 13 (Metronome.Bridge.Debug.byteWOf hw cw x r) =
+                Metronome.Bridge.Debug.writeBytes (Metronome.Machine.Util.bv 13 x)
+                  { strobe := h0 || d0, host := h0, hWd := hwd, cwData := cwd }
+                  { strobe := h1 || d1, host := h1, hWd := hwd, cwData := cwd }
+@Metronome.ChipCut.Discharge.DbgMapWire.machCw_emask_lane : ÔêÇ {s : Metronome.ChipCut.State}
+  {m : Metronome.Machine.State},
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.Machine.Util.hwAt (Metronome.ChipCut.Discharge.machCw m) "DBG" 0 "EMASK" =
+      if (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 8#32) = true then
+        some (0, s.cq.pendingData.toNat)
+      else
+        if (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 9#32) = true then
+          some (1, s.cq.pendingData.toNat)
+        else none
+@Metronome.ChipCut.Discharge.DbgMapWire.machCw_rlv_lane : ÔêÇ {s : Metronome.ChipCut.State} {m : Metronome.Machine.State},
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.Machine.Util.hwAt (Metronome.ChipCut.Discharge.machCw m) "DBG" 0 "RLV" =
+      if (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 18#32) = true then
+        some (0, s.cq.pendingData.toNat)
+      else
+        if (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 19#32) = true then
+          some (1, s.cq.pendingData.toNat)
+        else none
+@Metronome.ChipCut.Discharge.DbgMapWire.machCw_runtime : ÔêÇ {s : Metronome.ChipCut.State} {m : Metronome.Machine.State},
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Discharge.machCw m = none Ôê¿
+      Ôêâ r b l,
+        Metronome.Machine.hostLocate s.cq.pendingAddr.toNat = some l Ôêº l.blk = "DBG" Ôêº l.reg = r Ôêº l.byte = b Ôêº b < 2
+Metronome.ChipCut.Discharge.DbgMapWire.emask_host_01 : ÔêÇ (s : Metronome.ChipCut.State),
+  Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "EMASK") 0 = true ÔåÆ
+    Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "EMASK") 1 = false
+Metronome.ChipCut.Discharge.DbgMapWire.rlv_host_01 : ÔêÇ (s : Metronome.ChipCut.State),
+  Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "RLV") 0 = true ÔåÆ
+    Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "RLV") 1 = false
+Metronome.ChipCut.Discharge.DbgMapWire.emask_drain_01 : ÔêÇ (s : Metronome.ChipCut.State),
+  (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 8#32) = true ÔåÆ
+    (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 9#32) = false
+Metronome.ChipCut.Discharge.DbgMapWire.rlv_drain_01 : ÔêÇ (s : Metronome.ChipCut.State),
+  (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 18#32) = true ÔåÆ
+    (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == 19#32) = false
+@Metronome.ChipCut.Discharge.DbgMapWire.cwDrain_emask_addr : ÔêÇ {s : Metronome.ChipCut.State} {off : Nat},
+  off = 8 Ôê¿ off = 9 ÔåÆ
+    (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == BitVec.ofNat 32 off) = true ÔåÆ
+      s.cq.pendingAddr = Ôåæ(9320 + (off - 8))
+@Metronome.ChipCut.Discharge.DbgMapWire.cwDrain_rlv_addr : ÔêÇ {s : Metronome.ChipCut.State} {off : Nat},
+  off = 18 Ôê¿ off = 19 ÔåÆ
+    (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == BitVec.ofNat 32 off) = true ÔåÆ
+      s.cq.pendingAddr = Ôåæ(9330 + (off - 18))
+@Metronome.ChipCut.Discharge.DbgMapWire.emask_drain_imp_C : ÔêÇ {s : Metronome.ChipCut.State} {off : Nat},
+  off = 8 Ôê¿ off = 9 ÔåÆ
+    (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == BitVec.ofNat 32 off) = true ÔåÆ
+      (!s.freeze.frz && s.cq.pending && !(s.cq.pending && Metronome.Machine.Config.isCfgAddr s.cq.pendingAddr.toNat) &&
+          Metronome.Machine.cwRuntimeTarget s.cq.pendingAddr.toNat) =
+        true
+@Metronome.ChipCut.Discharge.DbgMapWire.rlv_drain_imp_C : ÔêÇ {s : Metronome.ChipCut.State} {off : Nat},
+  off = 18 Ôê¿ off = 19 ÔåÆ
+    (Metronome.ChipCut.cwDrain s && Metronome.Strobes.cwDbgOff s.cq.pendingAddr == BitVec.ofNat 32 off) = true ÔåÆ
+      (!s.freeze.frz && s.cq.pending && !(s.cq.pending && Metronome.Machine.Config.isCfgAddr s.cq.pendingAddr.toNat) &&
+          Metronome.Machine.cwRuntimeTarget s.cq.pendingAddr.toNat) =
+        true
+Metronome.ChipCut.Discharge.DbgMapWire.emask_hostOpt_eq : ÔêÇ (s : Metronome.ChipCut.State)
+  (pin : Metronome.Machine.PinIn),
+  Metronome.Bridge.Debug.hostOpt2 (Metronome.Bridge.Debug.emaskPort0 (Metronome.ChipCut.dbgCtrlIn s pin))
+      (Metronome.Bridge.Debug.emaskPort1 (Metronome.ChipCut.dbgCtrlIn s pin)) =
+    if
+        Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "EMASK") 0 =
+          true then
+      some (0, (Metronome.ChipCut.hwData s).toNat)
+    else
+      if
+          Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "EMASK") 1 =
+            true then
+        some (1, (Metronome.ChipCut.hwData s).toNat)
+      else none
+Metronome.ChipCut.Discharge.DbgMapWire.rlv_hostOpt_eq : ÔêÇ (s : Metronome.ChipCut.State) (pin : Metronome.Machine.PinIn),
+  Metronome.Bridge.Debug.hostOpt2 (Metronome.Bridge.Debug.rlvPort0 (Metronome.ChipCut.dbgCtrlIn s pin))
+      (Metronome.Bridge.Debug.rlvPort1 (Metronome.ChipCut.dbgCtrlIn s pin)) =
+    if Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "RLV") 0 = true then
+      some (0, (Metronome.ChipCut.hwData s).toNat)
+    else
+      if
+          Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "RLV") 1 =
+            true then
+        some (1, (Metronome.ChipCut.hwData s).toNat)
+      else none
+Metronome.ChipCut.Discharge.DbgMapWire.hostByteStrobe_emask0 : ÔêÇ (s : Metronome.ChipCut.State),
+  Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "EMASK") 0 =
+    Metronome.Strobes.hostDbg (Metronome.ChipCut.hwDbg s) (Metronome.ChipCut.dbgOff s.hostCmd.addr)
+      Metronome.Strobes.hoDbgEmask
+Metronome.ChipCut.Discharge.DbgMapWire.hostByteStrobe_emask1 : ÔêÇ (s : Metronome.ChipCut.State),
+  Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "EMASK") 1 =
+    Metronome.Strobes.hostDbg (Metronome.ChipCut.hwDbg s) (Metronome.ChipCut.dbgOff s.hostCmd.addr)
+      Metronome.Strobes.hoDbgEmaskPlus1
+Metronome.ChipCut.Discharge.DbgMapWire.hostByteStrobe_rlv0 : ÔêÇ (s : Metronome.ChipCut.State),
+  Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "RLV") 0 =
+    Metronome.Strobes.hostDbg (Metronome.ChipCut.hwDbg s) (Metronome.ChipCut.dbgOff s.hostCmd.addr)
+      Metronome.Strobes.hoDbgRlv
+Metronome.ChipCut.Discharge.DbgMapWire.hostByteStrobe_rlv1 : ÔêÇ (s : Metronome.ChipCut.State),
+  Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt (Metronome.ChipCut.hwOf s) "DBG" 0 "RLV") 1 =
+    Metronome.Strobes.hostDbg (Metronome.ChipCut.hwDbg s) (Metronome.ChipCut.dbgOff s.hostCmd.addr)
+      Metronome.Strobes.hoDbgRlvPlus1
+@Metronome.ChipCut.Discharge.DbgMapWire.hwAt_two_lane : ÔêÇ {o : Option Metronome.Machine.HostWr} {r : String} {v : Nat},
+  (ÔêÇ (j w : Nat), Metronome.Machine.Util.hwAt o "DBG" 0 r = some (j, w) ÔåÆ j < 2 Ôêº w = v) ÔåÆ
+    Metronome.Machine.Util.hwAt o "DBG" 0 r =
+      if Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt o "DBG" 0 r) 0 = true then some (0, v)
+      else if Metronome.ChipCut.byteStrobe (Metronome.Machine.Util.hwAt o "DBG" 0 r) 1 = true then some (1, v) else none
+@Metronome.ChipCut.Discharge.DbgMapWire.machCw_hwByte_ectl : ÔêÇ {s : Metronome.ChipCut.State}
+  {m : Metronome.Machine.State},
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.Machine.Util.hwByte (Metronome.ChipCut.Discharge.machCw m) "DBG" 0 "ECTL" =
+      if
+          (Metronome.ChipCut.cwDrain s &&
+              Metronome.Strobes.cwDbgOff s.cq.pendingAddr == BitVec.ofNat 32 Metronome.Strobes.hoDbgEctl) =
+            true then
+        some s.cq.pendingData.toNat
+      else none
+Metronome.ChipCut.Discharge.DbgMapWire.wit_coreOpt2_emask_coll : ÔêÇ (cont : Metronome.ChipCut.Contents)
+  (pin : Metronome.Machine.PinIn),
+  Metronome.Bridge.Debug.coreOpt2
+      (Metronome.Bridge.Debug.emaskPort0
+        (Metronome.ChipCut.dbgCtrlIn (Metronome.ChipCut.Discharge.DbgMapWire.witState cont 9320 9320) pin))
+      (Metronome.Bridge.Debug.emaskPort1
+        (Metronome.ChipCut.dbgCtrlIn (Metronome.ChipCut.Discharge.DbgMapWire.witState cont 9320 9320) pin)) =
+    none
+Metronome.ChipCut.Discharge.DbgMapWire.wit_chipRel : ÔêÇ (cont : Metronome.ChipCut.Contents) (ha hq : BitVec 16),
+  Metronome.ChipCut.ChipRel (Metronome.ChipCut.Discharge.DbgMapWire.witState cont ha hq)
+    (Metronome.ChipCut.absChip (Metronome.ChipCut.Discharge.DbgMapWire.witState cont ha hq))
+'Metronome.ChipCut.Discharge.DbgMapWire.dbgHEH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.dbgHESH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.dbgHRH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.dbgHRSH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.dbgHEC_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.dbgHRC_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.dbgHmctl' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.dbgHectl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.dbgEmaskValue_of' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.dbgRlvValue_of_wv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.dbgRlvValue_of' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.emask_value_of' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.rlv_value_of' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.rlv_value_of_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.dbg_wb_of_wv' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.dbg_bitAt_replayValid' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.byteW2_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.machCw_emask_lane' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.machCw_rlv_lane' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.machCw_runtime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.emask_host_01' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.rlv_host_01' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.emask_drain_01' depends on axioms: [propext]
+'Metronome.ChipCut.Discharge.DbgMapWire.rlv_drain_01' depends on axioms: [propext]
+'Metronome.ChipCut.Discharge.DbgMapWire.cwDrain_emask_addr' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.cwDrain_rlv_addr' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.emask_drain_imp_C' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.rlv_drain_imp_C' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.emask_hostOpt_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.rlv_hostOpt_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.hostByteStrobe_emask0' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.hostByteStrobe_rlv1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.DbgMapWire.wit_coreOpt2_emask_coll' depends on axioms: [propext, Quot.sound]

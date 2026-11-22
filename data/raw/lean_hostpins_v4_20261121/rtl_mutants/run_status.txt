@@ -1,0 +1,4 @@
+case	outcome	exit	expectation
+baseline	accepted	0	ok
+hostpins_tx_early	rejected (generated Lean: rejected by Lean (exit 1): 1020:53: error: unsolved goals)	1	ok
+hostpins_sck_from_s1	rejected (structural check: u_host.sck is not s2[8])	0	ok

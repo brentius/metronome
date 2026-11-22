@@ -1,0 +1,8 @@
+command: python code/tests/lean/verify.py --mutations --artifacts-dir data/raw/lean_full_v4_20261120d/proof (build/run_lean_full_awake.ps1 -> build/run_lean_full.sh)
+EXIT=0
+baseline accepted lines: 4
+mutation rejection lines: 36
+sorryAx in baseline proof logs/axiom audits: 0
+src unchanged vs HEAD: yes
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)

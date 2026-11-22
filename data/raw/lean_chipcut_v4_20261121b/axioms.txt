@@ -1,0 +1,51 @@
+﻿'Metronome.ChipCut.pins_of_rel' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.sideConds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Strobes.atMostOne_cases._native.bv_decide.ax_1_6,
+ Metronome.Strobes.hitsMask_atMostOne._native.bv_decide.ax_1_7]
+'Metronome.ChipCut.frozenNoMove' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.accHit_oneHotOrZero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Strobes.atMostOne_cases._native.bv_decide.ax_1_6,
+ Metronome.Strobes.hitsMask_atMostOne._native.bv_decide.ax_1_7]
+'Metronome.ChipCut.inv_reset' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.inv_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Mem.reqNext_three._native.bv_decide.ax_1_10]
+'Metronome.ChipCut.inv_trace' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Mem.reqNext_three._native.bv_decide.ax_1_10]
+'Metronome.ChipCut.rel_reset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.chip_reset_refines_rel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.chip_reset_refines' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.cfgNext_cwRel' depends on axioms: [propext]
+'Metronome.ChipCut.chip_step_refines' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.trace_refines' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Mem.reqNext_three._native.bv_decide.ax_1_10]
+Metronome.ChipCut.chip_reset_refines : ÔêÇ (s : Metronome.ChipCut.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.runRst s pin = false ÔåÆ
+    Metronome.ChipCut.ChipRel (Metronome.ChipCut.step s pin) (Metronome.Machine.step (Metronome.ChipCut.absChip s) pin)
+Metronome.ChipCut.chip_step_refines : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State)
+  (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      (Metronome.ChipCut.runRst s pin = true ÔåÆ Metronome.ChipCut.Premises s m pin) ÔåÆ
+        Metronome.ChipCut.ChipRel (Metronome.ChipCut.step s pin) (Metronome.Machine.step m pin)
+Metronome.ChipCut.trace_refines : ÔêÇ (pins : Nat ÔåÆ Metronome.Machine.PinIn) (cont : Metronome.ChipCut.Contents),
+  (ÔêÇ (n : Nat),
+      Metronome.ChipCut.runRst (Metronome.ChipCut.cutStateAt pins (Metronome.ChipCut.resetState cont) n) (pins n) =
+          true ÔåÆ
+        Metronome.ChipCut.Premises (Metronome.ChipCut.cutStateAt pins (Metronome.ChipCut.resetState cont) n)
+          (Metronome.ChipCut.machineStateAt pins (Metronome.ChipCut.absChip (Metronome.ChipCut.resetState cont)) n)
+          (pins n)) ÔåÆ
+    ÔêÇ (n : Nat),
+      Metronome.ChipCut.ChipRel (Metronome.ChipCut.cutStateAt pins (Metronome.ChipCut.resetState cont) n)
+        (Metronome.ChipCut.machineStateAt pins (Metronome.ChipCut.absChip (Metronome.ChipCut.resetState cont)) n)
+Metronome.ChipCut.Premises : Metronome.ChipCut.State ÔåÆ Metronome.Machine.State ÔåÆ Metronome.Machine.PinIn ÔåÆ Prop
+Metronome.ChipCut.ChipRel : Metronome.ChipCut.State ÔåÆ Metronome.Machine.State ÔåÆ Prop

@@ -1,0 +1,30 @@
+﻿'Metronome.ChipCut.Discharge.premise_lines' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Line.and_one_bne_zero_3._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Line.and_one_bne_zero_32._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Line.missBits_disj._native.bv_decide.ax_1_5,
+ Metronome.Bridge.Line.or3_as_pack3._native.bv_decide.ax_1_7]
+'Metronome.ChipCut.Discharge.premise_threads' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.machine_step_runStep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.runStep_lines' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.runStep_threads' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.runStep_lines_vec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.runStep_threads_vec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.lineIn_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.threadIn_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.trig_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.trigEvent_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.lcs_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.sync_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.dbg_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.lineComb_pin_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.lineNext_pin_congr' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.no_accept_of_disp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.ltThreadIn_dispatch_ready' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.corePick_ready' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.pickThread_some' depends on axioms: [propext]
+'Metronome.ChipCut.Discharge.getElem!_eq_get' depends on axioms: [propext]
+'Metronome.ChipCut.Discharge.activeStep_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.activeStep_thread' depends on axioms: [propext, Classical.choice, Quot.sound]
+

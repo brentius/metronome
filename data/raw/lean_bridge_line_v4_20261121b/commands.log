@@ -1,0 +1,27 @@
+# Bridge Line evidence: commands, exit codes and wall times
+
+Repo: C:\Users\b_yee23\Documents\projects\jane street comp
+Branch: metronome-v4.0 (worktree has unrelated uncommitted changes; nothing committed)
+Lean: 4.35.0 (core libraries only), `code/tests/lean`, `moreLeanArgs = ["-DwarningAsError=true"]`
+Environment: PowerShell, `$env:PATH="$env:USERPROFILE/.elan/bin;$env:PATH"`
+
+All commands were run from `code/tests/lean` unless stated otherwise.
+
+| # | Command | Exit | Wall time |
+|---|---|---|---|
+| 1 | `lake build Metronome.Bridge.Line` (full module compile, warnings as errors) | 0 | 16.7 s |
+| 2 | `lake build Metronome.Bridge.Line` (cached, build graph up to date) | 0 | 0.44 s |
+| 3 | `lake env lean Metronome/Bridge/Line.lean` (direct elaboration of the final file) | 0 | 21.0 s |
+| 4 | `lake env lean build/lean_scratch_bridge_line2/Axioms.lean` (`#print axioms` for all 226 theorems) | 0 | 2.9 s |
+| 5 | `git diff --quiet HEAD -- src` | 0 | <0.1 s |
+
+Notes:
+
+* Command 1 was the last full build after the final edits; output `Build completed successfully (22 jobs).`
+* No `sorry`, `sorryAx` or `native_decide` occurs in
+  `Metronome/Bridge/Line.lean`; `axioms.txt` contains the `#print axioms` lines
+  (the only non-core certificates are the `bv_decide` native-checker axioms used
+  by the existing `and_one_bne_zero_{16,3,32}` lemmas).
+* `git diff --quiet HEAD -- src` is true: `src/` was not modified.
+* Scratch directory `build/lean_scratch_bridge_line2/` was used for incremental
+  development and deleted at the end.

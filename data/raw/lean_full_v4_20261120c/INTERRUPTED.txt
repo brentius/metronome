@@ -1,0 +1,1 @@
+Stopped with EXIT=1 after 'bank baseline: accepted': the first bank-mutant Yosys elaboration raised TimeoutExpired with a negative elapsed time (-7753 s), consistent with a host sleep/clock jump rather than a proof failure. All 18 verify.py cases and the bank baseline completed as expected before that. Superseded by lean_full_v4_20261120d.

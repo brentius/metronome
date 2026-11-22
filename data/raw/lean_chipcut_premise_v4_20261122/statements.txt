@@ -1,0 +1,27 @@
+﻿pack6 : BitVec 5 ÔåÆ BitVec 5 ÔåÆ BitVec 5 ÔåÆ BitVec 5 ÔåÆ BitVec 5 ÔåÆ BitVec 5 ÔåÆ BitVec 30
+grpAt : Nat ÔåÆ BitVec 5 ÔåÆ BitVec 5 ÔåÆ BitVec 5 ÔåÆ BitVec 5 ÔåÆ BitVec 5 ÔåÆ BitVec 5 ÔåÆ BitVec 5
+pack6_slice : ÔêÇ (x0 x1 x2 x3 x4 x5 : BitVec 5) (q : Nat),
+  q < 6 ÔåÆ Metronome.CoreCtl.slice (pack6 x0 x1 x2 x3 x4 x5) (5 * q) 5 = grpAt q x0 x1 x2 x3 x4 x5
+mapOfWith_slice : ÔêÇ (tab : BitVec 320) (dst : BitVec 36) (q : Nat),
+  q < 6 ÔåÆ
+    Metronome.CoreCtl.slice (Metronome.Moves.mapOfWith tab dst) (5 * q) 5 =
+      Metronome.Moves.dgLookupAt tab (Metronome.CoreCtl.slice dst (6 * q) 6)
+grpPacked_holds : ÔêÇ (s : Metronome.ChipCut.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.Discharge.MoveFabricKeyed.GrpPacked s pin
+hostCfgOf_isSome_wr : ÔêÇ (s : Metronome.ChipCut.State),
+  (Metronome.ChipCut.hostCfgOf s).isSome = true ÔåÆ s.hostCmd.wr = true
+completing_bitc : ÔêÇ (s : Metronome.HostCmd.State) (i : Metronome.HostCmd.Input),
+  Metronome.HostCmd.completing s i = true ÔåÆ s.bitc = 7
+cwH19_step : ÔêÇ (s : Metronome.ChipCut.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.Discharge.HostPinInv s ÔåÆ
+    ┬¼((Metronome.ChipCut.step s pin).arb.heldValid = true Ôêº
+        (Metronome.ChipCut.hostCfgOf (Metronome.ChipCut.step s pin)).isSome = true)
+cwH19_reset : ÔêÇ (cont : Metronome.ChipCut.Contents),
+  ┬¼((Metronome.ChipCut.resetState cont).arb.heldValid = true Ôêº
+      (Metronome.ChipCut.hostCfgOf (Metronome.ChipCut.resetState cont)).isSome = true)
+hostPinInv_trace : ÔêÇ (pins : Nat ÔåÆ Metronome.Machine.PinIn) (cont : Metronome.ChipCut.Contents) (n : Nat),
+  Metronome.ChipCut.Discharge.HostPinInv (Metronome.ChipCut.cutStateAt pins (Metronome.ChipCut.resetState cont) n)
+cwH19_trace : ÔêÇ (pins : Nat ÔåÆ Metronome.Machine.PinIn) (cont : Metronome.ChipCut.Contents) (n : Nat),
+  ┬¼((Metronome.ChipCut.cutStateAt pins (Metronome.ChipCut.resetState cont) n).arb.heldValid = true Ôêº
+      (Metronome.ChipCut.hostCfgOf (Metronome.ChipCut.cutStateAt pins (Metronome.ChipCut.resetState cont) n)).isSome =
+        true)

@@ -1,0 +1,6 @@
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Build completed successfully (10 jobs).
+baseline: accepted
+hostpins_tx_early: rejected (generated Lean: rejected by Lean (exit 1): 1020:53: error: unsolved goals)
+hostpins_sck_from_s1: rejected (structural check: u_host.sck is not s2[8])

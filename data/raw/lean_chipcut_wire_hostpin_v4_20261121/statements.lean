@@ -1,0 +1,20 @@
+import Metronome.ChipCut.Discharge.HostPinWire
+open Metronome
+open Metronome.ChipCut.Discharge
+set_option pp.fullNames true
+#check @wire_pinLvl
+#check @wire_pinPrev
+#check @wire_pinAgree
+#check @wire_hCtl
+#check @wire_hPC
+#check @wire_hStat
+#check @wire_hTapmissClr
+#check @wire_beat
+#check @hcfg
+#check @dbgWire_hdbg
+#check @dbgWire_hESC
+#check @dbgWire_hRSC
+#check @hostReq_open_strobe
+#check @quiet_wr
+#check @host_open_regVal_of
+#check @HostPinInv

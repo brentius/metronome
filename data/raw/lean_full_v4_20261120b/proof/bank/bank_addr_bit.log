@@ -1,0 +1,507 @@
+RTL snapshot SHA-256: 938ef0e4d31bc34cb046372e1c5a162f866446d8e1ebabd4d1c497fb58e2d271
+Yosys command: read_verilog -I src src/cells_behav.v src/md2_acc.v src/md2_cfg_bank.v src/md2_core.v src/md2_counter.v src/md2_dmem.v src/md2_host.v src/md2_lfsr.v src/md2_line.v src/md2_mem.v src/md2_pmem.v src/md2_shifter.v src/md2_sram_bb.v src/md2_stream.v src/md2_thread.v src/project.v; hierarchy -check -top tt_um_brentius_metronome; proc; opt_clean; write_json design.json
+Warning: Latch inferred for signal `\cfg_lgcp_beh.\int_gate' from process `\cfg_lgcp_beh.$src/cells_behav.v:23$proc$3': $auto$proc_dlatch.cc:559:proc_dlatch$13762
+Warning: Latch inferred for signal `\cfg_dlhrq_beh.\Q' from process `\cfg_dlhrq_beh.$src/cells_behav.v:15$proc$1': $auto$proc_dlatch.cc:555:proc_dlatch$13783
+Bank geometry: 480 offsets, 284 live byte(s), 2112 latch bit(s)
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:47:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 1#9
+'Metronome.BankEquivalence.enable0_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable0_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:70:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 0#9
+'Metronome.BankEquivalence.enable1_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable1_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:93:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 3#9
+'Metronome.BankEquivalence.enable2_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable2_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:116:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 2#9
+'Metronome.BankEquivalence.enable3_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable3_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:139:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 5#9
+'Metronome.BankEquivalence.enable4_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable4_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:162:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 4#9
+'Metronome.BankEquivalence.enable5_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable5_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:185:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 7#9
+'Metronome.BankEquivalence.enable6_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable6_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:208:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 6#9
+'Metronome.BankEquivalence.enable7_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable7_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:231:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 9#9
+'Metronome.BankEquivalence.enable8_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable8_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:254:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 8#9
+'Metronome.BankEquivalence.enable9_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable9_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:277:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 11#9
+'Metronome.BankEquivalence.enable10_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable10_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:300:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 10#9
+'Metronome.BankEquivalence.enable11_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable11_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:323:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 13#9
+'Metronome.BankEquivalence.enable12_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable12_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:346:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 12#9
+'Metronome.BankEquivalence.enable13_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable13_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:369:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 15#9
+'Metronome.BankEquivalence.enable14_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable14_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:392:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 14#9
+'Metronome.BankEquivalence.enable15_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable15_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:415:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 17#9
+'Metronome.BankEquivalence.enable16_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable16_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:438:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 16#9
+'Metronome.BankEquivalence.enable17_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable17_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:461:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 19#9
+'Metronome.BankEquivalence.enable18_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable18_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:484:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 18#9
+'Metronome.BankEquivalence.enable19_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable19_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:507:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 21#9
+'Metronome.BankEquivalence.enable20_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable20_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:530:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 20#9
+'Metronome.BankEquivalence.enable21_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable21_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:553:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 23#9
+'Metronome.BankEquivalence.enable22_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable22_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:576:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 22#9
+'Metronome.BankEquivalence.enable23_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable23_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:599:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 25#9
+'Metronome.BankEquivalence.enable24_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable24_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:622:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 24#9
+'Metronome.BankEquivalence.enable25_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable25_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:645:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 27#9
+'Metronome.BankEquivalence.enable26_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable26_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:668:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 26#9
+'Metronome.BankEquivalence.enable27_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable27_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:691:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 29#9
+'Metronome.BankEquivalence.enable28_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable28_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:714:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 33#9
+'Metronome.BankEquivalence.enable32_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable32_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:737:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 32#9
+'Metronome.BankEquivalence.enable33_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable33_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:760:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 35#9
+'Metronome.BankEquivalence.enable34_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable34_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:783:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 34#9
+'Metronome.BankEquivalence.enable35_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable35_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:806:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 37#9
+'Metronome.BankEquivalence.enable36_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable36_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:829:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 36#9
+'Metronome.BankEquivalence.enable37_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable37_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:852:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 39#9
+'Metronome.BankEquivalence.enable38_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable38_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:875:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 38#9
+'Metronome.BankEquivalence.enable39_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable39_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:898:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 41#9
+'Metronome.BankEquivalence.enable40_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable40_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:921:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 40#9
+'Metronome.BankEquivalence.enable41_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable41_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:944:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 43#9
+'Metronome.BankEquivalence.enable42_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable42_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:967:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 42#9
+'Metronome.BankEquivalence.enable43_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable43_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:990:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 45#9
+'Metronome.BankEquivalence.enable44_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable44_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1013:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 44#9
+'Metronome.BankEquivalence.enable45_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable45_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1036:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 47#9
+'Metronome.BankEquivalence.enable46_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable46_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1059:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 46#9
+'Metronome.BankEquivalence.enable47_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable47_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1082:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 49#9
+'Metronome.BankEquivalence.enable48_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable48_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1105:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 48#9
+'Metronome.BankEquivalence.enable49_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable49_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1128:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 51#9
+'Metronome.BankEquivalence.enable50_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable50_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1151:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 50#9
+'Metronome.BankEquivalence.enable51_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable51_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1174:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 53#9
+'Metronome.BankEquivalence.enable52_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable52_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1197:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 52#9
+'Metronome.BankEquivalence.enable53_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable53_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1220:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 55#9
+'Metronome.BankEquivalence.enable54_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable54_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1243:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 54#9
+'Metronome.BankEquivalence.enable55_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable55_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1266:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 57#9
+'Metronome.BankEquivalence.enable56_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable56_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1289:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 56#9
+'Metronome.BankEquivalence.enable57_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable57_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1312:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 59#9
+'Metronome.BankEquivalence.enable58_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable58_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1335:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 58#9
+'Metronome.BankEquivalence.enable59_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable59_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1358:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 61#9
+'Metronome.BankEquivalence.enable60_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable60_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1381:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 65#9
+'Metronome.BankEquivalence.enable64_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable64_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1404:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 64#9
+'Metronome.BankEquivalence.enable65_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable65_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1427:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 67#9
+'Metronome.BankEquivalence.enable66_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable66_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1450:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 66#9
+'Metronome.BankEquivalence.enable67_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable67_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1473:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 69#9
+'Metronome.BankEquivalence.enable68_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable68_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1496:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 68#9
+'Metronome.BankEquivalence.enable69_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable69_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1519:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 71#9
+'Metronome.BankEquivalence.enable70_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable70_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1542:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 70#9
+'Metronome.BankEquivalence.enable71_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable71_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1565:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 73#9
+'Metronome.BankEquivalence.enable72_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable72_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1588:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 72#9
+'Metronome.BankEquivalence.enable73_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable73_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1611:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 75#9
+'Metronome.BankEquivalence.enable74_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable74_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1634:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 74#9
+'Metronome.BankEquivalence.enable75_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable75_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1657:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 77#9
+'Metronome.BankEquivalence.enable76_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable76_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1680:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 76#9
+'Metronome.BankEquivalence.enable77_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable77_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1703:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 79#9
+'Metronome.BankEquivalence.enable78_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable78_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1726:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 78#9
+'Metronome.BankEquivalence.enable79_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable79_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1749:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 81#9
+'Metronome.BankEquivalence.enable80_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable80_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1772:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 80#9
+'Metronome.BankEquivalence.enable81_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable81_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1795:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 83#9
+'Metronome.BankEquivalence.enable82_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable82_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1818:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 82#9
+'Metronome.BankEquivalence.enable83_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable83_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1841:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 85#9
+'Metronome.BankEquivalence.enable84_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable84_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1864:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 84#9
+'Metronome.BankEquivalence.enable85_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable85_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1887:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 87#9
+'Metronome.BankEquivalence.enable86_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable86_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1910:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 86#9
+'Metronome.BankEquivalence.enable87_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable87_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1933:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 89#9
+'Metronome.BankEquivalence.enable88_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable88_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1956:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 88#9
+'Metronome.BankEquivalence.enable89_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable89_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:1979:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 91#9
+'Metronome.BankEquivalence.enable90_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable90_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:2002:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 90#9
+'Metronome.BankEquivalence.enable91_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable91_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:2025:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 93#9
+'Metronome.BankEquivalence.enable92_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable92_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:2048:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 97#9
+'Metronome.BankEquivalence.enable96_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable96_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:2071:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 96#9
+'Metronome.BankEquivalence.enable97_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable97_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:2094:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 99#9
+'Metronome.BankEquivalence.enable98_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable98_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:2117:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 98#9
+'Metronome.BankEquivalence.enable99_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable99_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:2140:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 101#9
+'Metronome.BankEquivalence.enable100_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable100_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:2163:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 100#9
+'Metronome.BankEquivalence.enable101_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable101_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:2186:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 103#9
+'Metronome.BankEquivalence.enable102_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable102_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:2209:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 102#9
+'Metronome.BankEquivalence.enable103_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable103_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:2232:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 105#9
+'Metronome.BankEquivalence.enable104_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable104_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:2255:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 104#9
+'Metronome.BankEquivalence.enable105_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable105_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:2278:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 107#9
+'Metronome.BankEquivalence.enable106_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable106_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:2301:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 106#9
+'Metronome.BankEquivalence.enable107_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable107_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:2324:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 109#9
+'Metronome.BankEquivalence.enable108_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.BankEquivalence.enable108_open' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-o9bl3mmn\BankProof.lean:2347:2: error: maximum number of errors (100; from option `maxErrors`) reached, exiting
+-- bank_addr_bit: rejected by Lean (exit 1)

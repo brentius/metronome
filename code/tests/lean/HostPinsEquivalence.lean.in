@@ -1,0 +1,176 @@
+set_option linter.unusedSimpArgs false
+
+namespace Metronome.HostPins
+
+/-! ## The elaborated pin trace is the composed specification's trace -/
+
+/-- The read machine's input trace through the elaborated synchronisers, the
+`u_host` wiring and the free `rd_val`/landing inputs. -/
+def rtlReadInputs (raws : Nat → BitVec 16) (rst : Nat → Bool) (initial : SpiPins.Sync)
+    (rdData : Nat → Bool) (rdVal : Nat → BitVec 8) (hland : Nat → Bool)
+    (hlandD : Nat → BitVec 8) : Nat → HostRead.Input :=
+  fun n =>
+    let w := SpiPins.rtlHostInputs raws rst initial rdData hland n
+    ⟨w.resetN, w.sck, w.sckPrev, w.csN, w.mosi, w.rdData, rdVal n, w.hland, hlandD n⟩
+
+/-- The elaborated pin trace is the specification's input trace. -/
+theorem rtlReadInputs_eq (raws : Nat → BitVec 16) (rst : Nat → Bool) (initial : SpiPins.Sync)
+    (rdData : Nat → Bool) (rdVal : Nat → BitVec 8) (hland : Nat → Bool)
+    (hlandD : Nat → BitVec 8) (n : Nat) :
+    rtlReadInputs raws rst initial rdData rdVal hland hlandD n
+      = readInputs raws rst initial rdData rdVal hland hlandD n := by
+  simp only [rtlReadInputs, readInputs, SpiPins.rtlHostInputs_eq]
+
+/-- The read extract's address field is the host command cut's transition: the
+composed `rtlStep` emits it as `(HostCmd.rtlStep …).addr`, so this is
+definitional. -/
+theorem rtlAddr_bridge (state : HostRead.State) (input : HostRead.Input) :
+    (HostRead.rtlStep state input).addr
+      = (HostCmd.rtlStep (state.toHostCmd 0#8) input.toHostCmd).addr := rfl
+
+/-- `HostRead.AddrOk` holds of the elaborated design: it is the host command
+cut's `HostCmd.rtlAddr`, so the read path's transition theorem holds of the RTL
+without the hypothesis. -/
+theorem rtlAddrOk (state : HostRead.State) (input : HostRead.Input) :
+    HostRead.AddrOk state input := by
+  show (HostRead.rtlStep state input).addr = HostRead.addrNext state input
+  rw [rtlAddr_bridge]
+  exact HostCmd.rtlAddr (state.toHostCmd 0#8) input.toHostCmd
+
+/-- The elaborated read transition is the specification's. -/
+theorem rtlReadStep_eq_step (state : HostRead.State) (input : HostRead.Input) :
+    HostRead.rtlStep state input = HostRead.step state input :=
+  HostRead.rtlStep_eq_step state input (rtlAddrOk state input)
+
+/-- The elaborated read trace is the specification trace at every cycle. -/
+theorem rtlReadStateAt_eq (inputs : Nat → HostRead.Input) (initial : HostRead.State)
+    (n : Nat) : HostRead.rtlStateAt inputs initial n = HostRead.stateAt inputs initial n := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+    show HostRead.rtlStep (HostRead.rtlStateAt inputs initial n) (inputs n)
+      = HostRead.step (HostRead.stateAt inputs initial n) (inputs n)
+    rw [ih, rtlReadStep_eq_step]
+
+/-- The elaborated pin trace is the specification trace at every cycle. -/
+theorem rtlReadInputs_stateAt_eq (raws : Nat → BitVec 16) (rst : Nat → Bool)
+    (initial : SpiPins.Sync) (rdData : Nat → Bool) (rdVal : Nat → BitVec 8)
+    (hland : Nat → Bool) (hlandD : Nat → BitVec 8) (n : Nat) :
+    HostRead.rtlStateAt (rtlReadInputs raws rst initial rdData rdVal hland hlandD)
+        HostRead.resetState n
+      = HostRead.stateAt (readInputs raws rst initial rdData rdVal hland hlandD)
+        HostRead.resetState n := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+    show HostRead.rtlStep (HostRead.rtlStateAt (rtlReadInputs raws rst initial rdData rdVal
+        hland hlandD) HostRead.resetState n)
+        (rtlReadInputs raws rst initial rdData rdVal hland hlandD n)
+      = HostRead.step (HostRead.stateAt (readInputs raws rst initial rdData rdVal hland hlandD)
+        HostRead.resetState n)
+        (readInputs raws rst initial rdData rdVal hland hlandD n)
+    rw [ih, rtlReadStep_eq_step, rtlReadInputs_eq]
+
+/-! ## The composed read transaction at the pins -/
+
+/-- **The composed read transaction.**  A pin-level read transaction (`0x03`,
+`AH`, `AL`, then data bytes) drives the *elaborated* host link: the bit on the
+MISO pin in slot `k` is the `rdValSpec` of `{AH, AL} + k` at that slot's request
+cycle, sampled MSB first on the slot's eight rising `SCK` edges.  The `rd_val`
+input of the cut is the elaborated mux of the address register and the register
+file (`hval`); everything else is the pin waveform. -/
+theorem rtl_transaction_read_bytes (raws : Nat → BitVec 16) (rst : Nat → Bool)
+    (initial : SpiPins.Sync) (rdData : Nat → Bool) (rdVal : Nat → BitVec 8)
+    (hland : Nat → Bool) (hlandD : Nat → BitVec 8) (first period nbytes : Nat)
+    (bytes : Nat → BitVec 8) (regs : Nat → HostRead.Regs)
+    (hp : 3 ≤ period) (hf : 3 ≤ first) (hnb : 3 ≤ nbytes)
+    (hinit : initial = SpiPins.resetState)
+    (hreset : ∀ j, rst j = true)
+    (hcs : ∀ j, SpiPins.bit (raws j) 9 = false)
+    (hrise : ∀ k, k < 8 * nbytes → SpiPins.pinRise raws (SpiPins.srAt first period k) = true)
+    (honly : ∀ m, SpiPins.pinRise raws m = true → ∃ k, m = SpiPins.srAt first period k)
+    (hbit : ∀ m k, m < 3 → k < 8 →
+      SpiPins.bit (raws (SpiPins.srAt first period (8 * m + k) - 2)) 10 = SpiPins.bit8 (bytes m) (7 - k))
+    (hcmd : bytes 0 = HostCmd.CMD_READ)
+    (hackAddr : ∀ j, j < SpiPins.srAt first period (8 * 2 + 7) + 1 →
+      HostCmd.ackBit (HostCmd.stateAt (cins raws rst initial rdData hland) HostCmd.resetState j)
+        (cins raws rst initial rdData hland j) = false)
+    (hnoland : ∀ j, j < SpiPins.srAt first period (8 * nbytes) →
+      (readInputs raws rst initial rdData rdVal hland hlandD j).hland = false)
+    (hackSlot : ∀ k, k + 3 < nbytes → ∀ j, SpiPins.srAt first period (8 * (3 + k)) ≤ j →
+      j < SpiPins.srAt first period (8 * (3 + k) + 8) →
+      HostRead.ack (HostRead.stateAt (readInputs raws rst initial rdData rdVal hland hlandD)
+        HostRead.resetState j) (readInputs raws rst initial rdData rdVal hland hlandD j) = false)
+    (hrdData : ∀ k, (readInputs raws rst initial rdData rdVal hland hlandD
+      (reqAt first period k)).rdData = false)
+    (hval : ∀ n, rdVal n = HostRead.rtlRdVal
+      (HostRead.stateAt (readInputs raws rst initial rdData rdVal hland hlandD)
+        HostRead.resetState n).addr (regs n)) :
+    ∀ k, k + 3 < nbytes → ∀ j, j < 8 →
+      HostRead.rtlMiso (HostRead.rtlStateAt
+        (rtlReadInputs raws rst initial rdData rdVal hland hlandD) HostRead.resetState
+        (SpiPins.srAt first period (8 * (3 + k) + j)))
+      = HostRead.bitAt (HostRead.rdValSpec ((bytes 1 ++ bytes 2) + (k : BitVec 16))
+          (regs (reqAt first period k))) (7 - j) := by
+  intro k hk j hj
+  have hspec := transaction_read_bytes raws rst initial rdData rdVal hland hlandD first period
+    nbytes bytes hp hf hnb hinit hreset hcs hrise honly hbit hcmd hackAddr hnoland hackSlot
+    hrdData k hk
+  have hvalR : (readInputs raws rst initial rdData rdVal hland hlandD
+      (reqAt first period k)).rdVal
+      = HostRead.rdValSpec ((bytes 1 ++ bytes 2) + (k : BitVec 16))
+          (regs (reqAt first period k)) := by
+    show rdVal (reqAt first period k) = _
+    rw [hval (reqAt first period k), hspec.2.1, HostRead.rtlRdVal_eq_spec]
+  rw [rtlReadInputs_stateAt_eq, HostRead.rtlMiso_eq_tx7, hspec.2.2.2 j hj, hvalR]
+
+/-! ## The composed write transaction at the pins -/
+
+/-- **The composed write target.**  A pin-level write transaction drives the
+*elaborated* host link's strobe, and at that strobe the host map enables at most
+one write target. -/
+theorem rtl_transaction_write_target (raws : Nat → BitVec 16) (rst : Nat → Bool)
+    (initial : SpiPins.Sync) (rdData hland : Nat → Bool) (first period nbytes : Nat)
+    (bytes : Nat → BitVec 8) (live : Bool)
+    (hp : 2 ≤ period) (hf : 3 ≤ first) (hnb : 3 ≤ nbytes)
+    (hinit : initial = SpiPins.resetState)
+    (hreset : ∀ j, rst j = true)
+    (hcs : ∀ j, SpiPins.bit (raws j) 9 = false)
+    (hrise : ∀ k, SpiPins.pinRise raws (SpiPins.srAt first period k) = true)
+    (honly : ∀ m, SpiPins.pinRise raws m = true → ∃ k, m = SpiPins.srAt first period k)
+    (hbit : ∀ m k, m < nbytes → k < 8 →
+      SpiPins.bit (raws (SpiPins.srAt first period (8 * m + k) - 2)) 10 = SpiPins.bit8 (bytes m) (7 - k))
+    (hcmd : bytes 0 = HostCmd.CMD_WRITE)
+    (hack : ∀ j, HostCmd.ackBit
+      (HostCmd.stateAt (cins raws rst initial rdData hland) HostCmd.resetState j)
+      (cins raws rst initial rdData hland j) = false) :
+    ∀ j, j + 3 < nbytes →
+      (HostCmd.stateAt (SpiPins.rtlHostInputs raws rst initial rdData hland)
+          HostCmd.resetState (SpiPins.srAt first period (8 * (3 + j) + 7) + 1)).wr = true ∧
+        (HostCmd.stateAt (SpiPins.rtlHostInputs raws rst initial rdData hland)
+          HostCmd.resetState (SpiPins.srAt first period (8 * (3 + j) + 7) + 1)).addr
+          = (bytes 1 ++ bytes 2) + (j : BitVec 16) ∧
+        (HostCmd.stateAt (SpiPins.rtlHostInputs raws rst initial rdData hland)
+          HostCmd.resetState (SpiPins.srAt first period (8 * (3 + j) + 7) + 1)).wdata
+          = bytes (3 + j) ∧
+        HostMap.bitCount (HostMap.enabledSels live true
+          ((bytes 1 ++ bytes 2) + (j : BitVec 16))) ≤ 1 := by
+  intro j hj
+  have hspec := transaction_write_target raws rst initial rdData hland first period nbytes
+    bytes live hp hf hnb hinit hreset hcs hrise honly hbit hcmd hack j hj
+  rw [SpiPins.rtl_stateAt_eq]
+  exact ⟨hspec.1, hspec.2.1, hspec.2.2.1, hspec.2.2.2.1⟩
+
+/-! ## Axiom audit -/
+
+#print axioms rtlReadInputs_eq
+#print axioms rtlAddrOk
+#print axioms rtlReadStep_eq_step
+#print axioms rtlReadStateAt_eq
+#print axioms rtlReadInputs_stateAt_eq
+#print axioms rtl_transaction_read_bytes
+#print axioms rtl_transaction_write_target
+#print axioms transaction_read_bytes
+#print axioms transaction_write_target
+
+end Metronome.HostPins

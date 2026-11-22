@@ -1,0 +1,33 @@
+﻿# Commands, exit codes and wall times
+# Lean 4.35.0 (core libraries only), branch metronome-v4.0, cwd code/tests/lean
+# acceptance flag -DwarningAsError=true comes from lakefile.toml (moreLeanArgs)
+# wall times vary with the concurrent builds of the other discharge agents
+#
+# round 2 (2026-11-22, after the shIn.we wiring fix in Wire.lean:610):
+#   - dependency rebuild against the new Wire.lean (ChipCut + all discharge files):
+#       lake build Metronome.ChipCut.Discharge.MoveFabric   exit=0, wall=129s
+#       (Wire -> Proof -> LineThread/Glue/MemHostCfg/StreamDbg/CoreUnits -> MoveFabric)
+
+cmd: lake env lean -DwarningAsError=true Metronome/ChipCut/Discharge/MoveFabricUnits.lean
+exit=0
+wall=7s
+
+cmd: lake build Metronome.ChipCut.Discharge.MoveFabricUnits   (ACCEPTANCE)
+exit=0
+wall=0s
+
+cmd: lake env lean --run ../../../data/raw/lean_chipcut_wire_movefabric_units_v4_20261122/decode_check_ports.lean   (compiled check of DstPortTable)
+exit=0
+wall=2s
+
+cmd: lake env lean -DwarningAsError=true ../../../data/raw/lean_chipcut_wire_movefabric_units_v4_20261122/axioms.lean   (#print axioms -> axioms.txt)
+exit=0
+wall=3s
+
+cmd: lake build Metronome.ChipCut   (regression)
+exit=0
+wall=5s
+
+cmd: git diff --quiet HEAD -- src
+exit=0  (0 = src/ untouched)
+wall=0s

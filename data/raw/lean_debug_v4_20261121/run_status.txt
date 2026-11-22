@@ -1,0 +1,10 @@
+case	outcome	exit	expectation
+baseline	accepted	0	ok
+misr_poly	rejected (generated Lean: rejected by Lean (exit 1): rtlMisr_eq)	1	ok
+misr_frozen	rejected (structural check: misr: the bound leaf `i.frz` is not used)	0	ok
+replay_mask_ignores_emask	rejected (structural check: pins_level: the bound leaf `emask` is not used)	0	ok
+ectl_core_beats_host	rejected (structural check: replay: the bound leaf `i.hEctl` is not used)	0	ok
+dc_not_cleared	rejected (generated Lean: rejected by Lean (exit 1): rtlDc_eq)	1	ok
+pins_high_s2	rejected (structural check: tt_um_brentius_metronome.lvl: bits 13..15 are not tied to 0 (SPEC_V2 §2))	0	ok
+pm_be_shift_one	rejected (generated Lean: rejected by Lean (exit 1): rtlPmBe_eq)	1	ok
+rstq_one_stage	rejected (structural check: tt_um_brentius_metronome.rst_m: missing net)	0	ok

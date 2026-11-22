@@ -1,0 +1,29 @@
+# Evidence: Metronome.ChipCut.Discharge.CoreUnits (ChipCut premise discharge: cores, units)
+# Machine: Windows 10 (win32), Lean 4.35.0 (commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc),
+# elan toolchain from code/tests/lean/lean-toolchain, no Mathlib (core libraries only).
+# Date: 2026-11-21, branch metronome-v4.0.
+# Shell: PowerShell.  $env:PATH = "$env:USERPROFILE/.elan/bin;$env:PATH"
+
+# --- clean rebuild of just this module (-DwarningAsError=true from lakefile.toml) ---
+# (removed .lake/build/lib/lean/Metronome/ChipCut/Discharge/CoreUnits.olean first)
+cd code/tests/lean
+lake build Metronome.ChipCut.Discharge.CoreUnits
+#   exit 0, wall 15.1 s
+#   log: build.log ("Build completed successfully (59 jobs).")
+
+# --- #print axioms for every premise and headline theorem ---
+lake env lean ..\..\..\data\raw\lean_chipcut_discharge_coreunits_v4_20261121\axioms.lean
+#   exit 0, wall 5.8 s
+#   output: axioms.txt
+#   premise_cores:    [propext, Classical.choice, Quot.sound]
+#   premise_units:    [propext, Classical.choice, Quot.sound] + the pre-existing bridge
+#                     bv_decide certificates (Strobes.atMostOne_cases/hitsMask_atMostOne,
+#                     AccB.rNext_bytes, CounterB.setByte_lo/hi, LfsrB.setByte_p0..p3)
+#   no sorryAx, no native_decide in this file.
+
+# --- source hygiene ---
+Select-String -Path Metronome/ChipCut/Discharge/CoreUnits.lean -Pattern "sorry|native_decide|admit"
+#   no matches; 847 lines (below the 3000-line split threshold)
+cd ../../..
+git diff --quiet HEAD -- src
+#   exit 0 (src/ untouched)

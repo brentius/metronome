@@ -1,0 +1,10 @@
+case	outcome	exit	expectation
+baseline	accepted	0	ok
+mem_p0_over_s1	rejected (generated Lean: rtlReq)	1	ok
+mem_host_first	rejected (generated Lean: rtlHostQ)	1	ok
+mem_host_lane	rejected (generated Lean: rtlHLane)	1	ok
+mem_host_no_overwrite	rejected (generated Lean: rtlHostQ)	1	ok
+mem_p0_rdy_early	rejected (generated Lean: rtlRdy)	1	ok
+mem_ptr_wrap_1024	rejected (generated Lean: rtlPtr)	1	ok
+mem_s0_word_be	rejected (generated Lean: rtlMBe)	1	ok
+mem_dmem_lane	rejected (structural check: u_sram.A_BM: bit 0 is not be[0])	0	ok

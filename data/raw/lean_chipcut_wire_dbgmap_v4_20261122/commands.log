@@ -1,0 +1,68 @@
+Date: 2026-11-22 (round 2, after the `Wire.lean` hEm0/hRlv0 fix).
+Toolchain: Lean 4.35.0 (elan), core libraries only; lake with
+-DwarningAsError=true (from lakefile.toml).  Working directory:
+code/tests/lean (unless noted).
+
+Round 1 (2026-11-22, before the fix): the two-byte registers were
+register-level host flags; the six leaves were refuted on a cycle with host
+byte 1 + drain byte 0.  Records: earlier entries in this log and
+`WIRE_DBGMAP_NOTES.md`.
+
+Round 2:
+1) baseline: lake build Metronome.ChipCut.Discharge.DbgMapWire
+   -> exit 1: the old byte-1 witnesses no longer typecheck under the fixed
+      `Wire.dbgCtrlIn` (expected; rewritten below).  ~10 s.
+2) Lake failed transiently on other threads' modules while they were being
+   edited; retried.  (During the round StreamDbg/LineThread rebuilt several
+   times; our module was rebuilt after each.)
+3) successive module builds while extending the file:
+   round a (same-byte witnesses + coreOpt2 lemmas):   exit 0, 5.1 s
+   round b (host/exclusivity leaf proofs + geometry):  exit 0, 4.4 s
+   round c (byteW2_value, 9-case value lemma):         exit 0, 4.9 s
+   round d (emask_value_of):                           exit 0, 6.0 s
+   round e (rlv_value_of):                             exit 0, 4.6 s   <-- final content
+   re-run (up to date):                                exit 0, 0.4 s
+4) statements + axioms:
+   lake env lean ..\..\..\data\raw\lean_chipcut_wire_dbgmap_v4_20261122\axioms.lean
+   -> exit 0, 2.1 s; axioms.txt: the delivered theorems depend only on
+      [propext, Classical.choice, Quot.sound]; no sorryAx, no bv_decide.
+5) sanity:
+   git diff --stat HEAD -- src      -> empty
+   git status --short: only our new file, our notes and the evidence dir
+   (all other modifications are other threads' work).
+
+Round 3 (same day, packaging the drain decode and the two value fields):
+6) successive module builds (lake build Metronome.ChipCut.Discharge.DbgMapWire):
+   lane/exclusivity lemmas (host_01, drain_01, addr pinning): exit 1 -> fixed, ~35 s once (full recompile)
+   machCw_runtime + drain-imp-C + machCw_emask_lane:          exit 0, 8.0 s
+   machCw_rlv_lane:                                           exit 0, 6.1 s
+   hostOpt bridges + dbgEmaskValue_of/dbgRlvValue_of:         exit 1 -> two
+     type errors (hostOpt2 vs byteStrobe shape); added
+     emask_hostOpt_eq/rlv_hostOpt_eq:                          exit 0, 6.9 s
+   re-run (up to date):                                        exit 0, ~1 s
+7) statements + axioms:
+   lake env lean ..\..\..\data\raw\lean_chipcut_wire_dbgmap_v4_20261122\axioms.lean
+   -> exit 0, 2.4 s; axioms.txt: 29 #print axioms entries, all subsets of
+      [propext, Classical.choice, Quot.sound]; no sorryAx, no bv_decide,
+      no warnings.  New entries: dbgEmaskValue_of, dbgRlvValue_of,
+      machCw_emask_lane, machCw_rlv_lane, machCw_runtime, emask/rlv_host_01,
+      emask/rlv_drain_01, cwDrain_emask/rlv_addr, emask/rlv_drain_imp_C,
+      emask/rlv_hostOpt_eq.
+8) sanity (round 3): git diff --stat HEAD -- src -> empty.
+
+Round 4 (WV-guarded RLV value, after B1's `dbgHwb_unguarded_false`):
+9) lake build Metronome.ChipCut.Discharge.DbgMapWire:
+   first run after the edits: exit 1 (projection into `apply`'s conjuncts); the
+   full dependency rebuild took 154.6 s, the failing module 4.8 s.
+   second run: exit 1, 5.5 s (wrong projection `hA.1.1.2`/`hA.1.2.1`);
+   third run: exit 0, 6.1 s (6.5 s wall incl. lake).
+10) statements + axioms:
+   lake env lean ..\..\..\data\raw\lean_chipcut_wire_dbgmap_v4_20261122\axioms.lean
+   -> exit 0, 2.6 s; axioms.txt: 33 #print axioms entries, all subsets of
+      [propext, Classical.choice, Quot.sound]; no sorryAx, no bv_decide, no
+      warnings.  New: dbgRlvValue_of_wv, rlv_value_of_apply, dbg_wb_of_wv,
+      dbg_bitAt_replayValid, dbg_vget_streams_zero.
+11) sanity (round 4): git diff --stat HEAD -- src -> empty; no new imports
+   (Bridge.StreamBuf would not build in this checkout; its guarded `WB` lemma
+   is inlined as `dbg_wb_of_wv`, and Assembly's `bitAt_replayValid` as
+   `dbg_bitAt_replayValid`, since Assembly imports this file).

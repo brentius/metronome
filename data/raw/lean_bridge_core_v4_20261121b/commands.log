@@ -1,0 +1,76 @@
+# Evidence: move-bus packed words (bridge gap 1 closed)
+
+Task: extend `code/tests/lean/Metronome/Bridge/Core.lean` with the §6 move-bus packed
+words (`mv_en`/`mv_src`/`mv_dst`/`mv_data`) and prove the cut's bus is the machine's
+move list slot by slot.
+
+Environment: Windows, Lean 4.35.0 (`leanprover/lean4:v4.35.0`, toolchain pinned in
+`code/tests/lean/lean-toolchain`), core libraries only (no Mathlib, no `import Mathlib`).
+`lakefile.toml` sets `moreLeanArgs = ["-DwarningAsError=true"]`, so `lake build` fails on
+any warning; the build below is warning-free.
+
+Files touched: `code/tests/lean/Metronome/Bridge/Core.lean` (extended, all 94 existing
+theorems unchanged), `code/tests/lean/BRIDGE_CORE_NOTES.md` (gap 1 closed).  Neither
+`Metronome/Core.lean` nor `Metronome/Machine/*.lean` was edited (`src/` untouched):
+`git diff --quiet HEAD -- src` exit 0.
+
+New theorems (33): `range3`, `coreComb_moves`, `coreComb_moves_of_xa`,
+`coreComb_moves_of_idle`, `i_g_slot`, `i_s_slot`, `i_d_slot`,
+`mvEnAt_bridge`, `moveCand_isSome`, `moveVal_idx`, `moveVal_src`, `moveVal_dst`,
+`moveVal_v`, `moveCand_eq_some`, `moveCand_map_src`, `moveCand_map_dst`,
+`moveCand_map_v`, `moveAt_eq_cand`, `any_eq_find?_isSome`, `bitOf_boolMask3`,
+`mvEn_bit`, `mvEnOf_bit`, `decide_and_if`, `decide_and_not_decide_and_if`,
+`not_decide_and_if`, `pack3_slice0`, `pack3_slice1`, `pack3_slice2`, `mvSrc_field`,
+`mvDst_field`, `mvData_field`, `srcByte_index`, `moves_bridge`.
+New definitions (7): `slotGuard`, `slotSrc`, `slotDst`, `moveEn`, `moveVal`, `moveCand`,
+`pack3`.
+
+## Commands (PowerShell, from `code/tests/lean`, PATH prefixed with `~/.elan/bin`)
+
+| # | command | exit | wall |
+|---|---|---|---|
+| 1 | `lake build Metronome.Bridge.Core` (fresh: `Bridge/Core.olean` deleted first) | 0 | 16.4 s |
+| 2 | `lake env lean Metronome/Bridge/Core.lean` | 0 | 21.3 s |
+| 3 | `lake env lean Axioms.lean` (`#print axioms`, output = `axioms.txt`) | 0 | 7.6 s |
+| 4 | `git diff --quiet HEAD -- src` | 0 | <0.1 s |
+
+Notes:
+* command 1 was run with `-DwarningAsError=true` from `lakefile.toml`; Lake reports
+  `Built Metronome.Bridge.Core (15s)` for the 22 jobs and the whole `lake build` wall
+  time was 16.4 s (a warm no-op rebuild afterwards is 0.3 s).
+* command 2 re-elaborates the single file without Lake's cache, for a clean per-file
+  wall time (cold caches: 21.3 s).
+* Lean runs were allowed 900 s; each was far below that.
+* 127 theorems in the file now (94 existing + 33 new); `grep -c '^theorem '` = 127.
+  No `sorry`, no `native_decide`, no `bv_decide` in the file (the bitset lemmas are
+  proved from `BitVec.getLsbD` facts and `omega`).
+
+## Axioms
+
+`axioms.txt` is the verbatim output of command 3.  Every new theorem depends only on
+`propext`, `Classical.choice` and `Quot.sound`; `range3` depends on no axioms.  No
+`sorryAx`, no native/`bv_decide` certificate axioms.
+
+## What is proved (summary)
+
+* `coreComb_moves`: the machine's `coreComb ... .moves` is
+  `(List.range 3).filterMap (moveCand ...)` on an active cycle (`xa`) and `[]` otherwise
+  (`coreComb_moves_of_xa`, `coreComb_moves_of_idle` are the two useful halves).
+  The `List.foldl_filterMap.match_1` obstruction is avoided by *defining* the per-slot
+  candidate (`moveEn`/`moveVal`/`moveCand`) so the machine's lambda body and the
+  candidate are definitionally equal: after unfolding `coreComb`, reducing
+  `N_MOVES = 3` and `List.range 3 = [0,1,2]` (`range3`), rewriting the machine's core
+  state to the cut's (`Rel.core`) and reducing `absCore`, the list identity is `rfl`.
+* `moveAt_eq_cand`: on an active cycle the machine's `find?` for slot `m` is the slot's
+  candidate (eight `moveEn 0/1/2` cases after `m ∈ {0,1,2}`).
+* Packing: `pack3_slice0/1/2` extract each of three `w`-bit fields from the packed
+  `3w`-bit word; `mvSrc_field`/`mvDst_field`/`mvData_field` instantiate them at `w = 6`
+  (source/destination) and `w = 8` (data); `srcByte_index` puts the cut's data byte at
+  `8 * (i_s s m).toNat` (the `BitVec.setWidth 32` index of `srcByte`).
+* `moves_bridge`: for every slot `m < 3`,
+  1. cut `mv_en` bit `m` = `(moveAt cb m).isSome` (present iff enabled),
+  2. machine `mvEnOf` bit `m` = the same,
+  3. any present machine entry has `idx = m`, `src` = cut `mv_src` slice `m`,
+     `dst` = cut `mv_dst` slice `m`, `v` = cut `mv_data` byte `m`,
+  4. under `mv_en m`, `mvSrcOf`/`mvDstOf`/`mvDataOf` equal those slices,
+  5. under `¬mv_en m`, they are `0`.

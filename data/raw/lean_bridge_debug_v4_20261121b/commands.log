@@ -1,0 +1,4 @@
+lake build Metronome.Bridge.Debug   (Debug.lean rebuilt from its imports; -DwarningAsError=true from lakefile.toml)   exit=0  wall=15.38s
+lake env lean data/raw/lean_bridge_debug_v4_20261121b/Axioms.lean   (84 #print axioms; only propext, Classical.choice, Quot.sound)   exit=0  wall=2.25s
+git diff --quiet HEAD -- src   exit=0
+lake build Metronome.Bridge.Glue   (other agent's file, checked but not touched)   exit=1  (Glue.lean syntax error is in that file, not Debug.lean)

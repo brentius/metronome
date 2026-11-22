@@ -1,0 +1,3 @@
+15461e50055d4bcb2eeb1861c9e8e53c1006a3caeede3624900bd094b4d2b0d0  code\tests\lean\Metronome\Strobes.lean
+d067f7ae5dd28abc520c6c10665ff06602cc33d40aabba2c42f71f50878d82d1  code\tests\lean\strobes_check.py
+5e89c7087bb58d5c654587853cd5eb9333e8366b0c9769807b7159dd47272058  code\tests\lean\StrobesEquivalence.lean.in

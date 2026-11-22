@@ -1,0 +1,51 @@
+# ChipCut W4 (CoreCombWire) evidence - rounds c-g
+# Lean 4.35.0 (elan toolchain leanprover--lean4---v4.35.0), core libraries only
+# (no Mathlib), PowerShell, parallel agents building in the same checkout.
+# Acceptance: lake build with -DwarningAsError=true (lakefile sets it).
+
+## 1. Module compile (the whole file recompiled after the round-g edit)
+
+command: cd code/tests/lean; lake build Metronome.ChipCut.Discharge.CoreCombWire
+result:  Build completed successfully (63 jobs).
+         [63/63] Built Metronome.ChipCut.Discharge.CoreCombWire (21s)
+exit=0 wall=21.8s   (module compile 21s)
+
+## 2. No-op rebuild (acceptance on the current tree)
+
+command: lake build Metronome.ChipCut.Discharge.CoreCombWire
+result:  Build completed successfully (63 jobs).
+exit=0 wall=0.5s   (a later no-op rebuild)
+
+## 3. Axioms
+
+command: lake env lean data/raw/lean_chipcut_wire_corecomb_v4_20261121/axioms.lean
+exit=0 wall=3.2s   (full output in axioms.txt; 99 theorems)
+
+summary: every theorem depends only on [propext, Classical.choice, Quot.sound]
+(or a subset: p0Req_congr and hostReq_congr are axiom-free, streamReq_congr only
+uses propext),
+except p0_open_served / hostReq_open_served / stream_served, which additionally
+inherit the pre-existing Metronome.Mem.grants_exclusive bv_decide certificates
+(as in rounds a/b).  execInv_* / pause_* / disp_* / xvrv_of_step carry no
+certificates of their own; selIdx_bit and bitOf_winOf are kernel `decide`
+reductions (not native_decide).
+
+## 4. No forbidden devices
+
+command: Select-String CoreCombWire.lean -Pattern "sorry|native_decide|admit"
+result:  only the module doc comment ("No `sorry`, no `native_decide`").
+
+## 5. src untouched
+
+command: git diff --quiet HEAD -- src
+exit=0
+
+## 6. Files owned / changed in this round
+
+code/tests/lean/Metronome/ChipCut/Discharge/CoreCombWire.lean  (edited; now also
+                                                               imports MemHostCfg)
+code/tests/lean/WIRE_CORECOMB_NOTES.md                        (edited)
+data/raw/lean_chipcut_wire_corecomb_v4_20261121/              (axioms.lean,
+                                                               axioms.txt,
+                                                               commands.log)
+No other existing file was edited; nothing was committed.

@@ -1,0 +1,49 @@
+# Evidence: moves bridge item 4H (2026-11-21b)
+
+Lean 4.35.0 (`code/tests/lean/lean-toolchain`), core libraries only.
+Shell: PowerShell; `$env:PATH="$env:USERPROFILE/.elan/bin;$env:PATH"`.
+Working directory for Lean commands: `code/tests/lean`.
+
+[1] lake build Metronome.Bridge.Moves
+    cwd: code/tests/lean
+    (olean removed first, so this is a full rebuild of the module)
+    command: Remove-Item .lake/build/lib/lean/Metronome/Bridge/Moves.olean; lake build Metronome.Bridge.Moves
+    exit: 0   wall: 10.4 s
+    output tail: "[23/23] Built Metronome.Bridge.Moves (10s)" and
+                 "Build completed successfully (23 jobs)."
+    The lakefile sets moreLeanArgs = ["-DwarningAsError=true"], so this build is
+    warning-free (deprecation warnings included).
+
+[2] lake build (default target, whole `Metronome` library)
+    cwd: code/tests/lean
+    exit: 1   wall: 11.6 s
+    NOTE: the failure is in `Metronome/Bridge/Stream.lean` (lines 205/215/229/262/267)
+    and `Metronome/Bridge/Host.lean` (several lines), i.e. uncommitted files owned by
+    other threads; neither imports `Metronome.Bridge.Moves`.  `Metronome/Bridge/Moves.lean`
+    is the last import of `Metronome.lean` and builds on its own ([1]).
+    Not caused by, and not fixed in, this task's file.
+
+[3] lake env lean .../Axioms.lean > axioms.txt
+    cwd: code/tests/lean
+    command: lake env lean ../../data/raw/lean_bridge_moves_v4_20261121b/Axioms.lean
+    exit: 0   wall: 2.0 s
+    `#print axioms` for all 58 new theorems; output in axioms.txt.  The only axioms
+    are `propext`, `Classical.choice` and `Quot.sound`; no `sorryAx` and no
+    compiler-trust (`ofReduceBool`) axiom.
+
+[4] lake env lean --run .../decode_check.lean > decode_check.log
+    cwd: code/tests/lean
+    command: lake env lean --run ../../data/raw/lean_bridge_moves_v4_20261121b/decode_check.lean
+    exit: 0   wall: 3.0 s
+    output tail: "DECODE CHECK OK: 64 destination kinds, 64 destination groups, 2 source codes"
+    Compiled evaluation of the machine's own `dstOp`, `dstGroup`, `srcOp` against the
+    cut's `dgTable`; checks the single global hypothesis `DstKindTable`, the
+    kernel-proved `dstGroup_all`, and the source codes 33/38.
+
+[5] git diff --quiet HEAD -- src
+    cwd: repository root
+    exit: 0 (0 = `src/` unchanged)
+
+Checks on the source file:
+    Select-String -Path Metronome/Bridge/Moves.lean -Pattern 'sorry|native_decide|admit'
+    -> no matches.

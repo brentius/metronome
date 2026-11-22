@@ -1,0 +1,27 @@
+Metronome.CoreCtl.rtlWcw_we: propext, Classical.choice, Quot.sound, rtlWcw_we._native.bv_decide.ax_1_11
+Metronome.CoreCtl.rtlWcw_dst: propext, Classical.choice, Quot.sound, rtlWcw_dst._native.bv_decide.ax_1_11
+Metronome.CoreCtl.rtlWcw_data: propext, Classical.choice, Quot.sound, rtlWcw_data._native.bv_decide.ax_1_11
+Metronome.CoreCtl.rtlWcw_eq_pack: propext, Classical.choice, Quot.sound, makeWord_fields._native.bv_decide.ax_1_5, rtlWcw_data._native.bv_decide.ax_1_11, rtlWcw_dst._native.bv_decide.ax_1_11, rtlWcw_we._native.bv_decide.ax_1_11
+Metronome.CoreCtl.rtlWcw_none: propext, Classical.choice, Quot.sound, makeWord_fields._native.bv_decide.ax_1_5, rtlWcw_data._native.bv_decide.ax_1_11, rtlWcw_dst._native.bv_decide.ax_1_11, rtlWcw_we._native.bv_decide.ax_1_11
+Metronome.CoreCtl.rtlWcw_unique_0: propext, Classical.choice, Quot.sound, makeWord_fields._native.bv_decide.ax_1_5, rtlWcw_data._native.bv_decide.ax_1_11, rtlWcw_dst._native.bv_decide.ax_1_11, rtlWcw_we._native.bv_decide.ax_1_11
+Metronome.CoreCtl.rtlFreezeStep_eq_step: propext
+Metronome.CoreCtl.rtlFreezeStateAt_eq: propext
+Metronome.CoreCtl.rtl_trace_freeze_low: propext, Quot.sound
+Metronome.CoreCtl.rtl_trace_frz_of_trigger: propext
+Metronome.CoreCtl.rtl_trace_frz_one_cycle: propext, Quot.sound
+Metronome.CoreCtl.rtl_trace_frz_of_host_trigger: propext, Classical.choice, Quot.sound, rtlDbgWrite_eq_spec._native.bv_decide.ax_1_6
+Metronome.CoreCtl.rtlSticky_eq_spec: propext, sorryAx, Classical.choice, Quot.sound
+Metronome.CoreCtl.rtlStickyLeaf_eq_spec: propext, sorryAx, Classical.choice, Quot.sound
+Metronome.CoreCtl.rtlDbgWrite_eq_spec: propext, Classical.choice, Quot.sound, rtlDbgWrite_eq_spec._native.bv_decide.ax_1_6
+Metronome.CoreCtl.queue_writeData: propext, Classical.choice, Quot.sound, rtlWcw_dst._native.bv_decide.ax_1_11, rtlWcw_we._native.bv_decide.ax_1_11
+Metronome.CoreCtl.queue_writeLow: propext, Classical.choice, Quot.sound, rtlWcw_dst._native.bv_decide.ax_1_11, rtlWcw_we._native.bv_decide.ax_1_11
+Metronome.CoreCtl.queue_writeHigh: propext, Classical.choice, Quot.sound, rtlWcw_dst._native.bv_decide.ax_1_11, rtlWcw_we._native.bv_decide.ax_1_11
+Metronome.CoreCtl.queue_cwData: propext, Classical.choice, Quot.sound, rtlWcw_data._native.bv_decide.ax_1_11
+Metronome.CoreCtl.queue_hostClear: propext, sorryAx, Classical.choice, Quot.sound
+Metronome.CoreCtl.cwD_dropped_sets_overrun: propext, Classical.choice, Quot.sound, rtlWcw_dst._native.bv_decide.ax_1_11, rtlWcw_we._native.bv_decide.ax_1_11
+Metronome.CoreCtl.overrun_cleared_by_sticky: propext, sorryAx, Classical.choice, Quot.sound, rtlWcw_dst._native.bv_decide.ax_1_11, rtlWcw_we._native.bv_decide.ax_1_11
+Metronome.CoreCtl.overrun_sticky_unless_sticky: propext, sorryAx, Classical.choice, Quot.sound
+Metronome.CoreCtl.frozen_queue_holds: propext, Quot.sound
+Metronome.CoreCtl.coreValid_of_queue: propext, Quot.sound
+Metronome.CoreCtl.codes_spec: 
+Metronome.CoreCtl.stickyBit_spec: 

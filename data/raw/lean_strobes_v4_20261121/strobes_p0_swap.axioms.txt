@@ -1,0 +1,80 @@
+Metronome.Strobes.rtlAccHit_spec: propext, Classical.choice, Quot.sound
+Metronome.Strobes.rtlAccHit_oneHotOrZero: propext, Classical.choice, Quot.sound, atMostOne_cases._native.bv_decide.ax_1_6, hitsMask_atMostOne._native.bv_decide.ax_1_7
+Metronome.Strobes.rtlOpgCnt0Lo_spec: propext, Classical.choice, Quot.sound, rtlOpgCnt0Lo_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgCnt0Hi_spec: propext, Classical.choice, Quot.sound, rtlOpgCnt0Hi_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgCnt1Lo_spec: propext, Classical.choice, Quot.sound, rtlOpgCnt1Lo_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgCnt1Hi_spec: propext, Classical.choice, Quot.sound, rtlOpgCnt1Hi_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgCnt2Lo_spec: propext, Classical.choice, Quot.sound, rtlOpgCnt2Lo_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgCnt2Hi_spec: propext, Classical.choice, Quot.sound, rtlOpgCnt2Hi_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgLf0St_spec: propext, Classical.choice, Quot.sound, rtlOpgLf0St_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgLf0B0_spec: propext, Classical.choice, Quot.sound, rtlOpgLf0B0_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgLf0B1_spec: propext, Classical.choice, Quot.sound, rtlOpgLf0B1_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgLf0B2_spec: propext, Classical.choice, Quot.sound, rtlOpgLf0B2_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgLf1St_spec: propext, Classical.choice, Quot.sound, rtlOpgLf1St_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgLf1B0_spec: propext, Classical.choice, Quot.sound, rtlOpgLf1B0_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgLf1B1_spec: propext, Classical.choice, Quot.sound, rtlOpgLf1B1_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgLf1B2_spec: propext, Classical.choice, Quot.sound, rtlOpgLf1B2_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgSh0Sh_spec: propext, Classical.choice, Quot.sound, rtlOpgSh0Sh_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgSh1Sh_spec: propext, Classical.choice, Quot.sound, rtlOpgSh1Sh_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgS0Ctl_spec: propext, Classical.choice, Quot.sound, rtlOpgS0Ctl_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgS0Adv_spec: propext, Classical.choice, Quot.sound, rtlOpgS0Adv_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgS0Rx_spec: propext, Classical.choice, Quot.sound, rtlOpgS0Rx_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgS1Ctl_spec: propext, Classical.choice, Quot.sound, rtlOpgS1Ctl_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgS1Adv_spec: propext, Classical.choice, Quot.sound, rtlOpgS1Adv_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlOpgS1Rx_spec: propext, Classical.choice, Quot.sound, rtlOpgS1Rx_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlSelSh0_spec: propext, Classical.choice, Quot.sound, rtlOpgSh0Sh_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlSelSh1_spec: propext, Classical.choice, Quot.sound, rtlOpgSh1Sh_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.counterSel0_ops: propext, Quot.sound
+Metronome.Strobes.counterSel1_ops: propext, Quot.sound
+Metronome.Strobes.counterSel2_ops: propext, Quot.sound
+Metronome.Strobes.counterSel0_exclusive: propext, Classical.choice, Quot.sound, dsteqMask_pick._native.bv_decide.ax_1_7, hitsMask_atMostOne._native.bv_decide.ax_1_7
+Metronome.Strobes.counterSel1_exclusive: propext, Classical.choice, Quot.sound, dsteqMask_pick._native.bv_decide.ax_1_7, hitsMask_atMostOne._native.bv_decide.ax_1_7
+Metronome.Strobes.counterSel2_exclusive: propext, Classical.choice, Quot.sound, dsteqMask_pick._native.bv_decide.ax_1_7, hitsMask_atMostOne._native.bv_decide.ax_1_7
+Metronome.Strobes.lfsrSel0_ops: propext, Quot.sound
+Metronome.Strobes.lfsrSel1_ops: propext, Quot.sound
+Metronome.Strobes.lfsrSel0_exclusive: propext, Classical.choice, Quot.sound, dsteqMask_pick._native.bv_decide.ax_1_7, hitsMask_atMostOne._native.bv_decide.ax_1_7
+Metronome.Strobes.lfsrSel1_exclusive: propext, Classical.choice, Quot.sound, dsteqMask_pick._native.bv_decide.ax_1_7, hitsMask_atMostOne._native.bv_decide.ax_1_7
+Metronome.Strobes.rtlSelCn0_spec: propext
+Metronome.Strobes.rtlSelCn1_spec: propext
+Metronome.Strobes.rtlSelCn2_spec: propext
+Metronome.Strobes.rtlSelCn0_opg: propext, Quot.sound
+Metronome.Strobes.rtlSelCn1_opg: propext, Quot.sound
+Metronome.Strobes.rtlSelCn2_opg: propext, Quot.sound
+Metronome.Strobes.rtlSelLf0_spec: propext
+Metronome.Strobes.rtlSelLf1_spec: propext
+Metronome.Strobes.rtlSelLf0_opg: propext, Quot.sound
+Metronome.Strobes.rtlSelLf1_opg: propext, Quot.sound
+Metronome.Strobes.rtlPSel_spec: propext, sorryAx, Classical.choice, Quot.sound
+Metronome.Strobes.rtlPSel_word: propext, sorryAx, Classical.choice, Quot.sound, pack_dst._native.bv_decide.ax_1_7
+Metronome.Strobes.rtlLineSop0_spec: propext, Classical.choice, Quot.sound
+Metronome.Strobes.rtlLineSop1_spec: propext, Classical.choice, Quot.sound
+Metronome.Strobes.rtlLineSop2_spec: propext, Classical.choice, Quot.sound
+Metronome.Strobes.rtlLineSop3_spec: propext, Classical.choice, Quot.sound
+Metronome.Strobes.rtlLineSop0_word: propext, Classical.choice, Quot.sound
+Metronome.Strobes.rtlLineSop1_word: propext, Classical.choice, Quot.sound
+Metronome.Strobes.rtlLineSop2_word: propext, Classical.choice, Quot.sound
+Metronome.Strobes.rtlLineSop3_word: propext, Classical.choice, Quot.sound
+Metronome.Strobes.rtlAccSel0_spec: propext, Classical.choice, Quot.sound, rtlAccSel0_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlAccSel1_spec: propext, Classical.choice, Quot.sound, rtlAccSel1_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlAccSel2_spec: propext, Classical.choice, Quot.sound, rtlAccSel2_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlAccSel3_spec: propext, Classical.choice, Quot.sound, rtlAccSel3_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlAccSel4_spec: propext, Classical.choice, Quot.sound, rtlAccSel4_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlAccSel5_spec: propext, Classical.choice, Quot.sound, rtlAccSel5_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlCwDbgOff_spec: propext, Classical.choice, Quot.sound
+Metronome.Strobes.rtlRewindS0_spec: propext, Classical.choice, Quot.sound, rtlRewindS0_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlRewindS1_spec: propext, Classical.choice, Quot.sound, rtlRewindS1_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlRewindS0_word: propext, Classical.choice, Quot.sound, pack_data._native.bv_decide.ax_1_7, rtlRewindS0_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlRewindS1_word: propext, Classical.choice, Quot.sound, pack_data._native.bv_decide.ax_1_7, rtlRewindS1_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlFlushS0_spec: propext, Classical.choice, Quot.sound, rtlFlushS0_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlFlushS1_spec: propext, Classical.choice, Quot.sound, rtlFlushS1_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlFlushS0_word: propext, Classical.choice, Quot.sound, pack_data._native.bv_decide.ax_1_7, rtlFlushS0_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlFlushS1_word: propext, Classical.choice, Quot.sound, pack_data._native.bv_decide.ax_1_7, rtlFlushS1_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlClrS0_spec: propext, Classical.choice, Quot.sound, rtlClrS0_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlClrS1_spec: propext, Classical.choice, Quot.sound, rtlClrS1_spec._native.bv_decide.ax_1_8
+Metronome.Strobes.rtlDbgEctl_spec: propext, Classical.choice, Quot.sound
+Metronome.Strobes.rtlDbgEm0_spec: propext, Classical.choice, Quot.sound
+Metronome.Strobes.rtlDbgEm1_spec: propext, Classical.choice, Quot.sound
+Metronome.Strobes.rtlDbgRlv0_spec: propext, Classical.choice, Quot.sound
+Metronome.Strobes.rtlDbgRlv1_spec: propext, Classical.choice, Quot.sound
+Metronome.Strobes.rtlCapEnS0_spec: 
+Metronome.Strobes.rtlCapEnS1_spec: 

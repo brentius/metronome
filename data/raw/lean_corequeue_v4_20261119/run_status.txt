@@ -1,0 +1,47 @@
+Metronome v4 Lean core-queue cut: run status
+
+Command: python code/tests/lean/verify.py --mutations --artifacts-dir data/raw/lean_corequeue_v4_20261119/proof
+Exit code: 0 (the invoking shell recorded 0; every case outcome is in verify_stdout.log)
+Tools: Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0) | Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1) | Build completed successfully (8 jobs).
+Cases: 19 (1 baseline + 18 mutations), parsed from data/raw/lean_corequeue_v4_20261119/verify_stdout.log
+Baseline: Lean verified the configuration transition, host write cone, both configuration-address decodes, the core pending-write queue, their traces and axiom dependencies
+Mutation outcomes (parsed from the log, not hand-counted):
+  spacing: rejected by Lean configuration equivalence proof
+  priority: rejected by Lean configuration equivalence proof
+  held_addr: rejected by Lean configuration equivalence proof
+  held_data: rejected by Lean configuration equivalence proof
+  stage_capture: rejected by Lean configuration equivalence proof
+  feedback: rejected by top-level wiring check
+  host_gate: rejected by Lean host equivalence proof
+  host_counter: rejected by Lean host equivalence proof
+  host_filter: rejected by chip-top host filter check
+  decode_permissive: rejected by both Lean decode equivalence proofs
+  decode_core_bypass: rejected by Lean core decode equivalence proof
+  decode_mask_byte: rejected by both Lean decode equivalence proofs
+  decode_core_addr: rejected by core arbiter address check
+  cwq_drain_clears: rejected by Lean core pending-write queue proof
+  cwq_hold_addr: rejected by Lean core pending-write queue proof
+  cwq_accept_pending: rejected by Lean core pending-write queue proof
+  cwq_frz_gate: rejected by Lean core pending-write queue proof
+  cwq_overrun_clear: rejected by Lean core pending-write queue proof
+
+Rejection layers:
+  rejected by Lean configuration equivalence proof: 5
+  rejected by Lean core decode equivalence proof: 1
+  rejected by Lean core pending-write queue proof: 5
+  rejected by Lean host equivalence proof: 2
+  rejected by both Lean decode equivalence proofs: 2
+  rejected by chip-top host filter check: 1
+  rejected by core arbiter address check: 1
+  rejected by top-level wiring check: 1
+
+Core-queue proof sources retained: 16 .corequeue.lean files (the feedback, host_filter and decode_core_addr cases fail at an adapter check before this cut is generated)
+Accepted core-queue proofs: 11; sorryAx occurrences: 0
+Rejected core-queue mutants: 5; their failed proofs contain sorryAx in 5 logs, which is the expected shape of a Lean error report
+Axiom guard text from the accepted baseline core-queue proof:
+  /-- info: 'Metronome.CoreQueue.rtlStep_eq_step' depends on axioms: [propext, Quot.sound] -/
+  /-- info: 'Metronome.CoreQueue.rtl_trace_result' depends on axioms: [propext, Quot.sound] -/
+The baseline build accepted both guards, so rtlStep_eq_step and rtl_trace_result depend only on propext and Quot.sound. pack_take/pack_low/pack_high use bv_decide and add per-theorem native LRAT certificates; they are used only by accept_increments and the two *_load_bytes corollaries.
+src tree unchanged vs HEAD: yes (git diff --quiet HEAD -- src exit 0)
+
+Per-case logs: data/raw/lean_corequeue_v4_20261119/proof/<case>.{log,host.log,decode.log,corequeue.log}

@@ -1,0 +1,9 @@
+case	outcome	exit	expectation
+baseline	accepted	0	ok
+hostread_sticky_layout	rejected (generated Lean: rejected by Lean (exit 1): 527:44: error: unsolved goals)	1	ok
+hostread_default_nonzero	rejected (generated Lean: rejected by Lean (exit 1): 527:44: error: unsolved goals)	1	ok
+hostread_phase_slice	rejected (generated Lean: rejected by Lean (exit 1): 529:44: error: unsolved goals)	1	ok
+hostread_tx_early	rejected (generated Lean: rejected by Lean (exit 1): 435:53: error: unsolved goals)	1	ok
+hostread_ackv_swap	rejected (generated Lean: rejected by Lean (exit 1): 435:53: error: unsolved goals)	1	ok
+hostread_default_x	rejected (generated Lean: rejected by Lean (exit 1): 594:48: error: unsolved goals)	1	ok
+hostread_miso_lsb	rejected (generated Lean: rejected by Lean (exit 1): 577:77: error: unsolved goals)	1	ok

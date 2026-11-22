@@ -1,0 +1,11 @@
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Build completed successfully (3 jobs).
+baseline: accepted (15 registers, 15 checked window fields)
+line_frz_held: rejected (generated Lean: rejected by Lean (exit 1): 691:544: error: Tactic `rfl` failed: The left-hand side)
+line_host_ctl_loses: rejected (structural check: rtl.run_f: already bound)
+line_tapmiss_not_sticky: rejected (generated Lean: rejected by Lean (exit 1): 728:544: error: Tactic `rfl` failed: The left-hand side)
+line_commit_staged: rejected (generated Lean: rejected by Lean (exit 1): 728:544: error: Tactic `rfl` failed: The left-hand side)
+line_tap0_cross: rejected (generated Lean: rejected by Lean (exit 1): 611:548: error: Tactic `rfl` failed: The left-hand side)
+line_cfg_offset: rejected (structural check: md2_line.c_t1: not window bytes 6+ (field t1))
+line2_cfg_slice: rejected (structural check: g_ln[2].u.cfg: not window bytes 64..95)

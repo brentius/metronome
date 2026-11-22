@@ -1,0 +1,10 @@
+case	outcome	exit	expectation
+baseline	accepted	0	ok
+pick_ignores_we	rejected (generated Lean: rejected by Lean (exit 1): 127:2: error: The prover found a counterexample, consider the following assignment:)	1	ok
+pick_wrong_group	rejected (extraction: w_cw: group comparator 0 compares with [2], not DG_CW = 25)	1	ok
+frz_wrong_reset	rejected (generated Lean: rejected by Lean (exit 1): 244:74: error: The prover found a potentially spurious counterexample:)	1	ok
+frz_never_clears	rejected (generated Lean: rejected by Lean (exit 1): 245:74: error: The prover found a potentially spurious counterexample:)	1	ok
+sticky_wrong_offset	rejected (extraction: c_wr_stk: offset 2 is not the host map's)	1	ok
+sticky_wrong_block	rejected (extraction: c_wr_stk: expected one subtraction, one span comparison and one offset comparison, found ['$and', '$eq', '$lt', '$sub'])	1	ok
+sticky_no_write	rejected (generated Lean: rejected by Lean (exit 1): 316:2: error: The prover found a counterexample, consider the following assignment:)	1	ok
+sticky_wrong_bit	rejected (generated Lean: rejected by Lean (exit 1): 308:45: error: Tactic `decide` proved that the proposition)	1	ok

@@ -1,0 +1,34 @@
+﻿=== chipcut discharge Glue: command log ===
+date: 2026-11-21T20:25:48.9695840+00:00
+revision: b7b4068 (metronome-v4.0)
+lean: Lean (version 4.35.0, x86_64-w64-windows-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+
+-- 1. lake build Metronome.ChipCut.Discharge.Glue   (lakefile moreLeanArgs = -DwarningAsError=true)
+Build completed successfully (59 jobs).
+exit=0 wall=0.4s
+
+-- 2. lake env lean ../../../data/raw/lean_chipcut_discharge_glue_v4_20261121/axioms.lean   (output -> axioms.txt)
+exit=0 wall=2.1s
+
+-- 3. sorry / native_decide / admit scan of the new file (only the docstring mentions native_decide)
+line 213: (`decide`) of `Machine.Tables.hostBlocks`; no `native_decide`. -/
+
+-- 4. git diff --quiet HEAD -- src
+exit=0
+
+-- 5. lake build Metronome.ChipCut  (the pre-existing ChipCut product, unchanged by this file)
+Build completed successfully (59 jobs).
+exit=0 wall=0.4s
+-- 1b. build after touching the source (fresh elaboration of the new file)
+Build completed successfully (59 jobs).
+exit=0 wall=0.3s
+-- 1b. build after removing this module's olean (fresh elaboration of the new file)
+Ô£ö [59/59] Built Metronome.ChipCut.Discharge.Glue (6.5s)
+Build completed successfully (59 jobs).
+exit=0 wall=6.9s
+-- 1c. final: olean removed, rebuilt with -DwarningAsError=true (header edits applied)
+Ô£ö [59/59] Built Metronome.ChipCut.Discharge.Glue (5.8s)
+Build completed successfully (59 jobs).
+exit=0 wall=6.2s
+-- 1d. final build (dead helper lemmas removed), olean removed
+exit=0 wall=8.5s (built Metronome.ChipCut.Discharge.Glue, 59 jobs)

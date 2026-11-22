@@ -1,0 +1,30 @@
+# Commands, exit codes and wall times — LineMoveWire (v4, 2026-11-22)
+
+Working directory: `code/tests/lean` (Lean 4.35.0, `$env:PATH = "$env:USERPROFILE/.elan/bin;$env:PATH"`).
+All builds used the lakefile's `-DwarningAsError=true`.  No `lake clean`, no `.olean` deleted.
+
+| # | command | exit | wall time | note |
+|---|---|---|---|---|
+| 1 | `lake build Metronome.ChipCut.Discharge.LineMoveWire` | 0 | ~0.4 s (cached) | final acceptance build; `build_module.log` |
+| 2 | `lake env lean -DwarningAsError=true Metronome/ChipCut/Discharge/LineMoveWire.lean` | 0 | 4.5 s | fresh elaboration of the module only; `elaborate_module.log` (empty = no output) |
+| 3 | `lake env lean -DwarningAsError=true ../../../data/raw/lean_chipcut_wire_linemove_v4_20261122/axioms.lean` | 0 | 2.1 s | `#print axioms` + `#check`; `axioms.txt` |
+| 4 | `lake build Metronome.ChipCut` | 0 | 0.4 s (cached) | regression; `chipcut_regression.log` |
+| 5 | `git diff --quiet HEAD -- src` | 0 | 0.1 s | `src/` untouched |
+
+Iteration notes (not part of the evidence): the module was developed in place with
+edit+build cycles of roughly 4–10 s each; `MoveFabricKeyed.lean` (owned by another
+agent) was edited concurrently during the session and re-elaborated by Lake as needed.
+
+## Axioms (from `axioms.txt`, exit 0)
+
+`wireAgree_ctl_low3`: `propext`, `Classical.choice`, `Quot.sound` plus pre-existing
+`bv_decide` certificates (`Moves.beq_comm_5`, `Moves.hitsMask_bit_0..5`,
+`Strobes.dsteqMask_pick`, `Strobes.hitsMask_atMostOne`).
+
+`wireAgree_sym_low4`: `propext`, `Classical.choice`, `Quot.sound` plus pre-existing
+`bv_decide` certificates (`CoreCtl.makeWord_we/dst`, `Moves.sameKey_comm`,
+`Moves.symMask_bit` ×6, `Strobes.atMostOne_cases`,
+`MoveFabricKeyed.bits6_bit` ×6) and the two new certificates of
+`truncate_four_makeWord` (see `WIRE_LINEMOVE_NOTES.md` §7).
+
+No `sorryAx`, no `Lean.trustCompiler` in either.

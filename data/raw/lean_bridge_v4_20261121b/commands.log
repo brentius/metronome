@@ -1,0 +1,34 @@
+# Commands, exit codes, wall times (item 4D, evidence dir lean_bridge_v4_20261121b)
+
+Shell: PowerShell 7 (`$env:PATH="$env:USERPROFILE/.elan/bin;$env:PATH"`), cwd
+`code/tests/lean` unless stated. Lean 4.35.0, lakefile `moreLeanArgs = ["-DwarningAsError=true"]`,
+core libs only (no Mathlib).
+
+| # | command | exit | wall |
+|---|---|---|---|
+| 1 | `lake build Metronome.Bridge.Host Metronome.Bridge.CfgWrite` (both `.olean` removed first, so both modules recompile with `-DwarningAsError=true`) | 0 | 11.4 s |
+| 2 | `lake env lean Metronome/Bridge/Host.lean` (final file) | 0 | ~8 s |
+| 3 | `lake env lean Metronome/Bridge/CfgWrite.lean` (final file) | 0 | ~6 s |
+| 4 | `lake env lean build/lean_scratch_bridge_hc/ax.lean` — `#print axioms` for all 131 theorems of the two files | 0 | 3.1 s |
+| 5 | `git diff --quiet HEAD -- src` (repo root) | 0 | <1 s |
+| 6 | `git diff --quiet -- src` (repo root) | 0 | <1 s |
+| 7 | search for `sorry` / `native_decide` / `sorryAx` in both files | matches only in the module docstring ("No `sorry`, no `native_decide`") | <1 s |
+| 8 | search for `sorryAx` in `axioms.txt` | 0 matches | <1 s |
+
+Notes.
+
+* Command 1 recompiled both modules from scratch (removed
+  `.lake/build/lib/lean/Metronome/Bridge/{Host,CfgWrite}.olean` first) and completed with no
+  warnings, so no deprecations and no unused-variable warnings remain.
+  `linter.unusedVariables` is disabled in `Host.lean` because several lemmas take a
+  `hreset`/`hrel` argument only for the caller's convenience (`simp_all` uses it without naming
+  it); this is a project-wide pattern in the cut specs (`HostRead.lean` does the same).
+* Command 4 is generated: `ax.lean` holds one `#print axioms` line per theorem declared in
+  `Metronome/Bridge/Host.lean` (104) and `Metronome/Bridge/CfgWrite.lean` (27). Output in
+  `axioms.txt`: every entry depends only on `propext`, `Classical.choice`, `Quot.sound`, or on
+  no axioms at all (`absCw_reset`, `absArb_zero`). No `sorryAx`.
+* During development each lemma was checked with `lake env lean Metronome/Bridge/<file>.lean`
+  (exit 0 after every fix); the scratch files used for that live in
+  `code/tests/lean/build/lean_scratch_bridge_hc/` and are deleted at the end of the task.
+* Timeout per Lean run: 900 s; the slowest single run observed was ~9 s (a full `Host.lean`
+  compile).

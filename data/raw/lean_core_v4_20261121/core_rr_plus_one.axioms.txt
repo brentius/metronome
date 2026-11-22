@@ -1,0 +1,12 @@
+Metronome.Core.Rtl0.rtlStep_eq_step: propext, sorryAx, Classical.choice, Quot.sound, rtlRv._native.bv_decide.ax_1_47, rtlXv._native.bv_decide.ax_1_47
+Metronome.Core.Rtl0.rtlOut_eq_out: propext, sorryAx, Classical.choice, Quot.sound, rtlDisp._native.bv_decide.ax_1_47, rtlFetchEn._native.bv_decide.ax_1_47, rtlMvData._native.bv_decide.ax_1_47, rtlMvEn._native.bv_decide.ax_1_47, rtlNpc._native.bv_decide.ax_1_47
+Metronome.Core.Rtl0.rtlStateAt_eq: propext, sorryAx, Classical.choice, Quot.sound, rtlRv._native.bv_decide.ax_1_47, rtlXv._native.bv_decide.ax_1_47
+Metronome.Core.Rtl0.rtl_trace_result: propext, sorryAx, Classical.choice, Quot.sound, rtlRv._native.bv_decide.ax_1_47, rtlXv._native.bv_decide.ax_1_47
+Metronome.Core.Rtl0.rtl_trace_dispatch_idle: propext, sorryAx, Classical.choice, Quot.sound, rtlRv._native.bv_decide.ax_1_47, rtlXv._native.bv_decide.ax_1_47
+Metronome.Core.Rtl0.rtl_trace_jump_idle: propext, sorryAx, Classical.choice, Quot.sound, rtlRv._native.bv_decide.ax_1_47, rtlXv._native.bv_decide.ax_1_47
+Metronome.Core.Rtl1.rtlStep_eq_step: propext, sorryAx, Classical.choice, Quot.sound, rtlRv._native.bv_decide.ax_1_47, rtlXv._native.bv_decide.ax_1_47
+Metronome.Core.Rtl1.rtlOut_eq_out: propext, sorryAx, Classical.choice, Quot.sound, rtlDisp._native.bv_decide.ax_1_47, rtlFetchEn._native.bv_decide.ax_1_47, rtlMvData._native.bv_decide.ax_1_47, rtlMvEn._native.bv_decide.ax_1_47, rtlNpc._native.bv_decide.ax_1_47
+Metronome.Core.Rtl1.rtlStateAt_eq: propext, sorryAx, Classical.choice, Quot.sound, rtlRv._native.bv_decide.ax_1_47, rtlXv._native.bv_decide.ax_1_47
+Metronome.Core.Rtl1.rtl_trace_result: propext, sorryAx, Classical.choice, Quot.sound, rtlRv._native.bv_decide.ax_1_47, rtlXv._native.bv_decide.ax_1_47
+Metronome.Core.Rtl1.rtl_trace_dispatch_idle: propext, sorryAx, Classical.choice, Quot.sound, rtlRv._native.bv_decide.ax_1_47, rtlXv._native.bv_decide.ax_1_47
+Metronome.Core.Rtl1.rtl_trace_jump_idle: propext, sorryAx, Classical.choice, Quot.sound, rtlRv._native.bv_decide.ax_1_47, rtlXv._native.bv_decide.ax_1_47

@@ -1,0 +1,62 @@
+# Evidence: bridge of `Metronome.Stream` to `Metronome.Machine.Stream`, round c
+
+Date: 2026-11-21 (round c, unfrozen cycle).
+Toolchain: `leanprover/lean4:v4.35.0`, core libraries only, lake project
+`code/tests/lean` (`moreLeanArgs = ["-DwarningAsError=true"]`).
+Shell: Windows PowerShell 5.1, `$env:PATH="$env:USERPROFILE/.elan/bin;$env:PATH"`.
+
+## 1. Acceptance build
+
+```
+cd code/tests/lean
+Remove-Item .lake/build/lib/lean/Metronome/Bridge/Stream.olean   # force a clean rebuild
+lake build Metronome.Bridge.Stream
+```
+
+* exit code: 0
+* wall time: 323.1 s (clean rebuild of the module; the module's own proof work is
+  the bulk of it, the imported machine spec is cached)
+* log: `build.log` — final line `Build completed successfully (22 jobs).`
+* no warnings (the project builds with `-DwarningAsError=true`)
+
+## 2. Axiom audit
+
+```
+cd code/tests/lean
+lake env lean build/lean_scratch_bridge_stream3/ax.lean
+```
+
+`ax.lean` imports `Metronome.Bridge.Stream` and runs `#print axioms` for every
+theorem the round adds.
+
+* exit code: 0
+* wall time: 3.2 s
+* output: `axioms.txt` (35 `#print axioms` lines)
+* result: every theorem depends only on `propext`, `Classical.choice` and
+  `Quot.sound`; there is no `sorryAx` line.
+
+## 3. No unproved steps
+
+```
+cd code/tests/lean
+Select-String -Path Metronome/Bridge/Stream.lean -Pattern "sorry|admit|native_decide"
+```
+
+* exit code: 0
+* no matching line (the file contains no `sorry`, no `admit`, no `native_decide`;
+  every disagreement witness is a kernel `decide` proof).
+
+## 4. The submission RTL is untouched
+
+```
+cd <repo root>
+git diff --quiet HEAD -- src
+```
+
+* exit code: 0 (no change under `src/`)
+
+## 5. Earlier rounds in this file
+
+The frozen-cycle bridge and the three divergence witnesses were measured in
+round b; the numbers are in
+`data/raw/lean_bridge_units_stream_v4_20261121b/commands.log`.

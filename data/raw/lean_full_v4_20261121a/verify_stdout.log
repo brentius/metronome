@@ -1,0 +1,124 @@
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+✔ [37/38] Built Metronome (2.7s)
+Build completed successfully (38 jobs).
+baseline: Lean verified the configuration transition, host write cone, both configuration-address decodes, the core pending-write queue, their traces and axiom dependencies
+'Metronome.Decode.rtlHostQual_eq_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlHostQual_eq_spec._native.bv_decide.ax_1_5]
+'Metronome.Decode.rtlCoreLive_eq_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlCoreLive_eq_spec._native.bv_decide.ax_1_5]
+Decode host outcome: accepted
+Decode core outcome: accepted
+Core queue outcome: accepted
+spacing: rejected by Lean configuration equivalence proof
+priority: rejected by Lean configuration equivalence proof
+held_addr: rejected by Lean configuration equivalence proof
+held_data: rejected by Lean configuration equivalence proof
+stage_capture: rejected by Lean configuration equivalence proof
+feedback: rejected by top-level wiring check
+host_gate: rejected by Lean host equivalence proof
+host_counter: rejected by Lean host equivalence proof
+host_filter: rejected by chip-top host filter check
+decode_permissive: rejected by both Lean decode equivalence proofs
+decode_core_bypass: rejected by Lean core decode equivalence proof
+decode_mask_byte: rejected by both Lean decode equivalence proofs
+decode_core_addr: rejected by core arbiter address check
+cwq_drain_clears: rejected by Lean core pending-write queue proof
+cwq_hold_addr: rejected by Lean core pending-write queue proof
+cwq_accept_pending: rejected by Lean core pending-write queue proof
+cwq_frz_gate: rejected by Lean core pending-write queue proof
+cwq_overrun_clear: rejected by Lean core pending-write queue proof
+bank baseline: accepted (284/480 live bytes, 2112 latch bits)
+bank_wrong_addr: rejected by latch-bank generated Lean: rejected by Lean (exit 1): 154:2: error: The prover found a counterexample, consider the following assignment:
+bank_addr_bit: rejected by latch-bank generated Lean: rejected by Lean (exit 1): 63:2: error: The prover found a counterexample, consider the following assignment:
+bank_shared_addr: rejected by latch-bank generated Lean: rejected by Lean (exit 1): 76:2: error: The prover found a counterexample, consider the following assignment:
+bank_no_we1: rejected by latch-bank structural check: u_cfg: byte 0 gate is not an AND enable
+bank_we1_polarity: rejected by latch-bank structural check: u_cfg: byte 0 gate is not enabled by we1
+hostcmd baseline: accepted
+hostcmd_read_strobes: rejected by hostcmd generated Lean: rejected by Lean (exit 1): 138:2: error: The prover found a potentially spurious counterexample:
+hostcmd_al_next: rejected by hostcmd generated Lean: rejected by Lean (exit 1): 104:2: error: The prover found a potentially spurious counterexample:
+hostcmd_cs_hold: rejected by hostcmd generated Lean: rejected by Lean (exit 1): 104:2: error: The prover found a potentially spurious counterexample:
+hostcmd_no_addr_step: rejected by hostcmd generated Lean: rejected by Lean (exit 1): 131:2: error: The prover found a potentially spurious counterexample:
+hostcmd_addr_bytes_swap: rejected by hostcmd generated Lean: rejected by Lean (exit 1): 132:2: error: The prover found a potentially spurious counterexample:
+corectl baseline: accepted
+pick_ignores_we: rejected by corectl generated Lean: rejected by Lean (exit 1): 127:2: error: The prover found a counterexample, consider the following assignment:
+pick_wrong_group: rejected by corectl extraction: w_cw: group comparator 0 compares with [2], not DG_CW = 25
+frz_wrong_reset: rejected by corectl generated Lean: rejected by Lean (exit 1): 244:74: error: The prover found a potentially spurious counterexample:
+frz_never_clears: rejected by corectl generated Lean: rejected by Lean (exit 1): 245:74: error: The prover found a potentially spurious counterexample:
+sticky_wrong_offset: rejected by corectl extraction: c_wr_stk: offset 2 is not the host map's
+sticky_wrong_block: rejected by corectl extraction: c_wr_stk: expected one subtraction, one span comparison and one offset comparison, found ['$and', '$eq', '$lt', '$sub']
+sticky_no_write: rejected by corectl generated Lean: rejected by Lean (exit 1): 316:2: error: The prover found a counterexample, consider the following assignment:
+sticky_wrong_bit: rejected by corectl generated Lean: rejected by Lean (exit 1): 308:45: error: Tactic `decide` proved that the proposition
+hostmap baseline: accepted
+hostmap_overlap: rejected by hostmap generated Lean: rejected by Lean (exit 1): 173:2: error: The prover found a counterexample, consider the following assignment:
+hostmap_thread_instance: rejected by hostmap generated Lean: rejected by Lean (exit 1): 613:2: error: The prover found a counterexample, consider the following assignment:
+hostmap_pm_lane: rejected by hostmap generated Lean: rejected by Lean (exit 1): 1017:2: error: The prover found a counterexample, consider the following assignment:
+hostmap_readonly_write: rejected by hostmap generated Lean: rejected by Lean (exit 1): 847:2: error: The prover found a counterexample, consider the following assignment:
+hostread baseline: accepted
+hostread_sticky_layout: rejected by hostread generated Lean: rejected by Lean (exit 1): 527:44: error: unsolved goals
+hostread_default_nonzero: rejected by hostread generated Lean: rejected by Lean (exit 1): 527:44: error: unsolved goals
+hostread_phase_slice: rejected by hostread generated Lean: rejected by Lean (exit 1): 529:44: error: unsolved goals
+hostread_tx_early: rejected by hostread generated Lean: rejected by Lean (exit 1): 435:53: error: unsolved goals
+hostread_ackv_swap: rejected by hostread generated Lean: rejected by Lean (exit 1): 435:53: error: unsolved goals
+hostread_default_x: rejected by hostread generated Lean: rejected by Lean (exit 1): 594:48: error: unsolved goals
+hostread_miso_lsb: rejected by hostread generated Lean: rejected by Lean (exit 1): 577:77: error: unsolved goals
+spipins baseline: accepted
+spipins_sck_from_s1: rejected by spipins structural check: u_host.sck is not s2[8]
+spipins_cs_mosi_swap: rejected by spipins structural check: u_host.cs_n is not s2[9]
+spipins_sckp_from_s2: rejected by spipins structural check: u_host.sck_p is not sp[8]
+spipins_sp_stage_dropped: rejected by spipins generated Lean: rejected by Lean (exit 1): 63:56: error: unsolved goals
+spipins_s2_bypass: rejected by spipins structural check: tt_um_brentius_metronome.s1: missing net
+mem baseline: accepted
+mem_p0_over_s1: rejected by mem generated Lean: rtlReq
+mem_host_first: rejected by mem generated Lean: rtlHostQ
+mem_host_lane: rejected by mem generated Lean: rtlHLane
+mem_host_no_overwrite: rejected by mem generated Lean: rtlHostQ
+mem_p0_rdy_early: rejected by mem generated Lean: rtlRdy
+mem_ptr_wrap_1024: rejected by mem generated Lean: rtlPtr
+mem_s0_word_be: rejected by mem generated Lean: rtlMBe
+mem_dmem_lane: rejected by mem structural check: u_sram.A_BM: bit 0 is not be[0]
+thread baseline: accepted
+thread_pause_dispatch: rejected by thread generated Lean: rejected by Lean (exit 1): 92:14: error: The prover found a counterexample, consider the following assignment:
+thread_pc_pause_wins: rejected by thread generated Lean: rejected by Lean (exit 1): 92:14: error: The prover found a potentially spurious counterexample:
+thread_ovr_clear_wins: rejected by thread generated Lean: rejected by Lean (exit 1): 92:14: error: The prover found a counterexample, consider the following assignment:
+thread_ev_not_frozen: rejected by thread generated Lean: rejected by Lean (exit 1): 1183:12: error: The prover found a counterexample, consider the following assignment:
+thread3_line2_beat: rejected by thread generated Lean: rejected by Lean (exit 1): 1461:12: error: The prover found a counterexample, consider the following assignment:
+thread_always_ignores_running: rejected by thread generated Lean: rejected by Lean (exit 1): 1189:12: error: The prover found a counterexample, consider the following assignment:
+stream baseline: accepted
+stream_msb_index: rejected by stream generated Lean: rejected by Lean (exit 1) at rtlCur_eq: 710:67: error: unsolved goals
+stream_no_adv_starve: rejected by stream generated Lean: rejected by Lean (exit 1) at rtlStarved_eq: 765:75: error: unsolved goals
+stream_rewind_keeps_pv: rejected by stream generated Lean: rejected by Lean (exit 1) at rtlPv_eq: 760:65: error: unsolved goals
+stream_write_when_stalled: rejected by stream generated Lean: rejected by Lean (exit 1) at rtlPend_eq: 748:69: error: unsolved goals
+stream_flush_unpadded: rejected by stream generated Lean: rejected by Lean (exit 1) at rtlPend_eq: 752:69: error: unsolved goals
+stream_end_is_mark: rejected by stream generated Lean: rejected by Lean (exit 1) at rtlGEnd_eq: 801:46: error: unsolved goals
+stream_capture_ba_one: rejected by stream generated Lean: rejected by Lean (exit 1) at rtlBa_eq: 709:65: error: unsolved goals
+stream_replay_pos_one: rejected by stream generated Lean: rejected by Lean (exit 1) at rtlPos_eq: 696:67: error: unsolved goals
+units baseline: accepted
+unit_counter_wrap: rejected by units generated Lean: rejected by Lean (exit 1): 474:2: error: The prover found a potentially spurious counterexample:
+unit_counter_bytes_swap: rejected by units generated Lean: rejected by Lean (exit 1): 476:2: error: The prover found a potentially spurious counterexample:
+unit_shifter_len_zero: rejected by units generated Lean: rejected by Lean (exit 1): 542:2: error: The prover found a potentially spurious counterexample:
+unit_lfsr_feedback_bit: rejected by units generated Lean: rejected by Lean (exit 1): 612:2: error: The prover found a potentially spurious counterexample:
+unit_acc_sub_carry: rejected by units generated Lean: rejected by Lean (exit 1): 683:55: error: The prover found a counterexample, consider the following assignment:
+unit_acc_cmp_writes_a: rejected by units generated Lean: rejected by Lean (exit 1): 671:55: error: The prover found a counterexample, consider the following assignment:
+moves baseline: accepted
+moves_map_entry: rejected by moves generated Lean: rejected by Lean: moves (exit 1): C:\Users\b_yee23\AppData\Local\Temp\metronome-moves-moves_map_entry-dopzp6zx\MovesProofmoves_map_entry.lean:68:2: error: Tactic `rfl` failed: The left-hand side
+moves_null_group: rejected by moves generated Lean: rejected by Lean: moves (exit 1): C:\Users\b_yee23\AppData\Local\Temp\metronome-moves-moves_null_group-_eq52i3c\MovesProofmoves_null_group.lean:68:2: error: Tactic `rfl` failed: The left-hand side
+moves_same_key_line: rejected by moves generated Lean: rejected by Lean: moves (exit 1): C:\Users\b_yee23\AppData\Local\Temp\metronome-moves-moves_same_key_line-5zb_ccjg\MovesProofmoves_same_key_line.lean:204:2: error: The prover found a counterexample, consider the following assignment:
+moves_win_highest: rejected by moves generated Lean: rejected by Lean: moves (exit 1): C:\Users\b_yee23\AppData\Local\Temp\metronome-moves-moves_win_highest-u72zs7ll\MovesProofmoves_win_highest.lean:240:2: error: The prover found a counterexample, consider the following assignment:
+moves_conflict_three_way: rejected by moves generated Lean: rejected by Lean: moves (exit 1): C:\Users\b_yee23\AppData\Local\Temp\metronome-moves-moves_conflict_three_way-qbspaurh\MovesProofmoves_conflict_three_way.lean:384:2: error: The prover found a counterexample, consider the following as
+moves_clear_beats_event: rejected by moves generated Lean: rejected by Lean: moves (exit 1): C:\Users\b_yee23\AppData\Local\Temp\metronome-moves-moves_clear_beats_event-4xwww7_u\MovesProofmoves_clear_beats_event.lean:420:2: error: Tactic `rfl` failed: The left-hand side
+moves_valid_no_group: rejected by moves generated Lean: rejected by Lean: moves (exit 1): C:\Users\b_yee23\AppData\Local\Temp\metronome-moves-moves_valid_no_group-48daorsk\MovesProofmoves_valid_no_group.lean:87:2: error: The prover found a counterexample, consider the following assignment:
+moves_hits_ignores_en: rejected by moves generated Lean: rejected by Lean: words (exit 1): C:\Users\b_yee23\AppData\Local\Temp\metronome-moves-moves_hits_ignores_en-g9lqp1pc\MovesWordsmoves_hits_ignores_en.lean:151:2: error: The prover found a counterexample, consider the following assignme
+line baseline: accepted
+line_frz_held: rejected by line generated Lean: rejected by Lean (exit 1): 691:544: error: Tactic `rfl` failed: The left-hand side
+line_host_ctl_loses: rejected by line structural check: rtl.run_f: already bound
+line_tapmiss_not_sticky: rejected by line generated Lean: rejected by Lean (exit 1): 728:544: error: Tactic `rfl` failed: The left-hand side
+line_commit_staged: rejected by line generated Lean: rejected by Lean (exit 1): 728:544: error: Tactic `rfl` failed: The left-hand side
+line_tap0_cross: rejected by line generated Lean: rejected by Lean (exit 1): 611:548: error: Tactic `rfl` failed: The left-hand side
+line_cfg_offset: rejected by line structural check: md2_line.c_t1: not window bytes 6+ (field t1)
+line2_cfg_slice: rejected by line structural check: g_ln[2].u.cfg: not window bytes 64..95
+EXIT=0

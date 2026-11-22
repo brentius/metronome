@@ -1,0 +1,12 @@
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Build completed successfully (3 jobs).
+baseline: accepted (187 theorems, {'sources': 64, 'guards': 64, 'lines': 4, 'control': 12, 'outputs': 14, 'oe': 8})
+glue_source_slot: rejected (generated Lean: rejected by Lean (exit 1): rtlSrc4_spec (line 389))
+glue_guard_polarity: rejected (generated Lean: rejected by Lean (exit 1): rtlGuard24_spec (line 1217))
+glue_err_misses_cwovr: rejected (generated Lean: rejected by Lean (exit 1): rtlErr_spec (line 1626))
+glue_irq_ignores_err: rejected (generated Lean: rejected by Lean (exit 1): rtlIrq_spec (line 1634))
+glue_flp_not_frozen: rejected (generated Lean: rejected by Lean (exit 1): rtlFlp_spec (line 1655))
+glue_db_not_held: rejected (generated Lean: rejected by Lean (exit 1): rtlDb_spec (line 1640))
+glue_out_not_frozen: rejected (generated Lean: rejected by Lean (exit 1): rtlOut0_full (line 2195))
+glue_uo_out_irq: rejected (extraction: uo_out[1]: the IRQ register is not in the design (is bit 1 still IRQ?))

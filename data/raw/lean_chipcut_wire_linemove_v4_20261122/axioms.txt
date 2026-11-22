@@ -1,0 +1,115 @@
+﻿'Metronome.ChipCut.Discharge.LineMoveWire.wireAgree_ctl_low3' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Moves.beq_comm_5._native.bv_decide.ax_1_5,
+ Metronome.Moves.hitsMask_bit_0._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_1._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_2._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_3._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_4._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_5._native.bv_decide.ax_1_10,
+ Metronome.Strobes.dsteqMask_pick._native.bv_decide.ax_1_7,
+ Metronome.Strobes.hitsMask_atMostOne._native.bv_decide.ax_1_7]
+'Metronome.ChipCut.Discharge.LineMoveWire.wireAgree_sym_low4' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.CoreCtl.makeWord_dst._native.bv_decide.ax_1_5,
+ Metronome.CoreCtl.makeWord_we._native.bv_decide.ax_1_5,
+ Metronome.Moves.sameKey_comm._native.bv_decide.ax_1_6,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_14,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_19,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_24,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_29,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_34,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_9,
+ Metronome.Strobes.atMostOne_cases._native.bv_decide.ax_1_6,
+ truncate_four_makeWord._native.bv_decide.ax_1_10,
+ truncate_four_makeWord._native.bv_decide.ax_1_5,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_11,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_16,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_21,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_26,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_31,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_6]
+'Metronome.ChipCut.Discharge.LineMoveWire.dgTable_lctl_code' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.MoveFabricKeyed.symMask_atMostOne' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Moves.sameKey_comm._native.bv_decide.ax_1_6,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_14,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_19,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_24,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_29,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_34,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_9,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_11,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_16,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_21,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_26,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_31,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_6]
+'Metronome.ChipCut.Discharge.MoveFabricKeyed.hitOr_onehot' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.LineMoveWire.eq_shift_of_atMostOne' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Strobes.atMostOne_cases._native.bv_decide.ax_1_6]
+'Metronome.ChipCut.Discharge.LineMoveWire.absSymOp_lineSop' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.LineMoveWire.truncate_four_makeWord' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ truncate_four_makeWord._native.bv_decide.ax_1_10,
+ truncate_four_makeWord._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.LineMoveWire.winAt_arbBundle' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.LineMoveWire.symSlot' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_14,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_19,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_24,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_29,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_34,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_9,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_11,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_16,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_21,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_26,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_31,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_6]
+'Metronome.ChipCut.Discharge.LineMoveWire.symScan_eq_none_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_14,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_19,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_24,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_29,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_34,
+ Metronome.Moves.symMask_bit._native.bv_decide.ax_1_9,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_11,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_16,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_21,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_26,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_31,
+ Metronome.ChipCut.Discharge.MoveFabricKeyed.bits6_bit._native.bv_decide.ax_1_6]
+wireAgree_ctl_low3 : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.Discharge.MoveFabricKeyed.JGTable ÔåÆ
+        (ÔêÇ (c : Fin 2), Metronome.ChipCut.Discharge.CoreInputBus s m pin c (Metronome.ChipCut.Discharge.sIr s m c)) ÔåÆ
+          Metronome.ChipCut.Discharge.MoveFabricKeyed.GrpPacked s pin ÔåÆ
+            Metronome.Bridge.Moves.DstKindTable ÔåÆ
+              Metronome.ChipCut.Discharge.MoveFabric.DstPayloadTable ÔåÆ
+                ÔêÇ (l : Fin 4),
+                  Option.map (fun v => v % 8) (Metronome.ChipCut.Discharge.ltLineIn m l).ctlMove =
+                    (Metronome.Bridge.Line.absIn (Metronome.ChipCut.lineIn s pin Ôåæl)).ctlMove
+wireAgree_sym_low4 : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.Discharge.MoveFabricKeyed.JGTable ÔåÆ
+        (ÔêÇ (c : Fin 2), Metronome.ChipCut.Discharge.CoreInputBus s m pin c (Metronome.ChipCut.Discharge.sIr s m c)) ÔåÆ
+          Metronome.ChipCut.Discharge.MoveFabricKeyed.GrpPacked s pin ÔåÆ
+            Metronome.Bridge.Moves.DstKindTable ÔåÆ
+              Metronome.ChipCut.Discharge.MoveFabricKeyed.DstStreamLineTable ÔåÆ
+                ÔêÇ (l : Fin 4),
+                  Option.map (fun w => (w.op, w.v % 16)) (Metronome.ChipCut.Discharge.ltLineIn m l).sym =
+                    Option.map (fun w => (w.op, w.v))
+                      (Metronome.Bridge.Line.absIn (Metronome.ChipCut.lineIn s pin Ôåæl)).sym

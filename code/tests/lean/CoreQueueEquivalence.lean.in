@@ -1,0 +1,93 @@
+namespace Metronome.CoreQueue
+
+/-- The extracted transition matches the independent SPEC_V2 §13.1 queue
+specification for every state and input.  `state.addr`, the 15-bit picked CW
+group and the free leaves are all symbolic. -/
+theorem rtlStep_eq_step (state : State) (input : Input) :
+    rtlStep state input = step state input := by
+  apply State.ext <;> rfl
+
+def rtlStateAt (inputs : Nat → Input) (initial : State) (n : Nat) : State :=
+  run (fun state input => rtlStep state input) inputs initial n
+
+theorem rtlStateAt_eq (inputs : Nat → Input) (initial : State) (n : Nat) :
+    rtlStateAt inputs initial n = stateAt inputs initial n :=
+  run_congr (fun state input => rtlStep_eq_step state input) inputs initial n
+
+theorem rtl_trace_result (inputs : Nat → Input) (initial : State) (n : Nat) :
+    rtlStep (rtlStateAt inputs initial n) (inputs n) =
+      step (stateAt inputs initial n) (inputs n) := by
+  rw [rtlStateAt_eq, rtlStep_eq_step]
+
+theorem rtl_trace_held_until_drain (inputs : Nat → Input) (initial : State)
+    (m n : Nat) (order : m ≤ n)
+    (pending : (rtlStateAt inputs initial m).pending = true)
+    (noDrain : ∀ k, m ≤ k → k < n →
+      drain (rtlStateAt inputs initial k) (inputs k) = false)
+    (noReset : ∀ k, m ≤ k → k < n → (inputs k).resetN = true) :
+    (rtlStateAt inputs initial n).pending = true ∧
+      (rtlStateAt inputs initial n).pendingAddr =
+        (rtlStateAt inputs initial m).pendingAddr ∧
+      (rtlStateAt inputs initial n).pendingData =
+        (rtlStateAt inputs initial m).pendingData := by
+  rw [rtlStateAt_eq inputs initial m] at pending
+  rw [rtlStateAt_eq inputs initial n, rtlStateAt_eq inputs initial m]
+  exact trace_held_until_drain inputs initial m n order pending
+    (fun k le lt => by simpa only [rtlStateAt_eq] using noDrain k le lt) noReset
+
+theorem rtl_trace_drain_delivers (inputs : Nat → Input) (initial : State)
+    (m n : Nat) (order : m + 1 ≤ n)
+    (accepted : accept (rtlStateAt inputs initial m) (inputs m) = true)
+    (resetM : (inputs m).resetN = true)
+    (noDrain : ∀ k, m + 1 ≤ k → k < n →
+      drain (rtlStateAt inputs initial k) (inputs k) = false)
+    (noReset : ∀ k, m + 1 ≤ k → k < n → (inputs k).resetN = true)
+    (drained : drain (rtlStateAt inputs initial n) (inputs n) = true) :
+    drain (rtlStateAt inputs initial n) (inputs n) = true ∧
+      delivered (rtlStateAt inputs initial n) =
+        acceptedWrite (rtlStateAt inputs initial m) (inputs m) := by
+  rw [rtlStateAt_eq inputs initial m] at accepted
+  rw [rtlStateAt_eq inputs initial n] at drained
+  rw [rtlStateAt_eq inputs initial n, rtlStateAt_eq inputs initial m]
+  exact trace_drain_delivers_accepted inputs initial m n order accepted resetM
+    (fun k le lt => by simpa only [rtlStateAt_eq] using noDrain k le lt) noReset drained
+
+theorem rtl_trace_drain_empties (inputs : Nat → Input) (initial : State) (n : Nat)
+    (drained : drain (rtlStateAt inputs initial n) (inputs n) = true)
+    (noAccept : accept (rtlStateAt inputs initial n) (inputs n) = false)
+    (reset : (inputs n).resetN = true) :
+    (rtlStateAt inputs initial (n + 1)).pending = false := by
+  rw [rtlStateAt_eq inputs initial n] at drained noAccept
+  rw [rtlStateAt_eq inputs initial (n + 1)]
+  exact trace_drain_empties inputs initial n drained noAccept reset
+
+theorem rtl_accepted_or_overrun (state : State) (input : Input)
+    (reset : input.resetN = true) (write : writeData input = true)
+    (dropped : accept state input = false) :
+    (rtlStep state input).overrun = true := by
+  rw [rtlStep_eq_step]
+  exact accepted_or_overrun state input reset write dropped
+
+theorem rtl_frz_holds (state : State) (input : Input)
+    (frozen : input.frz = true) (pending : state.pending = true)
+    (reset : input.resetN = true) :
+    (rtlStep state input).pending = true ∧
+      (rtlStep state input).pendingAddr = state.pendingAddr ∧
+      (rtlStep state input).pendingData = state.pendingData := by
+  rw [rtlStep_eq_step]
+  obtain ⟨held, heldAddr, heldData, _⟩ := frz_holds state input frozen pending reset
+  exact ⟨held, heldAddr, heldData⟩
+
+theorem rtl_step_increments (state : State) (input : Input)
+    (accepted : accept state input = true) (reset : input.resetN = true) :
+    (rtlStep state input).addr = state.addr + 1 := by
+  rw [rtlStep_eq_step]
+  exact accept_increments state input accepted reset
+
+/-- info: 'Metronome.CoreQueue.rtlStep_eq_step' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs in #print axioms rtlStep_eq_step
+
+/-- info: 'Metronome.CoreQueue.rtl_trace_result' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs in #print axioms rtl_trace_result
+
+end Metronome.CoreQueue

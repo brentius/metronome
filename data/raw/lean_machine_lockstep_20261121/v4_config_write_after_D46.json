@@ -1,0 +1,11 @@
+{
+ "scenario": "v4_config_write",
+ "cycles": 8386,
+ "ok": true,
+ "first_mismatch_cycle": null,
+ "mismatching_keys": 0,
+ "mismatches": [],
+ "keys_compared": 197,
+ "seconds": 9.77,
+ "check": null
+}

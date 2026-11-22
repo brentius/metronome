@@ -1,0 +1,136 @@
+RTL snapshot SHA-256: d3a660c49a23a6f358174f935d503e8afd7092a9c14906f0128dac86897959f0
+Yosys command: read_verilog -I src src/cells_behav.v src/md2_acc.v src/md2_cfg_bank.v src/md2_core.v src/md2_counter.v src/md2_dmem.v src/md2_host.v src/md2_lfsr.v src/md2_line.v src/md2_mem.v src/md2_pmem.v src/md2_shifter.v src/md2_sram_bb.v src/md2_stream.v src/md2_thread.v src/project.v; hierarchy -check -top tt_um_brentius_metronome; proc; opt_clean; write_json design.json
+Warning: Latch inferred for signal `\cfg_lgcp_beh.\int_gate' from process `\cfg_lgcp_beh.$src/cells_behav.v:23$proc$3': $auto$proc_dlatch.cc:559:proc_dlatch$13753
+Warning: Latch inferred for signal `\cfg_dlhrq_beh.\Q' from process `\cfg_dlhrq_beh.$src/cells_behav.v:15$proc$1': $auto$proc_dlatch.cc:555:proc_dlatch$13774
+C = 0: 256 extracted signals
+C = 1: 254 extracted signals
+C:\Users\b_yee23\AppData\Local\Temp\metronome-core-core_ifnot_uses_c-eqzp4bp6\CoreProof.lean:373:67: error: The prover found a potentially spurious counterexample:
+- It abstracted the following unsupported expressions as opaque variables:
+  - state.ir
+  - state.xl
+  - input.guards
+  - input.frz
+  - input.gLine
+  - state.xv
+Consider the following assignment:
+state.xv = true
+input.frz = false
+state.ir = 18446638518445432831#64
+input.guards = 18446744073709549567#64
+input.gLine = 1048575#20
+state.xl = 3#2
+'Metronome.Core.Rtl0.rtlStep_eq_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlFpc._native.bv_decide.ax_1_47,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl0.rtlOut_eq_out' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlDisp._native.bv_decide.ax_1_47,
+ rtlDispE._native.bv_decide.ax_1_47,
+ rtlFetchAddr._native.bv_decide.ax_1_47,
+ rtlFetchEn._native.bv_decide.ax_1_47,
+ rtlMvData._native.bv_decide.ax_1_47,
+ rtlNpc._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl0.rtlStateAt_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlFpc._native.bv_decide.ax_1_47,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl0.rtl_trace_result' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlFpc._native.bv_decide.ax_1_47,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl0.rtl_trace_dispatch_idle' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlFpc._native.bv_decide.ax_1_47,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl0.rtl_trace_jump_idle' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlFpc._native.bv_decide.ax_1_47,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-core-core_ifnot_uses_c-eqzp4bp6\CoreProof.lean:833:63: error: unsolved goals
+state : State
+input : Input
+⊢ (rtlOut state input).mvEn = (out true state input).mvEn
+'Metronome.Core.Rtl1.rtlStep_eq_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlFpc._native.bv_decide.ax_1_47,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl1.rtlOut_eq_out' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlDisp._native.bv_decide.ax_1_47,
+ rtlDispE._native.bv_decide.ax_1_47,
+ rtlFetchAddr._native.bv_decide.ax_1_47,
+ rtlFetchEn._native.bv_decide.ax_1_47,
+ rtlMvData._native.bv_decide.ax_1_47,
+ rtlNpc._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl1.rtlStateAt_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlFpc._native.bv_decide.ax_1_47,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl1.rtl_trace_result' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlFpc._native.bv_decide.ax_1_47,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl1.rtl_trace_dispatch_idle' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlFpc._native.bv_decide.ax_1_47,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+'Metronome.Core.Rtl1.rtl_trace_jump_idle' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlFpc._native.bv_decide.ax_1_47,
+ rtlRr._native.bv_decide.ax_1_47,
+ rtlRv._native.bv_decide.ax_1_47,
+ rtlXl._native.bv_decide.ax_1_47,
+ rtlXt._native.bv_decide.ax_1_47,
+ rtlXv._native.bv_decide.ax_1_47]
+-- core_ifnot_uses_c: rejected by Lean (exit 1)

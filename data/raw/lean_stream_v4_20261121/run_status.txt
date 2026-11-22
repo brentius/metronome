@@ -1,0 +1,10 @@
+case	outcome	exit	expectation
+baseline	accepted	0	ok
+stream_msb_index	rejected (generated Lean: rejected by Lean (exit 1) at rtlCur_eq: 710:67: error: unsolved goals)	1	ok
+stream_no_adv_starve	rejected (generated Lean: rejected by Lean (exit 1) at rtlStarved_eq: 765:75: error: unsolved goals)	1	ok
+stream_rewind_keeps_pv	rejected (generated Lean: rejected by Lean (exit 1) at rtlPv_eq: 760:65: error: unsolved goals)	1	ok
+stream_write_when_stalled	rejected (generated Lean: rejected by Lean (exit 1) at rtlPend_eq: 748:69: error: unsolved goals)	1	ok
+stream_flush_unpadded	rejected (generated Lean: rejected by Lean (exit 1) at rtlPend_eq: 752:69: error: unsolved goals)	1	ok
+stream_end_is_mark	rejected (generated Lean: rejected by Lean (exit 1) at rtlGEnd_eq: 801:46: error: unsolved goals)	1	ok
+stream_capture_ba_one	rejected (generated Lean: rejected by Lean (exit 1) at rtlBa_eq: 709:65: error: unsolved goals)	1	ok
+stream_replay_pos_one	rejected (generated Lean: rejected by Lean (exit 1) at rtlPos_eq: 696:67: error: unsolved goals)	1	ok

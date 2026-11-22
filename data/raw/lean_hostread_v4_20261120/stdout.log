@@ -1,0 +1,10 @@
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Build completed successfully (7 jobs).
+baseline: accepted (11 registers, 134 read-map cells, 200 don't-care bits, MISO ((BitVec.truncate 1 (BitVec.ushiftRight state.tx 7)) != 0))
+hostread_sticky_layout: rejected (generated Lean: rejected by Lean (exit 1): 386:44: error: unsolved goals)
+hostread_default_nonzero: rejected (generated Lean: rejected by Lean (exit 1): 386:44: error: unsolved goals)
+hostread_phase_slice: rejected (generated Lean: rejected by Lean (exit 1): 387:44: error: unsolved goals)
+hostread_tx_early: rejected (generated Lean: rejected by Lean (exit 1): 294:53: error: unsolved goals)
+hostread_ackv_swap: rejected (generated Lean: rejected by Lean (exit 1): 294:53: error: unsolved goals)
+hostread_miso_lsb: rejected (generated Lean: rejected by Lean (exit 1): 436:77: error: unsolved goals)

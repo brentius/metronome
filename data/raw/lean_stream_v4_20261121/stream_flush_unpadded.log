@@ -1,0 +1,216 @@
+RTL snapshot SHA-256: 1d7e11a6a3965f4b1e8a98cef0f855f94f99b8bf3bba8597598cbae82d600598
+Yosys command: read_verilog -I src src/cells_behav.v src/md2_acc.v src/md2_cfg_bank.v src/md2_core.v src/md2_counter.v src/md2_dmem.v src/md2_host.v src/md2_lfsr.v src/md2_line.v src/md2_mem.v src/md2_pmem.v src/md2_shifter.v src/md2_sram_bb.v src/md2_stream.v src/md2_thread.v src/project.v; hierarchy -check -top tt_um_brentius_metronome; proc; opt_clean; write_json design.json
+Warning: Latch inferred for signal `\cfg_lgcp_beh.\int_gate' from process `\cfg_lgcp_beh.$src/cells_behav.v:23$proc$3': $auto$proc_dlatch.cc:559:proc_dlatch$13759
+Warning: Latch inferred for signal `\cfg_dlhrq_beh.\Q' from process `\cfg_dlhrq_beh.$src/cells_behav.v:15$proc$1': $auto$proc_dlatch.cc:555:proc_dlatch$13780
+g_s[0].u: 14 registers, 267 gates
+g_s[1].u: 12 registers, 158 gates
+C:\Users\b_yee23\AppData\Local\Temp\metronome-stream-stream_flush_unpadded-qjwqyv2e\StreamProof.lean:752:69: error: unsolved goals
+case isTrue.isFalse.isFalse.isFalse.isFalse
+state : State
+input : Input
+h✝⁴ : input.resetN = true
+h✝³ : input.frz = false
+h✝² : input.replayEn = false
+h✝¹ : input.capEn = false
+h✝ : input.cfgMode = true
+⊢ (if
+        (input.rxWe = true ∧ ¬state.pos = input.cfgLen) ∧ state.bidx = 7#3 ∨
+          (input.flush = true ∧ ¬state.pos = input.cfgLen) ∧
+            (¬state.bidx = 0#3 ∨ input.rxWe = true ∧ ¬state.pos = input.cfgLen) then
+      if state.pv = true ∧ input.gnt = false then state.pend
+      else
+        state.cur |||
+          (if input.rxBit = true then 1#8 else 0#8) <<<
+            (if input.cfgMsb = true then ~~~state.bidx else state.bidx).toNat
+    else state.pend) =
+    if
+        (input.rxWe = true ∧ ¬state.pos = input.cfgLen) ∧ state.bidx = 7#3 ∨
+          (input.flush = true ∧ ¬state.pos = input.cfgLen) ∧
+            (¬state.bidx = 0#3 ∨ input.rxWe = true ∧ ¬state.pos = input.cfgLen) then
+      if state.pv = true ∧ input.gnt = false then state.pend
+      else
+        state.cur |||
+          if (input.rxWe = true ∧ ¬state.pos = input.cfgLen) ∧ input.rxBit = true then
+            1#8 <<< (if input.cfgMsb = true then ~~~state.bidx else state.bidx).toNat
+          else 0#8
+    else state.pend
+'Metronome.Stream.CapOne.rtlPos_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlPos_eq._native.bv_decide.ax_1_7]
+'Metronome.Stream.CapOne.rtlWb_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlWb_eq._native.bv_decide.ax_1_7]
+'Metronome.Stream.CapOne.rtlStarved_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Stream.CapOne.rtlBit_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Stream.CapOne.rtlReqWord_eq' depends on axioms: [propext]
+'Metronome.Stream.CapOne.rtlStep_eq_step' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlBa_eq._native.bv_decide.ax_1_7,
+ rtlBidx_eq._native.bv_decide.ax_1_7,
+ rtlCur_eq._native.bv_decide.ax_1_7,
+ rtlCv_eq._native.bv_decide.ax_1_7,
+ rtlNb_eq._native.bv_decide.ax_1_12,
+ rtlNb_eq._native.bv_decide.ax_1_7,
+ rtlNv_eq._native.bv_decide.ax_1_7,
+ rtlPos_eq._native.bv_decide.ax_1_7,
+ rtlPv_eq._native.bv_decide.ax_1_7,
+ rtlWb_eq._native.bv_decide.ax_1_7,
+ rtlWv_eq._native.bv_decide.ax_1_7]
+'Metronome.Stream.CapOne.rtlOut_eq_out' depends on axioms: [propext, Quot.sound]
+'Metronome.Stream.CapOne.rtlStateAt_eq' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlBa_eq._native.bv_decide.ax_1_7,
+ rtlBidx_eq._native.bv_decide.ax_1_7,
+ rtlCur_eq._native.bv_decide.ax_1_7,
+ rtlCv_eq._native.bv_decide.ax_1_7,
+ rtlNb_eq._native.bv_decide.ax_1_12,
+ rtlNb_eq._native.bv_decide.ax_1_7,
+ rtlNv_eq._native.bv_decide.ax_1_7,
+ rtlPos_eq._native.bv_decide.ax_1_7,
+ rtlPv_eq._native.bv_decide.ax_1_7,
+ rtlWb_eq._native.bv_decide.ax_1_7,
+ rtlWv_eq._native.bv_decide.ax_1_7]
+'Metronome.Stream.CapOne.rtl_trace_rewind' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlBa_eq._native.bv_decide.ax_1_7,
+ rtlBidx_eq._native.bv_decide.ax_1_7,
+ rtlCur_eq._native.bv_decide.ax_1_7,
+ rtlCv_eq._native.bv_decide.ax_1_7,
+ rtlNb_eq._native.bv_decide.ax_1_12,
+ rtlNb_eq._native.bv_decide.ax_1_7,
+ rtlNv_eq._native.bv_decide.ax_1_7,
+ rtlPos_eq._native.bv_decide.ax_1_7,
+ rtlPv_eq._native.bv_decide.ax_1_7,
+ rtlWb_eq._native.bv_decide.ax_1_7,
+ rtlWv_eq._native.bv_decide.ax_1_7]
+'Metronome.Stream.CapOne.rtl_trace_adv_without_cur' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlBa_eq._native.bv_decide.ax_1_7,
+ rtlBidx_eq._native.bv_decide.ax_1_7,
+ rtlCur_eq._native.bv_decide.ax_1_7,
+ rtlCv_eq._native.bv_decide.ax_1_7,
+ rtlNb_eq._native.bv_decide.ax_1_12,
+ rtlNb_eq._native.bv_decide.ax_1_7,
+ rtlNv_eq._native.bv_decide.ax_1_7,
+ rtlPos_eq._native.bv_decide.ax_1_7,
+ rtlPv_eq._native.bv_decide.ax_1_7,
+ rtlWb_eq._native.bv_decide.ax_1_7,
+ rtlWv_eq._native.bv_decide.ax_1_7]
+'Metronome.Stream.CapOne.rtl_trace_starved_persists' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlBa_eq._native.bv_decide.ax_1_7,
+ rtlBidx_eq._native.bv_decide.ax_1_7,
+ rtlCur_eq._native.bv_decide.ax_1_7,
+ rtlCv_eq._native.bv_decide.ax_1_7,
+ rtlNb_eq._native.bv_decide.ax_1_12,
+ rtlNb_eq._native.bv_decide.ax_1_7,
+ rtlNv_eq._native.bv_decide.ax_1_7,
+ rtlPos_eq._native.bv_decide.ax_1_7,
+ rtlPv_eq._native.bv_decide.ax_1_7,
+ rtlWb_eq._native.bv_decide.ax_1_7,
+ rtlWv_eq._native.bv_decide.ax_1_7]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-stream-stream_flush_unpadded-qjwqyv2e\StreamProof.lean:1481:69: error: unsolved goals
+case isTrue.isFalse.isTrue
+state : State
+input : Input
+h✝² : input.resetN = true
+h✝¹ : input.frz = false
+h✝ : input.cfgMode = true
+⊢ (if
+        (input.rxWe = true ∧ ¬state.pos = input.cfgLen) ∧ state.bidx = 7#3 ∨
+          (input.flush = true ∧ ¬state.pos = input.cfgLen) ∧
+            (¬state.bidx = 0#3 ∨ input.rxWe = true ∧ ¬state.pos = input.cfgLen) then
+      if state.pv = true ∧ input.gnt = false then state.pend
+      else
+        state.cur |||
+          (if input.rxBit = true then 1#8 else 0#8) <<<
+            (if input.cfgMsb = true then ~~~state.bidx else state.bidx).toNat
+    else state.pend) =
+    if
+        (input.rxWe = true ∧ ¬state.pos = input.cfgLen) ∧ state.bidx = 7#3 ∨
+          (input.flush = true ∧ ¬state.pos = input.cfgLen) ∧
+            (¬state.bidx = 0#3 ∨ input.rxWe = true ∧ ¬state.pos = input.cfgLen) then
+      if state.pv = true ∧ input.gnt = false then state.pend
+      else
+        state.cur |||
+          if (input.rxWe = true ∧ ¬state.pos = input.cfgLen) ∧ input.rxBit = true then
+            1#8 <<< (if input.cfgMsb = true then ~~~state.bidx else state.bidx).toNat
+          else 0#8
+    else state.pend
+'Metronome.Stream.CapTwo.rtlPos_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlPos_eq._native.bv_decide.ax_1_7]
+'Metronome.Stream.CapTwo.rtlWb_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Stream.CapTwo.rtlStarved_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Stream.CapTwo.rtlBit_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Stream.CapTwo.rtlReqWord_eq' depends on axioms: [propext]
+'Metronome.Stream.CapTwo.rtlStep_eq_step' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlBa_eq._native.bv_decide.ax_1_7,
+ rtlBidx_eq._native.bv_decide.ax_1_7,
+ rtlCur_eq._native.bv_decide.ax_1_7,
+ rtlCv_eq._native.bv_decide.ax_1_7,
+ rtlPos_eq._native.bv_decide.ax_1_7,
+ rtlPv_eq._native.bv_decide.ax_1_7,
+ rtlWv_eq._native.bv_decide.ax_1_7]
+'Metronome.Stream.CapTwo.rtlOut_eq_out' depends on axioms: [propext, Quot.sound]
+'Metronome.Stream.CapTwo.rtlStateAt_eq' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlBa_eq._native.bv_decide.ax_1_7,
+ rtlBidx_eq._native.bv_decide.ax_1_7,
+ rtlCur_eq._native.bv_decide.ax_1_7,
+ rtlCv_eq._native.bv_decide.ax_1_7,
+ rtlPos_eq._native.bv_decide.ax_1_7,
+ rtlPv_eq._native.bv_decide.ax_1_7,
+ rtlWv_eq._native.bv_decide.ax_1_7]
+'Metronome.Stream.CapTwo.rtl_trace_rewind' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlBa_eq._native.bv_decide.ax_1_7,
+ rtlBidx_eq._native.bv_decide.ax_1_7,
+ rtlCur_eq._native.bv_decide.ax_1_7,
+ rtlCv_eq._native.bv_decide.ax_1_7,
+ rtlPos_eq._native.bv_decide.ax_1_7,
+ rtlPv_eq._native.bv_decide.ax_1_7,
+ rtlWv_eq._native.bv_decide.ax_1_7]
+'Metronome.Stream.CapTwo.rtl_trace_adv_without_cur' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlBa_eq._native.bv_decide.ax_1_7,
+ rtlBidx_eq._native.bv_decide.ax_1_7,
+ rtlCur_eq._native.bv_decide.ax_1_7,
+ rtlCv_eq._native.bv_decide.ax_1_7,
+ rtlPos_eq._native.bv_decide.ax_1_7,
+ rtlPv_eq._native.bv_decide.ax_1_7,
+ rtlWv_eq._native.bv_decide.ax_1_7]
+'Metronome.Stream.CapTwo.rtl_trace_starved_persists' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ rtlBa_eq._native.bv_decide.ax_1_7,
+ rtlBidx_eq._native.bv_decide.ax_1_7,
+ rtlCur_eq._native.bv_decide.ax_1_7,
+ rtlCv_eq._native.bv_decide.ax_1_7,
+ rtlPos_eq._native.bv_decide.ax_1_7,
+ rtlPv_eq._native.bv_decide.ax_1_7,
+ rtlWv_eq._native.bv_decide.ax_1_7]
+-- stream_flush_unpadded: rejected by Lean (exit 1)

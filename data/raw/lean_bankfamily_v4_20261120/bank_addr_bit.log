@@ -1,0 +1,307 @@
+RTL snapshot SHA-256: 938ef0e4d31bc34cb046372e1c5a162f866446d8e1ebabd4d1c497fb58e2d271
+Yosys command: read_verilog -I src src/cells_behav.v src/md2_acc.v src/md2_cfg_bank.v src/md2_core.v src/md2_counter.v src/md2_dmem.v src/md2_host.v src/md2_lfsr.v src/md2_line.v src/md2_mem.v src/md2_pmem.v src/md2_shifter.v src/md2_sram_bb.v src/md2_stream.v src/md2_thread.v src/project.v; hierarchy -check -top tt_um_brentius_metronome; proc; opt_clean; write_json design.json
+Warning: Latch inferred for signal `\cfg_lgcp_beh.\int_gate' from process `\cfg_lgcp_beh.$src/cells_behav.v:23$proc$3': $auto$proc_dlatch.cc:559:proc_dlatch$13762
+Warning: Latch inferred for signal `\cfg_dlhrq_beh.\Q' from process `\cfg_dlhrq_beh.$src/cells_behav.v:15$proc$1': $auto$proc_dlatch.cc:555:proc_dlatch$13783
+Bank geometry: 480 offsets, 284 live byte(s), 2112 latch bit(s)
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:63:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 1#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:76:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 0#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:89:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 3#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:102:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 2#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:115:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 5#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:128:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 4#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:141:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 7#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:154:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 6#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:167:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 9#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:180:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 8#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:193:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 11#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:206:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 10#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:219:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 13#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:232:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 12#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:245:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 15#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:258:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 14#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:271:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 17#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:284:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 16#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:297:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 19#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:310:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 18#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:323:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 21#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:336:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 20#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:349:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 23#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:362:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 22#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:375:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 25#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:388:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 24#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:401:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 27#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:414:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 26#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:427:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 29#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:440:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 33#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:453:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 32#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:466:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 35#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:479:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 34#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:492:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 37#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:505:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 36#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:518:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 39#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:531:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 38#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:544:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 41#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:557:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 40#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:570:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 43#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:583:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 42#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:596:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 45#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:609:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 44#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:622:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 47#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:635:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 46#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:648:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 49#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:661:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 48#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:674:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 51#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:687:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 50#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:700:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 53#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:713:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 52#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:726:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 55#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:739:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 54#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:752:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 57#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:765:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 56#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:778:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 59#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:791:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 58#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:804:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 61#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:817:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 65#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:830:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 64#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:843:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 67#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:856:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 66#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:869:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 69#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:882:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 68#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:895:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 71#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:908:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 70#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:921:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 73#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:934:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 72#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:947:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 75#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:960:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 74#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:973:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 77#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:986:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 76#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:999:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 79#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1012:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 78#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1025:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 81#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1038:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 80#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1051:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 83#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1064:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 82#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1077:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 85#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1090:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 84#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1103:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 87#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1116:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 86#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1129:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 89#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1142:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 88#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1155:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 91#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1168:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 90#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1181:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 93#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1194:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 97#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1207:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 96#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1220:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 99#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1233:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 98#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1246:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 101#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1259:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 100#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1272:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 103#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1285:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 102#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1298:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 105#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1311:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 104#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1324:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 107#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1337:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 106#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1350:2: error: The prover found a counterexample, consider the following assignment:
+we1 = true
+addr1 = 109#9
+C:\Users\b_yee23\AppData\Local\Temp\metronome-bank-bank_addr_bit-mi9twjh3\BankProof.lean:1363:2: error: maximum number of errors (100; from option `maxErrors`) reached, exiting
+-- bank_addr_bit: rejected by Lean (exit 1)

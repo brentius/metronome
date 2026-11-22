@@ -1,0 +1,38 @@
+# Bridge commands and results (2026-11-21)
+
+Repository: `C:\Users\b_yee23\Documents\projects\jane street comp`, branch
+`metronome-v4.0`, Lean 4.35.0 (`leanprover/lean4:v4.35.0`), core libraries only.
+
+All commands were run from `code/tests/lean` with
+
+```powershell
+$env:PATH="$env:USERPROFILE/.elan/bin;$env:PATH"
+```
+
+| # | Command | Exit | Wall clock |
+|---|---|---|---|
+| 1 | `lake build Metronome.Machine Metronome.Line Metronome.Moves` | 0 | 0.32 s (warm) |
+| 2 | `lake env lean Metronome/Bridge/Line.lean` | 0 | 2.63 s |
+| 3 | `lake env lean Metronome/Bridge/Moves.lean` | 0 | 9.62 s |
+| 4 | `lake env lean build/lean_scratch_bridge_lm/BridgeAxiomsAll.lean` (both bridge files + `#print axioms`) | 0 | 9.67 s |
+| 5 | `git diff --quiet HEAD -- src` | 0 (no changes) | — |
+
+The scratch directory `build/lean_scratch_bridge_lm/` held only probe files and
+the axiom print; it was deleted at the end.  `Line.lean` and `Moves.lean` are
+new files under `Metronome/Bridge/` and are not added to `Metronome.lean`, so
+the default `lake build` does not build them.
+
+Evidence files: `line.log` (command 2 output), `moves.log` (command 3 output),
+`commands.log` (this table), `axioms.txt` (command 4, `#print axioms` for every
+bridge theorem).
+
+`axioms.txt` contains no `sorryAx` and no `native_decide`.  The only native
+certificates are the three per-theorem `bv_decide` axioms of
+`and_one_bne_zero_16/_3/_32`, which the suite already records for its
+`bv_decide` goals; every other theorem depends on at most `propext`,
+`Classical.choice` and `Quot.sound`.
+
+`lake env lean` does not pass `-DwarningAsError=true`; the files carry only
+linter warnings (a deprecated `if_pos`/`if_neg` and one unused `hpin` binder).
+A `lake build Metronome.Bridge.Line` with the project's
+`-DwarningAsError=true` would fail on those warnings, not on a proof.

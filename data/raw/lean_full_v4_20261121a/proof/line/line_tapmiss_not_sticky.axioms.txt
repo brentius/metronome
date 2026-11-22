@@ -1,0 +1,54 @@
+Metronome.Line.rtlStep_eq_step: propext, sorryAx, Quot.sound
+Metronome.Line.rtlStateAt_eq: propext, sorryAx, Quot.sound
+Metronome.Line.rtl_trace_frz_holds: propext, sorryAx, Quot.sound
+Metronome.Line.rtlEdg_eq: propext, Quot.sound
+Metronome.Line.rtlE0_eq: propext, Quot.sound
+Metronome.Line.rtlRuna_eq: propext
+Metronome.Line.rtlInwin_eq: propext
+Metronome.Line.rtlStart_eq: propext, Quot.sound
+Metronome.Line.rtlAccept_eq: propext, Quot.sound
+Metronome.Line.rtlN_eq: propext, Quot.sound
+Metronome.Line.rtlOver_eq: propext, Quot.sound
+Metronome.Line.rtlNxw_eq: propext, Quot.sound
+Metronome.Line.rtlNx_eq: propext, Quot.sound
+Metronome.Line.rtlTh_eq: propext
+Metronome.Line.rtlHTok_eq: propext
+Metronome.Line.rtlHold_eq: propext, Quot.sound
+Metronome.Line.rtlAdv_eq: propext, Quot.sound
+Metronome.Line.rtlWrap_eq: propext, Quot.sound
+Metronome.Line.rtlBeatOut_eq: propext, Quot.sound
+Metronome.Line.rtlMissEv_eq: propext, Quot.sound
+Metronome.Line.rtlFiredNext_eq: propext, Quot.sound
+Metronome.Line.rtlSnap_eq: propext, Quot.sound
+Metronome.Line.rtlPhC_eq: propext, Quot.sound
+Metronome.Line.rtlPhF_eq: propext, Quot.sound
+Metronome.Line.rtlRunC_eq: propext, Quot.sound
+Metronome.Line.rtlArmC_eq: propext, Quot.sound
+Metronome.Line.rtlRenC_eq: propext
+Metronome.Line.rtlRunF_eq: propext, Quot.sound
+Metronome.Line.rtlStarting_eq: propext, Quot.sound
+Metronome.Line.rtlStagedN_eq: propext, Quot.sound
+Metronome.Line.rtlSegValue_eq: propext, Quot.sound
+Metronome.Line.rtlPinaIn_eq: propext, Quot.sound
+Metronome.Line.rtlPinbIn_eq: propext, Quot.sound
+Metronome.Line.rtlPinaRiseIn_eq: propext, Quot.sound
+Metronome.Line.rtlPinaFallIn_eq: propext, Quot.sound
+Metronome.Line.rtlTapOut_eq: propext, Quot.sound
+Metronome.Line.rtlInSymOut_eq: propext, Quot.sound
+Metronome.Line.rtlCapValue_eq: propext, Quot.sound
+Metronome.Line.rtl_trace_reset: propext, sorryAx, Quot.sound
+Metronome.Line.rtlPh: propext, Quot.sound
+Metronome.Line.rtlRun: propext, Quot.sound
+Metronome.Line.rtlArm: propext, Quot.sound
+Metronome.Line.rtlRen: propext, Quot.sound
+Metronome.Line.rtlHeld: propext, Quot.sound
+Metronome.Line.rtlFirst: propext, Quot.sound
+Metronome.Line.rtlSc: propext, Quot.sound
+Metronome.Line.rtlSp: propext, Quot.sound
+Metronome.Line.rtlFired: propext, Quot.sound
+Metronome.Line.rtlW: propext, Quot.sound
+Metronome.Line.rtlSn: propext, Quot.sound
+Metronome.Line.rtlRem: propext, Quot.sound
+Metronome.Line.rtlStaged: propext, Quot.sound
+Metronome.Line.rtlCommitted: propext, Quot.sound
+Metronome.Line.rtlTapmiss: propext, sorryAx, Quot.sound

@@ -1,0 +1,12 @@
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Build completed successfully (3 jobs).
+baseline: accepted
+misr_poly: rejected (generated Lean: rejected by Lean (exit 1): rtlMisr_eq)
+misr_frozen: rejected (structural check: misr: the bound leaf `i.frz` is not used)
+replay_mask_ignores_emask: rejected (structural check: pins_level: the bound leaf `emask` is not used)
+ectl_core_beats_host: rejected (structural check: replay: the bound leaf `i.hEctl` is not used)
+dc_not_cleared: rejected (generated Lean: rejected by Lean (exit 1): rtlDc_eq)
+pins_high_s2: rejected (structural check: tt_um_brentius_metronome.lvl: bits 13..15 are not tied to 0 (SPEC_V2 §2))
+pm_be_shift_one: rejected (generated Lean: rejected by Lean (exit 1): rtlPmBe_eq)
+rstq_one_stage: rejected (structural check: tt_um_brentius_metronome.rst_m: missing net)

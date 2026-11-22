@@ -1,0 +1,233 @@
+set_option linter.unusedSimpArgs false
+
+/-! ## The extracted transition is the specification
+
+Each register equation is proved from its own cone: the generated function is
+the elaborated next-state logic, the right-hand side is `Metronome.HostRead`'s
+independent statement of SPEC_V2 §9. -/
+
+theorem rtlPhase (state : State) (input : Input) :
+    (rtlStep state input).phase = phaseNext state input := by
+  simp [rtlStep, phaseNext, HostCmd.phaseNext, HostCmd.completing, HostCmd.sr,
+    HostCmd.byteIn, State.toHostCmd, Input.toHostCmd]
+  try bv_decide
+
+theorem rtlBitc (state : State) (input : Input) :
+    (rtlStep state input).bitc = bitcNext state input := by
+  simp [rtlStep, bitcNext, HostCmd.bitcNext, HostCmd.sr, State.toHostCmd,
+    Input.toHostCmd]
+  try bv_decide
+
+theorem rtlRx (state : State) (input : Input) :
+    (rtlStep state input).rx = rxNext state input := by
+  simp only [rtlStep, rxNext, HostCmd.rxNext, HostCmd.sr, HostCmd.byteIn,
+    State.toHostCmd, Input.toHostCmd]
+  by_cases h1 : input.resetN = true <;> by_cases h2 : input.csN = true <;>
+    by_cases h3 : (!input.csN && input.sck && !input.sckPrev) = true <;>
+    by_cases h4 : input.mosi = true <;> simp_all <;> try bv_decide
+
+theorem rtlIsRd (state : State) (input : Input) :
+    (rtlStep state input).isRd = isRdNext state input := by
+  simp [rtlStep, isRdNext, HostCmd.isRdNext, HostCmd.completing, HostCmd.sr,
+    HostCmd.byteIn, State.toHostCmd, Input.toHostCmd]
+  try bv_decide
+
+theorem rtlWr (state : State) (input : Input) :
+    (rtlStep state input).wr = wrNext state input := by
+  simp [rtlStep, wrNext, HostCmd.wrNext, HostCmd.completing, HostCmd.sr,
+    State.toHostCmd, Input.toHostCmd]
+  try bv_decide
+
+theorem rtlWdata (state : State) (input : Input) :
+    (rtlStep state input).wdata = wdataNext state input := by
+  simp [rtlStep, wdataNext, HostCmd.wdataNext, HostCmd.completing, HostCmd.sr,
+    HostCmd.byteIn, State.toHostCmd, Input.toHostCmd]
+  try bv_decide
+
+theorem rtlRd (state : State) (input : Input) :
+    (rtlStep state input).rd = rdNext state input := by
+  simp [rtlStep, rdNext, HostCmd.rdNext, HostCmd.completing, HostCmd.sr,
+    State.toHostCmd, Input.toHostCmd]
+  try bv_decide
+
+theorem rtlRack (state : State) (input : Input) :
+    (rtlStep state input).rack = rackNext state input := by
+  simp [rtlStep, rackNext, HostCmd.rackNext, State.toHostCmd, Input.toHostCmd]
+  try bv_decide
+
+/-- A register read loads `TX` at the end of the cycle after its request (SPEC_V2
+§9 read response), with the `rd_val` sampled in the request cycle. -/
+theorem rtlTx (state : State) (input : Input) :
+    (rtlStep state input).tx = txNext state input := by
+  simp [rtlStep, txNext, ack, ackv, sr, HostCmd.sr, State.toHostCmd,
+    Input.toHostCmd]
+  try bv_decide
+
+/-- `rackv` samples `rd_val` every cycle and holds it for the load. -/
+theorem rtlRackv (state : State) (input : Input) :
+    (rtlStep state input).rackv = rackvNext state input := by
+  simp [rtlStep, rackvNext, State.toHostCmd, Input.toHostCmd]
+  try bv_decide
+
+/-- The command machine's address equation of the elaborated step.
+
+This cut does not re-prove the address register: the host command cut proves
+exactly this equation for the same cone (`HostCmd.rtlAddr`, `hostcmd_check.py`),
+so it enters here as a stated hypothesis rather than a second proof of the same
+cells.  Everything the read path adds - `tx`, `rackv`, the read map and MISO -
+is proved below without it. -/
+def AddrOk (state : State) (input : Input) : Prop :=
+  (rtlStep state input).addr = addrNext state input
+
+/-- The extracted transition is the specification's, register by register. -/
+theorem rtlStep_eq_step (state : State) (input : Input) (haddr : AddrOk state input) :
+    rtlStep state input = step state input := by
+  exact State.ext (rtlPhase state input) (rtlBitc state input) (rtlRx state input)
+    (rtlIsRd state input) haddr (rtlWr state input)
+    (rtlWdata state input) (rtlRd state input) (rtlRack state input)
+    (rtlTx state input) (rtlRackv state input)
+
+/-! ## The RTL trace is the specification trace
+
+Every byte-level theorem of `Metronome.HostRead` is a statement about
+`stateAt`; this says the elaborated transition's trace is that trace, so those
+theorems hold of the RTL. -/
+
+/-- The register state during cycle `n` of the elaborated transition. -/
+def rtlStateAt (inputs : Nat → Input) (initial : State) : Nat → State
+  | 0 => initial
+  | n + 1 => rtlStep (rtlStateAt inputs initial n) (inputs n)
+
+theorem rtlStateAt_eq (inputs : Nat → Input) (initial : State)
+    (haddr : ∀ n, AddrOk (rtlStateAt inputs initial n) (inputs n)) (n : Nat) :
+    rtlStateAt inputs initial n = stateAt inputs initial n := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+    have h : AddrOk (stateAt inputs initial n) (inputs n) := by
+      rw [← ih]
+      exact haddr n
+    rw [rtlStateAt, stateAt_succ, ih, rtlStep_eq_step _ _ h]
+
+/-- The elaborated host link's register read response. -/
+theorem rtl_register_read_response (inputs : Nat → Input) (initial : State)
+    (haddr : ∀ n, AddrOk (rtlStateAt inputs initial n) (inputs n)) (R : Nat)
+    (hd : (rtlStateAt inputs initial R).rd = true)
+    (hrdData : (inputs R).rdData = false)
+    (hresetR : (inputs R).resetN = true) (hcsR : (inputs R).csN = false)
+    (hresetL : (inputs (R + 1)).resetN = true) (hcsL : (inputs (R + 1)).csN = false)
+    (hkeep : sr (inputs (R + 1)) = false ∨ (rtlStateAt inputs initial (R + 1)).bitc = 7) :
+    (rtlStateAt inputs initial (R + 2)).tx = (inputs R).rdVal := by
+  have e : ∀ n, rtlStateAt inputs initial n = stateAt inputs initial n :=
+    fun n => rtlStateAt_eq inputs initial haddr n
+  rw [e R, e (R + 1), e (R + 2)] at *
+  exact (register_read_response inputs initial R hd hrdData hresetR hcsR hresetL hcsL
+    hkeep).2.2
+
+/-- The elaborated host link clocks a data byte out MSB first, one bit per `SR`. -/
+theorem rtl_read_byte_msb (inputs : Nat → Input) (s : State) (a : BitVec 16)
+    (b : BitVec 8) (haddr : ∀ n, AddrOk (rtlStateAt inputs s n) (inputs n))
+    (h : Sending (rtlStateAt inputs s 0) a b)
+    (hcyc : ∀ j, j < 8 →
+      (inputs j).resetN = true ∧ (inputs j).csN = false ∧ sr (inputs j) = true)
+    (hack : ∀ j, j < 8 → ack (rtlStateAt inputs s j) (inputs j) = false) :
+    ∀ j, j < 8 → bitAt (rtlStateAt inputs s j).tx 7 = bitAt b (7 - j) := by
+  have e : ∀ n, rtlStateAt inputs s n = stateAt inputs s n :=
+    fun n => rtlStateAt_eq inputs s haddr n
+  rw [e 0] at h
+  have hack' : ∀ j, j < 8 → ack (stateAt inputs s j) (inputs j) = false := by
+    intro j hj
+    rw [← e j]
+    exact hack j hj
+  have hb := (read_byte_msb inputs s a b h hcyc hack').1
+  intro j hj
+  rw [e j]
+  exact hb j hj
+
+/-! ## The read map is the documented register map -/
+
+/-- The elaborated `rd_val` mux is `rdValSpec` at every 16-bit address, for
+every value of the observable state: the register map is bit-exact, the holes
+and the default read zero, and no state signal is invented. -/
+theorem rtlRdVal_eq_spec (a : BitVec 16) (state : Regs) :
+    rtlRdVal a state = rdValSpec a state := by
+  cases state
+  simp [rtlRdVal, rdValSpec, inCtl, inLrt, inTrt, inSrt, inDbg, inRegBlock,
+    ctlVal, lrtVal, trtVal, srtVal, dbgVal, errSum, sliceAt, sliceOff, mulC, bv,
+    bitAt, mdVersion]
+  try bv_decide
+
+/-- Program memory reads zero (SPEC_V2 §9: program bytes are write-only). -/
+theorem rtlRdVal_program_zero (a : BitVec 16) (state : Regs) (h : a < 0x1000) :
+    rtlRdVal a state = 0 := by
+  rw [rtlRdVal_eq_spec]
+  exact program_reads_zero a state h
+
+/-- The data RAM reads zero through the register port (`rd_data` redirects it). -/
+theorem rtlRdVal_data_zero (a : BitVec 16) (state : Regs) (h : a - 0x1000 < 0x800) :
+    rtlRdVal a state = 0 := by
+  rw [rtlRdVal_eq_spec]
+  exact data_reads_zero a state h
+
+/-- Configuration registers are write-only and read 0 (D14). -/
+theorem rtlRdVal_config_zero (a : BitVec 16) (state : Regs) (h : a - 0x2000 < 0x1E0) :
+    rtlRdVal a state = 0 := by
+  rw [rtlRdVal_eq_spec]
+  exact config_reads_zero a state h
+
+/-- Unmapped addresses read 0. -/
+theorem rtlRdVal_unmapped (a : BitVec 16) (state : Regs) (h : inRegBlock a = false) :
+    rtlRdVal a state = 0 := by
+  rw [rtlRdVal_eq_spec]
+  exact zero_outside a state h
+
+/-- `CTRL.ID` reads `0xA2` whatever the machine state. -/
+theorem rtlRdVal_id (a : BitVec 16) (state : Regs) (h : a = 0x2407) :
+    rtlRdVal a state = 0xA2 := by
+  subst h
+  rw [rtlRdVal_eq_spec]
+  exact id_reads_version state
+
+/-- A data-RAM landing loads `TX` with `hland_d`, so a read there returns the
+served RAM byte. -/
+theorem rtlRamLanding (state : State) (input : Input)
+    (hreset : input.resetN = true) (hcs : input.csN = false)
+    (hland : input.hland = true) (hnosr : sr input = false) :
+    (rtlStep state input).tx =
+      (if state.rack then state.rackv else input.hlandD) := by
+  rw [rtlTx]
+  exact tx_load state input hreset hcs (by rw [ack, hland]; simp) (Or.inl hnosr)
+
+/-- MISO is the top bit of the host shift register in the same cycle: `uo_out[0]`
+is the `miso` port of the host instance with no extra register. -/
+theorem rtlMiso_eq_tx7 (state : State) : rtlMiso state = bitAt state.tx 7 := by
+  simp [rtlMiso, bitAt]
+  try bv_decide
+
+/-! ## Axiom audit -/
+
+#print axioms rtlStep_eq_step
+#print axioms rtlStateAt_eq
+#print axioms rtlRdVal_eq_spec
+#print axioms rtlMiso_eq_tx7
+
+/-! ## The don't-care arms are unobservable -/
+
+/-- The `rd_val` mux with each Yosys `x` bit replaced by an arbitrary value is
+still the documented register map: no don't-care arm reaches the read value,
+so reading them as 0 in `rtlRdVal` loses nothing. -/
+theorem rtlRdValX_eq_spec (a : BitVec 16) (state : Regs) (xs : BitVec xWidth) :
+    rtlRdValX a state xs = rdValSpec a state := by
+  cases state
+  simp [rtlRdValX, rdValSpec, inCtl, inLrt, inTrt, inSrt, inDbg, inRegBlock,
+    ctlVal, lrtVal, trtVal, srtVal, dbgVal, errSum, sliceAt, sliceOff, mulC, bv,
+    bitAt, mdVersion, xWidth]
+  try bv_decide
+
+/-- Corollary: the zero reading and every don't-care assignment agree. -/
+theorem rtlRdVal_dontcare_irrelevant (a : BitVec 16) (state : Regs)
+    (xs : BitVec xWidth) : rtlRdValX a state xs = rtlRdVal a state := by
+  rw [rtlRdValX_eq_spec, rtlRdVal_eq_spec]
+
+#print axioms rtlRdValX_eq_spec
+#print axioms rtlRdVal_dontcare_irrelevant

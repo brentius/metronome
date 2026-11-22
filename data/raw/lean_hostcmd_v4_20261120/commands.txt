@@ -1,0 +1,32 @@
+Host command cut evidence, 2026-11-20 (branch metronome-v4.0).
+Commands run from the repository root with OSS CAD Suite and Elan on PATH.
+Exit codes are the real process exit codes.
+
+1. python code/tests/lean/hostcmd_check.py --mutations
+   exit 0
+   baseline accepted at exit 0; five mutants each rejected with Lean exit 1.
+   Per-case evidence: run_status.txt, stdout.log, *.hostcmd.lean, *.log,
+   *.axioms.txt.
+
+2. cd code/tests/lean && lake env lean Metronome/HostCmd.lean
+   exit 0, no diagnostics.
+
+3. git diff --quiet HEAD -- src
+   exit 0 (src/ unchanged by this work).
+
+Tool versions (tools.log):
+  Lake 5.0.0-src+eb6cafb (Lean 4.35.0)
+  Yosys 0.70+190 (git sha1 485b63564)
+
+Generated baseline (baseline.hostcmd.lean) includes the component
+equalities, trace lifting, the AL-edge burst theorem, the Host/Compose
+bridge and the premise witness. Baseline axiom audit: no sorryAx; the
+equalities carry per-theorem bv_decide native certificate axioms plus
+propext, Classical.choice and Quot.sound (baseline.axioms.txt). Rejected
+mutant logs contain sorryAx only because Lean fills in sorry for the
+declarations after the reported counterexample; those cases exit 1 and are
+not accepted.
+
+The two Yosys latch warnings in the baseline log (cfg_lgcp_beh.int_gate,
+cfg_dlhrq_beh.Q) come from src/cells_behav.v and appear for every Yosys run
+of this design; they are unrelated to the host cut.

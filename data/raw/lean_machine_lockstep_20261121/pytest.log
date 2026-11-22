@@ -1,0 +1,45 @@
+﻿...................F.....                                                [100%]
+================================== FAILURES ===================================
+___________________ test_machine_lockstep[v4_config_write] ____________________
+
+scenario = 'v4_config_write'
+
+    @pytest.mark.skipif(not FAKE and not exe_available(),
+                        reason=f"Lean exe not built: {default_exe()} (lake build machine-sim, or set MACHINE_SIM)")
+    @pytest.mark.parametrize("scenario", ALL)
+    def test_machine_lockstep(scenario):
+        rep = run_lockstep.run(scenario, fake_cmd() if FAKE else None, verbose=False)
+>       assert rep["ok"], (f"{scenario}: {rep['mismatching_keys']} mismatching keys, first cycle {rep['first_mismatch_cycle']}: "
+                           + "; ".join(f"{m['key']}@{m['cycle']} py={m['python']} lean={m['lean']}" for m in rep["mismatches"][:8]))
+E       AssertionError: v4_config_write: 1 mismatching keys, first cycle 3513: uo_out@3513 py=2 lean=0
+E       assert False
+
+test_machine_lockstep.py:36: AssertionError
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED test_machine_lockstep.py::test_machine_lockstep[smoke]
+PASSED test_machine_lockstep.py::test_machine_lockstep[eth_loopback]
+PASSED test_machine_lockstep.py::test_machine_lockstep[follower]
+PASSED test_machine_lockstep.py::test_machine_lockstep[hold]
+PASSED test_machine_lockstep.py::test_machine_lockstep[taps]
+PASSED test_machine_lockstep.py::test_machine_lockstep[units]
+PASSED test_machine_lockstep.py::test_machine_lockstep[reset_mid]
+PASSED test_machine_lockstep.py::test_machine_lockstep[spi_target]
+PASSED test_machine_lockstep.py::test_machine_lockstep[shifter_parallel]
+PASSED test_machine_lockstep.py::test_machine_lockstep[random_1]
+PASSED test_machine_lockstep.py::test_machine_lockstep[random_2]
+PASSED test_machine_lockstep.py::test_machine_lockstep[random_3]
+PASSED test_machine_lockstep.py::test_machine_lockstep[random_4]
+PASSED test_machine_lockstep.py::test_machine_lockstep[v3_live_misr]
+PASSED test_machine_lockstep.py::test_machine_lockstep[v3_freeze]
+PASSED test_machine_lockstep.py::test_machine_lockstep[v3_ecap]
+PASSED test_machine_lockstep.py::test_machine_lockstep[v3_freeze2]
+PASSED test_machine_lockstep.py::test_machine_lockstep[random3_1]
+PASSED test_machine_lockstep.py::test_machine_lockstep[random3_2]
+PASSED test_machine_lockstep.py::test_machine_lockstep[v4_replay]
+PASSED test_machine_lockstep.py::test_machine_lockstep[v4_stage1]
+PASSED test_machine_lockstep.py::test_machine_lockstep[v4_stage2]
+PASSED test_machine_lockstep.py::test_machine_lockstep[v4_uart_reply]
+PASSED test_machine_lockstep.py::test_machine_lockstep[v4_crc_reply]
+FAILED test_machine_lockstep.py::test_machine_lockstep[v4_config_write] - Ass...
+1 failed, 24 passed in 1106.26s (0:18:26)

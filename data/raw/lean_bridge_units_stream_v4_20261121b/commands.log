@@ -1,0 +1,31 @@
+# Bridge Units/Stream — commands, exit codes, wall times (2026-11-21b)
+
+Working directory for all Lean runs: `code/tests/lean`
+(`$env:PATH="$env:USERPROFILE/.elan/bin;$env:PATH"`).
+Lean 4.35.0 (x86_64-w64-mingw32), core libraries only.  The library is built with
+`moreLeanArgs = ["-DwarningAsError=true"]`, so `lake build` rejects warnings
+including deprecations (both files set `linter.deprecated false`).
+
+| # | command | exit | wall |
+|---|---|---|---|
+| 1 | `lake build Metronome.Bridge.Units` (olean removed first, full rebuild) | 0 | 11.2 s |
+| 2 | `lake build Metronome.Bridge.Stream` (olean removed first, full rebuild) | 0 | 6.8 s |
+| 3 | `lake build Metronome.Bridge.Units Metronome.Bridge.Stream` (cached) | 0 | 0.6 s |
+| 4 | `lake env lean Metronome/Bridge/Units.lean` | 0 | 17.0 s |
+| 5 | `lake env lean Metronome/Bridge/Stream.lean` | 0 | 15.1 s |
+| 6 | `lake env lean build/lean_scratch_bridge_us2/Axioms.lean` (→ `axioms.txt`) | 0 | 6.3 s |
+| 7 | `git diff --quiet HEAD -- src` | 0 | (see below) |
+
+Notes
+
+* `lake build` is the acceptance check: it applies `-DwarningAsError=true`.
+  Both modules build clean; there are no warnings, and neither file contains
+  `sorry`/`sorryAx` (checked with `Select-String`).
+* Earlier theorems in both files are unchanged; the additions are appended
+  inside the same namespaces (`Metronome.Bridge.AccB`,
+  `Metronome.Bridge.StreamB`).
+* `Axioms.lean` is a scratch audit; its output is `axioms.txt` in this folder.
+  The only non-standard axioms are `propext`, `Classical.choice`, `Quot.sound`
+  and the pre-existing `bv_decide` LRAT certificates of `AccB.rNext_bytes`
+  (the byte-bank lemma written in the 2026-11-21a round).  No `sorryAx`.
+* `git diff --quiet HEAD -- src` at the end of the work: exit 0 (no RTL change).

@@ -1,0 +1,155 @@
+RTL snapshot SHA-256: 553178c2b22bf379410a115fd2e01082c9d17915464ca82eb694bf084f4abb0c
+Yosys command: read_verilog -I src -D USE_IHP_SRAM src/cells_behav.v src/md2_acc.v src/md2_cfg_bank.v src/md2_core.v src/md2_counter.v src/md2_dmem.v src/md2_host.v src/md2_lfsr.v src/md2_line.v src/md2_mem.v src/md2_pmem.v src/md2_shifter.v src/md2_sram_bb.v src/md2_stream.v src/md2_thread.v src/project.v; hierarchy -check -top tt_um_brentius_metronome; proc; opt_clean; write_json design.json
+Warning: Latch inferred for signal `\cfg_lgcp_beh.\int_gate' from process `\cfg_lgcp_beh.$src/cells_behav.v:23$proc$3': $auto$proc_dlatch.cc:559:proc_dlatch$13714
+Warning: Latch inferred for signal `\cfg_dlhrq_beh.\Q' from process `\cfg_dlhrq_beh.$src/cells_behav.v:15$proc$1': $auto$proc_dlatch.cc:555:proc_dlatch$13735
+Extracted: 5 pin, 2 digest, 12 control, 5 program and 2 reset definitions
+C:\Users\b_yee23\AppData\Local\Temp\metronome-debug-pm_be_shift_one-fx3g8q64\DebugProof.lean:473:37: error: The prover found a counterexample, consider the following assignment:
+a = 65535#16
+'Metronome.Debug.Pins.rtlPinsLevel_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Pins.rtlPinsLevel_eq._native.bv_decide.ax_1_11]
+'Metronome.Debug.Pins.rtlPinsPrev_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Pins.rtlPinsPrev_eq._native.bv_decide.ax_1_11]
+'Metronome.Debug.Pins.rtlLvl_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Debug.Pins.rtlRise_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Debug.Pins.rtlFall_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Debug.Pins.rtl_level_masked' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Pins.level_masked._native.bv_decide.ax_1_5,
+ Pins.rtlPinsLevel_eq._native.bv_decide.ax_1_11]
+'Metronome.Debug.Pins.rtl_lvl_high_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Debug.Pins.rtl_rise_level' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Pins.rtlPinsLevel_eq._native.bv_decide.ax_1_11,
+ Pins.rtlPinsPrev_eq._native.bv_decide.ax_1_11]
+'Metronome.Debug.Pins.rtl_fall_level' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Pins.rtlPinsLevel_eq._native.bv_decide.ax_1_11,
+ Pins.rtlPinsPrev_eq._native.bv_decide.ax_1_11]
+'Metronome.Debug.Digest.rtlMen_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Debug.Digest.rtlMisr_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Digest.rtlMisr_eq._native.bv_decide.ax_1_13]
+'Metronome.Debug.Digest.rtlStep_eq_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Digest.rtlMisr_eq._native.bv_decide.ax_1_13]
+'Metronome.Debug.Digest.rtlStateAt_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Digest.rtlMisr_eq._native.bv_decide.ax_1_13]
+'Metronome.Debug.Digest.rtl_trace_result' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Digest.rtlMisr_eq._native.bv_decide.ax_1_13]
+'Metronome.Debug.Digest.rtl_trace_misr_frozen' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Digest.rtlMisr_eq._native.bv_decide.ax_1_13]
+'Metronome.Debug.Ctrl.rtlTick_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Debug.Ctrl.rtlInterval_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Ctrl.rtlInterval_eq._native.bv_decide.ax_1_8]
+'Metronome.Debug.Ctrl.rtlApply_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Ctrl.rtlApply_eq._native.bv_decide.ax_1_12]
+'Metronome.Debug.Ctrl.rtlLate_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Ctrl.rtlLate_eq._native.bv_decide.ax_1_12]
+'Metronome.Debug.Ctrl.rtlReplayLevels_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Debug.Ctrl.rtlCev_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Ctrl.rtlCev_eq._native.bv_decide.ax_1_8]
+'Metronome.Debug.Ctrl.rtlReplay_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Ctrl.rtlReplay_eq._native.bv_decide.ax_1_10]
+'Metronome.Debug.Ctrl.rtlCen_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Ctrl.rtlCen_eq._native.bv_decide.ax_1_10]
+'Metronome.Debug.Ctrl.rtlEmask_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Ctrl.rtlEmask_eq._native.bv_decide.ax_1_11]
+'Metronome.Debug.Ctrl.rtlRlv_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Ctrl.rtlRlv_eq._native.bv_decide.ax_1_12]
+'Metronome.Debug.Ctrl.rtlRlvPrev_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Debug.Ctrl.rtlDc_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Debug.Ctrl.rtlStep_eq_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Ctrl.rtlCen_eq._native.bv_decide.ax_1_10,
+ Ctrl.rtlEmask_eq._native.bv_decide.ax_1_11,
+ Ctrl.rtlReplay_eq._native.bv_decide.ax_1_10,
+ Ctrl.rtlRlv_eq._native.bv_decide.ax_1_12]
+'Metronome.Debug.Ctrl.rtlStateAt_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Ctrl.rtlCen_eq._native.bv_decide.ax_1_10,
+ Ctrl.rtlEmask_eq._native.bv_decide.ax_1_11,
+ Ctrl.rtlReplay_eq._native.bv_decide.ax_1_10,
+ Ctrl.rtlRlv_eq._native.bv_decide.ax_1_12]
+'Metronome.Debug.Ctrl.rtl_trace_result' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Ctrl.rtlCen_eq._native.bv_decide.ax_1_10,
+ Ctrl.rtlEmask_eq._native.bv_decide.ax_1_11,
+ Ctrl.rtlReplay_eq._native.bv_decide.ax_1_10,
+ Ctrl.rtlRlv_eq._native.bv_decide.ax_1_12]
+'Metronome.Debug.Ctrl.rtl_trace_frozen' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Ctrl.rtlCen_eq._native.bv_decide.ax_1_10,
+ Ctrl.rtlEmask_eq._native.bv_decide.ax_1_11,
+ Ctrl.rtlReplay_eq._native.bv_decide.ax_1_10,
+ Ctrl.rtlRlv_eq._native.bv_decide.ax_1_12]
+'Metronome.Debug.Ctrl.rtl_trace_dc_ectl' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Ctrl.rtlCen_eq._native.bv_decide.ax_1_10,
+ Ctrl.rtlEmask_eq._native.bv_decide.ax_1_11,
+ Ctrl.rtlReplay_eq._native.bv_decide.ax_1_10,
+ Ctrl.rtlRlv_eq._native.bv_decide.ax_1_12]
+'Metronome.Debug.Ctrl.rtl_trace_ectl_host_wins' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Ctrl.rtlCen_eq._native.bv_decide.ax_1_10,
+ Ctrl.rtlEmask_eq._native.bv_decide.ax_1_11,
+ Ctrl.rtlReplay_eq._native.bv_decide.ax_1_10,
+ Ctrl.rtlRlv_eq._native.bv_decide.ax_1_12]
+'Metronome.Debug.Pmem.rtlPmWe0_eq' depends on axioms: [propext]
+'Metronome.Debug.Pmem.rtlPmWe1_eq' depends on axioms: [propext]
+'Metronome.Debug.Pmem.rtlPmBe_eq' depends on axioms: [propext, sorryAx]
+'Metronome.Debug.Pmem.rtlPmAddr0_eq' depends on axioms: [propext]
+'Metronome.Debug.Pmem.rtlPmAddr1_eq' depends on axioms: [propext]
+'Metronome.Debug.Pmem.rtl_pm_lane_nonzero' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ Pmem.be_ne_zero._native.bv_decide.ax_1_5]
+'Metronome.Debug.Pmem.rtl_pm_exclusive' depends on axioms: [propext]
+'Metronome.Debug.Pmem.rtl_pm_port0' depends on axioms: [propext]
+'Metronome.Debug.Pmem.rtl_pm_port1' depends on axioms: [propext]
+'Metronome.Debug.Reset.rtlRstM_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Debug.Reset.rtlRstQ_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Debug.Reset.rtlStep_eq_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Debug.Reset.rtlStateAt_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Debug.Reset.rtl_trace_result' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Debug.Reset.rtl_trace_rstq_low' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Debug.Reset.rtl_trace_rstq_low_one_more' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Debug.Reset.rtl_trace_rstq_after_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+-- pm_be_shift_one: rejected by Lean (exit 1)

@@ -1,0 +1,8 @@
+case	outcome	exit	expectation
+baseline	accepted	0	ok
+unit_counter_wrap	rejected (generated Lean: rejected by Lean (exit 1): 474:2: error: The prover found a potentially spurious counterexample:)	1	ok
+unit_counter_bytes_swap	rejected (generated Lean: rejected by Lean (exit 1): 476:2: error: The prover found a potentially spurious counterexample:)	1	ok
+unit_shifter_len_zero	rejected (generated Lean: rejected by Lean (exit 1): 542:2: error: The prover found a potentially spurious counterexample:)	1	ok
+unit_lfsr_feedback_bit	rejected (generated Lean: rejected by Lean (exit 1): 612:2: error: The prover found a potentially spurious counterexample:)	1	ok
+unit_acc_sub_carry	rejected (generated Lean: rejected by Lean (exit 1): 683:55: error: The prover found a counterexample, consider the following assignment:)	1	ok
+unit_acc_cmp_writes_a	rejected (generated Lean: rejected by Lean (exit 1): 671:55: error: The prover found a counterexample, consider the following assignment:)	1	ok

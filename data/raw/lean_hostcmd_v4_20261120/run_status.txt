@@ -1,0 +1,7 @@
+case	outcome	exit	expectation
+baseline	accepted	0	ok
+hostcmd_read_strobes	rejected (generated Lean: rejected by Lean (exit 1): 138:2: error: The prover found a potentially spurious counterexample:)	1	ok
+hostcmd_al_next	rejected (generated Lean: rejected by Lean (exit 1): 104:2: error: The prover found a potentially spurious counterexample:)	1	ok
+hostcmd_cs_hold	rejected (generated Lean: rejected by Lean (exit 1): 104:2: error: The prover found a potentially spurious counterexample:)	1	ok
+hostcmd_no_addr_step	rejected (generated Lean: rejected by Lean (exit 1): 131:2: error: The prover found a potentially spurious counterexample:)	1	ok
+hostcmd_addr_bytes_swap	rejected (generated Lean: rejected by Lean (exit 1): 132:2: error: The prover found a potentially spurious counterexample:)	1	ok

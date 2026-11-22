@@ -1,0 +1,59 @@
+# W-K (keyed move picks) — commands, exit codes, wall times
+# Lean 4.35.0, core libraries only.  Working directory: code/tests/lean
+# $env:PATH = "$env:USERPROFILE/.elan/bin;$env:PATH"
+# Date: 2026-11-22
+
+# --- build the module (lakefile carries -DwarningAsError=true) ---
+# exit 0, 4.5 s  (first skeleton: plumbing only)
+# exit 0, 20 s   (after MoveFabric re-elaborated by its owner: 65 jobs)
+# exit 0, 10 s, 7 s, 5 s, 3 s  (successive proof repairs)
+# exit 0, 5.0 s  (FINAL: full module, all four field theorems)
+lake build Metronome.ChipCut.Discharge.MoveFabricKeyed
+
+# --- axioms dump (no sorryAx, no Lean.trustCompiler) ---
+# exit 0, 2.56 s, 14 #print axioms lines
+lake env lean -DwarningAsError=true ..\..\..\data\raw\lean_chipcut_wire_movefabric_keyed_v4_20261122\axioms.lean
+
+# --- regression: the aggregate ChipCut module still builds ---
+# exit 0, 0.4 s (up to date, 59 jobs)
+lake build Metronome.ChipCut
+
+# --- src/ untouched ---
+# exit 0, empty diff
+git diff HEAD -- src
+
+# Notes on the failures during development (all fixed, none left in the file):
+# * `match` binders under `List.any` are not rewritable (rw/▸ are not
+#   alpha-invariant there) -> the scan lemmas any_filterMap_split/any_ite_congr
+#   keep the per-slot identity outside the match.
+# * `Machine.dstOp` is opaque for parsed names (String.splitOn is irreducible),
+#   so the destination class goes through DstKindTable + class1_eq/class2_eq and
+#   the 64-code decides of dgTable.
+# * two PowerShell Get-Content/Set-Content round trips re-encoded the source file
+#   and broke Unicode tokens; the file was rewritten (UTF-8, no BOM) and rebuilt.
+
+# ==================== Round 2 (2026-11-22, later) ====================
+# Same rules: no lake clean, no olean deletion, only MoveFabricKeyed.lean + notes.
+
+# The build directory was found empty mid-round (another agent's lake clean).
+# Rebuilt the module and all its dependencies; exit 0, 117.9 s (62 jobs):
+#   MemHostCfg 39 s, CoreUnits 50 s, MoveFabric 58 s, MoveFabricKeyed 7.7 s
+lake build Metronome.ChipCut.Discharge.MoveFabricKeyed
+
+# Round-2 additions (symMask one-hot, hitOr_onehot, byte %2/%4 lemmas, witnesses):
+# exit 0, 4.6 s
+lake build Metronome.ChipCut.Discharge.MoveFabricKeyed
+
+# axioms dump (13 theorems incl. symMask_atMostOne, hitOr_onehot): exit 0, 1.8 s,
+# 84 lines, 0 sorryAx, 0 Lean.trustCompiler
+lake env lean -DwarningAsError=true ..\..\..\data\raw\lean_chipcut_wire_movefabric_keyed_v4_20261122\axioms.lean
+
+# scratch files used for the round-2 proofs were deleted after splicing:
+#   scratch_sym1.lean, scratch_hitor.lean, scratch_probe.lean
+# (PowerShell Get-Content/Set-Content was not used on the module this round.)
+
+# ==================== Round 3 ====================
+# DstStreamLineTable + dstOp_sAdv/dstOp_sRx spliced: exit 0, 4.1 s
+lake build Metronome.ChipCut.Discharge.MoveFabricKeyed
+# compiled table check: exit 0, 2.3 s, "codes = 64, failures = 0", "bad codes = []"
+lake env lean --run ..\..\..\data\raw\lean_chipcut_wire_movefabric_keyed_v4_20261122\decode_check_streamline.lean

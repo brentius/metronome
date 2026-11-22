@@ -1,0 +1,56 @@
+# Commands, exit codes, wall times (2026-11-22)
+
+Environment: Lean 4.35.0 (elan toolchain leanprover--lean4---v4.35.0),
+core libraries only, PowerShell.
+`$env:PATH = "$env:USERPROFILE/.elan/bin;$env:PATH"`, cwd `code/tests/lean`
+for `lake` commands.  `-DwarningAsError=true` comes from `lakefile.toml`.
+
+## Acceptance build
+
+```
+> lake build Metronome.ChipCut.Discharge.CoreCombCbs
+✔ [65/65] Built Metronome.ChipCut.Discharge.CoreCombCbs (9.0s)
+Build completed successfully (65 jobs).
+EXIT=0    WALL=10.4 s      (round 1: 7.7 s / 8.1 s)
+```
+
+## Baseline (before the new file existed) — dependencies build
+
+```
+> lake build Metronome.ChipCut.Discharge.CoreCombWire
+Build completed successfully (63 jobs).            EXIT=0  WALL=3.2 s
+> lake build Metronome.ChipCut.Discharge.GuardSrc
+Build completed successfully (60 jobs).            EXIT=0  WALL=0.5 s
+```
+
+## Axiom audit
+
+```
+> lake env lean ../../../data/raw/lean_chipcut_wire_corecomb_cbs_v4_20261122/axioms.lean
+EXIT=0    WALL=2.2 s
+```
+Output in `axioms.txt` (round 2 adds the `AbsInv` chain, `chipRel_absChip`,
+`contents_open_proj_abs` and the bank witness).  Every declaration depends only
+on `propext`, `Classical.choice` and `Quot.sound`, except:
+* `contents_open_proj` / `contents_open_proj_abs` / `coreInputBus_abs`, which
+  inherit `GuardSrc`/`Bridge.Glue`'s pre-existing `bv_decide` certificates;
+* `hostShape_step` (`HostCmd.tagged_step._native.bv_decide.ax_1_22`),
+  `stream_rqLd_step` (its own `_native.bv_decide.ax_1_5`),
+  `absInv_step`/`absInv_trace` (the two above plus
+  `Mem.reqNext_three._native.bv_decide.ax_1_10` from `inv_trace`).
+No `sorryAx`, no `Lean.ofReduceBool` of this file's own `decide` lemmas (the
+`decide` uses add no axiom).
+
+## Source hygiene
+
+```
+> Select-String CoreCombCbs.lean -Pattern "sorry|native_decide|admit"
+only the header comment ("No `sorry`, no `native_decide`.") matches.
+```
+
+## Files touched
+
+Only `code/tests/lean/Metronome/ChipCut/Discharge/CoreCombCbs.lean` (new) and
+this evidence directory.  `git status --porcelain` shows the pre-existing
+untracked `code/tests/lean/` tree and the unrelated modifications listed before
+this task; `src/` and `BOTS/` were not touched.

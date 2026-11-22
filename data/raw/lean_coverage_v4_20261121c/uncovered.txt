@@ -1,0 +1,3 @@
+UNCOVERED CELLS
+0 of 8962 cell occurrences are not read by any cut cone and are not covered structurally.
+

@@ -1,0 +1,78 @@
+﻿build/lean_scratch_bridge_lm/BridgeAxiomsAll.lean:378:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i╠Áf╠Á_╠Áp╠Áo╠Ás╠Ái╠▓t╠▓e╠▓_╠▓e╠▓q╠▓_╠▓l╠▓e╠▓f╠▓t╠▓
+build/lean_scratch_bridge_lm/BridgeAxiomsAll.lean:378:19: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i╠Áf╠Á_╠Áp╠Áo╠Ás╠Ái╠▓t╠▓e╠▓_╠▓e╠▓q╠▓_╠▓l╠▓e╠▓f╠▓t╠▓
+build/lean_scratch_bridge_lm/BridgeAxiomsAll.lean:381:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i╠Áf╠Á_╠Án╠Áe╠Ág╠Ái╠▓t╠▓e╠▓_╠▓e╠▓q╠▓_╠▓r╠▓i╠▓g╠▓h╠▓t╠▓
+build/lean_scratch_bridge_lm/BridgeAxiomsAll.lean:381:19: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i╠Áf╠Á_╠Án╠Áe╠Ág╠Ái╠▓t╠▓e╠▓_╠▓e╠▓q╠▓_╠▓r╠▓i╠▓g╠▓h╠▓t╠▓
+build/lean_scratch_bridge_lm/BridgeAxiomsAll.lean:368:68: warning: Variable name `hpin` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hpin
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+build/lean_scratch_bridge_lm/BridgeAxiomsAll.lean:445:68: warning: Variable name `hpin` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hpin
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'Metronome.Bridge.Line.nbit_eq_testBit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Line.bitAt_eq_nbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Line.sel16_eq_nbit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Line.and_one_bne_zero_16._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Line.sel3_eq_nbit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Line.and_one_bne_zero_3._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Line.sel32_eq_nbit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Line.and_one_bne_zero_32._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Line.pack3_bit' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Line.packBits3_as_pack3' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Line.pack3_bits'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Line.pack4_bits'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Line.slice_toNat' depends on axioms: [propext]
+'Metronome.Bridge.Line.esel_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Line.edge_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Line.e0_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Line.inwin_bridge' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Line.start_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Line.accept_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Line.slice16_self' depends on axioms: [propext]
+'Metronome.Bridge.Line.concat17_toNat' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Line.sum17_toNat' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Line.over_eq_decide' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Line.over_bridge' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Moves.wgList_eq' does not depend on any axioms
+'Metronome.Bridge.Moves.dstGroup_getElem?' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Moves.dstGroup_getElem?_wg' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Moves.dgTable_matches_all' depends on axioms: [propext]
+'Metronome.Bridge.Moves.dgTable_matches' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Moves.dgTable_null_31' depends on axioms: [propext]
+'Metronome.Bridge.Moves.ctrl_conflict_bridge' depends on axioms: [propext]
+'Metronome.Bridge.Moves.ctrl_memhaz_bridge' depends on axioms: [propext]
+'Metronome.Bridge.Moves.ctrl_conflict_frozen' depends on axioms: [propext]
+'Metronome.Bridge.Moves.ctrl_conflict_clear_only' depends on axioms: [propext]
+'Metronome.Bridge.Moves.ctrl_conflict_event' depends on axioms: [propext]
+'Metronome.Bridge.Moves.ctrl_inv_bridge' depends on axioms: [propext]
+'Metronome.Bridge.Moves.ctrl_inv_host_write_wins' depends on axioms: [propext]
+'Metronome.Bridge.Moves.ctrl_inv_read_clears' depends on axioms: [propext]
+'Metronome.Bridge.Moves.memhaz_event_bridge' does not depend on any axioms
+'Metronome.Bridge.Moves.memhaz_event_of_read' does not depend on any axioms
+'Metronome.Bridge.Line.hold_frozen_cut' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Line.hold_frozen_machine' depends on axioms: [propext]
+'Metronome.Bridge.Line.absSymOp_three' does not depend on any axioms
+'Metronome.Bridge.Line.staged_op3_is_xor' depends on axioms: [propext, Quot.sound]

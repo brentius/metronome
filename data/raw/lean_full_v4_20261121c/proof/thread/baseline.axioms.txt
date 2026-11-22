@@ -1,0 +1,14 @@
+Metronome.Thread.rtlRunning_pause_dispatch: propext, Classical.choice, Quot.sound
+Metronome.Thread.rtlPc_host_beats_pause: propext, Classical.choice, Quot.sound
+Metronome.Thread.rtlOvr_set_beats_clear: propext, Classical.choice, Quot.sound
+Metronome.Thread.rtlStep_eq_step: propext, Classical.choice, Quot.sound
+Metronome.Thread.rtlStateAt_eq: propext, Classical.choice, Quot.sound
+Metronome.Thread.rtl_trace_result: propext, Classical.choice, Quot.sound
+Metronome.Thread.rtl_trace_exclusive: propext, Classical.choice, Quot.sound, exclusive_step._native.bv_decide.ax_1_10
+Metronome.Thread.Top.rtlEvIn0_eq_spec: propext, Classical.choice, Quot.sound, rtlEvIn0_eq_spec._native.bv_decide.ax_1_13
+Metronome.Thread.Top.rtlDbIn0_eq_spec: propext
+Metronome.Thread.Top.rtlStop0_eq_spec: propext, Classical.choice, Quot.sound, rtlStop0_eq_spec._native.bv_decide.ax_1_10
+Metronome.Thread.Top.rtlLate0_eq_spec: propext, Classical.choice, Quot.sound, rtlLate0_eq_spec._native.bv_decide.ax_1_10
+Metronome.Thread.Top.rtlBeat0_eq_spec: propext, Classical.choice, Quot.sound, rtlBeat0_eq_spec._native.bv_decide.ax_1_9
+Metronome.Thread.Top.rtlPcWe0_eq_spec: propext, Classical.choice, Quot.sound, rtlPcWe0_eq_spec._native.bv_decide.ax_1_11
+Metronome.Thread.Top.rtlStatWe5_eq_spec: propext, Classical.choice, Quot.sound, rtlStatWe5_eq_spec._native.bv_decide.ax_1_11

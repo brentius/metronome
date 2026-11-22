@@ -1,0 +1,51 @@
+# W5 CapTrace: commands, exit codes, wall times
+
+Host: Windows 11, PowerShell.  Lean 4.35.0 (elan, `lean-toolchain` =
+`leanprover/lean4:v4.35.0`, `Lean (version 4.35.0, x86_64-w64-windows-gnu,
+commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)`), Lake
+`5.0.0-src+eb6cafb`, core libraries only.
+`lakefile.toml` sets `moreLeanArgs = ["-DwarningAsError=true"]`.
+Working directory: `code/tests/lean`, with
+`$env:PATH = "$env:USERPROFILE/.elan/bin;$env:PATH"`.
+
+## Edited / added files (SHA-256)
+
+| file | SHA-256 | bytes |
+|---|---|---|
+| `Metronome/ChipCut/Discharge/CapTrace.lean` | `824BD7155FF7861E57140114834882B0AF32326CD1200F6117276E5221B24316` | 17523 |
+| `WIRE_CAPTRACE_NOTES.md` | notes (not part of the build) |  |
+
+No other file was edited.  `src/` untouched.  No `lake clean`, no manual
+`.olean` deletion; the module was built with `lake build` only.
+
+## Acceptance runs
+
+| # | command | exit | wall |
+|---|---|---|---|
+| 1 | `lake build Metronome.ChipCut.Discharge.CapTrace` (fresh, final module) | **0** | **136.8 s** (125 s, 65 jobs), no warnings |
+| 2 | `lake build Metronome.ChipCut.Discharge.CapTrace` (cached re-run) | **0** | 0.4 s |
+| 3 | `lake env lean -DwarningAsError=true ...\axioms.lean` (18 `#print axioms`) | **0** | **2.2 s**, 0 `sorryAx`, 0 errors |
+| 4 | `lake env lean ...\statements.lean` (18 `#check`) | **0** | **2.0 s**, 0 errors |
+| 5 | `lake build Metronome.ChipCut.Assembly` (downstream, still green, no name clash) | **0** | 1.1 s (76 jobs, cached) |
+| 6 | `git diff --quiet HEAD -- src` | **0** | — (0 changes) |
+
+Development history (same environment): the first-draft scratch
+(`scratch_captrace_draft.lean`, the invariant plus the reset/step/trace section
+before the consumer section and the active/reset split) compiled with
+`lake env lean scratch_captrace.lean`, exit 0 in ~2-3 s per iteration; the first
+spliced version of the module built in 2.8 s; the restructured final version
+rebuilt the module and its dependencies in 125 s (run 1).  A dependency was
+momentarily rebuilt by a concurrent agent during run 1, so the wall time is not
+comparable across rounds.
+
+## Axioms (from `axioms.txt`)
+
+All 18 declarations depend only on `[propext]`, `[propext, Quot.sound]` or
+`[propext, Classical.choice, Quot.sound]`; none on `sorryAx`.  A source scan of
+`CapTrace.lean` for `sorry` / `native_decide` / `admit` finds no occurrence.
+
+## Evidence
+
+`data/raw/lean_chipcut_captrace_v4_20261122/`: `axioms.txt`, `axioms.lean`,
+`statements.txt`, `statements.lean`, `commands.log`, and the first-draft
+`scratch_captrace_draft.lean`.

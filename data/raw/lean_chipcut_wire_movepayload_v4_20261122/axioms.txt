@@ -1,0 +1,102 @@
+﻿'Metronome.ChipCut.Discharge.MovePayloadWire.unitFlagPQ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.MovePayloadWire.hPQ_p0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.MovePayloadWire.mhcP0Move_isSome' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Moves.beq_comm_5._native.bv_decide.ax_1_5,
+ Metronome.Moves.hitsMask_bit_0._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_1._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_2._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_3._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_4._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_5._native.bv_decide.ax_1_10]
+'Metronome.ChipCut.Discharge.MovePayloadWire.p0Move' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Moves.beq_comm_5._native.bv_decide.ax_1_5,
+ Metronome.Moves.hitsMask_bit_0._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_1._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_2._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_3._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_4._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_5._native.bv_decide.ax_1_10]
+'Metronome.ChipCut.Discharge.MovePayloadWire.hPQ_cw' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.MovePayloadWire.cwWord_code' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.CoreCtl.makeWord_dst._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.MovePayloadWire.cwWord_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.CoreCtl.makeWord_data._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.MovePayloadWire.cwWord_we' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.CoreCtl.makeWord_we._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.MovePayloadWire.cwMove' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.CoreCtl.makeWord_data._native.bv_decide.ax_1_5,
+ Metronome.CoreCtl.makeWord_dst._native.bv_decide.ax_1_5,
+ Metronome.CoreCtl.makeWord_we._native.bv_decide.ax_1_5,
+ Metronome.Moves.beq_comm_5._native.bv_decide.ax_1_5,
+ Metronome.Moves.hitsMask_bit_0._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_1._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_2._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_3._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_4._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_5._native.bv_decide.ax_1_10]
+'Metronome.ChipCut.Discharge.MovePayloadWire.p0Next_haz' depends on axioms: [propext]
+'Metronome.ChipCut.Discharge.MovePayloadWire.pending_req' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.MovePayloadWire.isPD_class' depends on axioms: [propext]
+'Metronome.ChipCut.Discharge.MovePayloadWire.srcOpOf_pD_all' depends on axioms: [propext]
+'Metronome.ChipCut.Discharge.MovePayloadWire.srcPD_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.MovePayloadWire.pdSlot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.MovePayloadWire.pdScan' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.MovePayloadWire.readsOf_any' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.MovePayloadWire.ctrlInTrue_memhaz_unfold' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Metronome.ChipCut.Discharge.MovePayloadWire.p0Haz_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Moves.beq_comm_5._native.bv_decide.ax_1_5,
+ Metronome.Moves.hitsMask_bit_0._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_1._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_2._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_3._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_4._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_5._native.bv_decide.ax_1_10]
+'Metronome.ChipCut.Discharge.MovePayloadWire.ctrlMemhaz' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Moves.beq_comm_5._native.bv_decide.ax_1_5,
+ Metronome.Moves.hitsMask_bit_0._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_1._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_2._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_3._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_4._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_5._native.bv_decide.ax_1_10]
+'Metronome.ChipCut.Discharge.MovePayloadWire.step_coreIssue' depends on axioms: [propext]
+'Metronome.ChipCut.Discharge.MovePayloadWire.arbIn_coreIssue' depends on axioms: [propext]
+'Metronome.ChipCut.Discharge.MovePayloadWire.accept_not' depends on axioms: [propext]
+'Metronome.ChipCut.Discharge.MovePayloadWire.mhcDrains' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.MovePayloadWire.cwNext_coreDrain_val' depends on axioms: [propext]
+'Metronome.ChipCut.Discharge.MovePayloadWire.mhcDrains_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.MovePayloadWire.mhcCwo_ovr_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.MovePayloadWire.ctrlCwovr' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.CoreCtl.makeWord_data._native.bv_decide.ax_1_5,
+ Metronome.CoreCtl.makeWord_dst._native.bv_decide.ax_1_5,
+ Metronome.CoreCtl.makeWord_we._native.bv_decide.ax_1_5,
+ Metronome.Moves.beq_comm_5._native.bv_decide.ax_1_5,
+ Metronome.Moves.hitsMask_bit_0._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_1._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_2._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_3._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_4._native.bv_decide.ax_1_10,
+ Metronome.Moves.hitsMask_bit_5._native.bv_decide.ax_1_10]
+'Metronome.ChipCut.Discharge.MovePayloadWire.DstFlagP0CwTable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

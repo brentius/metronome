@@ -1,0 +1,25 @@
+run: python code/tests/lean/verify.py --mutations --artifacts-dir data/raw/lean_full_v4_20261121c/proof (build/run_lean_full_awake.ps1, detached)
+finished: 2026-11-21 19:58 local
+exit: EXIT=0
+baselines accepted: 18
+baseline: Lean verified the configuration transition, host w
+bank baseline: accepted (284/480 live bytes, 2112 latch bits
+hostcmd baseline: accepted
+corectl baseline: accepted
+hostmap baseline: accepted
+hostread baseline: accepted
+spipins baseline: accepted
+mem baseline: accepted
+thread baseline: accepted
+stream baseline: accepted
+units baseline: accepted
+moves baseline: accepted
+line baseline: accepted
+core baseline: accepted
+hostpins baseline: accepted
+debug baseline: accepted
+glue baseline: accepted
+strobes baseline: accepted
+planted faults rejected: 129
+mutants accepted: 0
+stderr bytes: 0

@@ -1,0 +1,77 @@
+RTL snapshot SHA-256: d2c5c719c3d97bcca3f5220d253acd62db2f37422a1c7889051005764c5f11bf
+Yosys command: read_verilog -I src src/cells_behav.v src/md2_acc.v src/md2_cfg_bank.v src/md2_core.v src/md2_counter.v src/md2_dmem.v src/md2_host.v src/md2_lfsr.v src/md2_line.v src/md2_mem.v src/md2_pmem.v src/md2_shifter.v src/md2_sram_bb.v src/md2_stream.v src/md2_thread.v src/project.v; hierarchy -check -top tt_um_brentius_metronome; proc; opt_clean; write_json design.json
+Warning: Latch inferred for signal `\cfg_lgcp_beh.\int_gate' from process `\cfg_lgcp_beh.$src/cells_behav.v:23$proc$3': $auto$proc_dlatch.cc:559:proc_dlatch$13762
+Warning: Latch inferred for signal `\cfg_dlhrq_beh.\Q' from process `\cfg_dlhrq_beh.$src/cells_behav.v:15$proc$1': $auto$proc_dlatch.cc:555:proc_dlatch$13783
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yi2sqyik\held_addr\ConfigProof.lean:45:44: error: Tactic `rfl` failed: The left-hand side
+  rtlStep { previousWrite := true, heldValid := false, held := held✝, staged := staged✝ }
+    { resetN := true, hostValid := true, host := host✝, coreValid := false, core := core✝ }
+is not definitionally equal to the right-hand side
+  step { previousWrite := true, heldValid := false, held := held✝, staged := staged✝ }
+    { resetN := true, hostValid := true, host := host✝, coreValid := false, core := core✝ }
+
+case true.true.false.true.false
+held✝ staged✝ host✝ core✝ : Write
+⊢ rtlStep { previousWrite := true, heldValid := false, held := held✝, staged := staged✝ }
+      { resetN := true, hostValid := true, host := host✝, coreValid := false, core := core✝ } =
+    step { previousWrite := true, heldValid := false, held := held✝, staged := staged✝ }
+      { resetN := true, hostValid := true, host := host✝, coreValid := false, core := core✝ }
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yi2sqyik\held_addr\ConfigProof.lean:45:44: error: Tactic `rfl` failed: The left-hand side
+  rtlStep { previousWrite := true, heldValid := false, held := held✝, staged := staged✝ }
+    { resetN := true, hostValid := true, host := host✝, coreValid := true, core := core✝ }
+is not definitionally equal to the right-hand side
+  step { previousWrite := true, heldValid := false, held := held✝, staged := staged✝ }
+    { resetN := true, hostValid := true, host := host✝, coreValid := true, core := core✝ }
+
+case true.true.false.true.true
+held✝ staged✝ host✝ core✝ : Write
+⊢ rtlStep { previousWrite := true, heldValid := false, held := held✝, staged := staged✝ }
+      { resetN := true, hostValid := true, host := host✝, coreValid := true, core := core✝ } =
+    step { previousWrite := true, heldValid := false, held := held✝, staged := staged✝ }
+      { resetN := true, hostValid := true, host := host✝, coreValid := true, core := core✝ }
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yi2sqyik\held_addr\ConfigProof.lean:45:44: error: Tactic `rfl` failed: The left-hand side
+  rtlStep { previousWrite := true, heldValid := true, held := held✝, staged := staged✝ }
+    { resetN := true, hostValid := true, host := host✝, coreValid := false, core := core✝ }
+is not definitionally equal to the right-hand side
+  step { previousWrite := true, heldValid := true, held := held✝, staged := staged✝ }
+    { resetN := true, hostValid := true, host := host✝, coreValid := false, core := core✝ }
+
+case true.true.true.true.false
+held✝ staged✝ host✝ core✝ : Write
+⊢ rtlStep { previousWrite := true, heldValid := true, held := held✝, staged := staged✝ }
+      { resetN := true, hostValid := true, host := host✝, coreValid := false, core := core✝ } =
+    step { previousWrite := true, heldValid := true, held := held✝, staged := staged✝ }
+      { resetN := true, hostValid := true, host := host✝, coreValid := false, core := core✝ }
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yi2sqyik\held_addr\ConfigProof.lean:45:44: error: Tactic `rfl` failed: The left-hand side
+  rtlStep { previousWrite := true, heldValid := true, held := held✝, staged := staged✝ }
+    { resetN := true, hostValid := true, host := host✝, coreValid := true, core := core✝ }
+is not definitionally equal to the right-hand side
+  step { previousWrite := true, heldValid := true, held := held✝, staged := staged✝ }
+    { resetN := true, hostValid := true, host := host✝, coreValid := true, core := core✝ }
+
+case true.true.true.true.true
+held✝ staged✝ host✝ core✝ : Write
+⊢ rtlStep { previousWrite := true, heldValid := true, held := held✝, staged := staged✝ }
+      { resetN := true, hostValid := true, host := host✝, coreValid := true, core := core✝ } =
+    step { previousWrite := true, heldValid := true, held := held✝, staged := staged✝ }
+      { resetN := true, hostValid := true, host := host✝, coreValid := true, core := core✝ }
+'Metronome.Config.rtlStep_eq_step' depends on axioms: [sorryAx]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yi2sqyik\held_addr\ConfigProof.lean:82:0: error: ❌️ Docstring on `#guard_msgs` does not match generated message:
+
+- info: 'Metronome.Config.rtlStep_eq_step' does not depend on any axioms
++ info: 'Metronome.Config.rtlStep_eq_step' depends on axioms: [sorryAx]
+'Metronome.Config.rtl_trace_result' depends on axioms: [sorryAx]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yi2sqyik\held_addr\ConfigProof.lean:85:0: error: ❌️ Docstring on `#guard_msgs` does not match generated message:
+
+- info: 'Metronome.Config.rtl_trace_result' does not depend on any axioms
++ info: 'Metronome.Config.rtl_trace_result' depends on axioms: [sorryAx]
+'Metronome.Config.rtl_trace_spacing' depends on axioms: [propext, sorryAx]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yi2sqyik\held_addr\ConfigProof.lean:88:0: error: ❌️ Docstring on `#guard_msgs` does not match generated message:
+
+- info: 'Metronome.Config.rtl_trace_spacing' depends on axioms: [propext]
++ info: 'Metronome.Config.rtl_trace_spacing' depends on axioms: [propext, sorryAx]
+'Metronome.Config.rtl_trace_host_service' depends on axioms: [propext, sorryAx]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yi2sqyik\held_addr\ConfigProof.lean:91:0: error: ❌️ Docstring on `#guard_msgs` does not match generated message:
+
+- info: 'Metronome.Config.rtl_trace_host_service' depends on axioms: [propext]
++ info: 'Metronome.Config.rtl_trace_host_service' depends on axioms: [propext, sorryAx]
+Config proof outcome: rejected

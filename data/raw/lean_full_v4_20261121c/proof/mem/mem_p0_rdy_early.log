@@ -1,0 +1,29 @@
+RTL snapshot SHA-256: 0136aa106d917466a65d24ed378d72b49f03772dfd444d9607ddb19da2c9ed86
+Yosys command: read_verilog -I src -D USE_IHP_SRAM src/cells_behav.v src/md2_acc.v src/md2_cfg_bank.v src/md2_core.v src/md2_counter.v src/md2_dmem.v src/md2_host.v src/md2_lfsr.v src/md2_line.v src/md2_mem.v src/md2_pmem.v src/md2_shifter.v src/md2_sram_bb.v src/md2_stream.v src/md2_thread.v src/project.v; hierarchy -check -top tt_um_brentius_metronome; proc; opt_clean; write_json design.json
+Warning: Latch inferred for signal `\cfg_lgcp_beh.\int_gate' from process `\cfg_lgcp_beh.$src/cells_behav.v:23$proc$3': $auto$proc_dlatch.cc:559:proc_dlatch$13712
+Warning: Latch inferred for signal `\cfg_dlhrq_beh.\Q' from process `\cfg_dlhrq_beh.$src/cells_behav.v:15$proc$1': $auto$proc_dlatch.cc:555:proc_dlatch$13733
+Arbiter cut: 15 registers, 11 outputs, 106 RTL cells, 116 emitted terms
+lean attempt 1: exit 1 after 7.1 s
+C:\Users\b_yee23\AppData\Local\Temp\metronome-mem-mem_p0_rdy_early-c7aj48xr\MemProof.lean:211:55: error: unsolved goals
+case isTrue
+state : State
+input : Input
+h✝ : input.resetN = true
+⊢ (!input.pWe &&
+      (decide (input.sReq = 0#2) && !decide (state.req = 0#2) && !input.frz && state.landRdy && !input.frz ||
+        state.rdy)) =
+    (!input.pWe && (state.land && state.landRdy && !input.frz || state.rdy))
+'Metronome.Mem.rtlStep_eq_step' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.Mem.rtlOuts_eq_outs' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlSGnt._native.bv_decide.ax_1_19]
+'Metronome.Mem.rtlStateAt_eq' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.Mem.rtl_trace_host_read_lands' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.Mem.rtl_trace_p0_read_lands' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Metronome.Mem.rtl_trace_frozen' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ frozen_access_is_host._native.bv_decide.ax_1_7]
+-- mem_p0_rdy_early: rejected by Lean (exit 1)

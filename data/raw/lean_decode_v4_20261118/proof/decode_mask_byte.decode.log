@@ -1,0 +1,8 @@
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yi2sqyik\decode_mask_byte\DecodeHostProof.lean:186:2: error: The prover found a counterexample, consider the following assignment:
+a = 8222#16
+'Metronome.Decode.rtlHostQual_eq_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yi2sqyik\decode_mask_byte\DecodeCoreProof.lean:178:2: error: The prover found a counterexample, consider the following assignment:
+a = 8222#16
+'Metronome.Decode.rtlCoreLive_eq_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+Decode host outcome: rejected
+Decode core outcome: rejected

@@ -1,0 +1,12 @@
+'Metronome.Decode.rtlHostQual_eq_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ rtlHostQual_eq_spec._native.bv_decide.ax_1_5]
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yi2sqyik\decode_core_bypass\DecodeCoreProof.lean:177:2: error: The prover found a counterexample, consider the following assignment:
+a = 8221#16
+C:\Users\b_yee23\AppData\Local\Temp\metronome-lean-yi2sqyik\decode_core_bypass\DecodeCoreProof.lean:192:2: error: Tactic `decide` proved that the proposition
+  rtlCoreLive 8221 = false
+is false
+'Metronome.Decode.rtlCoreLive_eq_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+Decode host outcome: accepted
+Decode core outcome: rejected

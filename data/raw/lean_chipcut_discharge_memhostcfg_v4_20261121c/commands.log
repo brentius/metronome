@@ -1,0 +1,34 @@
+# MemHostCfg revision c evidence: commands, exit codes, wall times
+# Machine: Windows, PowerShell; Lean 4.35.0 (elan); cwd = code/tests/lean
+#   $env:PATH = "$env:USERPROFILE/.elan/bin;$env:PATH"
+# Timings are wall-clock of the whole PowerShell pipeline, same checkout,
+# incremental (dependencies already built by the pre-fix run below).
+
+2026-11-21  lake build Metronome.ChipCut.Discharge.MemHostCfg
+   exit 1   wall 853.4 s
+   (pre-fix: rebuilt the ChipCut dependency chain after the Wire.lean edit and
+    failed on the cw_open_frozen/CwRel.cwqd goal: `hm` and `frozen_bank_port`
+    had been instantiated with `mhcHostCfg m pin`/`mhcWindow m` while the goal
+    had already been rewritten to `hostCfgOf s`/`false`.  Superseded.)
+
+2026-11-21  lake build Metronome.ChipCut.Discharge.MemHostCfg   (after the fix)
+   exit 0   wall 13.5 s
+   log: build.log  ("Built Metronome.ChipCut.Discharge.MemHostCfg (13s)",
+                    "Build completed successfully (59 jobs)")
+   -DwarningAsError=true comes from lakefile.toml `moreLeanArgs`; no warnings.
+
+2026-11-21  lake env lean ..\..\..\data\raw\lean_chipcut_discharge_memhostcfg_v4_20261121c\axioms.lean
+   exit 0   wall 3.9 s
+   output: axioms.txt  (no sorryAx; premise_cw depends only on
+   propext/Classical.choice/Quot.sound plus pre-existing Bridge.CfgWrite/
+   CoreQueue bv_decide certificates; cw_open_frozen likewise.)
+
+2026-11-21  lake build Metronome.ChipCut   (cached dependency check)
+   exit 0   wall 2.7 s   ("Built Metronome.ChipCut (2.2s)", 59 jobs)
+
+2026-11-21  cd ../.. ; git diff --quiet HEAD -- src
+   exit 0   (src/ untouched);  git status --short -- src BOTS: empty
+
+Source hygiene:
+   Select-String MemHostCfg.lean -Pattern "sorry|native_decide|admit"  -> only
+   the header sentence "No `sorry`, no `native_decide`."

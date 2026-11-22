@@ -1,0 +1,57 @@
+﻿# #print axioms output for every delivered bridge theorem
+# generated 2026-11-21; Lean 4.35.0; command: lake env lean build/lean_scratch_bridge/Axioms.lean
+# exit=0 wall_seconds=4.1
+'Metronome.Bridge.Thread.step_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Thread.pc_bridge' depends on axioms: [propext]
+'Metronome.Bridge.Thread.en_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Thread.ready_bridge' depends on axioms: [propext]
+'Metronome.Bridge.Thread.running_bridge' depends on axioms: [propext]
+'Metronome.Bridge.Thread.armed_bridge' depends on axioms: [propext]
+'Metronome.Bridge.Thread.late_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Thread.ovr_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Thread.step_reset_eq' depends on axioms: [propext]
+'Metronome.Bridge.Thread.trig_refines' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Thread.trig_frozen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Thread.bitAt_eq_nbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Mem.p0_step_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Mem.ptr_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Mem.req_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Mem.rdy_bridge' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Mem.dat_bridge' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Mem.land_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Mem.reqAddr_bridge' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Mem.reqData_bridge' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Mem.arbiter_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Mem.slot_step' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Mem.hostNext_slot' depends on axioms: [propext]
+'Metronome.Bridge.Mem.hLand_next' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Mem.hLane_next' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Mem.absP0_reset' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Mem.p0_fetch_req' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Mem.p0_write_req' depends on axioms: [propext]
+'Metronome.Bridge.Mem.p0_write_addr' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.pin_bridge' depends on axioms: [propext]
+'Metronome.Bridge.Host.nbit_bridge' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.byteIn_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.bitc_succ' depends on axioms: [propext]
+'Metronome.Bridge.CfgWrite.queue_fields' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.CoreQueue.pack_take._native.bv_decide.ax_1_9,
+ Metronome.Bridge.CfgWrite.pack_eq_append._native.bv_decide.ax_1_5,
+ Metronome.Bridge.CfgWrite.wh_wd._native.bv_decide.ax_1_8,
+ Metronome.Bridge.CfgWrite.wl_wd._native.bv_decide.ax_1_8,
+ Metronome.Bridge.CfgWrite.wl_wh._native.bv_decide.ax_1_8]
+'Metronome.Bridge.CfgWrite.overrun_bridge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.CfgWrite.wh_wd._native.bv_decide.ax_1_8,
+ Metronome.Bridge.CfgWrite.wl_wh._native.bv_decide.ax_1_8]
+'Metronome.Bridge.CfgWrite.cwNext_ovr_false' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.CfgWrite.wh_wd._native.bv_decide.ax_1_8,
+ Metronome.Bridge.CfgWrite.wl_wh._native.bv_decide.ax_1_8]
+'Metronome.Bridge.CfgWrite.frozen_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.CfgWrite.absCw_reset' does not depend on any axioms
+

@@ -1,0 +1,110 @@
+﻿wire_pinAgree : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        ÔêÇ (l : Fin 4), Metronome.Bridge.Line.PinAgree (pinAbs s) (Metronome.ChipCut.lineIn s pin Ôåæl)
+wire_pinLvl : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ (Metronome.Machine.pinView m.sync m.dbg).lvl = (pinAbs s).lvl
+wire_pinPrev : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ (Metronome.Machine.pinView m.sync m.dbg).prev = (pinAbs s).prev
+wire_hPhase : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        ÔêÇ (l : Fin 4), (ltLineIn m l).hPhase = (Metronome.Bridge.Line.absIn (Metronome.ChipCut.lineIn s pin Ôåæl)).hPhase
+wire_hCtl : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        ÔêÇ (l : Fin 4), (ltLineIn m l).hCtl = (Metronome.Bridge.Line.absIn (Metronome.ChipCut.lineIn s pin Ôåæl)).hCtl
+wire_hTapmissClr : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        ÔêÇ (l : Fin 4),
+          (ltLineIn m l).hTapmissClr = (Metronome.Bridge.Line.absIn (Metronome.ChipCut.lineIn s pin Ôåæl)).hTapmissClr
+wire_hPC : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        ÔêÇ (t : Fin 6),
+          (ltThreadIn m t).hPC =
+            (Metronome.Bridge.Thread.absInput (Metronome.ChipCut.threadAt s Ôåæt)
+                (Metronome.ChipCut.threadIn s pin Ôåæt)).hPC
+wire_hStat : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        ÔêÇ (t : Fin 6),
+          (ltThreadIn m t).hStat =
+            (Metronome.Bridge.Thread.absInput (Metronome.ChipCut.threadAt s Ôåæt)
+                (Metronome.ChipCut.threadIn s pin Ôåæt)).hStat
+wire_beat : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        ÔêÇ (t : Fin 6),
+          (ltThreadIn m t).beat =
+            (Metronome.Bridge.Thread.absInput (Metronome.ChipCut.threadAt s Ôåæt)
+                (Metronome.ChipCut.threadIn s pin Ôåæt)).beat
+hcfg : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        ÔêÇ (l : Fin 4),
+          (Metronome.Machine.cfgView m.cfg).lines[l] = Metronome.Bridge.Line.absCfg (Metronome.ChipCut.lineCfg s Ôåæl)
+dbgWire_hdbg : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        Metronome.Machine.Util.hwByte (machHw m) "DBG" 0 "DBG" =
+          if (Metronome.ChipCut.freezeIn s pin).dbgWrite = true then some (Metronome.ChipCut.freezeIn s pin).data.toNat
+          else none
+dbgWire_hESC : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        ((Metronome.ChipCut.dbgCtrlIn s pin).dWrEm0 && !(Metronome.ChipCut.dbgCtrlIn s pin).hEm0 &&
+              (Metronome.ChipCut.dbgCtrlIn s pin).dWrEm1 &&
+            !(Metronome.ChipCut.dbgCtrlIn s pin).hEm1) =
+          false
+dbgWire_hRSC : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        ((Metronome.ChipCut.dbgCtrlIn s pin).dWrRlv0 && !(Metronome.ChipCut.dbgCtrlIn s pin).hRlv0 &&
+              (Metronome.ChipCut.dbgCtrlIn s pin).dWrRlv1 &&
+            !(Metronome.ChipCut.dbgCtrlIn s pin).hRlv1) =
+          false
+hostReq_open_strobe : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ HostPinInv s ÔåÆ ┬¼(s.hostCmd.wr = true Ôêº s.hostCmd.rd = true)
+host_open_quiet : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        HostPinInv s ÔåÆ
+          host_sck_spacing s pin ÔåÆ
+            Metronome.HostCmd.completing (s.hostRead.toHostCmd s.hostCmd.cmd)
+                  (Metronome.ChipCut.hostReadIn s pin).toHostCmd =
+                true ÔåÆ
+              (s.hostRead.toHostCmd s.hostCmd.cmd).wr = false Ôêº
+                Metronome.HostCmd.ackBit (s.hostRead.toHostCmd s.hostCmd.cmd)
+                    (Metronome.ChipCut.hostReadIn s pin).toHostCmd =
+                  false
+host_open_regVal : ÔêÇ (s : Metronome.ChipCut.State) (m : Metronome.Machine.State) (pin : Metronome.Machine.PinIn),
+  Metronome.ChipCut.ChipRel s m ÔåÆ
+    Metronome.ChipCut.Inv s ÔåÆ
+      Metronome.ChipCut.runRst s pin = true ÔåÆ
+        Metronome.Bridge.Host.regVal (Metronome.ChipCut.absChip s) (Metronome.Machine.cfgView s.cont.cfg) =
+          Metronome.Bridge.Host.regVal m (Metronome.Machine.cfgView m.cfg)
+HostPinInv : Metronome.ChipCut.State ÔåÆ Prop
+hostPinInv_reset : ÔêÇ (cont : Metronome.ChipCut.Contents), HostPinInv (Metronome.ChipCut.resetState cont)
+hostPinInv_step : ÔêÇ (s : Metronome.ChipCut.State) (pin : Metronome.Machine.PinIn),
+  HostPinInv s ÔåÆ HostPinInv (Metronome.ChipCut.step s pin)
+host_sck_spacing : Metronome.ChipCut.State ÔåÆ Metronome.Machine.PinIn ÔåÆ Prop

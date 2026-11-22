@@ -1,0 +1,35 @@
+'Metronome.ChipCut.Discharge.wire_pinLvl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.wire_pinPrev' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.wire_pinAgree' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Line.and_one_bne_zero_16._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.wire_hCtl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.wire_hPC' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.wire_hStat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.wire_hTapmissClr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.dbgWire_hdbg' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.dbgWire_hESC' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.ChipCut.Discharge.hostDbg_addr8._native.bv_decide.ax_1_5,
+ Metronome.ChipCut.Discharge.hostDbg_addr9._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.dbgWire_hRSC' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.ChipCut.Discharge.hostDbg_addr18._native.bv_decide.ax_1_5,
+ Metronome.ChipCut.Discharge.hostDbg_addr19._native.bv_decide.ax_1_5]
+'Metronome.ChipCut.Discharge.hostReq_open_strobe' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.quiet_wr' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.hostPinInv_reset' depends on axioms: [propext]
+'Metronome.ChipCut.Discharge.hostPinInv_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.host_open_regVal_of' depends on axioms: [propext, Quot.sound]
+'Metronome.ChipCut.Discharge.vget_lines' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.vget_threads' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.absCfg_lineCfgOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.line_cfg_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.hcfg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.wire_beat' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Line.and_one_bne_zero_16._native.bv_decide.ax_1_5]

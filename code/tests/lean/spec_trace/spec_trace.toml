@@ -1,0 +1,2405 @@
+# Clause trace: wiki/SPEC_V2.md <-> Metronome.Machine.  See README.md.
+# Edit kind, decls and reason; do not edit hash (run check_trace.py --update).
+
+["§0/p1"]
+hash = "e41fd3c200"
+text = "Status: **v2.0 draft 2, 2026-11-12.**"
+kind = "informative"
+reason = "preamble: status, scope, evidence and change log of the SPEC itself"
+
+["§0/p2"]
+hash = "74b8509c23"
+text = "Part B is **normative** for the v2 machine: the v2 RTL, the v2 cycle-level reference model and th..."
+kind = "informative"
+reason = "preamble: status, scope, evidence and change log of the SPEC itself"
+
+["§0/p3"]
+hash = "4fc99e6f18"
+text = "Part A, the score language that compiles onto this machine, is [SPEC_V2_SCORE.md](SPEC_V2_SCORE.m..."
+kind = "informative"
+reason = "preamble: status, scope, evidence and change log of the SPEC itself"
+
+["§0/p4"]
+hash = "10c3740904"
+text = "Names and numbers (field positions, port, guard and trigger indices, write groups, configuration..."
+kind = "informative"
+reason = "preamble: status, scope, evidence and change log of the SPEC itself"
+
+["§0/p5"]
+hash = "608650e8b4"
+text = "`BOTS/PLANS/V2_DESIGN.md` explains *why*; this file says *what*."
+kind = "informative"
+reason = "preamble: status, scope, evidence and change log of the SPEC itself"
+
+["§0/p6"]
+hash = "f2c70845b4"
+text = "Where they disagree, this file wins and the difference is recorded in `BOTS/PLANS/DECISIONS.md`...."
+kind = "informative"
+reason = "preamble: status, scope, evidence and change log of the SPEC itself"
+
+["§0/p7"]
+hash = "62684a81bc"
+text = "**Changes from draft 1 (commit f945c29):** the beat-generator **hold** (3.2a, D27), start commit..."
+kind = "informative"
+reason = "preamble: status, scope, evidence and change log of the SPEC itself"
+
+["§0/p8"]
+hash = "9df73f9868"
+text = "The hold is in the machine tables, model and full v2 RTL."
+kind = "informative"
+reason = "preamble: status, scope, evidence and change log of the SPEC itself"
+
+["§0/p9"]
+hash = "f68e7cda62"
+text = "Configuration is 2,084 bits; `HOLD` is at line offset 0x1C and `HELD` is CTL bit 7."
+kind = "informative"
+reason = "preamble: status, scope, evidence and change log of the SPEC itself"
+
+["§0/p10"]
+hash = "35d74de785"
+text = "Evidence (2026-11-12, uncommitted working tree over f945c29): the cycle-level model has 43 passin..."
+kind = "informative"
+reason = "preamble: status, scope, evidence and change log of the SPEC itself"
+
+["§0/p11"]
+hash = "bec2e805d4"
+text = "Pin-level lockstep evidence, source hashes, red/green regressions and exact tool/library provenan..."
+kind = "informative"
+reason = "preamble: status, scope, evidence and change log of the SPEC itself"
+
+["§0/p12"]
+hash = "1831de0baa"
+text = "The model and RTL had a shared host-stop/start-edge error caught by an independently asserted tes..."
+kind = "informative"
+reason = "preamble: status, scope, evidence and change log of the SPEC itself"
+
+["§0/p13"]
+hash = "91919e8cb6"
+text = "Full-v2 synthesis estimates 274,908.2868 um? of standard cells excluding SRAM macros."
+kind = "informative"
+reason = "preamble: status, scope, evidence and change log of the SPEC itself"
+
+["§0/p14"]
+hash = "7ba1cabd26"
+text = "Physical fit, DRC/LVS, gate-level simulation and 60 MHz timing for this full RTL remain unverified."
+kind = "informative"
+reason = "preamble: status, scope, evidence and change log of the SPEC itself"
+
+["§0/p15"]
+hash = "7a55d76fa5"
+text = "The earlier sizing skeleton's flow results (D24/U10) apply only to that skeleton."
+kind = "informative"
+reason = "preamble: status, scope, evidence and change log of the SPEC itself"
+
+["§1/bullet1"]
+hash = "49ab14be3a"
+text = "One clock, `clk`, nominally 60 MHz. \"Cycle t\" is the interval between clock edges t and t+1. A va..."
+kind = "machine"
+decls = ["Metronome.Machine.step", "Metronome.Machine.runStep", "Metronome.Machine.State"]
+
+["§1/bullet2"]
+hash = "1f7339c9fc"
+text = "All combinational quantities in cycle t are functions of register values in cycle t, configuratio..."
+kind = "machine"
+decls = ["Metronome.Machine.runStep", "Metronome.Machine.lineComb", "Metronome.Machine.coreComb"]
+
+["§1/bullet3"]
+hash = "b8046b34b0"
+text = "Unsigned arithmetic unless stated. `{a,b}` is concatenation with `a` most significant. `popcount`..."
+kind = "machine"
+decls = ["Metronome.Machine.Util.popcount", "Metronome.Machine.seg", "Metronome.Machine.lineComb"]
+
+["§1/bullet4"]
+hash = "993baddab8"
+text = "**Reset.** `rst_n` is asserted asynchronously and released synchronously through two flops; the i..."
+kind = "machine"
+decls = ["Metronome.Machine.resetStep", "Metronome.Machine.stepObs", "Metronome.Machine.State", "Metronome.Machine.State.init"]
+
+["§1/bullet5"]
+hash = "c4e1524057"
+text = "**Configuration** is the host-written, program-invisible state listed per unit as \"Configuration\"..."
+kind = "machine"
+decls = ["Metronome.Machine.Config", "Metronome.Machine.Config.zero", "Metronome.Machine.Config.isCfgAddr", "Metronome.Machine.Config.write", "Metronome.Machine.cfgNext", "Metronome.Machine.CfgView", "Metronome.Machine.cfgView", "Metronome.Machine.resetStep"]
+
+["§1/bullet6"]
+hash = "12d348d7d7"
+text = "**Configuration write spacing (D24).** Two configuration writes must not occur in consecutive cyc..."
+kind = "machine"
+decls = ["Metronome.Machine.cwNext", "Metronome.Machine.CwOut", "Metronome.Machine.runStep"]
+
+["§2/bullet1"]
+hash = "5528458516"
+text = "Raw inputs are synchronised: `s1' = raw`, `s2' = s1`, `sp' = s2`. The **synchronised level** of i..."
+kind = "machine"
+decls = ["Metronome.Machine.syncNext", "Metronome.Machine.SyncSt", "Metronome.Machine.pinView", "Metronome.Machine.PinView", "Metronome.Machine.PinView.rise", "Metronome.Machine.PinView.fall"]
+
+["§2/bullet2"]
+hash = "6146b504f7"
+text = "Input pins P0..P12 are `uio_in[0..7]`, `ui_in[3..7]`. A pin select of 13..15 reads constant 0 and..."
+kind = "machine"
+decls = ["Metronome.Machine.pinView", "Metronome.Machine.PinView.pin", "Metronome.Machine.PinView.rise", "Metronome.Machine.PinView.fall", "Metronome.Machine.PinIn"]
+
+["§2/bullet3"]
+hash = "0848aa9e9d"
+text = "The host link uses `ui_in[0..2]` (SCK, CS_N, MOSI) through the same synchronisers and drives `uo_..."
+kind = "machine"
+decls = ["Metronome.Machine.pinView", "Metronome.Machine.hostNext", "Metronome.Machine.pinsOut"]
+
+["§2/bullet4"]
+hash = "21d20d4f8a"
+text = "Output pins O0..O13 are `uio_out[0..7]`, `uo_out[2..7]`. `uio_oe[i]` is O_i's output-enable regis..."
+kind = "machine"
+decls = ["Metronome.Machine.pinsOut", "Metronome.Machine.outNext"]
+
+["§3/p1"]
+hash = "4160c5debc"
+text = "A line is a beat generator plus the pins it samples, its input symbol and its output symbol."
+kind = "machine"
+decls = ["Metronome.Machine.LineSt", "Metronome.Machine.LineCfg", "Metronome.Machine.lineNext"]
+
+["§3/p2"]
+hash = "d5bb420f84"
+text = "Threads (section 4) are bound to one line; ports named `L.*` refer to the executing thread's line."
+kind = "machine"
+decls = ["Metronome.Machine.Move", "Metronome.Machine.moveGroup", "Metronome.Machine.coreComb", "Metronome.Machine.ThreadCfg"]
+
+["§3.1/p1"]
+hash = "7500a1c0bd"
+text = "Configuration: `INC, MOD, T0, T1, T2, PRE, WLO, WHI` (16 bits each); `EDGE` (pin 4 bits, polarity..."
+kind = "machine"
+decls = ["Metronome.Machine.LineCfg", "Metronome.Machine.Config.line"]
+
+["§3.1/p2"]
+hash = "d10b0c140a"
+text = "State: `PH` (16); `RUN, ARM, REN`; `HELD`; `FIRST`; `SC, SP`; `FIRED[2:0]`; working samples `W =..."
+kind = "machine"
+decls = ["Metronome.Machine.LineSt"]
+
+["§3.2/p1"]
+hash = "80401817c8"
+text = "In cycle t:"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb", "Metronome.Machine.LineComb"]
+
+["§3.2/code1"]
+hash = "46b5a384d8"
+text = "edge = polarity-selected RISE/FALL of PIN[EDGE.pin] (0 if pin >= 13 or polarity 0)"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb", "Metronome.Machine.PinView.edgeSel"]
+
+["§3.2/code2"]
+hash = "a970fc6d20"
+text = "e0 = polarity-selected RISE/FALL of PIN[T0EDGE.pin] (same rule)"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb", "Metronome.Machine.PinView.edgeSel"]
+
+["§3.2/code3"]
+hash = "2db06edbb9"
+text = "inwin = (WLO <= WHI) ? (WLO <= PH && PH <= WHI) : (PH >= WLO || PH <= WHI)"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.2/code4"]
+hash = "55d38f6695"
+text = "start = edge && ARM && !RUN"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.2/code5"]
+hash = "694503c0c5"
+text = "accept = edge && RUN && REN && (!WEN || inwin)"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.2/code6"]
+hash = "b8828ece2a"
+text = "adv = RUN && !accept && !hold (hold: section 3.2a)"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.2/code7"]
+hash = "9555b2dbee"
+text = "n = PH + INC (17-bit); nx = (n >= MOD) ? n - MOD : n"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.2/code8"]
+hash = "4ee5b33244"
+text = "wrap = adv && (n >= MOD)"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.2/code9"]
+hash = "a61c47d247"
+text = "BEAT = FOLLOW ? accept : wrap"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.2/code10"]
+hash = "d6001c6466"
+text = "PH' = (start || accept) ? PRE : (adv ? nx : PH)"
+kind = "machine"
+decls = ["Metronome.Machine.lineNext"]
+
+["§3.2/code11"]
+hash = "6952c1914f"
+text = "RUN' = RUN || start; ARM' = ARM && !start"
+kind = "machine"
+decls = ["Metronome.Machine.lineNext"]
+
+["§3.2/p2"]
+hash = "80c34762e0"
+text = "`BEAT` is the line's **boundary**."
+kind = "machine"
+decls = ["Metronome.Machine.lineComb", "Metronome.Machine.LineComb"]
+
+["§3.2/p3"]
+hash = "df99b3e16b"
+text = "An accepted edge never advances the phase in its cycle; it re-aligns it."
+kind = "machine"
+decls = ["Metronome.Machine.lineNext"]
+
+["§3.2/p4"]
+hash = "0dc6086098"
+text = "`SYNC`, read by guard `L.SYNC`, is `SP`:"
+kind = "machine"
+decls = ["Metronome.Machine.guardVal", "Metronome.Machine.lineNext"]
+
+["§3.2/code12"]
+hash = "9ddb7e3e9b"
+text = "FOLLOW = 0: SC' = accept ? 1 : (BEAT ? 0 : SC); SP' = BEAT ? SC : SP"
+kind = "machine"
+decls = ["Metronome.Machine.lineNext"]
+
+["§3.2/code13"]
+hash = "86ea53d376"
+text = "FOLLOW = 1: SC' = 0; SP' = BEAT ? 1 : (wrap ? 0 : SP)"
+kind = "machine"
+decls = ["Metronome.Machine.lineNext"]
+
+["§3.2/p5"]
+hash = "a72460b601"
+text = "A move to `Lk.CTL` in cycle t sets `RUN' = bus[0], ARM' = bus[1], REN' = bus[2]`, overriding the..."
+kind = "machine"
+decls = ["Metronome.Machine.lineNext", "Metronome.Machine.LineIn", "Metronome.Machine.runStep"]
+
+["§3.2/p6"]
+hash = "5b8cd84562"
+text = "Host writes to `PHASE` or `CTL` behave the same way and take priority over moves and over the gen..."
+kind = "machine"
+decls = ["Metronome.Machine.lineNext", "Metronome.Machine.LineIn", "Metronome.Machine.runStep"]
+
+["§3.2a/p1"]
+hash = "1773df3772"
+text = "A line can stall its phase until a pin reaches a level."
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.2a/p2"]
+hash = "c512b645b1"
+text = "This lets a generated clock wait for a wire it has released, as in I2C clock stretching, without..."
+kind = "informative"
+reason = "motivation for the hold (I2C clock stretching); the behaviour is in the code block below"
+
+["§3.2a/code1"]
+hash = "5a35ebfc7d"
+text = "k = HTAP (a phase tap: k = 1, 2, or 0 with T0SRC = 0)"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb", "Metronome.Machine.Util.isPhaseTap"]
+
+["§3.2a/code2"]
+hash = "d114fbad57"
+text = "want = RUN && !accept && (cross_k of 3.4, evaluated with adv = 1)"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb", "Metronome.Machine.phaseCross"]
+
+["§3.2a/code3"]
+hash = "b7a1c8ab6f"
+text = "hold = HEN && want && (PIN[HPIN] != HLVL)"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.2a/code4"]
+hash = "e14ec15b00"
+text = "HELD' = hold"
+kind = "machine"
+decls = ["Metronome.Machine.lineNext"]
+
+["§3.2a/p3"]
+hash = "c84d7f27cd"
+text = "While `hold` is true, the phase does not advance."
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.2a/p4"]
+hash = "eefef029a8"
+text = "Tap k does not fire, and neither does any later tap or boundary of the beat."
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.2a/p5"]
+hash = "eedcc00e49"
+text = "The phase advances again in the first cycle in which the pin reads `HLVL`, and tap k fires in tha..."
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.2a/p6"]
+hash = "60bd1f05f8"
+text = "An accepted edge takes priority, because `want` is 0 in an accept cycle."
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.2a/p7"]
+hash = "c8b84f5afe"
+text = "The hold is disabled when `HEN = 0`, when `HTAP = 3`, when tap k is disabled, or when `HTAP = 0`..."
+kind = "machine"
+decls = ["Metronome.Machine.lineComb", "Metronome.Machine.tapEnabled"]
+
+["§3.2a/p8"]
+hash = "b17a4292fc"
+text = "Consequences (calculated from the rules above, not simulated):"
+kind = "informative"
+reason = "lead-in label for the calculated consequences that follow"
+
+["§3.2a/bullet1"]
+hash = "a83e7ea891"
+text = "**A hold only lengthens beats.** Every bound in section 10 that is stated relative to a line's bo..."
+kind = "theorem"
+decls = []
+
+["§3.2a/bullet2"]
+hash = "f83fe7dd62"
+text = "**Read-back latency stretches every beat.** The pin is read through the synchronisers (section 2)..."
+kind = "theorem"
+decls = []
+
+["§3.2a/bullet3"]
+hash = "0742696d5b"
+text = "**`HPIN >= 13` reads 0.** With `HLVL = 1` the line would hold forever, so the toolchain rejects t..."
+kind = "theorem"
+decls = []
+
+["§3.2a/bullet4"]
+hash = "f1b7352681"
+text = "**There is no built-in timeout.** A stuck wire leaves the line held, and the host can read `HELD`..."
+kind = "theorem"
+decls = []
+
+["§3.2a/p9"]
+hash = "3202ed1cfa"
+text = "Score mapping (part A 5.2): `stretch on WIRE` sets `HEN = 1`, `HPIN` = the wire's input pin, `HLV..."
+kind = "outside"
+reason = "score-language mapping (part A 5.2), a compiler obligation, not machine behaviour"
+
+["§3.2a/p10"]
+hash = "2716573ed0"
+text = "Cost: 8 configuration bits per line, 32 in total, about 1.0k µm² at the measured 32.4 µm² per lat..."
+kind = "informative"
+reason = "cost estimate paragraph (area), not machine behaviour"
+
+["§3.2a/p11"]
+hash = "34ce080ab9"
+text = "The comparator can share the tap-crossing logic of 3.4."
+kind = "informative"
+reason = "cost estimate paragraph (area), not machine behaviour"
+
+["§3.3/p1"]
+hash = "98f34d2017"
+text = "With `FOLLOW = 1` the boundary is an accepted edge, not a phase wrap."
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.3/p2"]
+hash = "7ad812e33f"
+text = "The phase restarts at `PRE` on every boundary, so taps 1 and 2 count cycles from the edge."
+kind = "machine"
+decls = ["Metronome.Machine.lineNext"]
+
+["§3.3/p3"]
+hash = "fbf51feb81"
+text = "A wrap with no edge is a missing clock: no boundary, and `SYNC` clears."
+kind = "machine"
+decls = ["Metronome.Machine.lineComb", "Metronome.Machine.lineNext"]
+
+["§3.3/p4"]
+hash = "ce7f10692a"
+text = "Choose `MOD` as the longest allowed clock period and `INC = 1`."
+kind = "informative"
+reason = "configuration advice for follower lines, not a machine rule"
+
+["§3.3/p5"]
+hash = "2069faad9e"
+text = "**Edge-sourced tap 0.**"
+kind = "informative"
+reason = "lead-in label for the following paragraph"
+
+["§3.3/p6"]
+hash = "9a4a5e5c64"
+text = "With `T0SRC = 1`, tap 0 fires on `e0` instead of at phase `T0`."
+kind = "machine"
+decls = ["Metronome.Machine.lineComb", "Metronome.Machine.tapEnabled"]
+
+["§3.3/p7"]
+hash = "ea2e61b639"
+text = "Typical use: the boundary on one clock polarity (commit) and tap 0 on the other (capture), so a t..."
+kind = "informative"
+reason = "typical use of the edge-sourced tap 0, not a machine rule"
+
+["§3.3/p8"]
+hash = "7fb8974add"
+text = "`T0SRC` is also legal with `FOLLOW = 0`."
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.3/p9"]
+hash = "6964470dfc"
+text = "A follower line is started by setting `RUN` and `REN` (move or host)."
+kind = "machine"
+decls = ["Metronome.Machine.lineNext"]
+
+["§3.3/p10"]
+hash = "195013d745"
+text = "The start edge of section 3.2 is not a boundary in either mode."
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.4/p1"]
+hash = "affd05539f"
+text = "Tap k is **enabled** if `Tk < MOD`, or, for tap 0 with `T0SRC = 1`, if `T0EDGE.polarity != 0`."
+kind = "machine"
+decls = ["Metronome.Machine.tapEnabled"]
+
+["§3.4/p2"]
+hash = "a130693918"
+text = "In cycle t, for each enabled tap k:"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.4/code1"]
+hash = "0c8100b450"
+text = "phase taps (k = 1, 2; k = 0 when T0SRC = 0):"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb", "Metronome.Machine.phaseCross"]
+
+["§3.4/code2"]
+hash = "ae38967708"
+text = "cross_k = adv && ((n >= MOD) ? (Tk > PH || Tk <= nx) : (PH < Tk && Tk <= nx))"
+kind = "machine"
+decls = ["Metronome.Machine.phaseCross", "Metronome.Machine.lineComb"]
+
+["§3.4/code3"]
+hash = "86c67960f1"
+text = "next_k = cross_k && BEAT && (n >= MOD) && (Tk <= nx)"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.4/code4"]
+hash = "1ba48a6d93"
+text = "edge tap 0 (T0SRC = 1):"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.4/code5"]
+hash = "9daa6f12ff"
+text = "cross_0 = RUN && e0"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.4/code6"]
+hash = "eec9c9fe52"
+text = "next_0 = cross_0 && BEAT"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.4/code7"]
+hash = "6528514037"
+text = "cur_k = cross_k && !next_k"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.4/code8"]
+hash = "91bc72a494"
+text = "TAPk = (cur_k && !FIRED[k]) || next_k"
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.4/p3"]
+hash = "6ef27515a7"
+text = "`next_k` marks a tap event that belongs to the beat starting at this boundary; `cur_k` one that b..."
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.4/p4"]
+hash = "93b728a100"
+text = "A tap fires at most once per beat: a current-beat event with its fired bit already set is dropped."
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§3.4/p5"]
+hash = "d011264450"
+text = "Disabled taps never fire."
+kind = "machine"
+decls = ["Metronome.Machine.tapEnabled", "Metronome.Machine.lineComb"]
+
+["§3.4/code9"]
+hash = "e1b570ed06"
+text = "if RUN' && !RUN: FIRED'[k] = (k is an enabled phase tap) && (Tk <= PH'); FIRST' = 1 (taps behind..."
+kind = "machine"
+decls = ["Metronome.Machine.lineNext"]
+
+["§3.4/code10"]
+hash = "d4808e181a"
+text = "elif BEAT: FIRED'[k] = next_k; FIRST' = 0"
+kind = "machine"
+decls = ["Metronome.Machine.lineNext"]
+
+["§3.4/code11"]
+hash = "6e2c535a8c"
+text = "else: FIRED'[k] = FIRED[k] || cur_k"
+kind = "machine"
+decls = ["Metronome.Machine.lineNext"]
+
+["§3.4/code12"]
+hash = "9171583e58"
+text = "TAPMISS' = TAPMISS || (BEAT && some enabled k has !FIRED[k] && !cur_k && !(k == 0 && T0SRC && FIR..."
+kind = "machine"
+decls = ["Metronome.Machine.lineNext"]
+
+["§3.4/code13"]
+hash = "8941866bdc"
+text = "SEG = popcount(FIRED) (2 bits)"
+kind = "machine"
+decls = ["Metronome.Machine.seg"]
+
+["§3.4/p6"]
+hash = "f2604d0b3a"
+text = "`FIRST` (one bit per line, state) marks the starting beat, which is partial: its edge-sourced tap..."
+kind = "machine"
+decls = ["Metronome.Machine.lineNext"]
+
+["§3.4/p7"]
+hash = "f60a784696"
+text = "`TAPMISS` is sticky until the host clears it."
+kind = "machine"
+decls = ["Metronome.Machine.lineNext", "Metronome.Machine.runStep"]
+
+["§3.4/p8"]
+hash = "84aa7214f6"
+text = "`SEG` is the number of taps fired so far in the beat; for phase taps in ascending order with no r..."
+kind = "theorem"
+decls = []
+
+["§3.5/p1"]
+hash = "e9b7d12fda"
+text = "Let `pa = PIN[PINA]`, `pb = PIN[PINB]` (0 for selects >= 13)."
+kind = "machine"
+decls = ["Metronome.Machine.lineNext", "Metronome.Machine.PinView.pin"]
+
+["§3.5/bullet1"]
+hash = "54b99f8efd"
+text = "**Capture.** `TAP0: A0' = pa`. `TAP1: A1' = pa, B1' = pb`. `TAP2: A2' = pa`."
+kind = "machine"
+decls = ["Metronome.Machine.lineNext"]
+
+["§3.5/bullet2"]
+hash = "86dab4c2fd"
+text = "**Snapshot.** `snap = (SNAP == 3) ? BEAT : TAP[SNAP]`. If `snap`: `SN' = W'` (the working bits in..."
+kind = "machine"
+decls = ["Metronome.Machine.lineNext"]
+
+["§3.5/bullet3"]
+hash = "de6b451fcb"
+text = "**Input symbol.** `IN = {LUT1[{REM, SN}], LUT0[{REM, SN}]}`, combinational from the `REM` and `SN..."
+kind = "machine"
+decls = ["Metronome.Machine.inSym", "Metronome.Machine.srcVal"]
+
+["§3.5/p2"]
+hash = "95ba1919ca"
+text = "`IN`, `L.CAP` and guards `L.IN0, L.IN1` therefore change only at the end of a snapshot cycle."
+kind = "theorem"
+decls = []
+
+["§3.5/p3"]
+hash = "56a7390260"
+text = "`REM` is table output 1 of the previous snapshot, which lets a table decode differential codes."
+kind = "machine"
+decls = ["Metronome.Machine.inSym", "Metronome.Machine.lineNext"]
+
+["§3.6/p1"]
+hash = "b74d1ee7e0"
+text = "The three symbol ports form one write group per line (section 6)."
+kind = "machine"
+decls = ["Metronome.Machine.moveGroup", "Metronome.Machine.resolveMoves", "Metronome.Machine.SymWrite"]
+
+["§3.6/p2"]
+hash = "a8445a57d0"
+text = "The winning write in cycle t sets `STAGED'`:"
+kind = "machine"
+decls = ["Metronome.Machine.stagedNext", "Metronome.Machine.SymWrite"]
+
+["§3.6/code1"]
+hash = "4e085a613c"
+text = "L.SYM: STAGED' = bus[3:0]"
+kind = "machine"
+decls = ["Metronome.Machine.stagedNext"]
+
+["§3.6/code2"]
+hash = "219503c451"
+text = "L.DBIT: STAGED' = {STAGED[3:1], bus[0]}"
+kind = "machine"
+decls = ["Metronome.Machine.stagedNext"]
+
+["§3.6/code3"]
+hash = "66da77ab41"
+text = "L.XOR: STAGED' = STAGED ^ bus[3:0]"
+kind = "machine"
+decls = ["Metronome.Machine.stagedNext"]
+
+["§3.6/p3"]
+hash = "87b7321c14"
+text = "If `BEAT` in cycle t, or `RUN' && !RUN` (the line starts, by an edge, a move or a host write): `C..."
+kind = "machine"
+decls = ["Metronome.Machine.lineNext"]
+
+["§3.6/p4"]
+hash = "6db023e674"
+text = "The start commit lets a follower present its first bit before the first clock edge, as an SPI mod..."
+kind = "informative"
+reason = "rationale for the start commit (SPI mode-0 target); the rule is the previous sentence"
+
+["§4/p1"]
+hash = "a538090ae7"
+text = "Configuration: `CORE` (bit), `LINE` (2), `TRIG` (5, codes in ISA_TABLES_V2), watchers `W0C, W1C`..."
+kind = "machine"
+decls = ["Metronome.Machine.ThreadCfg", "Metronome.Machine.Config.thread", "Metronome.Machine.TrigOp", "Metronome.Machine.trigOp"]
+
+["§4/p2"]
+hash = "4e98773cf8"
+text = "State: `PC` (8), `EN`, `READY`, `RUNNING`, `ARMED`, sticky `LATE`, `OVR`."
+kind = "machine"
+decls = ["Metronome.Machine.ThreadSt"]
+
+["§4/bullet1"]
+hash = "5703d39067"
+text = "**Trigger event** `trig` in cycle t: `EN && (event(TRIG) || DB[t])`, where `DB[t]` is the doorbel..."
+kind = "machine"
+decls = ["Metronome.Machine.trigEvent", "Metronome.Machine.trigOp", "Metronome.Machine.TrigOp", "Metronome.Machine.runStep", "Metronome.Machine.ThreadIn"]
+
+["§4/bullet2"]
+hash = "b58fd99aeb"
+text = "On `trig`: if `READY || RUNNING` then `OVR' = 1` and the trigger is dropped; otherwise `READY' =..."
+kind = "machine"
+decls = ["Metronome.Machine.threadNext"]
+
+["§4/bullet3"]
+hash = "972a119645"
+text = "**Disarm.** If its line has `BEAT` in cycle t: `ARMED' = 0`, unless an accepted trigger in the sa..."
+kind = "machine"
+decls = ["Metronome.Machine.threadNext"]
+
+["§4/bullet4"]
+hash = "afa6adcad7"
+text = "**Late write.** Every enabled move to `L.SYM`, `L.DBIT` or `L.XOR` by a thread whose `ARMED` is 0..."
+kind = "machine"
+decls = ["Metronome.Machine.runStep", "Metronome.Machine.threadNext"]
+
+["§4/bullet5"]
+hash = "25e329c09f"
+text = "**Stop.** An enabled move to `T.STOP`: `EN' = 0`. The current burst continues to its pause. A hos..."
+kind = "machine"
+decls = ["Metronome.Machine.threadNext", "Metronome.Machine.runStep"]
+
+["§4/bullet6"]
+hash = "465f107d2f"
+text = "Dispatch and pause (section 5) set `READY' = 0, RUNNING' = 1` and `RUNNING' = 0, PC' = npc`. A ho..."
+kind = "machine"
+decls = ["Metronome.Machine.threadNext", "Metronome.Machine.runStep"]
+
+["§5/p1"]
+hash = "14ac262ffc"
+text = "Each core has a 256 x 64 program memory with a synchronous read: an address presented in cycle t..."
+kind = "machine"
+decls = ["Metronome.Machine.progWord", "Metronome.Machine.coreNext", "Metronome.Machine.CoreSt"]
+
+["§5/p2"]
+hash = "5309980bbe"
+text = "A core is a three-stage pipeline: present an address (F), word at the output (R), execute from th..."
+kind = "machine"
+decls = ["Metronome.Machine.coreComb", "Metronome.Machine.coreNext", "Metronome.Machine.CoreComb"]
+
+["§5/p3"]
+hash = "4ae7c6ced6"
+text = "Fetch runs one word ahead on the next sequential address."
+kind = "machine"
+decls = ["Metronome.Machine.coreComb"]
+
+["§5/p4"]
+hash = "b29f89eeb7"
+text = "State: `XV` (IR holds an instruction to execute), `IR` (64), `RV` (the memory output holds a word..."
+kind = "machine"
+decls = ["Metronome.Machine.CoreSt"]
+
+["§5/p5"]
+hash = "d6dda6f28b"
+text = "While `XV`, `FPC = PC(IR) + 1 mod 256`."
+kind = "theorem"
+decls = []
+
+["§5/p6"]
+hash = "e1df932b00"
+text = "In cycle t, with guards `G` evaluated on cycle-t state with line-relative guards taken from line..."
+kind = "machine"
+decls = ["Metronome.Machine.coreComb", "Metronome.Machine.guardVal"]
+
+["§5/code1"]
+hash = "d10548b9db"
+text = "if XV:"
+kind = "machine"
+decls = ["Metronome.Machine.coreComb"]
+
+["§5/code2"]
+hash = "9395603563"
+text = "C = G[IR.cond]; JC = G[JUMP_GUARDS[IR.jcond]]"
+kind = "machine"
+decls = ["Metronome.Machine.coreComb", "Metronome.Machine.insnField", "Metronome.Machine.guardOp", "Metronome.Machine.jumpGuard"]
+
+["§5/code3"]
+hash = "40640430c8"
+text = "for each move m: en_m = guard_m==always || (guard_m==if && C) || (guard_m==ifnot && !C)"
+kind = "machine"
+decls = ["Metronome.Machine.coreComb"]
+
+["§5/code4"]
+hash = "f8b34e5def"
+text = "if en_m: write SRC[IR.src_m] (read in cycle t) to DST[IR.dst_m] at end of cycle"
+kind = "machine"
+decls = ["Metronome.Machine.coreComb", "Metronome.Machine.srcVal", "Metronome.Machine.srcOp", "Metronome.Machine.dstOp"]
+
+["§5/code5"]
+hash = "db531fbbfa"
+text = "taken = jmode==always || (jmode==if && JC) || (jmode==ifnot && !JC)"
+kind = "machine"
+decls = ["Metronome.Machine.coreComb"]
+
+["§5/code6"]
+hash = "b3130f69be"
+text = "npc = taken ? IR.imm : FPC"
+kind = "machine"
+decls = ["Metronome.Machine.coreComb"]
+
+["§5/code7"]
+hash = "f19d197f94"
+text = "jmp = XV && !IR.pause && taken"
+kind = "machine"
+decls = ["Metronome.Machine.coreComb"]
+
+["§5/code8"]
+hash = "79e0384960"
+text = "pse = XV && IR.pause"
+kind = "machine"
+decls = ["Metronome.Machine.coreComb"]
+
+["§5/code9"]
+hash = "9ab3326dad"
+text = "load = RV && !jmp && !pse"
+kind = "machine"
+decls = ["Metronome.Machine.coreComb"]
+
+["§5/code10"]
+hash = "833717de2e"
+text = "free = pse || (!XV && !RV)"
+kind = "machine"
+decls = ["Metronome.Machine.coreComb"]
+
+["§5/code11"]
+hash = "abe8f5221d"
+text = "if pse: PC[XT]' = npc; RUNNING[XT]' = 0"
+kind = "machine"
+decls = ["Metronome.Machine.threadNext", "Metronome.Machine.runStep"]
+
+["§5/code12"]
+hash = "9802909165"
+text = "disp = free && RUN_global && some thread e has CORE == c and READY"
+kind = "machine"
+decls = ["Metronome.Machine.coreComb", "Metronome.Machine.pickThread"]
+
+["§5/code13"]
+hash = "f1eab1ca6f"
+text = "if disp:"
+kind = "machine"
+decls = ["Metronome.Machine.coreComb"]
+
+["§5/code14"]
+hash = "3e654e5f46"
+text = "e = first ready thread bound to c in circular order RR, RR+1, ... (mod 6)"
+kind = "machine"
+decls = ["Metronome.Machine.pickThread"]
+
+["§5/code15"]
+hash = "16bbbe531a"
+text = "d = (W0C[e] != 0 && G_e[W0C[e]]) ? W0H[e] : (W1C[e] != 0 && G_e[W1C[e]]) ? W1H[e] : PC[e]"
+kind = "machine"
+decls = ["Metronome.Machine.watcherAddr"]
+
+["§5/code16"]
+hash = "fa649073cc"
+text = "READY[e]' = 0; RUNNING[e]' = 1; XT' = e; XL' = LINE[e]; RR' = (e + 1) mod 6"
+kind = "machine"
+decls = ["Metronome.Machine.coreNext", "Metronome.Machine.threadNext"]
+
+["§5/code17"]
+hash = "58302c6c0b"
+text = "fetch address = jmp ? IR.imm : load ? FPC + 1 : disp ? d : none"
+kind = "machine"
+decls = ["Metronome.Machine.coreComb"]
+
+["§5/code18"]
+hash = "ce34061ca8"
+text = "if a fetch address: FPC' = address"
+kind = "machine"
+decls = ["Metronome.Machine.coreNext"]
+
+["§5/code19"]
+hash = "c176a60eff"
+text = "RV' = jmp || load || disp"
+kind = "machine"
+decls = ["Metronome.Machine.coreNext"]
+
+["§5/code20"]
+hash = "d9444b31e2"
+text = "XV' = load; if load: IR' = word at the memory output"
+kind = "machine"
+decls = ["Metronome.Machine.coreNext"]
+
+["§5/p7"]
+hash = "e38b9a6c41"
+text = "`G_e` evaluates guards relative to thread e's line; watchers are sampled in the dispatch cycle, o..."
+kind = "machine"
+decls = ["Metronome.Machine.watcherAddr"]
+
+["§5/p8"]
+hash = "2e727f2b02"
+text = "`RR` changes only on dispatch."
+kind = "machine"
+decls = ["Metronome.Machine.coreNext"]
+
+["§5/p9"]
+hash = "b5813d2ddc"
+text = "Consequences (calculated from the rules above):"
+kind = "informative"
+reason = "lead-in label for the calculated consequences that follow"
+
+["§5/table1"]
+hash = "9c4eac887e"
+text = "| Trigger in cycle t, core idle | `READY` in t+1, dispatch in t+1, first instruction executes in..."
+kind = "theorem"
+decls = []
+
+["§5/table2"]
+hash = "ccbf97342f"
+text = "| Sequential instructions | one per cycle |"
+kind = "theorem"
+decls = []
+
+["§5/table3"]
+hash = "18da3af5f0"
+text = "| Taken jump on a non-pausing instruction | the fetched-ahead word is discarded and never execute..."
+kind = "theorem"
+decls = []
+
+["§5/table4"]
+hash = "847464629a"
+text = "| `pause` | `PC` takes `npc`, including a jump target, at no cost; the fetched-ahead word is disc..."
+kind = "theorem"
+decls = []
+
+["§5/table5"]
+hash = "7cc44e17af"
+text = "| Dispatch after a pause | in the pause cycle; the next thread's first instruction executes two c..."
+kind = "theorem"
+decls = []
+
+["§5/p10"]
+hash = "e7975b50b5"
+text = "**Burst length** is counted in cycles: instructions executed plus one for each taken jump on a no..."
+kind = "theorem"
+decls = []
+
+["§5/p11"]
+hash = "9dc6b11e5e"
+text = "**Response bound:** from a trigger in cycle t, a thread's last instruction executes no later than..."
+kind = "theorem"
+decls = []
+
+["§5/p12"]
+hash = "13298a0986"
+text = "This assumes finite bursts, `RUN_global = 1` and unchanged program and configuration during the i..."
+kind = "theorem"
+decls = []
+
+["§5/p13"]
+hash = "ca8f73b574"
+text = "Alone on its core, a one-instruction burst executes at t+3."
+kind = "theorem"
+decls = []
+
+["§5/p14"]
+hash = "dc16132712"
+text = "(Checked on the model by randomized trigger timing for two threads on one core.)"
+kind = "informative"
+reason = "evidence statement (checked on the model), not machine behaviour"
+
+["§5/p15"]
+hash = "041efde0b0"
+text = "Host writes to a core's program memory take the memory port in that cycle; a fetch in the same cy..."
+kind = "machine"
+decls = ["Metronome.Machine.runStep", "Metronome.Machine.progWord"]
+
+["§6/p1"]
+hash = "a42d527ded"
+text = "All moves of both cores in cycle t read their sources from cycle-t state and write at the end of..."
+kind = "machine"
+decls = ["Metronome.Machine.runStep", "Metronome.Machine.coreComb", "Metronome.Machine.resolveMoves"]
+
+["§6/p2"]
+hash = "de267e3636"
+text = "The move bus is 8 bits; single-bit sources occupy bit 0, and unused high bits read 0."
+kind = "machine"
+decls = ["Metronome.Machine.srcVal"]
+
+["§6/p3"]
+hash = "bfc91e4c17"
+text = "Destination ports are partitioned into **write groups** (`machine.WRITE_GROUPS`): `L.SYM` (the th..."
+kind = "machine"
+decls = ["Metronome.Machine.moveGroup", "Metronome.Machine.DstOp", "Metronome.Machine.dstOp"]
+
+["§6/p4"]
+hash = "dc06ad0b2a"
+text = "`NULL` has no group."
+kind = "machine"
+decls = ["Metronome.Machine.moveGroup"]
+
+["§6/p5"]
+hash = "47678950c3"
+text = "If two or more enabled moves target one group in a cycle, sticky `CONFLICT' = 1` and only the wri..."
+kind = "machine"
+decls = ["Metronome.Machine.resolveMoves", "Metronome.Machine.ctrlNext"]
+
+["§6/p6"]
+hash = "ca1c3f3d5f"
+text = "Source side effects happen only for enabled moves: reading `HOST.IN` clears `INV`; reading `P0.D`..."
+kind = "machine"
+decls = ["Metronome.Machine.runStep", "Metronome.Machine.ctrlNext", "Metronome.Machine.CtrlIn"]
+
+["§6.1/bullet1"]
+hash = "dc549d8954"
+text = "**Flags** `F[15:0]`. `SET n: F[n]' = 1`. `CLR n: F[n]' = 0`. `FP' = F` every cycle."
+kind = "machine"
+decls = ["Metronome.Machine.unitsNext", "Metronome.Machine.UnitsIn", "Metronome.Machine.UnitsSt"]
+
+["§6.1/bullet2"]
+hash = "6530bc1e10"
+text = "**Accumulator** `A` (8), `Z, C, N`, scratch `R0..R3`: as SPEC v1 6.1."
+kind = "machine"
+decls = ["Metronome.Machine.accNext", "Metronome.Machine.unitsNext", "Metronome.Machine.UnitsSt"]
+
+["§6.1/bullet3"]
+hash = "fe2b521d7b"
+text = "**Shifters** `SH0, SH1`: as SPEC v1 6.1 (`LEN`, `MSB` are state set by `SHk.CFG`)."
+kind = "machine"
+decls = ["Metronome.Machine.shNext", "Metronome.Machine.shOut", "Metronome.Machine.ShSt"]
+
+["§6.1/bullet4"]
+hash = "4e33bee9dc"
+text = "**Counters** `CNT0..CNT2`: as SPEC v1 6.1."
+kind = "machine"
+decls = ["Metronome.Machine.cntNext"]
+
+["§6.1/bullet5"]
+hash = "7f6cc2cbf2"
+text = "**LFSR/CRC** `LF0, LF1`: as SPEC v1 6.1, `POLY` is configuration. Source `LFk.O` and guard `LFk.O..."
+kind = "machine"
+decls = ["Metronome.Machine.lfNext", "Metronome.Machine.Config.poly", "Metronome.Machine.srcVal", "Metronome.Machine.guardVal"]
+
+["§6.1/bullet6"]
+hash = "e5dbe237fc"
+text = "**Pointer** `P0`: as SPEC v1 6.1 for one pointer, with the data RAM arbiter below."
+kind = "machine"
+decls = ["Metronome.Machine.p0Next", "Metronome.Machine.p0Req", "Metronome.Machine.P0St", "Metronome.Machine.PReq", "Metronome.Machine.P0Move"]
+
+["§6.1/bullet7"]
+hash = "a458d512cf"
+text = "**Host mailbox**: as SPEC v1 6.1. Guard `HOST.OUTE` is `!OUTV`."
+kind = "machine"
+decls = ["Metronome.Machine.ctrlNext", "Metronome.Machine.guardVal", "Metronome.Machine.CtrlSt"]
+
+["§6.2/p1"]
+hash = "dfbe593a2c"
+text = "The data RAM is 512 x 32 bits (2,048 bytes; byte address a is lane `a[1:0]` of word `a[10:2]`, li..."
+kind = "machine"
+decls = ["Metronome.Machine.ramWord", "Metronome.Machine.ramAccess", "Metronome.Machine.State"]
+
+["§6.2/p2"]
+hash = "d6f1e3ea17"
+text = "One access per cycle."
+kind = "machine"
+decls = ["Metronome.Machine.arbiter"]
+
+["§6.2/p3"]
+hash = "9b9978328d"
+text = "Requesters, in priority order: stream S0, stream S1, pointer P0, host."
+kind = "machine"
+decls = ["Metronome.Machine.arbiter"]
+
+["§6.2/p4"]
+hash = "a5590b930c"
+text = "Each holds at most one request, visible to the arbiter in the cycle after it is set."
+kind = "machine"
+decls = ["Metronome.Machine.streamReq", "Metronome.Machine.p0Req", "Metronome.Machine.hostReq", "Metronome.Machine.RamReq", "Metronome.Machine.runStep"]
+
+["§6.2/p5"]
+hash = "f66f4896fb"
+text = "A write is performed at the end of the cycle it is served."
+kind = "machine"
+decls = ["Metronome.Machine.ramAccess"]
+
+["§6.2/p6"]
+hash = "ea7e43f23e"
+text = "A read served in cycle s has its word at the RAM output during s+1, and the requester loads it at..."
+kind = "machine"
+decls = ["Metronome.Machine.ramAccess", "Metronome.Machine.p0Next", "Metronome.Machine.streamNext", "Metronome.Machine.hostNext", "Metronome.Machine.runStep"]
+
+["§6.2/p7"]
+hash = "19921247d0"
+text = "Addresses wrap at 2,048 bytes."
+kind = "machine"
+decls = ["Metronome.Machine.ramAccess", "Metronome.Machine.ramWord"]
+
+["§6.3/p1"]
+hash = "b5b3c16e3a"
+text = "Configuration: `MODE` (0 transmit, 1 receive), `MSB` (1 = most significant bit first), `START` (1..."
+kind = "machine"
+decls = ["Metronome.Machine.StreamCfg", "Metronome.Machine.Config.stream"]
+
+["§6.3/p2"]
+hash = "bf44dcc6ce"
+text = "State: `POS` (12), `BIDX` (3), `BA` (11), `CUR` (8), `CV`, `WB` (32), `WV`, `RQ`, `LD`, `PEND` (8..."
+kind = "machine"
+decls = ["Metronome.Machine.StreamSt"]
+
+["§6.3/p3"]
+hash = "cde86aee53"
+text = "Common definitions in cycle t: `END = (POS == LEN)`; `b = MSB ? 7 - BIDX : BIDX`; `LB` = lane `BA..."
+kind = "machine"
+decls = ["Metronome.Machine.streamEnd", "Metronome.Machine.streamB", "Metronome.Machine.streamLB", "Metronome.Machine.StreamIn"]
+
+["§6.3/p4"]
+hash = "9cb6835494"
+text = "The stream requests a read of word `BA[10:2]` while `RQ` (transmit), or a one-byte write of `PEND..."
+kind = "machine"
+decls = ["Metronome.Machine.streamReq"]
+
+["§6.3/p5"]
+hash = "77350b26dd"
+text = "**Transmit** (`MODE = 0`)."
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto", "Metronome.Machine.streamMode"]
+
+["§6.3/p6"]
+hash = "1e8a9d513f"
+text = "`adv` = an enabled move to `Sk.ADV` and `!END`."
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto", "Metronome.Machine.runStep"]
+
+["§6.3/code1"]
+hash = "895b9d435b"
+text = "if LD: WB' = word read in t-1; WV' = 1; LD' = 0"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/code2"]
+hash = "088e5fd75d"
+text = "if RQ && g: RQ' = 0; LD' = 1"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/code3"]
+hash = "3bfaf8fcc3"
+text = "elif !WV && !RQ && !LD: RQ' = 1"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/code4"]
+hash = "563b6db59f"
+text = "if adv && !CV: STARVED' = 1 (the advance is ignored)"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/code5"]
+hash = "5adf1f79e1"
+text = "if !CV && WV: CUR' = LB; CV' = 1; BA' = BA + 1; if BA[1:0] == 3: WV' = 0"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/code6"]
+hash = "b72a7f061c"
+text = "elif adv && CV:"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/code7"]
+hash = "8b561a594c"
+text = "if BIDX != 7: BIDX' = BIDX + 1"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/code8"]
+hash = "c853f4df7b"
+text = "else: POS' = POS + 1; BIDX' = 0"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/code9"]
+hash = "013f690086"
+text = "if WV: CUR' = LB; BA' = BA + 1; if BA[1:0] == 3: WV' = 0"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/code10"]
+hash = "e4a865f77e"
+text = "else: CV' = 0; STARVED' = 1"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/p7"]
+hash = "3ab0e2ec7c"
+text = "`Sk.BIT` (source and guard) is `CV && !END && CUR[b]`."
+kind = "machine"
+decls = ["Metronome.Machine.streamBit"]
+
+["§6.3/p8"]
+hash = "dae74bbc5a"
+text = "Source `Sk.BYTE` reads `CUR`."
+kind = "machine"
+decls = ["Metronome.Machine.streamByte"]
+
+["§6.3/p9"]
+hash = "2f2db26ba1"
+text = "A stream may read up to one word past its region; it never writes in transmit mode."
+kind = "machine"
+decls = ["Metronome.Machine.streamReq"]
+
+["§6.3/p10"]
+hash = "103e559466"
+text = "**Receive** (`MODE = 1`)."
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/p11"]
+hash = "84fcacdb24"
+text = "`bitin` = an enabled move to `Sk.RX` and `!END`, with bit `bus[0]`; `flush` = a flush request (be..."
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto", "Metronome.Machine.streamNext"]
+
+["§6.3/code11"]
+hash = "c2ccb2e290"
+text = "NSH = CUR | ((bitin && bus[0]) << b) (CUR is the assembly register)"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/code12"]
+hash = "8641f5175e"
+text = "done = (bitin && BIDX == 7) || (flush && (BIDX != 0 || bitin))"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/code13"]
+hash = "5a2889a09f"
+text = "if PV && g: PV' = 0; BA' = BA + 1 (PEND is written to byte BA this cycle)"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/code14"]
+hash = "1f2ca9b6c7"
+text = "if bitin && !done: CUR' = NSH; BIDX' = BIDX + 1"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/code15"]
+hash = "4cf19328fe"
+text = "if done: CUR' = 0; BIDX' = 0; POS' = POS + 1"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/code16"]
+hash = "a596154b4d"
+text = "if PV && !g: STARVED' = 1 (the byte is dropped)"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/code17"]
+hash = "f025ad9a97"
+text = "else: PEND' = NSH; PV' = 1"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/p12"]
+hash = "73c24722c6"
+text = "`Sk.BIT` is 0 in receive mode."
+kind = "machine"
+decls = ["Metronome.Machine.streamBit"]
+
+["§6.3/p13"]
+hash = "fb9fd5bffc"
+text = "Source `Sk.BYTE` reads `PEND`, the last completed byte."
+kind = "machine"
+decls = ["Metronome.Machine.streamByte"]
+
+["§6.3/p14"]
+hash = "a0d15ba4b0"
+text = "Unfilled bits of a flushed byte are 0."
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§6.3/p15"]
+hash = "8bec8c8d19"
+text = "The host reads `POS` and `BIDX` for the frame length; read `BIDX` before a flush, which clears it."
+kind = "machine"
+decls = ["Metronome.Machine.hostRead"]
+
+["§6.3/p16"]
+hash = "e3361a3136"
+text = "**Guards.**"
+kind = "informative"
+reason = "lead-in label for the guard definitions"
+
+["§6.3/p17"]
+hash = "597437bdb2"
+text = "`Sk.END = END`; `Sk.MARK = (POS == MARK) && (BIDX == 0)`; `Sk.BYTE = (BIDX == 0)`; `Sk.BIT` as ab..."
+kind = "machine"
+decls = ["Metronome.Machine.streamEnd", "Metronome.Machine.streamMark", "Metronome.Machine.streamAtByte", "Metronome.Machine.streamBit", "Metronome.Machine.guardVal"]
+
+["§6.3/p18"]
+hash = "acbdf218ee"
+text = "**Control.**"
+kind = "informative"
+reason = "lead-in label for the control rules"
+
+["§6.3/p19"]
+hash = "95f7debcd8"
+text = "A move to `Sk.CTL` or a host write of the stream's `CTL` register makes a request; requests from..."
+kind = "machine"
+decls = ["Metronome.Machine.streamNext", "Metronome.Machine.runStep"]
+
+["§6.3/p20"]
+hash = "897c5af9ab"
+text = "Bit 0 **rewinds** at the end of the cycle: `POS' = 0, BIDX' = 0, BA' = START, CUR' = 0, CV' = WV'..."
+kind = "machine"
+decls = ["Metronome.Machine.streamNext"]
+
+["§6.3/p21"]
+hash = "a8d41d7e84"
+text = "A request served in a rewind cycle still accesses the RAM; read data is discarded."
+kind = "machine"
+decls = ["Metronome.Machine.streamNext", "Metronome.Machine.runStep"]
+
+["§6.3/p22"]
+hash = "6b14e44de3"
+text = "`PEND` and `STARVED` are unchanged."
+kind = "machine"
+decls = ["Metronome.Machine.streamNext"]
+
+["§6.3/p23"]
+hash = "11624fec3a"
+text = "Bit 1 **flushes** (receive only)."
+kind = "machine"
+decls = ["Metronome.Machine.streamNext", "Metronome.Machine.Util.streamAuto"]
+
+["§6.3/p24"]
+hash = "78341cc2c9"
+text = "Host `CTL` bit 7 clears `STARVED`, unless a starve event occurs in the same cycle."
+kind = "machine"
+decls = ["Metronome.Machine.streamNext"]
+
+["§6.3/p25"]
+hash = "4088552320"
+text = "Reset leaves each stream rewound at address 0."
+kind = "machine"
+decls = ["Metronome.Machine.State.init", "Metronome.Machine.Config.zero", "Metronome.Machine.resetStep"]
+
+["§6.3/p26"]
+hash = "c408698a7f"
+text = "`MODE`, `MSB` and `START` changes take effect at the next rewind; `LEN` and `MARK` are used live."
+kind = "machine"
+decls = ["Metronome.Machine.streamNext", "Metronome.Machine.streamMode"]
+
+["§7/p1"]
+hash = "417449af48"
+text = "Indices are in [ISA_TABLES_V2.md](ISA_TABLES_V2.md)."
+kind = "table"
+decls = ["Metronome.Machine.Tables.guardNames", "Metronome.Machine.Tables.jumpGuardNames"]
+
+["§7/p2"]
+hash = "44adcaf560"
+text = "Guard 0 is constant true."
+kind = "machine"
+decls = ["Metronome.Machine.guardVal", "Metronome.Machine.GuardOp"]
+
+["§7/p3"]
+hash = "ef25dba6d1"
+text = "Line-relative guards use the executing thread's line, or for watchers the line of the thread bein..."
+kind = "machine"
+decls = ["Metronome.Machine.guardVal", "Metronome.Machine.watcherAddr", "Metronome.Machine.coreComb"]
+
+["§7/p4"]
+hash = "de24e6d373"
+text = "`Lk.RUN` is line k's `RUN`."
+kind = "machine"
+decls = ["Metronome.Machine.guardVal"]
+
+["§7/p5"]
+hash = "0e0c4cef66"
+text = "`PINk` is `PIN[k]`."
+kind = "machine"
+decls = ["Metronome.Machine.guardVal"]
+
+["§7/p6"]
+hash = "f887eae260"
+text = "Move guards use the 6-bit `cond`."
+kind = "machine"
+decls = ["Metronome.Machine.coreComb", "Metronome.Machine.guardOp", "Metronome.Machine.insnField"]
+
+["§7/p7"]
+hash = "ba6d037e82"
+text = "Jumps use the 5-bit `jcond`, which selects guard `JUMP_GUARDS[jcond]`; all 32 entries are defined."
+kind = "machine"
+decls = ["Metronome.Machine.jumpGuard", "Metronome.Machine.Util.jumpGuardIdx"]
+
+["§8/p1"]
+hash = "2ab62aa542"
+text = "Configuration: `LINE` (2), `BOUND`, `SEL0, SEL1, SEL2` (2 bits each), `LUT` (32), and for o < 8 `..."
+kind = "machine"
+decls = ["Metronome.Machine.OutCfg", "Metronome.Machine.Config.out"]
+
+["§8/p2"]
+hash = "ae424030f4"
+text = "Each cycle:"
+kind = "machine"
+decls = ["Metronome.Machine.outNext"]
+
+["§8/code1"]
+hash = "a4132d5389"
+text = "idx = BOUND ? {SEG(LINE), COMMITTED(LINE)[SEL2], COMMITTED(LINE)[SEL1], COMMITTED(LINE)[SEL0]} : 0"
+kind = "machine"
+decls = ["Metronome.Machine.outIdx"]
+
+["§8/code2"]
+hash = "2465bc169a"
+text = "OUT[o]' = LUT[idx]; OEN[o]' = OE[idx] (o < 8)"
+kind = "machine"
+decls = ["Metronome.Machine.outNext"]
+
+["§8/p3"]
+hash = "f46cff7689"
+text = "The pin outputs are these registers."
+kind = "machine"
+decls = ["Metronome.Machine.pinsOut"]
+
+["§8/p4"]
+hash = "6f0706f86c"
+text = "After reset every pin drives 0 with its output enable off."
+kind = "machine"
+decls = ["Metronome.Machine.State.init", "Metronome.Machine.resetStep"]
+
+["§8/p5"]
+hash = "761469cf1f"
+text = "**v3 note:** on `metronome-v3.0`, `LIVE` (BIND bits 4:3) may replace b2 and b1 by live pins, and..."
+kind = "machine"
+decls = ["Metronome.Machine.outIdx", "Metronome.Machine.outNext"]
+
+["§9/p1"]
+hash = "1f0efa7327"
+text = "**SPI target, mode 0, MSB first.**"
+kind = "machine"
+decls = ["Metronome.Machine.hostNext"]
+
+["§9/p2"]
+hash = "92f8fb205f"
+text = "Let `SR` be the synchronised rising edge of SCK (section 2) in a cycle where the synchronised CS_..."
+kind = "machine"
+decls = ["Metronome.Machine.hostNext", "Metronome.Machine.HostSt"]
+
+["§9/p3"]
+hash = "7d542f617d"
+text = "While CS_N is high: the byte state returns to the command byte, the bit count clears and `TX' = 0`."
+kind = "machine"
+decls = ["Metronome.Machine.hostNext"]
+
+["§9/p4"]
+hash = "b4ef51b268"
+text = "`MISO = TX[7]`."
+kind = "machine"
+decls = ["Metronome.Machine.pinsOut"]
+
+["§9/bullet1"]
+hash = "b880c64b1b"
+text = "On each `SR`: `RX' = {RX[6:0], MOSI}` and the bit count increments. On the 1st..7th `SR` of a byt..."
+kind = "machine"
+decls = ["Metronome.Machine.hostNext"]
+
+["§9/bullet2"]
+hash = "c64d1f2845"
+text = "Byte 0: command. `0x02` write, `0x03` read; any other value ignores the rest of the transaction."
+kind = "machine"
+decls = ["Metronome.Machine.hostNext"]
+
+["§9/bullet3"]
+hash = "54d9150bfb"
+text = "Byte 1: `ADDR[15:8]`. Byte 2: `ADDR[7:0]`; for a read, a read request at `ADDR` is issued in cycl..."
+kind = "machine"
+decls = ["Metronome.Machine.hostNext"]
+
+["§9/bullet4"]
+hash = "be5ccc00c0"
+text = "Write, bytes 3 onward: a **host write** of the byte to `ADDR` in cycle **W = c+1**; `ADDR' = ADDR..."
+kind = "machine"
+decls = ["Metronome.Machine.hostNext", "Metronome.Machine.HostWr", "Metronome.Machine.runStep"]
+
+["§9/bullet5"]
+hash = "dc7c0e0a76"
+text = "Read, bytes 3 onward: completing a data byte issues a read request at `ADDR` in cycle c+1."
+kind = "machine"
+decls = ["Metronome.Machine.hostNext"]
+
+["§9/bullet6"]
+hash = "eb5c272f5d"
+text = "**Read response.** A register read issued in cycle R loads `TX` at the end of R+1 with the regist..."
+kind = "machine"
+decls = ["Metronome.Machine.hostNext", "Metronome.Machine.hostReq", "Metronome.Machine.HReq"]
+
+["§9/bullet7"]
+hash = "1cfe2e66cf"
+text = "**No host read has a side effect.** Reads prefetch one address past the last byte the host clocks..."
+kind = "machine"
+decls = ["Metronome.Machine.hostRead"]
+
+["§9/bullet8"]
+hash = "c539c1bc02"
+text = "Keep SCK at or below clk/16 (3.75 MHz at 60 MHz)."
+kind = "outside"
+reason = "host-side timing obligation (SCK rate), not modelled by the machine step"
+
+["§9/bullet9"]
+hash = "83e70cc336"
+text = "`IRQ' = (IRQEN[0] && OUTV) || (IRQEN[1] && ERR)`, where `ERR` is any of `CONFLICT`, `MEMHAZ`, `CW..."
+kind = "machine"
+decls = ["Metronome.Machine.irqNext", "Metronome.Machine.errAny", "Metronome.Machine.ctrlNext"]
+
+["§9/p5"]
+hash = "3274d4479e"
+text = "**Host map.**"
+kind = "informative"
+reason = "lead-in label for the host map"
+
+["§9/p6"]
+hash = "5f0e472c84"
+text = "Addresses, register layouts and access types are generated from `machine.HOST_MAP` and `HOST_BLOC..."
+kind = "table"
+decls = ["Metronome.Machine.Tables.hostBlocks", "Metronome.Machine.hostLocate", "Metronome.Machine.HostLoc"]
+
+["§9/p7"]
+hash = "f1e6d4b446"
+text = "Configuration registers (access W) are write-only and read 0 (D14)."
+kind = "machine"
+decls = ["Metronome.Machine.hostRead", "Metronome.Machine.Config.isCfgAddr"]
+
+["§9/p8"]
+hash = "aabb94eb4b"
+text = "Program memory is written by byte lane (byte k of word w of core c at `c*0x800 + 8w + k`, holding..."
+kind = "machine"
+decls = ["Metronome.Machine.runStep", "Metronome.Machine.progWord", "Metronome.Machine.hostRead"]
+
+["§9/p9"]
+hash = "08e8361531"
+text = "Unmapped addresses read 0 and ignore writes."
+kind = "machine"
+decls = ["Metronome.Machine.hostRead", "Metronome.Machine.hostLocate", "Metronome.Machine.Config.write"]
+
+["§9/p10"]
+hash = "6e15e4caee"
+text = "Multi-byte registers are little-endian; each byte is written independently."
+kind = "machine"
+decls = ["Metronome.Machine.lineNext", "Metronome.Machine.hostRead", "Metronome.Machine.Config.write"]
+
+["§9/p11"]
+hash = "2949d00776"
+text = "Host writes take priority over moves and hardware updates of the same state, except where a secti..."
+kind = "machine"
+decls = ["Metronome.Machine.lineNext", "Metronome.Machine.threadNext", "Metronome.Machine.ctrlNext", "Metronome.Machine.streamNext", "Metronome.Machine.dbgNext", "Metronome.Machine.runStep"]
+
+["§9/p12"]
+hash = "284a7a2e6d"
+text = "Runtime registers (flops):"
+kind = "informative"
+reason = "lead-in label for the runtime registers"
+
+["§9/bullet10"]
+hash = "8e6a246c2b"
+text = "`CTRL.RUN` bit 0 is `RUN_global`. `STICKY` reads `{MEMHAZ, CONFLICT}` in bits 1, 0, write 1 to cl..."
+kind = "machine"
+decls = ["Metronome.Machine.ctrlNext", "Metronome.Machine.hostRead"]
+
+["§9/bullet11"]
+hash = "a228636ab9"
+text = "Line runtime: `PHASE` reads and writes `PH`. `CTL` bits 0..2 read and write `RUN, ARM, REN` (sect..."
+kind = "machine"
+decls = ["Metronome.Machine.lineNext", "Metronome.Machine.hostRead"]
+
+["§9/bullet12"]
+hash = "53e33e34e1"
+text = "Thread runtime: `PC` reads and writes. `STAT` reads `{OVR, LATE, EN, ARMED, RUNNING, READY}` in b..."
+kind = "machine"
+decls = ["Metronome.Machine.threadNext", "Metronome.Machine.hostRead"]
+
+["§9/bullet13"]
+hash = "da587477ac"
+text = "Stream runtime: `POSL`, `POSH` (`{STARVED, BIDX, POS[11:8]}`), `CTL` (write-only; section 6.3)."
+kind = "machine"
+decls = ["Metronome.Machine.hostRead", "Metronome.Machine.streamNext"]
+
+["§9/bullet14"]
+hash = "41d25fbe01"
+text = "**v3 (section 12):** block `DBG` at `0x2460`: `DBG` (freeze, step), `MCTL`/`MISR` (execution dige..."
+kind = "machine"
+decls = ["Metronome.Machine.dbgNext", "Metronome.Machine.hostRead", "Metronome.Machine.DbgSt"]
+
+["§9a/item1"]
+hash = "d8dd408213"
+text = "**Unused encodings.** Source indices beyond the table read 0; destination indices beyond the tabl..."
+kind = "machine"
+decls = ["Metronome.Machine.srcOp", "Metronome.Machine.dstOp", "Metronome.Machine.guardOp", "Metronome.Machine.trigOp", "Metronome.Machine.SrcOp"]
+
+["§9a/item2"]
+hash = "2fc291f21e"
+text = "**Request overwrite** (P0 and host): as SPEC v1 9a.2. A stream never overwrites its own request."
+kind = "machine"
+decls = ["Metronome.Machine.p0Next", "Metronome.Machine.hostNext", "Metronome.Machine.streamReq"]
+
+["§9a/item3"]
+hash = "89acf6ea06"
+text = "**RDY precedence and stale landings**: as SPEC v1 9a.3."
+kind = "machine"
+decls = ["Metronome.Machine.p0Next"]
+
+["§9a/item4"]
+hash = "ea73485661"
+text = "**Host request slot**: one data RAM request; a new one overwrites an unserved one (no flag)."
+kind = "machine"
+decls = ["Metronome.Machine.hostNext"]
+
+["§9a/item5"]
+hash = "f3af380dc8"
+text = "**Mailbox precedence**: as SPEC v1 9a.5."
+kind = "machine"
+decls = ["Metronome.Machine.ctrlNext"]
+
+["§9a/item6"]
+hash = "7d72cb6de7"
+text = "**Beat generator range.** `INC < MOD` is required (the toolchain checks). The 17-bit sum is reduc..."
+kind = "machine"
+decls = ["Metronome.Machine.lineComb"]
+
+["§9a/item7"]
+hash = "e0a5fc0ef8"
+text = "**Flags.** `Z` for ADD, SUB and CMP is computed on the 8-bit result."
+kind = "machine"
+decls = ["Metronome.Machine.accNext"]
+
+["§9a/item8"]
+hash = "08697b7e12"
+text = "**Program loading.** A fetch in a cycle with a host program-memory write to the same core returns..."
+kind = "machine"
+decls = ["Metronome.Machine.runStep"]
+
+["§9a/item9"]
+hash = "2eb951afe9"
+text = "**Host read address.** The first read of a transaction uses `{byte 1, byte 2}`."
+kind = "machine"
+decls = ["Metronome.Machine.hostNext"]
+
+["§9a/item10"]
+hash = "4c1e876f03"
+text = "**Taps.** Disabled taps never fire and never count in `SEG`. `T0 = T1 = T2 = 0` on a running gene..."
+kind = "machine"
+decls = ["Metronome.Machine.tapEnabled", "Metronome.Machine.seg"]
+
+["§9a/item11"]
+hash = "836891d89e"
+text = "**Configuration changes in use.** Changing a running line's, a bound pin's or a ready thread's co..."
+kind = "machine"
+decls = ["Metronome.Machine.Config.write", "Metronome.Machine.cfgNext"]
+
+["§9a/item12"]
+hash = "8cc7c6b2f3"
+text = "**Line with `RUN = 0`.** No boundary, no taps, no snapshot; symbol writes only stage. `ARMED` thr..."
+kind = "machine"
+decls = ["Metronome.Machine.lineComb", "Metronome.Machine.lineNext", "Metronome.Machine.threadNext"]
+
+["§9a/item13"]
+hash = "77faa81b5e"
+text = "**Stream mode change.** Changing `MODE`, `MSB` or `START` without a rewind leaves the stream in a..."
+kind = "machine"
+decls = ["Metronome.Machine.streamNext", "Metronome.Machine.streamMode"]
+
+["§10/item1"]
+hash = "323a5e1686"
+text = "**Inputs.** `L.IN`, `L.CAP`, `L.IN0` and `L.IN1` change only at the end of a snapshot cycle, so t..."
+kind = "theorem"
+decls = []
+
+["§10/item2"]
+hash = "322b23081c"
+text = "**Outputs.** A symbol written by a thread is committed at the first boundary of its line after th..."
+kind = "theorem"
+decls = []
+
+["§10/item3"]
+hash = "16f23ef287"
+text = "**Flags.** A late symbol write sets `LATE`; a trigger during a burst or before dispatch sets `OVR..."
+kind = "theorem"
+decls = []
+
+["§10/item4"]
+hash = "dd77e17d70"
+text = "**Toolchain obligations.** The static check accepts a program only if:"
+kind = "outside"
+reason = "10.4 toolchain obligation: a static check of programs, not the machine step"
+
+["§10/bullet1"]
+hash = "a4383ad32c"
+text = "every burst is loop-free and its length, in cycles as section 5 counts them, is known;"
+kind = "outside"
+reason = "10.4 toolchain obligation: a static check of programs, not the machine step"
+
+["§10/bullet2"]
+hash = "23535d328e"
+text = "for every thread triggered by a line event, the response bound of section 5, counted from the tri..."
+kind = "outside"
+reason = "10.4 toolchain obligation: a static check of programs, not the machine step"
+
+["§10/bullet3"]
+hash = "7729521bcc"
+text = "every generated line has `INC < MOD`;"
+kind = "outside"
+reason = "10.4 toolchain obligation: a static check of programs, not the machine step"
+
+["§10/bullet4"]
+hash = "ba1ef5dfd5"
+text = "every line that re-aligns (`REN` used, `WEN = 1`, `FOLLOW = 0`) has a non-wrapping window (`WLO <..."
+kind = "outside"
+reason = "10.4 toolchain obligation: a static check of programs, not the machine step"
+
+["§10/item5"]
+hash = "fe350c0123"
+text = "**Streams (calculated; checked on the model with one advance per cycle, not proven for every arbi..."
+kind = "theorem"
+decls = []
+
+["§11/table1"]
+hash = "b48e67d4b9"
+text = "| Structure | 4 beat generators, 6 engines with their own pins and tables | 4 lines (beat generat..."
+kind = "informative"
+reason = "section 11: differences from SPEC v1 (rationale, not machine behaviour)"
+
+["§11/table2"]
+hash = "0d080b35c4"
+text = "| Taps | suppressed in an accept cycle without a flag; `SEG` from the phase | fired bits: at most..."
+kind = "informative"
+reason = "section 11: differences from SPEC v1 (rationale, not machine behaviour)"
+
+["§11/table3"]
+hash = "728ed30b84"
+text = "| Clock modes | generated, edge-started, recovered | adds follower mode, an edge-sourced tap 0 an..."
+kind = "informative"
+reason = "section 11: differences from SPEC v1 (rationale, not machine behaviour)"
+
+["§11/table4"]
+hash = "60b6eccc7a"
+text = "| Input | 2-bit symbol from 16-entry tables over `CAP`, visible per tap | 2-bit symbol from 32-en..."
+kind = "informative"
+reason = "section 11: differences from SPEC v1 (rationale, not machine behaviour)"
+
+["§11/table5"]
+hash = "0f7e33c344"
+text = "| Output | 2-bit symbol, one write port | 4-bit symbol; whole, data-bit and exclusive-or ports, o..."
+kind = "informative"
+reason = "section 11: differences from SPEC v1 (rationale, not machine behaviour)"
+
+["§11/table6"]
+hash = "f8431b1990"
+text = "| Pin tables | 4 inputs | 5 inputs: three chosen symbol bits and `SEG` |"
+kind = "informative"
+reason = "section 11: differences from SPEC v1 (rationale, not machine behaviour)"
+
+["§11/table7"]
+hash = "005cca3256"
+text = "| Core | first instruction at t+2; bursts back to back | registered instruction, first at t+3; on..."
+kind = "informative"
+reason = "section 11: differences from SPEC v1 (rationale, not machine behaviour)"
+
+["§11/table8"]
+hash = "b666656e50"
+text = "| Jumps | on the move condition | on a separate 5-bit condition over 32 guards |"
+kind = "informative"
+reason = "section 11: differences from SPEC v1 (rationale, not machine behaviour)"
+
+["§11/table9"]
+hash = "f0aa642436"
+text = "| Units | 4 shifters, 4 counters, 2 pointers | 2 shifters, 3 counters, 1 pointer, 2 streams; LFSR..."
+kind = "informative"
+reason = "section 11: differences from SPEC v1 (rationale, not machine behaviour)"
+
+["§11/table10"]
+hash = "787d79d4bd"
+text = "| Configuration | flops, cleared by synchronous reset | latches, cleared by reset, seen two cycle..."
+kind = "informative"
+reason = "section 11: differences from SPEC v1 (rationale, not machine behaviour)"
+
+["§11/table11"]
+hash = "7d8978fc62"
+text = "| Host map | `machine.HOST_MAP` (v1) | regenerated; ID `0xA2`; per-line `TAPMISS`, per-stream `ST..."
+kind = "informative"
+reason = "section 11: differences from SPEC v1 (rationale, not machine behaviour)"
+
+["§12/p1"]
+hash = "53fc69697e"
+text = "**Status: normative for the v3 RTL and the v3 cycle model on `metronome-v3.0`; r4b (`metronome-v2..."
+kind = "informative"
+reason = "status paragraph (implementation and evidence status)"
+
+["§12/p2"]
+hash = "66ed6772b1"
+text = "Every addition is off after reset: with every v3 register at its reset value the machine is cycle..."
+kind = "informative"
+reason = "status paragraph (implementation and evidence status)"
+
+["§12/p3"]
+hash = "b63417b3ec"
+text = "Names and addresses come from `machine.OUT_REGS` (`LIVE`) and `machine.DBG_REGS` (block `DBG` at..."
+kind = "informative"
+reason = "status paragraph (implementation and evidence status)"
+
+["§12/p4"]
+hash = "550aa74e63"
+text = "Decisions D38 to D42."
+kind = "informative"
+reason = "status paragraph (implementation and evidence status)"
+
+["§12.1/p1"]
+hash = "99c25abaf1"
+text = "Section 8 becomes, with `ln = LINE`, `cm = COMMITTED(ln)` and `PINA(ln)`, `PINB(ln)` the bound li..."
+kind = "machine"
+decls = ["Metronome.Machine.outIdx"]
+
+["§12.1/code1"]
+hash = "64da194a95"
+text = "b0 = cm[SEL0]"
+kind = "machine"
+decls = ["Metronome.Machine.outIdx"]
+
+["§12.1/code2"]
+hash = "3dd73f5ae3"
+text = "b1 = LIVE[1] ? PIN[PINB(ln)] : cm[SEL1]"
+kind = "machine"
+decls = ["Metronome.Machine.outIdx"]
+
+["§12.1/code3"]
+hash = "22661269a2"
+text = "b2 = LIVE[0] ? PIN[PINA(ln)] : cm[SEL2]"
+kind = "machine"
+decls = ["Metronome.Machine.outIdx"]
+
+["§12.1/code4"]
+hash = "a139ee7214"
+text = "idx = BOUND ? {SEG(ln), b2, b1, b0} : 0"
+kind = "machine"
+decls = ["Metronome.Machine.outIdx"]
+
+["§12.1/code5"]
+hash = "bd47886642"
+text = "OUT[o]' = LUT[idx]; OEN[o]' = OE[idx] (o < 8; both hold in a frozen cycle, 12.3)"
+kind = "machine"
+decls = ["Metronome.Machine.outNext"]
+
+["§12.1/p2"]
+hash = "8f75d4c426"
+text = "`LIVE = 0` is v2."
+kind = "machine"
+decls = ["Metronome.Machine.outIdx"]
+
+["§12.1/p3"]
+hash = "ca7867b9c1"
+text = "Latency (calculated): a level on a raw input in cycle t is `PIN` in t+2 (two synchronisers) and i..."
+kind = "theorem"
+decls = []
+
+["§12.1/p4"]
+hash = "e34e319ed3"
+text = "The table still sees `SEG` and the other symbol bits, so one table can say \"drive data bit b0, an..."
+kind = "informative"
+reason = "usage examples of live-pin tables, not a machine rule"
+
+["§12.1/p5"]
+hash = "87a962e73a"
+text = "Taking the pins from the bound line keeps the selection at two bits per output pin (28 latch bits..."
+kind = "theorem"
+decls = []
+
+["§12.1/p6"]
+hash = "ca1ff6b748"
+text = "The path is synchroniser to output register only; no guard, move or core path gains logic."
+kind = "informative"
+reason = "implementation structure (which paths gain logic), not observable behaviour"
+
+["§12.2/p1"]
+hash = "4c45d862db"
+text = "A 32-bit multiple-input signature register `M`."
+kind = "machine"
+decls = ["Metronome.Machine.misrNext", "Metronome.Machine.DbgSt"]
+
+["§12.2/p2"]
+hash = "0201f5dfef"
+text = "With `D = {OEN[7:0], OUT[13:0]}` (22 bits: `OUT[o]` in bit o, `OEN[o]` in bit 14+o), the pin regi..."
+kind = "machine"
+decls = ["Metronome.Machine.misrNext"]
+
+["§12.2/code1"]
+hash = "9f79df9650"
+text = "if the host writes MCTL with bit 1 set in cycle t: M' = 0"
+kind = "machine"
+decls = ["Metronome.Machine.misrNext", "Metronome.Machine.dbgNext"]
+
+["§12.2/code2"]
+hash = "4fb345e9e8"
+text = "elif MEN && !FRZ: M' = ((M << 1) mod 2^32) ^ (M[31] ? 0x04C11DB7 : 0) ^ D"
+kind = "machine"
+decls = ["Metronome.Machine.misrNext"]
+
+["§12.2/code3"]
+hash = "6089ff527c"
+text = "else: M' = M"
+kind = "machine"
+decls = ["Metronome.Machine.misrNext"]
+
+["§12.2/p3"]
+hash = "a91072c131"
+text = "`MEN` is `MCTL` bit 0."
+kind = "machine"
+decls = ["Metronome.Machine.dbgNext"]
+
+["§12.2/p4"]
+hash = "1fb78428bb"
+text = "The host reads `M` as `MISR` bytes 0..3 (little-endian, no side effect)."
+kind = "machine"
+decls = ["Metronome.Machine.hostRead"]
+
+["§12.2/p5"]
+hash = "dfdbeb6b08"
+text = "The polynomial is the CRC-32 generator (`machine.MISR_POLY`) in Galois form, shifting left."
+kind = "machine"
+decls = ["Metronome.Machine.misrNext"]
+
+["§12.2/p6"]
+hash = "25ccf55579"
+text = "The model computes the same value, so one read after millions of cycles checks every output and o..."
+kind = "informative"
+reason = "purpose of the digest (comparison against the model), not a machine rule"
+
+["§12.2/p7"]
+hash = "17574e7f15"
+text = "`MISO` and `IRQ` are excluded because they depend on host timing."
+kind = "machine"
+decls = ["Metronome.Machine.misrNext"]
+
+["§12.2/p8"]
+hash = "458da0cfb3"
+text = "A random error escapes with probability about 2^-32 (literature-derived property of a 32-bit MISR..."
+kind = "informative"
+reason = "literature-derived escape probability, not machine behaviour"
+
+["§12.3/p1"]
+hash = "a8315d1c60"
+text = "State: `FREEZE` (host bit, `DBG` bit 0), `FRZ` (this cycle is frozen) and `FRZD` (`FRZ` of the pr..."
+kind = "machine"
+decls = ["Metronome.Machine.DbgSt", "Metronome.Machine.dbgNext"]
+
+["§12.3/p2"]
+hash = "b4bc3287e6"
+text = "A host write of `DBG` in cycle W with byte d sets `FREEZE' = d[0]` and `FRZ' = d[0] && !d[1]`; wi..."
+kind = "machine"
+decls = ["Metronome.Machine.dbgNext"]
+
+["§12.3/p3"]
+hash = "f0ff9f52ba"
+text = "Always `FRZD' = FRZ`."
+kind = "machine"
+decls = ["Metronome.Machine.dbgNext"]
+
+["§12.3/p4"]
+hash = "9195f17e5b"
+text = "Writing `0x01` freezes from W+1."
+kind = "machine"
+decls = ["Metronome.Machine.dbgNext"]
+
+["§12.3/p5"]
+hash = "e88be9802d"
+text = "With `FREEZE = 1`, writing `0x03` (STEP) runs exactly cycle W+1 and freezes again from W+2."
+kind = "machine"
+decls = ["Metronome.Machine.dbgNext"]
+
+["§12.3/p6"]
+hash = "ddf7e33dc2"
+text = "Single-**cycle** stepping was chosen over single-beat stepping: it costs nothing beyond the freez..."
+kind = "informative"
+reason = "design rationale for single-cycle stepping"
+
+["§12.3/p7"]
+hash = "83499c5df7"
+text = "A cycle with `FRZ = 1` is **frozen**."
+kind = "machine"
+decls = ["Metronome.Machine.runStep"]
+
+["§12.3/p8"]
+hash = "7a0cfab694"
+text = "In a frozen cycle:"
+kind = "informative"
+reason = "lead-in label for the frozen-cycle rules"
+
+["§12.3/bullet1"]
+hash = "4808870f9b"
+text = "No core executes, jumps, pauses, fetches or dispatches. `XV, RV, IR, FPC, XT, XL, RR` hold and th..."
+kind = "machine"
+decls = ["Metronome.Machine.coreComb", "Metronome.Machine.coreNext"]
+
+["§12.3/bullet2"]
+hash = "4a82aabb36"
+text = "No line sees a pin edge and no line advances: as if `edge = e0 = 0` and `adv = 0` (no start, acce..."
+kind = "machine"
+decls = ["Metronome.Machine.lineComb", "Metronome.Machine.lineNext"]
+
+["§12.3/bullet3"]
+hash = "bc43a8bb5e"
+text = "No trigger is accepted (no `READY`, `ARMED` or `OVR` change). `FP` and `INVP` hold, so a flag or..."
+kind = "machine"
+decls = ["Metronome.Machine.runStep", "Metronome.Machine.unitsNext", "Metronome.Machine.ctrlNext"]
+
+["§12.3/bullet4"]
+hash = "313ed037b7"
+text = "Streams and the pointer make no autonomous update and are not served; the arbiter serves only the..."
+kind = "machine"
+decls = ["Metronome.Machine.arbiter", "Metronome.Machine.streamNext", "Metronome.Machine.p0Next"]
+
+["§12.3/bullet5"]
+hash = "ab2db831ef"
+text = "Output pin registers (`OUT`, `OEN`), `M` (12.2) and the edge-capture counter `DC` (12.4) hold, so..."
+kind = "machine"
+decls = ["Metronome.Machine.outNext", "Metronome.Machine.misrNext", "Metronome.Machine.dbgNext"]
+
+["§12.3/bullet6"]
+hash = "27d726b95c"
+text = "The core configuration-write queue (13.1) holds: a pending `CWQ` does not drain, neither to the l..."
+kind = "machine"
+decls = ["Metronome.Machine.cwNext", "Metronome.Machine.runStep"]
+
+["§12.3/bullet7"]
+hash = "12a16419cd"
+text = "Still running: the input synchronisers (an input edge that occurs and ends inside a freeze is not..."
+kind = "machine"
+decls = ["Metronome.Machine.syncNext", "Metronome.Machine.hostNext", "Metronome.Machine.cfgNext", "Metronome.Machine.ctrlNext", "Metronome.Machine.streamNext", "Metronome.Machine.lineNext", "Metronome.Machine.threadNext"]
+
+["§12.3/p9"]
+hash = "ad89f30211"
+text = "`RUN_global` and `FREEZE` are independent: `RUN_global = 0` stops dispatch only (bursts in flight..."
+kind = "machine"
+decls = ["Metronome.Machine.coreComb", "Metronome.Machine.runStep"]
+
+["§12.3/p10"]
+hash = "f04a2aee83"
+text = "Program memory may be written while frozen only on a core with `XV = RV = 0` (read `CST`); otherw..."
+kind = "machine"
+decls = ["Metronome.Machine.runStep"]
+
+["§12.3/p11"]
+hash = "e07018f628"
+text = "Readback, frozen or running (value in cycle R, no side effect): thread `PC` and `STAT` (section 9..."
+kind = "machine"
+decls = ["Metronome.Machine.hostRead"]
+
+["§12.3/p12"]
+hash = "8c4c32ac21"
+text = "Apart from the input and landing exceptions above, a freeze is **transparent**: deleting the froz..."
+kind = "theorem"
+decls = []
+
+["§12.4/p1"]
+hash = "b2153ffbec"
+text = "With `CEN` (`ECTL` bit 0) set, stream S0 becomes a capture stream."
+kind = "machine"
+decls = ["Metronome.Machine.streamMode"]
+
+["§12.4/p2"]
+hash = "d30f03e6ca"
+text = "Its transmit and receive bit paths are disabled: moves to `S0.ADV` and `S0.RX` and flushes have n..."
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto", "Metronome.Machine.streamBit", "Metronome.Machine.streamByte"]
+
+["§12.4/p3"]
+hash = "1758d200ab"
+text = "Change `CEN` only together with a rewind of S0 (as 9a.13)."
+kind = "outside"
+reason = "programming rule (change CEN only with a rewind of S0); the machine applies CEN live"
+
+["§12.4/p4"]
+hash = "eafe1771e4"
+text = "State: `DC` (19 bits)."
+kind = "machine"
+decls = ["Metronome.Machine.DbgSt"]
+
+["§12.4/p5"]
+hash = "642d62177a"
+text = "In an unfrozen cycle t:"
+kind = "machine"
+decls = ["Metronome.Machine.captureEvent", "Metronome.Machine.dbgNext"]
+
+["§12.4/code1"]
+hash = "7ec5ea32bd"
+text = "cev = CEN && ((RISE | FALL)[12:0] & EMASK) != 0"
+kind = "machine"
+decls = ["Metronome.Machine.captureEvent"]
+
+["§12.4/code2"]
+hash = "d9fa562423"
+text = "rec = {DC[18:0], PIN[12:0]} (bits 31:13 DC; bits 12:0 the synchronised levels in t)"
+kind = "machine"
+decls = ["Metronome.Machine.captureEvent"]
+
+["§12.4/code3"]
+hash = "469fab8e73"
+text = "DC' = !CEN ? 0 : (cev ? 1 : min(DC + 1, 2^19 - 1)) (a host ECTL write sets DC' = 0, also while fr..."
+kind = "machine"
+decls = ["Metronome.Machine.dbgNext"]
+
+["§12.4/code4"]
+hash = "f3479a5603"
+text = "push = cev && !END"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§12.4/code5"]
+hash = "64da2756a6"
+text = "if PV && g: PV' = 0; BA' = BA + 4 (the pending record is written to word BA[10:2], all four lanes)"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§12.4/code6"]
+hash = "feff48050b"
+text = "if push: if PV && !g: STARVED' = 1 (record dropped; POS unchanged)"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§12.4/code7"]
+hash = "0eb7741b1b"
+text = "else: WB' = rec; PV' = 1; POS' = POS + 4"
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§12.4/p6"]
+hash = "b81077d03f"
+text = "While `PV`, S0 requests a one-word write of `WB` at word `BA[10:2]`."
+kind = "machine"
+decls = ["Metronome.Machine.streamReq"]
+
+["§12.4/p7"]
+hash = "d704e43a30"
+text = "`DC` counts cycles since the previous edge event (pushed or dropped); every `ECTL` write clears i..."
+kind = "machine"
+decls = ["Metronome.Machine.dbgNext"]
+
+["§12.4/p8"]
+hash = "08742c3a8b"
+text = "**Resolution:** one clock cycle."
+kind = "theorem"
+decls = []
+
+["§12.4/p9"]
+hash = "1a76ab3cd1"
+text = "Records are little-endian words from `START`; use a word-aligned `START` and a `LEN` that is a mu..."
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto", "Metronome.Machine.ramAccess"]
+
+["§12.4/p10"]
+hash = "95e7341864"
+text = "Rewind, `END`, `MARK`, `POS` readback and the STARVED clear work as in 6.3."
+kind = "machine"
+decls = ["Metronome.Machine.streamNext", "Metronome.Machine.streamMark", "Metronome.Machine.hostRead"]
+
+["§12.4/p11"]
+hash = "d662cd1118"
+text = "**Write width and back-to-back edges (calculated from 6.2 and the rules above).**"
+kind = "theorem"
+decls = []
+
+["§12.4/p12"]
+hash = "835a93b144"
+text = "A record is one RAM access."
+kind = "theorem"
+decls = []
+
+["§12.4/p13"]
+hash = "c242925d7f"
+text = "S0 has the highest arbiter priority, so a record pushed in cycle t is written in t+1 and a push i..."
+kind = "theorem"
+decls = []
+
+["§12.4/p14"]
+hash = "b160915217"
+text = "While edges arrive every cycle, S1, P0 and the host get no RAM cycle; a host data RAM read must b..."
+kind = "theorem"
+decls = []
+
+["§12.4/p15"]
+hash = "782104442a"
+text = "Edges of several masked pins in one cycle make one record."
+kind = "theorem"
+decls = []
+
+["§12.4/p16"]
+hash = "2047d6abb1"
+text = "This suits captures, not continuous full-rate streaming: a 2 KB region holds 512 records."
+kind = "theorem"
+decls = []
+
+["§12.5/p1"]
+hash = "d12203017d"
+text = "Configuration is not double-buffered (rejected for area, V3_RIVAL_IDEAS 7.6), so a field written..."
+kind = "outside"
+reason = "12.5 is the model-diagnostic program-load contract, not machine behaviour"
+
+["§12.5/p2"]
+hash = "9f37111975"
+text = "**Contract:** the host writes a configuration byte of a line only while that line has `RUN = 0` a..."
+kind = "outside"
+reason = "12.5 is the model-diagnostic program-load contract, not machine behaviour"
+
+["§12.5/p3"]
+hash = "bb448cd7e8"
+text = "(Stream configuration is already defined by 6.3 and 9a.13: `MODE`, `MSB`, `START` act at the next..."
+kind = "outside"
+reason = "12.5 is the model-diagnostic program-load contract, not machine behaviour"
+
+["§12.5/p4"]
+hash = "b0ad9de55e"
+text = "The hardware does not enforce the contract; writes take effect as sections 1 and 9 say."
+kind = "outside"
+reason = "12.5 is the model-diagnostic program-load contract, not machine behaviour"
+
+["§12.5/p5"]
+hash = "f74b3a793f"
+text = "The cycle model records every host write that breaks it, in the cycle the write is issued (W), in..."
+kind = "outside"
+reason = "12.5 is the model-diagnostic program-load contract, not machine behaviour"
+
+["§12.5/p6"]
+hash = "fc3bef7904"
+text = "Strict harnesses assert that the list is empty; the v3 host loader refuses such writes (Track D)."
+kind = "outside"
+reason = "12.5 is the model-diagnostic program-load contract, not machine behaviour"
+
+["§13/p1"]
+hash = "48122d6dbd"
+text = "**Status.**"
+kind = "informative"
+reason = "status paragraph (implementation and evidence status)"
+
+["§13/p2"]
+hash = "b072ac3dd2"
+text = "Sections 13.1–13.2 are implemented in the cycle model and RTL."
+kind = "informative"
+reason = "status paragraph (implementation and evidence status)"
+
+["§13/p3"]
+hash = "642e31564e"
+text = "Core writes and S0 replay have directed RTL lockstep checks, and the shared bank arbiter has an i..."
+kind = "informative"
+reason = "status paragraph (implementation and evidence status)"
+
+["§13/p4"]
+hash = "0a622922bd"
+text = "The centralized A1/A2 build at 45% placement density passed extracted timing and Tiny Tapeout pre..."
+kind = "informative"
+reason = "status paragraph (implementation and evidence status)"
+
+["§13/p5"]
+hash = "b2fc53a5a0"
+text = "Every addition is off after reset."
+kind = "informative"
+reason = "status paragraph (implementation and evidence status)"
+
+["§13/p6"]
+hash = "b52179c637"
+text = "With `ECTL.RPL = 0` and no `CW.D` move, the machine follows sections 1 to 12."
+kind = "informative"
+reason = "status paragraph (implementation and evidence status)"
+
+["§13/p7"]
+hash = "e8c2ac646a"
+text = "Destination codes 58..60 were `NULL` in v3 (9a.1)."
+kind = "informative"
+reason = "status paragraph (implementation and evidence status)"
+
+["§13/p8"]
+hash = "115a487c48"
+text = "The encodings are in `machine.DST` (`CW.*`), `machine.DBG_REGS` (`RLV`, `ECTL` bit 1), `CTRL.STIC..."
+kind = "informative"
+reason = "status paragraph (implementation and evidence status)"
+
+["§13.1/p1"]
+hash = "1c588b232f"
+text = "State: `CWA` (16), `CWV`, `CWQ = (address, byte)`, sticky `CWOVR`; `BWP` (the configuration latch..."
+kind = "machine"
+decls = ["Metronome.Machine.CwSt", "Metronome.Machine.CtrlSt"]
+
+["§13.1/p2"]
+hash = "b468dd8e88"
+text = "One write group `CW`."
+kind = "machine"
+decls = ["Metronome.Machine.moveGroup", "Metronome.Machine.resolveMoves", "Metronome.Machine.CwMove"]
+
+["§13.1/bullet1"]
+hash = "3384dd7e88"
+text = "`CW.AL`, `CW.AH`: `CWA[7:0]` or `CWA[15:8] := bus`."
+kind = "machine"
+decls = ["Metronome.Machine.cwNext"]
+
+["§13.1/bullet2"]
+hash = "a3fe9f9802"
+text = "`CW.D` in cycle t: if `CWV` and the pending write does not drain in t, `CWOVR' = 1` and the new w..."
+kind = "machine"
+decls = ["Metronome.Machine.cwNext"]
+
+["§13.1/bullet3"]
+hash = "fe460985b8"
+text = "**Bank port.** The latch bank has one write port and is never written in two consecutive cycles (..."
+kind = "machine"
+decls = ["Metronome.Machine.cwNext", "Metronome.Machine.cfgNext"]
+
+["§13.1/bullet4"]
+hash = "10baffbb3c"
+text = "**Other targets.** A pending write to `DBG.ECTL`, `EMASK` or `RLV` drains in the next cycle as a..."
+kind = "machine"
+decls = ["Metronome.Machine.cwNext", "Metronome.Machine.cwRuntimeTarget", "Metronome.Machine.dbgNext"]
+
+["§13.1/bullet5"]
+hash = "3cc46fb2d3"
+text = "**Timing (calculated, checked in `code/tests/md2/test_v4_model.py`).** A `CW.D` executed in cycle..."
+kind = "theorem"
+decls = []
+
+["§13.1/bullet6"]
+hash = "6efcf0f13b"
+text = "**Contract.** The section 12.5 contract applies to core writes. The model checks it when the writ..."
+kind = "outside"
+reason = "program-load contract check of the model (12.5), not machine behaviour"
+
+["§13.2/p1"]
+hash = "c332de345c"
+text = "`ECTL` bit 1 `RPL` turns S0 into a replay stream; it takes priority over `CEN` (capture is off wh..."
+kind = "machine"
+decls = ["Metronome.Machine.streamMode", "Metronome.Machine.captureEvent"]
+
+["§13.2/p2"]
+hash = "5f3bac1089"
+text = "Change it only together with a rewind of S0."
+kind = "outside"
+reason = "programming rule (change RPL only with a rewind of S0); the machine applies RPL live"
+
+["§13.2/p3"]
+hash = "4c66eaa043"
+text = "`RLV` (13 bits, read/write, `DBG` offset 0x12) holds the replay levels."
+kind = "machine"
+decls = ["Metronome.Machine.DbgSt", "Metronome.Machine.dbgNext", "Metronome.Machine.hostRead"]
+
+["§13.2/p4"]
+hash = "e8f89fc0cf"
+text = "While `RPL`, the synchronised level of every pin in `EMASK` is `RLV`, its previous level is `RLV`..."
+kind = "machine"
+decls = ["Metronome.Machine.pinView"]
+
+["§13.2/p5"]
+hash = "8839efa7c5"
+text = "Lines, triggers, guards and `PINS.*` all see the replayed waveform."
+kind = "machine"
+decls = ["Metronome.Machine.pinView", "Metronome.Machine.trigEvent", "Metronome.Machine.guardVal", "Metronome.Machine.srcVal"]
+
+["§13.2/p6"]
+hash = "c627f40551"
+text = "S0 reads whole words, records of 12.4, from `START` in order, into a two-deep buffer (`WB`, then..."
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto", "Metronome.Machine.StreamSt"]
+
+["§13.2/p7"]
+hash = "da73cbd203"
+text = "A read is requested when the stream is not at `END`, no read is in flight and the buffer is not f..."
+kind = "machine"
+decls = ["Metronome.Machine.Util.streamAuto"]
+
+["§13.2/p8"]
+hash = "6c206c7120"
+text = "With `DC` reused as the replay timer (0 after an `ECTL` write):"
+kind = "machine"
+decls = ["Metronome.Machine.dbgNext"]
+
+["§13.2/code1"]
+hash = "688970447c"
+text = "apply = RPL && WV && DC + 1 >= WB.DC (WB.DC = WB[31:13])"
+kind = "machine"
+decls = ["Metronome.Machine.replayApply"]
+
+["§13.2/code2"]
+hash = "e083b27409"
+text = "apply: RLV' = (RLV & ~EMASK) | (WB[12:0] & EMASK); DC' = 0; WB' = NB, WV' = NV, NV' = 0"
+kind = "machine"
+decls = ["Metronome.Machine.dbgNext", "Metronome.Machine.Util.streamAuto"]
+
+["§13.2/code3"]
+hash = "cc17d6cbc2"
+text = "else: DC' = min(DC + 1, 2^19 - 1)"
+kind = "machine"
+decls = ["Metronome.Machine.dbgNext"]
+
+["§13.2/code4"]
+hash = "f4fa0a3ff7"
+text = "late: apply && DC + 1 > WB.DC -> STARVED' = 1"
+kind = "machine"
+decls = ["Metronome.Machine.replayApply", "Metronome.Machine.streamNext"]
+
+["§13.2/p9"]
+hash = "c5d2fcb6b7"
+text = "**Mirror property (checked by test):** if a capture starts with an `ECTL` write in cycle W and a..."
+kind = "theorem"
+decls = []
+
+["§13.2/p10"]
+hash = "55c1bff33a"
+text = "Edge intervals of at least 3 cycles never starve (measured on the model; 1-cycle intervals do sta..."
+kind = "informative"
+reason = "measured on the model, not a machine rule"
+
+["§13.2/p11"]
+hash = "d3ed26321c"
+text = "The initial level is `RLV`, not inferred from the records; a single masked pin is the supported c..."
+kind = "machine"
+decls = ["Metronome.Machine.pinView", "Metronome.Machine.dbgNext"]
+
+[helpers."Metronome.Machine.MemWrite"]
+reason = "observation of the memory bytes written in a cycle, for the state-dump memory sums; no state"

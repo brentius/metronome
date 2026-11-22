@@ -1,0 +1,38 @@
+# Commands, exit codes and wall times (item 4N, second pass: the output pins)
+
+Machine: Windows, Lean 4.35.0 (core libs only), Lake 5.0.0-src+eb6cafb.
+Working directory: `code/tests/lean`.  `PATH` includes `%USERPROFILE%/.elan/bin`.
+The project's `lakefile.toml` passes `-DwarningAsError=true`, so a deprecation or an
+unused-variable warning fails the build (the file sets `set_option linter.deprecated false`).
+
+| # | Command | Exit | Wall |
+|---|---|---|---|
+| 1 | `lake build Metronome.Bridge.Glue` (after deleting its `.olean`; full re-elaboration) | 0 | 37.9 s |
+| 2 | `lake build Metronome.Bridge.Glue` (incremental, final) | 0 | 0.4 s |
+| 3 | `lake env lean <evidence dir>/Axioms.lean` (265 `#print axioms` lines) | 0 | 2.2 s |
+| 4 | `git diff --quiet HEAD -- src` | 0 | 0.2 s |
+
+Additional checks:
+
+* `Select-String -Path Metronome/Bridge/Glue.lean -Pattern 'sorry|native_decide'` → one
+  match, the doc-comment sentence "no `native_decide`".  No proof uses either.
+* `Metronome/Bridge/Glue.lean` now has 265 `theorem` declarations: the 221 of the first
+  4N pass (all still present) plus 44 new (`seg_lt` … `pins_bridge`).
+* `axioms.txt`: 178 theorems on `[propext, Classical.choice, Quot.sound]`, 38 on
+  `[propext, Quot.sound]`, 15 on `[propext]`, 5 on nothing; no `sorryAx`, no
+  `Lean.ofReduceBool`.
+* Both specs untouched: no edits under `Metronome/Machine/` or to `Metronome/Glue.lean`;
+  `src/` unchanged.
+* `Metronome.Bridge.Debug` (another agent's in-progress file, no import of this module)
+  still fails at `Debug.lean:814` and was not rebuilt here.
+
+Files:
+
+| Path | Role |
+|---|---|
+| `code/tests/lean/Metronome/Bridge/Glue.lean` | glue bridge, extended with `out_bridge`/`pins_bridge` |
+| `code/tests/lean/BRIDGE_GLUE_DEBUG_NOTES.md` | the 4N output-pin subsection |
+| `data/raw/lean_bridge_glue_v4_20261121c/Axioms.lean` | the axiom-audit source |
+| `data/raw/lean_bridge_glue_v4_20261121c/axioms.txt` | `#print axioms` output |
+| `data/raw/lean_bridge_glue_v4_20261121c/glue_names.txt` | the 265 theorem names |
+| `data/raw/lean_bridge_glue_v4_20261121c/build_glue_fresh.log` | fresh build log |

@@ -1,0 +1,45 @@
+lake env lean -DwarningAsError=true ../../../data/raw/lean_chipcut_bank_v4_20261122/check_bank_wire.lean
+Metronome.ChipCut.Discharge.BankWire.cfgView_maskImg (c : Machine.Config) :
+  Machine.cfgView (maskImg c) = Machine.cfgView c
+Metronome.ChipCut.Discharge.BankWire.cfgMask_poly (c : Machine.Config) (i : Fin 2) : (maskImg c).poly ↑i = c.poly ↑i
+Metronome.ChipCut.Discharge.BankWire.cfgView_of_masked {d c : Machine.Config} (h : MaskedImage d c) :
+  Machine.cfgView d = Machine.cfgView c
+Metronome.ChipCut.Discharge.BankWire.cfgView_bankImg (b : Bank.State) (c : Machine.Config)
+  (h : ∀ (k : Fin Bank.BYTES), Bank.read b k = BitVec.ofNat 8 (Machine.Util.bget c.img ↑k) &&& cfgMaskFin k) :
+  Machine.cfgView (bankImg b) = Machine.cfgView c
+Metronome.ChipCut.Discharge.BankWire.cfgPoly_bankImg (b : Bank.State) (c : Machine.Config)
+  (h : ∀ (k : Fin Bank.BYTES), Bank.read b k = BitVec.ofNat 8 (Machine.Util.bget c.img ↑k) &&& cfgMaskFin k)
+  (i : Fin 2) : (bankImg b).poly ↑i = c.poly ↑i
+Metronome.ChipCut.Discharge.BankWire.cfgMask_live_cfg (k : Fin Bank.BYTES) :
+  cfgMaskFin k ≠ 0 → Machine.Config.isCfgAddr (Machine.Tables.LINE_BASE + ↑k) = true
+Metronome.ChipCut.BankRel (b : Bank.State) (c : Machine.Config) : Prop
+Metronome.ChipCut.rel_reset (cont : Contents) (hzero : MaskedZero cont.cfg) :
+  ChipRel (resetState cont) (absChip (resetState cont))
+Metronome.ChipCut.maskedZero_release_trace (pins : Nat → Machine.PinIn) (cont : Contents) (n : Nat) (m : Machine.State)
+  (hrel : ChipRel (cutStateAt pins (resetState cont) n) m)
+  (hrun : runRst (cutStateAt pins (resetState cont) n) (pins n) = false) (hn : (pins n).rstn = true) :
+  MaskedZero (Machine.cfgNext m.cfg m.cw)
+Metronome.ChipCut.Discharge.bank_live_cfg {b : Bank.State} {c : Machine.Config} (h : BankRel b c) (k : Fin Bank.BYTES)
+  (hk : b.mask k ≠ 0) : Machine.Config.isCfgAddr (Machine.Tables.LINE_BASE + ↑k) = true
+Metronome.ChipCut.Discharge.bank_decode_of_rel {b : Bank.State} {c : Machine.Config} (h : BankRel b c) :
+  Machine.cfgView (bankImg b) = Machine.cfgView c ∧ ∀ (i : Fin 2), (bankImg b).poly ↑i = c.poly ↑i
+Metronome.ChipCut.Discharge.premise_bank (s : State) (m : Machine.State) (pin : Machine.PinIn) (hrel : ChipRel s m)
+  (hinv : ChipCut.Inv s) (hact : runRst s pin = true) (bank_open_size : m.cfg.img.size = Machine.Util.cfgSize) :
+  BankRel (activeStep s pin).bank (Machine.step m pin).cfg
+Metronome.ChipCut.Discharge.trace_cfg_size (pins : Nat → Machine.PinIn) (m : Machine.State)
+  (hsize : m.cfg.img.size = Machine.Util.cfgSize) (n : Nat) :
+  (machineStateAt pins m n).cfg.img.size = Machine.Util.cfgSize
+'Metronome.ChipCut.Discharge.BankWire.cfgView_maskImg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.BankWire.cfgMask_poly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.BankWire.cfgMask_live_cfg' depends on axioms: [propext]
+'Metronome.ChipCut.Discharge.bank_decode_of_rel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.Discharge.premise_bank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.rel_reset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.maskedZero_release_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.ChipCut.trace_refines' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Mem.reqNext_three._native.bv_decide.ax_1_10]
+'Metronome.ChipCut.Discharge.trace_cfg_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Exit 0; wall 3.64 s

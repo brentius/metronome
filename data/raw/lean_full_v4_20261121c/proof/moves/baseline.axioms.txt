@@ -1,0 +1,50 @@
+Metronome.Moves.rtlGrpV_spec: propext, Quot.sound
+Metronome.Moves.rtlValid_spec: propext, Classical.choice, Quot.sound
+Metronome.Moves.rtlWin_spec: propext, Classical.choice, Quot.sound, rtlWin_spec._native.bv_decide.ax_1_10
+Metronome.Moves.rtlConflictEv_spec: propext, Classical.choice, Quot.sound, rtlConflictEv_spec._native.bv_decide.ax_1_10
+Metronome.Moves.rtlSticky_spec: propext, Classical.choice, Quot.sound, rtlSticky_spec._native.bv_decide.ax_1_6
+Metronome.Moves.rtlConflictStep_spec: propext
+Metronome.Moves.rtl_conflict_sticky: propext
+Metronome.Moves.rtlMemhazStep_spec: propext
+Metronome.Moves.rtlMemhazEv_spec: propext, Classical.choice, Quot.sound, rtlMemhazEv_spec._native.bv_decide.ax_1_7
+Metronome.Moves.rtlRdHin_spec: propext, Classical.choice, Quot.sound
+Metronome.Moves.rtlRdPd_spec: propext, Classical.choice, Quot.sound
+Metronome.Moves.rtlInvStep_spec: propext, Classical.choice, Quot.sound, rtlInvStep_spec._native.bv_decide.ax_1_6
+Metronome.Moves.rtl_inv_read: propext, Classical.choice, Quot.sound, rtlInvStep_spec._native.bv_decide.ax_1_6
+Metronome.Moves.rtl_memhaz_read: propext, Classical.choice, Quot.sound, rtlMemhazEv_spec._native.bv_decide.ax_1_7
+Metronome.Moves.winAt_spec: propext, Quot.sound
+Metronome.Moves.winners_unique: propext, Classical.choice, Quot.sound, sameKey_comm._native.bv_decide.ax_1_6
+Metronome.Moves.conflictEv_iff_pairs: propext, Quot.sound
+Metronome.Moves.pick_is_winner_0: propext, Classical.choice, Quot.sound
+Metronome.Moves.pick_is_winner_5: propext, Classical.choice, Quot.sound
+Metronome.Moves.sticky_event_beats_clear: propext
+Metronome.Moves.trace_sticky_low: propext, Quot.sound
+Metronome.Moves.memhaz_of_read: propext, Quot.sound
+Metronome.Moves.machineTable_spec: 
+Metronome.Moves.rtlWordFlags_spec: propext, Classical.choice, Quot.sound, rtlWordFlags_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordCw_spec: propext, Classical.choice, Quot.sound, rtlWordCw_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordP0_spec: propext, Classical.choice, Quot.sound, rtlWordP0_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordHostOut_spec: propext, Classical.choice, Quot.sound, rtlWordHostOut_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordR0_spec: propext, Classical.choice, Quot.sound, rtlWordR0_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordR1_spec: propext, Classical.choice, Quot.sound, rtlWordR1_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordR2_spec: propext, Classical.choice, Quot.sound, rtlWordR2_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordR3_spec: propext, Classical.choice, Quot.sound, rtlWordR3_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordSh0_spec: propext, Classical.choice, Quot.sound, rtlWordSh0_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordSh1_spec: propext, Classical.choice, Quot.sound, rtlWordSh1_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordSh0Cfg_spec: propext, Classical.choice, Quot.sound, rtlWordSh0Cfg_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordSh1Cfg_spec: propext, Classical.choice, Quot.sound, rtlWordSh1Cfg_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordCnt0_spec: propext, Classical.choice, Quot.sound, rtlWordCnt0_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordCnt1_spec: propext, Classical.choice, Quot.sound, rtlWordCnt1_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordCnt2_spec: propext, Classical.choice, Quot.sound, rtlWordCnt2_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordLf0_spec: propext, Classical.choice, Quot.sound, rtlWordLf0_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordLf1_spec: propext, Classical.choice, Quot.sound, rtlWordLf1_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordS0_spec: propext, Classical.choice, Quot.sound, rtlWordS0_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordS1_spec: propext, Classical.choice, Quot.sound, rtlWordS1_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordLine0Ctl_spec: propext, Classical.choice, Quot.sound, rtlWordLine0Ctl_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordLine1Ctl_spec: propext, Classical.choice, Quot.sound, rtlWordLine1Ctl_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordLine2Ctl_spec: propext, Classical.choice, Quot.sound, rtlWordLine2Ctl_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlWordLine3Ctl_spec: propext, Classical.choice, Quot.sound, rtlWordLine3Ctl_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlSymWordSym0_spec: propext, Classical.choice, Quot.sound, rtlSymWordSym0_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlSymWordSym1_spec: propext, Classical.choice, Quot.sound, rtlSymWordSym1_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlSymWordSym2_spec: propext, Classical.choice, Quot.sound, rtlSymWordSym2_spec._native.bv_decide.ax_1_9
+Metronome.Moves.rtlSymWordSym3_spec: propext, Classical.choice, Quot.sound, rtlSymWordSym3_spec._native.bv_decide.ax_1_9

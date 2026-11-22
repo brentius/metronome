@@ -1,0 +1,4 @@
+7fae1f63ea3638f0b886f96e55a3d4c97de3f63788bef8fa19770fb5ba64dbf6  code\tests\lean\Metronome\Moves.lean
+6c0781f00679d8702df7a45fe5002efd809af65779ab93830517469429f5ee31  code\tests\lean\moves_check.py
+3dd41b41d4a381a043883ca8a17918688a2421c3b6a9abfe9bc922a22f14dfa5  code\tests\lean\MovesEquivalence.lean.in
+fe706911af11814436ce479c6940595909e8b7b5ffdd5f3cc241298784d2759f  code\md2\machine.json

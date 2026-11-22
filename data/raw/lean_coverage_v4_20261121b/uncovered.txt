@@ -1,0 +1,253 @@
+UNCOVERED CELLS
+830 of 8962 cell occurrences are not read by any cut cone and are not covered structurally.
+
+== tt_um_brentius_metronome (830 cells) ==
+  src/project.v:281  276 cells  $and x138, $eq x138
+      tt_um_brentius_metronome/$src/project.v:281$and$10002  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10004  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10006  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10008  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10010  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10012  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10054  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10056  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10058  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10060  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10062  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10064  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10168  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10170  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10172  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10174  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10176  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10178  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10225  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10227  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10229  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10231  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10233  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10235  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10275  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10277  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10279  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10281  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10283  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10285  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10396  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10398  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10400  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10402  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10404  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10406  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10453  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10455  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10457  $and
+      tt_um_brentius_metronome/$src/project.v:281$and$10459  $and
+      ... 236 more
+  src/project.v:283  322 cells  $and x115, $logic_not x115, $reduce_or x92
+      tt_um_brentius_metronome/$src/project.v:283$and$10016  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10020  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10024  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10028  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10032  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10068  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10072  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10076  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10080  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10084  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10182  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10186  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10190  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10194  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10198  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10239  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10243  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10247  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10251  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10255  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10289  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10293  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10297  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10301  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10305  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10410  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10414  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10418  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10422  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10426  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10467  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10471  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10475  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10479  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10483  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10517  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10521  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10525  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10529  $and
+      tt_um_brentius_metronome/$src/project.v:283$and$10533  $and
+      ... 282 more
+  src/project.v:307  132 cells  $eq x132
+      tt_um_brentius_metronome/$src/project.v:307$eq$10038  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10039  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10040  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10041  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10042  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10043  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10090  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10091  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10092  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10093  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10094  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10095  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10204  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10205  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10206  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10207  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10208  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10209  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10261  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10262  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10263  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10264  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10265  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10266  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10311  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10312  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10313  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10314  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10315  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10316  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10432  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10433  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10434  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10435  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10436  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10437  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10489  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10490  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10491  $eq
+      tt_um_brentius_metronome/$src/project.v:307$eq$10492  $eq
+      ... 92 more
+  src/project.v:396  4 cells  $and x2, $reduce_or x2
+      tt_um_brentius_metronome/$src/project.v:396$and$8893  $and
+      tt_um_brentius_metronome/$src/project.v:396$and$9063  $and
+      tt_um_brentius_metronome/$src/project.v:396$reduce_or$8894  $reduce_or
+      tt_um_brentius_metronome/$src/project.v:396$reduce_or$9064  $reduce_or
+  src/project.v:409  6 cells  $and x3, $reduce_or x3
+      tt_um_brentius_metronome/$src/project.v:409$and$9173  $and
+      tt_um_brentius_metronome/$src/project.v:409$and$9338  $and
+      tt_um_brentius_metronome/$src/project.v:409$and$9503  $and
+      tt_um_brentius_metronome/$src/project.v:409$reduce_or$9174  $reduce_or
+      tt_um_brentius_metronome/$src/project.v:409$reduce_or$9339  $reduce_or
+      tt_um_brentius_metronome/$src/project.v:409$reduce_or$9504  $reduce_or
+  src/project.v:410  6 cells  $and x3, $reduce_or x3
+      tt_um_brentius_metronome/$src/project.v:410$and$9225  $and
+      tt_um_brentius_metronome/$src/project.v:410$and$9390  $and
+      tt_um_brentius_metronome/$src/project.v:410$and$9555  $and
+      tt_um_brentius_metronome/$src/project.v:410$reduce_or$9226  $reduce_or
+      tt_um_brentius_metronome/$src/project.v:410$reduce_or$9391  $reduce_or
+      tt_um_brentius_metronome/$src/project.v:410$reduce_or$9556  $reduce_or
+  src/project.v:425  4 cells  $and x2, $reduce_or x2
+      tt_um_brentius_metronome/$src/project.v:425$and$9669  $and
+      tt_um_brentius_metronome/$src/project.v:425$and$9940  $and
+      tt_um_brentius_metronome/$src/project.v:425$reduce_or$9670  $reduce_or
+      tt_um_brentius_metronome/$src/project.v:425$reduce_or$9941  $reduce_or
+  src/project.v:426  4 cells  $and x2, $reduce_or x2
+      tt_um_brentius_metronome/$src/project.v:426$and$9721  $and
+      tt_um_brentius_metronome/$src/project.v:426$and$9992  $and
+      tt_um_brentius_metronome/$src/project.v:426$reduce_or$9722  $reduce_or
+      tt_um_brentius_metronome/$src/project.v:426$reduce_or$9993  $reduce_or
+  src/project.v:427  4 cells  $and x2, $reduce_or x2
+      tt_um_brentius_metronome/$src/project.v:427$and$10044  $and
+      tt_um_brentius_metronome/$src/project.v:427$and$9773  $and
+      tt_um_brentius_metronome/$src/project.v:427$reduce_or$10045  $reduce_or
+      tt_um_brentius_metronome/$src/project.v:427$reduce_or$9774  $reduce_or
+  src/project.v:428  4 cells  $and x2, $reduce_or x2
+      tt_um_brentius_metronome/$src/project.v:428$and$10096  $and
+      tt_um_brentius_metronome/$src/project.v:428$and$9825  $and
+      tt_um_brentius_metronome/$src/project.v:428$reduce_or$10097  $reduce_or
+      tt_um_brentius_metronome/$src/project.v:428$reduce_or$9826  $reduce_or
+  src/project.v:456  4 cells  $and x2, $reduce_or x2
+      tt_um_brentius_metronome/$src/project.v:456$and$10210  $and
+      tt_um_brentius_metronome/$src/project.v:456$and$10438  $and
+      tt_um_brentius_metronome/$src/project.v:456$reduce_or$10211  $reduce_or
+      tt_um_brentius_metronome/$src/project.v:456$reduce_or$10439  $reduce_or
+  src/project.v:463  4 cells  $and x2, $not x2
+      tt_um_brentius_metronome/$src/project.v:463$and$10318  $and
+      tt_um_brentius_metronome/$src/project.v:463$and$10546  $and
+      tt_um_brentius_metronome/$src/project.v:463$not$10317  $not
+      tt_um_brentius_metronome/$src/project.v:463$not$10545  $not
+  src/project.v:470  4 cells  $and x2, $reduce_or x2
+      tt_um_brentius_metronome/$src/project.v:470$and$10319  $and
+      tt_um_brentius_metronome/$src/project.v:470$and$10547  $and
+      tt_um_brentius_metronome/$src/project.v:470$reduce_or$10320  $reduce_or
+      tt_um_brentius_metronome/$src/project.v:470$reduce_or$10548  $reduce_or
+  src/project.v:471  4 cells  $and x2, $reduce_or x2
+      tt_um_brentius_metronome/$src/project.v:471$and$10321  $and
+      tt_um_brentius_metronome/$src/project.v:471$and$10549  $and
+      tt_um_brentius_metronome/$src/project.v:471$reduce_or$10322  $reduce_or
+      tt_um_brentius_metronome/$src/project.v:471$reduce_or$10550  $reduce_or
+  src/project.v:472  12 cells  $and x8, $or x4
+      tt_um_brentius_metronome/$src/project.v:472$and$10323  $and
+      tt_um_brentius_metronome/$src/project.v:472$and$10324  $and
+      tt_um_brentius_metronome/$src/project.v:472$and$10326  $and
+      tt_um_brentius_metronome/$src/project.v:472$and$10327  $and
+      tt_um_brentius_metronome/$src/project.v:472$and$10551  $and
+      tt_um_brentius_metronome/$src/project.v:472$and$10552  $and
+      tt_um_brentius_metronome/$src/project.v:472$and$10554  $and
+      tt_um_brentius_metronome/$src/project.v:472$and$10555  $and
+      tt_um_brentius_metronome/$src/project.v:472$or$10325  $or
+      tt_um_brentius_metronome/$src/project.v:472$or$10328  $or
+      tt_um_brentius_metronome/$src/project.v:472$or$10553  $or
+      tt_um_brentius_metronome/$src/project.v:472$or$10556  $or
+  src/project.v:473  2 cells  $and x2
+      tt_um_brentius_metronome/$src/project.v:473$and$10329  $and
+      tt_um_brentius_metronome/$src/project.v:473$and$10557  $and
+  src/project.v:485  4 cells  $eq x2, $mux x2
+      tt_um_brentius_metronome/$src/project.v:485$eq$7588  $eq
+      tt_um_brentius_metronome/$src/project.v:485$eq$7589  $eq
+      tt_um_brentius_metronome/$src/project.v:485$ternary$7592  $mux
+      tt_um_brentius_metronome/$src/project.v:485$ternary$7593  $mux
+  src/project.v:486  2 cells  $eq x1, $mux x1
+      tt_um_brentius_metronome/$src/project.v:486$eq$7590  $eq
+      tt_um_brentius_metronome/$src/project.v:486$ternary$7591  $mux
+  src/project.v:514  16 cells  $eq x8, $mux x8
+      tt_um_brentius_metronome/$src/project.v:514$eq$10660  $eq
+      tt_um_brentius_metronome/$src/project.v:514$eq$10661  $eq
+      tt_um_brentius_metronome/$src/project.v:514$eq$10776  $eq
+      tt_um_brentius_metronome/$src/project.v:514$eq$10777  $eq
+      tt_um_brentius_metronome/$src/project.v:514$eq$10892  $eq
+      tt_um_brentius_metronome/$src/project.v:514$eq$10893  $eq
+      tt_um_brentius_metronome/$src/project.v:514$eq$11008  $eq
+      tt_um_brentius_metronome/$src/project.v:514$eq$11009  $eq
+      tt_um_brentius_metronome/$src/project.v:514$ternary$10662  $mux
+      tt_um_brentius_metronome/$src/project.v:514$ternary$10663  $mux
+      tt_um_brentius_metronome/$src/project.v:514$ternary$10778  $mux
+      tt_um_brentius_metronome/$src/project.v:514$ternary$10779  $mux
+      tt_um_brentius_metronome/$src/project.v:514$ternary$10894  $mux
+      tt_um_brentius_metronome/$src/project.v:514$ternary$10895  $mux
+      tt_um_brentius_metronome/$src/project.v:514$ternary$11010  $mux
+      tt_um_brentius_metronome/$src/project.v:514$ternary$11011  $mux
+  src/project.v:660  1 cells  $sub x1
+      tt_um_brentius_metronome/$src/project.v:660$sub$7634  $sub
+  src/project.v:666  3 cells  $and x1, $eq x1, $or x1
+      tt_um_brentius_metronome/$src/project.v:666$and$7646  $and
+      tt_um_brentius_metronome/$src/project.v:666$eq$7645  $eq
+      tt_um_brentius_metronome/$src/project.v:666$or$7647  $or
+  src/project.v:667  3 cells  $and x1, $eq x1, $or x1
+      tt_um_brentius_metronome/$src/project.v:667$and$7649  $and
+      tt_um_brentius_metronome/$src/project.v:667$eq$7648  $eq
+      tt_um_brentius_metronome/$src/project.v:667$or$7650  $or
+  src/project.v:668  3 cells  $and x1, $eq x1, $or x1
+      tt_um_brentius_metronome/$src/project.v:668$and$7652  $and
+      tt_um_brentius_metronome/$src/project.v:668$eq$7651  $eq
+      tt_um_brentius_metronome/$src/project.v:668$or$7653  $or
+  src/project.v:669  3 cells  $and x1, $eq x1, $or x1
+      tt_um_brentius_metronome/$src/project.v:669$and$7655  $and
+      tt_um_brentius_metronome/$src/project.v:669$eq$7654  $eq
+      tt_um_brentius_metronome/$src/project.v:669$or$7656  $or
+  src/project.v:670  3 cells  $and x1, $eq x1, $or x1
+      tt_um_brentius_metronome/$src/project.v:670$and$7658  $and
+      tt_um_brentius_metronome/$src/project.v:670$eq$7657  $eq
+      tt_um_brentius_metronome/$src/project.v:670$or$7659  $or
+

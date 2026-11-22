@@ -1,0 +1,241 @@
+﻿'Metronome.Bridge.Host.pin_bridge' depends on axioms: [propext]
+'Metronome.Bridge.Host.bv_toNat' depends on axioms: [propext]
+'Metronome.Bridge.Host.bitc_succ' depends on axioms: [propext]
+'Metronome.Bridge.Host.nbit_bridge' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.b2n_bit' depends on axioms: [propext]
+'Metronome.Bridge.Host.byteIn_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.bv2_cases' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Host.bv2_cases._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Host.bv2_cases_ne' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Host.bv2_cases._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Host.toNat_eq_two' does not depend on any axioms
+'Metronome.Bridge.Host.toNat_eq_three' does not depend on any axioms
+'Metronome.Bridge.Host.byte_ne_two' does not depend on any axioms
+'Metronome.Bridge.Host.byte_ne_three' does not depend on any axioms
+'Metronome.Bridge.Host.bv2_toNat_zero' does not depend on any axioms
+'Metronome.Bridge.Host.bv2_zero_iff' depends on axioms: [propext]
+'Metronome.Bridge.Host.bv2_toNat_toNat' depends on axioms: [propext]
+'Metronome.Bridge.Host.bv2_toNat_0' does not depend on any axioms
+'Metronome.Bridge.Host.bv2_toNat_1' does not depend on any axioms
+'Metronome.Bridge.Host.bv2_toNat_2' does not depend on any axioms
+'Metronome.Bridge.Host.bv2_toNat_3' does not depend on any axioms
+'Metronome.Bridge.Host.cmdStep_toNat_zero' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.cmdStep_zero' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.cmdStep_two' depends on axioms: [propext]
+'Metronome.Bridge.Host.cmdStep_ne_three' depends on axioms: [propext]
+'Metronome.Bridge.Host.v_bridge' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.ign_iff' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.rxOr_toNat' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.linkRel_reset' depends on axioms: [propext]
+'Metronome.Bridge.Host.cmd_hold' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.cmd_complete_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.cmd_complete_keep' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Host.bv2_cases._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Host.wP_hold' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.rP_hold' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.wP_complete_data' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.rP_complete_data' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.rP_complete_low' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.wP_complete_low' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.wP_complete_high' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.rP_complete_high' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.wP_complete_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.rP_complete_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.wData_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.ldV_eq' depends on axioms: [propext]
+'Metronome.Bridge.Host.append_toNat' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.append_byte' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.trunc_toNat' depends on axioms: [propext]
+'Metronome.Bridge.Host.shr8_toNat' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.bv16_add_one' depends on axioms: [propext]
+'Metronome.Bridge.Host.addr_if_bv' depends on axioms: [propext]
+'Metronome.Bridge.Host.addr_incr' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.addr_data' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.addr_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.addr_high' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.addr_low' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.sr_facts' depends on axioms: [propext]
+'Metronome.Bridge.Host.cmdNext_hold' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.cmdNext_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.pin_csn' depends on axioms: [propext]
+'Metronome.Bridge.Host.pin_sckRise' depends on axioms: [propext]
+'Metronome.Bridge.Host.phase_ne_cmd' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Host.bv2_cases._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Host.not_completing_cmd' does not depend on any axioms
+'Metronome.Bridge.Host.not_completing_of_nbit' depends on axioms: [propext]
+'Metronome.Bridge.Host.bv2_eq_three' depends on axioms: [propext]
+'Metronome.Bridge.Host.cmd_one_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Host.bv2_cases._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Host.cmd_two_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Host.bv2_cases._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Host.bv2_ne_three' depends on axioms: [propext]
+'Metronome.Bridge.Host.phaseOf_csHigh' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.phaseOf_hold' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.phaseOf_complete_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.phaseOf_complete_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.phaseOf_complete_2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.phaseOf_complete_3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.phaseNext_cmd_ah' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.phaseNext_cmd_ign' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.phaseNext_hold' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.phase_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.HostCmd.ah_completion._native.bv_decide.ax_1_21,
+ Metronome.HostCmd.al_completion._native.bv_decide.ax_1_21,
+ Metronome.HostCmd.data_completion._native.bv_decide.ax_1_21,
+ Metronome.HostCmd.ign_holds._native.bv_decide.ax_1_21,
+ Metronome.Bridge.Host.bv2_cases._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Host.bitc_succ_iff' depends on axioms: [propext]
+'Metronome.Bridge.Host.bv3_zero' does not depend on any axioms
+'Metronome.Bridge.Host.nbit_step' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.rx_step' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.cmdZero_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Host.bv2_cases._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Host.cmdNe_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Host.bv2_cases._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Host.isRdNext_hold' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.isRd_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Host.bv2_cases._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Host.phase_high_ne' depends on axioms: [propext]
+'Metronome.Bridge.Host.phase_high_ne_al' depends on axioms: [propext]
+'Metronome.Bridge.Host.phase_low_ne' depends on axioms: [propext]
+'Metronome.Bridge.Host.wr_machine_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Host.bv2_cases._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Host.rd_machine_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Host.bv2_cases._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Host.bool_eq_iff' depends on axioms: [propext]
+'Metronome.Bridge.Host.wrNext_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.rdNext_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.wr_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Host.bv2_cases._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Host.rd_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Host.bv2_cases._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Host.rack_step' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.wdata_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.HostCmd.data_completion._native.bv_decide.ax_1_21]
+'Metronome.Bridge.Host.addrSet_false' depends on axioms: [propext]
+'Metronome.Bridge.Host.addrSet_true' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.addrNext_incr' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.Host.addrNext_ah' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.addrNext_al' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.Host.addr_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.Host.bv2_cases._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Host.linkRel_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.HostCmd.ah_completion._native.bv_decide.ax_1_21,
+ Metronome.HostCmd.al_completion._native.bv_decide.ax_1_21,
+ Metronome.HostCmd.data_completion._native.bv_decide.ax_1_21,
+ Metronome.HostCmd.ign_holds._native.bv_decide.ax_1_21,
+ Metronome.Bridge.Host.bv2_cases._native.bv_decide.ax_1_5]
+'Metronome.Bridge.Host.hw_bridge' depends on axioms: [propext]
+'Metronome.Bridge.Host.read_req_bridge' depends on axioms: [propext]
+'Metronome.Bridge.CfgWrite.pack_eq_append' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.CfgWrite.pack_eq_append._native.bv_decide.ax_1_5]
+'Metronome.Bridge.CfgWrite.pack_toNat' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.CfgWrite.pack_eq_append._native.bv_decide.ax_1_5]
+'Metronome.Bridge.CfgWrite.highByte_toNat' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.CfgWrite.lowByte_toNat' depends on axioms: [propext]
+'Metronome.Bridge.CfgWrite.take8_eq_trunc' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.CfgWrite.take8_eq_trunc._native.bv_decide.ax_1_5]
+'Metronome.Bridge.CfgWrite.bv_toNat' depends on axioms: [propext]
+'Metronome.Bridge.CfgWrite.bv_mod8' depends on axioms: [propext]
+'Metronome.Bridge.CfgWrite.pack_round' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.CfgWrite.pack_eq_append._native.bv_decide.ax_1_5]
+'Metronome.Bridge.CfgWrite.pack_low_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.CfgWrite.pack_eq_append._native.bv_decide.ax_1_5]
+'Metronome.Bridge.CfgWrite.pack_high_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.CfgWrite.pack_eq_append._native.bv_decide.ax_1_5]
+'Metronome.Bridge.CfgWrite.bv_add_one' depends on axioms: [propext]
+'Metronome.Bridge.CfgWrite.wl_wd' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.CfgWrite.wl_wd._native.bv_decide.ax_1_8]
+'Metronome.Bridge.CfgWrite.wh_wd' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.CfgWrite.wh_wd._native.bv_decide.ax_1_8]
+'Metronome.Bridge.CfgWrite.wl_wh' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.CfgWrite.wl_wh._native.bv_decide.ax_1_8]
+'Metronome.Bridge.CfgWrite.writeLow_false_of_writeData' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.CfgWrite.wl_wd._native.bv_decide.ax_1_8]
+'Metronome.Bridge.CfgWrite.writeHigh_false_of_writeData' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.CfgWrite.wh_wd._native.bv_decide.ax_1_8]
+'Metronome.Bridge.CfgWrite.writeHigh_false_of_writeLow' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.CfgWrite.wl_wh._native.bv_decide.ax_1_8]
+'Metronome.Bridge.CfgWrite.queue_fields' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.CoreQueue.pack_take._native.bv_decide.ax_1_9,
+ Metronome.Bridge.CfgWrite.pack_eq_append._native.bv_decide.ax_1_5,
+ Metronome.Bridge.CfgWrite.wh_wd._native.bv_decide.ax_1_8,
+ Metronome.Bridge.CfgWrite.wl_wd._native.bv_decide.ax_1_8,
+ Metronome.Bridge.CfgWrite.wl_wh._native.bv_decide.ax_1_8]
+'Metronome.Bridge.CfgWrite.cwNext_ovr_false' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.CfgWrite.wh_wd._native.bv_decide.ax_1_8,
+ Metronome.Bridge.CfgWrite.wl_wh._native.bv_decide.ax_1_8]
+'Metronome.Bridge.CfgWrite.overrun_bridge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Metronome.Bridge.CfgWrite.wh_wd._native.bv_decide.ax_1_8,
+ Metronome.Bridge.CfgWrite.wl_wh._native.bv_decide.ax_1_8]
+'Metronome.Bridge.CfgWrite.absCw_reset' does not depend on any axioms
+'Metronome.Bridge.CfgWrite.frozen_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.CfgWrite.bv8_toNat' depends on axioms: [propext]
+'Metronome.Bridge.CfgWrite.offOf_addrOf' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.CfgWrite.absArb_zero' does not depend on any axioms
+'Metronome.Bridge.CfgWrite.arbiter_bridge' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.CfgWrite.adjacent_host_witness' depends on axioms: [propext]

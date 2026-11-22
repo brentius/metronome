@@ -1,0 +1,170 @@
+# Evidence: the strong replay-buffer bridge (BufRelX), 2026-11-22
+
+Date: 2026-11-22.  Toolchain: `leanprover/lean4:v4.35.0`, core libraries only,
+lake project `code/tests/lean` (`moreLeanArgs = ["-DwarningAsError=true"]`).
+Shell: Windows PowerShell 5.1, `$env:PATH="$env:USERPROFILE/.elan/bin;$env:PATH"`.
+Scope: the new module `code/tests/lean/Metronome/Bridge/StreamBuf.lean`
+(`namespace Metronome.Bridge.StreamBuf`), which imports
+`Metronome.Bridge.Stream` only.  No other module, no `src/`, no `BOTS/` was
+edited.  Other agents' concurrent builds in the same checkout are unaffected;
+nothing was cleaned.
+
+## 1. Acceptance build
+
+```
+cd code/tests/lean
+lake build Metronome.Bridge.StreamBuf
+```
+
+| stage | exit | wall | note |
+|---|---|---|---|
+| acceptance (`lake build Metronome.Bridge.StreamBuf`) | 0 | 192 s | `Built Metronome.Bridge.StreamBuf (192s)`, `Build completed successfully (23 jobs).`, `-DwarningAsError=true` from `lakefile.toml`, no warnings |
+| source elaboration during development (`lake env lean -DwarningAsError=true Metronome/Bridge/StreamBuf.lean`) | 0 | 44–240 s | final clean run ~120 s per full elaboration of the completed module; no diagnostics |
+| axiom dump (`lake env lean ../../../data/raw/lean_bridge_streambuf_v4_20261122/axioms.lean`) | 0 | ~2-3 min | 72 declarations, all `[propext, Classical.choice, Quot.sound]` or fewer, no `sorryAx` |
+| `git diff --quiet HEAD -- src` | 0 | — | `src/` untouched |
+
+The 23-job count is the module plus its cached dependency chain
+(`Metronome.Stream`, `Metronome.Machine`, `Metronome.Bridge.Stream`); the
+`Metronome.Bridge.Stream` olean (13.4 MB, 2026-11-21 23:46) was reused, not
+rebuilt.
+
+## 2. Axiom audit
+
+`axioms.lean` prints `#print axioms` for the relation projections, the reset
+lemma, the four unfrozen field lemmas, `bufRelX_step_unfrozen`, the four frozen
+field lemmas, `bufRelX_step_frozen`, `frozen_ld_false`, `ld_frozen_hold`, the
+two flush-generalised exact-state frozen bridges, the two flush-generalised
+relational frozen bridges, the three first-round witness theorems, the seven
+landing post-state equations, `modeOf_eq_three`, `ld_frozen_eq`, `rq_frozen_hold`,
+`nv_frozen_hold`, `starved_frozen`, the two
+`bufRelX_step_frozen_landing` theorems, the two landing witnesses,
+`abs_step_frozen_landing` and the two relational landing bridges.  `axioms.txt`
+has 43 declarations (45 physical lines, one wrapped):
+
+* 8 `does not depend on any axioms` (the projections and the reset lemmas);
+* 35 `depends on axioms: [propext, Classical.choice, Quot.sound]` or
+  `[propext, Quot.sound]`/`[propext]` (the step lemmas, the state bridges and
+  the witness theorems);
+* no `sorryAx`.
+
+The witness theorems use the kernel `decide` tactic on concrete values; there
+is no `native_decide`.  A scan of the module finds no `sorry`, `admit` or
+`native_decide`.
+
+## 3. Reproduce
+
+```powershell
+cd code/tests/lean
+$env:PATH = "$env:USERPROFILE/.elan/bin;$env:PATH"
+lake build Metronome.Bridge.StreamBuf
+lake env lean ../../../data/raw/lean_bridge_streambuf_v4_20261122/axioms.lean
+cd ../../..
+git diff --quiet HEAD -- src
+```
+
+## 4. What the round did
+
+* Added `BufRelX` (slot equality of `WB`/`WV`/`NB`, `NV` for `CAP = 1`), its
+  projections, `BufRelX.capture_wb` (`PV → WB`), `BufRelX.toBufRel` (given the
+  read-handshake clause) and the reset lemmas.
+* Proved `bufRelX_step_unfrozen` (all four modes; `resetN`, `!frz`, `AbsRelB`,
+  and `hfresh : LD → !FRZD`) and `bufRelX_step_frozen` (with or without a host
+  rewind and for any flush; `resetN`, `frz`, `hland : LD → FRZD`, `AbsRelB`).
+* Closed corners 2 (`apply ∧ LD`) and 3 (`LD ∧ occupied ∧ FRZD`, via `hfresh`)
+  of `BRIDGE_UNITS_STREAM_NOTES.md`; witnessed corner 1 (frozen landing with
+  `WV = 0`, AMBIG 11) on a three-cycle trace from reset and kept `hland` as the
+  named hypothesis.
+* Proved `frozen_ld_false` and `ld_frozen_hold`, the trace facts that discharge
+  `hfresh` from `hland`.
+* Re-proved the frozen state bridges and the relational frozen bridges the
+  discharge uses without the `flush = false` side condition
+  (`abs_step_frozen_flush`, `abs_step_frozen_rewind_flush`,
+  `frozen_rel_flush`, `frozen_rel_rewind_flush`), removing
+  `StreamWire.hostctl`.
+
+## 5. Round 2: the landing exception (`LD ∧ !FRZD`)
+
+The assembler's `streamWire_landing_false` shows `StreamWire.landing`
+(`LD → FRZD`) is refuted by a host freeze one cycle after a served read.  This
+round added, in the same module:
+
+* the frozen post-state equations `wb_frozen_landing`, `nb_frozen_landing`,
+  `mach_frozen_landing`, `mach_frozen_rewind_landing`, `modeOf_eq_three`,
+  `ld_frozen_eq`, `rq_frozen_hold`, `nv_frozen_hold`, `starved_frozen`;
+* `abs_step_frozen_landing` — the exact-state frozen bridge with the landing
+  exception, under `hslot` (both readings write the same slot: transmit, or
+  replay with `WV = 1`), and the `hside` move conditions;
+* `bufRelX_step_frozen_landing` and `bufRelX_step_frozen_landing_rewind` —
+  `BufRelX` across the same-slot frozen landing, with or without a host rewind;
+* `frozen_rel_landing_flush` and `frozen_rel_landing_rewind_flush` — the
+  relational `AbsRelB` bridge (the form `premise_streams` uses) for **all**
+  modes, under `hldmode : LD → (transmit ∨ replay)` and the replay
+  well-formedness `ShapeOK : WV = 0 → NV = 0`;
+* the witnesses `wS4_not_shape` and `frozen_landing_invalid_nv_disagrees` for
+  the one genuinely divergent sub-case (a frozen landing into an empty replay
+  head with a valid second slot: the cut clobbers `NB`, the machine keeps it and
+  writes `WB`), so even the guarded `BufRel` fails there;
+* `ShapeOK` is the named hypothesis that excludes it; it holds throughout a
+  replay stream and after a rewind, and a mode excursion into transmit that
+  consumes a word while `NV` is set breaks it (§9a.13 leaves such a mode change
+  unspecified).
+
+Consequence: `StreamWire.landing` can be dropped — the frozen cycle is covered
+by the relational landing bridges under `StreamWire.mode`, `ldModeInv` and
+`ShapeOK`.  The unfrozen cycle immediately after a frozen landing (`LD = 1`,
+`FRZD = 1`) still needs a companion pending-landing bridge for
+`StreamWire.bufrel`; it is not needed by `premise_streams`, which takes the
+next-state `BufRel` as a premise.  Recorded in `BRIDGE_STREAMBUF_NOTES.md` §8.
+
+## 6. Round 3: `ShapeOK`, the pending landing, and the packaged step
+
+Two follow-ups (notes §9–§10):
+
+* **`ShapeOK` as an invariant.**  `ShapeModeOK mode s := ShapeOK s ∧ (s.nv → mode = 3)`
+  is preserved by `Stream.step true s i` under the strengthened mode quietness
+  (`hchange : modeOf true i = mode ∨ (s.wv = false ∧ s.nv = false)`):
+  `shapeModeOK_reset`, `shapeModeOK_step`, `shapeOK_step`, with
+  `nv_step_true_or`, `rpl_nv_wv`, and `nv_step_cap_false`/`shapeOK_step_cap_false`
+  for `CAP = 0`.  `shapeOK_break_witness` shows the mode-change hypothesis is
+  needed (a transmit consume from `WV = NV = 1`).
+* **The pending landing.**  `HeldLanding s m` (`s.nb` equals the machine's free
+  landing slot) is established by `heldLanding_frozen_landing`, and
+  `wb_frozen_tx_landing` supplies the transmit `HeldOK` fact.  The guarded
+  unfrozen bridges `wb_step_unfrozen_guarded`, `nb_step_unfrozen_guarded`,
+  `wb_nb_unfrozen_capF`, `no_overlap_step` assemble into
+  `bufRel_step_unfrozen_guarded` under
+  `hok : s.ld = true → HeldOK cap s i m`.
+* **Packaged.**  `buf_step` (AbsRelB in/out, at `cfgOf i`, over unfrozen fresh
+  and held landings, frozen with/without rewind, any flush, all modes);
+  `bufRelX_step` (same-slot + `hfresh`) and `bufRelX_step_abs`
+  (`BufRelX ∧ AbsRelB`).  Unconditional `BufRelX` preservation is impossible
+  (`frozen_landing_bufrelX_fails`).
+
+## 7. Round 4: the two write-buffer facts
+
+* **`CapRel`** (`cap = true → pv → wb` agree): the consumer
+  (`mhcModesReq_abs_wb` → `streamReq_congr`) needs it only in capture mode
+  (mode 2 writes `wrWord … s.wb`; mode 1 writes `PEND`), and it is **not**
+  preserved: `capRel_step_witness` (a replay `apply` with `NV = 0` publishes
+  the two stale `NB`s into `WB`) and the reachable five-cycle trace
+  `capWb_reachable_witness` (served replay read, frozen landing with host
+  rewind, receive completion, then capture with `PV = 1` and divergent `WB`).
+  So `contentsWb` stays a named hypothesis; notes §11.
+* **`dbgHwb`**: the consumers (`apply_bridge`, `rlv_value_of`) read `WB` only
+  under the cut's `replayValid = RPL && WV` (`Debug.Ctrl.apply` conjoins
+  `valid`).  The guarded form is proved (`dbgHwb_of_wv`,
+  `dbgHwb_of_replayValid`); the unguarded form is false at the reachable
+  frozen-landing state (`dbgHwb_unguarded_false`).  The assembler can restate
+  the field guarded by `WV`/`replayValid`.
+
+## 8. Round 5: the mode-indexed capture invariant
+
+The mode-change discipline is extended once more (`PV = 0` in the current and
+the next state at a mode change, plus `LD = RQ = 0`), closing the round-4
+corner.  `CapModeOK mode s m := (mode = 2 → s.ld = false) ∧
+(mode = 2 → s.pv → s.wb = m.wb)` is preserved by `capModeOK_step` (with
+`AbsRelB`, `hreset`, the config agreement `hcfg` and the extended
+`hchange`), reset by `capModeOK_reset`, and consumed by
+`contentsWb_of_capModeOK` (the `pv → wb` form `contents_open_req_wb` needs).
+`capWb_hchange_excluded` shows the round-4 reachable witness is excluded by the
+new premise (receive → capture with incoming `PV = 1`).

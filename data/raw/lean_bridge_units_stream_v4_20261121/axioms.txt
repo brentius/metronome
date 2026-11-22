@@ -1,0 +1,47 @@
+﻿'Metronome.Bridge.bitAt_eq_bit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.bitAt_eq_nbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.beq_zero_nat' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.CounterB.abs_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ CounterB.setByte_hi._native.bv_decide.ax_1_5,
+ CounterB.setByte_lo._native.bv_decide.ax_1_5]
+'Metronome.Bridge.CounterB.zOut_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.ShifterB.abs_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.ShifterB.out_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.ShifterB.done_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.LfsrB.abs_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ LfsrB.setByte_p0._native.bv_decide.ax_1_5,
+ LfsrB.setByte_p1._native.bv_decide.ax_1_5,
+ LfsrB.setByte_p2._native.bv_decide.ax_1_5,
+ LfsrB.setByte_p3._native.bv_decide.ax_1_5]
+'Metronome.Bridge.LfsrB.out_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Metronome.Bridge.AccB.rNext_bytes' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ AccB.rNext_bytes._native.bv_decide.ax_1_11,
+ AccB.rNext_bytes._native.bv_decide.ax_1_16,
+ AccB.rNext_bytes._native.bv_decide.ax_1_21,
+ AccB.rNext_bytes._native.bv_decide.ax_1_26,
+ AccB.rNext_bytes._native.bv_decide.ax_1_31,
+ AccB.rNext_bytes._native.bv_decide.ax_1_36,
+ AccB.rNext_bytes._native.bv_decide.ax_1_41,
+ AccB.rNext_bytes._native.bv_decide.ax_1_6]
+'Metronome.Bridge.AccB.rNext_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ AccB.rNext_bytes._native.bv_decide.ax_1_11,
+ AccB.rNext_bytes._native.bv_decide.ax_1_16,
+ AccB.rNext_bytes._native.bv_decide.ax_1_21,
+ AccB.rNext_bytes._native.bv_decide.ax_1_26,
+ AccB.rNext_bytes._native.bv_decide.ax_1_31,
+ AccB.rNext_bytes._native.bv_decide.ax_1_36,
+ AccB.rNext_bytes._native.bv_decide.ax_1_41,
+ AccB.rNext_bytes._native.bv_decide.ax_1_6]
+'Metronome.Bridge.AccB.code7_z_disagrees' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.StreamB.end_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.StreamB.mark_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.StreamB.byteAt_eq' depends on axioms: [propext, Quot.sound]
+'Metronome.Bridge.StreamB.byte_eq' depends on axioms: [propext]

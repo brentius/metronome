@@ -1,0 +1,130 @@
+Metronome v4 Lean cut coverage and closure inventory
+generated: 2026-11-21 15:10:17
+elapsed: 129.5 s
+design: read_verilog -I src -D USE_IHP_SRAM src/cells_behav.v src/md2_acc.v src/md2_cfg_bank.v src/md2_core.v src/md2_counter.v src/md2_dmem.v src/md2_host.v src/md2_lfsr.v src/md2_line.v src/md2_mem.v src/md2_pmem.v src/md2_shifter.v src/md2_sram_bb.v src/md2_stream.v src/md2_thread.v src/project.v; hierarchy -check -top tt_um_brentius_metronome; proc; opt_clean; write_json design.json
+modules: 22  cell occurrences: 8962
+
+Cell coverage: 8129 covered + 3 black-box = 90.74% (830 uncovered)
+  covered by a cut cone or a structural check: 8129
+  SRAM macro black boxes (stated contract): 3
+  uncovered: 830
+
+Free leaves: 597  UNCLOSED: 35
+  UNCLOSED mem md2_mem.p_sel [2] UNCLOSED x2
+  UNCLOSED stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000001.cap_en [1] UNCLOSED x1
+  UNCLOSED stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000001.adv [1] UNCLOSED x1
+  UNCLOSED stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000001.rx_we [1] UNCLOSED x1
+  UNCLOSED stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000001.rewind [1] UNCLOSED x1
+  UNCLOSED stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000001.flush [1] UNCLOSED x1
+  UNCLOSED stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000001.clr_starved [1] UNCLOSED x1
+  UNCLOSED stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000000.cap_en [1] UNCLOSED x1
+  UNCLOSED stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000000.adv [1] UNCLOSED x1
+  UNCLOSED stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000000.rx_we [1] UNCLOSED x1
+  UNCLOSED stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000000.rewind [1] UNCLOSED x1
+  UNCLOSED stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000000.flush [1] UNCLOSED x1
+  UNCLOSED stream $paramod\md2_stream\CAP=s32'00000000000000000000000000000000.clr_starved [1] UNCLOSED x1
+  UNCLOSED units md2_shifter.sel [1] UNCLOSED x2
+  UNCLOSED units $paramod\md2_acc\NR=s32'00000000000000000000000000000100.hit [6] UNCLOSED x6
+  UNCLOSED units tt_um_brentius_metronome.g_cn[0].op_lo [1] UNCLOSED x1
+  UNCLOSED units tt_um_brentius_metronome.g_cn[0].op_hi [1] UNCLOSED x1
+  UNCLOSED units tt_um_brentius_metronome.g_cn[1].op_lo [1] UNCLOSED x1
+  UNCLOSED units tt_um_brentius_metronome.g_cn[1].op_hi [1] UNCLOSED x1
+  UNCLOSED units tt_um_brentius_metronome.g_cn[2].op_lo [1] UNCLOSED x1
+  UNCLOSED units tt_um_brentius_metronome.g_cn[2].op_hi [1] UNCLOSED x1
+  UNCLOSED units tt_um_brentius_metronome.g_lf[0].op_st [1] UNCLOSED x1
+  UNCLOSED units tt_um_brentius_metronome.g_lf[0].op_b0 [1] UNCLOSED x1
+  UNCLOSED units tt_um_brentius_metronome.g_lf[0].op_b1 [1] UNCLOSED x1
+  UNCLOSED units tt_um_brentius_metronome.g_lf[0].op_b2 [1] UNCLOSED x1
+  UNCLOSED units tt_um_brentius_metronome.g_lf[1].op_st [1] UNCLOSED x1
+  UNCLOSED units tt_um_brentius_metronome.g_lf[1].op_b0 [1] UNCLOSED x1
+  UNCLOSED units tt_um_brentius_metronome.g_lf[1].op_b1 [1] UNCLOSED x1
+  UNCLOSED units tt_um_brentius_metronome.g_lf[1].op_b2 [1] UNCLOSED x1
+  UNCLOSED line $paramod\md2_line\CFGW=s32'00000000000000000000000100000000.sym_op [2] UNCLOSED x8
+  UNCLOSED debug tt_um_brentius_metronome.d_wr_ectl [1] UNCLOSED x1
+  UNCLOSED debug tt_um_brentius_metronome.d_wr_em0 [1] UNCLOSED x1
+  UNCLOSED debug tt_um_brentius_metronome.d_wr_em1 [1] UNCLOSED x1
+  UNCLOSED debug tt_um_brentius_metronome.d_wr_rlv0 [1] UNCLOSED x1
+  UNCLOSED debug tt_um_brentius_metronome.d_wr_rlv1 [1] UNCLOSED x1
+
+Per cut
+cells = distinct cells read per module type; a module-level cut applies
+to every chip-top instance of that module.  cones = adapter instances.
+cut                modules                                              cones  cells  regs leaves
+verify/config      md2_cfg_arb, md2_cfg_stage                               2     23     6     12
+verify/host        md2_host                                                 1     19     2      6
+verify/decode      tt_um_brentius_metronome                                 3     72     0      2
+verify/corequeue   tt_um_brentius_metronome                                 1     41     5      7
+bank               $paramod$105d233105514fa780d1c4f258a21522e395953f\md   284    568     0      2
+hostcmd            md2_host                                                 1     77     9      7
+corectl            tt_um_brentius_metronome                                 4     57     3      9
+hostmap            tt_um_brentius_metronome                                72    167     6     17
+hostread           md2_host, tt_um_brentius_metronome                       4    217    11     59
+spipins            tt_um_brentius_metronome                                 1      6     3      3
+mem                md2_mem                                                  2    121    15     17
+thread             md2_thread, tt_um_brentius_metronome                    61    443     7     41
+stream             $paramod\md2_stream\CAP=s32'000000000000000000000000    54    453    26     44
+units              md2_counter, md2_shifter, md2_lfsr, $paramod\md2_acc    18    342    11     36
+moves              tt_um_brentius_metronome                                38   1190     3     20
+line               $paramod\md2_line\CFGW=s32'0000000000000000000000010    36    249    15     61
+core               $paramod$445378f378ebce8979ca0263f1f0419adee9ad48\md     2    423    14     34
+debug              tt_um_brentius_metronome                                 9     92     8     41
+glue               tt_um_brentius_metronome                               181    323    11    117
+hostpins           tt_um_brentius_metronome, md2_host                       7    226    14     62
+
+Uncovered by module
+  tt_um_brentius_metronome                       830 cells
+
+Uncovered by source line (top 25)
+  src/project.v:283     322 cells
+  src/project.v:281     276 cells
+  src/project.v:307     132 cells
+  src/project.v:514      16 cells
+  src/project.v:472      12 cells
+  src/project.v:409       6 cells
+  src/project.v:410       6 cells
+  src/project.v:396       4 cells
+  src/project.v:425       4 cells
+  src/project.v:426       4 cells
+  src/project.v:427       4 cells
+  src/project.v:428       4 cells
+  src/project.v:456       4 cells
+  src/project.v:463       4 cells
+  src/project.v:470       4 cells
+  src/project.v:471       4 cells
+  src/project.v:485       4 cells
+  src/project.v:666       3 cells
+  src/project.v:667       3 cells
+  src/project.v:668       3 cells
+  src/project.v:669       3 cells
+  src/project.v:670       3 cells
+  src/project.v:473       2 cells
+  src/project.v:486       2 cells
+  src/project.v:660       1 cells
+
+Output pins
+  24 output bits; 24 driven by covered logic; 0 not
+  uo_out[0] covered  owned_register   md2_host.miso
+  uo_out[1] covered  owned_register   $procdff$13796 ($dff) owned by glue
+  uo_out[2] covered  owned_register   $procdff$13766 ($dff) owned by glue
+  uo_out[3] covered  owned_register   $procdff$13765 ($dff) owned by glue
+  uo_out[4] covered  owned_register   $procdff$13764 ($dff) owned by glue
+  uo_out[5] covered  owned_register   $procdff$13763 ($dff) owned by glue
+  uo_out[6] covered  owned_register   $procdff$13762 ($dff) owned by glue
+  uo_out[7] covered  owned_register   $procdff$13761 ($dff) owned by glue
+  uio_out[0] covered  owned_register   $procdff$13782 ($dff) owned by glue
+  uio_out[1] covered  owned_register   $procdff$13780 ($dff) owned by glue
+  uio_out[2] covered  owned_register   $procdff$13778 ($dff) owned by glue
+  uio_out[3] covered  owned_register   $procdff$13776 ($dff) owned by glue
+  uio_out[4] covered  owned_register   $procdff$13774 ($dff) owned by glue
+  uio_out[5] covered  owned_register   $procdff$13772 ($dff) owned by glue
+  uio_out[6] covered  owned_register   $procdff$13770 ($dff) owned by glue
+  uio_out[7] covered  owned_register   $procdff$13768 ($dff) owned by glue
+  uio_oe[0] covered  owned_register   $procdff$13781 ($dff) owned by glue
+  uio_oe[1] covered  owned_register   $procdff$13779 ($dff) owned by glue
+  uio_oe[2] covered  owned_register   $procdff$13777 ($dff) owned by glue
+  uio_oe[3] covered  owned_register   $procdff$13775 ($dff) owned by glue
+  uio_oe[4] covered  owned_register   $procdff$13773 ($dff) owned by glue
+  uio_oe[5] covered  owned_register   $procdff$13771 ($dff) owned by glue
+  uio_oe[6] covered  owned_register   $procdff$13769 ($dff) owned by glue
+  uio_oe[7] covered  owned_register   $procdff$13767 ($dff) owned by glue
+
