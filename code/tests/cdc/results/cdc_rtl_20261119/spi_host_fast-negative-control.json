@@ -1,0 +1,142 @@
+{
+  "scenario": "spi_host_fast",
+  "notes": "negative control: sentinel write at clk/16, overwrite at clk/2 with MOSI edges delayed (see jitter_depth_cycles), both read back",
+  "clock_ns": 16.666,
+  "jitter_probability": 1.0,
+  "jitter_depth_cycles": 2,
+  "mask": "0x400",
+  "program_frames_skipped_after_first_pass": 0,
+  "passes": [
+    {
+      "seed": null,
+      "cycles": 1604,
+      "edges": 0,
+      "edges_delayed": 0,
+      "edges_by_pin": {},
+      "result": {
+        "spi_reads": [
+          [
+            4128,
+            "5a5a"
+          ],
+          [
+            4128,
+            "a53c"
+          ]
+        ]
+      },
+      "error": null,
+      "spi_readback": [
+        [
+          4128,
+          "5a5a"
+        ],
+        [
+          4128,
+          "a53c"
+        ]
+      ],
+      "diagnostics": {},
+      "txns": 4,
+      "trace_sha": "17ea27f819940aca",
+      "label": "clean"
+    },
+    {
+      "seed": 7,
+      "cycles": 1604,
+      "edges": 46,
+      "edges_delayed": 92,
+      "edges_by_pin": {
+        "uio_in[0]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "uio_in[1]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "uio_in[2]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "uio_in[3]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "uio_in[4]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "uio_in[5]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "uio_in[6]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "uio_in[7]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "ui_in[0]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "ui_in[1]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "ui_in[2]": {
+          "edges": 46,
+          "delayed": 92
+        },
+        "ui_in[3]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "ui_in[4]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "ui_in[5]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "ui_in[6]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "ui_in[7]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "rst_n": {
+          "edges": 0,
+          "delayed": 0
+        }
+      },
+      "result": {},
+      "error": "negative-control readback [('0x1020', '5a5a'), ('0x1020', '5a5a')] != [('0x1020', '5a5a'), ('0x1020', 'a53c')]\nassert [(4128, b'ZZ'), (4128, b'ZZ')] == [(4128, b'ZZ'), (4128, b'\\xa5<')]",
+      "spi_readback": [
+        [
+          4128,
+          "5a5a"
+        ],
+        [
+          4128,
+          "5a5a"
+        ]
+      ],
+      "diagnostics": {},
+      "txns": 4,
+      "trace_sha": "874cd5612541ea66",
+      "label": "jitter-7",
+      "first_pin_trace_divergence_vs_clean": 1325
+    }
+  ],
+  "protocol_results_equal": false,
+  "first_pin_trace_divergence_vs_clean": 1325,
+  "expect_divergence": true,
+  "gl": false
+}

@@ -1,0 +1,5 @@
+# Generated intermediate (6.5 MB Yosys elaboration) and local run output.
+# The source artifacts are inventory.json and storage_paths.json; see README.md.
+inventory.yosys.json
+*.log
+__pycache__/

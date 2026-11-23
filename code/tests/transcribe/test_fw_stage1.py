@@ -29,10 +29,10 @@ def prog():
     return _PROG["p"]
 
 
-def run_fw(levels, max_cycles=3_000_000, *, pin=PIN, framing=False, output=None):
+def run_fw(levels, max_cycles=3_000_000, *, pin=PIN, framing=False, output=None, reply=None):
     ch = Chip()
     image = prog() if not framing and pin == PIN else assemble_text(
-        source(pin, NREC, framing=framing, transmit=output is not None))
+        source(pin, NREC, framing=framing, transmit=output is not None, reply=reply))
 
     def step(level):
         if pin < 8:
@@ -99,6 +99,47 @@ def test_framing_image_fits_and_passes_static_check():
     text = source(framing=True, transmit=True)
     assert max(count_insns(text).values()) <= 256
     assert check(assemble_text(text)).errors == []
+
+
+@pytest.mark.parametrize(("rate", "width", "parity", "stops", "idle", "clock_error", "jitter"), [
+    (115200, 8, None, 1, 1, 0.015, 2),
+    (460800, 7, "even", 2, 0, 0.015, 2),
+    (1000000, 9, "odd", 1, 1, 0.0, 0),
+    (3750000, 8, None, 1, 1, 0.0, 0),
+])
+def test_firmware_encodes_a_held_out_uart_byte(rate, width, parity, stops, idle, clock_error, jitter):
+    reply = 0x42
+    training = [byte for byte in rand_bytes(32, width, 7) if byte != reply]
+    hidden = hidden_text(rate, width, parity, stops, idle)
+    levels = capture(hidden, training, rate, clock_error, jitter)
+    output = []
+    text = source(framing=True, transmit=True, reply=reply)
+    assert max(count_insns(text).values()) <= 256
+    assert check(assemble_text(text)).errors == []
+    ch, _, result, done = run_fw([idle] * 1000 + levels, framing=True, output=output, reply=reply)
+    assert done is not None
+    assert result[:2] == [1, idle]
+    assert list(ch.mem.data[FRAME_RES:FRAME_RES+3]) == [1, width, (None, "even", "odd").index(parity)]
+    assert ch.host.OUTB == 1
+    assert output[-1] == idle
+    decoded = Codec(parse(hidden)).decode("receiver", {"tx": output + [idle] * int(4 * FS / rate)})
+    assert decoded.ok, decoded.notes
+    assert [value for field, value in decoded.events if field == "data"] == [reply]
+    assert not any(stream.STARVED for stream in ch.mem.streams)
+    assert not any(thread.LATE or thread.OVR for thread in ch.threads)
+    assert not (ch.ctrl.CWOVR or ch.ctrl.MEMHAZ or ch.ctrl.CONFLICT or ch.contract_violations)
+
+
+def test_firmware_rejects_reply_that_does_not_fit_learned_width():
+    rate = 460800
+    hidden = hidden_text(rate, 7, "even", 2)
+    levels = capture(hidden, rand_bytes(32, 7, 7), rate)
+    output = []
+    ch, _, _, done = run_fw([1] * 1000 + levels, framing=True, output=output, reply=0x80)
+    assert done is not None
+    assert list(ch.mem.data[FRAME_RES:FRAME_RES+3]) == [1, 7, 1]
+    assert ch.host.OUTB == 5
+    assert output == []
 
 
 def test_framing_rejects_a_run_outside_its_range():

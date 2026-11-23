@@ -1,0 +1,22 @@
+# Extended scenarios (separate, longer run)
+
+date_utc   : 2026-11-19T15:20:45Z start, ended 15:49:27Z
+command    : source code/tools/env.sh
+             CDC_SEEDS=1 CDC_SCENARIOS=uart_tx_rx,uart_reply \
+                 python -m pytest code/tests/cdc -q -k test_cdc_jitter -p no:cacheprovider
+result     : 2 passed in 1538.21s (0:25:38), exit status 0
+             (the host was shared with other work; the default suite's 4 min is the reference for speed)
+revision   : branch metronome-v4.0, HEAD b7b4068 + uncommitted v4 working tree
+tools      : Python 3.12.10, cocotb 2.1.0, Icarus Verilog 14.0 (devel) s20260301-638-ge072b3334-dirty
+environment: see ../environment.json (same toolchain); CDC_SEEDS=1, CDC_JITTER=0.5, CDC_JITTER_DEPTH=1
+
+uart_tx_rx  clean 202 213 frames, jittered pass 80 151 frames (skips 122 062 program-load frames)
+            seed 1: P5 edges 177, delayed 88; O8 retransmits 11 training frames; status 1, framing (1,8,0,11,1),
+            ERRSUM 0; first pin-trace divergence at cycle 172 494 while the decode stays identical
+uart_reply  clean 204 517 frames, jittered pass 80 151 frames (skips 124 366 program-load frames)
+            seed 1: P5 edges 177, delayed 88; O8 replies 0x42 after learning 11 training frames; ERRSUM 0;
+            first pin-trace divergence at cycle 174 749 while the decode stays identical
+
+These are excluded from the default suite by cost (see ../run.txt and README "Default-suite results"),
+not because they are optional evidence: they are the sensitive UART cases, where one cycle is 4.2 % of a 24-clock
+bit, and both show a visibly shifted O8 waveform with an unchanged decode.

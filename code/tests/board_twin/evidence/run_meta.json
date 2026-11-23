@@ -1,0 +1,80 @@
+{
+ "date": "2026-11-19",
+ "host": "Windows-11-10.0.26200-SP0",
+ "command": "cmd /c python -m pytest code/tests/board_twin -q --durations=0 > code\\tests\\board_twin\\evidence\\pytest_full_20261119.log 2>&1   (from a deleted sim_build_twin/ with TWIN_REBUILD=1 and the OSS CAD Suite bin/ and lib/ on PATH)",
+ "git_head": "b7b40687cc26419bed64a25c467ed91be65f28a9",
+ "git_branch": "metronome-v4.0",
+ "git_dirty_entries": 27,
+ "tools": {
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cocotb": "2.1.0",
+  "pytest": "9.2.0",
+  "iverilog": "Icarus Verilog version 14.0 (devel) (s20260301-638-ge072b3334-dirty)",
+  "oss_cad_suite": "20261022",
+  "sram_models": "test/sram_model (see code/tests/lockstep_v2/rtl_sources.py)"
+ },
+ "result": {
+  "passed": 50,
+  "failed": 0,
+  "seconds": 442.04,
+  "line": "50 passed in 442.04s (0:07:22)"
+ },
+ "durations_seconds": {
+  "test_twin_sweep": {
+   "phase": "call",
+   "seconds": 265.56
+  },
+  "test_twin_uart_tx": {
+   "phase": "call",
+   "seconds": 122.59
+  },
+  "test_twin_smoke": {
+   "phase": "call",
+   "seconds": 38.54
+  },
+  "test_twin_negative": {
+   "phase": "call",
+   "seconds": 14.78
+  },
+  "test_pinned_sdk_api_names_exist_in_the_pinned_source": {
+   "phase": "call",
+   "seconds": 0.22
+  },
+  "test_toolchain_image_loads_byte_for_byte": {
+   "phase": "call",
+   "seconds": 0.05
+  },
+  "test_cli_plan_accepts_a_toolchain_image": {
+   "phase": "setup",
+   "seconds": 0.02
+  },
+  "test_core_is_micropython_friendly": {
+   "phase": "call",
+   "seconds": 0.02
+  },
+  "test_image_load_is_refused_at_fast_sck": {
+   "phase": "call",
+   "seconds": 0.01
+  },
+  "test_sweep_table_in_sw_results": {
+   "phase": "call",
+   "seconds": 0.01
+  }
+ },
+ "sim_clock_period_ps": 16000,
+ "sweep": {
+  "points": 38,
+  "chip_cycles": 175350,
+  "nudges": 28,
+  "model_mismatch_cycles": 0,
+  "passing_points": 23,
+  "spec_points_all_pass": true
+ },
+ "fine_phase": {
+  "points": 20,
+  "chip_cycles": 62920,
+  "nudges": 2,
+  "model_mismatch_cycles": 0
+ }
+}

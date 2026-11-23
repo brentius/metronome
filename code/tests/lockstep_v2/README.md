@@ -44,6 +44,27 @@ The digest, debug block and capture records are compared through MISO like every
 six RTL mutants (live pin swapped, digest polynomial, pins not held while frozen, step ignored, IR not held,
 capture `DC` restarting at 0); each must fail its scenario.
 
+## Independent UART receiver
+
+`v4_uart_reply` loads the resident UART learner via SPI, feeds 8N1 training
+at 24 chip clocks per bit, and checks that O8 sends the held-out byte `0x42`.
+`LOCKSTEP_TRACE_UO` writes a byte per compared cycle from the actual RTL
+output bus. Use a separately authored UART receiver to decode O8 and verify
+that zeroing the reply's stop bit produces a framing error.
+
+```sh
+git clone https://github.com/alexforencich/verilog-uart.git build/v4_proto/verilog-uart
+git -C build/v4_proto/verilog-uart checkout --detach 1b867e53af738e4a8bc7c839ca2f1c07f40382dc
+python code/tests/lockstep_v2/check_uart_peer.py build/v4_proto/verilog-uart/rtl/uart_tx.v --emit-training build/v4_proto/uart_training.bin
+LOCKSTEP_UART_TRAINING="$PWD/build/v4_proto/uart_training.bin" \
+  LOCKSTEP_TRACE_UO="$PWD/build/v4_proto/uart_reply_pins.bin" \
+  python -m pytest code/tests/lockstep_v2 -q -k v4_uart_reply
+python code/tests/lockstep_v2/check_uart_peer.py build/v4_proto/uart_reply_pins.bin build/v4_proto/verilog-uart/rtl/uart_rx.v
+```
+
+Have Icarus Verilog and `vvp` on PATH. The checker expects the exact
+`v4_uart_reply` stimulus and pin trace.
+
 ## Constraints on random stimulus (and why)
 
 - Program memory is written only before `RUN_global` is set: a host program write in the same cycle as a fetch is

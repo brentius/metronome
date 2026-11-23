@@ -1,0 +1,14 @@
+{
+  "date_utc": "2026-11-19T15:49:48Z",
+  "command": "C:\\Users\\b_yee23\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\pytest\\__main__.py code/tests/cdc -q -p no:cacheprovider",
+  "python": "3.12.10",
+  "cocotb": "2.1.0",
+  "iverilog": "Icarus Verilog version 14.0 (devel) (s20260301-638-ge072b3334-dirty)",
+  "verilator": "unavailable (FileNotFoundError)",
+  "yosys": "Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)",
+  "simulator": "icarus",
+  "environment": {
+    "CDC_OUTDIR": "C:\\Users\\b_yee23\\Documents\\projects\\jane street comp\\code\\tests\\cdc\\results\\cdc_rtl_20261119",
+    "VERILATOR_ROOT": "C:\\Users\\b_yee23\\tools\\oss-cad-suite\\share\\verilator"
+  }
+}

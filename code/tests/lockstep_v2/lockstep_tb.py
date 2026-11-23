@@ -73,6 +73,8 @@ async def lockstep(dut):
     outs = (0, 0, 0)
     mismatches = 0
     first = None
+    trace_path = os.environ.get("LOCKSTEP_TRACE_UO")
+    pin_trace = bytearray() if trace_path else None
     for t, (ui, hi, uio, rst_n) in enumerate(scen.steps):
         await FallingEdge(dut.clk)
         uio = uio(t, outs) if callable(uio) else uio
@@ -85,6 +87,8 @@ async def lockstep(dut):
         await RisingEdge(dut.clk)
         await ReadOnly()
         got = (_val(dut.uo_out), _val(dut.uio_out), _val(dut.uio_oe))
+        if pin_trace is not None and t >= scen.compare_from and got[0] is not None:
+            pin_trace.append(got[0])
         if os.environ.get("LOCKSTEP_TRACE_MEM") and (_val(dut.frz) or _val(dut.frzd)) and _val(dut.u_mem.land):
             dut._log.info(f"t={t} frz={_val(dut.frz)} frzd={_val(dut.frzd)} land={_val(dut.u_mem.land)} "
                           f"p_dat={_val(dut.u_mem.p_dat):#x} m_rd={_val(dut.u_mem.m_rd):#x} gh={_val(dut.u_mem.gh)}")
@@ -100,4 +104,7 @@ async def lockstep(dut):
     assert mismatches == 0, f"{mismatches} mismatching cycles in {name} ({len(scen.steps)} cycles), first {first}"
     if scen.check is not None:
         scen.check(model)
+    if trace_path:
+        assert len(pin_trace) == len(scen.steps) - scen.compare_from
+        Path(trace_path).write_bytes(pin_trace)
     dut._log.info(f"scenario {name}: {len(scen.steps)} cycles, outputs identical")

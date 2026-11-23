@@ -135,6 +135,8 @@ async def lockstep(dut):
     expected = []
     done = cocotb.triggers.Event()
     mismatches = []
+    trace_path = os.environ.get("LOCKSTEP_TRACE_UO")
+    pin_trace = bytearray() if trace_path else None
 
     async def drive_and_model():
         nonlocal outs
@@ -162,6 +164,8 @@ async def lockstep(dut):
                 raise AssertionError("checker reached a clock edge without a modeled stimulus")
             t, exp, ui, uio = expected.pop(0)
             got = (_val(dut.uo_out), _val(dut.uio_out), _val(dut.uio_oe))
+            if pin_trace is not None and t >= scen.compare_from and got[0] is not None:
+                pin_trace.append(got[0])
             if t >= scen.compare_from and got != exp:
                 mismatches.append((t, got, exp, ui, uio))
                 if len(mismatches) == 1:
@@ -178,6 +182,9 @@ async def lockstep(dut):
     check = getattr(scen, "check", None)
     if check is not None:
         check(model)
+    if trace_path:
+        assert len(pin_trace) == len(scen.steps) - scen.compare_from
+        Path(trace_path).write_bytes(pin_trace)
     dut._log.info(f"scenario {name}: {len(scen.steps)} cycles, outputs identical")
 '''
     destination.write_text(text[:test_start] + test, encoding="utf-8")
@@ -222,6 +229,7 @@ def main() -> int:
     ap.add_argument("--sdf", type=Path, help="one corner SDF; invoke separately for typ, slow and fast")
     ap.add_argument("--seeds", type=int, default=4, help="random scenarios, seeds 1..N (default: 4)")
     ap.add_argument("--scenario", action="append", help="run a named scenario instead of the default suite; repeatable")
+    ap.add_argument("--trace-uo", action="store_true", help="save one settled uo_out byte per compared cycle")
     a = ap.parse_args()
 
     repo = a.repo.resolve(); netlist = a.netlist.resolve(); cells = a.cells.resolve()
@@ -348,11 +356,15 @@ def main() -> int:
         logpath = out / f"run_{name}.log"
         start = time.time()
         row: dict[str, Any] = {"scenario": scenario, "xml": str(xml), "log": str(logpath)}
+        extra_env = {"LOCKSTEP_SCENARIO": scenario, "LOCKSTEP_TRACE_UO": ""}
+        trace = out / f"uo_{name}.bin"
+        if a.trace_uo:
+            extra_env["LOCKSTEP_TRACE_UO"] = str(trace)
         try:
             with logpath.open("w", encoding="utf-8") as log, contextlib.redirect_stdout(log), contextlib.redirect_stderr(log):
                 returned_xml = runner.test(hdl_toplevel=WRAPPER, test_module="lockstep_gate_tb", build_dir=build,
                                            test_dir=out, results_xml=str(xml),
-                                           extra_env={"LOCKSTEP_SCENARIO": scenario}, log_file=out / f"sim_{name}.log")
+                                           extra_env=extra_env, log_file=out / f"sim_{name}.log")
             xmlpath = Path(returned_xml) if returned_xml else xml
             if xmlpath.resolve() != xml.resolve() and xmlpath.exists():
                 shutil.copy2(xmlpath, xml)
@@ -367,6 +379,8 @@ def main() -> int:
                         "timingcheck_unsupported_count": len(unsupported),
                         "timingcheck_unsupported_examples": unsupported[:10],
                         "wall_seconds": round(time.time() - start, 3)})
+            if a.trace_uo and not issues:
+                row.update(trace_uo=str(trace), trace_uo_sha256=sha256(trace))
             row["status"] = "PASS" if not issues and not errors and not warnings else "FAIL"
         except Exception as e:
             row.update({"status": "FAIL", "issues": [f"{type(e).__name__}: {e}"],

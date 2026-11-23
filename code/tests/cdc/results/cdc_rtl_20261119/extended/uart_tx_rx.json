@@ -1,0 +1,180 @@
+{
+  "scenario": "uart_tx_rx",
+  "notes": "P5 (uio_in[5]) jittered, 24 clocks/bit; SPI readback not jittered",
+  "clock_ns": 16.666,
+  "jitter_probability": 0.5,
+  "jitter_depth_cycles": 1,
+  "program_frames_skipped_after_first_pass": 122062,
+  "passes": [
+    {
+      "seed": null,
+      "cycles": 202213,
+      "edges": 0,
+      "edges_delayed": 0,
+      "edges_by_pin": {},
+      "result": {
+        "status": 1,
+        "frame": [
+          1,
+          8,
+          0,
+          11,
+          1
+        ],
+        "uart": [
+          165,
+          92,
+          56,
+          231,
+          19,
+          244,
+          137,
+          39,
+          165,
+          92,
+          56
+        ],
+        "errsum": 0
+      },
+      "error": null,
+      "spi_readback": [
+        [
+          5904,
+          "010100033f010108000b01"
+        ],
+        [
+          9216,
+          "01000000000102a200"
+        ]
+      ],
+      "diagnostics": {
+        "learned_bit_time_q5": 768
+      },
+      "txns": 30,
+      "trace_sha": "09b43960a732634e",
+      "label": "clean"
+    },
+    {
+      "seed": 1,
+      "cycles": 80151,
+      "edges": 177,
+      "edges_delayed": 88,
+      "edges_by_pin": {
+        "uio_in[0]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "uio_in[1]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "uio_in[2]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "uio_in[3]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "uio_in[4]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "uio_in[5]": {
+          "edges": 176,
+          "delayed": 87
+        },
+        "uio_in[6]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "uio_in[7]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "ui_in[0]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "ui_in[1]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "ui_in[2]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "ui_in[3]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "ui_in[4]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "ui_in[5]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "ui_in[6]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "ui_in[7]": {
+          "edges": 0,
+          "delayed": 0
+        },
+        "rst_n": {
+          "edges": 1,
+          "delayed": 1
+        }
+      },
+      "result": {
+        "status": 1,
+        "frame": [
+          1,
+          8,
+          0,
+          11,
+          1
+        ],
+        "uart": [
+          165,
+          92,
+          56,
+          231,
+          19,
+          244,
+          137,
+          39,
+          165,
+          92,
+          56
+        ],
+        "errsum": 0
+      },
+      "error": null,
+      "spi_readback": [
+        [
+          5904,
+          "010100033f010108000b01"
+        ],
+        [
+          9216,
+          "01000000000102a200"
+        ]
+      ],
+      "diagnostics": {
+        "learned_bit_time_q5": 768
+      },
+      "txns": 28,
+      "trace_sha": "8fd75cffc69d3444",
+      "label": "jitter-1",
+      "first_pin_trace_divergence_vs_clean": 172494
+    }
+  ],
+  "protocol_results_equal": true,
+  "first_pin_trace_divergence_vs_clean": 172494,
+  "expect_divergence": false,
+  "gl": false
+}

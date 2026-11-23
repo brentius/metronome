@@ -1,0 +1,34 @@
+# Canonical evidence: default CDC suite (RTL)
+
+date_utc   : 2026-11-19T15:49:48Z (environment.json; suite ended 15:52:30Z)
+command    : source code/tools/env.sh
+             python -m pytest code/tests/cdc -q -p no:cacheprovider
+workdir    : C:\Users\b_yee23\Documents\projects\jane street comp
+result     : 10 passed in 162.63s (0:02:42), exit status 0
+revision   : branch metronome-v4.0, HEAD b7b4068 + uncommitted v4 working tree; src/ not modified by this suite
+host       : Windows 11 Enterprise, 12th Gen Intel Core i5-1245U (12 threads), otherwise idle
+tools      : Python 3.12.10
+             cocotb 2.1.0
+             Icarus Verilog 14.0 (devel) s20260301-638-ge072b3334-dirty
+             Yosys 0.70+190 (git sha1 485b63564, Release, x86_64-w64-mingw32-g++ 15.2.1)
+             OSS CAD Suite 2026-10-22 at C:\Users\b_yee23\tools\oss-cad-suite
+simulator  : icarus (Verilator was not usable on this machine: no C++ toolchain, no Perl driver)
+settings   : CDC_SEEDS=1,2  CDC_JITTER=0.5  CDC_JITTER_DEPTH=1  clock 16.666 ns (60 MHz, assumed)
+
+files
+  environment.json                      date, argv, tool versions, CDC_* environment (written by the suite)
+  audit.json, structural_audit.txt      structural audit of the Yosys elaboration of src/
+  mutation_raw_input_into_output.json   mutation test: audit must fail     (RAW_FANOUT + NO_RAW_COMB_PATH)
+  mutation_raw_rst_n_into_output.json   mutation test: audit must fail     (RSTN_FANOUT)
+  mutation_s1_used_as_synchronised.json mutation test: audit must fail     (SYNC_CHAIN)
+  spi_host.json                         clean + 2 seeds, SCK = clk/16, all 16 input bits jittered (mask 0xffff)
+  uart_example.json                     clean + 2 seeds, P5 jittered (mask 0x20), RX 531 cycles/bit + O8 TX
+  spi_host_fast-negative-control.json   negative control (mask 0x400, depth 2, expected divergence)
+  pytest.log                            pytest summary
+  sim/results_*.xml                     cocotb JUnit XML per scenario (sim_time, seed, wall time)
+  probes/spi_host_fast-depth1.json      margin probe: 1-cycle late MOSI at clk/2 still decodes (FINDINGS.md)
+  probes/spi_host_fast-depth2.json      margin probe: 2-cycle late MOSI loses the clk/2 write
+  extended/                             separate 1-seed run of uart_tx_rx + uart_reply (see extended/run.txt)
+
+Build products removed after the run: sim/sim.vvp (5,147,902 bytes, Icarus output) and sim/cmds.f.
+A rerun rebuilds them into a scratch directory; see README "Evidence set".

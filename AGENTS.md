@@ -77,8 +77,8 @@ Keep handoffs brief: completed work, changed files, relevant evidence or checks,
 
 ### Models and token spend
 
-- Use **Sonnet (`sonnet`) for Claude subagents** and **Luna (`gpt-6-luna`) for Codex subagents**. Select the model explicitly at launch; do not inherit a more expensive parent model.
-- Sonnet/Luna is the base. Where judgement says a task needs more capability (RTL timing and micro-architecture trade-offs, subtle verification gaps, hard debugging, independent review of a consequential claim), use a more powerful model at a **lower reasoning effort** rather than defaulting to a high-effort run, and keep the effort set explicitly at launch. Minimise token spend while maximising output quality: escalate model power only when it measurably improves the result, prefer lowering effort before raising model tier, and do not use a more powerful model at high effort unless the user asks. If a requested model is unavailable, report that limitation and complete suitable work directly instead of silently switching models.
+- Use DeepSeek V4.1 Flash 1017 on OpenCode Go (`opencode-go/deepseek-v4.1-flash`) for subagents by default. Only use other models for subagents if deemed necessary. This takes precedence over other project guidance on subagent model selection.
+- Select the model and reasoning effort explicitly at launch where supported. Prefer the lowest reasoning effort sufficient for the task. If a model the user explicitly requested is unavailable, report the limitation and complete suitable work directly.
 - Pass only relevant context, keep assignments focused, and request concise outputs. Avoid unnecessary full-history copies, repeated file reads, redundant checks, and excessive polling.
 - Check the selected model when the environment exposes it. These instructions guide delegation; model selection must also be set in the actual launch parameters or agent configuration.
 

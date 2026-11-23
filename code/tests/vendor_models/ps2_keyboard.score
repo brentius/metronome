@@ -1,0 +1,38 @@
+# PS/2 keyboard device-to-host frame, as a score (blind challenge, item 3).
+#
+# Written only from the public interface specification:
+#   IBM Personal System/2 Hardware Interface Technical Reference (1988), "Keyboard-to-System Communication"
+#   (scanned: https://archive.org/details/bitsavers_ibm), mirrored as "The PS/2 Mouse/Keyboard Protocol"
+#   (A. Chapweske, 1999), sections "Communication: General Description" and "Communication: Device-to-Host",
+#   https://www.burtonsys.com/ps2_chapweske.htm :
+#   11 bits per frame - start bit 0, 8 data bits least significant first, one odd parity bit, stop bit 1;
+#   the device generates the clock (10-16.7 kHz); data is valid on the falling clock edge.
+#
+# The receiver is the only role that can be built here: the chip listens to a keyboard.  It is a fixed-rate
+# receiver - the beat is derived from the declared clock, exactly like the UART receive template - so it
+# samples at 16.7 kHz (the fast end of the device range) instead of tracking each device clock edge.  The
+# hand-written assembly program in code/host2/examples/vendor/ps2_keyboard_rx.mas follows the device's own
+# clock instead; the README records the difference and its consequence.
+#
+# Compiled in code/tests/vendor_models/ps2_test.py with role "host", bind "clk=P0 data=P1", rate 16.667 kHz.
+# Host interface: receive stream 0 (data bits then the parity bit, 9 bits per frame), HOST.OUT = frame status
+# byte (0 = start/stop constants matched).
+protocol ps2_keyboard
+roles device, host
+
+wire clk  out idle high by device
+wire data out idle high by device
+
+clock 16667 Hz
+  device: generated
+  host:   started by clk fall
+  tolerance 20%
+
+symbols
+  bit(d)  clk "10"  data "d"  sample data at 50%
+
+bits lsb first
+
+grammar
+  line  = frame*
+  frame = bit(0) data:u8 parity:bit bit(1)

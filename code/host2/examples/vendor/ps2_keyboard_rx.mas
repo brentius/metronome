@@ -1,0 +1,69 @@
+; ps2_keyboard_rx.mas -- PS/2 device-to-host receiver (blind-challenge program, item 6).
+;
+; Specification: IBM Personal System/2 Hardware Interface Technical Reference (1988), "Keyboard-to-System
+; Communication" (scanned: https://archive.org/details/bitsavers_ibm); mirrored as "The PS/2 Mouse/Keyboard
+; Protocol" (A. Chapweske, 1999), "Communication: Device-to-Host",
+; https://www.burtonsys.com/ps2_chapweske.htm .
+; The device owns both wires: it drives the clock (10-16.7 kHz) and data, both open drain with pull-ups.
+; A frame is 11 clock falls: start (0), 8 data bits LSB first, odd parity, stop (1).  Data is valid on the
+; falling clock edge.  The chip only listens; it never drives either wire.
+; Tested in code/tests/vendor_models/ps2_test.py against ps2_keyboard_peer.v (first-party, written from the
+; same specification); the Score version of the same protocol is code/tests/vendor_models/ps2_keyboard.score.
+;
+;   * Line 0 is a follower of P0 (CLK fall).  Tap 0 is edge-sourced on the same fall, so the capture in the
+;     snapshot is the DATA level (P1) at that edge; `in0 a0` makes L.IN bit 0 that capture.
+;   * Thread 0 (core 0, trigger L0.TAP0) runs one ten-instruction burst per clock fall:
+;       - ACC counts bit positions 1..11 (1 = start, 2..9 = data, 10 = parity, 11 = stop); the wrap sets the
+;         index back to 0 so the next start bit is 1 again;
+;       - CNT0 is the data-bit counter: reloaded to 8 on the start bit (idx <= 1), so the shifter takes exactly
+;         the eight data bits and freezes; SH0 (LSB first, 8 bits) assembles the byte;
+;       - S1 logs the raw 11-bit frame so the host can check start, parity and stop itself;
+;       - the assembled byte goes to HOST.OUT once CNT0 is 0 (parity bit onwards; the shifter is frozen, so the
+;         parity and stop bits rewrite the same byte).
+;   * Frame resynchronisation is by bit count since reset: PS/2 frames are back-to-back with no idle marker the
+;     language can see, so a lost edge shifts the frame.  The host checks the raw log for that case.
+;
+; Pins: CLK = P0 (uio[0]), DATA = P1 (uio[1]).  No output pins are used.
+
+.clock 60e6
+
+.line 0
+    follow
+    period 40000            ; MOD = longest CLK period tolerated (667 us; PS/2 is 60-100 us)
+    edge P0 fall            ; boundary: every falling clock edge
+    t0edge P0 fall          ; tap 0: the same edge, for the data capture
+    pins A=P1               ; DATA
+    in0 a0
+    snap tap0
+    minperiod 3000          ; shortest CLK period tolerated (3000 cycles = 50 us, above 16.7 kHz)
+    minhalf 1000
+    ctl run ren
+.end
+
+.stream 1
+    mode rx
+    order lsb
+    start 0x100
+    len 0x100
+.end
+
+.thread 0
+    core 0
+    line 0
+    trigger L0.TAP0
+    start bit
+.end
+
+.budget thread 0 cycles 14
+
+.core 0
+bit:    #1 -> ACC.ADD
+        #11 -> ACC.CMP
+        when ACC.C   ? ZERO -> ACC.LD
+        L.IN -> S1.RX
+        when CNT0.Z   ! L.IN -> SH0.SH
+        when CNT0.Z   ! ZERO -> CNT0.DEC
+        #2 -> ACC.CMP
+        when ACC.C   ! #8 -> CNT0.LO
+        when CNT0.Z   ? SH0.D -> HOST.OUT
+        pause goto bit

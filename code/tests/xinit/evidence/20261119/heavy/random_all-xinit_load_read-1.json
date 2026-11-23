@@ -1,0 +1,104 @@
+{
+ "scenario": "xinit_load_read",
+ "mode": "random_all",
+ "seed": 1,
+ "gate": false,
+ "cycles": 1431,
+ "mismatches": 0,
+ "first_mismatches": [],
+ "x_cycles": [],
+ "x_detail": [],
+ "reset_checks": [
+  {
+   "cycle": 5,
+   "state": {
+    "cfg": 0,
+    "run_g": 0,
+    "fl": 0,
+    "irqen": 0,
+    "inb": 0,
+    "outb": 0,
+    "misr": 0,
+    "dc": 0,
+    "o_out": 0,
+    "o_oe": 0
+   }
+  }
+ ],
+ "mid_randomised": null,
+ "pulse": null,
+ "pulse_edges": [],
+ "reset_latency": null,
+ "run_pin_values": [],
+ "internal": [
+  {
+   "cycle": 5,
+   "signals": {
+    "core0.ir": {
+     "defined": true,
+     "xv": 0
+    },
+    "core1.ir": {
+     "defined": true,
+     "xv": 0
+    },
+    "u_pmem0.dr_r": {
+     "defined": true
+    },
+    "u_pmem1.dr_r": {
+     "defined": true
+    },
+    "u_dmem.dr_r": {
+     "defined": true
+    }
+   }
+  },
+  {
+   "cycle": 1431,
+   "signals": {
+    "core0.ir": {
+     "defined": true,
+     "xv": 0
+    },
+    "core1.ir": {
+     "defined": true,
+     "xv": 0
+    },
+    "u_pmem0.dr_r": {
+     "defined": true
+    },
+    "u_pmem1.dr_r": {
+     "defined": true
+    },
+    "u_dmem.dr_r": {
+     "defined": true
+    }
+   }
+  }
+ ],
+ "read_before_write": {
+  "reads": 8,
+  "writes": 8,
+  "unknown_accesses": 0,
+  "unwritten_reads": [
+   {
+    "cycle": 6,
+    "array": "u_dmem",
+    "word": 0,
+    "byte_addr": 0,
+    "unwritten_lanes": [
+     0,
+     1,
+     2,
+     3
+    ]
+   }
+  ]
+ },
+ "randomised": {
+  "leaves": 2627,
+  "leaf_bits": 3797,
+  "words": 1024,
+  "word_bits": 49152
+ }
+}

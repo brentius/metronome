@@ -1,0 +1,329 @@
+{
+  "scenario": "spi_host",
+  "notes": "every raw input bit jittered; SCK = clk/16, MOSI changes 8 cycles before the rise",
+  "clock_ns": 16.666,
+  "jitter_probability": 0.5,
+  "jitter_depth_cycles": 1,
+  "mask": "0xffff",
+  "program_frames_skipped_after_first_pass": 0,
+  "passes": [
+    {
+      "seed": null,
+      "cycles": 9945,
+      "edges": 0,
+      "edges_delayed": 0,
+      "edges_by_pin": {},
+      "result": {
+        "spi_reads": [
+          [
+            4160,
+            "a55a00ff817e33cc"
+          ],
+          [
+            9216,
+            "000001005a0001a200"
+          ],
+          [
+            9220,
+            "3c00"
+          ],
+          [
+            4160,
+            "a55a00ff817e33cc"
+          ],
+          [
+            8192,
+            "00000000"
+          ]
+        ]
+      },
+      "error": null,
+      "spi_readback": [
+        [
+          4160,
+          "a55a00ff817e33cc"
+        ],
+        [
+          9216,
+          "000001005a0001a200"
+        ],
+        [
+          9220,
+          "3c00"
+        ],
+        [
+          4160,
+          "a55a00ff817e33cc"
+        ],
+        [
+          8192,
+          "00000000"
+        ]
+      ],
+      "diagnostics": {},
+      "txns": 10,
+      "trace_sha": "e56b8b8cdc7ab0ad",
+      "label": "clean"
+    },
+    {
+      "seed": 1,
+      "cycles": 9945,
+      "edges": 5893,
+      "edges_delayed": 2923,
+      "edges_by_pin": {
+        "uio_in[0]": {
+          "edges": 904,
+          "delayed": 455
+        },
+        "uio_in[1]": {
+          "edges": 452,
+          "delayed": 229
+        },
+        "uio_in[2]": {
+          "edges": 226,
+          "delayed": 120
+        },
+        "uio_in[3]": {
+          "edges": 113,
+          "delayed": 56
+        },
+        "uio_in[4]": {
+          "edges": 56,
+          "delayed": 33
+        },
+        "uio_in[5]": {
+          "edges": 28,
+          "delayed": 16
+        },
+        "uio_in[6]": {
+          "edges": 14,
+          "delayed": 8
+        },
+        "uio_in[7]": {
+          "edges": 7,
+          "delayed": 6
+        },
+        "ui_in[0]": {
+          "edges": 1216,
+          "delayed": 602
+        },
+        "ui_in[1]": {
+          "edges": 20,
+          "delayed": 11
+        },
+        "ui_in[2]": {
+          "edges": 106,
+          "delayed": 56
+        },
+        "ui_in[3]": {
+          "edges": 1420,
+          "delayed": 673
+        },
+        "ui_in[4]": {
+          "edges": 710,
+          "delayed": 356
+        },
+        "ui_in[5]": {
+          "edges": 355,
+          "delayed": 172
+        },
+        "ui_in[6]": {
+          "edges": 177,
+          "delayed": 83
+        },
+        "ui_in[7]": {
+          "edges": 88,
+          "delayed": 46
+        },
+        "rst_n": {
+          "edges": 1,
+          "delayed": 1
+        }
+      },
+      "result": {
+        "spi_reads": [
+          [
+            4160,
+            "a55a00ff817e33cc"
+          ],
+          [
+            9216,
+            "000001005a0001a200"
+          ],
+          [
+            9220,
+            "3c00"
+          ],
+          [
+            4160,
+            "a55a00ff817e33cc"
+          ],
+          [
+            8192,
+            "00000000"
+          ]
+        ]
+      },
+      "error": null,
+      "spi_readback": [
+        [
+          4160,
+          "a55a00ff817e33cc"
+        ],
+        [
+          9216,
+          "000001005a0001a200"
+        ],
+        [
+          9220,
+          "3c00"
+        ],
+        [
+          4160,
+          "a55a00ff817e33cc"
+        ],
+        [
+          8192,
+          "00000000"
+        ]
+      ],
+      "diagnostics": {},
+      "txns": 10,
+      "trace_sha": "e745988d5c254d58",
+      "label": "jitter-1",
+      "first_pin_trace_divergence_vs_clean": 3819
+    },
+    {
+      "seed": 2,
+      "cycles": 9945,
+      "edges": 5893,
+      "edges_delayed": 2937,
+      "edges_by_pin": {
+        "uio_in[0]": {
+          "edges": 904,
+          "delayed": 466
+        },
+        "uio_in[1]": {
+          "edges": 452,
+          "delayed": 214
+        },
+        "uio_in[2]": {
+          "edges": 226,
+          "delayed": 115
+        },
+        "uio_in[3]": {
+          "edges": 113,
+          "delayed": 64
+        },
+        "uio_in[4]": {
+          "edges": 56,
+          "delayed": 30
+        },
+        "uio_in[5]": {
+          "edges": 28,
+          "delayed": 12
+        },
+        "uio_in[6]": {
+          "edges": 14,
+          "delayed": 8
+        },
+        "uio_in[7]": {
+          "edges": 7,
+          "delayed": 1
+        },
+        "ui_in[0]": {
+          "edges": 1216,
+          "delayed": 591
+        },
+        "ui_in[1]": {
+          "edges": 20,
+          "delayed": 10
+        },
+        "ui_in[2]": {
+          "edges": 106,
+          "delayed": 51
+        },
+        "ui_in[3]": {
+          "edges": 1420,
+          "delayed": 728
+        },
+        "ui_in[4]": {
+          "edges": 710,
+          "delayed": 343
+        },
+        "ui_in[5]": {
+          "edges": 355,
+          "delayed": 177
+        },
+        "ui_in[6]": {
+          "edges": 177,
+          "delayed": 91
+        },
+        "ui_in[7]": {
+          "edges": 88,
+          "delayed": 36
+        },
+        "rst_n": {
+          "edges": 1,
+          "delayed": 0
+        }
+      },
+      "result": {
+        "spi_reads": [
+          [
+            4160,
+            "a55a00ff817e33cc"
+          ],
+          [
+            9216,
+            "000001005a0001a200"
+          ],
+          [
+            9220,
+            "3c00"
+          ],
+          [
+            4160,
+            "a55a00ff817e33cc"
+          ],
+          [
+            8192,
+            "00000000"
+          ]
+        ]
+      },
+      "error": null,
+      "spi_readback": [
+        [
+          4160,
+          "a55a00ff817e33cc"
+        ],
+        [
+          9216,
+          "000001005a0001a200"
+        ],
+        [
+          9220,
+          "3c00"
+        ],
+        [
+          4160,
+          "a55a00ff817e33cc"
+        ],
+        [
+          8192,
+          "00000000"
+        ]
+      ],
+      "diagnostics": {},
+      "txns": 10,
+      "trace_sha": "41e3be5a2acdeb1a",
+      "label": "jitter-2",
+      "first_pin_trace_divergence_vs_clean": 3806
+    }
+  ],
+  "protocol_results_equal": true,
+  "first_pin_trace_divergence_vs_clean": 3806,
+  "expect_divergence": false,
+  "gl": false
+}

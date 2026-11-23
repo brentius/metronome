@@ -1,0 +1,204 @@
+{
+ "scenario": "xinit_pulse_1000_1000",
+ "mode": "random_all",
+ "seed": 7,
+ "gate": false,
+ "cycles": 7162,
+ "mismatches": 0,
+ "first_mismatches": [],
+ "x_cycles": [],
+ "x_detail": [],
+ "reset_checks": [
+  {
+   "cycle": 5,
+   "state": {
+    "cfg": 0,
+    "run_g": 0,
+    "fl": 0,
+    "irqen": 0,
+    "inb": 0,
+    "outb": 0,
+    "misr": 0,
+    "dc": 0,
+    "o_out": 0,
+    "o_oe": 0
+   }
+  },
+  {
+   "cycle": 5602,
+   "state": {
+    "cfg": 0,
+    "run_g": 0,
+    "fl": 0,
+    "irqen": 0,
+    "inb": 0,
+    "outb": 0,
+    "misr": 0,
+    "dc": 0,
+    "o_out": 0,
+    "o_oe": 0
+   }
+  }
+ ],
+ "mid_randomised": {
+  "leaves": 2625,
+  "leaf_bits": 3795,
+  "words": 1024,
+  "word_bits": 49152
+ },
+ "pulse": [
+  1000,
+  1000
+ ],
+ "pulse_edges": [
+  {
+   "cycle": 5598,
+   "rst_n": 1,
+   "rst_q": 1
+  },
+  {
+   "cycle": 5599,
+   "rst_n": 1,
+   "rst_q": 0
+  },
+  {
+   "cycle": 5600,
+   "rst_n": 1,
+   "rst_q": 1
+  },
+  {
+   "cycle": 5601,
+   "rst_n": 1,
+   "rst_q": 1
+  },
+  {
+   "cycle": 5602,
+   "rst_n": 1,
+   "rst_q": 1
+  },
+  {
+   "cycle": 5603,
+   "rst_n": 1,
+   "rst_q": 1
+  },
+  {
+   "cycle": 5604,
+   "rst_n": 1,
+   "rst_q": 1
+  }
+ ],
+ "reset_latency": {
+  "edges_low": 1,
+  "low_cycles": [
+   5599
+  ],
+  "reset_active_at_edge": [],
+  "release_cycle": 5600
+ },
+ "run_pin_values": [],
+ "internal": [
+  {
+   "cycle": 5,
+   "signals": {
+    "core0.ir": {
+     "defined": true,
+     "xv": 0
+    },
+    "core1.ir": {
+     "defined": true,
+     "xv": 0
+    },
+    "u_pmem0.dr_r": {
+     "defined": true
+    },
+    "u_pmem1.dr_r": {
+     "defined": true
+    },
+    "u_dmem.dr_r": {
+     "defined": true
+    }
+   }
+  },
+  {
+   "cycle": 5602,
+   "signals": {
+    "core0.ir": {
+     "defined": true,
+     "xv": 0
+    },
+    "core1.ir": {
+     "defined": true,
+     "xv": 0
+    },
+    "u_pmem0.dr_r": {
+     "defined": true
+    },
+    "u_pmem1.dr_r": {
+     "defined": true
+    },
+    "u_dmem.dr_r": {
+     "defined": true
+    }
+   }
+  },
+  {
+   "cycle": 7162,
+   "signals": {
+    "core0.ir": {
+     "defined": true,
+     "xv": 0
+    },
+    "core1.ir": {
+     "defined": true,
+     "xv": 0
+    },
+    "u_pmem0.dr_r": {
+     "defined": true
+    },
+    "u_pmem1.dr_r": {
+     "defined": true
+    },
+    "u_dmem.dr_r": {
+     "defined": true
+    }
+   }
+  }
+ ],
+ "read_before_write": {
+  "reads": 319,
+  "writes": 47,
+  "unknown_accesses": 0,
+  "unwritten_reads": [
+   {
+    "cycle": 6,
+    "array": "u_dmem",
+    "word": 0,
+    "byte_addr": 0,
+    "unwritten_lanes": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "cycle": 5599,
+    "array": "u_dmem",
+    "word": 105,
+    "byte_addr": 420,
+    "unwritten_lanes": [
+     0,
+     1,
+     2,
+     3
+    ]
+   }
+  ]
+ },
+ "randomised": {
+  "leaves": 2627,
+  "leaf_bits": 3797,
+  "words": 1024,
+  "word_bits": 49152
+ }
+}

@@ -1,0 +1,107 @@
+{
+ "evidence_log": "code/tests/vendor_models/evidence/pytest_vendor_models_2026-11-19.log",
+ "models": {
+  "24lc256": {
+   "bench_overrides": {
+    "MemoryBlock_preload": "0xFF",
+    "tWC_ns": 200000
+   },
+   "commit": "6c2915428b897b596694419b428202e9b5273b80",
+   "license": "Microchip/Young Engineering notice, use with Microchip products only",
+   "path": "legacy-trunk/3rdparty/models/i2c_eeprom/24LC256.v",
+   "upstream": "https://github.com/azonenberg/antikernel"
+  },
+  "ps2_peer": {
+   "origin": "first-party, written from IBM PS/2 Hardware Interface Technical Reference"
+  },
+  "w25q128jv": {
+   "bench_overrides": {
+    "NUM_PAGES": 256,
+    "tPP_ns": 100000
+   },
+   "commit": "6cfed424e0426bb1156f718259d3ce2667b98a65",
+   "license": "Unlicense (public domain)",
+   "upstream": "https://github.com/lijiaxun-sgms/w25q128jvxim_v_sim"
+  }
+ },
+ "results": {
+  "i2c_eeprom": {
+   "cycles": 126570,
+   "passed": true,
+   "poll_nacks_observed": 1,
+   "program": "Score i2c controller, 300 kHz",
+   "readback": "ffffdeadbeef at 0x003e",
+   "sim_ns": 2109549,
+   "wall_seconds": 36.5
+  },
+  "ps2_assembly": {
+   "captured_bits": 40,
+   "cycles": 156924,
+   "frames": 3,
+   "passed": true,
+   "program": "assembly code/host2/examples/vendor/ps2_keyboard_rx.mas",
+   "wall_seconds": 43.3
+  },
+  "ps2_score": {
+   "captured_bits": 32,
+   "captured_bits_before_padding": 27,
+   "captured_bits_unpadded": 27,
+   "cycles": 159882,
+   "frames": 3,
+   "passed": true,
+   "program": "Score code/tests/vendor_models/ps2_keyboard.score (fixed rate)",
+   "wall_seconds": 46.1
+  },
+  "spi_flash": {
+   "cycles": 64062,
+   "jedec": "ef7018",
+   "passed": true,
+   "program": "Score spi_mode0 controller, 4 MHz",
+   "sim_ns": 1067907,
+   "wall_seconds": 46.5,
+   "wire_bytes": 65
+  },
+  "suite": {
+   "acceptance_recheck_seconds": 177.3,
+   "command": "python -m pytest code/tests/vendor_models -q",
+   "from": "clean sim_build directory",
+   "note": "wall_seconds is the run whose -s log is the evidence file; acceptance_recheck_seconds is a later clean-build run of the plain -q command",
+   "tests": 4,
+   "wall_seconds": 180.6
+  }
+ },
+ "run": {
+  "branch": "metronome-v4.0",
+  "date": "2026-11-19",
+  "head": "b7b40687cc26419bed64a25c467ed91be65f28a9",
+  "worktree_dirty_at_head": true
+ },
+ "source_sha256": {
+  "build/vendor/antikernel/models/i2c_eeprom/24LC256.v": "d403d5325b5625c4de8517881ad0ceff60fd80a42131c894beda871d470ad0a9",
+  "build/vendor/w25q128jv/W25Q128JVxIM.v": "625495dcd898c6042b3adfb8ed1de3c77a8d58acda532a15a67b1dc9ba02efcd",
+  "code/host2/examples/vendor/ps2_keyboard_rx.mas": "6cea5feaee1a2ba00bfcc8dc20ec43c2bf6cc1598f392a2b2e7d6fedd1668409",
+  "code/score/lib/i2c.score": "9552b6fa1f3556fa13325dad5a6fecf711b399178a5a0538c1afa19891235054",
+  "code/score/lib/spi_mode0.score": "18154001ed566dbfdf489f3e1a41a89a2212b9dcabeee6f0ceda2464d5b0874b",
+  "code/tests/vendor_models/MANIFEST.md": "49980fa1e8ab4935bda2e05580fe0b6bf2fcef39b20df1b8fb3f4a6f9031029c",
+  "code/tests/vendor_models/README.md": "02309d992f877f915d031c7e1bc06321dbb6535ff3900b8497639e4e3e5531c1",
+  "code/tests/vendor_models/eeprom_test.py": "14bec38c17bd06faf086d8fd701094ac6609af756d3b1f11e74e7d43b13be8dc",
+  "code/tests/vendor_models/fetch_vendor.py": "5244eea47dd266c38583ec63f6f6d6c84b432b950bb5f3bc818a5cc9d4287dd2",
+  "code/tests/vendor_models/flash_test.py": "96cd99cd71e80063b8891308a07ff9c048d3fc7a0959b162fc2dfaaf30f98976",
+  "code/tests/vendor_models/ps2_keyboard.score": "93b9203ee36715ef94c9c6f0cce31f5d6433c4f9b762c59455d2fd28bf368f5f",
+  "code/tests/vendor_models/ps2_keyboard_peer.v": "15d790d0616fcd4ecc6855190a975c5385d492db7cc10621ac71b1c3045a9483",
+  "code/tests/vendor_models/ps2_test.py": "eef2d24cfee4f2412bc58bb794665072cfe734ea43771879cf6c9710757ae53a",
+  "code/tests/vendor_models/repro_24lc256.v": "7583b4c9164d427b89dd19563ebea01eea0878da7e42710e67045fa86f27602b",
+  "code/tests/vendor_models/tb_i2c_eeprom.v": "a47b151ae59bfc2f2cbac136c7d74c5bc0b7dbd5811631f452a6db3b09c12551",
+  "code/tests/vendor_models/tb_ps2.v": "03455b5d0d4fd4c64d7f3a0faca4d80785771d378b434a0839ab6320c45a2d03",
+  "code/tests/vendor_models/tb_spi_flash.v": "00cdc6a8e6f1efd787eb27439a7ed6b7aed4bd494b11e6b57e08ff770b6dd7ec",
+  "code/tests/vendor_models/test_vendor_models.py": "5a1d26498cccd2ad5608a19bc5212c6b346094ec1f557a3990534bc5a7442f42",
+  "code/tests/vendor_models/vendor_common.py": "768bfa06644b19945c3a169c8ba6b216739ea63e33e2777b10a6a5b5b88b8c1b"
+ },
+ "tools": {
+  "cocotb": "2.1.0",
+  "iverilog": "Icarus Verilog version 14.0 (devel) (s20260301-638-ge072b3334-dirty)",
+  "os": "Windows 10.0.26200",
+  "pytest": "9.2.0",
+  "python": "3.12.10"
+ }
+}

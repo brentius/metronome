@@ -14,11 +14,12 @@ from transcribe.fw_stage1 import source
 
 
 @pytest.fixture
-def demo_image(tmp_path):
+def demo_image(tmp_path, request):
     host = Path(__file__).resolve().parents[2] / "host2"
     destination = tmp_path / "resident-uart.json"
+    flags = getattr(request, "param", ())
     result = subprocess.run(
-        [sys.executable, "-m", "transcribe", "demo-image", str(destination)],
+        [sys.executable, "-m", "transcribe", "demo-image", str(destination), *flags],
         cwd=host,
         capture_output=True,
         text=True,
@@ -36,6 +37,12 @@ def test_demo_image_exports_the_resident_uart_spi_load(demo_image):
     ]
     assert demo_image["clock_hz"] == 60_000_000
     assert [(entry["core"], len(entry["words"])) for entry in demo_image["program"]] == [(0, 243), (1, 233)]
+
+
+@pytest.mark.parametrize("demo_image", [("--reply", "0x42")], indirect=True)
+def test_demo_image_exports_fresh_reply(demo_image):
+    program = assemble_text(source(framing=True, transmit=True, reply=0x42))
+    assert image_writes(demo_image) == [(address, data) for address, data, _ in host_writes(program)]
 
 
 def test_documented_uart_burst_replays_from_nonzero_sram(demo_image):

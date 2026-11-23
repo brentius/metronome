@@ -1,0 +1,187 @@
+{
+ "scenario": "xinit_read_probe",
+ "mode": "x_probe",
+ "seed": 0,
+ "gate": false,
+ "cycles": 1347,
+ "mismatches": 0,
+ "first_mismatches": [],
+ "x_cycles": [
+  1308,
+  1309,
+  1310,
+  1311,
+  1312,
+  1313,
+  1314,
+  1315,
+  1316,
+  1317,
+  1318,
+  1319,
+  1320
+ ],
+ "x_detail": [
+  {
+   "cycle": 1308,
+   "got": [
+    null,
+    0,
+    0
+   ],
+   "ui": 1,
+   "uio": 0
+  },
+  {
+   "cycle": 1309,
+   "got": [
+    null,
+    0,
+    0
+   ],
+   "ui": 1,
+   "uio": 0
+  },
+  {
+   "cycle": 1310,
+   "got": [
+    null,
+    0,
+    0
+   ],
+   "ui": 1,
+   "uio": 0
+  },
+  {
+   "cycle": 1311,
+   "got": [
+    null,
+    0,
+    0
+   ],
+   "ui": 0,
+   "uio": 0
+  },
+  {
+   "cycle": 1312,
+   "got": [
+    null,
+    0,
+    0
+   ],
+   "ui": 0,
+   "uio": 0
+  }
+ ],
+ "reset_checks": [
+  {
+   "cycle": 5,
+   "state": {
+    "cfg": 0,
+    "run_g": 0,
+    "fl": 0,
+    "irqen": 0,
+    "inb": 0,
+    "outb": 0,
+    "misr": 0,
+    "dc": 0,
+    "o_out": 0,
+    "o_oe": 0
+   }
+  }
+ ],
+ "mid_randomised": null,
+ "pulse": null,
+ "pulse_edges": [],
+ "reset_latency": null,
+ "run_pin_values": [],
+ "internal": [
+  {
+   "cycle": 5,
+   "signals": {
+    "core0.ir": {
+     "defined": false,
+     "xv": 0
+    },
+    "core1.ir": {
+     "defined": false,
+     "xv": 0
+    },
+    "u_pmem0.dr_r": {
+     "defined": false
+    },
+    "u_pmem1.dr_r": {
+     "defined": false
+    },
+    "u_dmem.dr_r": {
+     "defined": false
+    }
+   }
+  },
+  {
+   "cycle": 1347,
+   "signals": {
+    "core0.ir": {
+     "defined": false,
+     "xv": 0
+    },
+    "core1.ir": {
+     "defined": false,
+     "xv": 0
+    },
+    "u_pmem0.dr_r": {
+     "defined": false
+    },
+    "u_pmem1.dr_r": {
+     "defined": false
+    },
+    "u_dmem.dr_r": {
+     "defined": false
+    }
+   }
+  }
+ ],
+ "read_before_write": {
+  "reads": 8,
+  "writes": 5,
+  "unknown_accesses": 0,
+  "unwritten_reads": [
+   {
+    "cycle": 6,
+    "array": "u_dmem",
+    "word": 0,
+    "byte_addr": 0,
+    "unwritten_lanes": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "cycle": 667,
+    "array": "u_dmem",
+    "word": 72,
+    "byte_addr": 288,
+    "unwritten_lanes": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "cycle": 1307,
+    "array": "u_dmem",
+    "word": 74,
+    "byte_addr": 296,
+    "unwritten_lanes": [
+     0,
+     1,
+     2,
+     3
+    ]
+   }
+  ]
+ },
+ "randomised": {}
+}

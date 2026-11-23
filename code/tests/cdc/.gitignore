@@ -1,0 +1,11 @@
+# Build products and scratch output. Evidence JSON/log/XML under results/ is kept; compiled simulator
+# artefacts are not.
+sim_build/
+build/
+__pycache__/
+.pytest_cache/
+*.vvp
+*.vcd
+*.fst
+*.o
+*.so

@@ -1,0 +1,193 @@
+{
+ "campaign": "Metronome reset and power-up verification (hardware-side item 3)",
+ "generated_utc": "2026-11-19T16:13:04Z",
+ "repository": {
+  "branch": "metronome-v4.0",
+  "head": "b7b40687cc26419bed64a25c467ed91be65f28a9",
+  "note": "uncommitted v3/v4 working tree; src/ unchanged by this campaign",
+  "src_files": [
+   "project.v",
+   "md2_host.v",
+   "md2_cfg_bank.v",
+   "cells_behav.v",
+   "md2_line.v",
+   "md2_thread.v",
+   "md2_core.v",
+   "md2_acc.v",
+   "md2_shifter.v",
+   "md2_counter.v",
+   "md2_lfsr.v",
+   "md2_mem.v",
+   "md2_stream.v",
+   "md2_pmem.v",
+   "md2_dmem.v",
+   "md2_sram_bb.v"
+  ],
+  "src_sha256": {
+   "project.v": "718c5ddfb236cc68fa722440221ceda093637eebd605697cf575a5421710409e",
+   "md2_host.v": "668dc4ac8d327299ba71070fa6085e04e8e155e6b1ac263e2229ba22ab9d2d24",
+   "md2_cfg_bank.v": "b0b467443cc84b75fdd12cfb8222c7739be31825afab537c2534091c107f7e80",
+   "cells_behav.v": "2264c1f532b206fe5b3a84c5c7dbd9cec257ab8b155ee66580c6108362aa73b0",
+   "md2_line.v": "8f3c5f962c5212d94ac354eaa1f9abf13996beea7a3a73f82d716565df4a8118",
+   "md2_thread.v": "f4601106481db20b4947c1e07121a835a099122cea463b6b92c5ab9a09486481",
+   "md2_core.v": "48a33e0dbb9e7dd49f1b9866304bae45cb78bbba06024e635260bfa981f0dad0",
+   "md2_acc.v": "05514e00a822da7b4b030544d9447f2fb768a004a4b9d0a588589f1ed26da28a",
+   "md2_shifter.v": "d579b097c8ccbf23e1e73041affe2c53c467ab8e40e72836d76b3f81f4b575e6",
+   "md2_counter.v": "dff0d1cee26764fb355f8a79b2e42bb7a3c9e51ab7d40c2ed48ecfcf30a69d79",
+   "md2_lfsr.v": "11b81b40a77fdb0cebc9d1cc2dd1b19fde413fbca89dce8b533828dbdfecad98",
+   "md2_mem.v": "32e0dfc54b9cbbc6b683801b4c1a37e3429dfa4963415181e0f4f27234076fca",
+   "md2_stream.v": "2923643a2c7a7a5d4139d248a032b5960af5d70fa1f94f7aa40a73c6e3ca0807",
+   "md2_pmem.v": "7644cc5be7514bab1326c7d75b64578001e5f215a53736520c2b3ab57132b976",
+   "md2_dmem.v": "5ee720c4bdcb28715f1c48817f60a997f1d2f397d78f56f4d0aad91d81ea3d6c",
+   "md2_sram_bb.v": "3c918cc85fbb15569fe6241b4349397960f25a1aac5f09dfe6bbf3a033957f92"
+  }
+ },
+ "tools": {
+  "python": "3.12.10",
+  "cocotb": "2.1.0",
+  "pytest": "9.2.0",
+  "iverilog": "Icarus Verilog version 14.0 (devel) (s20260301-638-ge072b3334-dirty)",
+  "yosys": "Yosys 0.70+190 (git sha1 485b63564, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)",
+  "host": "Windows, Git Bash / PowerShell, OSS CAD Suite 2026-10-22"
+ },
+ "clock": "16 ns period (60 MHz equivalent), Icarus timescale 1ns/1ps",
+ "suites": [
+  {
+   "id": "default",
+   "cwd": "repository root",
+   "command": "python -m pytest code/tests/xinit -q",
+   "env": {
+    "XINIT_RESULTS_DIR": "code/tests/xinit/evidence/20261119/default"
+   },
+   "pytest_result": "25 passed in 184.51s (0:03:04)",
+   "simulation_cases": 24,
+   "simulated_cycles": 201216,
+   "mismatching_cases": [],
+   "cases_with_x_on_pins": [],
+   "load_run_seeds": [
+    1,
+    2,
+    3
+   ],
+   "evidence": "code/tests/xinit/evidence/20261119/default/ (<stem>.json, <stem>.xml)"
+  },
+  {
+   "id": "heavy",
+   "cwd": "repository root",
+   "command": "python -m pytest code/tests/xinit -q",
+   "env": {
+    "XINIT_RESULTS_DIR": "code/tests/xinit/evidence/20261119/heavy",
+    "XINIT_SEEDS": "8",
+    "XINIT_LOCKSTEP_SEEDS": "2"
+   },
+   "pytest_result": "30 passed in 216.11s (0:03:36)",
+   "simulation_cases": 29,
+   "simulated_cycles": 229211,
+   "mismatching_cases": [],
+   "cases_with_x_on_pins": [],
+   "load_run_seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "evidence": "code/tests/xinit/evidence/20261119/heavy/ (<stem>.json, <stem>.xml)"
+  }
+ ],
+ "inventory": {
+  "artifact": "code/tests/xinit/inventory.json",
+  "sha256": "ddac4f9a31366105a00cadd99eecc706c6e9305a4dd8d60f169994dcab49f1d3",
+  "storage_paths": 2627,
+  "storage_paths_sha256": "a899f38b586d33995f77b8e983a8e8c92f107354e67dd11241a07fae89352393",
+  "deposit_bits": 3797,
+  "resettable_bits": 3191,
+  "nonreset_bits": 606,
+  "nonreset_sites": 9,
+  "sram_bits": 49152,
+  "cell_counts": {
+   "reset": 168,
+   "no_reset": 9,
+   "memory_cell": 4,
+   "memory_array": 2
+  }
+ },
+ "pulse_sweep": [
+  {
+   "width_ps": 1000,
+   "phase_ps": 1000,
+   "rst_q_low_edges": 1,
+   "reset_active_at_edge": [],
+   "mismatching_cycles": 0
+  },
+  {
+   "width_ps": 1000,
+   "phase_ps": 7500,
+   "rst_q_low_edges": 2,
+   "reset_active_at_edge": [
+    5599
+   ],
+   "mismatching_cycles": 0
+  },
+  {
+   "width_ps": 100,
+   "phase_ps": 1000,
+   "rst_q_low_edges": 1,
+   "reset_active_at_edge": [],
+   "mismatching_cycles": 0
+  },
+  {
+   "width_ps": 10,
+   "phase_ps": 1000,
+   "rst_q_low_edges": 1,
+   "reset_active_at_edge": [],
+   "mismatching_cycles": 0
+  },
+  {
+   "width_ps": 16000,
+   "phase_ps": 1000,
+   "rst_q_low_edges": 2,
+   "reset_active_at_edge": [
+    5599
+   ],
+   "mismatching_cycles": 0
+  },
+  {
+   "width_ps": 1,
+   "phase_ps": 1000,
+   "rst_q_low_edges": 1,
+   "reset_active_at_edge": [],
+   "mismatching_cycles": 0
+  },
+  {
+   "width_ps": 1,
+   "phase_ps": 10000,
+   "rst_q_low_edges": 1,
+   "reset_active_at_edge": [],
+   "mismatching_cycles": 0
+  },
+  {
+   "width_ps": 4000,
+   "phase_ps": 1000,
+   "rst_q_low_edges": 1,
+   "reset_active_at_edge": [],
+   "mismatching_cycles": 0
+  }
+ ],
+ "host_contract_storage_bits": {
+  "program_sram": 32768,
+  "data_sram": 16384,
+  "reset_cleared_storage": 3191,
+  "non_reset_self_initialising_flops_and_latches": 606
+ },
+ "gate_level": {
+  "status": "not run",
+  "reason": "no routed v4 netlist available locally; no pod started",
+  "runner": "code/tests/xinit/run_gate.sh NETLIST.NL.V OUTDIR",
+  "syntax_check": "bash -n passes; missing-netlist argument check exits 2",
+  "smoke": "v1 template netlist compiled; the three SRAM models report 512+256+256 words filled"
+ }
+}

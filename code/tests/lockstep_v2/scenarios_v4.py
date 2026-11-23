@@ -1,8 +1,11 @@
 """Exercise the v4 paths through the chip's SPI host link and pins."""
+import binascii
+import os
 import sys
 from pathlib import Path
 
 from scenarios import HM, I, Scn, lut, reg_addr
+from check_uart_peer import TRAINING
 
 
 def address_for(address):
@@ -120,26 +123,37 @@ def stage1():
     return s
 
 
-def stage2():
-    """Infer UART framing and transmit complete words using the learned beat."""
+def stage2(reply=None):
+    """Infer UART framing and transmit complete training frames or a fresh byte."""
     sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "host2"))
     from metronome2_tools.asm import assemble_text
     from metronome2_tools.image import host_writes
     from transcribe.fw_stage1 import FRAME_RES, RES, source
 
-    s = Scn("v4_stage2")
+    s = Scn("v4_stage2" if reply is None else "v4_uart_reply")
     pin, bit_period = 5, 24
-    payload = (0xA5, 0x5C, 0x38, 0xE7, 0x13, 0xF4, 0x89, 0x27) * 4
-    frames = [[0] + [(word >> bit) & 1 for bit in range(8)] + [1] for word in payload]
+    payload = TRAINING
+    def frame(word):
+        return [0] + [(word >> bit) & 1 for bit in range(8)] + [1]
+
     s.uio = 1 << pin
     s.reset()
-    for address, data, _ in host_writes(assemble_text(source(pin, framing=True, transmit=True))):
+    for address, data, _ in host_writes(assemble_text(source(pin, framing=True, transmit=True, reply=reply))):
         s.write(address, data)
     s.idle(100)
-    for frame in frames:
-        for level in frame:
+    training_file = os.environ.get("LOCKSTEP_UART_TRAINING") if reply is not None else None
+    if training_file:
+        training = Path(training_file).read_bytes()
+        if set(training) != {0, 1}:
+            raise ValueError("training trace must contain byte values 0 and 1")
+        for level in training:
             s.uio = level << pin
-            s.idle(bit_period)
+            s.idle(1)
+    else:
+        for word in payload:
+            for level in frame(word):
+                s.uio = level << pin
+                s.idle(bit_period)
 
     tx = []
 
@@ -153,17 +167,24 @@ def stage2():
     s.read(HM["CTRL_BASE"], 9)
 
     def check(model):
-        assert tuple(model.mem.data[RES:RES+4]) == (1, 1, 0, 3)
+        result = model.mem.data[RES:RES+4]
+        assert tuple(result[:2]) == (1, 1)
+        learned_period = int.from_bytes(result[2:], "little")
+        # The peer inserts a two-cycle inter-frame gap, so the mean of the
+        # captured intervals can differ slightly from its programmed period.
+        nominal_period = bit_period * 32
+        assert abs(learned_period - nominal_period) <= (nominal_period // 100 if training_file else 0)
         status, width, parity, count, stops = model.mem.data[FRAME_RES:FRAME_RES+5]
         assert (status, width, parity, stops) == (1, 8, 0, 1)
-        assert 4 <= count < len(frames)
+        assert 4 <= count < len(payload)
         assert model.host.OUTV and model.host.OUTB == 1
         assert not any(stream.STARVED for stream in model.mem.streams)
         assert not any(thread.LATE or thread.OVR for thread in model.threads)
         assert not (model.ctrl.CWOVR or model.ctrl.CONFLICT or model.ctrl.MEMHAZ or model.contract_violations)
         idle = tx.index(1)
         start = tx.index(0, idle + 1)
-        expected = [level for frame in frames[:count] for level in frame]
+        words = payload[:count] if reply is None else (reply,)
+        expected = [level for word in words for level in frame(word)]
         assert tx[start + bit_period // 2:start + bit_period * len(expected):bit_period] == expected
         assert set(tx[start + bit_period * len(expected):]) == {1}
 
@@ -171,4 +192,55 @@ def stage2():
     return s
 
 
-DIRECTED_V4 = {"v4_config_write": config_write, "v4_replay": replay, "v4_stage1": stage1, "v4_stage2": stage2}
+def crc_reply():
+    """Load decoded codewords over SPI, then check the new reply on O8."""
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "host2"))
+    from metronome2_tools.asm import assemble_text
+    from metronome2_tools.image import host_writes
+    from transcribe.fw_crc import CLOCKS_PER_BIT, REPLY, source
+
+    def codeword(data):
+        return data + binascii.crc_hqx(data, 0xFFFF).to_bytes(2, "big")
+
+    s = Scn("v4_crc_reply")
+    s.reset()
+    reply = b"new!"
+    frames = [codeword(data) for data in (b"test", b"tset", b"mock")]
+    expected = codeword(reply)
+    for address, data, _ in host_writes(assemble_text(source(frames, reply))):
+        s.write(address, data)
+
+    tx = []
+
+    def observe(_tick, outputs):
+        tx.append((outputs[0] >> 2) & 1)
+        return 0
+
+    s.uio = observe
+    s.idle(13_000)
+    s.read(HM["DATA_BASE"] + REPLY, len(expected))
+    s.read(HM["CTRL_BASE"], 9)
+
+    def check(model):
+        assert model.host.OUTV and model.host.OUTB == 2
+        assert bytes(model.mem.data[REPLY:REPLY + len(expected)]) == expected
+        assert not any(thread.LATE or thread.OVR for thread in model.threads)
+        assert not (model.ctrl.CWOVR or model.ctrl.CONFLICT or model.ctrl.MEMHAZ or model.contract_violations)
+        cursor = tx.index(1) + 1
+        for byte in expected:
+            start = tx.index(0, cursor)
+            center = start + CLOCKS_PER_BIT // 2
+            stop = center + 9 * CLOCKS_PER_BIT
+            expected_bits = [0] + [(byte >> bit) & 1 for bit in range(8)] + [1]
+            assert tx[center:stop + 1:CLOCKS_PER_BIT] == expected_bits
+            cursor = stop + 1
+        assert set(tx[cursor:]) == {1}
+
+    s.check = check
+    return s
+
+
+DIRECTED_V4 = {
+    "v4_config_write": config_write, "v4_replay": replay, "v4_stage1": stage1,
+    "v4_stage2": stage2, "v4_uart_reply": lambda: stage2(reply=0x42), "v4_crc_reply": crc_reply,
+}

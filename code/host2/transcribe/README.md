@@ -120,6 +120,17 @@ Read the rate details only after rate status 1 and the framing details only
 after framing status 1. The framing status itself is valid after rate status 1.
 Convert a successful bit period to baud as `60_000_000 * 32 / (low | high << 8)`.
 
+### Encode a fresh byte
+
+Run `python -m transcribe demo-image resident-uart-reply.json --reply 0x42`
+and follow the same load and training procedure. The training packet listed
+above excludes `0x42`. Expect one frame containing `0x42` on O8, with the
+rate, polarity, data width, parity and stop interval derived on chip. Each
+image contains one byte selected at build time. If the detected width is
+9 bits, the ninth data bit is zero. If the byte is too wide for the detected
+format, `HOST.OUT` reports 5 and the transmitter stays off. The reply image
+uses 243 and 242 words on the two cores.
+
 ### Evidence
 
 The cycle-model test independently
@@ -136,3 +147,29 @@ Codec). Model level only; nothing here is measured on hardware. Tests: `python -
 Known compiler gap (scorec, not this tool): a score with a `parity` field, or idle-low with `invert`, already
 misbehaves when compiled directly, so those round trips are checked for equivalence with the hidden score compiled
 directly rather than for exact bytes.
+
+### On-chip CRC check and reply
+
+`crc-image` loads three decoded training frames and a new payload into data
+SRAM. Supply one hex frame per line, including the check field. Use three
+distinct frames with the same payload length as the reply, from 1 to 32 bytes.
+The frame length and reply length give the check field length.
+
+```sh
+cd code/host2
+python -m transcribe crc-image frames.txt crc-demo.json --reply-hex 6e657721
+```
+
+After loading the image over SPI, core 0 computes the residue of each training
+frame. The candidates are CRC-8/SMBUS for a one-byte check field, and
+CRC-16/CCITT-FALSE (big-endian) and CRC-16/ARC (little-endian) for two bytes.
+With a unique match, the firmware appends a newly computed check field to the
+reply at RAM offset `0x100`, sends the reply on O8 (`uo[2]`) at 500 kbaud 8N1
+with the 60 MHz clock, then sets the host mailbox. `HOST.OUT` is a bit mask
+with bits 0, 1 and 2 for the three profiles in that order. Zero or multiple
+matches leave O8 idle after configuration and report the mask in the mailbox.
+
+The prototype takes decoded bytes and uses a fixed profile catalogue. The
+model tests check all three profiles against independent CRC calculations,
+check the UART output byte for byte, and exercise corrupt and ambiguous
+training sets.

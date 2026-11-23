@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "findings": [],
+  "notes": [],
+  "sections": {
+    "audit": [
+      "cell types classified: 58 distinct, none unknown",
+      "24 modules elaborate; source list from rtl_sources.py, defines COCOTB_SIM/FUNCTIONAL/SIM/USE_IHP_SRAM (19 files)"
+    ],
+    "RAW_FANOUT": [
+      "s1 has a reset [77] (synchronous reset through rst_q; not the raw pin)",
+      "all 16 raw input bits (uio_in[7:0], ui_in[7:0]) drive only the $sdff $auto$ff.cc:337:slice$14145 D inputs, in order s1[k]=raw[k] (raw = {ui_in, uio_in})"
+    ],
+    "SYNC_CHAIN": [
+      "s1 -> s2: 16 bits, bit-to-bit",
+      "s2 -> sp: 16 bits, bit-to-bit; 16 other loads allowed",
+      "sp (third stage) has 14 loads"
+    ],
+    "RSTN_FANOUT": [
+      "rst_n reaches exactly 2 pins: rst_m.ARST (active low, $procdff$13955), rst_q.ARST (active low, $procdff$13960); no combinational cell, latch, data pin or output port",
+      "config latches (cfg_dlhrq_beh async clear) are cleared by the synchronised rise-through of rst_q, not by the raw pin (see RESET_NETS)"
+    ],
+    "RESET_NETS": [
+      "tt_um_brentius_metronome.rst_q: 1x reset_port $paramod$105d233105514fa780d1c4f258a21522e395953f\\md2_cfg_cells, 1x reset_port $paramod$445378f378ebce8979ca0263f1f0419adee9ad48\\md2_core, 1x reset_port $paramod$6016c97fed7761b543397da3494a09b0c1ad67fd\\md2_core, 1x reset_port $paramod\\md2_acc\\NR=s32'00000000000000000000000000000100, 4x reset_port $paramod\\md2_line\\CFGW=s32'00000000000000000000000100000000, 1x reset_port $paramod\\md2_stream\\CAP=s32'00000000000000000000000000000000, 1x reset_port $paramod\\md2_stream\\CAP=s32'00000000000000000000000000000001, 1x reset_port md2_cfg_arb, 1x reset_port md2_cfg_stage, 3x reset_port md2_counter, 1x reset_port md2_host, 2x reset_port md2_lfsr, 1x reset_port md2_mem, 2x reset_port md2_shifter, 6x reset_port md2_thread, 10x sync_reset $sdff, active low, 2x sync_reset $sdffe, active high, 45x sync_reset $sdffe, active low; via 3 comb cell(s)",
+      "$paramod$105d233105514fa780d1c4f258a21522e395953f\\md2_cfg_cells.rst_s: 2112x async_clear cfg_dlhrq_beh",
+      "$paramod$445378f378ebce8979ca0263f1f0419adee9ad48\\md2_core.rst_n: 6x sync_reset $sdffe, active low",
+      "$paramod$6016c97fed7761b543397da3494a09b0c1ad67fd\\md2_core.rst_n: 6x sync_reset $sdffe, active low",
+      "$paramod\\md2_acc\\NR=s32'00000000000000000000000000000100.rst_n: 8x sync_reset $sdffe, active low",
+      "$paramod\\md2_line\\CFGW=s32'00000000000000000000000100000000.rst_n: 8x sync_reset $sdff, active low, 1x sync_reset $sdffe, active high, 6x sync_reset $sdffe, active low; via 2 comb cell(s)",
+      "$paramod\\md2_stream\\CAP=s32'00000000000000000000000000000000.rst_n: 1x sync_reset $sdff, active low, 8x sync_reset $sdffe, active high, 3x sync_reset $sdffe, active low; via 2 comb cell(s)",
+      "$paramod\\md2_stream\\CAP=s32'00000000000000000000000000000001.rst_n: 3x sync_reset $sdff, active low, 9x sync_reset $sdffe, active high, 2x sync_reset $sdffe, active low; via 2 comb cell(s)",
+      "cfg_dlhrq_beh.RESET_B: 1x async_reset $adlatch, active low",
+      "md2_cfg_arb.rst_s: 1x sync_reset $sdff, active low",
+      "md2_cfg_stage.rst_s: 1x async_reset $adff, active low, 1x observe-only $print; via 3 comb cell(s)",
+      "md2_counter.rst_n: 2x sync_reset $sdffe, active low",
+      "md2_host.rst_n: 3x sync_reset $sdff, active high, 3x sync_reset $sdff, active low, 2x sync_reset $sdffe, active high, 3x sync_reset $sdffe, active low; via 4 comb cell(s)",
+      "md2_lfsr.rst_n: 4x sync_reset $sdffe, active low",
+      "md2_mem.rst_n: 2x sync_reset $sdff, active low, 2x sync_reset $sdffe, active high, 13x sync_reset $sdffe, active low; via 3 comb cell(s)",
+      "md2_shifter.rst_n: 4x sync_reset $sdffe, active low",
+      "md2_thread.rst_n: 2x sync_reset $sdff, active low, 2x sync_reset $sdffe, active high, 3x sync_reset $sdffe, active low; via 3 comb cell(s)"
+    ],
+    "NO_RAW_COMB_PATH": [
+      "ui_in, uio_in, rst_n and ena have no combinational path to uo_out/uio_out/uio_oe and reach no transparent latch"
+    ]
+  }
+}

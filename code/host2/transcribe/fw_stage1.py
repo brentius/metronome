@@ -9,7 +9,9 @@ with none/even/odd parity. It takes the first shortest candidate with at least
 four complete valid frames and measures the minimum stop interval between frames.
 Every interior run must quantise to 1–15 bits. With `transmit`, line 0 and S1
 send the quantised bits through the last validated stop bit on O8 at the learned
-rate. This mode needs at least 16 clocks per bit. `replay_capture` uses S0's raw
+rate. With `reply`, the transmitter instead frames a byte set at image build
+time using the learned format and polarity. Transmission needs at least
+16 clocks per bit. `replay_capture` uses S0's raw
 edge timing as an alternative to quantisation and framing.
 
 All values are in 1/32 cycle: a record's bytes 1..3 with byte 1 masked to bits 7:5 are DC << 5 (`R`), so no shifts are
@@ -32,7 +34,8 @@ mode, F5 quantise mode.
 Result block at RES (0x710): status (1 ok, 2 bit time too long, 3 no consistent bit time), idle, TU lo, TU hi, used,
 mult. Framing appends its result at FRAME_RES. HOST.OUT reports completion:
 the stage 1 status if bit-time inference failed, otherwise the framing status,
-or 4 if framing passed and the bit time was too short for transmission.
+4 if framing passed and the bit time was too short for transmission, or 5
+if the reply does not fit the learned data width.
 """
 from __future__ import annotations
 
@@ -45,13 +48,15 @@ S1_CONFIG = 0x20D8
 
 
 def source(pin: int = 5, nrec: int = 64, *, replay_capture: bool = False, framing: bool = False,
-           transmit: bool = False) -> str:
+           transmit: bool = False, reply: int | None = None) -> str:
     if not 0 <= pin < 13:
         raise ValueError("capture pin must be P0 through P12")
     if framing and (replay_capture or not 8 <= nrec <= 64):
         raise ValueError("framing requires 8–64 records and exclusive use of the capture")
     if transmit and not framing:
         raise ValueError("transmission requires a framing check")
+    if reply is not None and (not transmit or not isinstance(reply, int) or not 0 <= reply <= 255):
+        raise ValueError("reply requires transmission and a byte value")
     runs = nrec - 1
     need = -(-9 * runs // 10)                      # used * 10 >= 9 * runs
     L = []
@@ -492,11 +497,11 @@ def source(pin: int = 5, nrec: int = 64, *, replay_capture: bool = False, framin
     i("#6 -> FLAGS.CLR")
     i("pause goto qsrv")
     if framing:
-        _append_framing(i, lab, p0_at, wait_rdy, transmit)
+        _append_framing(i, lab, p0_at, wait_rdy, transmit, reply)
     return "\n".join(hdr + L) + "\n"
 
 
-def _append_framing(i, lab, p0_at, wait_rdy, transmit):
+def _append_framing(i, lab, p0_at, wait_rdy, transmit, reply):
     """Pack bit runs into S1, then test framing candidates on core 1.
 
     F4 alternates the logical run level, starting with the active level (0).
@@ -569,7 +574,7 @@ def _append_framing(i, lab, p0_at, wait_rdy, transmit):
     i("LF1.B2 -> ACC.LD")
     i("goto fs_next ifnot ACC.Z")
     lab("fs_good")
-    if transmit:
+    if transmit and reply is None:
         # The transmitter stops one bit beyond the last validated stop sample.
         i("CNT0.LO -> CNT2.LO")
         i("CNT0.HI -> CNT2.HI")
@@ -631,6 +636,9 @@ def _append_framing(i, lab, p0_at, wait_rdy, transmit):
         i("ZERO -> L.DBIT, #4 -> FLAGS.CLR")
         i("when ACC.Z ! #1 -> L.DBIT")
         i("when ACC.Z ! #4 -> FLAGS.SET")
+        if reply is not None:
+            _append_reply(i, lab, reply)
+            return
         i(f"#{S1_CONFIG & 0xff} -> CW.AL")
         i(f"#{S1_CONFIG >> 8} -> CW.AH")
         i("ZERO -> CW.D")
@@ -655,6 +663,52 @@ def _append_framing(i, lab, p0_at, wait_rdy, transmit):
         i("ACC -> L.DBIT, ZERO -> S1.ADV, ZERO -> CNT0.DEC   pause goto tx_sample")
         lab("tx_done")
         i("R2 -> HOST.OUT, ZERO -> L0.CTL, ZERO -> T.STOP   pause goto tx_sample")
+
+
+def _append_reply(i, lab, reply):
+    """Emit one new frame using R1 (width), R0 (parity), F4 (idle) and LF1.B1 (stop interval)."""
+    i("R1 -> ACC.LD")
+    i(f"#{reply.bit_length()} -> ACC.CMP")
+    i("goto tx_too_wide ifnot ACC.C")
+    # Count data separately from the shifter so a 9-bit frame gets a zero ninth bit.
+    i("ZERO -> SH0.CFG, R1 -> CNT1.LO, R0 -> ACC.LD")
+    i(f"#{reply} -> SH0.LD, ZERO -> CNT1.HI, ZERO -> CNT0.HI")
+    i("#1 -> ACC.AND, LF1.B1 -> CNT0.LO")
+    i("#1 -> ACC.XOR")
+    i("ACC -> LF1.B2")
+    i("#1 -> L0.CTL")
+    i("ZERO -> T.STOP   pause goto qsrv")
+    lab("tx_fast")
+    i("#4 -> R2")
+    i("goto fs_stop_thread")
+    lab("tx_too_wide")
+    i("#5 -> R2")
+    i("goto fs_stop_thread")
+
+    lab("tx_sample")
+    i("when F4 ! #1 -> L.DBIT, ? ZERO -> L.DBIT")
+    i("pause goto tx_data")
+    lab("tx_data")
+    i("LF1.B2 -> ACC.LD, goto tx_end_data if CNT1.Z")
+    i("when SH0.OUT ? #1 -> ACC.XOR")
+    i("ACC -> LF1.B2, SH0.O -> R3, ZERO -> SH0.SH")
+    i("R3 -> ACC.LD")
+    i("when F4 ! #1 -> ACC.XOR")
+    i("ACC -> L.DBIT, ZERO -> CNT1.DEC   pause goto tx_data")
+    lab("tx_end_data")
+    i("R0 -> ACC.LD")
+    i("goto tx_stop if ACC.Z")
+    i("LF1.B2 -> ACC.LD")
+    i("when F4 ! #1 -> ACC.XOR")
+    i("ACC -> L.DBIT   pause goto tx_stop")
+    lab("tx_stop")
+    i("when F4 ! ZERO -> L.DBIT, ? #1 -> L.DBIT")
+    i("pause goto tx_hold_stop")
+    lab("tx_hold_stop")
+    i("goto tx_done if CNT0.Z")
+    i("ZERO -> CNT0.DEC   pause goto tx_hold_stop")
+    lab("tx_done")
+    i("R2 -> HOST.OUT, ZERO -> L0.CTL, ZERO -> T.STOP   pause goto tx_sample")
 
 
 def count_insns(text: str) -> dict:

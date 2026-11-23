@@ -77,3 +77,19 @@ The evidence is model-level only: v2 cycle model plus the reference codec. These
 
 - **Listener projection** (`scorec/listener.py`, `spi_listener.py`; `compile_listener(src, "tx=P5")`). An input-only role projected from the same score: it binds input pins only (output pins are refused with `E-BIND`), has no `.out` block, and drives nothing (tests check every output-enable is 0 and the dedicated outputs never move). Frame protocols (UART, Ethernet receive) reuse the receive template with per-terminal violation flags; SPI mode 0 is a chip-select framed observer of both data wires. Each frame or transaction appends one record to a log in data RAM (record layout, ruler timestamp and status bits are in the `listener.py` docstring and in `compiled.host["listener"]`); `ListenerDecoder` decodes it into violations with the grammar terminal, its beat in the frame and a ruler tick timestamp (+-1 tick). Violations: framing (last terminal, or an SPI transaction ending inside a byte), grammar (earlier terminal), CRC, constant mismatch. Gaps: I2C bus monitor (refused with `E-UNSUPPORTED`), `arbitrate`/lost-arbitration fall-back (the compiler has no `arbitrate`), a timing-window violation code (edges outside the re-alignment window are ignored, not flagged), SPI clock activity while deselected, log holds 341 (UART) or 204 (SPI) records and then stops logging.
 - **Autobaud, plan B** (`scorec/autobaud.py`, `code/host2/autobaud/lin_autobaud.py`; `compile_score(..., autobaud={})`). SPEC_V2 gives no move destination for a line's INC/MOD/taps/PRE, so a program cannot retime itself. The chip logs the six falling-edge intervals of a LIN break and 0x55 sync field; the host computes the bit time and rewrites line 0's divider and ARM bit. Tests: `code/tests/scorec/test_autobaud.py`; sweep record `data/processed/v3_autobaud/lin_sweep_115200.json`.
+
+### Fixed-rate 8N1 receive envelope
+
+`scorec.envelope.uart8n1_envelope(compiled)` computes the receive sample
+cycles and a sender rate-error interval from the compiled line divider,
+preset, sample tap, and static scheduler latency bound. The calculation
+includes a one-cycle quantization and synchronization margin. Supply
+`jitter_cycles` for additional edge displacement and `idle_bits` for a
+guaranteed additional gap. Use `envelope.require(Fraction(4, 100))` to
+check a required symmetric rate tolerance.
+
+For the 1 Mbaud, 60 MHz test receiver with a 50% sample tap and contiguous
+frames, the calculated interval is −4.594% to +4.348%, with open endpoints.
+Every archived model sweep point inside the calculated intervals passed at
+each of the seven tested tap positions. The calculation covers the fixed-rate
+single-thread 8N1 template under the model's digital pin assumptions.

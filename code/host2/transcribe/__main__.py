@@ -1,6 +1,7 @@
 """CLI.  python -m transcribe trace TRACE.txt [--fs 60e6] [-o out.score]
         python -m transcribe crc FRAMES.txt [--len W]
-        python -m transcribe demo-image IMAGE.json
+        python -m transcribe demo-image IMAGE.json [--reply BYTE]
+        python -m transcribe crc-image FRAMES.txt IMAGE.json --reply-hex HEX
 TRACE.txt: a string of 0/1 characters (whitespace ignored), one per sample. FRAMES.txt: one hex frame per line."""
 import argparse
 import sys
@@ -21,6 +22,12 @@ def main(argv=None):
     c.add_argument("--len", type=int, default=None)
     demo = sub.add_parser("demo-image", help="export the resident Metronome v4 UART demo image")
     demo.add_argument("file", metavar="IMAGE.json")
+    demo.add_argument("--reply", type=lambda value: int(value, 0), metavar="BYTE",
+                      help="encode this byte in the learned format (decimal or 0x-prefixed)")
+    crc_demo = sub.add_parser("crc-image", help="export the on-chip CRC check and reply demo")
+    crc_demo.add_argument("frames", metavar="FRAMES.txt")
+    crc_demo.add_argument("file", metavar="IMAGE.json")
+    crc_demo.add_argument("--reply-hex", type=bytes.fromhex, required=True)
     a = ap.parse_args(argv)
     if a.cmd == "demo-image":
         from metronome2_tools.asm import assemble_text
@@ -28,10 +35,26 @@ def main(argv=None):
 
         from .fw_stage1 import source
 
-        program = assemble_text(source(framing=True, transmit=True), name="resident UART demo")
         try:
+            program = assemble_text(source(framing=True, transmit=True, reply=a.reply), name="resident UART demo")
             write_image(build_image(program), a.file)
-        except OSError as e:
+        except (OSError, ValueError) as e:
+            ap.error(str(e))
+        return 0
+    if a.cmd == "crc-image":
+        from pathlib import Path
+
+        from metronome2_tools.asm import assemble_text
+        from metronome2_tools.image import build_image, write_image
+
+        from .fw_crc import source
+
+        try:
+            lines = Path(a.frames).read_text(encoding="utf-8").splitlines()
+            frames = [bytes.fromhex(line) for line in lines if line.strip()]
+            program = assemble_text(source(frames, a.reply_hex), name="CRC identification demo")
+            write_image(build_image(program), a.file)
+        except (OSError, ValueError) as e:
             ap.error(str(e))
         return 0
     if a.cmd == "trace":
