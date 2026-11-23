@@ -164,7 +164,7 @@ Bridges (cut $\to$ machine) & \code{Metronome/Bridge/} & 12 & 16\,388 \\
 Chip composition and relation & \code{Metronome/ChipCut/} & 6 & 3\,162 \\
 Premise discharge and assembly & \code{Metronome/ChipCut/Discharge/} & 20 & 22\,623 \\
 \midrule
-Extraction, checkers, coverage (Python) & \code{code/tests/lean/*.py} & 19 & 18\,095 \\
+Extraction, checkers, coverage (Python) & \code{lean/*.py} & 19 & 18\,095 \\
 \bottomrule
 \end{tabular}
 \caption{Size of the development (Lean 4.35.0, core libraries only, no Mathlib).}
@@ -286,6 +286,132 @@ is expected fails the build. The project builds with
 
 %======================================================================
 \section{The specification side}
+
+\subsection{SPEC\_V2: what is being specified}
+\label{sec:specv2}
+
+\code{wiki/SPEC\_V2.md} (``part B: the machine'') is the normative description
+of the chip's behaviour. The RTL, the Python cycle model and the assembler
+implement it, and part~A, the score language, compiles onto it. It is written as
+a synchronous machine: every rule has the form ``in cycle $t$, from the register
+values of cycle $t$, the configuration and the raw pins, register $X$ takes the
+value $X'$ at the end of the cycle''. That shape is what makes a direct
+transcription into a total Lean function \lean{Machine.step} possible.
+
+\paragraph{Conventions (section 1).} There is one clock. A value ``at cycle
+$t$'' is the register value during cycle $t$, and $X'$ is its value in cycle
+$t+1$. Every combinational quantity is a function of registers, configuration and
+raw pins. The reset input is released synchronously through two flops, and while
+the internal reset is low every register is~0. \emph{Configuration} is the
+host-written state that programs cannot write (2,084 bits in v2, held in
+resettable latches). A configuration byte written in cycle $W$ is seen from
+$W+2$, and two configuration writes must not occur in consecutive cycles. These
+last two rules are exactly the ones the latch-bank and arbiter cuts of
+Section~\ref{sec:cuts} prove.
+
+\paragraph{The machine in one table.}
+\begin{table}[!ht]
+\centering\small
+\begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}X@{}}
+\toprule
+Spec section & Content \\
+\midrule
+2 Pins & Thirteen inputs, each through a two-flop synchroniser; level, rise and
+  fall are derived from the synchronised copy and its delayed copy. Fourteen
+  output pins, each driven from a register. The SPI host link shares the pin
+  set. \\
+3 Lines (4) & A beat generator (phase counter with increment, modulus, three
+  taps and a re-alignment window), the input pins it samples, a 32-entry input
+  symbol table, and the staged and committed output symbol. Modes: generated,
+  edge-started, recovered and follower. Includes the \emph{hold} (clock
+  stretching), the fired-tap bits and the sticky \code{TAPMISS}. \\
+4 Threads (6) & Each thread is bound to a line and a core, has a trigger
+  (a line beat or tap, a flag, a pin edge, the host doorbell), a program
+  counter and two watcher handlers. Sticky \code{LATE} and \code{OVR} record a
+  late symbol write and a dropped trigger. \\
+5 Cores (2) & A three-stage pipeline (fetch, read, execute) over a
+  $256\times64$ program memory with a synchronous read. Round-robin dispatch of
+  ready threads, one instruction per cycle, with exact timing consequences:
+  first instruction at $t+3$, one idle cycle per taken jump. \\
+6 Moves & Each instruction carries several guarded moves. All moves of both
+  cores read at the start of the cycle and write at its end. Destinations are
+  partitioned into \emph{write groups}, and two writes to one group set the
+  sticky \code{CONFLICT}, with the lowest (core, move) index winning. Units:
+  flags, accumulator, shifters, counters, LFSR/CRC, a pointer. A 2\,KB data RAM
+  has a fixed-priority arbiter (S0, S1, P0, host) and two byte streams. \\
+7 Guards & A 6-bit guard index for moves (64 conditions) and a 5-bit jump condition
+  that selects one of 32 of those guards. \\
+8 Output pins & Per pin, a 5-input table indexed by the committed symbol bits and
+  the taps fired so far, giving the pin level and its output enable. \\
+9 Host link & SPI mode~0 target with a 16-bit address, byte-exact timing of the
+  write and read strobes, and a register map with sticky and
+  write-1-to-clear flags. \\
+9a Edge cases & Thirteen numbered resolutions of cases the earlier sections
+  leave open (unused encodings, request overwrite, tap counting, stream mode
+  change). \\
+10 Timing contract & What a program may rely on: stability of inputs, commit
+  time of outputs, which sticky flag reports which violation. \\
+\bottomrule
+\end{tabularx}
+\caption{Structure of SPEC\_V2 part B.}
+\end{table}
+
+\paragraph{Style of a rule.} The beat generator (section 3.2) is typical. In
+cycle $t$, with \code{PH} the phase:
+\begin{lstlisting}[language={}]
+inwin  = (WLO <= WHI) ? (WLO <= PH && PH <= WHI) : (PH >= WLO || PH <= WHI)
+start  = edge && ARM && !RUN
+accept = edge && RUN && REN && (!WEN || inwin)
+adv    = RUN && !accept && !hold
+n      = PH + INC (17 bits);   nx = (n >= MOD) ? n - MOD : n
+wrap   = adv && (n >= MOD)
+BEAT   = FOLLOW ? accept : wrap
+PH'    = (start || accept) ? PRE : (adv ? nx : PH)
+\end{lstlisting}
+There is no hidden state and no event ordering, only a priority among
+simultaneous effects, which the text states: host writes beat moves, which beat
+the generator, and an accepted edge re-aligns the phase instead of advancing it.
+Where several units interact, the spec says which one wins (the arbiter priority,
+write-group conflicts, the ``host write wins'' rule). Those priorities are what
+the bridges of Section~\ref{sec:discharge} spend most of their effort on.
+
+\paragraph{Layered additions.} Sections 12 and 13 extend the machine in two
+steps, and every addition is off after reset. With the new registers at their
+reset values the machine is cycle-identical to sections 1 to 10, which lets
+earlier clauses and tests stay valid.
+\begin{itemize}
+\item \textbf{v3 (section 12).} Live input pins on the output tables
+  (wired-AND read-back, I2C arbitration); a 32-bit multiple-input signature
+  register over the output pins; \emph{freeze} and single-cycle \emph{step} with
+  readback of the accumulator, flags and core state; and edge capture into
+  stream~S0 (19-bit interval counter and a 13-bit pin mask, one 32-bit record
+  per edge event). The freeze clause is the most delicate. A frozen cycle stops
+  cores, lines, triggers, streams and the configuration-write queue, but not the
+  synchronisers, the host link or host writes, and it has an explicit
+  \emph{landing exception} for a RAM read served in the last unfrozen cycle.
+\item \textbf{v4 (section 13).} Cores can write configuration through three
+  move destinations (\code{CW.AL}, \code{CW.AH}, \code{CW.D}) into a one-deep
+  queue. The queue shares the latch bank's single write port with the host, never
+  writes in two consecutive cycles, and holds a rejected host write for one
+  cycle. Stream~S0 can also \emph{replay} captured edge records onto the input
+  pins.
+\end{itemize}
+
+\paragraph{How the spec labels its own claims.} Many clauses are marked
+\emph{calculated}, \emph{checked on the model} or \emph{estimated}, and a few
+are explicitly \emph{not proven}. Examples are the response bound of section~5,
+the stream starvation freedom of section~10 and the freeze transparency of
+section~12.3. These are statements about \emph{all} behaviours that the
+Python model and the lockstep bench can only sample. The Lean machine and its
+refinement do not prove these derived properties, only that the RTL implements
+the transition rules they are derived from. The derived properties themselves
+are not part of the headline theorem.
+
+\paragraph{What the spec does not cover.} Physical timing (the 60\,MHz clock, the
+two-cycle latch timing exception), the electrical behaviour of the pads and the
+synchronisers, and the score language of part~A are outside it. SPEC\_V2 itself
+records that area, timing and gate-level behaviour of the full RTL were
+unverified at the time of writing.
 
 \subsection{An independent executable machine}
 
@@ -653,10 +779,10 @@ were done by a different model, read-only. Two practices mattered most:
 \section{Reproducing}
 From the repository root, with Elan and the OSS CAD Suite on \code{PATH}:
 \begin{lstlisting}[language={}]
-(cd code/tests/lean && lake build)            # cuts, bridges, capstone
-python code/tests/lean/verify.py --mutations --artifacts-dir <fresh dir>
-python code/tests/lean/coverage_check.py --strict --artifacts-dir <fresh dir>
-(cd code/tests/lean && lake build machine-sim)
+(cd lean && lake build)            # cuts, bridges, capstone
+python lean/verify.py --mutations --artifacts-dir <fresh dir>
+python lean/coverage_check.py --strict --artifacts-dir <fresh dir>
+(cd lean && lake build machine-sim)
 python -m pytest code/tests/machine_lockstep -q   # machine vs Python model
 \end{lstlisting}
 Evidence for this write-up:
@@ -666,6 +792,6 @@ Evidence for this write-up:
 \item \code{data/raw/lean\_full\_v4\_20261121c/}
 \item \code{data/raw/lean\_machine\_lockstep\_20261122/}
 \end{itemize}
-The per-cut details are in \code{code/tests/lean/README.md}.
+The per-cut details are in \code{lean/README.md}.
 
 \end{document}

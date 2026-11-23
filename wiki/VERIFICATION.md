@@ -64,6 +64,46 @@ Vacuity is guarded in two ways:
 
 Not covered formally: SPI byte framing, watcher dispatch (it moved into the core during the area pass), the cross-cycle claim that each tap fires once per beat, and clock-time liveness without software obligations. The core proof bounds overtaking in dispatches; finite burst lengths and stable RUN/configuration are needed to convert this into the checker's clock bound.
 
+### Metronome v4 configuration write port in Lean
+
+The Lean framework checks the centralized arbiter and write stage against
+equations regenerated from the current Verilog. It proves cycle-by-cycle
+equivalence, write spacing after sampled reset, and host-byte delivery within
+one cycle under the host-strobe spacing rule. The cut ends at the latch-bank
+inputs.
+
+A second cut covers the actual host write-strobe cone in `md2_host.v`. Lean
+proves that the extracted registered `wr` and `bitc` transition matches the SPI
+write specification, that a write strobe forces the next bit count to zero,
+and that a bit count other than 7 excludes a write. The trace theorem proves
+no two adjacent strobes in cycles `n+1` and `n+2`; composition starts from the
+post-reset host state so the arbitrary power-up cycle 0 is covered explicitly.
+The chip-top adapter checks that `cfg_host_now` is exactly
+`u_host.wr & in_cfg & cfg_address_is_live(ha)`, which discharges
+`Config.SpacedHost` and instantiates the existing configuration service
+theorem. `st` and `is_rd` are free in the host model.
+
+A third cut closes the address decode. For every 16-bit address it proves the
+elaborated host qualification `in_cfg & cfg_address_is_live(ha)` and the
+elaborated core `cw_is_cfg` both equal "inside the window and the elaborated
+`u_cfg` mask byte at that offset is non-zero". Kernel-checked lemmas connect
+the maximal non-zero runs to the per-byte flags and to the `MASK` parameter;
+the adapter checks that each non-zero byte has a `we1`-enabled gate with an
+`addr1`-only select and exactly its masked latch set.
+The two arbiter address buses are checked as `a_cfg[8:0]` and
+`cw_pending_addr[8:0]`; because `CFG_LO` is nine-bit aligned and the window is
+at most 512 bytes, a Lean lemma shows the full offset fits the nine-bit bank
+address. Boundary facts cover the first and last live bytes, a hole, a partial
+byte, the last indexed but mask-zero byte, the out-of-window end and a wrapped
+address. The `bv_decide` theorems (the two full-address equalities, the
+interval/flag equivalence and the offset bound) use Lean's native LRAT
+certificate checker; that is the only trust added beyond Yosys and the RTLIL
+adapter. SPI pin timing, byte framing, payload content and physical
+timing remain outside this cut. Run
+`python lean/verify.py --mutations` to check the proofs and plant
+RTL changes that exercise their failure paths.
+[Commands, assumptions and proof boundaries](../lean/README.md).
+
 ## 4. Protocols, end to end
 
 Example programs (`code/host/examples/*.mas`) go through the full path:
@@ -82,6 +122,23 @@ The model tests are in `code/tests/protocols/` (11 tests). The RTL runs as `prot
 | `eth_tx` 10BASE-T | preamble/SFD generated on chip, **FCS computed on chip** (LFSR, reflected CRC-32), Manchester through the output-cell LUT | 15, 60 and 114 byte bodies plus a back-to-back pair decoded bit-exact by `eth_decode`; FCS matches `zlib.crc32`; every edge on the 3-clock half-bit grid (0 jitter); TP_IDL 18 clk | 1 frame, pass (decoded from RTL pins) |
 
 10BASE-T is the tightest case. A burst of n instructions frees its engine at t+n+2 and the next bit's trigger comes at t+6, so each bit gets at most 4 instructions. The bit loops use 3 or 4. The toolchain's static checker reports the worst burst as 4 instructions inside a 6-clock commit window. This bound is *calculated* from SPEC 5 and confirmed in the model.
+
+## 4a. Hardware-side checks (metronome v4, 2026-11-19)
+
+These checks target the chip's boundary with the outside world rather than the protocol programs. All runs are simulation: none is measured on hardware. Details, commands and caveats are in each folder's README and FINDINGS; the campaign record is `data/raw/hw_verify_20261119/` (independent review `review_opus.md`, post-fix reruns) and `data/raw/hwv_routed_20261119/` (routed run).
+
+| Check | Result | Evidence class |
+|---|---|---|
+| RP2350 loader core (`code/host2/board/`, `ttboard` SDK pinned at `15ba5ce`) against full-chip RTL in a board twin (`code/tests/board_twin/`) | 50 tests pass; 38-point SCK period/phase/jitter sweep plus a 20-point fine grid; every point at SCK <= clk/16 passes; 0 mismatches in 238,270 cycles compared with the cycle model | verified in simulation against the reference model; MicroPython compatibility checked statically only, not run on the board |
+| Pad CDC structure (`code/tests/cdc/`) | each of the 16 raw pad inputs drives only its first synchroniser flop, which drives only the second; raw `rst_n` drives only the reset synchroniser; the audit fails closed on unknown cells, and 3 planted mutations on a temporary copy of `src/` fail it | structural audit of the RTL elaboration (Yosys) |
+| Input-edge jitter (one-cycle late resolution, seeded) | protocol results identical to the unperturbed run for SPI host load/readback and a UART example; a two-cycle MOSI slip (negative control) is detected. A one-cycle slip cannot break the host link (the synchroniser delay is common to SCK and MOSI), so this shows tolerance, not margin | RTL-simulated; also gate-level simulated on the routed v4 netlist (`5cb8a739...`), zero-delay, with stimulus-side jitter |
+| Reset and X-state (`code/tests/xinit/`) | random init of all 2,627 non-reset register paths (3,797 storage bits) and all 1,024 SRAM words, then reset and SPI load: lockstep passes for 8 seeds; Icarus X-init leaves no X on any pin after reset and load; mid-run reset recovers; a 1 ps pulse resets (asynchronous clear), release after 1 edge, or 2 if the pulse straddles one | verified in simulation against the reference model (RTL); gate-level simulated on the routed netlist for 5 X-init/random-SRAM cases, 0 mismatches, 0 X on pins. Silicon minimum pulse width not established |
+| Host contract from the reset inventory | only SRAM is not cleared by reset: the host must load every byte of each fetchable program word, whole 32-bit data words (including padding and the read lookahead word) and data word 0 (post-reset prefetch) | structural inventory plus RTL simulation; SRAM retention across reset is inferred from the macro having no reset, not demonstrated |
+| Third-party device models (`code/tests/vendor_models/`) | Score controllers against the Winbond W25Q128JV flash model (JEDEC ID, program with WIP polling, read-back) and the 24LC256 EEPROM model (page write, ack polling, read-back) on the full-chip RTL; a PS/2 keyboard receiver built from the IBM/Chapweske description. Found a write-cycle bug in the third-party 24LC256 model | RTL-simulated against third-party models (Verilog compiled only; no third-party scripts run). Device timing shortened (tPP/tWC); PS/2 peer written by the same agent, so not an independent blind test |
+
+The gate-level runs used a fresh v4 harden of the unchanged RTL (`b7b4068` plus the frozen working tree, input archive SHA-256 `cf409a1a...1d60`) on 2026-11-19: extracted setup at 16.667 ns (60 MHz) slow +1.463 ns, typ +5.753 ns, fast +6.467 ns; hold fast +0.081 ns, typ +0.228 ns, slow +0.486 ns; route DRC, LVS, antenna, max slew, max cap, setup and hold violation counts all 0; 2,112 configuration latch D pins under the 2-cycle setup exception; Tiny Tapeout precheck passed; gate smoke 1/1; gate lockstep 6/6 zero-delay scenarios and 3/3 at each of the typ/slow/fast SDF corners; the independent `verilog-uart` decoder received `0x42` from the routed UART reply and flagged the bad-stop control. Classes: post-route extracted STA, precheck-passed, gate-level simulated. Timing matches the earlier qualified v4 build to the picosecond, as expected for identical inputs.
+
+The reference model's clocked reset holds for one edge longer than the RTL after a reset pulse shorter than a cycle; a cycle-level model cannot represent the sub-cycle pulse, and the lockstep compares from three idle cycles after reset. This is a modelling limit, not an RTL or SPEC deviation.
 
 ## 5. Physical (metronome v1.0)
 
@@ -110,7 +167,7 @@ LibreLane's cumulative `final/metrics.json` can keep obsolete pre-PnR values aft
 
 ## 6. What is not verified
 
-- Silicon, an FPGA prototype and the RP2350 demo board.
+- Silicon, an FPGA prototype and the RP2350 demo board. The RP2350 loader exists and its core is simulated against the RTL (section 4a), but it has not run on the board.
 - Slow-corner timing closure (v1.0 is -0.42 ns at 1.08 V/125 C) and SDF-annotated gate-level simulation.
 - The remaining antenna violation and the max slew/cap violations.
 - The IHP SRAM macros' power scheme, which upstream describes as not silicon-proven.

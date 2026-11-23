@@ -24,6 +24,23 @@ and [routed regression audit](../data/raw/v4_layout_closeout_20261118/regression
 for the corner details and case counts. SDF coverage omits SRAM timing and
 interconnect delays. Icarus leaves timing checks unenforced.
 
+### Lean proof of the v4 configuration write port
+
+| Evidence class | Result on RTL revision `b7b4068` | Boundary |
+|---|---|---|
+| Theorem proving, Lean 4.35.0 with Yosys 0.70+190 extraction | The arbiter and write stage match the specification at every sampled cycle, for arbitrary two-state payloads. Their Lean trace proves write spacing after reset and host-byte delivery within one cycle. Five HDL mutations failed equivalence and one broken connection failed the top-level wiring check. | The cut runs from the arbiter request ports to the latch-bank inputs. Host delivery assumes spaced strobes and reset remains released through delivery. Yosys elaboration and the RTLIL adapter are trusted. |
+| Independent RTL induction and RTL/model evidence | The v4 arbiter induction, its three mutation cases, 23 v4 model checks and the full-chip `v4_config_write` lockstep case passed. | The lockstep run used Icarus 14.0 devel and the IHP SRAM behavioral models. |
+| Theorem proving, host write-strobe cone, Lean 4.35.0 with Yosys 0.70+190 extraction | The extracted registered `wr`/`bitc` transition matches SPEC Â§9, a write forces the next bit count to zero, and bit count â‰  7 excludes a write. Adjacent strobes in cycles `n+1`/`n+2` are impossible. The chip-top `cfg_host_now` is exactly `u_host.wr & in_cfg & cfg_address_is_live(ha)`, which discharges `Config.SpacedHost` and applies the configuration service theorem. Two host mutations and one top-filter bypass mutation failed the expected layer; the six earlier configuration mutations were retained. Selected rerun: 23 v4 model checks, `v4_config_write` and `spi_target` lockstep, 25 passed. | The host cut starts at sampled `rst_n`, `sck`, `sck_p` and `cs_n` and ends at the next `wr`/`bitc`; `st` and `is_rd` are free inputs. Composition starts in `Host.resetState` so the arbitrary power-up cycle 0 is covered. SPI pin timing, byte framing, payload content, synchroniser analog behaviour and physical timing are outside the cut. Yosys and the RTLIL adapter are trusted. |
+| Theorem proving, host and core configuration address decode, Lean 4.35.0 with Yosys 0.70+190 extraction | For all 16-bit addresses the elaborated host `in_cfg & cfg_address_is_live(ha)` and core `cw_is_cfg` equal "in the 0x2000–0x21df window and the elaborated `u_cfg` mask byte at the offset is non-zero". The kernel checks the maximal 284 non-zero bytes of the 480-byte, 2112-bit mask against the `MASK` parameter; the adapter checks each non-zero byte has a `we1`-enabled gate with an `addr1`-only select and exactly its latch set. Boundary facts: 0x2000 and 0x21d7 live, 0x201d a hole, 0x20d0 partial 0x03, 0x21df indexed but mask-zero, 0x21e0 out, 0x1fff wrapped. The host/core arbiter addresses are checked as `a_cfg[8:0]`/`cw_pending_addr[8:0]`; the offset is proved below 512. Four new mutants (permissive line decode, core address-bit swap, non-live mask byte, core address wiring) failed the decode layer; the nine earlier mutants were retained. | The `bv_decide` theorems (two full-address equalities, interval/flag equivalence, offset bound) use Lean's native LRAT certificate checker, the only trust added beyond Yosys and the RTLIL adapter. The window alignment and span are checked preconditions. The cut covers address decode and implemented mask bits, not payload, latch visibility or physical timing. |
+
+See the [Lean proof runner](../lean/README.md), [captured proof input](../data/raw/lean_v4_20261118/proof/baseline.lean),
+[host proof input](../data/raw/lean_host_v4_20261118/proof_final3/baseline.host.lean)
+and [regression results](../data/raw/lean_v4_20261118/pytest.xml). The host
+run console, manifest and JUnit XML are under
+[data/raw/lean_host_v4_20261118](../data/raw/lean_host_v4_20261118/README.md).
+The address-decode sources, mutation logs and tool versions are under
+[data/raw/lean_decode_v4_20261118](../data/raw/lean_decode_v4_20261118/).
+
 ## Earlier qualification and methods
 
 Status: 2026-11-16, branch `metronome-v3.0`, uncommitted tree over `refs/v3-baseline/20261116` (7a8bdb9, itself over

@@ -17,6 +17,7 @@
 !/wiki/
 !/code/
 !/sim/
+!/lean/
 
 # Local agent instructions, planning records and editor settings.
 /BOTS/
@@ -45,6 +46,22 @@ DECISIONS.md
 /data/
 /code/.build/
 /code/.tools/
+
+# Lean build output (the lean/ folder keeps its own .gitignore too).
+.lake/
+*.olean
+*.ilean
+
+# Scratch files, stray logs and editor leftovers at the repo root.
+/*.lean
+/*.log
+/focus.py
+/scratch/
+*.tmp
+*.bak
+*.orig
+*.swp
+*~
 
 # Python environments, caches and package output.
 __pycache__/

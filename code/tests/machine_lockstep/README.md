@@ -29,7 +29,7 @@ python -m pytest code/tests/machine_lockstep -q                  # skips with a 
 MACHINE_LOCKSTEP_SEEDS=10 python -m pytest code/tests/machine_lockstep -q
 ```
 
-Exe: `code/tests/lean/.lake/build/bin/machine-sim(.exe)` (build: `lake build machine-sim` in `code/tests/lean`), or
+Exe: `lean/.lake/build/bin/machine-sim(.exe)` (build: `lake build machine-sim` in `lean`), or
 `MACHINE_SIM=<path>`, or `--exe`. Environment: `MACHINE_LOCKSTEP_SEEDS` (random_1..N, default 4),
 `MACHINE_LOCKSTEP_V3_SEEDS` (random3_1..N, default 2), `MACHINE_LOCKSTEP_FAKE=1` (pytest against `fake_sim.py`).
 Exit codes of `run_lockstep.py`: 0 match, 1 mismatch, 2 harness/exe error (timeout, crash, bad JSON).

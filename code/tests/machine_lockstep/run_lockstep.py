@@ -122,7 +122,7 @@ def main(argv=None):
     ap.add_argument("--ignore", help="comma-separated key globs to skip")
     ap.add_argument("--max-cycles", type=int)
     ap.add_argument("--max-keys", type=int, default=20, help="stop after this many distinct mismatching keys")
-    ap.add_argument("--exe", help="machine-sim path (default: env MACHINE_SIM or code/tests/lean/.lake/build/bin)")
+    ap.add_argument("--exe", help="machine-sim path (default: env MACHINE_SIM or lean/.lake/build/bin)")
     ap.add_argument("--fake-model", action="store_true", help="use fake_sim.py (second Python model) as the Lean side")
     ap.add_argument("--fake-flip", help="with --fake-model: CYCLE:KEY:BIT planted difference")
     ap.add_argument("--timeout", type=float, default=60.0)
